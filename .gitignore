@@ -1,0 +1,7 @@
+*.pyc
+marco/settings_local.py
+logs/*
+mediaroot/*
+deploy/*
+data/*
+env/*
