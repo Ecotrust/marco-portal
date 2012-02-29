@@ -1,3 +1,8 @@
+## This page describes the custom projection used for MARCO portal
+
+We'll use an Albers Equal Area projection focused on the MARCO boundary
+but with the central meridian shifted west to minimize distortion for near-shore analyses.
+
 # ESRI WKT
     PROJCS["MARCO_Albers",
         GEOGCS["GCS_WGS_1984",
@@ -22,16 +27,19 @@
 
 There is no corresponding EPSG code for this project. For the purposes of this project, we will use the custom code EPSG:99996
 
-## Add projection to GeoDjango and to PostGIS
+### Add projection to GeoDjango and to PostGIS
 
-* Set GEOMETRY_DB_SRID = 99996 in settings BEFORE you run syncdb
+* Set `GEOMETRY_DB_SRID = 99996` in settings BEFORE you run syncdb
 
 * add the proj4 definition to the bottom of /usr/local/share/proj/epsg (might be in another location) with srid of 99996
 
+```
     # Marco Albers
     <99996> +proj=aea +lat_1=37.25 +lat_2=40.25 +lat_0=36 +lon_0=-72 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs <>
-
+```
 * then run the following command from django shell in order to add the projection to the spatial_ref_sys table:
 
+```python
     from django.contrib.gis.utils import add_postgis_srs
     add_postgis_srs(99996) 
+```
