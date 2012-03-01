@@ -3,7 +3,9 @@
 We'll use an Albers Equal Area projection focused on the MARCO boundary
 but with the central meridian shifted west to minimize distortion for near-shore analyses.
 
-# ESRI WKT
+# WKT 
+Use this for .prj files for use with proj4
+
     PROJCS["MARCO_Albers",
         GEOGCS["GCS_WGS_1984",
             DATUM["WGS_1984",
@@ -11,6 +13,24 @@ but with the central meridian shifted west to minimize distortion for near-shore
             PRIMEM["Greenwich",0.0],
             UNIT["Degree",0.0174532925199433]],
         PROJECTION["Albers_Conic_Equal_Area"],
+        PARAMETER["False_Easting",0.0],
+        PARAMETER["False_Northing",0.0],
+        PARAMETER["Central_Meridian",-72.0],
+        PARAMETER["Standard_Parallel_1",37.25],
+        PARAMETER["Standard_Parallel_2",40.25],
+        PARAMETER["Latitude_Of_Origin",36.0],
+        UNIT["Meter",1.0]]
+
+# ESRI WKT 
+Uses "Albers"; necessary for compatibility with ESRI products.
+
+    PROJCS["MARCO_Albers",
+        GEOGCS["GCS_WGS_1984",
+            DATUM["WGS_1984",
+                SPHEROID["WGS_1984",6378137.0,298.257223563]],
+            PRIMEM["Greenwich",0.0],
+            UNIT["Degree",0.0174532925199433]],
+        PROJECTION["Albers"],
         PARAMETER["False_Easting",0.0],
         PARAMETER["False_Northing",0.0],
         PARAMETER["Central_Meridian",-72.0],
