@@ -5,3 +5,6 @@ mediaroot/*
 deploy/*
 data/*
 env/*
+
+/marco-media
+/marco.log

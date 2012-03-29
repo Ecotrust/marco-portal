@@ -21,9 +21,12 @@ COMPRESS_JS['application']['source_filenames'] += (
     'js/project.js',
 )
 
-INSTALLED_APPS += ( 'portal', )
+LOG_FILE =  os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'marco.log'))
 
-GEOMETRY_DB_SRID = 3857
+INSTALLED_APPS += ( 'sites',
+                    'general', )
+
+GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
 
 APP_NAME = "MARCO Portal"
