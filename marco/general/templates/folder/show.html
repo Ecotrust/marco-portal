@@ -1,0 +1,57 @@
+{% extends 'common/panel.html' %}
+{% block title %}{{instance.name}}{% endblock title %}
+{% block panel %}
+
+<h1>
+    <img src="/media/marco/img/folder.png"/>
+    <small><small>Folder </small></small> 
+    &nbsp;&nbsp;{{instance.name}} 
+</h1>
+<div class="tabs">
+    <ul>
+        <li><a href="#Inputs"><span>Inputs</span></a></li>
+        <li><a href="#reports"><span>Reports</span></a></li>
+    </ul>
+    <div id="Inputs">
+        <ul class="metadata">
+          {% if instance.user.first_name and instance.user.last_name %} 
+            <li class="creator">Created By {{instance.user.first_name}} {{instance.user.last_name}}</li>
+          {% else %}
+            <li class="creator">Created By {{instance.user.username}}</li>
+          {% endif %}
+            <li class="created">Created {{instance.date_created|date:"d M, Y P"}}</li>
+            <li class="modified">Modified {{instance.date_modified|date:"d M, Y P"}}</li>
+            <br class="clear" />
+        </ul>
+        
+        <h2>Contents</h2>
+            {% for scenario in instance.scenario_set %}
+                <p>{{scenario.name}}</p>
+            {% endfor %}
+            {% for aoi in instance.aoi_set %}
+                <p>{{aoi.name}}</p>
+            {% endfor %}
+        
+        <h2>Description</h2>
+            {% if instance.description %}
+            <p>{{instance.description}}</p>
+            {% else %}
+            <p><i>No description</i></p>
+            {% endif %}
+        
+        <h2>Hint</h2>
+        <div class="draghint">
+            <img src="{{MEDIA_URL}}common/images/dragdrophint.png" />
+            To add features to this collection, simply drag and drop features in and out of it from the sidebar after saving.
+            <br style="clear:both;" />
+        </div>
+    </div>
+    
+    <div id="reports">
+       <p>Reports coming soon...</p>
+    </div>
+    
+
+</div>
+    
+{% endblock panel %}

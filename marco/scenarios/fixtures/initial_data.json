@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1, 
+        "model": "scenarios.objective", 
+        "fields": {
+            "color": "778B1A55", 
+            "name": "Wind Energy"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "scenarios.parameter", 
+        "fields": {
+            "objectives": [], 
+            "name": "Depth Range"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "scenarios.parameter", 
+        "fields": {
+            "objectives": [], 
+            "name": "Distance from Shore"
+        }
+    }
+]

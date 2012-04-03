@@ -1,0 +1,291 @@
+{% extends "common/panel.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block panel %}
+<script type="text/javascript" charset="utf-8">
+    madrona.onShow(function(){
+        madrona.setupForm($('#featureform'));
+        
+        var step = 1;
+        var max_step = 4;
+        var first_next = true;
+        var is_edit = !(!$('#id_name').val());
+        var initial_objs = [];
+        var selected_objs = [];
+        var objectives = $('input.objectives');
+        $.each(objectives, function(index, obj) {
+            if (obj.checked) {
+                initial_objs.push(obj.value);
+            }
+        });
+        var initial_params = [];
+        var selected_params = [];
+        if (is_edit) {
+            var params = $('input.parameters');        
+            $.each(params, function(index, obj) {
+                if (obj.checked) {
+                    selected_params.push(obj.value);
+                }
+            });
+        }
+        
+        function identical(list1, list2) {
+            if (list1.length != list2.length) {
+                return false;
+            }
+            var a = list1.sort();
+            var b = list2.sort();
+            for (var i = 0; i < a.length; i++) {
+                if (a[i] != b[i]) {
+                    return false;
+                }
+            }
+            return true;
+        };
+        
+        function validate(step) {
+            if (step == 1) {
+                selected_objs = []
+                var all_objs = $('input.objectives');
+                $.each(all_objs, function(index, obj) {
+                    if (obj.checked) {
+                        selected_objs.push(obj.value);
+                    }
+                });
+                if (selected_objs.length == 0) {
+                    alert("Select at least 1 Objective.");
+                    return false;
+                } 
+            } else if (step == 2) {
+                selected_params = [];
+                var all_params = $('input.parameters');
+                $.each(all_params, function(index, param) {
+                    if (param.checked) {
+                        selected_params.push(param.value);
+                    }
+                });
+                if (selected_params.length == 0) {
+                    alert("Select at least 1 Parameter.");
+                    return false;
+                }
+            }
+            return true
+        }; 
+
+        function wizard(action) {
+            if (step == 1 && action == 'next') {
+                if (validate(step)) {
+                    step += 1;
+                    if (!identical(initial_objs, selected_objs) || !identical(initial_params, selected_params) || first_next) {
+                        $.post('/scenario/form/get-params', {'initial_objs': initial_objs, 'selected_objs': selected_objs, 'selected_params': selected_params, 'is_edit': is_edit}, function(data) {
+                            $('#step2_data').html(data);
+                        });
+                    } 
+                    first_next = false;
+                    initial_objs = selected_objs;
+                }
+            } else if (step ==2 && action == 'prev') {
+                step -= 1;
+                selected_params = [];
+                var all_params = $('input.parameters');
+                $.each(all_params, function(index, param) {
+                    if (param.checked) {
+                        selected_params.push(param.value);
+                    }
+                });
+                initial_params = selected_params;
+            } else if (step == 2 && action == 'next') {
+                if (validate(step)) {
+                    step += 1;
+                    $('#distance_shore').hide();
+                    $('#distance_port').hide();
+                    $('#depth').hide();
+                    $('#substrate').hide();
+                    $.each(selected_params, function(index, param_id) {
+                        if (param_id == '1') {
+                            $('#distance_shore').show();
+                        } else if (param_id == '2') {
+                            $('#depth').show();
+                        } else if (param_id == '3') {
+                            $('#distance_port').show();
+                        } 
+                    });
+                }
+            } else if (step < max_step && action == 'next') {
+                step += 1;
+            } else if (step > 1 && action == 'prev') {
+                step -= 1;
+            }
+            $('div.step').each(function(index) {
+                $(this).hide();
+            });
+            $('div#step' + step).show();
+
+            if (step == 1) {
+                $('#button_prev').hide();
+            } else {
+                $('#button_prev').show();
+            }
+
+            if (step == max_step) {
+                $('#button_next').hide();
+                $('.submit_button').show();
+            } else {
+                $('#button_next').show();
+                $('.submit_button').hide();
+            }
+        };
+        $('#button_prev').click( function() { wizard('prev'); });
+        $('#button_next').click( function() { wizard('next'); });
+        wizard();
+        
+        $('ul.errorlist').each( function() {
+                $('div#error_bar').html("<ul class='errorlist'><li>We encountered an error while processing your bioregion. Can you recheck the steps and make sure you've filled in all the required information?</li></ul>");
+        });
+        
+        
+        $('#check_all').click(function(event) {
+            $('input.parameters').each( function() { $(this).attr('checked', 'checked'); });
+        });
+        $('#uncheck_all').click(function(event) {
+            $('input.parameters').each( function() { $(this).removeAttr('checked'); });
+        });
+                    
+    });
+</script>
+
+<style type="text/css">
+div .field > label { font-size: 12px; display: inline; }
+div .step { 
+    -moz-box-shadow: 5px 5px 5px #ddd;
+    -webkit-box-shadow: 5px 5px 5px #ddd;
+    box-shadow: 5px 5px 5px #ddd; 
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px #ddd solid;
+    padding: 6px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    background-color: white; 
+    background-repeat: no-repeat;
+    min-height: 54px;
+}
+div .inputfield { padding-bottom: 14px; }
+span.form-image { float: left; margin-left: -66px; }
+span.form-image > img { width:46px; height:46px; }
+</style>
+
+{% if form.media %} {{ form.media }} {% endif %}
+<h1>{{ title }}</h1>
+<form id="featureform" action="{{action}}" method="post"> 
+  {% for hidden in form.hidden_fields %}
+    <div style="display:none;">
+        {{ hidden.errors }}
+    </div>
+    {{ hidden }}
+  {% endfor %}
+  <div id="error_bar"></div>
+  
+  <div class="step" id="step1">
+    <h3> Step 1 of 4 </h3>
+    <p> <strong>Choose 1 or more Objectives </strong> from the following list. <strong>*</strong><p>
+    <div id="objectives" class="inputfield">
+        <div>
+            {{ form.input_objectives.label_tag }}
+            {{ form.input_objectives.errors }}
+            <p>
+            {{ form.input_objectives }}
+            </p>
+        </div>
+    </div>
+  </div>
+    
+  <div class="step" id="step2">
+    <h3> Step 2 of 4 </h3>
+    <p><strong>Choose Parameters </strong> that are relevant to your Objectives. <strong>*</strong><p>
+    <div id="param_list">
+        {{ form.input_parameters.label_tag }}
+        {{ form.input_parameters.errors }}
+        <div id="step2_data">
+            <p>{{ form.input_parameters }} </p>
+        </div>
+    </div>
+  </div>
+
+  <div class="step" id="step3">
+    <h3> Step 3 of 4 </h3>
+    <p><strong>Provide suitable values </strong>for each of the chosen parameters. <strong>*</strong></p>
+    <p></p>
+    <div id="distance_shore" class="inputfield">
+        <div class="field required">
+            {{ form.input_dist_shore.label_tag }}
+            {{ form.input_dist_shore.errors }}
+            {{ form.input_dist_shore }}            
+        </div>
+    </div>
+
+    <div id="depth" class="inputfield">
+        <div class="field required">
+            {{ form.input_depth.label_tag }} 
+            {{ form.input_depth.errors }}
+            
+            {{ form.input_min_depth }}            
+            to
+            {{ form.input_max_depth }}            
+
+            {{ form.input_depth }}            
+        </div>
+    </div>
+    
+    <div id="distance_port" class="inputfield">
+        <div class="field required">
+            {{ form.input_dist_port.label_tag }}
+            {{ form.input_dist_port.errors }}
+            {{ form.input_dist_port }}            
+        </div>
+    </div>
+    
+  </div>
+
+<div class="step" id="step4">
+    <h3> Step 4 of 4 </h3>
+    <p> <strong>Provide a name</strong> to identify your scenario </p>
+    <p></p>
+    <div class="field required">
+        {{ form.name.label_tag }}
+        {{ form.name.errors }}
+        {{ form.name }}            
+    </div>
+    <p> <strong>Optionally</strong>, you may <strong>add a description </strong>and/or <strong>attach a file.</strong> </p>
+    <div>
+        {{ form.description.label_tag }}
+        {{ form.description.errors }}
+        {{ form.description }}            
+    </div>
+    <div>
+        {{ form.support_file.label_tag }}
+        {{ form.support_file.errors }} 
+        {% if form.support_file.help_text %}
+            <p>{{ form.support_file.help_text }}</p>            
+        {% endif %}
+        <p>{{ form.support_file }}</p>         
+    </div>
+</div>
+
+<p><input type="submit" value="submit"></p>
+</form>
+
+
+<div class="wizard_nav" style="width:100%">
+    <a href="#" class="button" style="float:left;" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
+    <a href="#" class="button" style="float:right;" onclick="this.blur(); return false;" id="button_next"><span>Next &gt;</span></a>
+</div>
+
+<div>
+    <a href="#" class="cancel_button button red" onclick="this.blur(); return false;"><span>Cancel</span></a>
+    <a href="#" class="submit_button button" onclick="this.blur(); return false;"><span>Submit</span></a>
+</div>
+
+
+{% endblock %}

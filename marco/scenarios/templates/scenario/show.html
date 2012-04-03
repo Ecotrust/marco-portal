@@ -1,0 +1,68 @@
+{% extends 'common/panel.html' %}
+{% block title %}{{instance.name}}{% endblock title %}
+{% block panel %}
+
+    <h1>
+        <img src="/media/marco/img/multi.png"/>
+        <small><small>Scenario </small></small> 
+        &nbsp;&nbsp;{{instance.name}} 
+    </h1>
+    <div class="tabs">
+        <ul>
+            <li><a href="#Inputs"><span>Inputs</span></a></li>
+            <li><a href="#reports"><span>Reports</span></a></li>
+            {% for scenario in instance.scenarios.all %}
+                {% if scenario.has_empty_geom %}
+                {% else %}
+                <li><a href="{% url scenario_report instance.pk scenario.pk %}"><span>{{scenario.input_objective}} Report</span></a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div id="Inputs">
+            <ul class="metadata">
+              {% if instance.user.first_name and instance.user.last_name %} 
+                <li class="creator">Created By {{instance.user.first_name}} {{instance.user.last_name}}</li>
+              {% else %}
+                <li class="creator">Created By {{instance.user.username}}</li>
+              {% endif %}
+                <li class="created">Created {{instance.date_created|date:"d M, Y P"}}</li>
+                <li class="modified">Modified {{instance.date_modified|date:"d M, Y P"}}</li>
+                <br class="clear" />
+            </ul>
+            
+            <h2>Objectives</h2>     
+                {% for objective in instance.input_objectives.all %}
+                <p>{{objective}} {% if instance.output_area == 0 %}-- <b>Empty Geometry</b>{% endif %}</p>                
+                {% endfor %}
+                
+            <h2>Description</h2>
+                {% if instance.description %}
+                <p>{{instance.description}}</p>
+                {% else %}
+                <p><i>No Description</i></p>
+                {% endif %}
+                
+            <h2>Support File</h2>
+                <div>
+                    {% if instance.support_file %}
+                    <p><a href="{{instance.support_file.url}}" target="_blank">{{instance.support_filename}}</a></p>
+                    {% else %}
+                    <p><i>No Attachments</i></p>
+                    {% endif %}
+                </div>
+        </div>
+        
+        <div id="reports">
+            <p>Reports coming soon...</p>
+        </div>
+        
+        {% if instance.done %}
+        {% for scenario in instance.scenarios.all %}
+        <div id="{{scenario.input_objective.short_name}}_report">
+            <p>{{scenario.input_objective}} Reports coming soon...</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock panel %}
