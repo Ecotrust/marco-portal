@@ -26,7 +26,7 @@ LOG_FILE =  os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'marc
 INSTALLED_APPS += ( 'clipping',
                     'general', 
                     'scenarios', 
-                    'sites', )
+                    'drawing', )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon

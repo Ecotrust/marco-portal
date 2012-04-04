@@ -1,7 +1,7 @@
 from django.db import models
 from madrona.features import register
 from madrona.features.models import FeatureCollection
-from sites.models import AOI, WindEnergySite
+from drawing.models import AOI, WindEnergySite
 from scenarios.models import Scenario
 
 @register
@@ -52,8 +52,8 @@ class Folder(FeatureCollection):
         form = 'general.forms.FolderForm'
         show_template = 'folder/show.html'
         valid_children = (
-            'sites.models.AOI',
-            'sites.models.WindEnergySite',
+            'drawing.models.AOI',
+            'drawing.models.WindEnergySite',
             'scenarios.models.Scenario',
             'general.models.Folder',
         )
