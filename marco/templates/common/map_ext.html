@@ -1,2 +1,17 @@
 {% extends 'common/map.html' %}
 
+
+{% block metanavigation %}
+{% if user.is_authenticated %}
+<li><a href="#" id="profile">{{user.username}}</a> | </li>
+{% endif %}
+<li><a href="#" id="help">help</a> | </li>
+<li><a href="#" id="about">about</a> | </li>
+{% if user.is_authenticated %}
+<li><a href="{% url user_signout %}">sign out</a></li>
+{% else %}
+<li><a href="#" id="register">register</a> | </li>
+<!-- <li><a href="{% url user_signin %}" id="signin">sign in</a></li> -->
+<li><a href="#" id="signin">sign in</a></li>
+{% endif %}                
+{% endblock metanavigation %}
