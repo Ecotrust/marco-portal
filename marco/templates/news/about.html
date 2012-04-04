@@ -1,5 +1,4 @@
 {% load appname %} 
+{% load flatblock_tags %}
 <h2> {% appname %}</h2>
-<p> <a href="http://www.midatlanticocean.org/index.htm" target="_blank">The Mid-Atlantic Regional Council on the Ocean (MARCO)</a> 
-    is a collaborative effort between the mid-atlantic states to maintain and improve the health of the ocean and coastal resources 
-    and ensure that they continue to contribute to the high quality of life and economic vitality of the region's communities.</p>
+<p> {% flatblock "about paragraph1" %}</p>
