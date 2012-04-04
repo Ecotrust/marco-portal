@@ -23,9 +23,10 @@ COMPRESS_JS['application']['source_filenames'] += (
 
 LOG_FILE =  os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'marco.log'))
 
-INSTALLED_APPS += ( 'general', 
-                    'sites',
-                    'scenarios', )
+INSTALLED_APPS += ( 'clipping',
+                    'general', 
+                    'scenarios', 
+                    'sites', )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon

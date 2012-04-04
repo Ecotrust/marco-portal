@@ -31,6 +31,9 @@
             {% for aoi in instance.aoi_set %}
                 <p>{{aoi.name}}</p>
             {% endfor %}
+            {% for wind_site in instance.wind_site_set %}
+                <p>{{wind_site.name}}</p>
+            {% endfor %}
         
         <h2>Description</h2>
             {% if instance.description %}

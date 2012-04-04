@@ -7,6 +7,8 @@ class AOI(PolygonFeature):
     class Options:
         verbose_name = 'Area of Interest'
         icon_url = 'marco/img/aoi.png'
+        manipulators = []
+        optional_manipulators = ['clipping.manipulators.ClipToShoreManipulator']
         form = 'sites.forms.AOIForm'
         show_template = 'aoi/show.html'
 
