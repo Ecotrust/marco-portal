@@ -234,7 +234,7 @@ class Scenario(Analysis):
         return self.id
     
     class Options:
-        verbose_name = 'Scenario'
+        verbose_name = 'SDC for Wind Energy'
         icon_url = 'marco/img/multi.png'
         form = 'scenarios.forms.ScenarioForm'
         form_template = 'scenario/form.html'
