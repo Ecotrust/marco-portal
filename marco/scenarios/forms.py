@@ -50,22 +50,22 @@ class ScenarioForm(FeatureForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 3}), required=False)
     #file = forms.FileField(widget=forms.ClearableFileInput(attrs={'style': 'top:0px;margin-bottom:0px'), max_length=70, required=False) #using ClearableFileInput produces poorly formatted edit form
     support_file = ValidFileField(widget=AdminFileWidget,required=False,label="Support File")
-        #could optionally add a param similar to the following:  help_text="(e.g. a pdf or text document that explains this scenario)"
-    input_objectives = forms.ModelMultipleChoiceField(  queryset=Objective.objects.all().order_by('id'), 
-                                                        widget=forms.CheckboxSelectMultiple(attrs={'class': 'objectives'}),
-                                                        required=False, 
-                                                        label="")
-    input_parameters = forms.ModelMultipleChoiceField(  queryset=Parameter.objects.all().order_by('id'),
+    #could optionally add a param similar to the following:  help_text="(e.g. a pdf or text document that explains this scenario)"
+    #input_objectives = forms.ModelMultipleChoiceField(  queryset=Objective.objects.all().order_by('id'), 
+    #                                                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'objectives'}),
+    #                                                    required=False, 
+    #                                                    label="")
+    input_parameters = forms.ModelMultipleChoiceField(  queryset=Parameter.objects.all().order_by('ordering_id'),
                                                         widget=forms.CheckboxSelectMultiple(attrs={'class': 'parameters'}),
                                                         required=False, 
                                                         #initial = Parameter.objects.all(),
                                                         label="")
-    input_dist_shore = forms.FloatField(min_value=0, max_value=50, initial=5,
-                                        widget=SliderWidget(min=0,max=50,step=1),
-                                        label="Within distance of Shore (miles)")
-    input_dist_port = forms.FloatField( min_value=0, max_value=50, initial=10,
-                                        widget=SliderWidget(min=0,max=50,step=1),
-                                        label="Within distance of Port (miles)")
+    input_min_dist_shore = forms.FloatField(initial=3, widget=forms.TextInput(attrs={'class':'slidervalue'}))
+    input_max_dist_shore = forms.FloatField(initial=10, widget=forms.TextInput(attrs={'class':'slidervalue'}))
+    input_dist_shore = forms.FloatField(min_value=0, max_value=50, initial=0,
+                                        widget=DualSliderWidget('input_min_dist_shore', 'input_max_dist_shore', 
+                                                                min=0,max=50,step=1),
+                                        label="Distance to Shore (miles)")
     input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_depth = forms.FloatField(initial=500, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     # Dummy field to set both of the above
@@ -73,6 +73,13 @@ class ScenarioForm(FeatureForm):
                                     widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=0,max=1000,step=10),
                                     label="Depth Range (feet)")
+    input_avg_wind_speed = forms.FloatField(min_value=7, max_value=10, initial=8.5,
+                                            widget=SliderWidget( min=7,max=10,step=.1 ),
+                                            required=False)
+    input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
+                                                widget=forms.CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),
+                                                label="Include areas with the following Substrate Types", required=False) 
+    #lease_blocks = ModelMultipleChoiceField( queryset=LeaseBlock.objects.all().order_by('id'), required=False)
     
     def save(self, commit=True):
         inst = super(FeatureForm, self).save(commit=False)

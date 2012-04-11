@@ -7,105 +7,55 @@ from django.utils.html import escape
 from madrona.common.utils import asKml
 from madrona.features import register
 from madrona.analysistools.models import Analysis
-from general.utils import miles_to_meters, feet_to_meters
+from general.utils import miles_to_meters, feet_to_meters, meters_to_feet
 
 
 @register
 class Scenario(Analysis):
     #Input Parameters
-    input_objectives = models.ManyToManyField("Objective")
+    #input_objectives = models.ManyToManyField("Objective")
     input_parameters = models.ManyToManyField("Parameter")
     
-    input_dist_shore = models.FloatField(verbose_name='Distance from Shoreline')
-    input_dist_port = models.FloatField(verbose_name='Distance to Port')
-    input_min_depth = models.FloatField(verbose_name='Minimum Depth')
-    input_max_depth = models.FloatField(verbose_name='Maximum Depth')
+    input_min_dist_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
+    input_max_dist_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
+    #input_dist_shore = models.FloatField(verbose_name='Distance from Shoreline')
+    #input_dist_port = models.FloatField(verbose_name='Distance to Port')
+    input_min_depth = models.FloatField(verbose_name='Minimum Depth', null=True, blank=True)
+    input_max_depth = models.FloatField(verbose_name='Maximum Depth', null=True, blank=True)
+    input_avg_wind_speed = models.FloatField(verbose_name='Average Wind Speed', null=True, blank=True)
+    input_substrate = models.ManyToManyField('Substrate', null=True, blank=True)
     
     #Descriptors (name field is inherited from Analysis)
     description = models.TextField(null=True, blank=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
-    
-    # All output fields should be allowed to be Null/Blank
-    output_geom = models.MultiPolygonField( srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, 
-                                            verbose_name="Scenario Geometry")
-    output_mapcalc = models.CharField(max_length=360, null=True, blank=True)
-    output_area = models.FloatField(null=True, blank=True, verbose_name="Total Area (sq km)")
-    
-    geometry_final = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID,
-            null=True, blank=True, verbose_name="Final Scenario Geometry")
+            
+    lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     
     def run(self):
-        from madrona.analysistools.grass import Grass
-
-        g = Grass('marco', 
-                gisbase=settings.GISBASE, 
-                gisdbase=settings.GISDBASE,  
-                autoclean=True)
-        g.verbose = True
-        
-        #g.run('g.region rast=bathymetry')
-        #g.run('g.region nsres=195 ewres=195')
-        g.run('g.region nsres=390 ewres=390')
-        rasts = g.list()['rast']
-
-        outdir = settings.GRASS_TMP #'/tmp'
-        outbase = 'marco_%s' % str(time.time()).split('.')[0]
-        output = os.path.join(outdir,outbase+'.json')
-        if os.path.exists(output):
-            raise Exception(output + " already exists")
-        
         input_params = [p.id for p in self.input_parameters.all()]
         result = 0
-        if 1 in input_params:
-            g.run('r.buffer input=shoreline_raster output=shoreline_rast_buffer distances=%s' % (miles_to_meters(self.input_dist_shore)) )
-            shoreline_buffer = 'if(shoreline_rast_buffer==2)'
-        else:
-            shoreline_buffer = 1
+        
+        result = LeaseBlock.objects.all()
             
         if 2 in input_params:
-            depth = 'if(bathymetry > %s && bathymetry < %s)' % (feet_to_meters(-self.input_max_depth), feet_to_meters(-self.input_min_depth))
-        else:
-            depth = 1        
-        
+            input_min_depth = feet_to_meters(-self.input_min_depth)
+            input_max_depth = feet_to_meters(-self.input_max_depth)
+            result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
         if 3 in input_params:
-            g.run('v.buffer input=ports output=port_buffer distance=%s' % (miles_to_meters(self.input_dist_port)) )
-            g.run('v.to.rast input=port_buffer output=port_buffer_rast use=cat')
-            port_buffer = 'if(port_buffer_rast)'
-        else:
-            port_buffer = 1
+            input_wind_speed = self.input_avg_wind_speed
+            result = result.filter(avg_wind_speed__gte=input_wind_speed)
+        if 4 in input_params:
+            input_substrate = [s.id for s in self.input_substrate.all()]
+            result = result.filter(majority_substrate__in=input_substrate)
         
-        mapcalc = """r.mapcalc "rresult = if((%s + %s + %s)==3,1,null())" """ % (shoreline_buffer, depth, port_buffer)
-        g.run(mapcalc)
-        self.output_mapcalc = mapcalc
-        
-        #g.run('r.mapcalc "oceanic_rresult = if(rresult==1, studyregion, null())"') #but studyregion is still vector...
-        g.run('r.to.vect input=rresult output=rresult_vect feature=area')
-
-        g.run('v.out.ogr -c input=rresult_vect type=area format=GeoJSON dsn=%s' % output)
-
-        from django.contrib.gis.gdal import DataSource
-        from django.contrib.gis.geos import MultiPolygon
-        try:
-            ds = DataSource(output)
-            layer = ds[0]
-            geom = MultiPolygon([g.geos for g in layer.get_geoms()])
-        except:
-            # Grass had no geometries to give - empty output
-            geom = MultiPolygon([])
-
-        geom.srid = settings.GEOMETRY_DB_SRID
-        self.output_geom = geom
-        self.output_area = geom.area / 1000000.0 # sq m to sq km
-        
-        self.geometry_final = geom
-
-        #cleanup
-        os.remove(output)
-        del g
-
+        leaseblock_ids = [r.id for r in result.all()]
+        self.lease_blocks = ','.join(map(str, leaseblock_ids))
+            
         return True
         
+    '''
     def save(self, rerun=True, *args, **kwargs):
+        
         # only rerun the analysis if any of the input_ fields have changed
         # ie if name and description change no need to rerun the full analysis
         if self.pk is not None:
@@ -114,6 +64,9 @@ class Scenario(Analysis):
             for f in Scenario.input_fields():
                 # Is original value different from form value?
                 #if orig._get_FIELD_display(f) != getattr(self,f.name):
+                #TODO:  if parameter is turned on during an Edit and the values are left at default, 
+                #       the app does NOT currently notice any change in parameter values 
+                #       (perhaps the change to input_parameters is not being acknowledged?)
                 if getattr(orig, f.name) != getattr(self, f.name):
                     rerun = True
                     break
@@ -122,13 +75,20 @@ class Scenario(Analysis):
                 #both getattr calls return the same original list until the model has been saved 
                 #(I assume this means the form.save_m2m actually has to be called), after which calls to getattr 
                 #will return the same list (regardless of whether we use orig or self)
-                #orig_substrates = set(getattr(orig, 'input_substrate').all())
+                orig_lease_blocks = set(getattr(orig, 'lease_blocks').all())
                 super(Scenario, self).save(rerun=False, *args, **kwargs)
-                #new_substrates = set(getattr(self, 'input_substrate').all())
-                #if orig_substrates != new_substrates:
-                #    rerun = True
+                new_lease_blocks = set(getattr(self, 'lease_blocks').all())
+                if orig_lease_blocks != new_lease_blocks:
+                    rerun = True
+                    #self.lease_blocks.delete()
+                    for block in new_lease_blocks:
+                        self.lease_blocks.add(block)
+        
+        import pdb
+        pdb.set_trace()
         super(Scenario, self).save(rerun=rerun, *args, **kwargs)
-
+    '''
+    
     def __unicode__(self):
         return u'%s' % self.name
         
@@ -173,56 +133,77 @@ class Scenario(Analysis):
         """ % (self.uid, escape(self.name))
 
     @property 
-    def kml_done(self):
+    def kml(self):  
+        from general.utils import format 
+        combined_kml = '<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name)
+        combined_kml += '<LookAt><longitude>-74</longitude><latitude>39</latitude><heading>0</heading><range>600000</range></LookAt>'
+        combined_kml += '<styleUrl>#%s-default</styleUrl>' % (self.model_uid())
+        leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
+        print 'There are %s Lease Blocks in this SDC' % len(leaseblock_ids)
+        for id in leaseblock_ids:
+            try:
+                leaseblock = LeaseBlock.objects.get(pk=id)
+            except:
+                continue
+            kml =   """
+                    %s
+                    <Placemark>
+                        <visibility>1</visibility>
+                        <styleUrl>#%s-leaseblock</styleUrl>
+                        <ExtendedData>
+                            <Data name="header"><value>%s</value></Data>
+                            <Data name="block_number"><value>%s</value></Data>
+                            <Data name="min_depth"><value>%s</value></Data>
+                            <Data name="max_depth"><value>%s</value></Data>
+                            <Data name="substrate"><value>%s</value></Data>
+                            <Data name="wind_speed"><value>%s</value></Data>
+                            <Data name="user"><value>%s</value></Data>
+                            <Data name="modified"><value>%s</value></Data>
+                        </ExtendedData>
+                        %s
+                    </Placemark>
+                    """ % ( self.leaseblock_style(), self.model_uid(), self.name, leaseblock.block_number,                             
+                            format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
+                            leaseblock.substrate, format(leaseblock.avg_wind_speed,1),
+                            self.user, self.date_modified.replace(microsecond=0), 
+                            asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
+                          ) 
+            combined_kml += kml 
+        combined_kml += "</Folder>"
+        return combined_kml
+    
+    def leaseblock_style(self):
         return """
-        %s
-        <Placemark id="%s">
-            <visibility>1</visibility>
-            <name>%s</name>
-            <styleUrl>#%s-default</styleUrl>
-            <ExtendedData>
-                <Data name="name"><value>%s</value></Data>
-                <Data name="user"><value>%s</value></Data>
-                <Data name="desc"><value>%s</value></Data>
-                <Data name="type"><value>%s</value></Data>
-                <Data name="modified"><value>%s</value></Data>
-            </ExtendedData>
-            <MultiGeometry>
-            %s
-            </MultiGeometry>
-        </Placemark>
-        """ % (self.kml_style, self.uid, escape(self.name), self.model_uid(),
-            escape(self.name), self.user, escape(self.description), self.Options.verbose_name, self.date_modified.replace(microsecond=0), 
-            asKml(self.output_geom.transform( settings.GEOMETRY_CLIENT_SRID, clone=True))
-            )
+        <Style id="%s-leaseblock">
+            <BalloonStyle>
+                <bgColor>ffeeeeee</bgColor>
+                <text> <![CDATA[
+                    <font color="#1A3752">
+                        SDC for Wind Energy: <strong>$[header]</strong>
+                        <p>Lease Block Number: $[block_number]</p>
+                        <p>Min Depth: $[min_depth] feet</p>
+                        <p>Max Depth: $[max_depth] feet</p>
+                        <p>Majority Substrate: $[substrate]</p>
+                        <p>Avg Wind Speed: $[wind_speed] mph</p>
+                    </font>  
+                    <font size=1>created by $[user] on $[modified]</font>
+                ]]> </text>
+            </BalloonStyle>
+            <PolyStyle>
+                <color>778B1A55</color>
+            </PolyStyle>
+        </Style>
+        """ % (self.model_uid())
         
     @property
     def kml_style(self):
         return """
         <Style id="%s-default">
-            <BalloonStyle>
-                <bgColor>ffeeeeee</bgColor>
-                <text> <![CDATA[
-                    <font color="#1A3752"><strong>$[name]</strong></font><br />
-                    <p>$[desc]</p>
-                    <font size=1>$[type] created by $[user] on $[modified]</font>
-                ]]> </text>
-            </BalloonStyle>
-            <IconStyle>
-                <color>ffffffff</color>
-                <colorMode>normal</colorMode>
-                <scale>0.9</scale> 
-                <Icon> <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href> </Icon>
-            </IconStyle>
-            <LabelStyle>
-                <color>ffffffff</color>
-                <scale>0.8</scale>
-            </LabelStyle>
-            <PolyStyle>
-                <color>%s</color>
-            </PolyStyle>
+            <ListStyle>
+                <listItemType>checkHideChildren</listItemType>
+            </ListStyle>
         </Style>
-        """ % (self.model_uid(),self.color)
+        """ % (self.model_uid())
         
     @property
     def get_input_parameters(self):
@@ -241,16 +222,87 @@ class Scenario(Analysis):
         show_template = 'scenario/show.html'
 
 class Objective(models.Model):
-    name = models.CharField(max_length=70)
+    name = models.CharField(max_length=35)
     color = models.CharField(max_length=8, default='778B1A55')
     
     def __unicode__(self):
         return u'%s' % self.name        
 
 class Parameter(models.Model):
-    name = models.CharField(max_length=70)
+    ordering_id = models.IntegerField(null=True, blank=True)
+    name = models.CharField(max_length=35, null=True, blank=True)
+    shortname = models.CharField(max_length=35, null=True, blank=True)
     objectives = models.ManyToManyField("Objective", null=True, blank=True)
     
     def __unicode__(self):
         return u'%s' % self.name
+        
+class LeaseBlock(models.Model):
+    prot_number = models.CharField(max_length=7)
+    prot_aprv = models.CharField(max_length=11)
+    block_number = models.CharField(max_length=6)
+    shape_length = models.FloatField()
+    shape_area = models.FloatField()
+    mybc = models.IntegerField()
+    min_depth = models.FloatField()
+    max_depth = models.FloatField()
+    avg_wind_speed = models.FloatField()
+    variety = models.IntegerField()
+    majority_substrate = models.IntegerField()
+    minority = models.IntegerField()
+    geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
+    objects = models.GeoManager()   
+
+    @property
+    def substrate(self):
+        try:
+            return Substrate.objects.get(substrate_id=self.majority_substrate).substrate_name
+        except:
+            return 'Unknown'
+        
+    @property 
+    def kml_done(self):
+        return """
+        <Placemark id="%s">
+            <visibility>1</visibility>
+            <styleUrl>#%s-default</styleUrl>
+            %s
+        </Placemark>
+        """ % ( self.uid, self.model_uid(),
+                asKml(self.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
+              )
+        
+    '''
+    @property 
+    def kml_done(self):
+        return """
+        %s
+        <Placemark id="%s">
+            <visibility>1</visibility>
+            <name>%s</name>
+            <styleUrl>#%s-default</styleUrl>
+            <ExtendedData>
+                <Data name="name"><value>%s</value></Data>
+                <Data name="user"><value>%s</value></Data>
+                <Data name="desc"><value>%s</value></Data>
+                <Data name="params"><value>%s</value></Data>
+                <Data name="type"><value>%s</value></Data>
+                <Data name="modified"><value>%s</value></Data>
+            </ExtendedData>
+            %s
+        </Placemark>
+        """ % (self.kml_style, self.uid, escape(self.name), self.model_uid(),
+            escape(self.name), self.user, escape(self.description), self.kml_param_output, 
+            self.Options.verbose_name, self.date_modified.replace(microsecond=0), 
+            asKml(self.output_geom.transform( settings.GEOMETRY_CLIENT_SRID, clone=True))
+            )
+    '''        
+        
+class Substrate(models.Model):
+    substrate_id = models.IntegerField()
+    substrate_name = models.CharField(max_length=35)
+    substrate_shortname = models.CharField(max_length=35)
+    
+    def __unicode__(self):
+        return u'%s' % self.substrate_name
         

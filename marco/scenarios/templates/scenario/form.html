@@ -6,17 +6,9 @@
         madrona.setupForm($('#featureform'));
         
         var step = 1;
-        var max_step = 4;
+        var max_step = 3;
         var first_next = true;
         var is_edit = !(!$('#id_name').val());
-        var initial_objs = [];
-        var selected_objs = [];
-        var objectives = $('input.objectives');
-        $.each(objectives, function(index, obj) {
-            if (obj.checked) {
-                initial_objs.push(obj.value);
-            }
-        });
         var initial_params = [];
         var selected_params = [];
         if (is_edit) {
@@ -28,34 +20,8 @@
             });
         }
         
-        function identical(list1, list2) {
-            if (list1.length != list2.length) {
-                return false;
-            }
-            var a = list1.sort();
-            var b = list2.sort();
-            for (var i = 0; i < a.length; i++) {
-                if (a[i] != b[i]) {
-                    return false;
-                }
-            }
-            return true;
-        };
-        
         function validate(step) {
             if (step == 1) {
-                selected_objs = []
-                var all_objs = $('input.objectives');
-                $.each(all_objs, function(index, obj) {
-                    if (obj.checked) {
-                        selected_objs.push(obj.value);
-                    }
-                });
-                if (selected_objs.length == 0) {
-                    alert("Select at least 1 Objective.");
-                    return false;
-                } 
-            } else if (step == 2) {
                 selected_params = [];
                 var all_params = $('input.parameters');
                 $.each(all_params, function(index, param) {
@@ -67,7 +33,7 @@
                     alert("Select at least 1 Parameter.");
                     return false;
                 }
-            }
+            } 
             return true
         }; 
 
@@ -75,30 +41,9 @@
             if (step == 1 && action == 'next') {
                 if (validate(step)) {
                     step += 1;
-                    if (!identical(initial_objs, selected_objs) || !identical(initial_params, selected_params) || first_next) {
-                        $.post('/scenario/form/get-params', {'initial_objs': initial_objs, 'selected_objs': selected_objs, 'selected_params': selected_params, 'is_edit': is_edit}, function(data) {
-                            $('#step2_data').html(data);
-                        });
-                    } 
-                    first_next = false;
-                    initial_objs = selected_objs;
-                }
-            } else if (step ==2 && action == 'prev') {
-                step -= 1;
-                selected_params = [];
-                var all_params = $('input.parameters');
-                $.each(all_params, function(index, param) {
-                    if (param.checked) {
-                        selected_params.push(param.value);
-                    }
-                });
-                initial_params = selected_params;
-            } else if (step == 2 && action == 'next') {
-                if (validate(step)) {
-                    step += 1;
                     $('#distance_shore').hide();
-                    $('#distance_port').hide();
                     $('#depth').hide();
+                    $('#wind').hide();
                     $('#substrate').hide();
                     $.each(selected_params, function(index, param_id) {
                         if (param_id == '1') {
@@ -106,7 +51,9 @@
                         } else if (param_id == '2') {
                             $('#depth').show();
                         } else if (param_id == '3') {
-                            $('#distance_port').show();
+                            $('#wind').show();
+                        } else if (param_id == '4') {
+                            $('#substrate').show();
                         } 
                     });
                 }
@@ -153,31 +100,11 @@
     });
 </script>
 
-<style type="text/css">
-div .field > label { font-size: 12px; display: inline; }
-div .step { 
-    -moz-box-shadow: 5px 5px 5px #ddd;
-    -webkit-box-shadow: 5px 5px 5px #ddd;
-    box-shadow: 5px 5px 5px #ddd; 
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -khtml-border-radius: 6px;
-    border-radius: 6px;
-    border: 1px #ddd solid;
-    padding: 6px;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    background-color: white; 
-    background-repeat: no-repeat;
-    min-height: 54px;
-}
-div .inputfield { padding-bottom: 14px; }
-span.form-image { float: left; margin-left: -66px; }
-span.form-image > img { width:46px; height:46px; }
-</style>
-
 {% if form.media %} {{ form.media }} {% endif %}
-<h1>{{ title }}</h1>
+<h1>
+    <img src="/media/marco/img/multi.png"/>
+    <small>New SDC for Wind Energy </small> 
+</h1>
 <form id="featureform" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
     <div style="display:none;">
@@ -188,22 +115,9 @@ span.form-image > img { width:46px; height:46px; }
   <div id="error_bar"></div>
   
   <div class="step" id="step1">
-    <h3> Step 1 of 4 </h3>
-    <p> <strong>Choose 1 or more Objectives </strong> from the following list. <strong>*</strong><p>
-    <div id="objectives" class="inputfield">
-        <div>
-            {{ form.input_objectives.label_tag }}
-            {{ form.input_objectives.errors }}
-            <p>
-            {{ form.input_objectives }}
-            </p>
-        </div>
-    </div>
-  </div>
-    
-  <div class="step" id="step2">
-    <h3> Step 2 of 4 </h3>
-    <p><strong>Choose Parameters </strong> that are relevant to your Objectives. <strong>*</strong><p>
+    <p class="step-text"><i>Step 1 of 3 </i>
+    <p class="instructions">Select 1 or more parameters for this sector <p>
+    <label class="step2-header">Wind Energy</label>
     <div id="param_list">
         {{ form.input_parameters.label_tag }}
         {{ form.input_parameters.errors }}
@@ -211,59 +125,92 @@ span.form-image > img { width:46px; height:46px; }
             <p>{{ form.input_parameters }} </p>
         </div>
     </div>
+    <p class="instructions">Choose any filtering parameters from other sectors <p>
+    <label class="step3-header">
+        Shipping
+        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
+    </label>
+    <label class="step3-header">
+        Conservation
+        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
+    </label>
   </div>
 
-  <div class="step" id="step3">
-    <h3> Step 3 of 4 </h3>
-    <p><strong>Provide suitable values </strong>for each of the chosen parameters. <strong>*</strong></p>
-    <p></p>
+  <div class="step" id="step2">
+    <p class="step-text"><i>Step 2 of 3 </i>
+    <p class="instructions">Provide suitable values for each of the chosen parameters. </p>
+    <label class="step3-header">
+        Wind Energy
+        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Hide Parameters</a>]:</small>
+    </label>
     <div id="distance_shore" class="inputfield">
-        <div class="field required">
-            {{ form.input_dist_shore.label_tag }}
-            {{ form.input_dist_shore.errors }}
-            {{ form.input_dist_shore }}            
+        <div>
+            <label class="param">
+                Distance to Shore (miles) 
+                
+                {{ form.input_min_dist_shore }}            
+                to
+                {{ form.input_max_dist_shore }}            
+
+                {{ form.input_dist_shore }}  
+                
+                {{ form.input_dist_shore.errors }}
+            </label>         
         </div>
     </div>
-
     <div id="depth" class="inputfield">
-        <div class="field required">
-            {{ form.input_depth.label_tag }} 
-            {{ form.input_depth.errors }}
-            
-            {{ form.input_min_depth }}            
-            to
-            {{ form.input_max_depth }}            
+        <div>
+            <label class="param">
+                Depth Range (feet)
+                
+                {{ form.input_min_depth }}            
+                to
+                {{ form.input_max_depth }}            
 
-            {{ form.input_depth }}            
+                {{ form.input_depth }}  
+                {{ form.input_depth.errors }}
+            </label>                   
         </div>
     </div>
-    
-    <div id="distance_port" class="inputfield">
-        <div class="field required">
-            {{ form.input_dist_port.label_tag }}
-            {{ form.input_dist_port.errors }}
-            {{ form.input_dist_port }}            
+    <div id="substrate" class="inputfield">
+        <div>
+            <label class="param"> Substrate Types
+                {{ form.input_substrate }}  
+            </label>                   
         </div>
     </div>
-    
+    <div id="wind" class="inputfield">
+        <div>
+            <label class="param"> Minimum Average Wind Speed (m/s)
+                {{ form.input_avg_wind_speed }}  
+            </label>                   
+        </div>
+    </div>
+    <label class="step3-header">
+        Shipping
+        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
+    </label>
+    <label class="step3-header">
+        Conservation
+        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
+    </label>
   </div>
 
-<div class="step" id="step4">
-    <h3> Step 4 of 4 </h3>
-    <p> <strong>Provide a name</strong> to identify your scenario </p>
-    <p></p>
-    <div class="field required">
+<div class="step" id="step3">
+    <p class="step-text"><i>Step 3 of 3 </i>
+    <p class="instructions">Provide a name to identify your scenario: </p>
+    <div class="step4-header">
         {{ form.name.label_tag }}
         {{ form.name.errors }}
         {{ form.name }}            
     </div>
-    <p> <strong>Optionally</strong>, you may <strong>add a description </strong>and/or <strong>attach a file.</strong> </p>
-    <div>
+    <p class="instructions">Optionally, you may add a description and/or attach a file: </p>
+    <div class="step4-header">
         {{ form.description.label_tag }}
         {{ form.description.errors }}
         {{ form.description }}            
     </div>
-    <div>
+    <div class="step4-header">
         {{ form.support_file.label_tag }}
         {{ form.support_file.errors }} 
         {% if form.support_file.help_text %}
@@ -287,5 +234,105 @@ span.form-image > img { width:46px; height:46px; }
     <a href="#" class="submit_button button" onclick="this.blur(); return false;"><span>Submit</span></a>
 </div>
 
+<!-- TODO: clean up the following (much of it is not being used) after we've made some progress -->
+<style type="text/css">
+
+div .field > label { font-size: 12px; display: inline; }
+div .step { 
+    -moz-box-shadow: 5px 5px 5px #ddd;
+    -webkit-box-shadow: 5px 5px 5px #ddd;
+    box-shadow: 5px 5px 5px #ddd; 
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px #ddd solid;
+    padding: 6px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    background-color: white; 
+    background-repeat: no-repeat;
+    min-height: 54px;
+}
+span.form-image { float: left; margin-left: -66px; }
+span.form-image > img { width:46px; height:46px; }
+
+
+label {
+    clear: both;
+    color: #344E63;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 0 5px;
+    padding: 0;
+    text-shadow: 0 1px 0 #FCFAFF;
+}
+p.step-text {
+    margin: 0px;
+    text-align:left;
+}
+p.instructions {
+    margin: 0px; 
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: left;
+    color: #47556C;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: sans-serif;
+}
+form ul {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding-left: 40px;
+}
+form ul li {
+    padding-left: 15px !important;
+}
+li label {   
+    font-weight: normal !important;
+    margin-bottom: 0px !important;
+}
+label.step1-header {
+    font-weight: bold;
+    padding-left: 15px !important;
+}
+label.step2-header {
+    font-weight: bold;
+    padding-left: 15px !important;
+}
+label.step3-header {
+    font-weight: bold;
+    padding-left: 15px !important;
+    padding-bottom: 10px !important;
+}
+div.step4-header {
+    font-weight: bold;
+}
+label.param {
+    font-weight: normal !important;
+    padding-left: 30px !important;
+}
+div.param-checkboxes {
+    padding-left: 10px !important;
+}
+div.inputfield {
+    padding-bottom: 10px !important;
+}
+img.info {
+    display: inline !important;
+}
+<!-- might remove the following and keep jquery-widgets.css...had some trouble getting this code to catch on its own -->
+.slidervalue { 
+    width: 40px !important;
+}
+.ui-slider { 
+    position:relative; 
+    text-align:left; 
+    left:15px; 
+}
+
+</style>
 
 {% endblock %}

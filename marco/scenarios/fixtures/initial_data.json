@@ -1,4 +1,4 @@
-[
+[    
     {
         "pk": 1, 
         "model": "scenarios.objective", 
@@ -8,19 +8,106 @@
         }
     }, 
     {
+        "pk": 1, 
+        "model": "scenarios.parameter", 
+        "fields": {
+            "shortname": "distance_from_shore", 
+            "ordering_id": 1, 
+            "objectives": [], 
+            "name": "Distance from Shore"
+        }
+    }, 
+    {
         "pk": 2, 
         "model": "scenarios.parameter", 
         "fields": {
+            "shortname": "depth_range", 
+            "ordering_id": 2, 
             "objectives": [], 
             "name": "Depth Range"
         }
     }, 
     {
-        "pk": 1, 
+        "pk": 4, 
         "model": "scenarios.parameter", 
         "fields": {
+            "shortname": "substrate", 
+            "ordering_id": 3, 
             "objectives": [], 
-            "name": "Distance from Shore"
+            "name": "Substrate"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "scenarios.parameter", 
+        "fields": {
+            "shortname": "average_wind_speed", 
+            "ordering_id": 4, 
+            "objectives": [], 
+            "name": "Average Wind Speed"
+        }
+    },
+    {
+        "pk": 1, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "depression", 
+            "substrate_id": 1, 
+            "substrate_name": "Depression"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "low_slope", 
+            "substrate_id": 2, 
+            "substrate_name": "Low Slope"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "steep", 
+            "substrate_id": 3, 
+            "substrate_name": "Steep"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "mid_flat", 
+            "substrate_id": 4, 
+            "substrate_name": "Mid Flat"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "side_slope", 
+            "substrate_id": 5, 
+            "substrate_name": "Side Slope"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "high_flat", 
+            "substrate_id": 6, 
+            "substrate_name": "High Flat"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "scenarios.substrate", 
+        "fields": {
+            "substrate_shortname": "high_slope", 
+            "substrate_id": 7, 
+            "substrate_name": "High Slope"
         }
     }
 ]
