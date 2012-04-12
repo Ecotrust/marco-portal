@@ -134,7 +134,7 @@ class Scenario(Analysis):
     @cache_kml
     def kml(self):  
         from general.utils import format 
-        from profilehooks import profile
+        #from profilehooks import profile
         import time
         '''
         combined_kml = '<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name)
@@ -179,10 +179,11 @@ class Scenario(Analysis):
         elapsed_time = time.time() - start_time
         print 'Finished generating KML (with str concatenation) for %s Lease Blocks in %s seconds' % (len(leaseblock_ids), elapsed_time)
         '''
-        
+        #the following list appendation strategy was a good 10% faster than string concatenation
+        #(biggest improvement however came by adding/populating a geometry_client column in leaseblock table)
         combined_kml_list = []
         combined_kml_list.append('<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
-        combined_kml_list.append('<LookAt><longitude>-74</longitude><latitude>39</latitude><heading>0</heading><range>600000</range></LookAt>')
+        combined_kml_list.append('<LookAt><longitude>-73.5</longitude><latitude>39</latitude><heading>0</heading><range>600000</range></LookAt>')
         combined_kml_list.append('<styleUrl>#%s-default</styleUrl>' % (self.model_uid()))
         combined_kml_list.append('%s' % self.leaseblock_style())
         leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
