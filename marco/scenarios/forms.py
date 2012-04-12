@@ -73,8 +73,8 @@ class ScenarioForm(FeatureForm):
                                     widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=0,max=1000,step=10),
                                     label="Depth Range (feet)")
-    input_avg_wind_speed = forms.FloatField(min_value=7, max_value=10, initial=8.5,
-                                            widget=SliderWidget( min=7,max=10,step=.1 ),
+    input_avg_wind_speed = forms.FloatField(min_value=10, max_value=23, initial=15.7,
+                                            widget=SliderWidget( min=10,max=23,step=.1 ),
                                             required=False)
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
                                                 widget=forms.CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),

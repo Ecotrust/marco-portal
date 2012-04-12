@@ -29,5 +29,8 @@ def sq_meters_to_acres(sq_meters):
     return float(sq_meters) * .000247104393
     
 def mps_to_mph(mps):
-    return mps * 2.23693629
+    return float(mps) * 2.23693629
+    
+def mph_to_mps(mph):
+    return float(mph) * 0.44704
     

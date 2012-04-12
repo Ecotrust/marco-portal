@@ -1,0 +1,3 @@
+# pip requirements file for MARCO
+
+django-picklefield>=0.2.0
