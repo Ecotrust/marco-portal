@@ -10,3 +10,7 @@ env/*
 /marco.log
 /grassdata
 /marco/clipping/fixtures/clipping_layers.json
+/docs/mockups/archive
+/docs/mockups/assets
+/docs/mockups/SDC_WireFrames_updated.pdf
+/docs/mockups

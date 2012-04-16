@@ -1,5 +1,20 @@
 {% extends 'common/map.html' %}
 
+{% block layersConfig %}
+    // setup which kml files are shown in the data layers panel
+    //options.rememberMapExtent = false; 
+    {% if is_public_layers %}   
+        {% if camera %}
+        madrona.addLayer('{% url public-data-layers %}');
+        {% else %}
+        madrona.addLayer('{% url public-data-layers %}', {setExtent: true});
+        {% endif %}
+    {% endif %}
+    {% if user.is_authenticated and is_privatekml %}
+    madrona.addLayer('{% url layers-privatekml-list session_key=session_key %}');            
+    {% endif %}
+{% endblock layersConfig %}
+
 
 {% block metanavigation %}
 {% if user.is_authenticated %}
