@@ -11,12 +11,6 @@
         <ul>
             <li><a href="#Inputs"><span>Inputs</span></a></li>
             <li><a href="#reports"><span>Reports</span></a></li>
-            {% for scenario in instance.scenarios.all %}
-                {% if scenario.has_empty_geom %}
-                {% else %}
-                <li><a href="{% url scenario_report instance.pk scenario.pk %}"><span>{{scenario.input_objective}} Report</span></a></li>
-                {% endif %}
-            {% endfor %}
         </ul>
         <div id="Inputs">
             <ul class="metadata">
@@ -30,21 +24,42 @@
                 <br class="clear" />
             </ul>
             
-            <h2>Description</h2>
-                {% if instance.description %}
-                <p>{{instance.description}}</p>
-                {% else %}
-                <p><i>No Description</i></p>
-                {% endif %}
-                
-            <h2>Support File</h2>
+            <h2>Wind Energy Parameters</h2>
                 <div>
-                    {% if instance.support_file %}
-                    <p><a href="{{instance.support_file.url}}" target="_blank">{{instance.support_filename}}</a></p>
-                    {% else %}
-                    <p><i>No Attachments</i></p>
+                    {% if instance.input_parameter_depth %}
+                        <p> Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet</p>
+                    {% endif %}
+                    {% if instance.input_parameter_wind_speed %}
+                        <p> Minimum Average Wind Speed: {{ instance.input_avg_wind_speed }} mph</p>
+                    {% endif %}
+                    {% if instance.input_parameter_substrate %}
+                        <p> Substrates: </p>
+                        <ul>
+                        {% for substrate in instance.input_substrate_names %}
+                            <li> {{substrate}} </li>
+                        {% endfor %}
+                        </ul>
                     {% endif %}
                 </div>
+            
+            <h2>Ports/Shipping Parameters</h2>
+                <p><i>None Chosen</i></p>
+            
+            <h2>Conservation Parameters</h2>
+                <p><i>None Chosen</i></p>
+            
+            {% if instance.description %}
+            <h2>Description</h2>
+                <p>{{instance.description}}</p>
+            {% endif %}
+                
+            {% if instance.support_file %}
+            <h2>Support File</h2>
+                <div>
+                    <p><a href="{{instance.support_file.url}}" target="_blank">{{instance.support_filename}}</a></p>
+                </div>
+            {% endif %}
+            
         </div>
         
         <div id="reports">

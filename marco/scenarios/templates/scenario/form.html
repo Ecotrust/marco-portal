@@ -7,55 +7,41 @@
         
         var step = 1;
         var max_step = 3;
-        var first_next = true;
-        var is_edit = !(!$('#id_name').val());
-        var initial_params = [];
-        var selected_params = [];
-        if (is_edit) {
-            var params = $('input.parameters');        
-            $.each(params, function(index, obj) {
-                if (obj.checked) {
-                    selected_params.push(obj.value);
-                }
-            });
-        }
+
+        $('.inputfield').each(function() {
+            $(this).hide();
+        });
+        if ($('#id_input_parameter_depth').is(':checked')) {
+            $('#depth_widget').show();
+        } 
+        if ($('#id_input_parameter_substrate').is(':checked')) {
+            $('#substrate_widget').show();
+        } 
+        if ($('#id_input_parameter_wind_speed').is(':checked')) {
+            $('#wind_speed_widget').show();
+        } 
         
         function validate(step) {
             if (step == 1) {
-                selected_params = [];
+                selected_params = 0;
                 var all_params = $('input.parameters');
                 $.each(all_params, function(index, param) {
                     if (param.checked) {
-                        selected_params.push(param.value);
+                        selected_params += 1;
                     }
                 });
-                if (selected_params.length == 0) {
+                if (selected_params == 0) {
                     alert("Select at least 1 Parameter.");
                     return false;
                 }
             } 
-            return true
+            return true;
         }; 
 
         function wizard(action) {
             if (step == 1 && action == 'next') {
                 if (validate(step)) {
                     step += 1;
-                    $('#distance_shore').hide();
-                    $('#depth').hide();
-                    $('#wind').hide();
-                    $('#substrate').hide();
-                    $.each(selected_params, function(index, param_id) {
-                        if (param_id == '1') {
-                            $('#distance_shore').show();
-                        } else if (param_id == '2') {
-                            $('#depth').show();
-                        } else if (param_id == '3') {
-                            $('#wind').show();
-                        } else if (param_id == '4') {
-                            $('#substrate').show();
-                        } 
-                    });
                 }
             } else if (step < max_step && action == 'next') {
                 step += 1;
@@ -81,6 +67,15 @@
                 $('.submit_button').hide();
             }
         };
+        
+        function showhide_widget(element) {
+            element.fadeToggle(100); //slideToggle
+        }
+        
+        $('#id_input_parameter_depth').click( function() { showhide_widget($('#depth_widget')); });
+        $('#id_input_parameter_substrate').click( function() { showhide_widget($('#substrate_widget')); });
+        $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
+        
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
         wizard();
@@ -88,15 +83,7 @@
         $('ul.errorlist').each( function() {
                 $('div#error_bar').html("<ul class='errorlist'><li>We encountered an error while processing your bioregion. Can you recheck the steps and make sure you've filled in all the required information?</li></ul>");
         });
-        
-        
-        $('#check_all').click(function(event) {
-            $('input.parameters').each( function() { $(this).attr('checked', 'checked'); });
-        });
-        $('#uncheck_all').click(function(event) {
-            $('input.parameters').each( function() { $(this).removeAttr('checked'); });
-        });
-                    
+                      
     });
 </script>
 
@@ -117,106 +104,81 @@
   <div class="step" id="step1">
     <p class="step-text"><i>Step 1 of 3 </i>
     <p class="instructions">Select 1 or more parameters for this sector <p>
-    <label class="step2-header">Wind Energy</label>
-    <div id="param_list">
-        {{ form.input_parameters.label_tag }}
-        {{ form.input_parameters.errors }}
-        <div id="step2_data">
-            <p>{{ form.input_parameters }} </p>
-        </div>
+    <label class="step1-header">Wind Energy</label>
+    <div id="step1_inputs">
+        <ul class="parameters">
+        <li>
+            <label>{{ form.input_parameter_depth }} Depth Range</label>
+            <div id="depth_widget" class="inputfield">
+                <label class="param">
+                    Desired Range (in feet)
+                    {{ form.input_min_depth }}            
+                    to
+                    {{ form.input_max_depth }}            
+
+                    {{ form.input_depth }}  
+                    {{ form.input_depth.errors }}
+                </label>  
+            </div>
+        </li>
+        <li>
+            <label>{{ form.input_parameter_substrate }} Substrate Types</label>
+            <div id="substrate_widget" class="inputfield">
+                <label class="param"> 
+                    {{ form.input_substrate }}  
+                    {{ form.input_substrate.errors }}  
+                </label> 
+            </div>
+        </li>
+        <li>
+            <label>{{ form.input_parameter_wind_speed }} Wind Speed</label>
+            <div id="wind_speed_widget" class="inputfield">
+                <label class="param"> Minimum Average Speed (m/s)
+                    {{ form.input_avg_wind_speed }} 
+                    {{ form.input_avg_wind_speed.errors }}   
+                </label> 
+            </div>
+        </li>
+        </ul>
     </div>
-    <p class="instructions">Choose any filtering parameters from other sectors <p>
-    <label class="step3-header">
-        Shipping
-        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
-    </label>
-    <label class="step3-header">
-        Conservation
-        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
-    </label>
   </div>
 
   <div class="step" id="step2">
     <p class="step-text"><i>Step 2 of 3 </i>
-    <p class="instructions">Provide suitable values for each of the chosen parameters. </p>
-    <label class="step3-header">
-        Wind Energy
-        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Hide Parameters</a>]:</small>
-    </label>
-    <div id="distance_shore" class="inputfield">
-        <div>
-            <label class="param">
-                Distance to Shore (miles) 
-                
-                {{ form.input_min_dist_shore }}            
-                to
-                {{ form.input_max_dist_shore }}            
-
-                {{ form.input_dist_shore }}  
-                
-                {{ form.input_dist_shore.errors }}
-            </label>         
-        </div>
+    <p class="instructions">Choose any filtering parameters from other sectors <p>
+    <div id="step2_inputs">
+        <label class="step2-header">
+            Shipping
+        </label>
+        <label class="step2-header">
+            Conservation
+        </label>
     </div>
-    <div id="depth" class="inputfield">
-        <div>
-            <label class="param">
-                Depth Range (feet)
-                
-                {{ form.input_min_depth }}            
-                to
-                {{ form.input_max_depth }}            
-
-                {{ form.input_depth }}  
-                {{ form.input_depth.errors }}
-            </label>                   
-        </div>
-    </div>
-    <div id="substrate" class="inputfield">
-        <div>
-            <label class="param"> Substrate Types
-                {{ form.input_substrate }}  
-            </label>                   
-        </div>
-    </div>
-    <div id="wind" class="inputfield">
-        <div>
-            <label class="param"> Minimum Average Wind Speed (m/s)
-                {{ form.input_avg_wind_speed }}  
-            </label>                   
-        </div>
-    </div>
-    <label class="step3-header">
-        Shipping
-        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
-    </label>
-    <label class="step3-header">
-        Conservation
-        <small>[<a id="showWidgets_tidal_energy" href="javascript:toggleParams('tidal_energy_widgets', 'showWidgets_tidal_energy');">Show Parameters</a>]</small>
-    </label>
   </div>
 
 <div class="step" id="step3">
     <p class="step-text"><i>Step 3 of 3 </i>
     <p class="instructions">Provide a name to identify your scenario: </p>
-    <div class="step4-header">
-        {{ form.name.label_tag }}
-        {{ form.name.errors }}
-        {{ form.name }}            
-    </div>
-    <p class="instructions">Optionally, you may add a description and/or attach a file: </p>
-    <div class="step4-header">
-        {{ form.description.label_tag }}
-        {{ form.description.errors }}
-        {{ form.description }}            
-    </div>
-    <div class="step4-header">
-        {{ form.support_file.label_tag }}
-        {{ form.support_file.errors }} 
-        {% if form.support_file.help_text %}
-            <p>{{ form.support_file.help_text }}</p>            
-        {% endif %}
-        <p>{{ form.support_file }}</p>         
+    <div class="step3-inputs">
+        <div class="step4-header">
+            {{ form.name.label_tag }}
+            {{ form.name.errors }}
+            {{ form.name }}            
+        </div>
+        <p class="instructions">Optionally, you may add a description and/or attach a file: </p>
+        <div class="step4-header">
+            {{ form.description.label_tag }}
+            {{ form.description.errors }}
+            {{ form.description }}            
+        </div>
+        <div class="step4-header">
+            {{ form.support_file.label_tag }}
+            {{ form.support_file.errors }} 
+            {% if form.support_file.help_text %}
+                <p>{{ form.support_file.help_text }}</p>            
+            {% endif %}
+            <p>{{ form.support_file }}</p>         
+        </div>
     </div>
 </div>
 
@@ -285,7 +247,7 @@ p.instructions {
 form ul {
     margin-top: 5px;
     margin-bottom: 0px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 form ul li {
     padding-left: 15px !important;
@@ -294,13 +256,19 @@ li label {
     font-weight: normal !important;
     margin-bottom: 0px !important;
 }
+form ul.parameters {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding-left: 40px;
+}
 label.step1-header {
     font-weight: bold;
-    padding-left: 15px !important;
+    padding-left: 5px !important;
 }
 label.step2-header {
     font-weight: bold;
     padding-left: 15px !important;
+    padding-bottom: 10px !important;
 }
 label.step3-header {
     font-weight: bold;
@@ -312,7 +280,7 @@ div.step4-header {
 }
 label.param {
     font-weight: normal !important;
-    padding-left: 30px !important;
+    padding-left: 0px !important;
 }
 div.param-checkboxes {
     padding-left: 10px !important;

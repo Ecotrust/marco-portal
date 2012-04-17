@@ -21,15 +21,22 @@ from scenarios.kml_caching import cache_kml, remove_kml_cache #has to follow KML
 class Scenario(Analysis):
     #Input Parameters
     #input_objectives = models.ManyToManyField("Objective")
-    input_parameters = models.ManyToManyField("Parameter")
+    #input_parameters = models.ManyToManyField("Parameter")
     
-    input_min_dist_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
-    input_max_dist_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
+    #input_parameter_dist_shore = models.BooleanField(verbose_name='Distance to Shore Parameter')
+    #input_min_dist_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
+    #input_max_dist_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
     #input_dist_shore = models.FloatField(verbose_name='Distance from Shoreline')
     #input_dist_port = models.FloatField(verbose_name='Distance to Port')
+    
+    input_parameter_depth = models.BooleanField(verbose_name='Depth Parameter')
     input_min_depth = models.FloatField(verbose_name='Minimum Depth', null=True, blank=True)
     input_max_depth = models.FloatField(verbose_name='Maximum Depth', null=True, blank=True)
+    
+    input_parameter_wind_speed = models.BooleanField(verbose_name='Wind Speed Parameter')
     input_avg_wind_speed = models.FloatField(verbose_name='Average Wind Speed', null=True, blank=True)
+    
+    input_parameter_substrate = models.BooleanField(verbose_name='Substrate Parameter')
     input_substrate = models.ManyToManyField('Substrate', null=True, blank=True)
     
     #Descriptors (name field is inherited from Analysis)
@@ -39,18 +46,17 @@ class Scenario(Analysis):
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     
     def run(self):
-        input_params = [p.id for p in self.input_parameters.all()]
-        result = 0
-        
+    
         result = LeaseBlock.objects.all()
-        if 2 in input_params:
+        
+        if self.input_parameter_depth:
             input_min_depth = feet_to_meters(-self.input_min_depth)
             input_max_depth = feet_to_meters(-self.input_max_depth)
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
-        if 3 in input_params:
+        if self.input_parameter_wind_speed:
             input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
             result = result.filter(avg_wind_speed__gte=input_wind_speed)
-        if 4 in input_params:
+        if self.input_parameter_substrate:
             input_substrate = [s.id for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
         
@@ -113,7 +119,11 @@ class Scenario(Analysis):
         r.symbols.append(ls)
         polygon_style.rules.append(r)
         return polygon_style     
-
+    
+    @property
+    def input_substrate_names(self):
+        return [substrate.substrate_name for substrate in self.input_substrate.all()]
+        
     @property
     def color(self):
         try:
@@ -294,11 +304,6 @@ class Scenario(Analysis):
             </ListStyle>
         </Style>
         """ % (self.model_uid())
-        
-    @property
-    def get_input_parameters(self):
-        input_params = [p.id for p in self.input_parameters.all()]
-        return input_params
         
     @property
     def get_id(self):

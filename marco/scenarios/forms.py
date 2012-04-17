@@ -55,17 +55,13 @@ class ScenarioForm(FeatureForm):
     #                                                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'objectives'}),
     #                                                    required=False, 
     #                                                    label="")
-    input_parameters = forms.ModelMultipleChoiceField(  queryset=Parameter.objects.all().order_by('ordering_id'),
-                                                        widget=forms.CheckboxSelectMultiple(attrs={'class': 'parameters'}),
-                                                        required=False, 
-                                                        #initial = Parameter.objects.all(),
-                                                        label="")
-    input_min_dist_shore = forms.FloatField(initial=3, widget=forms.TextInput(attrs={'class':'slidervalue'}))
-    input_max_dist_shore = forms.FloatField(initial=10, widget=forms.TextInput(attrs={'class':'slidervalue'}))
-    input_dist_shore = forms.FloatField(min_value=0, max_value=50, initial=0,
-                                        widget=DualSliderWidget('input_min_dist_shore', 'input_max_dist_shore', 
-                                                                min=0,max=50,step=1),
-                                        label="Distance to Shore (miles)")
+    #input_parameters = forms.ModelMultipleChoiceField(  queryset=Parameter.objects.all().order_by('ordering_id'),
+    #                                                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'parameters'}),
+    #                                                    required=False, 
+    #                                                    #initial = Parameter.objects.all(),
+    #                                                    label="")
+                                      
+    input_parameter_depth = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_depth = forms.FloatField(initial=500, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     # Dummy field to set both of the above
@@ -73,9 +69,13 @@ class ScenarioForm(FeatureForm):
                                     widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=0,max=1000,step=10),
                                     label="Depth Range (feet)")
+                                    
+    input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_avg_wind_speed = forms.FloatField(min_value=10, max_value=23, initial=15.7,
                                             widget=SliderWidget( min=10,max=23,step=.1 ),
                                             required=False)
+                                    
+    input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
                                                 widget=forms.CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),
                                                 label="Include areas with the following Substrate Types", required=False) 
