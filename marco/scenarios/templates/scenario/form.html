@@ -23,16 +23,27 @@
         
         function validate(step) {
             if (step == 1) {
-                selected_params = 0;
+                parameter_selections = 0;
                 var all_params = $('input.parameters');
                 $.each(all_params, function(index, param) {
                     if (param.checked) {
-                        selected_params += 1;
+                        parameter_selections += 1;
                     }
                 });
-                if (selected_params == 0) {
+                if (parameter_selections == 0) {
                     alert("Select at least 1 Parameter.");
                     return false;
+                } else if ($('#id_input_parameter_substrate').is(':checked')) {
+                    substrate_selections = 0;
+                    $.each($('.substrate_checkboxes'), function(index, checkbox) {
+                        if (checkbox.checked) {
+                            substrate_selections += 1;
+                        }
+                    });
+                    if (substrate_selections == 0) {
+                        alert("Select at least 1 Substrate Type or De-Activate the Substrate filter.");
+                        return false;
+                    }
                 }
             } 
             return true;
