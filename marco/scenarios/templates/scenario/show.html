@@ -5,7 +5,7 @@
     <h1>
         <img src="/media/marco/img/multi.png"/>
         <small><small>SDC for Wind Energy </small></small> 
-        &nbsp;&nbsp;{{instance.name}} 
+        &nbsp;&nbsp;{{instance.name}} {% if instance.geometry_is_empty %} -- Empty Geometry {% endif %}
     </h1>
     <div class="tabs">
         <ul>

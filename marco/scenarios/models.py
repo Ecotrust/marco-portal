@@ -62,7 +62,6 @@ class Scenario(Analysis):
         
         leaseblock_ids = [r.id for r in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
-            
         return True        
     
     def save(self, rerun=None, *args, **kwargs):
@@ -70,12 +69,16 @@ class Scenario(Analysis):
             rerun = False
             if not rerun:
                 orig = Scenario.objects.get(pk=self.pk)
-                for f in Scenario.input_fields():
-                    # Is original value different from form value?
-                    if getattr(orig, f.name) != getattr(self, f.name):
-                        remove_kml_cache(self)
-                        rerun = True
-                        break                                                                                                                   
+                if getattr(orig, 'name') != getattr(self, 'name'):
+                    remove_kml_cache(self) 
+                    rerun = True
+                if not rerun:
+                    for f in Scenario.input_fields():
+                        # Is original value different from form value?
+                        if getattr(orig, f.name) != getattr(self, f.name):
+                            remove_kml_cache(self)
+                            rerun = True
+                            break                                                                                                                   
                 if not rerun:
                     '''
                         the substrates need to be grabbed, then saved, then grabbed again because 
@@ -86,7 +89,7 @@ class Scenario(Analysis):
                     orig_substrates = set(getattr(self, 'input_substrate').all())                    
                     super(Scenario, self).save(rerun=False, *args, **kwargs)                    
                     new_substrates = set(getattr(self, 'input_substrate').all())
-                    if orig_substrates != new_substrates :
+                    if orig_substrates != new_substrates:
                         remove_kml_cache(self) 
                         rerun = True    
             super(Scenario, self).save(rerun=rerun, *args, **kwargs)
@@ -119,6 +122,10 @@ class Scenario(Analysis):
         r.symbols.append(ls)
         polygon_style.rules.append(r)
         return polygon_style     
+    
+    @property
+    def geometry_is_empty(self):
+        return len(self.lease_blocks) == 0
     
     @property
     def input_substrate_names(self):
@@ -192,11 +199,15 @@ class Scenario(Analysis):
         #the following list appendation strategy was a good 10% faster than string concatenation
         #(biggest improvement however came by adding/populating a geometry_client column in leaseblock table)
         combined_kml_list = []
-        combined_kml_list.append('<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
+        if len(self.lease_blocks) == 0:  #empty result
+            leaseblock_ids = []
+            combined_kml_list.append('<Folder id="%s"><name>%s (EMPTY RESULT)</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
+        else:
+            leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
+            combined_kml_list.append('<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
         combined_kml_list.append('<LookAt><longitude>-73.5</longitude><latitude>39</latitude><heading>0</heading><range>600000</range></LookAt>')
         combined_kml_list.append('<styleUrl>#%s-default</styleUrl>' % (self.model_uid()))
         combined_kml_list.append('%s' % self.leaseblock_style())
-        leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
         print 'Generating KML for %s Lease Blocks' % len(leaseblock_ids)
         start_time = time.time()
         leaseblocks = LeaseBlock.objects.filter(pk__in=leaseblock_ids)
