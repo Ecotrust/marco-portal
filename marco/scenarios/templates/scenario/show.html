@@ -5,7 +5,7 @@
     <h1>
         <img src="/media/marco/img/multi.png"/>
         <small><small>SDC for Wind Energy </small></small> 
-        &nbsp;&nbsp;{{instance.name}} {% if instance.geometry_is_empty %} -- Empty Geometry {% endif %}
+        &nbsp;&nbsp;{{instance.name}} {% if instance.geometry_is_empty %} (EMPTY RESULT) {% endif %}
     </h1>
     <div class="tabs">
         <ul>
@@ -62,8 +62,10 @@
             
         </div>
         
-        <div id="reports">
-            <p>Reports coming soon...</p>
+        <div id="reports" class="tabs">
+            <ul>
+                <li><a href="{% url sdc_analysis instance.pk %}"><span>Sample Report</span></a></li>
+            </div>
         </div>
         
         {% if instance.done %}

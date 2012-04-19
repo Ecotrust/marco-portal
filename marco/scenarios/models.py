@@ -44,6 +44,7 @@ class Scenario(Analysis):
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
             
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
+    geometry_final_area = models.FloatField(verbose_name='Total Area', null=True, blank=True)
     
     def run(self):
     
@@ -60,6 +61,7 @@ class Scenario(Analysis):
             input_substrate = [s.id for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
         
+        self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
         return True        
@@ -122,6 +124,10 @@ class Scenario(Analysis):
         r.symbols.append(ls)
         polygon_style.rules.append(r)
         return polygon_style     
+    
+    @property
+    def num_lease_blocks(self):
+        return len(self.lease_blocks.split(','))
     
     @property
     def geometry_is_empty(self):

@@ -1,0 +1,34 @@
+{% extends 'common/panel.html' %}
+
+{% load percentage %}
+{% load humanize %}
+
+{% block title %}Spatial Design Criteria Report{% endblock %}
+{% block panel %}
+
+<div class='freetext'>
+
+<h3>Spatial Result</h3>
+<p>
+<table  style='width:430px' class='analysis_container'>
+    <tbody>
+        <tr class="grey">
+            <td><b>Number of Lease Blocks</b></td>
+        </tr>
+        <tr>
+            <td>{{ num_lease_blocks }}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="grey">
+            <td><b>Total Area</b></td>
+        </tr>
+        <tr>
+            <td>{{ area|floatformat:0 }} sq miles</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+{% endblock %}
