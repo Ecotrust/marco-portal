@@ -64,11 +64,10 @@ class ScenarioForm(FeatureForm):
     input_parameter_depth = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_depth = forms.FloatField(initial=500, widget=forms.TextInput(attrs={'class':'slidervalue'}))
-    # Dummy field to set both of the above
     input_depth = forms.FloatField( min_value=0, max_value=1000, initial=0,
                                     widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=0,max=1000,step=10),
-                                    label="Depth Range (feet)")
+                                    )
                                     
     input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_avg_wind_speed = forms.FloatField(min_value=10, max_value=23, initial=15.7,
