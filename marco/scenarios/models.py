@@ -43,6 +43,7 @@ class Scenario(Analysis):
     description = models.TextField(null=True, blank=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
             
+    #I'm finding myself wishing lease_blocks was spelled without the underscore...            
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     geometry_final_area = models.FloatField(verbose_name='Total Area', null=True, blank=True)
     
@@ -124,6 +125,15 @@ class Scenario(Analysis):
         r.symbols.append(ls)
         polygon_style.rules.append(r)
         return polygon_style     
+    
+    @property
+    def lease_blocks_set(self):
+        if len(self.lease_blocks) == 0:  #empty result
+            leaseblock_ids = []
+        else:
+            leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
+        leaseblocks = LeaseBlock.objects.filter(pk__in=leaseblock_ids)
+        return leaseblocks
     
     @property
     def num_lease_blocks(self):

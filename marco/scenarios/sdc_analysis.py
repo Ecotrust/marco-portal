@@ -18,5 +18,21 @@ def get_sdc_analysis(sdc):
     #compile context
     area = sq_meters_to_sq_miles(sdc.geometry_final_area)
     num_lease_blocks = sdc.num_lease_blocks
-    context = { 'sdc': sdc, 'default_value': default_value, 'area': area, 'num_lease_blocks': num_lease_blocks }
+    min_wind_speed, max_wind_speed = get_wind_speed_range(sdc)
+    context = { 'sdc': sdc, 'default_value': default_value, 'area': area, 'num_lease_blocks': num_lease_blocks,
+                'min_wind_speed': min_wind_speed, 'max_wind_speed': max_wind_speed }
     return context
+
+def get_wind_speed_range(sdc):
+    leaseblocks = sdc.lease_blocks_set
+    if len(leaseblocks) == 0:
+        min_wind = max_wind = default_value
+    else:
+        min_wind = 99
+        max_wind = 0
+        for lb in leaseblocks:
+            if lb.avg_wind_speed < min_wind:
+                min_wind = lb.avg_wind_speed
+            if lb.avg_wind_speed > max_wind:
+                max_wind = lb.avg_wind_speed
+    return mps_to_mph(min_wind), mps_to_mph(max_wind)

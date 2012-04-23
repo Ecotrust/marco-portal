@@ -29,6 +29,21 @@
     </tbody>
 </table>
 
+<h3>Wind Energy Potential</h3>
+<p>
+<table  style='width:430px' class='analysis_container'>
+    <tbody>
+        <tr class="grey">
+            <td><b>Minimum Average Wind Speed</b></td>
+            <td><b>Maximum Average Wind Speed</b></td>
+        </tr>
+        <tr>
+            <td>{{ min_wind_speed|floatformat:1 }} (mph)</td>
+            <td>{{ max_wind_speed|floatformat:1 }} (mph)</td>
+        </tr>
+    </tbody>
+</table>
+
 </div>
 
 {% endblock %}
