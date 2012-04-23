@@ -1,0 +1,26 @@
+{% extends 'common/panel.html' %}
+
+{% load percentage %}
+{% load humanize %}
+
+{% block panel %}
+
+<div class='freetext'>
+
+<h3>Spatial Result</h3>
+<p>
+<table  style='width:430px' class='analysis_container'>
+    <tbody>
+        <tr class="grey">
+            <td><b>Total Area</b></td>
+        </tr>
+        <tr>
+            <td>{{ area|floatformat:0|intcomma }} sq miles</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</div>
+
+{% endblock %}

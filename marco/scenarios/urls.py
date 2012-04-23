@@ -3,5 +3,5 @@ from views import *
 
 urlpatterns = patterns('',
     #feature reports
-    url(r'report/(\d+)', sdc_analysis, name='sdc_analysis'), #user requested sdc analysis 
+    url(r'sdc_report/(\d+)', sdc_analysis, name='sdc_analysis'), #user requested sdc analysis 
 )
