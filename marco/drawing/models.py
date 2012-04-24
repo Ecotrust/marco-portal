@@ -67,6 +67,7 @@ class AOI(PolygonFeature):
     class Options:
         verbose_name = 'Area of Interest'
         icon_url = 'marco/img/aoi.png'
+        export_png = False
         manipulators = []
         optional_manipulators = ['clipping.manipulators.ClipToShoreManipulator']
         form = 'drawing.forms.AOIForm'
@@ -135,5 +136,6 @@ class WindEnergySite(PolygonFeature):
     class Options:
         verbose_name = 'Wind Energy Site'
         icon_url = 'marco/img/wind.png'
+        export_png = False
         form = 'drawing.forms.WindEnergySiteForm'
         show_template = 'wind/show.html'

@@ -49,6 +49,7 @@ class Folder(FeatureCollection):
     class Options:
         verbose_name = 'Folder'
         icon_url = 'marco/img/folder.png'
+        export_png = False
         form = 'general.forms.FolderForm'
         show_template = 'folder/show.html'
         valid_children = (
