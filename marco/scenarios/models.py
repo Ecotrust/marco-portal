@@ -64,24 +64,29 @@ class Scenario(Analysis):
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
-                
+        
         self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
         return True        
     
     def save(self, rerun=None, *args, **kwargs):
+        if rerun is None and self.pk is None:
+            rerun = True
         if rerun is None and self.pk is not None: #if editing a scenario and no value for rerun is given
             rerun = False
             if not rerun:
                 orig = Scenario.objects.get(pk=self.pk)
+                #keeping this in here for now while I figure out why self.lease_blocks is emptied whenever the user edits their sdc
                 if getattr(orig, 'name') != getattr(self, 'name'):
+                    #print 'name has changed'
                     remove_kml_cache(self) 
                     rerun = True
                 if not rerun:
                     for f in Scenario.input_fields():
                         # Is original value different from form value?
                         if getattr(orig, f.name) != getattr(self, f.name):
+                            #print 'input_field, %s, has changed' %f.name
                             remove_kml_cache(self)
                             rerun = True
                             break                                                                                                                   
@@ -96,6 +101,7 @@ class Scenario(Analysis):
                     super(Scenario, self).save(rerun=False, *args, **kwargs)                    
                     new_substrates = set(getattr(self, 'input_substrate').all())
                     if orig_substrates != new_substrates:
+                        #print 'substrate has changed'
                         remove_kml_cache(self) 
                         rerun = True    
             super(Scenario, self).save(rerun=rerun, *args, **kwargs)
