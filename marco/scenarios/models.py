@@ -39,6 +39,9 @@ class Scenario(Analysis):
     input_parameter_substrate = models.BooleanField(verbose_name='Substrate Parameter')
     input_substrate = models.ManyToManyField('Substrate', null=True, blank=True)
     
+    input_parameter_sediment = models.BooleanField(verbose_name='Sediment Parameter')
+    input_sediment = models.ManyToManyField('Sediment', null=True, blank=True)
+    
     #Descriptors (name field is inherited from Analysis)
     description = models.TextField(null=True, blank=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
@@ -57,11 +60,11 @@ class Scenario(Analysis):
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
         if self.input_parameter_wind_speed:
             input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
-            result = result.filter(avg_wind_speed__gte=input_wind_speed)
+            result = result.filter(min_wind_speed__gte=input_wind_speed)
         if self.input_parameter_substrate:
-            input_substrate = [s.id for s in self.input_substrate.all()]
+            input_substrate = [s.substrate_name for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
-        
+                
         self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
@@ -238,7 +241,8 @@ class Scenario(Analysis):
                         <Data name="min_depth"><value>%s</value></Data>
                         <Data name="max_depth"><value>%s</value></Data>
                         <Data name="substrate"><value>%s</value></Data>
-                        <Data name="wind_speed"><value>%s</value></Data>
+                        <Data name="min_wind_speed"><value>%s</value></Data>
+                        <Data name="max_wind_speed"><value>%s</value></Data>
                         <Data name="user"><value>%s</value></Data>
                         <Data name="modified"><value>%s</value></Data>
                     </ExtendedData>
@@ -246,7 +250,9 @@ class Scenario(Analysis):
                 </Placemark>
                 """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
                         format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
-                        leaseblock.substrate, format(mps_to_mph(leaseblock.avg_wind_speed),1),
+                        leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
+                        #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
+                        format(mps_to_mph(leaseblock.min_wind_speed),1), format(mps_to_mph(leaseblock.max_wind_speed),1),
                         self.user, self.date_modified.replace(microsecond=0), 
                         #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
                         asKml(leaseblock.geometry_client)
@@ -300,6 +306,7 @@ class Scenario(Analysis):
         return combined_kml
     
     def leaseblock_style(self):
+        #LeaseBlock Update:  changed the following from <p>Avg Wind Speed: $[wind_speed] 
         return  """
                 <Style id="%s-leaseblock">
                     <BalloonStyle>
@@ -311,7 +318,8 @@ class Scenario(Analysis):
                                 <p>Min Depth: $[min_depth] feet</p>
                                 <p>Max Depth: $[max_depth] feet</p>
                                 <p>Majority Substrate: $[substrate]</p>
-                                <p>Avg Wind Speed: $[wind_speed] mph</p>
+                                <p>Min Avg Wind Speed: $[min_wind_speed] mph</p>
+                                <p>Max Avg Wind Speed: $[max_wind_speed] mph</p>
                             </font>  
                             <font size=1>created by $[user] on $[modified]</font>
                         ]]> </text>
@@ -358,7 +366,7 @@ class Parameter(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.name
-        
+'''        
 class LeaseBlock(models.Model):
     prot_number = models.CharField(max_length=7)
     prot_aprv = models.CharField(max_length=11)
@@ -394,7 +402,45 @@ class LeaseBlock(models.Model):
         """ % ( self.uid, self.model_uid(),
                 asKml(self.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
               )        
+'''   
+
+class LeaseBlock(models.Model):
+    prot_number = models.CharField(max_length=7, null=True, blank=True)
+    prot_aprv = models.CharField(max_length=11, null=True, blank=True)
+    block_number = models.CharField(max_length=6, null=True, blank=True)
+    prot_numb = models.CharField(max_length=15, null=True, blank=True)
+    min_depth = models.FloatField()
+    max_depth = models.FloatField()
+    avg_depth = models.FloatField()
+    min_wind_speed = models.FloatField()
+    max_wind_speed = models.FloatField()
+    majority_sediment = models.CharField(max_length=35, null=True, blank=True)  #LeaseBlock Update: might change back to IntegerField 
+    variety_sediment = models.IntegerField()
+    majority_substrate = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
+    variety_substrate = models.IntegerField()
+    geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
+    geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
+    objects = models.GeoManager()   
+
+    @property
+    def substrate(self):
+        try:
+            return Substrate.objects.get(substrate_id=self.majority_substrate).substrate_name
+        except:
+            return 'Unknown'
         
+    @property 
+    def kml_done(self):
+        return """
+        <Placemark id="%s">
+            <visibility>1</visibility>
+            <styleUrl>#%s-default</styleUrl>
+            %s
+        </Placemark>
+        """ % ( self.uid, self.model_uid(),
+                asKml(self.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
+              )        
+       
 class Substrate(models.Model):
     substrate_id = models.IntegerField()
     substrate_name = models.CharField(max_length=35)
@@ -402,4 +448,13 @@ class Substrate(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.substrate_name
+     
+class Sediment(models.Model):
+    sediment_id = models.IntegerField()
+    sediment_name = models.CharField(max_length=35)
+    sediment_output = models.CharField(max_length=55)
+    sediment_shortname = models.CharField(max_length=35)
+    
+    def __unicode__(self):
+        return u'%s' % self.sediment_name
      

@@ -24,7 +24,7 @@
                 <br class="clear" />
             </ul>
             
-            <h2>Wind Energy Parameters</h2>
+            <h2>Wind Energy Inputs</h2>
                 <div>
                     {% if instance.input_parameter_depth %}
                         <p> Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet</p>
@@ -42,10 +42,10 @@
                     {% endif %}
                 </div>
             
-            <h2>Ports/Shipping Parameters</h2>
+            <h2>Ports/Shipping Inputs</h2>
                 <p><i>None Chosen</i></p>
             
-            <h2>Conservation Parameters</h2>
+            <h2>Conservation Inputs</h2>
                 <p><i>None Chosen</i></p>
             
             {% if instance.description %}

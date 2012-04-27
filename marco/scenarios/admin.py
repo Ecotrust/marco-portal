@@ -29,4 +29,10 @@ class SubstrateAdmin(admin.ModelAdmin):
     fields = ['substrate_id', 'substrate_name', 'substrate_shortname']
 admin.site.register(Substrate, SubstrateAdmin)
 
+class SedimentAdmin(admin.ModelAdmin):
+    list_display = ('sediment_output', 'sediment_name', 'sediment_shortname', 'sediment_id')
+    fields = ['sediment_output', 'sediment_id', 'sediment_name', 'sediment_shortname']
+admin.site.register(Sediment, SedimentAdmin)
+
+
 

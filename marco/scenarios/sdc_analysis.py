@@ -31,8 +31,8 @@ def get_wind_speed_range(sdc):
         min_wind = 99
         max_wind = 0
         for lb in leaseblocks:
-            if lb.avg_wind_speed < min_wind:
-                min_wind = lb.avg_wind_speed
-            if lb.avg_wind_speed > max_wind:
-                max_wind = lb.avg_wind_speed
+            if lb.min_wind_speed < min_wind: #LeaseBlock Update: changed from avg_wind_speed
+                min_wind = lb.min_wind_speed #LeaseBlock Update: changed from avg_wind_speed
+            if lb.max_wind_speed > max_wind: #LeaseBlock Update: changed from avg_wind_speed
+                max_wind = lb.max_wind_speed #LeaseBlock Update: changed from avg_wind_speed
     return mps_to_mph(min_wind), mps_to_mph(max_wind)
