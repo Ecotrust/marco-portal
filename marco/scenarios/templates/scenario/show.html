@@ -40,6 +40,14 @@
                         {% endfor %}
                         </ul>
                     {% endif %}
+                    {% if instance.input_parameter_sediment %}
+                        <p> Sediment: </p>
+                        <ul>
+                        {% for sediment in instance.input_sediment_names %}
+                            <li> {{sediment}} </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
             
             <h2>Ports/Shipping Inputs</h2>

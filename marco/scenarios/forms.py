@@ -48,19 +48,10 @@ class ValidFileField(forms.FileField):
 
 class ScenarioForm(FeatureForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 3}), required=False)
-    #file = forms.FileField(widget=forms.ClearableFileInput(attrs={'style': 'top:0px;margin-bottom:0px'), max_length=70, required=False) #using ClearableFileInput produces poorly formatted edit form
+    
     support_file = ValidFileField(widget=AdminFileWidget,required=False,label="Support File")
     #could optionally add a param similar to the following:  help_text="(e.g. a pdf or text document that explains this scenario)"
-    #input_objectives = forms.ModelMultipleChoiceField(  queryset=Objective.objects.all().order_by('id'), 
-    #                                                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'objectives'}),
-    #                                                    required=False, 
-    #                                                    label="")
-    #input_parameters = forms.ModelMultipleChoiceField(  queryset=Parameter.objects.all().order_by('ordering_id'),
-    #                                                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'parameters'}),
-    #                                                    required=False, 
-    #                                                    #initial = Parameter.objects.all(),
-    #                                                    label="")
-                                      
+                                 
     input_parameter_depth = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_depth = forms.FloatField(initial=500, widget=forms.TextInput(attrs={'class':'slidervalue'}))
@@ -70,14 +61,20 @@ class ScenarioForm(FeatureForm):
                                     )
                                     
     input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
-    input_avg_wind_speed = forms.FloatField(min_value=10, max_value=23, initial=15.7,
-                                            widget=SliderWidget( min=10,max=23,step=.1 ),
-                                            required=False)
+    input_avg_wind_speed = forms.FloatField(    min_value=10, max_value=23, initial=15.7,
+                                                widget=SliderWidget( min=10,max=23,step=.1 ),
+                                                required=False)
                                     
     input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
                                                 widget=forms.CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),
-                                                label="Include areas with the following Substrate Types", required=False) 
+                                                required=False) 
+                                                
+    input_parameter_sediment = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_sediment = ModelMultipleChoiceField(  queryset=Sediment.objects.all().order_by('sediment_id'), 
+                                                widget=forms.CheckboxSelectMultiple(attrs={'class':'sediment_checkboxes'}),
+                                                required=False) 
+                                                
     #lease_blocks = ModelMultipleChoiceField( queryset=LeaseBlock.objects.all().order_by('id'), required=False)
     
     def save(self, commit=True):

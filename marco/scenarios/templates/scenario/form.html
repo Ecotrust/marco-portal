@@ -2,6 +2,7 @@
 {% block title %}{{title}}{% endblock %}
 {% block panel %}
 <script type="text/javascript" charset="utf-8">
+
     madrona.onShow(function(){
         madrona.setupForm($('#featureform'));
         
@@ -16,6 +17,9 @@
         } 
         if ($('#id_input_parameter_substrate').is(':checked')) {
             $('#substrate_widget').show();
+        } 
+        if ($('#id_input_parameter_sediment').is(':checked')) {
+            $('#sediment_widget').show();
         } 
         if ($('#id_input_parameter_wind_speed').is(':checked')) {
             $('#wind_speed_widget').show();
@@ -33,16 +37,29 @@
                 if (parameter_selections == 0) {
                     alert("Select at least 1 Parameter.");
                     return false;
-                } else if ($('#id_input_parameter_substrate').is(':checked')) {
-                    substrate_selections = 0;
-                    $.each($('.substrate_checkboxes'), function(index, checkbox) {
-                        if (checkbox.checked) {
-                            substrate_selections += 1;
+                } else {
+                    if ($('#id_input_parameter_substrate').is(':checked')) {
+                        substrate_selections = 0;
+                        $.each($('.substrate_checkboxes'), function(index, checkbox) {
+                            if (checkbox.checked) {
+                                substrate_selections += 1;
+                            }
+                        });
+                        if (substrate_selections == 0) {
+                            alert("Select at least 1 Substrate Type or de-activate the Substrate filter.");
+                            return false;
                         }
-                    });
-                    if (substrate_selections == 0) {
-                        alert("Select at least 1 Substrate Type or De-Activate the Substrate filter.");
-                        return false;
+                    } else if ($('#id_input_parameter_sediment').is(':checked')) {
+                        sediment_selections = 0;
+                        $.each($('.sediment_checkboxes'), function(index, checkbox) {
+                            if (checkbox.checked) {
+                                sediment_selections += 1;
+                            }
+                        });
+                        if (sediment_selections == 0) {
+                            alert("Select at least 1 Sediment Type or de-activate the Sediment filter.");
+                            return false;
+                        }
                     }
                 }
             } 
@@ -85,17 +102,19 @@
         
         $('#id_input_parameter_depth').click( function() { showhide_widget($('#depth_widget')); });
         $('#id_input_parameter_substrate').click( function() { showhide_widget($('#substrate_widget')); });
+        $('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
         $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
-        
+       
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
         wizard();
         
         $('ul.errorlist').each( function() {
-                $('div#error_bar').html("<ul class='errorlist'><li>We encountered an error while processing your bioregion. Can you recheck the steps and make sure you've filled in all the required information?</li></ul>");
+                $('div#error_bar').html("<ul class='errorlist'><li>We encountered an error while processing your request. Can you recheck the steps and make sure you've filled in all the required information?</li></ul>");
         });
                       
     });
+
 </script>
 
 {% if form.media %} {{ form.media }} {% endif %}
@@ -135,10 +154,15 @@
         <li>
             <label>{{ form.input_parameter_substrate }} Substrate Types</label>
             <div id="substrate_widget" class="inputfield">
-                <label class="param"> 
-                    {{ form.input_substrate }}  
-                    {{ form.input_substrate.errors }}  
-                </label> 
+                {{ form.input_substrate }}  
+                {{ form.input_substrate.errors }} 
+            </div>
+        </li>
+        <li>
+            <label>{{ form.input_parameter_sediment }} Sediment Types</label>
+            <div id="sediment_widget" class="inputfield">
+                {{ form.input_sediment }}  
+                {{ form.input_sediment.errors }}
             </div>
         </li>
         <li>

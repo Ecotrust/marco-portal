@@ -64,6 +64,9 @@ class Scenario(Analysis):
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
+        if self.input_parameter_sediment:
+            input_sediment = [s.sediment_name for s in self.input_sediment.all()]
+            result = result.filter(majority_sediment__in=input_sediment)
         
         self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]
@@ -97,11 +100,12 @@ class Scenario(Analysis):
                         (perhaps because form.save_m2m has to be called), after which calls to getattr will 
                         return the same list (regardless of whether we use orig or self)
                     '''
-                    orig_substrates = set(getattr(self, 'input_substrate').all())                    
+                    orig_substrates = set(getattr(self, 'input_substrate').all())  
+                    orig_sediments = set(getattr(self, 'input_sediment').all())                    
                     super(Scenario, self).save(rerun=False, *args, **kwargs)                    
-                    new_substrates = set(getattr(self, 'input_substrate').all())
-                    if orig_substrates != new_substrates:
-                        #print 'substrate has changed'
+                    new_substrates = set(getattr(self, 'input_substrate').all()) 
+                    new_sediments = set(getattr(self, 'input_sediment').all())   
+                    if orig_substrates != new_substrates or orig_sediments != new_sediments:
                         remove_kml_cache(self) 
                         rerun = True    
             super(Scenario, self).save(rerun=rerun, *args, **kwargs)
@@ -157,6 +161,10 @@ class Scenario(Analysis):
         return [substrate.substrate_name for substrate in self.input_substrate.all()]
         
     @property
+    def input_sediment_names(self):
+        return [sediment.sediment_name for sediment in self.input_sediment.all()]
+        
+    @property
     def color(self):
         try:
             return Objective.objects.get(pk=self.input_objectives.values_list()[0][0]).color
@@ -176,51 +184,8 @@ class Scenario(Analysis):
     @cache_kml
     def kml(self):  
         from general.utils import format 
-        #from profilehooks import profile
         import time
-        '''
-        combined_kml = '<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name)
-        combined_kml += '<LookAt><longitude>-74</longitude><latitude>39</latitude><heading>0</heading><range>600000</range></LookAt>'
-        combined_kml += '<styleUrl>#%s-default</styleUrl>' % (self.model_uid())
-        combined_kml += '%s' % self.leaseblock_style()
-        leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
-        print 'Generating KML for %s Lease Blocks' % len(leaseblock_ids)
-        start_time = time.time()
-        model_uid = self.model_uid()
-        name = self.name
-        user = self.user
-        date_modified = self.date_modified.replace(microsecond=0)
-        leaseblocks = LeaseBlock.objects.filter(pk__in=leaseblock_ids)
-        for leaseblock in leaseblocks:
-            min_depth = format(meters_to_feet(leaseblock.min_depth),0)
-            kml =   """
-                <Placemark>
-                    <visibility>1</visibility>
-                    <styleUrl>#%s-leaseblock</styleUrl>
-                    <ExtendedData>
-                        <Data name="header"><value>%s</value></Data>
-                        <Data name="block_number"><value>%s</value></Data>
-                        <Data name="min_depth"><value>%s</value></Data>
-                        <Data name="max_depth"><value>%s</value></Data>
-                        <Data name="substrate"><value>%s</value></Data>
-                        <Data name="wind_speed"><value>%s</value></Data>
-                        <Data name="user"><value>%s</value></Data>
-                        <Data name="modified"><value>%s</value></Data>
-                    </ExtendedData>
-                    %s
-                </Placemark>
-                """ % ( model_uid, name, leaseblock.block_number,                             
-                        min_depth, format(meters_to_feet(leaseblock.max_depth),0), 
-                        leaseblock.substrate, format(mps_to_mph(leaseblock.avg_wind_speed),1),
-                        user, date_modified, 
-                        #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
-                        asKml(leaseblock.geometry_client)
-                      ) 
-            combined_kml += kml 
-        combined_kml += "</Folder>"
-        elapsed_time = time.time() - start_time
-        print 'Finished generating KML (with str concatenation) for %s Lease Blocks in %s seconds' % (len(leaseblock_ids), elapsed_time)
-        '''
+
         #the following list appendation strategy was a good 10% faster than string concatenation
         #(biggest improvement however came by adding/populating a geometry_client column in leaseblock table)
         combined_kml_list = []
@@ -247,6 +212,7 @@ class Scenario(Analysis):
                         <Data name="min_depth"><value>%s</value></Data>
                         <Data name="max_depth"><value>%s</value></Data>
                         <Data name="substrate"><value>%s</value></Data>
+                        <Data name="sediment"><value>%s</value></Data>
                         <Data name="min_wind_speed"><value>%s</value></Data>
                         <Data name="max_wind_speed"><value>%s</value></Data>
                         <Data name="user"><value>%s</value></Data>
@@ -257,6 +223,7 @@ class Scenario(Analysis):
                 """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
                         format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
                         leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
+                        leaseblock.sediment,
                         #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
                         format(mps_to_mph(leaseblock.min_wind_speed),1), format(mps_to_mph(leaseblock.max_wind_speed),1),
                         self.user, self.date_modified.replace(microsecond=0), 
@@ -268,47 +235,7 @@ class Scenario(Analysis):
         combined_kml = ''.join(combined_kml_list)
         elapsed_time = time.time() - start_time
         print 'Finished generating KML (with a list) for %s Lease Blocks in %s seconds' % (len(leaseblock_ids), elapsed_time)
-        '''
-        from cStringIO import StringIO
-        combined_kml_str = StringIO()
-        combined_kml_str.write('<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
-        combined_kml_str.write('<LookAt><longitude>-74</longitude><latitude>39</latitude><heading>0</heading><range>600000</range></LookAt>')
-        combined_kml_str.write('<styleUrl>#%s-default</styleUrl>' % (self.model_uid()))
-        combined_kml_str.write('%s' % self.leaseblock_style())
-        leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
-        print 'Generating KML for %s Lease Blocks' % len(leaseblock_ids)
-        start_time = time.time()
-        leaseblocks = LeaseBlock.objects.filter(pk__in=leaseblock_ids)
-        for leaseblock in leaseblocks:
-            kml =   """
-                <Placemark>
-                    <visibility>1</visibility>
-                    <styleUrl>#%s-leaseblock</styleUrl>
-                    <ExtendedData>
-                        <Data name="header"><value>%s</value></Data>
-                        <Data name="block_number"><value>%s</value></Data>
-                        <Data name="min_depth"><value>%s</value></Data>
-                        <Data name="max_depth"><value>%s</value></Data>
-                        <Data name="substrate"><value>%s</value></Data>
-                        <Data name="wind_speed"><value>%s</value></Data>
-                        <Data name="user"><value>%s</value></Data>
-                        <Data name="modified"><value>%s</value></Data>
-                    </ExtendedData>
-                    %s
-                </Placemark>
-                """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
-                        format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
-                        leaseblock.substrate, format(mps_to_mph(leaseblock.avg_wind_speed),1),
-                        self.user, self.date_modified.replace(microsecond=0), 
-                        #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
-                        asKml(leaseblock.geometry_client)
-                      ) 
-            combined_kml_str.write(kml )
-        combined_kml_str.write("</Folder>")
-        combined_kml = combined_kml_str.getvalue()
-        elapsed_time = time.time() - start_time
-        print 'Finished generating KML (with cStringIO) for %s Lease Blocks in %s seconds' % (len(leaseblock_ids), elapsed_time)
-        '''
+        
         return combined_kml
     
     def leaseblock_style(self):
@@ -320,12 +247,16 @@ class Scenario(Analysis):
                         <text> <![CDATA[
                             <font color="#1A3752">
                                 SDC for Wind Energy: <strong>$[header]</strong>
-                                <p>Lease Block Number: $[block_number]</p>
-                                <p>Min Depth: $[min_depth] feet</p>
-                                <p>Max Depth: $[max_depth] feet</p>
-                                <p>Majority Substrate: $[substrate]</p>
-                                <p>Min Avg Wind Speed: $[min_wind_speed] mph</p>
-                                <p>Max Avg Wind Speed: $[max_wind_speed] mph</p>
+                                <p>
+                                <table width="250">
+                                <tr><td> Lease Block Number: $[block_number]</td></tr>
+                                <tr><td> Min Depth: $[min_depth] feet</td></tr>
+                                <tr><td> Max Depth: $[max_depth] feet</td></tr>
+                                <tr><td> Majority Substrate: $[substrate]</td></tr>
+                                <tr><td> Majority Sediment: $[sediment]</td></tr>
+                                <tr><td> Min Avg Wind Speed: $[min_wind_speed] mph</td></tr>
+                                <tr><td> Max Avg Wind Speed: $[max_wind_speed] mph</td></tr>
+                                </table>
                             </font>  
                             <font size=1>created by $[user] on $[modified]</font>
                         ]]> </text>
@@ -372,43 +303,6 @@ class Parameter(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.name
-'''        
-class LeaseBlock(models.Model):
-    prot_number = models.CharField(max_length=7)
-    prot_aprv = models.CharField(max_length=11)
-    block_number = models.CharField(max_length=6)
-    shape_length = models.FloatField()
-    shape_area = models.FloatField()
-    mybc = models.IntegerField()
-    min_depth = models.FloatField()
-    max_depth = models.FloatField()
-    avg_wind_speed = models.FloatField()
-    variety = models.IntegerField()
-    majority_substrate = models.IntegerField()
-    minority = models.IntegerField()
-    geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
-    geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
-    objects = models.GeoManager()   
-
-    @property
-    def substrate(self):
-        try:
-            return Substrate.objects.get(substrate_id=self.majority_substrate).substrate_name
-        except:
-            return 'Unknown'
-        
-    @property 
-    def kml_done(self):
-        return """
-        <Placemark id="%s">
-            <visibility>1</visibility>
-            <styleUrl>#%s-default</styleUrl>
-            %s
-        </Placemark>
-        """ % ( self.uid, self.model_uid(),
-                asKml(self.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
-              )        
-'''   
 
 class LeaseBlock(models.Model):
     prot_number = models.CharField(max_length=7, null=True, blank=True)
@@ -432,6 +326,13 @@ class LeaseBlock(models.Model):
     def substrate(self):
         try:
             return Substrate.objects.get(substrate_id=self.majority_substrate).substrate_name
+        except:
+            return 'Unknown'
+        
+    @property
+    def sediment(self):
+        try:
+            return Sediment.objects.get(sediment_name=self.majority_sediment).sediment_output
         except:
             return 'Unknown'
         
@@ -462,5 +363,5 @@ class Sediment(models.Model):
     sediment_shortname = models.CharField(max_length=35)
     
     def __unicode__(self):
-        return u'%s' % self.sediment_name
+        return u'%s' % self.sediment_output
      

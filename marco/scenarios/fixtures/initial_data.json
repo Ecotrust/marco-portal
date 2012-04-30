@@ -109,5 +109,65 @@
             "substrate_id": 7, 
             "substrate_name": "High Slope"
         }
+    },
+    {
+        "pk": 1, 
+        "model": "scenarios.sediment", 
+        "fields": {
+            "sediment_output": "Silt/Mud (0-0.03cm)", 
+            "sediment_name": "0 - 0.03 Silt/Mud", 
+            "sediment_id": 1, 
+            "sediment_shortname": "silt_mud"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "scenarios.sediment", 
+        "fields": {
+            "sediment_output": "Sand (0.36-0.48cm)", 
+            "sediment_name": "0.36 - 0.48 Sand", 
+            "sediment_id": 5, 
+            "sediment_shortname": "very_coarse_sand"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "scenarios.sediment", 
+        "fields": {
+            "sediment_output": "Gravel (0.48cm+)", 
+            "sediment_name": "0.48 + Gravel", 
+            "sediment_id": 6, 
+            "sediment_shortname": "gravel"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "scenarios.sediment", 
+        "fields": {
+            "sediment_output": "Sand (0.35-0.36cm)", 
+            "sediment_name": "0.35 - 0.36 Sand", 
+            "sediment_id": 4, 
+            "sediment_shortname": "coarse_sand"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "scenarios.sediment", 
+        "fields": {
+            "sediment_output": "Sand (0.17-0.35cm)", 
+            "sediment_name": "0.17 - 0.35 Sand", 
+            "sediment_id": 3, 
+            "sediment_shortname": "medium_sand"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "scenarios.sediment", 
+        "fields": {
+            "sediment_output": "Sand (0.03-0.17cm)", 
+            "sediment_name": "0.03 - 0.17 Sand", 
+            "sediment_id": 2, 
+            "sediment_shortname": "fine_sand"
+        }
     }
 ]
