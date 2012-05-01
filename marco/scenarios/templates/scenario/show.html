@@ -26,11 +26,14 @@
             
             <h2>Wind Energy Inputs</h2>
                 <div>
-                    {% if instance.input_parameter_depth %}
-                        <p> Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet</p>
-                    {% endif %}
                     {% if instance.input_parameter_wind_speed %}
                         <p> Minimum Average Wind Speed: {{ instance.input_avg_wind_speed }} mph</p>
+                    {% endif %}
+                    {% if instance.input_parameter_distance_to_shore %}
+                        <p> Distance to Shore: {{ instance.input_min_distance_to_shore|floatformat:0 }} to {{ instance.input_max_distance_to_shore|floatformat:0 }} miles</p>
+                    {% endif %}
+                    {% if instance.input_parameter_depth %}
+                        <p> Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet</p>
                     {% endif %}
                     {% if instance.input_parameter_substrate %}
                         <p> Substrates: </p>

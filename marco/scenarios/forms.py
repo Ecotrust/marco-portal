@@ -65,6 +65,14 @@ class ScenarioForm(FeatureForm):
                                                 widget=SliderWidget( min=10,max=23,step=.1 ),
                                                 required=False)
                                     
+    input_parameter_distance_to_shore = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_min_distance_to_shore = forms.FloatField(initial=12, widget=forms.TextInput(attrs={'class':'slidervalue'}))
+    input_max_distance_to_shore = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
+    input_distance_to_shore = forms.FloatField( min_value=0, max_value=100, initial=0,
+                                                widget=DualSliderWidget('input_min_distance_to_shore','input_max_distance_to_shore',
+                                                                        min=0,max=100,step=1),
+                                                required=False)
+                                    
     input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
                                                 widget=forms.CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),

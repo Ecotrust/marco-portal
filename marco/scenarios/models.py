@@ -36,6 +36,10 @@ class Scenario(Analysis):
     input_parameter_wind_speed = models.BooleanField(verbose_name='Wind Speed Parameter')
     input_avg_wind_speed = models.FloatField(verbose_name='Average Wind Speed', null=True, blank=True)
     
+    input_parameter_distance_to_shore = models.BooleanField(verbose_name='Distance to Shore')
+    input_min_distance_to_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
+    input_max_distance_to_shore = models.FloatField(verbose_name='Maximum Distance to Shore', null=True, blank=True)
+    
     input_parameter_substrate = models.BooleanField(verbose_name='Substrate Parameter')
     input_substrate = models.ManyToManyField('Substrate', null=True, blank=True)
     
@@ -54,13 +58,15 @@ class Scenario(Analysis):
     
         result = LeaseBlock.objects.all()
         
+        if self.input_parameter_wind_speed:
+            input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
+            result = result.filter(min_wind_speed__gte=input_wind_speed)
+        if self.input_parameter_distance_to_shore:
+            result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_depth:
             input_min_depth = feet_to_meters(-self.input_min_depth)
             input_max_depth = feet_to_meters(-self.input_max_depth)
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
-        if self.input_parameter_wind_speed:
-            input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
-            result = result.filter(min_wind_speed__gte=input_wind_speed)
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
@@ -213,6 +219,7 @@ class Scenario(Analysis):
                         <Data name="max_depth"><value>%s</value></Data>
                         <Data name="substrate"><value>%s</value></Data>
                         <Data name="sediment"><value>%s</value></Data>
+                        <Data name="distance_to_shore"><value>%s</value></Data>
                         <Data name="min_wind_speed"><value>%s</value></Data>
                         <Data name="max_wind_speed"><value>%s</value></Data>
                         <Data name="user"><value>%s</value></Data>
@@ -223,7 +230,7 @@ class Scenario(Analysis):
                 """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
                         format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
                         leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
-                        leaseblock.sediment,
+                        leaseblock.sediment, format(leaseblock.max_distance,0),
                         #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
                         format(mps_to_mph(leaseblock.min_wind_speed),1), format(mps_to_mph(leaseblock.max_wind_speed),1),
                         self.user, self.date_modified.replace(microsecond=0), 
@@ -250,12 +257,13 @@ class Scenario(Analysis):
                                 <p>
                                 <table width="250">
                                 <tr><td> Lease Block Number: $[block_number]</td></tr>
+                                <tr><td> Min Avg Wind Speed: $[min_wind_speed] mph</td></tr>
+                                <tr><td> Max Avg Wind Speed: $[max_wind_speed] mph</td></tr>
+                                <tr><td> Distance to Shore: $[distance_to_shore] miles</td></tr>
                                 <tr><td> Min Depth: $[min_depth] feet</td></tr>
                                 <tr><td> Max Depth: $[max_depth] feet</td></tr>
                                 <tr><td> Majority Substrate: $[substrate]</td></tr>
                                 <tr><td> Majority Sediment: $[sediment]</td></tr>
-                                <tr><td> Min Avg Wind Speed: $[min_wind_speed] mph</td></tr>
-                                <tr><td> Max Avg Wind Speed: $[max_wind_speed] mph</td></tr>
                                 </table>
                             </font>  
                             <font size=1>created by $[user] on $[modified]</font>
@@ -318,6 +326,9 @@ class LeaseBlock(models.Model):
     variety_sediment = models.IntegerField()
     majority_substrate = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
     variety_substrate = models.IntegerField()
+    min_distance = models.FloatField(null=True, blank=True)
+    max_distance = models.FloatField(null=True, blank=True)
+    avg_distance = models.FloatField(null=True, blank=True)
     geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
     geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
     objects = models.GeoManager()   
@@ -347,6 +358,40 @@ class LeaseBlock(models.Model):
         """ % ( self.uid, self.model_uid(),
                 asKml(self.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
               )        
+       
+'''
+class LeaseBlockAlt(models.Model):
+    objectid = models.IntegerField()
+    blkclip_field = models.FloatField()
+    blkclip_id = models.FloatField()
+    mms_region = models.CharField(max_length=1)
+    mms_plan_a = models.CharField(max_length=3)
+    prot_numbe = models.CharField(max_length=7)
+    prot_aprv_field = models.CharField(max_length=11)
+    block_numb = models.CharField(max_length=6)
+    blk_fed_ap = models.CharField(max_length=11)
+    block_lab = models.CharField(max_length=6)
+    ac_lab = models.CharField(max_length=8)
+    globalid = models.CharField(max_length=38)
+    prot_numb = models.CharField(max_length=12)
+    depthm_min = models.FloatField()
+    depthm_max = models.FloatField()
+    depth_mean = models.FloatField()
+    bensed_var = models.IntegerField()
+    bensed_maj = models.CharField(max_length=24)
+    bdform_var = models.IntegerField()
+    bdform_maj = models.CharField(max_length=14)
+    wnd90m_min = models.FloatField()
+    wind90m_ma = models.FloatField()
+    mi_min = models.FloatField()
+    mi_max = models.FloatField()
+    mi_mean = models.FloatField()
+    mi_min50 = models.FloatField()
+    mi_max50 = models.FloatField()
+    mi_mean50 = models.FloatField()
+    geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
+    objects = models.GeoManager()   
+'''       
        
 class Substrate(models.Model):
     substrate_id = models.IntegerField()

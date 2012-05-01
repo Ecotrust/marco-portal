@@ -15,6 +15,9 @@
         if ($('#id_input_parameter_depth').is(':checked')) {
             $('#depth_widget').show();
         } 
+        if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
+            $('#distance_to_shore_widget').show();
+        } 
         if ($('#id_input_parameter_substrate').is(':checked')) {
             $('#substrate_widget').show();
         } 
@@ -104,6 +107,7 @@
         $('#id_input_parameter_substrate').click( function() { showhide_widget($('#substrate_widget')); });
         $('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
         $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
+        $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
        
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
@@ -138,6 +142,28 @@
     <div id="step1_inputs">
         <ul class="parameters">
         <li>
+            <label>{{ form.input_parameter_wind_speed }} Wind Speed</label>
+            <div id="wind_speed_widget" class="inputfield">
+                <label class="param"> Minimum Average Speed (mph)
+                    {{ form.input_avg_wind_speed }} 
+                    {{ form.input_avg_wind_speed.errors }}   
+                </label> 
+            </div>
+        </li>
+        <li>
+            <label>{{ form.input_parameter_distance_to_shore }} Distance to Shore</label>
+            <div id="distance_to_shore_widget" class="inputfield">
+                <label class="param"> Desired Distance (in miles)
+                    {{ form.input_min_distance_to_shore }}            
+                    to
+                    {{ form.input_max_distance_to_shore }}            
+
+                    {{ form.input_distance_to_shore }} 
+                    {{ form.input_distance_to_shore.errors }}   
+                </label> 
+            </div>
+        </li>
+        <li>
             <label>{{ form.input_parameter_depth }} Depth Range</label>
             <div id="depth_widget" class="inputfield">
                 <label class="param">
@@ -163,15 +189,6 @@
             <div id="sediment_widget" class="inputfield">
                 {{ form.input_sediment }}  
                 {{ form.input_sediment.errors }}
-            </div>
-        </li>
-        <li>
-            <label>{{ form.input_parameter_wind_speed }} Wind Speed</label>
-            <div id="wind_speed_widget" class="inputfield">
-                <label class="param"> Minimum Average Speed (mph)
-                    {{ form.input_avg_wind_speed }} 
-                    {{ form.input_avg_wind_speed.errors }}   
-                </label> 
             </div>
         </li>
         </ul>
