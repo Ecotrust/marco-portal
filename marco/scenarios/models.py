@@ -238,8 +238,6 @@ class Scenario(Analysis):
                           ) 
             except: 
                 #this is in place to handle (at least one - "NJ18-05_6420") instance in which null value was used in float field max_distance
-                import pdb
-                pdb.set_trace()
                 print "The following leaseblock threw an error while generating KML:  %s" %leaseblock.prot_numb
                 continue
             combined_kml_list.append(kml )
