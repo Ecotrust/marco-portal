@@ -1,6 +1,6 @@
 from madrona.features.forms import FeatureForm, SpatialFeatureForm
 from django import forms
-from django.forms import ModelMultipleChoiceField
+from django.forms import ModelMultipleChoiceField, CheckboxSelectMultiple
 from django.forms.widgets import *
 from django.utils.safestring import mark_safe
 from django.contrib.gis.geos import fromstr
@@ -75,13 +75,29 @@ class ScenarioForm(FeatureForm):
                                     
     input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
-                                                widget=forms.CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),
+                                                widget=CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),
                                                 required=False) 
                                                 
     input_parameter_sediment = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_sediment = ModelMultipleChoiceField(  queryset=Sediment.objects.all().order_by('sediment_id'), 
-                                                widget=forms.CheckboxSelectMultiple(attrs={'class':'sediment_checkboxes'}),
+                                                widget=CheckboxSelectMultiple(attrs={'class':'sediment_checkboxes'}),
                                                 required=False) 
+                                                
+    # NON-ACTIVATED FORM ELEMENTS
+    
+    input_parameter_distance_to_shipping = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_distance_to_shipping = forms.FloatField(  min_value=0, max_value=5, initial=3,
+                                                    widget=SliderWidget( min=0,max=5,step=.1 ),
+                                                    required=False)
+                                                
+    input_parameter_traffic_density = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_traffic_density = forms.FloatField(   min_value=1, max_value=3, initial=2,
+                                                widget=SliderWidget( min=1, max=3, step=1 ),
+                                                required=False)
+                                                
+    input_assessment_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_warn_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_ordinance_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
                                                 
     #lease_blocks = ModelMultipleChoiceField( queryset=LeaseBlock.objects.all().order_by('id'), required=False)
     

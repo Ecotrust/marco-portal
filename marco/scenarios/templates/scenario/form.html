@@ -108,7 +108,9 @@
         $('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
         $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
         $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
-       
+        $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
+        $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
+        
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
         wizard();
@@ -136,8 +138,8 @@
   <div id="error_bar"></div>
   
   <div class="step" id="step1">
-    <p class="step-text"><i>Step 1 of 3 </i>
-    <p class="instructions">Select 1 or more parameters for this sector <p>
+    <p class="step-text"><i>Step 1 of 3 </i></p>
+    <p class="instructions">Select 1 or more parameters for this sector </p>
     <label class="step1-header">Wind Energy</label>
     <div id="step1_inputs">
         <ul class="parameters">
@@ -178,7 +180,7 @@
             </div>
         </li>
         <li>
-            <label>{{ form.input_parameter_substrate }} Substrate Types</label>
+            <label>{{ form.input_parameter_substrate }} Seabed Form</label>
             <div id="substrate_widget" class="inputfield">
                 {{ form.input_substrate }}  
                 {{ form.input_substrate.errors }} 
@@ -196,15 +198,45 @@
   </div>
 
   <div class="step" id="step2">
-    <p class="step-text"><i>Step 2 of 3 </i>
-    <p class="instructions">Choose any filtering parameters from other sectors <p>
+    <p class="step-text"><i>Step 2 of 3 </i></p>
+    <p class="instructions">Choose any filtering parameters from other sectors </p>
+    <label class="step2-header">Shipping</label>
     <div id="step2_inputs">
-        <label class="step2-header">
-            Shipping
-        </label>
-        <label class="step2-header">
-            Conservation
-        </label>
+        <ul class="parameters">
+        <li>
+            <label>{{ form.input_parameter_distance_to_shipping }} Distance to Shipping Lanes</label>
+            <div id="distance_to_shipping_widget" class="inputfield">
+                <label class="param"> Minimum Distance (miles)
+                    {{ form.input_distance_to_shipping }} 
+                    {{ form.input_distance_to_shipping.errors }}   
+                </label> 
+            </div>
+        </li>
+        <li>
+            <label>{{ form.input_parameter_traffic_density }} Ship Traffic Density</label>
+            <div id="traffic_density_widget" class="inputfield">
+                <label class="param"> Limit traffic to the following density level
+                    {{ form.input_traffic_density }} 
+                    {{ form.input_traffic_density.errors }}   
+                </label> 
+            </div>
+        </li>
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Military</label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            <label>{{ form.input_assessment_areas }} Exclude DoD Assessment Areas</label>
+        </li>
+        <li>
+            <label>{{ form.input_warn_areas }} Exclude Military Op Warn Areas</label>
+        </li>
+        <li>
+            <label>{{ form.input_ordinance_areas }} Exclude Unexploded Ordinance Areas</label>
+        </li>
+        </ul>
     </div>
   </div>
 
@@ -315,7 +347,7 @@ form ul.parameters {
 }
 label.step1-header {
     font-weight: bold;
-    padding-left: 5px !important;
+    padding-left: 15px !important;
 }
 label.step2-header {
     font-weight: bold;

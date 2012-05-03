@@ -208,35 +208,39 @@ class Scenario(Analysis):
         start_time = time.time()
         leaseblocks = LeaseBlock.objects.filter(pk__in=leaseblock_ids)
         for leaseblock in leaseblocks:
-            kml =   """
-                <Placemark>
-                    <visibility>1</visibility>
-                    <styleUrl>#%s-leaseblock</styleUrl>
-                    <ExtendedData>
-                        <Data name="header"><value>%s</value></Data>
-                        <Data name="block_number"><value>%s</value></Data>
-                        <Data name="min_depth"><value>%s</value></Data>
-                        <Data name="max_depth"><value>%s</value></Data>
-                        <Data name="substrate"><value>%s</value></Data>
-                        <Data name="sediment"><value>%s</value></Data>
-                        <Data name="distance_to_shore"><value>%s</value></Data>
-                        <Data name="min_wind_speed"><value>%s</value></Data>
-                        <Data name="max_wind_speed"><value>%s</value></Data>
-                        <Data name="user"><value>%s</value></Data>
-                        <Data name="modified"><value>%s</value></Data>
-                    </ExtendedData>
-                    %s
-                </Placemark>
-                """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
-                        format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
-                        leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
-                        leaseblock.sediment, format(leaseblock.max_distance,0),
-                        #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
-                        format(mps_to_mph(leaseblock.min_wind_speed),1), format(mps_to_mph(leaseblock.max_wind_speed),1),
-                        self.user, self.date_modified.replace(microsecond=0), 
-                        #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
-                        asKml(leaseblock.geometry_client)
-                      ) 
+            try:
+                kml =   """
+                    <Placemark>
+                        <visibility>1</visibility>
+                        <styleUrl>#%s-leaseblock</styleUrl>
+                        <ExtendedData>
+                            <Data name="header"><value>%s</value></Data>
+                            <Data name="block_number"><value>%s</value></Data>
+                            <Data name="min_depth"><value>%s</value></Data>
+                            <Data name="max_depth"><value>%s</value></Data>
+                            <Data name="substrate"><value>%s</value></Data>
+                            <Data name="sediment"><value>%s</value></Data>
+                            <Data name="distance_to_shore"><value>%s</value></Data>
+                            <Data name="min_wind_speed"><value>%s</value></Data>
+                            <Data name="max_wind_speed"><value>%s</value></Data>
+                            <Data name="user"><value>%s</value></Data>
+                            <Data name="modified"><value>%s</value></Data>
+                        </ExtendedData>
+                        %s
+                    </Placemark>
+                    """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
+                            format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
+                            leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
+                            leaseblock.majority_sediment, format(leaseblock.max_distance,0),
+                            #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
+                            format(mps_to_mph(leaseblock.min_wind_speed),1), format(mps_to_mph(leaseblock.max_wind_speed),1),
+                            self.user, self.date_modified.replace(microsecond=0), 
+                            #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
+                            asKml(leaseblock.geometry_client)
+                          ) 
+            except: 
+                #this is in place to handle (at least one - "NJ18-05_6420") instance in which null value was used in float field max_distance
+                continue
             combined_kml_list.append(kml )
         combined_kml_list.append("</Folder>")
         combined_kml = ''.join(combined_kml_list)
