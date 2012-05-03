@@ -8,7 +8,7 @@ from django.utils.html import escape
 from madrona.common.utils import asKml
 from madrona.features import register
 from madrona.analysistools.models import Analysis
-from general.utils import miles_to_meters, feet_to_meters, meters_to_feet, mph_to_mps, mps_to_mph
+from general.utils import miles_to_meters, feet_to_meters, meters_to_feet, mph_to_mps, mps_to_mph, format
 
 
 class KMLCache(models.Model):
@@ -189,7 +189,7 @@ class Scenario(Analysis):
     @property 
     @cache_kml
     def kml(self):  
-        from general.utils import format 
+        #from general.utils import format 
         import time
 
         #the following list appendation strategy was a good 10% faster than string concatenation
@@ -215,31 +215,32 @@ class Scenario(Analysis):
                         <styleUrl>#%s-leaseblock</styleUrl>
                         <ExtendedData>
                             <Data name="header"><value>%s</value></Data>
-                            <Data name="block_number"><value>%s</value></Data>
-                            <Data name="min_depth"><value>%s</value></Data>
-                            <Data name="max_depth"><value>%s</value></Data>
+                            <Data name="prot_number"><value>%s</value></Data>
+                            <Data name="depth_range_output"><value>%s</value></Data>
                             <Data name="substrate"><value>%s</value></Data>
                             <Data name="sediment"><value>%s</value></Data>
                             <Data name="distance_to_shore"><value>%s</value></Data>
-                            <Data name="min_wind_speed"><value>%s</value></Data>
-                            <Data name="max_wind_speed"><value>%s</value></Data>
+                            <Data name="wind_speed_output"><value>%s</value></Data>
                             <Data name="user"><value>%s</value></Data>
                             <Data name="modified"><value>%s</value></Data>
                         </ExtendedData>
                         %s
                     </Placemark>
-                    """ % ( self.model_uid(), self.name, leaseblock.block_number,                             
-                            format(meters_to_feet(leaseblock.min_depth),0), format(meters_to_feet(leaseblock.max_depth),0), 
+                    """ % ( self.model_uid(), self.name, leaseblock.prot_numb,                             
+                            leaseblock.depth_range_output, 
                             leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
                             leaseblock.majority_sediment, format(leaseblock.max_distance,0),
                             #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
-                            format(mps_to_mph(leaseblock.min_wind_speed),1), format(mps_to_mph(leaseblock.max_wind_speed),1),
+                            leaseblock.wind_speed_output,
                             self.user, self.date_modified.replace(microsecond=0), 
                             #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
                             asKml(leaseblock.geometry_client)
                           ) 
             except: 
                 #this is in place to handle (at least one - "NJ18-05_6420") instance in which null value was used in float field max_distance
+                import pdb
+                pdb.set_trace()
+                print "The following leaseblock threw an error while generating KML:  %s" %leaseblock.prot_numb
                 continue
             combined_kml_list.append(kml )
         combined_kml_list.append("</Folder>")
@@ -260,13 +261,11 @@ class Scenario(Analysis):
                                 SDC for Wind Energy: <strong>$[header]</strong>
                                 <p>
                                 <table width="250">
-                                <tr><td> Lease Block Number: $[block_number]</td></tr>
-                                <tr><td> Min Avg Wind Speed: $[min_wind_speed] mph</td></tr>
-                                <tr><td> Max Avg Wind Speed: $[max_wind_speed] mph</td></tr>
+                                <tr><td> Lease Block Number: $[prot_number]</td></tr>
+                                <tr><td> Avg Wind Speed: $[wind_speed_output]</td></tr>
                                 <tr><td> Distance to Shore: $[distance_to_shore] miles</td></tr>
-                                <tr><td> Min Depth: $[min_depth] feet</td></tr>
-                                <tr><td> Max Depth: $[max_depth] feet</td></tr>
-                                <tr><td> Majority Substrate: $[substrate]</td></tr>
+                                <tr><td> Depth: $[depth_range_output] </td></tr>
+                                <tr><td> Majority Seabed Form: $[substrate]</td></tr>
                                 <tr><td> Majority Sediment: $[sediment]</td></tr>
                                 </table>
                             </font>  
@@ -350,6 +349,20 @@ class LeaseBlock(models.Model):
             return Sediment.objects.get(sediment_name=self.majority_sediment).sediment_output
         except:
             return 'Unknown'
+        
+    @property
+    def wind_speed_output(self):
+        if self.min_wind_speed == self.max_wind_speed:
+            return "%s mph" %format(mps_to_mph(self.min_wind_speed),1)
+        else:
+            return "%s - %s mph" %( format(mps_to_mph(self.min_wind_speed),1), format(mps_to_mph(self.max_wind_speed),1) )
+     
+    @property
+    def depth_range_output(self):
+        if self.min_depth == self.max_depth:
+            return "%s feet" %format(meters_to_feet(-self.min_depth),0)
+        else:
+            return "%s - %s feet" %( format(meters_to_feet(-self.min_depth),0), format(meters_to_feet(-self.max_depth),0) )     
         
     @property 
     def kml_done(self):

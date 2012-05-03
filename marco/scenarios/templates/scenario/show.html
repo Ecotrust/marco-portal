@@ -36,7 +36,7 @@
                         <p> Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet</p>
                     {% endif %}
                     {% if instance.input_parameter_substrate %}
-                        <p> Substrates: </p>
+                        <p> Seabed Types: </p>
                         <ul>
                         {% for substrate in instance.input_substrate_names %}
                             <li> {{substrate}} </li>
@@ -44,7 +44,7 @@
                         </ul>
                     {% endif %}
                     {% if instance.input_parameter_sediment %}
-                        <p> Sediment: </p>
+                        <p> Sediment Types: </p>
                         <ul>
                         {% for sediment in instance.input_sediment_names %}
                             <li> {{sediment}} </li>
