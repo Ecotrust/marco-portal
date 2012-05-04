@@ -55,14 +55,18 @@ class AOI(PolygonFeature):
                 <color>%s</color>
             </PolyStyle>
             <LineStyle>
-                <color>ffffffff</color>
+                <color>%s</color>
             </LineStyle>
         </Style>
-        """ % (self.model_uid(), self.color())
+        """ % (self.model_uid(), self.fill_color(), self.outline_color())
 
     @classmethod
-    def color(self):
-        return '776BAEFD'             
+    def fill_color(self):
+        return '776BAEFD'      
+    
+    @classmethod
+    def outline_color(self):
+        return '776BAEFD'          
     
     class Options:
         verbose_name = 'Area of Interest'
@@ -124,14 +128,18 @@ class WindEnergySite(PolygonFeature):
                 <color>%s</color>
             </PolyStyle>
             <LineStyle>
-                <color>ffffffff</color>
+                <color>%s</color>
             </LineStyle>
         </Style>
-        """ % (self.model_uid(), self.color())
+        """ % (self.model_uid(), self.fill_color(), self.outline_color())
 
     @classmethod
-    def color(self):
-        return '7776B9DE'             
+    def fill_color(self):
+        return '7776B9DE'      
+    
+    @classmethod
+    def outline_color(self):
+        return '7776B9DE'                
     
     class Options:
         verbose_name = 'Wind Energy Site'
