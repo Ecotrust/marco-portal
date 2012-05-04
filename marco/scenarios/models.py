@@ -270,6 +270,9 @@ class Scenario(Analysis):
                             <font size=1>created by $[user] on $[modified]</font>
                         ]]> </text>
                     </BalloonStyle>
+                    <LineStyle>
+                        <color>ff8B1A55</color>
+                    </LineStyle>
                     <PolyStyle>
                         <color>778B1A55</color>
                     </PolyStyle>
