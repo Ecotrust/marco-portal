@@ -7,23 +7,7 @@ from django.contrib.gis.geos import fromstr
 from os.path import splitext, split
 from madrona.analysistools.widgets import SliderWidget, DualSliderWidget
 from models import *
-
-class AdminFileWidget(forms.FileInput):
-    """
-    A FileField Widget that shows its current value if it has one.
-    """
-    def __init__(self, attrs={}):
-        super(AdminFileWidget, self).__init__(attrs)
-
-    def render(self, name, value, attrs=None):
-        output = ['<p>']
-        if value and hasattr(value, "name"):
-            filename = split(value.name)[-1]
-            output.append('Current File: <a href="%s" target="_blank">%s</a> : <input style="top:0px;margin-bottom:0px" type="checkbox" name="clear_%s" /> Remove </p>' % (value._get_url(), filename, name))
-            output.append('<p> Change:') 
-        output.append(super(AdminFileWidget, self).render(name, value, attrs))
-        output.append("</p>")
-        return mark_safe(u''.join(output))
+from widgets import AdminFileWidget, SliderWidgetWithTooltip, DualSliderWidgetWithTooltip, CheckboxSelectMultipleWithTooltip, CheckboxSelectMultipleWithObjTooltip 
 
 # http://www.neverfriday.com/sweetfriday/2008/09/-a-long-time-ago.html
 class FileValidationError(forms.ValidationError):
@@ -62,7 +46,8 @@ class ScenarioForm(FeatureForm):
                                     
     input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_avg_wind_speed = forms.FloatField(    min_value=10, max_value=23, initial=15.7,
-                                                widget=SliderWidget( min=10,max=23,step=.1 ),
+                                                widget=SliderWidgetWithTooltip( min=10,max=23,step=.1,
+                                                                                id="info_wind_speed_widget"),
                                                 required=False)
                                     
     input_parameter_distance_to_shore = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )

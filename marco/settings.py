@@ -18,6 +18,7 @@ COMPRESS_CSS['application']['source_filenames'] += (
 )
 
 COMPRESS_JS['application']['source_filenames'] += (
+    'marco/js/jquery.qtip-1.0.0-rc3.min.js',
 )
 
 LOG_FILE =  os.path.realpath(os.path.join(os.path.dirname(__file__), '..', 'marco.log'))
