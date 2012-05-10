@@ -77,7 +77,7 @@ class ScenarioForm(FeatureForm):
                                                 
     input_parameter_traffic_density = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_traffic_density = forms.FloatField(   min_value=1, max_value=3, initial=2,
-                                                widget=SliderWidget( min=1, max=3, step=1),
+                                                widget=SliderWidget( min=1, max=3, step=1, show_number=False), 
                                                 required=False)
                                                 
     input_assessment_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )

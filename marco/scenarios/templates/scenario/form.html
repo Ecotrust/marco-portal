@@ -111,13 +111,25 @@
         $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
         $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
         $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
-        
-        $('#slider-input_traffic_density').slider().bind('slidechange', 
-            function(event,ui) {
-                //console.log('sliderchange: ' + $('#id_input_traffic_density').val() );
-            });
-        $('#slider-input_traffic_density').trigger('slidechange');
-        
+                
+        $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
+            $('#traffic_density_text').html('Medium');
+        });
+        $('#slider-input_traffic_density').bind( "slidechange", function(event, ui) {
+            change_traffic_message(ui);
+        });
+        $('#slider-input_traffic_density').bind( "slide", function(event, ui) {
+            change_traffic_message(ui);
+        });
+        function change_traffic_message(ui) {
+            if(ui.value == 2) {
+                $('#traffic_density_text').html('Medium');
+            } else if (ui.value == 3) {
+                $('#traffic_density_text').html('High');
+            } else if (ui.value == 1) {
+                $('#traffic_density_text').html('Low');
+            } 
+        }
         
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
@@ -394,10 +406,13 @@
                 <img src="/media/marco/img/info.png" id="info_traffic" class="info" />
             </label>
             <div id="traffic_density_widget" class="inputfield">
-                <label class="param"> Limit traffic to the following density level
+                <div class="span traffic"> Limit traffic to the following density level: 
+                    <span id="traffic_density_text" class="traffic">Medium</span>
+                </div>
+                <div class="traffic_widget">
                     {{ form.input_traffic_density }} 
                     {{ form.input_traffic_density.errors }}   
-                </label> 
+                </div>
             </div>
         </li>
         </ul>
@@ -506,9 +521,18 @@ span {
 span.potential {
     font-weight:bold; !important;
 }
+span.traffic {
+    font-weight:bold; !important;
+}
 span.form-image { float: left; margin-left: -66px; }
 span.form-image > img { width:46px; height:46px; }
 
+.traffic {
+    margin-top: 5px;
+}
+.traffic_widget {
+    margin-top: 15px;
+}
 
 label {
     clear: both;
