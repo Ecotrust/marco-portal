@@ -1,6 +1,7 @@
 {% extends "common/panel.html" %}
 {% block title %}{{title}}{% endblock %}
 {% block panel %}
+
 <script type="text/javascript" charset="utf-8">
 
     madrona.onShow(function(){
@@ -111,6 +112,13 @@
         $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
         $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
         
+        $('#slider-input_traffic_density').slider().bind('slidechange', 
+            function(event,ui) {
+                //console.log('sliderchange: ' + $('#id_input_traffic_density').val() );
+            });
+        $('#slider-input_traffic_density').trigger('slidechange');
+        
+        
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
         wizard();
@@ -216,10 +224,59 @@
                     }
                 });
             }
-        });             
-                      
-    });
+        }); 
 
+        $('#slider-input_avg_wind_speed').bind( "slidecreate", function(event, ui) {
+            //debugger;
+            $(event.target).find('.ui-slider-range').css('background', '#880066');
+        });
+        $('#slider-input_avg_wind_speed').bind( "slidechange", function(event, ui) {
+            //debugger;
+            var $left_side = $(event.target).find('.ui-slider-range');
+            change_wind_message($left_side, ui);
+        });
+        $('#slider-input_avg_wind_speed').bind( "slide", function(event, ui) {
+            var $left_side = $(event.target).find('.ui-slider-range');
+            change_wind_message($left_side, ui);
+        });
+        function change_wind_message($left_side, ui) {
+            if (ui.value < 12.5) {
+                $('#wind_speed_text').html('Poor');
+                $left_side.css('background', '#aaaa00');
+            } else if (ui.value < 14.3) {
+                $('#wind_speed_text').html('Marginal');
+                $left_side.css('background', '#aa5500');
+            } else if (ui.value < 15.7) {
+                $('#wind_speed_text').html('Fair');
+                $left_side.css('background', '#aa0000');
+            } else if (ui.value < 16.8) {
+                $('#wind_speed_text').html('Good');
+                $left_side.css('background', '#880066');
+            } else if (ui.value < 17.9) {
+                $('#wind_speed_text').html('Excellent');
+                $left_side.css('background', '#8800aa');
+            } else if (ui.value < 15.7) {
+                $('#wind_speed_text').html('Outstanding');
+                $left_side.css('background', '#4400aa');
+            } else {
+                $('#wind_speed_text').html('Superb');
+                $left_side.css('background', '#000088');
+            }
+            //Poor      < 12.5      (< 5.6)     ffff00
+            //Marginal  12.5-14.3   (5.6-6.4)   ff7700
+            //Fair      14.3-15.7   (6.4-7.0)   ff0000
+            //Good      15.7-16.8   (7.0-7.5)   ff0077
+            //Excellent 16.8-17.9   (7.5-8.0)   ff00ff
+            //Oustanding    17.9-19.7   (8.0-8.8)   7700ff
+            //Superb    > 19.7      (> 8.8)     0000ff
+        }
+        
+         
+        if ($("input[type='color']").length) {
+            $.getScript("media/marco/js/mColorPicker.js");
+        }             
+    });
+    
 </script>
 
 {% if form.media %} {{ form.media }} {% endif %}
@@ -248,10 +305,13 @@
                 <img src="/media/marco/img/info.png" id="info_wind_speed" class="info" />
             </label>
             <div id="wind_speed_widget" class="inputfield">
-                <label class="param"> Minimum Average Speed (mph)
+                <div class="span">Potential:  <span id="wind_speed_text" class="potential">Good</span></div>
+                <span class="label"> 
+                    Minimum Average Speed (mph) 
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
-                </label> 
+                </span> 
+                
             </div>
         </li>
         <li>
@@ -260,14 +320,14 @@
                 <img src="/media/marco/img/info.png" id="info_shore" class="info" />
             </label>
             <div id="distance_to_shore_widget" class="inputfield">
-                <label class="param"> Desired Distance (in miles)
+                <span class="label">
+                    Desired Distance (in miles)
                     {{ form.input_min_distance_to_shore }}            
                     to
                     {{ form.input_max_distance_to_shore }}            
-
-                    {{ form.input_distance_to_shore }} 
-                    {{ form.input_distance_to_shore.errors }}   
-                </label> 
+                </span>
+                {{ form.input_distance_to_shore }} 
+                {{ form.input_distance_to_shore.errors }} 
             </div>
         </li>
         <li>
@@ -276,15 +336,14 @@
                 <img src="/media/marco/img/info.png" id="info_depth" class="info" />
             </label>
             <div id="depth_widget" class="inputfield">
-                <label class="param">
+                <span class="label">
                     Desired Range (in feet)
                     {{ form.input_min_depth }}            
                     to
                     {{ form.input_max_depth }}            
-
-                    {{ form.input_depth }}  
-                    {{ form.input_depth.errors }}
-                </label>  
+                </span>
+                {{ form.input_depth }}  
+                {{ form.input_depth.errors }}
             </div>
         </li>
         <li>
@@ -390,14 +449,16 @@
             {% if form.support_file.help_text %}
                 <p>{{ form.support_file.help_text }}</p>            
             {% endif %}
-            <p>{{ form.support_file }}</p>         
+            {{ form.support_file }}         
+        </div>
+        <div id="scenario-cp">
+            <!--<input type="color" value="#ff0667" data-text="hidden" style="height:20px;width:20px;" />-->
         </div>
     </div>
 </div>
 
 <p><input type="submit" value="submit"></p>
 </form>
-
 
 <div class="wizard_nav" style="width:100%">
     <a href="#" class="button" style="float:left;" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
@@ -408,6 +469,7 @@
     <a href="#" class="cancel_button button red" onclick="this.blur(); return false;"><span>Cancel</span></a>
     <a href="#" class="submit_button button" onclick="this.blur(); return false;"><span>Submit</span></a>
 </div>
+
 
 <!-- TODO: clean up the following (much of it is not being used) after we've made some progress -->
 <style type="text/css">
@@ -428,6 +490,21 @@ div .step {
     background-color: white; 
     background-repeat: no-repeat;
     min-height: 54px;
+}
+div .span {
+    font-weight:normal;
+    font-size: 12px;
+    font-family: verdana;
+    color: #344E63;
+}
+span {
+    font-weight:normal;
+    font-size: 12px;
+    font-family: verdana;
+    color: #344E63;
+}
+span.potential {
+    font-weight:bold; !important;
 }
 span.form-image { float: left; margin-left: -66px; }
 span.form-image > img { width:46px; height:46px; }
