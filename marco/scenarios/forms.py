@@ -58,6 +58,11 @@ class ScenarioForm(FeatureForm):
                                                                         min=0,max=100,step=1),
                                                 required=False)
                                     
+    input_parameter_distance_to_awc = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_distance_to_awc = forms.FloatField(   min_value=1, max_value=30, initial=15,
+                                                widget=SliderWidget( min=1,max=30,step=1 ),
+                                                required=False)
+                                                
     input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
                                                 widget=CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),

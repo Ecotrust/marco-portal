@@ -19,6 +19,9 @@
         if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
             $('#distance_to_shore_widget').show();
         } 
+        if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
+            $('#distance_to_awc_widget').show();
+        } 
         if ($('#id_input_parameter_substrate').is(':checked')) {
             $('#substrate_widget').show();
         } 
@@ -109,6 +112,7 @@
         $('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
         $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
         $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
+        $('#id_input_parameter_distance_to_awc').click( function() { showhide_widget($('#distance_to_awc_widget')); });
         $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
         $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
                 
@@ -323,7 +327,6 @@
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
                 </span> 
-                
             </div>
         </li>
         <li>
@@ -340,6 +343,19 @@
                 </span>
                 {{ form.input_distance_to_shore }} 
                 {{ form.input_distance_to_shore.errors }} 
+            </div>
+        </li>
+        <li>
+            <label>
+                {{ form.input_parameter_distance_to_awc }} Distance to AWC Station 
+                <img src="/media/marco/img/info.png" id="info_awc" class="info" />
+            </label>
+            <div id="distance_to_awc_widget" class="inputfield">
+                <span class="label"> 
+                    Maximum Distance (in miles) 
+                    {{ form.input_distance_to_awc }} 
+                    {{ form.input_distance_to_awc.errors }}   
+                </span> 
             </div>
         </li>
         <li>
@@ -506,6 +522,7 @@ div .step {
     background-repeat: no-repeat;
     min-height: 54px;
 }
+<!--
 div .span {
     font-weight:normal;
     font-size: 12px;
@@ -518,6 +535,7 @@ span {
     font-family: verdana;
     color: #344E63;
 }
+-->
 span.potential {
     font-weight:bold; !important;
 }
