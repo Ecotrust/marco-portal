@@ -1,5 +1,41 @@
 [    
     {
+        "pk": 2, 
+        "model": "scenarios.wea", 
+        "fields": {
+            "wea_shortname": "new_jersey", 
+            "wea_id": 1, 
+            "wea_name": "New Jersey"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "scenarios.wea", 
+        "fields": {
+            "wea_shortname": "delaware", 
+            "wea_id": 2, 
+            "wea_name": "Delaware"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "scenarios.wea", 
+        "fields": {
+            "wea_shortname": "maryland", 
+            "wea_id": 3, 
+            "wea_name": "Maryland"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "scenarios.wea", 
+        "fields": {
+            "wea_shortname": "virginia", 
+            "wea_id": 4, 
+            "wea_name": "Virginia"
+        }
+    },
+    {
         "pk": 1, 
         "model": "scenarios.objective", 
         "fields": {
