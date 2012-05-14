@@ -26,6 +26,14 @@
             
             <h2>Wind Energy Inputs</h2>
                 <div>
+                    {% if instance.input_parameter_wea %}
+                        {% if instance.input_wea_names.1 %} <p> Wind Energy Areas: </p> {% else %} <p> Wind Energy Area: </p> {% endif %}
+                        <ul>
+                        {% for wea in instance.input_wea_names %}
+                            <li> {{wea}} </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
                     {% if instance.input_parameter_wind_speed %}
                         <p> Minimum Average Wind Speed: {{ instance.input_avg_wind_speed }} mph</p>
                     {% endif %}

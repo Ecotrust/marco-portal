@@ -31,6 +31,9 @@
         if ($('#id_input_parameter_wind_speed').is(':checked')) {
             $('#wind_speed_widget').show();
         } 
+        if ($('#id_input_parameter_wea').is(':checked')) {
+            $('#wea_widget').show();
+        } 
         
         function validate(step) {
             if (step == 1) {
@@ -115,6 +118,7 @@
         $('#id_input_parameter_distance_to_awc').click( function() { showhide_widget($('#distance_to_awc_widget')); });
         $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
         $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
+        $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
                 
         $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
             $('#traffic_density_text').html('Medium');
@@ -321,7 +325,7 @@
                 <img src="/media/marco/img/info.png" id="info_wind_speed" class="info" />
             </label>
             <div id="wind_speed_widget" class="inputfield">
-                <div class="span">Potential:  <span id="wind_speed_text" class="potential">Good</span></div>
+                <div class="label">Potential:  <span id="wind_speed_text" class="potential">Good</span></div>
                 <span class="label"> 
                     Minimum Average Speed (mph) 
                     {{ form.input_avg_wind_speed }} 
@@ -392,6 +396,19 @@
             <div id="sediment_widget" class="inputfield">
                 {{ form.input_sediment }}  
                 {{ form.input_sediment.errors }}
+            </div>
+        </li>
+        <li>
+            <label>
+                {{ form.input_parameter_wea }} Wind Energy Areas 
+                <img src="/media/marco/img/info.png" id="info_wea" class="info" />
+            </label>
+            <div id="wea_widget" class="inputfield">
+                <span class="label"> 
+                    Constrain my result to the following WEA(s)
+                    {{ form.input_wea }}  
+                    {{ form.input_wea.errors }}
+                </span>
             </div>
         </li>
         </ul>
@@ -505,7 +522,10 @@
 <!-- TODO: clean up the following (much of it is not being used) after we've made some progress -->
 <style type="text/css">
 
-div .field > label { font-size: 12px; display: inline; }
+div .field > label { 
+    font-size: 12px; 
+    display: inline; 
+}
 div .step { 
     -moz-box-shadow: 5px 5px 5px #ddd;
     -webkit-box-shadow: 5px 5px 5px #ddd;
@@ -522,14 +542,32 @@ div .step {
     background-repeat: no-repeat;
     min-height: 54px;
 }
+div.param-checkboxes {
+    padding-left: 10px !important;
+}
+div.inputfield {
+    padding-bottom: 10px !important;
+}
 span.potential {
     font-weight:bold; !important;
 }
 span.traffic {
     font-weight:bold; !important;
 }
-span.form-image { float: left; margin-left: -66px; }
-span.form-image > img { width:46px; height:46px; }
+span.form-image { 
+    float: left; 
+    margin-left: -66px; 
+}
+span.form-image > img { 
+    width:46px; 
+    height:46px; 
+}
+.label {
+    font-weight:normal;
+ 	font-size: 12px;
+ 	font-family: verdana;
+ 	color: #344E63;
+}
 
 .traffic {
     margin-top: 5px;
@@ -599,12 +637,6 @@ div.step4-header {
 label.param {
     font-weight: normal !important;
     padding-left: 0px !important;
-}
-div.param-checkboxes {
-    padding-left: 10px !important;
-}
-div.inputfield {
-    padding-bottom: 10px !important;
 }
 img.info {
     display: inline !important;

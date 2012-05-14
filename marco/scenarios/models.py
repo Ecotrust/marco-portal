@@ -49,6 +49,9 @@ class Scenario(Analysis):
     input_parameter_sediment = models.BooleanField(verbose_name='Sediment Parameter')
     input_sediment = models.ManyToManyField('Sediment', null=True, blank=True)
     
+    input_parameter_wea = models.BooleanField(verbose_name='WEA Parameter')
+    input_wea = models.ManyToManyField('WEA', null=True, blank=True)
+    
     #Descriptors (name field is inherited from Analysis)
     description = models.TextField(null=True, blank=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
@@ -61,6 +64,9 @@ class Scenario(Analysis):
     
         result = LeaseBlock.objects.all()
         
+        if self.input_parameter_wea:
+            input_wea = [wea.wea_id for wea in self.input_wea.all()]
+            result = result.filter(wea_number__in=input_wea)
         if self.input_parameter_wind_speed:
             input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
             result = result.filter(min_wind_speed__gte=input_wind_speed)
@@ -110,13 +116,15 @@ class Scenario(Analysis):
                         both getattr calls (orig and self) return the same original list until the model has been saved 
                         (perhaps because form.save_m2m has to be called), after which calls to getattr will 
                         return the same list (regardless of whether we use orig or self)
-                    '''
+                    ''' 
+                    orig_weas = set(getattr(self, 'input_wea').all())   
                     orig_substrates = set(getattr(self, 'input_substrate').all())  
                     orig_sediments = set(getattr(self, 'input_sediment').all())                    
-                    super(Scenario, self).save(rerun=False, *args, **kwargs)                    
+                    super(Scenario, self).save(rerun=False, *args, **kwargs)  
+                    new_weas = set(getattr(self, 'input_wea').all())                   
                     new_substrates = set(getattr(self, 'input_substrate').all()) 
                     new_sediments = set(getattr(self, 'input_sediment').all())   
-                    if orig_substrates != new_substrates or orig_sediments != new_sediments:
+                    if orig_substrates != new_substrates or orig_sediments != new_sediments or orig_weas != new_weas:
                         remove_kml_cache(self) 
                         rerun = True    
             super(Scenario, self).save(rerun=rerun, *args, **kwargs)
@@ -167,6 +175,10 @@ class Scenario(Analysis):
     def geometry_is_empty(self):
         return len(self.lease_blocks) == 0
     
+    @property
+    def input_wea_names(self):
+        return [wea.wea_name for wea in self.input_wea.all()]
+        
     @property
     def input_substrate_names(self):
         return [substrate.substrate_name for substrate in self.input_substrate.all()]
@@ -224,6 +236,7 @@ class Scenario(Analysis):
                             <Data name="depth_range_output"><value>%s</value></Data>
                             <Data name="substrate"><value>%s</value></Data>
                             <Data name="sediment"><value>%s</value></Data>
+                            <Data name="wea"><value>%s</value></Data>
                             <Data name="distance_to_shore"><value>%s</value></Data>
                             <Data name="distance_to_awc"><value>%s</value></Data>
                             <Data name="wind_speed_output"><value>%s</value></Data>
@@ -235,7 +248,9 @@ class Scenario(Analysis):
                     """ % ( self.model_uid(), self.name, leaseblock.prot_numb,                             
                             leaseblock.depth_range_output, 
                             leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
-                            leaseblock.majority_sediment, format(leaseblock.avg_distance,0), format(leaseblock.awc_min_distance,0),
+                            leaseblock.majority_sediment, 
+                            leaseblock.wea_output,
+                            format(leaseblock.avg_distance,0), format(leaseblock.awc_min_distance,0),
                             #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
                             leaseblock.wind_speed_output,
                             self.user, self.date_modified.replace(microsecond=0), 
@@ -265,13 +280,14 @@ class Scenario(Analysis):
                                 SDC for Wind Energy: <strong>$[header]</strong>
                                 <p>
                                 <table width="250">
-                                <tr><td> Lease Block Number: $[prot_number]</td></tr>
-                                <tr><td> Avg Wind Speed: $[wind_speed_output]</td></tr>
-                                <tr><td> Distance to Shore: $[distance_to_shore] miles</td></tr>
-                                <tr><td> Distance to AWC Station: $[distance_to_awc] miles</td></tr>
+                                <tr><td> Lease Block Number: $[prot_number] </td></tr>
+                                <tr><td> $[wea] </td></tr>
+                                <tr><td> Avg Wind Speed: $[wind_speed_output] </td></tr>
+                                <tr><td> Distance to Shore: $[distance_to_shore] miles </td></tr>
+                                <tr><td> Distance to AWC Station: $[distance_to_awc] miles </td></tr>
                                 <tr><td> Depth: $[depth_range_output] </td></tr>
-                                <tr><td> Majority Seabed Form: $[substrate]</td></tr>
-                                <tr><td> Majority Sediment: $[sediment]</td></tr>
+                                <tr><td> Majority Seabed Form: $[substrate] </td></tr>
+                                <tr><td> Majority Sediment: $[sediment] </td></tr>
                                 </table>
                             </font>  
                             <font size=1>created by $[user] on $[modified]</font>
@@ -364,6 +380,13 @@ class LeaseBlock(models.Model):
             return 'Unknown'
         
     @property
+    def wea_output(self):
+        if self.wea_name is None:
+            return ""
+        else:
+            return "Wind Energy Area: %s" %self.wea_name
+        
+    @property
     def wind_speed_output(self):
         if self.min_wind_speed == self.max_wind_speed:
             return "%s mph" %format(mps_to_mph(self.min_wind_speed),1)
@@ -444,4 +467,12 @@ class Sediment(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.sediment_output
+     
+class WEA(models.Model):
+    wea_id = models.IntegerField()
+    wea_name = models.CharField(max_length=35)
+    wea_shortname = models.CharField(max_length=35)
+    
+    def __unicode__(self):
+        return u'%s' % self.wea_name
      

@@ -9,6 +9,8 @@ from madrona.analysistools.widgets import SliderWidget, DualSliderWidget
 from models import *
 from widgets import AdminFileWidget, SliderWidgetWithTooltip, DualSliderWidgetWithTooltip, CheckboxSelectMultipleWithTooltip, CheckboxSelectMultipleWithObjTooltip 
 
+WEA_CHOICES = ( ('constrain', 'Constrain the result to the following WEAs'), ('exclude', 'Exclude the following WEAs') )
+
 # http://www.neverfriday.com/sweetfriday/2008/09/-a-long-time-ago.html
 class FileValidationError(forms.ValidationError):
     def __init__(self):
@@ -73,6 +75,13 @@ class ScenarioForm(FeatureForm):
                                                 widget=CheckboxSelectMultiple(attrs={'class':'sediment_checkboxes'}),
                                                 required=False) 
                                                 
+    input_parameter_wea = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    #input_parameter_wea_choice = forms.ChoiceField( widget=RadioSelect(attrs={'class': 'parameters'}), choices=WEA_CHOICES, required=False )
+    input_wea = ModelMultipleChoiceField(   queryset=WEA.objects.all().order_by('wea_id'), 
+                                            widget=CheckboxSelectMultiple(attrs={'class':'wea_checkboxes'}),
+                                            required=False) 
+    
+    
     # NON-ACTIVATED FORM ELEMENTS
     
     input_parameter_distance_to_shipping = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )

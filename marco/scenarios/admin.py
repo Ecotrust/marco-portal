@@ -34,5 +34,10 @@ class SedimentAdmin(admin.ModelAdmin):
     fields = ['sediment_output', 'sediment_id', 'sediment_name', 'sediment_shortname']
 admin.site.register(Sediment, SedimentAdmin)
 
+class WEAAdmin(admin.ModelAdmin):
+    list_display = ('wea_name', 'wea_shortname', 'wea_id')
+    fields = ['wea_id', 'wea_name', 'wea_shortname']
+admin.site.register(WEA, WEAAdmin)
+
 
 
