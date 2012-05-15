@@ -27,40 +27,40 @@
             <h2>Wind Energy Inputs</h2>
                 <div>
                     {% if instance.input_parameter_wea %}
-                        {% if instance.input_wea_names.1 %} <p> Wind Energy Areas: </p> {% else %} <p> Wind Energy Area: </p> {% endif %}
-                        <ul>
-                        {% for wea in instance.input_wea_names %}
-                            <li> {{wea}} </li>
-                        {% endfor %}
-                        </ul>
+                        <p><span class="label">
+                            {% if instance.input_wea_names.1 %}  Wind Energy Areas: {% else %} Wind Energy Area: {% endif %}
+                            {{ instance.input_wea_names|join:", " }}
+                        </span></p>
                     {% endif %}
                     {% if instance.input_parameter_wind_speed %}
-                        <p> Minimum Average Wind Speed: {{ instance.input_avg_wind_speed }} mph</p>
+                        <p><span class="label"> 
+                            Minimum Average Wind Speed: {{ instance.input_avg_wind_speed }} mph 
+                        </span></p>
                     {% endif %}
                     {% if instance.input_parameter_distance_to_shore %}
-                        <p> Distance to Shore: {{ instance.input_min_distance_to_shore|floatformat:0 }} to {{ instance.input_max_distance_to_shore|floatformat:0 }} miles</p>
+                        <p><span class="label"> 
+                            Distance to Shore: {{ instance.input_min_distance_to_shore|floatformat:0 }} to {{ instance.input_max_distance_to_shore|floatformat:0 }} miles 
+                        </span></p>
                     {% endif %}
                     {% if instance.input_parameter_distance_to_awc %}
-                        <p> Distance to AWC Station: {{ instance.input_distance_to_awc|floatformat:0 }} miles</p>
+                        <p><span class="label"> 
+                            Distance to AWC Station: {{ instance.input_distance_to_awc|floatformat:0 }} miles 
+                        </span></p>
                     {% endif %}
                     {% if instance.input_parameter_depth %}
-                        <p> Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet</p>
+                        <p><span class="label"> 
+                            Depth Range: {{ instance.input_min_depth|floatformat:0 }} to {{ instance.input_max_depth|floatformat:0 }} feet 
+                        </span></p>
                     {% endif %}
                     {% if instance.input_parameter_substrate %}
-                        <p> Seabed Types: </p>
-                        <ul>
-                        {% for substrate in instance.input_substrate_names %}
-                            <li> {{substrate}} </li>
-                        {% endfor %}
-                        </ul>
+                        <p><span class="label"> 
+                            Seabed Types: {{ instance.input_substrate_names|join:", " }}
+                        </span></p>                        
                     {% endif %}
                     {% if instance.input_parameter_sediment %}
-                        <p> Sediment Types: </p>
-                        <ul>
-                        {% for sediment in instance.input_sediment_names %}
-                            <li> {{sediment}} </li>
-                        {% endfor %}
-                        </ul>
+                        <p><span class="label"> 
+                            Sediment Types: {{ instance.input_sediment_names|join:", " }}
+                        </span></p> 
                     {% endif %}
                 </div>
             
