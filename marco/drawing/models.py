@@ -75,6 +75,7 @@ class AOI(PolygonFeature):
         manipulators = []
         optional_manipulators = ['clipping.manipulators.ClipToShoreManipulator']
         form = 'drawing.forms.AOIForm'
+        form_template = 'aoi/form.html'
         show_template = 'aoi/show.html'
 
 @register
@@ -146,4 +147,5 @@ class WindEnergySite(PolygonFeature):
         icon_url = 'marco/img/wind.png'
         export_png = False
         form = 'drawing.forms.WindEnergySiteForm'
+        form_template = 'wind/form.html'
         show_template = 'wind/show.html'
