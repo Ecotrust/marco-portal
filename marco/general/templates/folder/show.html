@@ -27,13 +27,13 @@
         {% if instance.num_features != 0 %}   
         <h2>Contents</h2>
             {% if instance.scenario_set %} 
-                <p>SDCs: {{ instance.scenario_set|join:", " }}</p>
+                <p><span class="label">SDCs: {{ instance.scenario_set|join:", " }}</span></p>
             {% endif %}
             {% if instance.aoi_set %}
-                <p>Areas of Interest: {{ instance.aoi_set|join:", " }}</p>
+                <p><span class="label">Areas of Interest: {{ instance.aoi_set|join:", " }}</span></p>
             {% endif %}
             {% if instance.wind_site_set %}
-                <p>Wind Energy Sites: {{ instance.wind_site_set|join:", " }}</p>
+                <p><span class="label">Wind Energy Sites: {{ instance.wind_site_set|join:", " }}</span></p>
             {% endif %}
         {% endif %}
         
