@@ -39,7 +39,10 @@ class Folder(FeatureCollection):
                 sites.append(feature)
         return sites
     
-    def num_features(self, model_class):
+    @property
+    def num_features(self, model_class=None):
+        if model_class is None:
+            return len(self.feature_set())
         count = 0
         for object in self.feature_set():
             if object.__class__ == model_class:
@@ -51,6 +54,7 @@ class Folder(FeatureCollection):
         icon_url = 'marco/img/folder.png'
         export_png = False
         form = 'general.forms.FolderForm'
+        form_template = 'folder/form.html'
         show_template = 'folder/show.html'
         valid_children = (
             'drawing.models.AOI',
