@@ -54,6 +54,7 @@ class Scenario(Analysis):
     
     #Descriptors (name field is inherited from Analysis)
     description = models.TextField(null=True, blank=True)
+    satisfied = models.BooleanField(default=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
             
     #I'm finding myself wishing lease_blocks was spelled without the underscore...            
@@ -84,10 +85,15 @@ class Scenario(Analysis):
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
-        
+            
         self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
+        
+        if self.lease_blocks == '':
+            self.satisfied = False
+        else:
+            self.satisfied = True
         return True        
     
     def save(self, rerun=None, *args, **kwargs):
@@ -97,11 +103,13 @@ class Scenario(Analysis):
             rerun = False
             if not rerun:
                 orig = Scenario.objects.get(pk=self.pk)
-                #keeping this in here for now while I figure out why self.lease_blocks is emptied whenever the user edits their sdc
-                if getattr(orig, 'name') != getattr(self, 'name'):
-                    #print 'name has changed'
-                    remove_kml_cache(self) 
-                    rerun = True
+                #TODO: keeping this in here til I figure out why self.lease_blocks and self.geometry_final_area are emptied when run() is not called
+                remove_kml_cache(self)
+                rerun = True
+                #if getattr(orig, 'name') != getattr(self, 'name'):
+                #    #print 'name has changed'
+                #    remove_kml_cache(self) 
+                #    rerun = True
                 if not rerun:
                     for f in Scenario.input_fields():
                         # Is original value different from form value?
@@ -169,6 +177,8 @@ class Scenario(Analysis):
     
     @property
     def num_lease_blocks(self):
+        if self.lease_blocks == '':
+            return 0
         return len(self.lease_blocks.split(','))
     
     @property
@@ -248,7 +258,7 @@ class Scenario(Analysis):
                     """ % ( self.model_uid(), self.name, leaseblock.prot_numb,                             
                             leaseblock.depth_range_output, 
                             leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
-                            leaseblock.majority_sediment, 
+                            leaseblock.majority_sediment, #TODO: might change sediment to a more user friendly output
                             leaseblock.wea_output,
                             format(leaseblock.avg_distance,0), format(leaseblock.awc_min_distance,0),
                             #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now

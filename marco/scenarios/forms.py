@@ -46,6 +46,7 @@ class ScenarioForm(FeatureForm):
                                                             min=0,max=1000,step=10),
                                     )
                                     
+    #TODO:  might adjust the max_value to 21.5 (this is the max min value, don't yet have the avg value...)                                    
     input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_avg_wind_speed = forms.FloatField(    min_value=10, max_value=23, initial=15.7,
                                                 widget=SliderWidgetWithTooltip( min=10,max=23,step=.1,

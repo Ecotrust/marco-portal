@@ -45,7 +45,7 @@
                     }
                 });
                 if (parameter_selections == 0) {
-                    alert("Select at least 1 Parameter.");
+                    alert("Select at least 1 Criteria.");
                     return false;
                 } else {
                     if ($('#id_input_parameter_substrate').is(':checked')) {
@@ -144,7 +144,8 @@
         wizard();
         
         $('ul.errorlist').each( function() {
-                $('div#error_bar').html("<ul class='errorlist'><li>We encountered an error while processing your request. Can you recheck the steps and make sure you've filled in all the required information?</li></ul>");
+            step = 3;
+            wizard();
         });
         
         $('img.info').each( function() {
@@ -315,7 +316,7 @@
   
   <div class="step" id="step1">
     <p class="step-text"><i>Step 1 of 3 </i></p>
-    <p class="instructions">Select 1 or more parameters for this sector </p>
+    <p class="instructions">Select 1 or more criteria for this sector </p>
     <label class="step1-header">Wind Energy</label>
     <div id="step1_inputs">
         <ul class="parameters">
@@ -417,7 +418,7 @@
 
   <div class="step" id="step2">
     <p class="step-text"><i>Step 2 of 3 </i></p>
-    <p class="instructions">Choose any filtering parameters from other sectors </p>
+    <p class="instructions">Choose any filtering criteria from other sectors </p>
     <label class="step2-header">Shipping</label>
     <div id="step2_inputs">
         <ul class="parameters">

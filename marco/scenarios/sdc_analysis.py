@@ -26,7 +26,7 @@ def get_sdc_analysis(sdc):
 def get_wind_speed_range(sdc):
     leaseblocks = sdc.lease_blocks_set
     if len(leaseblocks) == 0:
-        min_wind = max_wind = default_value
+        return default_value, default_value
     else:
         min_wind = 99
         max_wind = 0
