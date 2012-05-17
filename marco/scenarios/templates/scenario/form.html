@@ -249,7 +249,7 @@
 
         $('#slider-input_avg_wind_speed').bind( "slidecreate", function(event, ui) {
             //debugger;
-            $(event.target).find('.ui-slider-range').css('background', '#880066');
+            //$(event.target).find('.ui-slider-range').css('background', '#880066');
         });
         $('#slider-input_avg_wind_speed').bind( "slidechange", function(event, ui) {
             //debugger;
@@ -263,25 +263,25 @@
         function change_wind_message($left_side, ui) {
             if (ui.value < 12.5) {
                 $('#wind_speed_text').html('Poor');
-                $left_side.css('background', '#aaaa00');
+                //$left_side.css('background', '#aaaa00');
             } else if (ui.value < 14.3) {
                 $('#wind_speed_text').html('Marginal');
-                $left_side.css('background', '#aa5500');
+                //$left_side.css('background', '#aa5500');
             } else if (ui.value < 15.7) {
                 $('#wind_speed_text').html('Fair');
-                $left_side.css('background', '#aa0000');
+                //$left_side.css('background', '#aa0000');
             } else if (ui.value < 16.8) {
                 $('#wind_speed_text').html('Good');
-                $left_side.css('background', '#880066');
+                //$left_side.css('background', '#880066');
             } else if (ui.value < 17.9) {
                 $('#wind_speed_text').html('Excellent');
-                $left_side.css('background', '#8800aa');
+                //$left_side.css('background', '#8800aa');
             } else if (ui.value < 15.7) {
                 $('#wind_speed_text').html('Outstanding');
-                $left_side.css('background', '#4400aa');
+                //$left_side.css('background', '#4400aa');
             } else {
                 $('#wind_speed_text').html('Superb');
-                $left_side.css('background', '#000088');
+                //$left_side.css('background', '#000088');
             }
             //Poor      < 12.5      (< 5.6)     ffff00
             //Marginal  12.5-14.3   (5.6-6.4)   ff7700
