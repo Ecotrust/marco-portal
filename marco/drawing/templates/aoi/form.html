@@ -70,7 +70,7 @@
 {% if form.media %} {{ form.media }} {% endif %}
 <h1>
     <img src="/media/marco/img/aoi.png"/>
-    <small>New Area of Interest </small> 
+    <small>Area of Interest </small> 
 </h1>
 
 {% if is_spatial %} 
@@ -95,7 +95,7 @@
 {% if json %}
         <div style="display:none;" class="json">{{json}}</div>
 {% endif %}
-    <p class="instructions">Provide a name to identify your feature: </p>
+    <p class="instructions">Provide a name to identify your Area of Interest: </p>
 {% for field in form.visible_fields %}
     <div class="field{% if field.field.required %} required{% endif %}">
         {# Include the hidden fields in the form #}

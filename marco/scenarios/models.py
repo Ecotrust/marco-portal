@@ -287,7 +287,7 @@ class Scenario(Analysis):
                         <bgColor>ffeeeeee</bgColor>
                         <text> <![CDATA[
                             <font color="#1A3752">
-                                SDC for Wind Energy: <strong>$[header]</strong>
+                                Spatial Design for Wind Energy: <strong>$[header]</strong>
                                 <p>
                                 <table width="250">
                                 <tr><td> Lease Block Number: $[prot_number] </td></tr>
@@ -327,7 +327,7 @@ class Scenario(Analysis):
         return self.id
     
     class Options:
-        verbose_name = 'SDC for Wind Energy'
+        verbose_name = 'Spatial Design for Wind Energy'
         icon_url = 'marco/img/multi.png'
         form = 'scenarios.forms.ScenarioForm'
         form_template = 'scenario/form.html'
