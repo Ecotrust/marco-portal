@@ -4,12 +4,12 @@
 
 <script type="text/javascript">
     madrona.onShow(function(){
-      {% if instance.satisfied %}
-        $('#empty_geom').hide();
-      {% else %}
-        $('#satisfied').hide();
-        $('#button_cancel').click( function() {
-            var url = "/sdc/scenario/cancel/{{instance.id}}/";
+        $('#button_close').click( function() {
+            //close this panel
+            madrona.editors[0].panel.close();
+        });
+        $('#button_delete').click( function() {
+            var url = "/sdc/scenario/delete/{{instance.id}}/";
             $.post(url, function(data) {
                 //this post will delete the feature from the db
             });
@@ -146,9 +146,7 @@
             }
             
             panel.showUrl(url, panelOpts);
-        });
-        
-      {% endif %}
+        });        
     });
 </script>
 
@@ -158,19 +156,12 @@
         &nbsp;&nbsp;{{instance.name}} 
     </h1>
     
-    <div id="empty_geom">
-        <div class="box" style="padding: 10px; padding-bottom: 50px;">
-            <h3> The criteria you specified result in 0 leaseblocks being selected. </h3>
-            <h3> Try adjusting the criteria values, or removing criteria from consideration, to locate leaseblocks that meet your specifications.  </h3>
-            <div style="float: left; padding-top: 10px;"> <a class="button" id="button_return"><span>Return to the Spatial Design form</span></a> </div>
-        </div>
-        <div> <a href="#" id="button_cancel" class="cancel_button button red" onclick="this.blur(); return false;"><span>Cancel</span></a> </div>
-    </div>
-    
     <div id="satisfied" class="tabs">
         <ul>
             <li><a href="#Inputs"><span>Inputs</span></a></li>
-            <li><a href="#reports"><span>Reports</span></a></li>
+            {% if instance.satisfied %}
+            <li><a href="#Reports"><span>Reports</span></a></li>
+            {% endif %}
         </ul>
         <div id="Inputs">
             <ul class="metadata">
@@ -184,7 +175,20 @@
                 <br class="clear" />
             </ul>
             
+    {% if not instance.satisfied %}
+    
+        <div class="box" style="padding: 0px 0px 50px 10px; margin-top: 10px;">
+            <h2> There are 0 Leaseblocks that meet your criteria </h2>
+        
+    {% else %}   
+    
+            {% if instance.has_wind_energy_criteria %}
             <h2>Wind Energy Criteria</h2>
+            {% endif %}
+            
+    {% endif %}
+    
+            {% if instance.has_wind_energy_criteria %}
                 <div>
                     {% if instance.input_parameter_wea %}
                         <p><span class="label">
@@ -223,13 +227,20 @@
                         </span></p> 
                     {% endif %}
                 </div>
+            {% endif %}
             
+            {% if instance.has_shipping_filters %}
             <h2>Shipping Filters</h2>
                 <p><i>None Chosen</i></p>
+            {% endif %}
             
+            {% if instance.has_military_filters %}
             <h2>Military Filters</h2>
                 <p><i>None Chosen</i></p>
+            {% endif %}   
             
+    {% if instance.satisfied %}        
+    
             {% if instance.description %}
             <h2>Description</h2>
                 <p>{{instance.description}}</p>
@@ -244,7 +255,7 @@
             
         </div>
         
-        <div id="reports" class="tabs">
+        <div id="Reports" class="tabs">
             <ul>
                 <li><a href="{% url sdc_analysis instance.pk %}"><span>Sample Report</span></a></li>
             </ul>
@@ -258,5 +269,14 @@
         {% endfor %}
         {% endif %}
     </div>
-
+    
+    {% else %}
+    
+        <h3 style="padding-top: 10px; padding-bottom: 15px;"> Try adjusting your criteria to locate leaseblocks that meet your specifications.  </h3>
+        <div style="float: left;"> <a class="button" id="button_return"><span>Edit my Spatial Design</span></a> </div>
+    </div>
+    <div> <a href="#" id="button_close" class="cancel_button button red" onclick="this.blur(); return false;"><span>Close</span></a> </div>
+    <div> <a href="#" id="button_delete" class="button red" style="float: right;" onclick="this.blur(); return false;"><span>Delete</span></a> </div>
+   
+    {% endif %}
 {% endblock panel %}

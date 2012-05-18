@@ -166,6 +166,10 @@ class Scenario(Analysis):
         polygon_style.rules.append(r)
         return polygon_style     
     
+    @classmethod
+    def input_parameter_fields(klass):
+        return [f for f in klass._meta.fields if f.attname.startswith('input_parameter_')]
+
     @property
     def lease_blocks_set(self):
         if len(self.lease_blocks) == 0:  #empty result
@@ -196,7 +200,23 @@ class Scenario(Analysis):
     @property
     def input_sediment_names(self):
         return [sediment.sediment_name for sediment in self.input_sediment.all()]
+    
+    @property
+    def has_wind_energy_criteria(self):
+        wind_parameters = Scenario.input_parameter_fields()
+        for wp in wind_parameters:
+            if getattr(self, wp.name):
+                return True
+        return False
         
+    @property
+    def has_shipping_filters(self):
+        return False 
+        
+    @property
+    def has_military_filters(self):
+        return False
+    
     @property
     def color(self):
         try:
@@ -224,7 +244,7 @@ class Scenario(Analysis):
         combined_kml_list = []
         if len(self.lease_blocks) == 0:  #empty result
             leaseblock_ids = []
-            combined_kml_list.append('<Folder id="%s"><name>%s (EMPTY RESULT)</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
+            combined_kml_list.append('<Folder id="%s"><name>%s -- 0 Leaseblocks</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
         else:
             leaseblock_ids = [int(id) for id in self.lease_blocks.split(',')]
             combined_kml_list.append('<Folder id="%s"><name>%s</name><visibility>0</visibility><open>0</open>' %(self.uid, self.name))
