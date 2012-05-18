@@ -27,7 +27,16 @@ class SliderWidgetWithTooltip(SliderWidget):
 
     def render(self, *args, **kwargs): 
         output = super(SliderWidgetWithTooltip, self).render(*args,**kwargs) 
-        output = output.replace('\n', '<img src="/media/marco/img/info.png" id="%s" class="info" />\n' %self.id, 1)
+        img_id = self.id
+        span_id = "%s_content" %self.id
+        #grabbing flatblock outright as including the flatblock template tag in the output html resulted in a literal output of the template tag
+        from flatblocks.models import FlatBlock
+        try:
+            flatblock = str(FlatBlock.objects.get(slug=self.id).content)
+        except:
+            flatblock = ""
+        output = output.replace('\n', ' <img src="/media/marco/img/info.png" id="%s" class="info" />\n' %img_id, 1)
+        output = output.replace('\n', ' <span id="%s" style="display: none;">%s</span>\n' %(span_id, flatblock), 1)
         return mark_safe(output)      
     
 class DualSliderWidgetWithTooltip(DualSliderWidget):

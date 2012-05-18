@@ -1,6 +1,7 @@
 {% extends "common/panel.html" %}
 {% block title %}{{title}}{% endblock %}
 {% block panel %}
+{% load flatblock_tags %}
 
 <script type="text/javascript" charset="utf-8">
 
@@ -148,6 +149,7 @@
             wizard();
         });
         
+        
         $('img.info').each( function() {
             var id = $(this).attr('id');
             var text = "none";
@@ -155,95 +157,49 @@
             topLeft = false;
             topRight = false;
             switch(id) {
-            
                 //Step 1 Categories
                 case 'info_wind_speed':
                     topRight = true;
-                    text = "AWS-Truewind created this modeled wind speed Eastern Dataset with oversight and assistance from NREL.";
+                    text = $('#info_wind_speed_content').html();
                     break;   
                 case 'info_wind_speed_widget':
                     topLeft = true;
-                    text = "The National Renewable Energy Laboratory (2011) recommends siting of offshore wind facilities in areas with average wind speeds greater than 15.7 mph.";
+                    text = $('#info_wind_speed_widget_content').html();
                     break;                        
                 default:
                     $(this).hide();
             }
-            if (text!='none' && topMiddle) {
-                $(this).qtip({
+            if (text != 'none') {                
+                var my_configuration_object = {
                     content: text, 
                     show: { 
                         delay: 0,
                         when: { event: 'mouseover' } 
                     },
-                    position: {
-                        corner: {
-                            target: 'topMiddle',
-                            tooltip: 'bottomMiddle'
-                        }
-                    },
+                    position: { corner: {} },
                     hide: { when: {event: 'mouseleave'} },
                     style: { 
-                        width: 320,
                         name: 'blue' 
                     }
-                });
-            } else if (text!='none' && topLeft) {
-                $(this).qtip({
-                    content: text, 
-                    show: { 
-                        delay: 0,
-                        when: { event: 'mouseover' } 
-                    },
-                    position: {
-                        corner: {
-                            target: 'topRight',
-                            tooltip: 'bottomRight'
-                        }
-                    },
-                    hide: { when: {event: 'mouseleave'} },
-                    style: { 
-                        width: 270,
-                        name: 'blue' 
-                    }
-                });
-            } else if (text!='none' && topRight) {
-                $(this).qtip({
-                    content: text, 
-                    show: { 
-                        delay: 0,
-                        when: { event: 'mouseover' } 
-                    },
-                    position: {
-                        corner: {
-                            target: 'topLeft',
-                            tooltip: 'bottomLeft'
-                        }
-                    },
-                    hide: { when: {event: 'mouseleave'} },
-                    style: { 
-                        width: 270,
-                        name: 'blue' 
-                    }
-                });
-            } else if (text!='none') {
-                $(this).qtip({
-                    content: text, 
-                    show: { 
-                        delay: 0,
-                        when: { event: 'mouseover' } 
-                    },
-                    position: {
-                        corner: {
-                            target: 'rightMiddle',
-                            tooltip: 'leftMiddle'
-                        }
-                    },
-                    hide: { when: {event: 'mouseleave'} },
-                    style: { 
-                        width: 270,
-                        name: 'blue' 
-                    }
-                });
+                };
+                if (topMiddle) {
+                    my_configuration_object.position.corner.target = 'topMiddle';
+                    my_configuration_object.position.corner.tooltip = 'bottomMiddle';
+                    my_configuration_object.style.width = 320;
+                } else if (topLeft) {
+                    my_configuration_object.position.corner.target = 'topRight';
+                    my_configuration_object.position.corner.tooltip = 'bottomRight';
+                    my_configuration_object.style.width = 270;            
+                } else if (topRight) {
+                    my_configuration_object.position.corner.target = 'topLeft';
+                    my_configuration_object.position.corner.tooltip = 'bottomLeft';
+                    my_configuration_object.style.width = 270;
+                } else {
+                    my_configuration_object.position.corner.target = 'rightMiddle';
+                    my_configuration_object.position.corner.tooltip = 'leftMiddle';
+                    my_configuration_object.style.width = 270;
+                }
+                $(this).qtip(my_configuration_object);
             }
         }); 
 
@@ -324,6 +280,7 @@
             <label>
                 {{ form.input_parameter_wind_speed }} Wind Speed 
                 <img src="/media/marco/img/info.png" id="info_wind_speed" class="info" />
+                <span id="info_wind_speed_content" style="display: none;">{% flatblock "info_wind_speed" %}</span>
             </label>
             <div id="wind_speed_widget" class="inputfield">
                 <div class="label">Potential:  <span id="wind_speed_text" class="potential">Good</span></div>
