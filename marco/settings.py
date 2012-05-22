@@ -28,6 +28,7 @@ INSTALLED_APPS += ( 'clipping',
                     'general', 
                     'scenarios', 
                     'drawing',
+                    'reports',
                     'django.contrib.humanize' )
 
 GEOMETRY_DB_SRID = 99996
