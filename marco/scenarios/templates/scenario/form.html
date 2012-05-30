@@ -57,10 +57,11 @@
                             }
                         });
                         if (substrate_selections == 0) {
-                            alert("Select at least 1 Substrate Type or de-activate the Substrate filter.");
+                            alert("Select at least 1 Seabed Type or de-activate the Seabed criteria.");
                             return false;
                         }
-                    } else if ($('#id_input_parameter_sediment').is(':checked')) {
+                    }
+                    if ($('#id_input_parameter_sediment').is(':checked')) {
                         sediment_selections = 0;
                         $.each($('.sediment_checkboxes'), function(index, checkbox) {
                             if (checkbox.checked) {
@@ -68,7 +69,19 @@
                             }
                         });
                         if (sediment_selections == 0) {
-                            alert("Select at least 1 Sediment Type or de-activate the Sediment filter.");
+                            alert("Select at least 1 Sediment Type or de-activate the Sediment criteria.");
+                            return false;
+                        }
+                    }
+                    if ($('#id_input_parameter_wea').is(':checked')) {
+                        wea_selections = 0;
+                        $.each($('.wea_checkboxes'), function(index, checkbox) {
+                            if (checkbox.checked) {
+                                wea_selections += 1;
+                            }
+                        });
+                        if (wea_selections == 0) {
+                            alert("Select at least 1 Wind Energy Area or de-activate the Wind Energy Areas criteria.");
                             return false;
                         }
                     }
@@ -363,7 +376,6 @@
             </label>
             <div id="wea_widget" class="inputfield">
                 <span class="label"> 
-                    Constrain my result to the following WEA(s)
                     {{ form.input_wea }}  
                     {{ form.input_wea.errors }}
                 </span>
