@@ -40,6 +40,10 @@
             if (step == 1) {
                 parameter_selections = 0;
                 var all_params = $('input.parameters');
+                //NOTE:  This will also examine parameters in Step 2...might call those 'filters' to prevent this problem?
+                //       This means the user could select a param in step 1, proceed to step 2, select param there, 
+                //       return to step 1 and deselect all params there, and then proceed back to step 2 with no parameters selected
+                //       or maybe call them parameters_step2...?
                 $.each(all_params, function(index, param) {
                     if (param.checked) {
                         parameter_selections += 1;
@@ -131,7 +135,7 @@
         $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
         $('#id_input_parameter_distance_to_awc').click( function() { showhide_widget($('#distance_to_awc_widget')); });
         $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
-        $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
+        //$('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
         $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
                 
         $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
@@ -405,10 +409,10 @@
         </li>
         <li>
             <label>
-                {{ form.input_parameter_traffic_density }} Ship Traffic Density 
-                <img src="/media/marco/img/info.png" id="info_traffic" class="info" />
+                {{ form.input_filter_ais_density }} Exclude Areas with High Ship Traffic 
+                <img src="/media/marco/img/info.png" id="info_ais" class="info" />
             </label>
-            <div id="traffic_density_widget" class="inputfield">
+            <!--<div id="traffic_density_widget" class="inputfield">
                 <div class="span traffic"> Limit traffic to the following density level: 
                     <span id="traffic_density_text" class="traffic">Medium</span>
                 </div>
@@ -416,7 +420,7 @@
                     {{ form.input_traffic_density }} 
                     {{ form.input_traffic_density.errors }}   
                 </div>
-            </div>
+            </div>-->
         </li>
         </ul>
     </div>

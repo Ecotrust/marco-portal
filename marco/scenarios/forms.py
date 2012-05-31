@@ -37,7 +37,9 @@ class ScenarioForm(FeatureForm):
     
     support_file = ValidFileField(widget=AdminFileWidget,required=False,label="Support File")
     #could optionally add a param similar to the following:  help_text="(e.g. a pdf or text document that explains this scenario)"
-                                 
+              
+    # GeoPhysical
+              
     input_parameter_depth = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_depth = forms.FloatField(initial=500, widget=forms.TextInput(attrs={'class':'slidervalue'}))
@@ -45,14 +47,7 @@ class ScenarioForm(FeatureForm):
                                     widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=0,max=1000,step=10),
                                     )
-                                    
-    #TODO:  might adjust the max_value to 21.5 (this is the max min value, don't yet have the avg value...)                                    
-    input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
-    input_avg_wind_speed = forms.FloatField(    min_value=10, max_value=21.5, initial=15.7,
-                                                widget=SliderWidgetWithTooltip( min=10,max=21.5,step=.1,
-                                                                                id="info_wind_speed_widget"),
-                                                required=False)
-                                    
+                               
     input_parameter_distance_to_shore = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_distance_to_shore = forms.FloatField(initial=12, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_distance_to_shore = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
@@ -60,28 +55,44 @@ class ScenarioForm(FeatureForm):
                                                 widget=DualSliderWidget('input_min_distance_to_shore','input_max_distance_to_shore',
                                                                         min=0,max=100,step=1),
                                                 required=False)
-                                    
-    input_parameter_distance_to_awc = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
-    input_distance_to_awc = forms.FloatField(   min_value=1, max_value=30, initial=15,
-                                                widget=SliderWidget( min=1,max=30,step=1 ),
-                                                required=False)
-                                                
+                                         
     input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_substrate = ModelMultipleChoiceField( queryset=Substrate.objects.all().order_by('substrate_id'), 
                                                 widget=CheckboxSelectMultiple(attrs={'class':'substrate_checkboxes'}),
                                                 required=False) 
-                                                
+                                 
     input_parameter_sediment = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_sediment = ModelMultipleChoiceField(  queryset=Sediment.objects.all().order_by('sediment_id'), 
                                                 widget=CheckboxSelectMultiple(attrs={'class':'sediment_checkboxes'}),
                                                 required=False) 
-                                                
+                                   
+    # Wind Energy
+    
+    #TODO:  might adjust the max_value to 21.5 (this is the max min value, don't yet have the avg value...)                                    
+    input_parameter_wind_speed = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_avg_wind_speed = forms.FloatField(    min_value=10, max_value=21.5, initial=15.7,
+                                                widget=SliderWidgetWithTooltip( min=10,max=21.5,step=.1,
+                                                                                id="info_wind_speed_widget"),
+                                                required=False)
+                                  
+    input_parameter_distance_to_awc = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_distance_to_awc = forms.FloatField(   min_value=1, max_value=30, initial=15,
+                                                widget=SliderWidget( min=1,max=30,step=1 ),
+                                                required=False)
+                                              
     input_parameter_wea = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     #input_parameter_wea_choice = forms.ChoiceField( widget=RadioSelect(attrs={'class': 'parameters'}), choices=WEA_CHOICES, required=False )
     input_wea = ModelMultipleChoiceField(   queryset=WEA.objects.all().order_by('wea_id'), 
                                             widget=CheckboxSelectMultiple(attrs={'class':'wea_checkboxes'}),
                                             required=False) 
     
+    # Shipping 
+                               
+    input_filter_ais_density = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'filters'}), required=False )
+    #input_traffic_density = forms.FloatField(   min_value=1, max_value=3, initial=2,
+    #                                            widget=SliderWidget( min=1, max=3, step=1, show_number=False), 
+    #                                            required=False)
+                       
     
     # NON-ACTIVATED FORM ELEMENTS
     
@@ -89,12 +100,7 @@ class ScenarioForm(FeatureForm):
     input_distance_to_shipping = forms.FloatField(  min_value=0, max_value=5, initial=3,
                                                     widget=SliderWidget( min=0,max=5,step=.1 ),
                                                     required=False)
-                                                
-    input_parameter_traffic_density = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
-    input_traffic_density = forms.FloatField(   min_value=1, max_value=3, initial=2,
-                                                widget=SliderWidget( min=1, max=3, step=1, show_number=False), 
-                                                required=False)
-                                                
+                                              
     input_assessment_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_warn_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_ordinance_areas = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )

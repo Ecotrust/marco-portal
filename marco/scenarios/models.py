@@ -29,19 +29,15 @@ class Scenario(Analysis):
     #input_dist_shore = models.FloatField(verbose_name='Distance from Shoreline')
     #input_dist_port = models.FloatField(verbose_name='Distance to Port')
     
+    #GeoPhysical
+    
     input_parameter_depth = models.BooleanField(verbose_name='Depth Parameter')
     input_min_depth = models.FloatField(verbose_name='Minimum Depth', null=True, blank=True)
     input_max_depth = models.FloatField(verbose_name='Maximum Depth', null=True, blank=True)
     
-    input_parameter_wind_speed = models.BooleanField(verbose_name='Wind Speed Parameter')
-    input_avg_wind_speed = models.FloatField(verbose_name='Average Wind Speed', null=True, blank=True)
-    
     input_parameter_distance_to_shore = models.BooleanField(verbose_name='Distance to Shore')
     input_min_distance_to_shore = models.FloatField(verbose_name='Minimum Distance to Shore', null=True, blank=True)
     input_max_distance_to_shore = models.FloatField(verbose_name='Maximum Distance to Shore', null=True, blank=True)
-    
-    input_parameter_distance_to_awc = models.BooleanField(verbose_name='Distance to AWC Station')
-    input_distance_to_awc = models.FloatField(verbose_name='Maximum Distance to AWC Station', null=True, blank=True)
     
     input_parameter_substrate = models.BooleanField(verbose_name='Substrate Parameter')
     input_substrate = models.ManyToManyField('Substrate', null=True, blank=True)
@@ -49,10 +45,24 @@ class Scenario(Analysis):
     input_parameter_sediment = models.BooleanField(verbose_name='Sediment Parameter')
     input_sediment = models.ManyToManyField('Sediment', null=True, blank=True)
     
+    #Wind Energy 
+    
+    input_parameter_wind_speed = models.BooleanField(verbose_name='Wind Speed Parameter')
+    input_avg_wind_speed = models.FloatField(verbose_name='Average Wind Speed', null=True, blank=True)
+    
+    input_parameter_distance_to_awc = models.BooleanField(verbose_name='Distance to AWC Station')
+    input_distance_to_awc = models.FloatField(verbose_name='Maximum Distance to AWC Station', null=True, blank=True)
+    
     input_parameter_wea = models.BooleanField(verbose_name='WEA Parameter')
     input_wea = models.ManyToManyField('WEA', null=True, blank=True)
     
+    #Shipping
+    
+    input_filter_ais_density = models.BooleanField(verbose_name='Excluding Areas with AIS Density >= 1')
+    #input_ais_density = models.FloatField(verbose_name='Mean AIS Density', null=True, blank=True)    
+    
     #Descriptors (name field is inherited from Analysis)
+    
     description = models.TextField(null=True, blank=True)
     satisfied = models.BooleanField(default=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
@@ -75,6 +85,8 @@ class Scenario(Analysis):
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_distance_to_awc:
             result = result.filter(awc_min_distance__lte=self.input_distance_to_awc)
+        if self.input_filter_ais_density:
+            result = result.filter(ais_mean_density__lte=1)
         if self.input_parameter_depth:
             input_min_depth = feet_to_meters(-self.input_min_depth)
             input_max_depth = feet_to_meters(-self.input_max_depth)
@@ -170,6 +182,10 @@ class Scenario(Analysis):
     def input_parameter_fields(klass):
         return [f for f in klass._meta.fields if f.attname.startswith('input_parameter_')]
 
+    @classmethod
+    def input_filter_fields(klass):
+        return [f for f in klass._meta.fields if f.attname.startswith('input_filter_')]
+
     @property
     def lease_blocks_set(self):
         if len(self.lease_blocks) == 0:  #empty result
@@ -201,6 +217,7 @@ class Scenario(Analysis):
     def input_sediment_names(self):
         return [sediment.sediment_name for sediment in self.input_sediment.all()]
     
+    #TODO: is this being used...?  Yes, see show.html
     @property
     def has_wind_energy_criteria(self):
         wind_parameters = Scenario.input_parameter_fields()
@@ -211,6 +228,10 @@ class Scenario(Analysis):
         
     @property
     def has_shipping_filters(self):
+        shipping_filters = Scenario.input_filter_fields()
+        for sf in shipping_filters:
+            if getattr(self, sf.name):
+                return True
         return False 
         
     @property

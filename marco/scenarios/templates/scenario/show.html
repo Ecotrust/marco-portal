@@ -183,7 +183,7 @@
     {% else %}   
     
             {% if instance.has_wind_energy_criteria %}
-            <h2>Wind Energy Criteria</h2>
+                <h2>Wind Energy Criteria</h2>
             {% endif %}
             
     {% endif %}
@@ -230,8 +230,14 @@
             {% endif %}
             
             {% if instance.has_shipping_filters %}
-            <h2>Shipping Filters</h2>
-                <p><i>None Chosen</i></p>
+                <h2>Shipping Filters</h2>
+                <div>
+                    {% if instance.input_filter_ais_density %}
+                        <p><span class="label">
+                            Excluding Areas of High Ship Traffic
+                        </span></p>
+                    {% endif %}
+                </div>
             {% endif %}
             
             {% if instance.has_military_filters %}
