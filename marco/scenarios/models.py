@@ -61,6 +61,9 @@ class Scenario(Analysis):
     input_filter_ais_density = models.BooleanField(verbose_name='Excluding Areas with AIS Density >= 1')
     #input_ais_density = models.FloatField(verbose_name='Mean AIS Density', null=True, blank=True)    
     
+    input_filter_distance_to_shipping = models.BooleanField(verbose_name='Distance to Shipping Lanes (Traffic Separation Zones)')
+    input_distance_to_shipping = models.FloatField(verbose_name='Minimum Distance to Shipping Lanes (Traffic Separation Zones)', null=True, blank=True)
+    
     #Descriptors (name field is inherited from Analysis)
     
     description = models.TextField(null=True, blank=True)
@@ -75,18 +78,9 @@ class Scenario(Analysis):
     
         result = LeaseBlock.objects.all()
         
-        if self.input_parameter_wea:
-            input_wea = [wea.wea_id for wea in self.input_wea.all()]
-            result = result.filter(wea_number__in=input_wea)
-        if self.input_parameter_wind_speed:
-            input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
-            result = result.filter(min_wind_speed__gte=input_wind_speed)
+        #GeoPhysical
         if self.input_parameter_distance_to_shore:
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
-        if self.input_parameter_distance_to_awc:
-            result = result.filter(awc_min_distance__lte=self.input_distance_to_awc)
-        if self.input_filter_ais_density:
-            result = result.filter(ais_mean_density__lte=1)
         if self.input_parameter_depth:
             input_min_depth = feet_to_meters(-self.input_min_depth)
             input_max_depth = feet_to_meters(-self.input_max_depth)
@@ -97,6 +91,20 @@ class Scenario(Analysis):
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
+        #Wind Energy
+        if self.input_parameter_wind_speed:
+            input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
+            result = result.filter(min_wind_speed__gte=input_wind_speed)
+        if self.input_parameter_wea:
+            input_wea = [wea.wea_id for wea in self.input_wea.all()]
+            result = result.filter(wea_number__in=input_wea)
+        if self.input_parameter_distance_to_awc:
+            result = result.filter(awc_min_distance__lte=self.input_distance_to_awc)
+        #Shipping
+        if self.input_filter_ais_density:
+            result = result.filter(ais_mean_density__lte=1)
+        if self.input_filter_distance_to_shipping:
+            result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
             
         self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]

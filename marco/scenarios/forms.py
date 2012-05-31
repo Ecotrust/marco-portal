@@ -93,6 +93,11 @@ class ScenarioForm(FeatureForm):
     #                                            widget=SliderWidget( min=1, max=3, step=1, show_number=False), 
     #                                            required=False)
                        
+    input_filter_distance_to_shipping = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_distance_to_shipping = forms.FloatField(  min_value=0, max_value=5, initial=3,
+                                                    widget=SliderWidget( min=0,max=5,step=.1 ),
+                                                    required=False)
+                           
     
     # NON-ACTIVATED FORM ELEMENTS
     

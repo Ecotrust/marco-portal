@@ -237,6 +237,11 @@
                             Excluding Areas of High Ship Traffic
                         </span></p>
                     {% endif %}
+                    {% if instance.input_filter_distance_to_shipping %}
+                        <p><span class="label"> 
+                            Distance to Shipping Lanes: {{ instance.input_distance_to_shipping|floatformat:0 }} miles 
+                        </span></p>
+                    {% endif %}
                 </div>
             {% endif %}
             

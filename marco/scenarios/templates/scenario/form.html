@@ -14,14 +14,12 @@
         $('.inputfield').each(function() {
             $(this).hide();
         });
+        //GeoPhysical 
         if ($('#id_input_parameter_depth').is(':checked')) {
             $('#depth_widget').show();
         } 
         if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
             $('#distance_to_shore_widget').show();
-        } 
-        if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
-            $('#distance_to_awc_widget').show();
         } 
         if ($('#id_input_parameter_substrate').is(':checked')) {
             $('#substrate_widget').show();
@@ -29,11 +27,19 @@
         if ($('#id_input_parameter_sediment').is(':checked')) {
             $('#sediment_widget').show();
         } 
+        //Wind Energy 
+        if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
+            $('#distance_to_awc_widget').show();
+        } 
         if ($('#id_input_parameter_wind_speed').is(':checked')) {
             $('#wind_speed_widget').show();
         } 
         if ($('#id_input_parameter_wea').is(':checked')) {
             $('#wea_widget').show();
+        } 
+        //Shipping
+        if ($('#id_input_filter_distance_to_shipping').is(':checked')) {
+            $('#distance_to_shipping_widget').show();
         } 
         
         function validate(step) {
@@ -134,7 +140,7 @@
         $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
         $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
         $('#id_input_parameter_distance_to_awc').click( function() { showhide_widget($('#distance_to_awc_widget')); });
-        $('#id_input_parameter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
+        $('#id_input_filter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
         //$('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
         $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
                 
@@ -397,7 +403,7 @@
         <ul class="parameters">
         <li>
             <label>
-                {{ form.input_parameter_distance_to_shipping }} Distance to Shipping Lanes 
+                {{ form.input_filter_distance_to_shipping }} Distance to Shipping Lanes 
                 <img src="/media/marco/img/info.png" id="info_lanes" class="info" />
             </label>
             <div id="distance_to_shipping_widget" class="inputfield">
