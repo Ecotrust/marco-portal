@@ -299,6 +299,7 @@ class Scenario(Analysis):
                             <Data name="distance_to_shore"><value>%s</value></Data>
                             <Data name="distance_to_awc"><value>%s</value></Data>
                             <Data name="wind_speed_output"><value>%s</value></Data>
+                            <Data name="ais_density"><value>%s</value></Data>
                             <Data name="user"><value>%s</value></Data>
                             <Data name="modified"><value>%s</value></Data>
                         </ExtendedData>
@@ -312,6 +313,7 @@ class Scenario(Analysis):
                             format(leaseblock.avg_distance,0), format(leaseblock.awc_min_distance,0),
                             #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
                             leaseblock.wind_speed_output,
+                            leaseblock.ais_density,
                             self.user, self.date_modified.replace(microsecond=0), 
                             #asKml(leaseblock.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
                             asKml(leaseblock.geometry_client)
@@ -336,17 +338,24 @@ class Scenario(Analysis):
                         <bgColor>ffeeeeee</bgColor>
                         <text> <![CDATA[
                             <font color="#1A3752">
-                                Spatial Design for Wind Energy: <strong>$[header]</strong>
+                                Spatial Design for Wind Energy: <b>$[header]</b>
                                 <p>
                                 <table width="250">
-                                <tr><td> Lease Block Number: $[prot_number] </td></tr>
-                                <tr><td> $[wea] </td></tr>
-                                <tr><td> Avg Wind Speed: $[wind_speed_output] </td></tr>
-                                <tr><td> Distance to Shore: $[distance_to_shore] miles </td></tr>
-                                <tr><td> Distance to AWC Station: $[distance_to_awc] miles </td></tr>
-                                <tr><td> Depth: $[depth_range_output] </td></tr>
-                                <tr><td> Majority Seabed Form: $[substrate] </td></tr>
-                                <tr><td> Majority Sediment: $[sediment] </td></tr>
+                                    <tr><td> Lease Block Number: $[prot_number] </td></tr>
+                                </table>
+                                <table width="250">
+                                    <tr><td> $[wea] </td></tr>
+                                    <tr><td> Avg Wind Speed: $[wind_speed_output] </td></tr>
+                                    <tr><td> Distance to AWC Station: $[distance_to_awc] miles </td></tr>
+                                </table>
+                                <table width="250">
+                                    <tr><td> Distance to Shore: $[distance_to_shore] miles </td></tr>
+                                    <tr><td> Depth: $[depth_range_output] </td></tr>
+                                    <tr><td> Majority Seabed Form: $[substrate] </td></tr>
+                                    <tr><td> Majority Sediment: $[sediment] </td></tr>
+                                </table>
+                                <table width="250">
+                                    <tr><td> Shipping Density: $[ais_density] </td></tr>
                                 </table>
                             </font>  
                             <font size=1>created by $[user] on $[modified]</font>
@@ -459,6 +468,13 @@ class LeaseBlock(models.Model):
             return "%s mph" %format(mps_to_mph(self.min_wind_speed),1)
         else:
             return "%s - %s mph" %( format(mps_to_mph(self.min_wind_speed),1), format(mps_to_mph(self.max_wind_speed),1) )
+     
+    @property
+    def ais_density(self):
+        if self.ais_mean_density <= 1:
+            return 'Low'
+        else:
+            return 'High'
      
     @property
     def depth_range_output(self):
