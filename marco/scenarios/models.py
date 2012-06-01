@@ -295,7 +295,8 @@ class Scenario(Analysis):
                             <Data name="depth_range_output"><value>%s</value></Data>
                             <Data name="substrate"><value>%s</value></Data>
                             <Data name="sediment"><value>%s</value></Data>
-                            <Data name="wea"><value>%s</value></Data>
+                            <Data name="wea_label"><value>%s</value></Data>
+                            <Data name="wea_state_name"><value>%s</value></Data>
                             <Data name="distance_to_shore"><value>%s</value></Data>
                             <Data name="distance_to_awc"><value>%s</value></Data>
                             <Data name="wind_speed_output"><value>%s</value></Data>
@@ -309,7 +310,8 @@ class Scenario(Analysis):
                             leaseblock.depth_range_output, 
                             leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
                             leaseblock.majority_sediment, #TODO: might change sediment to a more user friendly output
-                            leaseblock.wea_output,
+                            leaseblock.wea_label,
+                            leaseblock.wea_state_name,
                             format(leaseblock.avg_distance,0), format(leaseblock.awc_min_distance,0),
                             #LeaseBlock Update: added the following two entries (min and max) to replace avg wind speed for now
                             leaseblock.wind_speed_output,
@@ -338,24 +340,24 @@ class Scenario(Analysis):
                         <bgColor>ffeeeeee</bgColor>
                         <text> <![CDATA[
                             <font color="#1A3752">
-                                Spatial Design for Wind Energy: <b>$[header]</b>
+                                Spatial Design for Wind Energy: <strong>$[header]</strong>
                                 <p>
                                 <table width="250">
-                                    <tr><td> Lease Block Number: $[prot_number] </td></tr>
+                                    <tr><td> Lease Block Number: <b>$[prot_number]</b> </td></tr>
                                 </table>
                                 <table width="250">
-                                    <tr><td> $[wea] </td></tr>
-                                    <tr><td> Avg Wind Speed: $[wind_speed_output] </td></tr>
-                                    <tr><td> Distance to AWC Station: $[distance_to_awc] miles </td></tr>
+                                    <tr><td> $[wea_label] <b>$[wea_state_name]</b> </td></tr>
+                                    <tr><td> Avg Wind Speed: <b>$[wind_speed_output]</b> </td></tr>
+                                    <tr><td> Distance to AWC Station: <b>$[distance_to_awc] miles</b> </td></tr>
                                 </table>
                                 <table width="250">
-                                    <tr><td> Distance to Shore: $[distance_to_shore] miles </td></tr>
-                                    <tr><td> Depth: $[depth_range_output] </td></tr>
-                                    <tr><td> Majority Seabed Form: $[substrate] </td></tr>
-                                    <tr><td> Majority Sediment: $[sediment] </td></tr>
+                                    <tr><td> Distance to Shore: <b>$[distance_to_shore] miles</b> </td></tr>
+                                    <tr><td> Depth: <b>$[depth_range_output]</b> </td></tr>
+                                    <tr><td> Majority Seabed Form: <b>$[substrate]</b> </td></tr>
+                                    <tr><td> Majority Sediment: <b>$[sediment]</b> </td></tr>
                                 </table>
                                 <table width="250">
-                                    <tr><td> Shipping Density: $[ais_density] </td></tr>
+                                    <tr><td> Shipping Density: <b>$[ais_density]</b> </td></tr>
                                 </table>
                             </font>  
                             <font size=1>created by $[user] on $[modified]</font>
@@ -456,11 +458,18 @@ class LeaseBlock(models.Model):
             return 'Unknown'
         
     @property
-    def wea_output(self):
+    def wea_label(self):
         if self.wea_name is None:
             return ""
         else:
-            return "Wind Energy Area: %s" %self.wea_name
+            return "Wind Energy Area: "
+        
+    @property
+    def wea_state_name(self):
+        if self.wea_name is None:
+            return ""
+        else:
+            return self.wea_name
         
     @property
     def wind_speed_output(self):
