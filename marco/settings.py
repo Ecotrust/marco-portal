@@ -15,6 +15,7 @@ DATABASES = {
 
 COMPRESS_CSS['application']['source_filenames'] += (
     'marco/css/analysis_reports.css',
+    'kmltree/dist/kmltree_mod.css',
 )
 
 COMPRESS_JS['application']['source_filenames'] += (
