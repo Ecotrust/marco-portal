@@ -159,6 +159,14 @@ class Scenario(Analysis):
         else: #editing a scenario and rerun is provided 
             super(Scenario, self).save(rerun=rerun, *args, **kwargs)
     
+    def delete(self, *args, **kwargs):
+        """
+        Remove KML cache before removing scenario 
+        """
+        from kml_caching import remove_kml_cache
+        remove_kml_cache(self)
+        super(Scenario, self).delete(*args, **kwargs)    
+    
     def __unicode__(self):
         return u'%s' % self.name
         
