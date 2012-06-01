@@ -15,6 +15,110 @@
     {% endif %}
 {% endblock layersConfig %}
 
+{% block js_ready %}
+    $('a[href="#DataLayers"]').click();
+{% endblock %}
+
+{% block datalayers %}
+<div id="DataLayers">
+    {% if user.is_authenticated %}
+    {% else %}
+        <div class="box" style="margin-top:20px;">
+            {% load appname %} 
+            {% load flatblock_tags %}
+            <h1> {% appname %}</h1>
+            <p> {% flatblock "about_paragraph_1" %}</p>
+        </div>
+        <div class="box">
+    {% endif %}
+            <h1> Data Layers </h1>
+            <div id="datalayerstree" style="margin-left:10px;"></div>
+    {% if user.is_authenticated %}
+    {% else %}
+        </div>
+    {% endif %}
+</div>
+<style type="text/css">
+h1 {
+    margin-top: 5px;
+}
+ul.wmp {
+    padding-left: 25px;
+    margin-top: 0px;
+    color: #4C4C4C;
+    font-size: 12px;
+    font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
+}
+ul.wmp li {
+    margin-bottom:3px;
+}
+</style>
+{% endblock datalayers %}
+
+{% block bookmark %}
+<div id="Bookmark" class="box" style="margin-top:20px;">
+    <h1>Bookmarks</h1>
+    <p> You can create a bookmark to remember your location, camera angle and data layers. Your bookmark will have a unique URL that you can share with others. </p> 
+    <br/>
+    <a id="create_bookmark" href="#" class="button" onclick="this.blur(); return false;">
+        <span>Create Bookmark</span>
+    </a>
+    <br/>
+    <br/>
+    <div id="bookmark_results" style="display:none;">
+        <p> Copy and paste this URL to get back to this bookmark. </p>
+        <div id="bookmark_url" style="border:1px #AAA solid; background-color: white; padding: 8px; font-family:monospace; font-size: 8pt; color: grey;">
+        </div>
+    </div>
+</div>
+{% endblock bookmark %}
+
+{% block tools %}
+<div id="tools" class="box" style="margin-top:20px;">
+    <h1>Tools</h1>
+    {% block flyto %}
+    <form id="flyToLocation" method="GET">
+        <input type="text" name="flyto_location" value="">
+        <a id="flytogo" href="#" class="button" onclick="this.blur(); return false;"><span>Fly Here</span></a>
+        <a id="flytoclear" href="#" class="button red disabled" onclick="this.blur(); return false;"><span>Clear</span></a>
+        <input type="submit" style="display:none;" />
+        <br style="clear:both;" />
+    </form>
+    {% endblock flyto %}
+    <hr />
+    <div id="measurement_tools" class="tool">
+        <a id="measure_distance" href="#" class="button" onclick="this.blur(); return false;"><span><img src="{{MEDIA_URL}}common/images/ruler.png">Measure Distance</span></a>
+        <a id="measure_area" href="#" class="button" onclick="this.blur(); return false;"><span><img src="{{MEDIA_URL}}common/images/ruler_square.png">Measure Area</span></a>
+        <a id="measure_clear" href="#" class="button red disabled" onclick="this.blur(); return false;"><span>Clear</span></a>
+        <p style="clear:both;">
+            Choose to measure distance or area and then draw a shape on the map. Double-click when finished drawing.
+        </p>
+        <div id="measureAmountHolder">
+            <span id="measureAmount"></span>
+            <select id="measure_units">
+                <option value="metric">metric</option>
+                <option value="english">english</option>
+                <option value="nautical">nautical</option>                            
+            </select>
+        </div>
+    </div>
+    <hr />
+    <div id="earthOptions">
+        <h3>Display Options</h3>
+        <p>Toggle the various options below and your choices will be remembered the next time you use the tool.</p>
+        <ul>
+            <li id="overview"><span class="toggler"><img width="16" height="16" src="{{MEDIA_URL}}common/images/transparent.gif" /></span>Overview Map</li>
+            <li id="scale"><span class="toggler"><img width="16" height="16" src="{{MEDIA_URL}}common/images/transparent.gif" /></span>Scale Legend</li>
+            <li class="visible" id="nav"><span class="toggler"><img width="16" height="16" src="{{MEDIA_URL}}common/images/transparent.gif" /></span>Navigation Controls</li>
+            <li id="terrain"><span class="toggler"><img width="16" height="16" src="{{MEDIA_URL}}common/images/transparent.gif" /></span>3d Terrain and Ocean Surface</li>
+            <li class="visible" id="atm"><span class="toggler"><img width="16" height="16" src="{{MEDIA_URL}}common/images/transparent.gif" /></span>Atmosphere</li>
+        </ul>
+    </div>
+
+</div>
+{% endblock tools %}
+
+
 
 {% block metanavigation %}
 {% if user.is_authenticated %}
@@ -30,3 +134,10 @@
 <li><a href="#" id="signin">sign in</a></li>
 {% endif %}                
 {% endblock metanavigation %}
+
+{% block tabs %}
+{% if user.is_authenticated %}
+<li><a href="#MyShapes"><span>My Shapes</span></a></li> 
+<li><a href="#SharedShapes"><span>Shared With Me</span></a></li>             
+{% endif %}
+{% endblock tabs %}
