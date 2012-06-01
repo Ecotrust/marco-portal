@@ -22,6 +22,10 @@
 {% block datalayers %}
 <div id="DataLayers">
     {% if user.is_authenticated %}
+        <div style="margin-top:20px;">
+            <h1> Data Layers </h1>
+            <div id="datalayerstree" style="margin-left:10px;"></div>
+        </div>
     {% else %}
         <div class="box" style="margin-top:20px;">
             {% load appname %} 
@@ -30,13 +34,10 @@
             <p> {% flatblock "about_paragraph_1" %}</p>
         </div>
         <div class="box">
-    {% endif %}
             <h1> Data Layers </h1>
             <div id="datalayerstree" style="margin-left:10px;"></div>
-    {% if user.is_authenticated %}
-    {% else %}
         </div>
-    {% endif %}
+    {% endif %}    
 </div>
 <style type="text/css">
 h1 {
@@ -118,8 +119,6 @@ ul.wmp li {
 </div>
 {% endblock tools %}
 
-
-
 {% block metanavigation %}
 {% if user.is_authenticated %}
 <li><a href="#" id="profile">{{user.username}}</a> | </li>
@@ -141,3 +140,4 @@ ul.wmp li {
 <li><a href="#SharedShapes"><span>Shared With Me</span></a></li>             
 {% endif %}
 {% endblock tabs %}
+
