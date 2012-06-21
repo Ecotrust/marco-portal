@@ -30,7 +30,8 @@ INSTALLED_APPS += ( 'clipping',
                     'scenarios', 
                     'drawing',
                     'reports',
-                    'django.contrib.humanize' )
+                    'django.contrib.humanize',
+		    'madrona.layer_manager' )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
