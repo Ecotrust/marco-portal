@@ -1,16 +1,40 @@
+			<footer role="contentinfo">
+			
+				<div id="inner-footer" class="clearfix">
+		          <hr />
+		          <div id="widget-footer" class="clearfix row-fluid">
+		            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer1') ) : ?>
+		            <?php endif; ?>
+		            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer2') ) : ?>
+		            <?php endif; ?>
+		            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer3') ) : ?>
+		            <?php endif; ?>
+		          </div>
+					
+					<nav class="clearfix">
+						<?php bones_footer_links(); // Adjust using Menus in Wordpress Admin ?>
+					</nav>
+					
+					<p class="pull-right"><a href="http://320press.com" id="credit320" title="By the dudes of 320press">320press</a></p>
+			
+					<p class="attribution">&copy; <?php bloginfo('name'); ?></p>
+				
+				</div> <!-- end #inner-footer -->
+				
+			</footer> <!-- end footer -->
+		
+		</div> <!-- end #container -->
+		
+		<!-- scripts are now optimized via Modernizr.load -->	
+		<script src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
+		
+		<!--[if lt IE 7 ]>
+  			<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+  			<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+		<![endif]-->
+		
+		<?php wp_footer(); // js scripts are inserted using this function ?>
 
-  </div><!-- /#wrap -->
+	</body>
 
-  <?php roots_footer_before(); ?>
-  <footer id="content-info" class="<?php echo WRAP_CLASSES; ?>" role="contentinfo">
-    <?php roots_footer_inside(); ?>
-    <?php dynamic_sidebar('sidebar-footer'); ?>
-    <p class="copy"><small>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></small></p>
-  </footer>
-  <?php roots_footer_after(); ?>
-
-  <?php wp_footer(); ?>
-  <?php roots_footer(); ?>
-
-</body>
 </html>

@@ -1,44 +1,98 @@
 <?php get_header(); ?>
-  <?php roots_content_before(); ?>
-    <div id="content" class="<?php echo CONTAINER_CLASSES; ?>">
-    <?php roots_main_before(); ?>
-      <div id="main" class="<?php echo MAIN_CLASSES; ?>" role="main">
-        <div class="page-header">
-          <h1>
-            <?php
-              $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-              if ($term) {
-                echo $term->name;
-              } elseif (is_post_type_archive()) {
-                echo get_queried_object()->labels->name;
-              } elseif (is_day()) {
-                printf(__('Daily Archives: %s', 'roots'), get_the_date());
-              } elseif (is_month()) {
-                printf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y'));
-              } elseif (is_year()) {
-                printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
-              } elseif (is_author()) {
-                global $post;
-                $author_id = $post->post_author;
-                printf(__('Author Archives: %s', 'roots'), get_the_author_meta('display_name', $author_id));
-              } else {
-                single_cat_title();
-              }
-            ?>
-          </h1>
-        </div>
-        <?php roots_loop_before(); ?>
-        <?php get_template_part('loop', 'category'); ?>
-        <?php roots_loop_after(); ?>
-      </div><!-- /#main -->
-    <?php roots_main_after(); ?>
-    <?php roots_sidebar_before(); ?>
-      <aside id="sidebar" class="<?php echo SIDEBAR_CLASSES; ?>" role="complementary">
-      <?php roots_sidebar_inside_before(); ?>
-        <?php get_sidebar(); ?>
-      <?php roots_sidebar_inside_after(); ?>
-      </aside><!-- /#sidebar -->
-    <?php roots_sidebar_after(); ?>
-    </div><!-- /#content -->
-  <?php roots_content_after(); ?>
+			
+			<div id="content" class="clearfix row-fluid">
+			
+				<div id="main" class="span8 clearfix" role="main">
+				
+					<div class="page-header">
+					<?php if (is_category()) { ?>
+						<h1 class="archive_title h2">
+							<span><?php _e("Posts Categorized:", "bonestheme"); ?></span> <?php single_cat_title(); ?>
+						</h1>
+					<?php } elseif (is_tag()) { ?> 
+						<h1 class="archive_title h2">
+							<span><?php _e("Posts Tagged:", "bonestheme"); ?></span> <?php single_tag_title(); ?>
+						</h1>
+					<?php } elseif (is_author()) { ?>
+						<h1 class="archive_title h2">
+							<span><?php _e("Posts By:", "bonestheme"); ?></span> <?php get_the_author_meta('display_name'); ?>
+						</h1>
+					<?php } elseif (is_day()) { ?>
+						<h1 class="archive_title h2">
+							<span><?php _e("Daily Archives:", "bonestheme"); ?></span> <?php the_time('l, F j, Y'); ?>
+						</h1>
+					<?php } elseif (is_month()) { ?>
+					    <h1 class="archive_title h2">
+					    	<span><?php _e("Monthly Archives:", "bonestheme"); ?>:</span> <?php the_time('F Y'); ?>
+					    </h1>
+					<?php } elseif (is_year()) { ?>
+					    <h1 class="archive_title h2">
+					    	<span><?php _e("Yearly Archives:", "bonestheme"); ?>:</span> <?php the_time('Y'); ?>
+					    </h1>
+					<?php } ?>
+					</div>
+
+					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+					
+					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+						
+						<header>
+							
+							<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+							
+							<p class="meta"><?php _e("Posted", "bonestheme"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php the_date(); ?></time> <?php _e("by", "bonestheme"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("filed under", "bonestheme"); ?> <?php the_category(', '); ?>.</p>
+						
+						</header> <!-- end article header -->
+					
+						<section class="post_content">
+						
+							<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
+						
+							<?php the_excerpt(); ?>
+					
+						</section> <!-- end article section -->
+						
+						<footer>
+							
+						</footer> <!-- end article footer -->
+					
+					</article> <!-- end article -->
+					
+					<?php endwhile; ?>	
+					
+					<?php if (function_exists('page_navi')) { // if expirimental feature is active ?>
+						
+						<?php page_navi(); // use the page navi function ?>
+
+					<?php } else { // if it is disabled, display regular wp prev & next links ?>
+						<nav class="wp-prev-next">
+							<ul class="clearfix">
+								<li class="prev-link"><?php next_posts_link(_e('&laquo; Older Entries', "bonestheme")) ?></li>
+								<li class="next-link"><?php previous_posts_link(_e('Newer Entries &raquo;', "bonestheme")) ?></li>
+							</ul>
+						</nav>
+					<?php } ?>
+								
+					
+					<?php else : ?>
+					
+					<article id="post-not-found">
+					    <header>
+					    	<h1><?php _e("No Posts Yet", "bonestheme"); ?></h1>
+					    </header>
+					    <section class="post_content">
+					    	<p><?php _e("Sorry, What you were looking for is not here.", "bonestheme"); ?></p>
+					    </section>
+					    <footer>
+					    </footer>
+					</article>
+					
+					<?php endif; ?>
+			
+				</div> <!-- end #main -->
+    
+				<?php get_sidebar(); // sidebar 1 ?>
+    
+			</div> <!-- end #content -->
+
 <?php get_footer(); ?>
