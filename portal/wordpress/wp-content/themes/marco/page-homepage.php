@@ -46,19 +46,6 @@ Template Name: Homepage
 			  </div>
 			</div>
 
-			<hr>
-
-			<footer>
-			  <div class="row">
-			    <div class="span8">
-			      <p>Contact info goes here</p>
-			    </div>
-			    <div class="span4 social">
-			        <h5>connect with us <img src="assets/img/social.png"/></h5>              
-			    </div>
-			  </div>
-			</footer>
-
 		</div> <!-- end #main -->
 
 	</div> <!-- end #content -->

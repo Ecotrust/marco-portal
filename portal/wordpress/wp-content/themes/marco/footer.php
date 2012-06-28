@@ -1,27 +1,16 @@
-			<footer role="contentinfo">
-			
-				<div id="inner-footer" class="clearfix">
-		          <hr />
-		          <div id="widget-footer" class="clearfix row-fluid">
-		            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer1') ) : ?>
-		            <?php endif; ?>
-		            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer2') ) : ?>
-		            <?php endif; ?>
-		            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer3') ) : ?>
-		            <?php endif; ?>
-		          </div>
-					
-					<nav class="clearfix">
-						<?php bones_footer_links(); // Adjust using Menus in Wordpress Admin ?>
-					</nav>
-					
-					<p class="pull-right"><a href="http://320press.com" id="credit320" title="By the dudes of 320press">320press</a></p>
-			
-					<p class="attribution">&copy; <?php bloginfo('name'); ?></p>
-				
-				</div> <!-- end #inner-footer -->
-				
-			</footer> <!-- end footer -->
+					<hr>
+
+			<footer>
+			  <div class="row">
+			    <div class="span8">
+			      <p>Contact info goes here</p>
+			    </div>
+			    <div class="span4 social">
+			        <h5>connect with us <img src="assets/img/social.png"/></h5>              
+			    </div>
+			  </div>
+			</footer>
+
 		
 		</div> <!-- end #container -->
 		
