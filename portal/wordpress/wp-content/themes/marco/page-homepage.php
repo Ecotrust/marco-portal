@@ -5,73 +5,62 @@ Template Name: Homepage
 ?>
 
 <?php get_header(); ?>
-			
-			<div id="content" class="clearfix row-fluid">
-			
-				<div id="main" class="span12 clearfix" role="main">
+	
+	<div id="content" class="row">
+		<div id="main" class="span12" role="main">
+			<div class="row">
+			  <div class="span12">
+			    <div class="showcase">
+			      <img class="span12" src="<?php echo get_template_directory_uri(); ?>/img/map-depth.png"/>
+			      <div class="caption">
+			        <h2>Resources for Mid-Atlantic <strong>ocean planning.</strong></h2>
+			        <p class="pull-right"><a>Launch Marine Planner Now &gt;</a></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-					
-						<header>
-						
-							<div class="hero-unit">
-							
-								<h1><?php the_title(); ?></h1>
-								
-								<?php echo get_post_meta($post->ID, 'custom_tagline' , true);?>
-							
-							</div>
-						
-						</header>
-						
-						<section class="row-fluid post_content">
-						
-							<div class="span8">
-						
-								<?php the_content(); ?>
-								
-							</div>
-							
-							<?php get_sidebar('sidebar2'); // sidebar 2 ?>
-													
-						</section> <!-- end article header -->
-						
-						<footer>
-			
-							<p class="clearfix"><?php the_tags('<span class="tags">' . __("Tags","bonestheme") . ': ', ', ', '</span>'); ?></p>
-							
-						</footer> <!-- end article footer -->
-					
-					</article> <!-- end article -->
-					
-					<?php 
-						// No comments on homepage
-						//comments_template();
-					?>
-					
-					<?php endwhile; ?>	
-					
-					<?php else : ?>
-					
-					<article id="post-not-found">
-					    <header>
-					    	<h1><?php _e("Not Found", "bonestheme"); ?></h1>
-					    </header>
-					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "bonestheme"); ?></p>
-					    </section>
-					    <footer>
-					    </footer>
-					</article>
-					
-					<?php endif; ?>
-			
-				</div> <!-- end #main -->
-    
-				<?php //get_sidebar(); // sidebar 1 ?>
-    
-			</div> <!-- end #content -->
+			<!-- Example row of columns -->
+			<div class="row bugs">
+			  <div class="span4">
+			    <div class="wrapper">
+			      <img src="<?php echo get_template_directory_uri(); ?>/img/learn.png"/>
+			      <h3>Learn</h3>
+			      <p>Read the latest news and updates on Mid-Atlantic planning.</p>
+			    </div>
+			  </div>
+			  <div class="span4">
+			    <div class="wrapper">
+			      <img src="<?php echo get_template_directory_uri(); ?>/img/explore.png"/>
+
+			      <h3>Explore</h3>
+			       <p>Access our data catalog and links to other data and services</p>
+			     </div>
+			 </div>
+			  <div class="span4">
+			    <div class="wrapper">
+			      <img src="<?php echo get_template_directory_uri(); ?>/img/visualize.png"/>
+			      <h3>Visualize</h3>
+			      <p>Launch our Marine Planner mapping application along with other maps and tools</p>
+			    </div>
+			  </div>
+			</div>
+
+			<hr>
+
+			<footer>
+			  <div class="row">
+			    <div class="span8">
+			      <p>Contact info goes here</p>
+			    </div>
+			    <div class="span4 social">
+			        <h5>connect with us <img src="assets/img/social.png"/></h5>              
+			    </div>
+			  </div>
+			</footer>
+
+		</div> <!-- end #main -->
+
+	</div> <!-- end #content -->
 
 <?php get_footer(); ?>

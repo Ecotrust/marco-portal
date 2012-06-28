@@ -68,32 +68,26 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-				
+
 		<header role="banner">
-		
-			<div id="inner-header" class="clearfix">
-				
-				<div class="navbar">
-				  <div class="navbar-inner">
-				    <div class="container">
-				        <img class="span4" src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
-				      <div class="pull-right">
-				        <ul class="nav">
-				          <li><a href="about.html">About the&nbsp;Portal</a></li>
-				          <li><a href="#about">Contact Us</a></li>
-				          <li><a href="#contact">Visit Marco Council</a></li>
-				        </ul>
-				        <form class="form-search pull-right">
-				          <input type="text" class="input-medium search-box">
-				          <button type="submit" class="btn">Search</button>
-				        </form>
-				      </div><!--/.nav-collapse -->
-				    </div>
-				  </div>
-				</div>
-			
-			</div> <!-- end #inner-header -->
-		
+			<div class="navbar">
+			  <div class="navbar-inner">
+			    <div class="container">
+			        <img class="span4" src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
+			      <div class="pull-right">
+			        <ul class="nav">
+			          <li><a href="about.html">About the&nbsp;Portal</a></li>
+			          <li><a href="#about">Contact Us</a></li>
+			          <li><a href="#contact">Visit Marco Council</a></li>
+			        </ul>
+			        <form class="form-search pull-right">
+			          <input type="text" class="input-medium search-box">
+			          <button type="submit" class="btn">Search</button>
+			        </form>
+			      </div><!--/.nav-collapse -->
+			    </div>
+			  </div>
+			</div>
 		</header> <!-- end header -->
 		
 		<div class="container-fluid">
