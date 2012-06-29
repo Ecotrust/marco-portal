@@ -1,16 +1,15 @@
 <?php
 /*
-Template Name: Left Sidebar Page
+Template Name: Right Sidebar Page
 */
 ?>
 
 <?php get_header(); ?>
 			
-			<div id="content" class="clearfix row-fluid">
+			<div id="content" class="row">
             
-            	<?php get_sidebar(); // sidebar 1 ?>
 			
-				<div id="main" class="span8 clearfix" role="main">
+				<div id="main" class="span8" role="main">
 
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
@@ -18,7 +17,7 @@ Template Name: Left Sidebar Page
 						
 						<header>
 							
-							<div class="page-header"><h1><?php the_title(); ?></h1></div>
+							<h2><?php the_title(); ?></h2>
 						
 						</header> <!-- end article header -->
 					
@@ -35,7 +34,7 @@ Template Name: Left Sidebar Page
 					
 					</article> <!-- end article -->
 					
-					<?php comments_template(); ?>
+					<?php //comments_template(); ?>
 					
 					<?php endwhile; ?>	
 					
@@ -55,7 +54,8 @@ Template Name: Left Sidebar Page
 					<?php endif; ?>
 			
 				</div> <!-- end #main -->
-    
+			    <?php get_sidebar(); // sidebar 1 ?>
+
 			</div> <!-- end #content -->
 
 <?php get_footer(); ?>

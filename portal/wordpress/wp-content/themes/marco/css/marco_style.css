@@ -1,13 +1,16 @@
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	font-weight: normal;
-}
-h2, h3 {
 	color: #2d8998;
 }
+
 h2 {
 	font-size: 28px;
 	margin-bottom: 10px;
 
+}
+
+header h2 {
+	margin-bottom: 0px;
 }
 hr {
 	border-top: 1px solid #ccc;
@@ -58,19 +61,18 @@ hr {
 		line-height: 12px;
 		color: #333;
 	}	
+.navbar form {
+	margin-top: 32px;
+}
 
 .navbar img {
-	margin-top: 10px;
-	margin-left: -20px;
+	margin-top: 15px;
+	margin-left: 0px;
 }
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: white;
 	color: #ccc;
 
-}
-.form-search {
-	margin-top: 40px;
-	margin-right: 15px;
 }
 
 .form-search .btn {
@@ -79,9 +81,9 @@ hr {
 	background-color: #2d8998;
 	background-image: none;
 	color: white;
+	margin-top: 6px;
 	margin-right: 0px;
 	margin-left: -5px;
-	margin-top: 0px;
 	border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
@@ -186,6 +188,18 @@ hr {
 	text-transform: uppercase;
 }
 
-.right-column h3 {
-	margin-top: 10px;
+.sidebar {
+	margin-top: 15px;
+}
+
+.sidebar ul {
+	list-style: none;
+	margin-left: 0;
+}
+.sidebar h4 {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+.sidebar a {
+	color: #333;
 }

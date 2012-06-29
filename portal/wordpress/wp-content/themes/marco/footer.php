@@ -6,7 +6,7 @@
 			      <p>Contact info goes here</p>
 			    </div>
 			    <div class="span4 social">
-			        <h5>connect with us <img src="assets/img/social.png"/></h5>              
+			        <h5>connect with us <img src="<?php echo get_template_directory_uri(); ?>/img/social.png"/></h5>              
 			    </div>
 			  </div>
 			</footer>

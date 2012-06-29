@@ -10,7 +10,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		
-		<title><?php wp_title('', true, 'right'); ?></title>
+		<title><?php echo wp_title('', true, 'right'); ?></title>
 				
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 		
@@ -48,13 +48,11 @@
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
 		
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
 		
 		<!-- marco stylesheet -->
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/marco_style.css">
 
-
-		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 		
 		<?php 
 
@@ -73,10 +71,12 @@
 			<div class="navbar">
 			  <div class="navbar-inner">
 			    <div class="container">
-			        <img class="span4" src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
+			        <a href="<?php echo get_bloginfo('wpurl'); ?>">
+			        	<img class="span4" src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
+			        </a>
 			      <div class="pull-right">
 			        <ul class="nav">
-			          <li><a href="about.html">About the&nbsp;Portal</a></li>
+			          <li><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
 			          <li><a href="#about">Contact Us</a></li>
 			          <li><a href="#contact">Visit Marco Council</a></li>
 			        </ul>
@@ -90,4 +90,4 @@
 			</div>
 		</header> <!-- end header -->
 		
-		<div class="container-fluid">
+		<div class="container">
