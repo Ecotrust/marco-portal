@@ -10,7 +10,7 @@ h2 {
 }
 
 header h2 {
-	margin-bottom: 0px;
+	margin-bottom: 5px;
 }
 hr {
 	border-top: 1px solid #ccc;
@@ -202,4 +202,8 @@ hr {
 }
 .sidebar a {
 	color: #333;
+}
+
+img + h3 {
+	margin-top: 10px;
 }

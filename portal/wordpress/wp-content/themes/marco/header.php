@@ -76,7 +76,7 @@
 			        </a>
 			      <div class="pull-right">
 			        <ul class="nav">
-			          <li><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
+			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
 			          <li><a href="#about">Contact Us</a></li>
 			          <li><a href="#contact">Visit Marco Council</a></li>
 			        </ul>
