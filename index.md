@@ -34,7 +34,7 @@ tagline:
     <p><a class='btn' href="{{BASE_PATH}}/archive.html">Archives</a></p>
     <p><a class='btn' href="{{BASE_PATH}}/categories.html">Categories</a></p>
     <p><a class='btn' href="{{BASE_PATH}}/tags.html">Tags</a></p>
-    <p><a href="{{BASE_PATH}}/atom.xml"><img height="20" width="20" src="{{BASE_PATH}}/assets/img/feed-icon-28x28.png"/></a></p>
+    <p><a href="http://feeds.feedburner.com/MarcoPortalDevelopmentLog"><img height="20" width="20" src="{{BASE_PATH}}/assets/img/feed-icon-28x28.png"/></a></p>
   </div> 
 </div>
 
