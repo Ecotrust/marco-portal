@@ -1,1 +1,0 @@
-These royalty-free icons obtained from http://icons.mysitemyway.com/category/blue-jelly-icons/

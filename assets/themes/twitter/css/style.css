@@ -1,0 +1,153 @@
+
+/* Local overrides */
+
+html, body {
+  background-color: #eee;
+  color: #555;  
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0px 0px 10px;
+	font-weight: normal;	
+}
+
+h1 {
+	color: #111;
+	font-size: 32px;
+	line-height: 1.25;	
+}
+
+h3 {
+	color: #333;	
+	font-size: 20px;
+}
+
+h4 {
+	color: #333;	
+	font-size: 17px;
+}
+
+
+dt {
+	font-weight: normal;
+}
+
+hr {
+	margin: 16px 0px;
+}
+
+p {
+	margin: 0px 0px 10px;
+	line-height: 22px;
+	font-size: 16px !important;
+}
+
+li {
+	line-height: 22px;
+}
+
+dl {
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	margin-bottom: 10px;
+}
+
+dl.case-links {
+	margin-bottom: 15px;
+}
+
+.container > footer {
+  margin-top: 20px;
+}
+
+.big-text {
+	font-size: 20px !important;
+	line-height: 30px;
+}
+
+.header {
+	border-bottom: 1px solid #eee;
+	border-radius: 0px !important;
+	--webkit-border-radius: 0px !important;
+	--moz-border-radius: 0px !important;
+}
+
+.header-title {
+	font-size: 48px;
+	margin-top: 26px;
+	letter-spacing: -2px;	
+}
+
+.thumbnail {
+	margin-bottom: 10px;
+}
+
+/***********************/
+
+.navbar {
+  margin-bottom: 0;
+}
+.container > footer {
+  margin-top: 20px;
+}
+.container > footer p {
+  text-align: center; /* center align it with the container */
+}
+
+/* The white background content wrapper */
+.content {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+/* Page header tweaks */
+.page-header {
+  padding: 20px 20px 0px;
+  margin: -20px -20px 20px;
+  border: 0px;
+}
+
+.topbar .btn {
+  border: 0;
+}
+
+
+/* tag_box ======================================================== */
+
+.tag_box {
+	list-style:none;
+	margin:0;
+	padding:5px 0 ;
+	overflow:hidden;
+}
+.tag_box li {
+	line-height:28px;
+}
+.tag_box.inline li {
+	float:left;
+}
+.tag_box a {
+	padding: 3px 6px;
+	margin: 2px;
+	background: #eee;
+	color:#005F6B;
+	border-radius: 3px;
+	text-decoration:none;
+}
+.tag_box a span{
+	vertical-align:super;
+	font-size:0.8em;
+}
+.tag_box a.active {
+	background:#57A957;
+	border:1px solid #4C964D;
+	color:#FFF;
+}
+	
