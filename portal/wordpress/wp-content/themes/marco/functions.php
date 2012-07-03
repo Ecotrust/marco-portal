@@ -23,7 +23,7 @@ require_once('library/shortcodes.php');
 
 // Custom Backend Footer
 function bones_custom_admin_footer() {
-	echo '<span id="footer-thankyou">Developed by <a href="http://320press.com" target="_blank">320press</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';
+	echo '<span id="footer-thankyou">Developed by Ecotrust, based on a theme by 320press</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';
 }
 
 // adding it to the admin area

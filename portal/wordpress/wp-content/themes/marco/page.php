@@ -10,7 +10,7 @@
 						
 						<header>
 							
-							<div class="page-header"><h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1></div>
+							<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 						
 						</header> <!-- end article header -->
 					

@@ -29,7 +29,7 @@
 	<title>marco</title>
 	<link>http://localhost/marco</link>
 	<description>Just another WordPress site</description>
-	<pubDate>Tue, 03 Jul 2012 17:30:43 +0000</pubDate>
+	<pubDate>Tue, 03 Jul 2012 21:36:24 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost/marco</wp:base_site_url>
@@ -361,7 +361,7 @@ As a new WordPress user, you should go to <a href="http://localhost:8080/portal/
 		</wp:postmeta>
 	</item>
 	<item>
-		<title>home</title>
+		<title>Home</title>
 		<link>http://localhost/marco/</link>
 		<pubDate>Wed, 27 Jun 2012 22:53:41 +0000</pubDate>
 		<dc:creator>admin</dc:creator>
@@ -460,7 +460,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum malesua
 		</wp:postmeta>
 	</item>
 	<item>
-		<title>news</title>
+		<title>News and Updates</title>
 		<link>http://localhost/marco/news/</link>
 		<pubDate>Tue, 03 Jul 2012 17:20:52 +0000</pubDate>
 		<dc:creator>admin</dc:creator>
@@ -487,6 +487,100 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum malesua
 		<wp:postmeta>
 			<wp:meta_key>_wp_page_template</wp:meta_key>
 			<wp:meta_value><![CDATA[page-right-sidebar.php]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Contact Us</title>
+		<link>http://localhost/marco/contact/</link>
+		<pubDate>Tue, 03 Jul 2012 19:06:06 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+		<guid isPermaLink="false">http://localhost/marco/?page_id=37</guid>
+		<description></description>
+		<content:encoded><![CDATA[[xyz-cfm-form id=1]]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>37</wp:post_id>
+		<wp:post_date>2012-07-03 19:06:06</wp:post_date>
+		<wp:post_date_gmt>2012-07-03 19:06:06</wp:post_date_gmt>
+		<wp:comment_status>closed</wp:comment_status>
+		<wp:ping_status>open</wp:ping_status>
+		<wp:post_name>contact</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>page</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_wp_page_template</wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Marco Data Catalog</title>
+		<link>http://localhost/marco/data/</link>
+		<pubDate>Tue, 03 Jul 2012 21:27:16 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+		<guid isPermaLink="false">http://localhost/marco/?page_id=42</guid>
+		<description></description>
+		<content:encoded><![CDATA[In order to support marine planning in the Mid-Atlantic Region, MARCO provides geographic data as downloadable files and web mapping services.
+ 
+The data cover the physical, biological and social characteristics of the area.
+ 
+Visit the <a href="http://test">Data Needs page</a> to view some of the highest priority unmet ocean planning data needs as well as data currently under development, but not yet available for the Mid-Atlantic Region.  ]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>42</wp:post_id>
+		<wp:post_date>2012-07-03 21:27:16</wp:post_date>
+		<wp:post_date_gmt>2012-07-03 21:27:16</wp:post_date_gmt>
+		<wp:comment_status>closed</wp:comment_status>
+		<wp:ping_status>open</wp:ping_status>
+		<wp:post_name>data</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>page</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_wp_page_template</wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Tools</title>
+		<link>http://localhost/marco/tools/</link>
+		<pubDate>Tue, 03 Jul 2012 21:29:56 +0000</pubDate>
+		<dc:creator>admin</dc:creator>
+		<guid isPermaLink="false">http://localhost/marco/?page_id=47</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>47</wp:post_id>
+		<wp:post_date>2012-07-03 21:29:56</wp:post_date>
+		<wp:post_date_gmt>2012-07-03 21:29:56</wp:post_date_gmt>
+		<wp:comment_status>closed</wp:comment_status>
+		<wp:ping_status>open</wp:ping_status>
+		<wp:post_name>tools</wp:post_name>
+		<wp:status>publish</wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type>page</wp:post_type>
+		<wp:post_password></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key>_edit_last</wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key>_wp_page_template</wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 </channel>

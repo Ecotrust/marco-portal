@@ -32,7 +32,7 @@ Template Name: Homepage
 				</a>
 			  </div>
 			  <div class="span4">
-			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/catalog">
+			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/data">
 				    <div class="wrapper">
 				      <img src="<?php echo get_template_directory_uri(); ?>/img/explore.png"/>
 
@@ -42,11 +42,13 @@ Template Name: Homepage
 				 </a>
 			 </div>
 			  <div class="span4">
-			    <div class="wrapper">
-			      <img src="<?php echo get_template_directory_uri(); ?>/img/visualize.png"/>
-			      <h3>Visualize</h3>
-			      <p>Launch our Marine Planner mapping application along with other maps and tools</p>
-			    </div>
+			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/tools">			  	
+				    <div class="wrapper">
+				      <img src="<?php echo get_template_directory_uri(); ?>/img/visualize.png"/>
+				      <h3>Visualize</h3>
+				      <p>Launch our Marine Planner mapping application along with other maps and tools</p>
+				    </div>
+				</a>
 			  </div>
 			</div>
 
