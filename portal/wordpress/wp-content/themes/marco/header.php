@@ -80,8 +80,8 @@
 			          <li><a href="#about">Contact Us</a></li>
 			          <li><a href="#contact">Visit Marco Council</a></li>
 			        </ul>
-			        <form class="form-search pull-right">
-			          <input type="text" class="input-medium search-box">
+			        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
+			          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">
 			          <button type="submit" class="btn">Search</button>
 			        </form>
 			      </div><!--/.nav-collapse -->
