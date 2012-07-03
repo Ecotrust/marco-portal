@@ -1,7 +1,7 @@
 ---
 layout: post
 category: event
-tags: [workshop, noaa]
+tags: [design, planner, catalog]
 title: New Marco Marine Planner Mapping Tool Mockups
 author: Tim Welch
 ---

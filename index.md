@@ -63,14 +63,14 @@ tagline:
 <div class="row">
 	<div class="span10">
 		<div class="row blocks">
-			<div class="span4">
+			<div class="span5">
 				<div class="well">
 					<h3>Project</h3>
 					<p>
 						<ul>
 							<li><a href="http://midatlanticocean.org/map_portal.html">What is the MARCO Portal?</a></li>							
-							<li><a href="{{BASE_PATH}}/technology.html">Technology</a></li>
-							<li><a href="http://github.com/ecotrust/marco-portal">GitHub project site</a></li>							
+							<li><a href="{{BASE_PATH}}/technology.html">Technology stack</a></li>
+							<li><a href="http://github.com/ecotrust/marco-portal">GitHub site (code and issue tracking)</a></li>							
 						</ul>
 					</p>
 				</div>
