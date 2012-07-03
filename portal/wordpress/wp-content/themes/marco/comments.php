@@ -21,18 +21,18 @@ The comments page for Bones
 	<h3 id="comments"><?php comments_number('<span>' . __("No","bonestheme") . '</span> ' . __("Responses","bonestheme") . '', '<span>' . __("One","bonestheme") . '</span> ' . __("Response","bonestheme") . '', '<span>%</span> ' . __("Responses","bonestheme") );?> <?php _e("to","bonestheme"); ?> &#8220;<?php the_title(); ?>&#8221;</h3>
 
 	<nav id="comment-nav">
-		<ul class="clearfix">
+		<ul class="clearfix unstyled">
 	  		<li><?php previous_comments_link( __("Older comments","bonestheme") ) ?></li>
 	  		<li><?php next_comments_link( __("Newer comments","bonestheme") ) ?></li>
 	 	</ul>
 	</nav>
 	
-	<ol class="commentlist">
+	<ol class="commentlist unstyled">
 		<?php wp_list_comments('type=comment&callback=bones_comments'); ?>
 	</ol>
 	
 	<nav id="comment-nav">
-		<ul class="clearfix">
+		<ul class="clearfix unstyled">
 	  		<li><?php previous_comments_link( __("Older comments","bonestheme") ) ?></li>
 	  		<li><?php next_comments_link( __("Newer comments","bonestheme") ) ?></li>
 		</ul>
@@ -88,7 +88,7 @@ The comments page for Bones
 
 	<?php else : ?>
 	
-	<ul id="comment-form-elements" class="clearfix">
+	<ul id="comment-form-elements" class="clearfix unstyled">
 		
 		<li>
 			<div class="control-group">
@@ -100,7 +100,7 @@ The comments page for Bones
 		  	</div>
 		</li>
 		
-		<li>
+		<li class="unstyled">
 			<div class="control-group">
 			  <label for="email"><?php _e("Mail","bonestheme"); ?> <?php if ($req) echo "(required)"; ?></label>
 			  <div class="input-prepend">
@@ -111,7 +111,7 @@ The comments page for Bones
 		  	</div>
 		</li>
 		
-		<li>
+		<li class="unstyled">
 			<div class="control-group">
 			  <label for="url"><?php _e("Website","bonestheme"); ?></label>
 			  <div class="input-prepend">

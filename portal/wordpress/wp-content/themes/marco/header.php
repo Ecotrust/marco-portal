@@ -49,6 +49,7 @@
 		<!-- end of wordpress head -->
 		
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>style.css">
 		
 		<!-- marco stylesheet -->
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/marco_style.css">
@@ -77,8 +78,8 @@
 			      <div class="pull-right">
 			        <ul class="nav">
 			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
-			          <li><a href="#about">Contact Us</a></li>
-			          <li><a href="#contact">Visit Marco Council</a></li>
+			          <li class="<?php echo $pagename == 'contact' ? 'active' : null ?>"><a a href="<?php echo get_bloginfo('wpurl'); ?>/contact">Contact Us</a></li>
+			          <li><a href="http://www.midatlanticocean.org/">Visit Marco Council</a></li>
 			        </ul>
 			        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
 			          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">
