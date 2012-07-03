@@ -41,7 +41,7 @@ hr {
 	font-size: 12px;
 	border-left: 1px solid #ccc;
 }
-.navbar .nav > li:hover a, .navbar .nav > li.active a {
+.navbar .nav > li:hover a, .navbar .nav > li.active a, .navbar .nav > li:hover a:visited {
 	height: 48px;
 	background-color: #eee !important;
 	color: #333;
