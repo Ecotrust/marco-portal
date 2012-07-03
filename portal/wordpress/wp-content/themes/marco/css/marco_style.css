@@ -176,13 +176,18 @@ hr {
 	border-radius: 10px;
 
 }
-.bugs .wrapper:hover {
+.bugs .wrapper:hover,
+.bugs .wrapper:hover h3 {
 	background-color: #2d8998;
 	color: white;
 }
-.bugs .wrapper:hover h3 {
-	color: white;
+
+.bugs a:link, .bugs a:visited, .bugs a:hover  {
+	color: #333;
+	text-decoration: none;
 }
+
+
 
 .social h5 {
 	font-weight: normal;

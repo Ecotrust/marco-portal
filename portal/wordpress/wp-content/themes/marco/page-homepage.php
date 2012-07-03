@@ -23,19 +23,23 @@ Template Name: Homepage
 			<!-- Example row of columns -->
 			<div class="row bugs">
 			  <div class="span4">
-			    <div class="wrapper">
-			      <img src="<?php echo get_template_directory_uri(); ?>/img/learn.png"/>
-			      <h3>Learn</h3>
-			      <p>Read the latest news and updates on Mid-Atlantic planning.</p>
-			    </div>
+				<a href="<?php echo get_bloginfo('wpurl'); ?>/news">
+					<div class="wrapper">
+					      <img src="<?php echo get_template_directory_uri(); ?>/img/learn.png"/>
+					      <h3>Learn</h3>
+					      <p>Read the latest news and updates on Mid-Atlantic planning.</p>
+					</div>
+				</a>
 			  </div>
 			  <div class="span4">
-			    <div class="wrapper">
-			      <img src="<?php echo get_template_directory_uri(); ?>/img/explore.png"/>
+			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/catalog">
+				    <div class="wrapper">
+				      <img src="<?php echo get_template_directory_uri(); ?>/img/explore.png"/>
 
-			      <h3>Explore</h3>
-			       <p>Access our data catalog and links to other data and services</p>
-			     </div>
+				      <h3>Explore</h3>
+				       <p>Access our data catalog and links to other data and services</p>
+				     </div>
+				 </a>
 			 </div>
 			  <div class="span4">
 			    <div class="wrapper">
