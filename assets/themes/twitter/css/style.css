@@ -17,8 +17,12 @@ h1 {
 	line-height: 1.25;	
 }
 
+h2 {
+	color: #2d8998;
+}
+
 h3 {
-	color: #333;	
+	color: #2d8998;
 	font-size: 20px;
 }
 

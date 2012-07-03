@@ -16,19 +16,19 @@ In August, the entire MARCO Portal website will be getting a facelift, but the M
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="{{BASE_PATH}}/assets/img/portal-front-page.png"><img src="{{BASE_PATH}}/assets/img/portal-front-page.png"/></a>
-				<div class="attrib caption">MARCO Portal front page</div>
+				<div class="attrib caption">Draft - MARCO Portal front page</div>
 			</div>
 		</div>
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="{{BASE_PATH}}/assets/img/mockup-data-catalog.png"><img src="{{BASE_PATH}}/assets/img/mockup-data-catalog.png"/></a>
-				<div class="attrib caption">Data Catalog mockup.  NOAA CMSP Data Registry inspired</div>
+				<div class="attrib caption">Draft - Data Catalog mockup.  NOAA CMSP Data Registry inspired</div>
 			</div>
 		</div>
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="{{BASE_PATH}}/assets/img/mockup-data-layers.png"><img src="{{BASE_PATH}}/assets/img/mockup-data-layers.png"/></a>
-				<div class="attrib caption">Data layer panel with themes and grouping</div>
+				<div class="attrib caption">Draft - Data layer panel with themes and grouping</div>
 			</div>
 		</div>		
 	</div>
@@ -39,22 +39,22 @@ In August, the entire MARCO Portal website will be getting a facelift, but the M
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="{{BASE_PATH}}/assets/img/mockup-designs-scenario.png"><img src="{{BASE_PATH}}/assets/img/mockup-designs-scenario.png"/></a>
-				<div class="attrib caption">Scenario planning feature</div>
+				<div class="attrib caption">Draft - spatial filter feature</div>
 			</div>
 		</div>		
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="{{BASE_PATH}}/assets/img/mockup-designs-sharing.png"><img src="{{BASE_PATH}}/assets/img/mockup-designs-sharing.png"/></a>
-				<div class="attrib caption">Sharing designs/scenarios.  Google Docs inspired</div>
+				<div class="attrib caption">Draft - sharing designs.  Google Docs inspired</div>
 			</div>
 		</div>
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="{{BASE_PATH}}/assets/img/mockup-data-layers.png"><img src="{{BASE_PATH}}/assets/img/mockup-data-layers.png"/></a>
-				<div class="attrib caption">Data layer panel</div>
+				<div class="attrib caption">Draft - Data layer panel</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-The MARCO Marine Planner Mapping Tool will be leveraging a lot of the functionality developed for Oregon MarineMap and the Washington Marine Planner including map bookmarks, scenario planning and tradeoff analysis.  The most notable difference is that with MARCO we'll be using a 2D mapping interface and we're taking additional strides to simplify the user interface, recognizing that the audience will be diverse and may not receive one-on-one training on how to use it. Approaches to simplification include themes (fishing, shipping, wind energy, etc.) and making it easier to work with large numbers of data layers.
+The MARCO Marine Planner Mapping Tool will be leveraging a lot of the functionality developed for Oregon MarineMap and the Washington Marine Planner including map bookmarks and spatial filtering (show me the areas that match my criteria).  The most notable difference is that with MARCO we'll be using a 2D mapping interface and we're taking additional strides to simplify the user interface, recognizing that the audience will be diverse and may not receive one-on-one training on how to use it. Approaches to simplification include themes (fishing, shipping, wind energy, etc.) and making it easier to work with large numbers of data layers.
