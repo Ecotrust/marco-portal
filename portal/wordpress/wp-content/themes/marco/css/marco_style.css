@@ -188,6 +188,39 @@ hr {
 }
 
 
+.wrapper .icon {
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper #learn-img {
+    background-image: url('../img/learn.png');
+}
+.wrapper #explore-img {
+    background-image: url('../img/explore.png');
+}
+.wrapper #visualize-img {
+    background-image: url('../img/visualize.png');
+}
+
+.wrapper:hover #learn-img {
+    background-image: url('../img/learn_rollover.png');
+
+}
+
+.wrapper:hover #explore-img {
+    background-image: url('../img/explore_rollover.png');
+
+}
+.wrapper:hover #visualize-img {
+    background-image: url('../img/visualize_rollover.png');
+
+}
 
 .social h5 {
 	font-weight: normal;
