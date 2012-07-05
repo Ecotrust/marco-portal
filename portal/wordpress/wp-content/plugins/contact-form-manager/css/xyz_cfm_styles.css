@@ -1,0 +1,26 @@
+
+#system_notice_area_dismiss{
+color: #FFFFFF;
+cursor: pointer;
+}
+.system_notice_area_style1 {
+	background: #00C348;
+	border: 1px solid green;
+}
+
+.system_notice_area_style0 {
+	background: #FA5A6A;
+	border: 1px solid brown;
+}
+
+.bottonWidth{
+	width:120px;
+}
+
+#img{
+	width:20px;
+	height: 20px;
+}
+#bottomBorderNone{
+	border-bottom:none;
+}
