@@ -93,9 +93,11 @@ app.addLayerToMap = function(layer) {
         //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
         app.map.addLayer(layer.layer);            
     }
-    layer.layer.opacity = .3
+    layer.layer.opacity = .5
     layer.layer.setVisibility(true);
 }
+
+
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it

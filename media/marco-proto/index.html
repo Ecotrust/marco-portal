@@ -190,16 +190,16 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group pull-right">
-                                                    <button class="btn btn-mini" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
-                                                        <i class="icon-chevron-up">
+                                                    <button class="btn" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
+                                                        <i class="icon-circle-arrow-up">
                                                         </i>
                                                     </button>
-                                                    <button class="btn btn-mini" data-bind="click: lowerLayer, css: { disabled: isBottomLayer($data) }">
-                                                        <i class="icon-chevron-down">
+                                                    <button class="btn" data-bind="click: lowerLayer, css: { disabled: isBottomLayer($data) }">
+                                                        <i class="icon-circle-arrow-down">
                                                         </i>
                                                     </button>
-                                                    <button class="btn btn-mini" data-bind="click: toggleActive">
-                                                        <i class="icon-remove-circle">
+                                                    <button class="btn" data-bind="click: toggleActive">
+                                                        <i class="icon-remove">
                                                         </i>
                                                     </button>
                                                 </div>
@@ -236,8 +236,9 @@
                                   <div id="map"></div>
                                   <div id="map-buttons">
                                       <p><button class="btn pull-right" data-bind="click: toggleLegend">
-                                          Legend
-                                      </button></p>
+                                          <span data-bind="visible: showLegend()">Hide Legend</span>
+                                          <span data-bind="visible: ! showLegend()">Show Legend</span>
+                                        </button></p>
                                       <p><button class="btn pull-right" data-bind="click: showBookmarks">
                                           <i class="icon-flag">
                                           </i>
@@ -288,14 +289,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-fluid">
-                                <div class="span6">
-                                    <h3>
-                                        About This Map
-                                    </h3>
-                                </div>
-                                <div class="span6">
-                                </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <h3>
+                                    About This Map
+                                </h3>
+                            </div>
+                            <div class="span6">
                             </div>
                         </div>
                     </div>

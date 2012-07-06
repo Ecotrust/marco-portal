@@ -16,9 +16,12 @@ body {
 
 #map-buttons {
   position: absolute;
-  top: 33%;
+  bottom: 50px;
   right: 0;
   z-index: 1250;
+}
+#map-buttons button {
+  width: 150px;
 }
 
 #error-overlay {

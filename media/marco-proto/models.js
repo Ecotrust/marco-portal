@@ -5,8 +5,8 @@ function layerModel(options, parent) {
 	self.id = options.id;
 	self.name = options.name;
 	self.url = options.url;
-	self.utfurl = options.utfurl || false; 
 	self.type = options.type;
+	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
     self.legendVisibility = ko.observable(false);
     
