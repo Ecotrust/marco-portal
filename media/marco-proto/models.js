@@ -13,20 +13,28 @@ function layerModel(options, parent) {
 	// is the layer visible?
 	self.active = ko.observable(false);
 
-    self.activeSubLayer = ko.observable(false);
-	// store references to sublayers
-	self.subLayerIndexes = options.subLayers || [];
-	self.subLayers = function () {
-		return $.map(self.subLayerIndexes, function (layer_index) {
-			return app.viewModel.layerIndex[layer_index];
+    self.activeSublayer = ko.observable(false);
+
+	self.subLayers = [];
+
+	if (options.subLayers) {	
+		$.each(options.subLayers, function (i, layer_options) {
+			var subLayer = new layerModel(layer_options, self);
+			app.viewModel.layerIndex[subLayer.id] = subLayer;
+			self.subLayers.push(subLayer);
 		});
-	};
+	}
 
 	if (parent) {
 		// save a ref to the parent
 		self.parent = parent;
+		self.fullName = self.parent.name + " (" + self.name + ")"
+
+	} else {
+    	self.fullName = self.name;
 	}
     
+
     self.toggleLegendVisibility = function() {
         var layer = this;
         layer.legendVisibility(!layer.legendVisibility());
@@ -39,13 +47,11 @@ function layerModel(options, parent) {
         
         app.setLayerVisibility(layer, false);
         
-		if (layer.subLayerIndexes) {
-			$.each(layer.subLayers(), function (i, subLayer) {
-				if (subLayer.active()) {
-					subLayer.deactivateLayer();
-				}
-			});
-		}
+        if (layer.activeSublayer()) {
+        	layer.activeSublayer().deactivateLayer();
+        	layer.activeSublayer(false);
+        }
+
 	};
 
 	self.activateLayer = function () {
@@ -56,6 +62,11 @@ function layerModel(options, parent) {
 		app.viewModel.activeLayers.unshift(layer);
 		// set the active flag
 		layer.active(true);
+
+		// save reference in parent layer
+		if (layer.parent) {
+			layer.parent.activeSublayer(layer);
+		}
 	};
 
 	self.toggleActive = function () {
@@ -67,21 +78,23 @@ function layerModel(options, parent) {
 				// layer has a parent
 				// turn off the parent shell layer
 				layer.parent.active(false);
+				layer.parent.activeSublayer(false);
+
 			}
 		} else {
 			// layer has a parent
 			if (layer.parent) {
 				// toggle sibling layers
-				if (layer.parent.type === 'radio') {
+				if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
 					// only allow one sublayer on at a time
-					layer.parent.deactivateLayer();
+					layer.parent.activeSublayer().deactivateLayer();
 				}
 				// turn on the parent
 				layer.parent.active(true);
 			}
-			if (layer.subLayerIndexes.length > 0) {
+			if (layer.subLayers.length) {
 				// layer has sublayer, activate first layer
-				app.viewModel.layerIndex[layer.subLayerIndexes[0]].activateLayer();
+				layer.subLayers[0].activateLayer();
 				layer.active(true);
 			} else {
 				// otherwise just activate the layer
