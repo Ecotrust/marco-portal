@@ -233,58 +233,58 @@
                         <div class="span12">
                             <div class="row-fluid">
                                 <div id="map-wrapper" class="span9" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
-                                    <div id="map">
-                                        <div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="legend-wrapper" class="span3" data-bind="visible: showLegend()">
-                                    <div class="accordion" id="legend-accordion" data-bind="foreach: activeLayers">
-                                        <div data-bind="if: legend">
-                                            <div class="accordion-group">
-                                                <div class="accordion-heading" data-bind="click: toggleLegendVisibility">
-                                                    <a class="accordion-toggle">
-                                                  <span data-bind="text: fullName"></span>
-                                                </a>
+                                  <div id="map"></div>
+                                  <div id="map-buttons">
+                                      <p><button class="btn pull-right" data-bind="click: toggleLegend">
+                                          Legend
+                                      </button></p>
+                                      <p><button class="btn pull-right" data-bind="click: showBookmarks">
+                                          <i class="icon-flag">
+                                          </i>
+                                          Bookmarks
+                                          <span data-bind="visible: bookmarks.bookmarksList().length > 0">
+                                              <span class="badge" data-bind="text: bookmarks.bookmarksList().length">
+                                              </span>
+                                          </span>
+                                      </button></p>
+                                      <p><button class="btn pull-right">
+                                          Coordinates &amp; Depth
+                                      </button></p>
+                                  </div>
+                                  <div id="error-overlay">
+                                        <div data-bind="visible: error() === 'restoreState'">
+                                            <div>
+                                                Bookmark restored.
+                                                <div class="pull-right">
+                                                    <button class="btn btn-mini" data-bind="click: clearError">
+                                                        Clear
+                                                    </button>
+                                                    <button class="btn btn-mini" data-bind="click: bookmarks.restoreState">
+                                                        Revert to previous?
+                                                    </button>
                                                 </div>
-                                                <div class="accordion-body collapse" data-bind="css: { in: legendVisibility }">
-                                                    <div class="accordion-inner">
-                                                        <img data-bind="attr: { src: legend }" />
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+                                <div data-bind="visible: showLegend()" class="span3">
+                                    <div id="legend-wrapper">
+                                        <div class="accordion" id="legend-accordion" data-bind="foreach: activeLayers">
+                                            <div data-bind="if: legend">
+                                                <div class="accordion-group">
+                                                    <div class="accordion-heading" data-bind="click: toggleLegendVisibility">
+                                                        <a class="accordion-toggle">
+                                                      <span data-bind="text: fullName"></span>
+                                                    </a>
+                                                    </div>
+                                                    <div class="accordion-body collapse" data-bind="css: { in: legendVisibility }">
+                                                        <div class="accordion-inner">
+                                                            <img data-bind="attr: { src: legend }" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row-fluid">
-                                <div class="span6">
-                                    <div data-bind="visible: error() === 'restoreState'">
-                                        <div class="alert alert-info">
-                                            Bookmark restored.
-                                            <button class="pull-right btn btn-mini" data-bind="click: bookmarks.restoreState">
-                                                Revert to previous?
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="span6">
-                                    <div class="pull-right">
-                                        <button class="btn" data-bind="click: toggleLegend">
-                                            Legend
-                                        </button>
-                                        <button class="btn" data-bind="click: showBookmarks">
-                                            <i class="icon-flag">
-                                            </i>
-                                            Bookmarks
-                                            <span data-bind="visible: bookmarks.bookmarksList().length > 0">
-                                                <span class="badge" data-bind="text: bookmarks.bookmarksList().length">
-                                                </span>
-                                            </span>
-                                        </button>
-                                        <button class="btn">
-                                            Coordinates &amp; Depth
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
             </footer>
         </div>
         <!--/.fluid-container-->
-        <div style="display:none" id="bookmark-popover" class="popover fade top in"
+        <div style="display:none" id="bookmark-popover" class="popover fade left in"
         data-bind="with: bookmarks">
             <div class="arrow">
             </div>

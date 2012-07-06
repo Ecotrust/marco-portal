@@ -17,6 +17,7 @@ function layerModel(options, parent) {
 
 	self.subLayers = [];
 
+	// add sublayers if they exist
 	if (options.subLayers) {	
 		$.each(options.subLayers, function (i, layer_options) {
 			var subLayer = new layerModel(layer_options, self);
@@ -25,10 +26,10 @@ function layerModel(options, parent) {
 		});
 	}
 
+	// save a ref to the parent, if it exists
 	if (parent) {
-		// save a ref to the parent
 		self.parent = parent;
-		self.fullName = self.parent.name + " (" + self.name + ")"
+		self.fullName = self.parent.name + " (" + self.name + ")";
 
 	} else {
     	self.fullName = self.name;
@@ -267,9 +268,12 @@ function viewModel() {
 	// can be one of:
 	// 	restoreState
 	self.error = ko.observable();
-    
+    self.clearError = function () {
+    	self.error(null);
+    };
+
     //show Legend by default
-    self.showLegend = ko.observable(true);
+    self.showLegend = ko.observable(false);
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
     	app.map.render('map');
@@ -287,8 +291,8 @@ function viewModel() {
 			//TODO: move all this into bookmarks model
 			// hide the popover if already visible
 			$popover.show().position({
-				"my": "center bottom",
-				"at": "center top",
+				"my": "right middle",
+				"at": "left middle",
 				"of": $button
 			});
 
@@ -334,6 +338,7 @@ function viewModel() {
 		// initial index
 		var index = 300;
 		app.state.activeLayers = [];
+		self.showLegend(false);
 		$.each(self.activeLayers(), function (i, layer) {
 			// set the zindex on the openlayers layer
 			// layers at the beginning of activeLayers
@@ -341,6 +346,9 @@ function viewModel() {
 			// also save the layer state
             app.setLayerZIndex(layer, index);
 			index--;
+			if (layer.legend) {
+				self.showLegend(true);
+			}
 		});
 
 		// update the url hash
