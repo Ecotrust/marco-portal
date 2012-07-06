@@ -1,0 +1,172 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+#map {
+  height: 800px;
+  margin-bottom: 15px;
+}
+
+#pos {
+  position: absolute;
+  background: white;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  padding: 5px 10px;
+  display: none;
+  z-index: 1000;
+}
+
+#data-accordion, #legend-accordion {
+  height: 400px;
+  overflow-y: auto;
+}
+
+.attribution {
+  font-size: 10px;
+}
+.theme-buttons {
+  margin-bottom: 15px;
+}
+
+img.olTileImage {
+    max-width: 256px !important;
+}
+
+div.olLayerGoogleCopyright,
+div.olLayerGooglePoweredBy
+{
+  display: none !important;
+}
+.sidebar-nav {
+  height: 600px;
+}
+
+.tab-content {
+  overflow: visible;
+}
+.in {
+  overflow: visible;
+}
+
+.layer-buttons {
+  position: relative;
+}
+.layer-menu {
+  position: absolute;
+}
+
+.dropdown-menu: {
+  z-index: 1100 !important;
+}
+
+.btn .badge {
+  margin-top: -5px !important;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+.olImageLoadError { 
+    /* when OL encounters a 404, don't display the pink image */
+    display: none !important;
+}
+
+
+// hide some stuff when using sortable
+// so the controls don't show
+
+.ui-sortable-helper .btn {
+  display: none;
+}
+
+
+a.disabled-link,
+a.disabled-link:visited ,
+a.disabled-link:active,
+a.disabled-link:hover {
+    color:#aaa !important;
+}
+
+// BUTTON GROUPS (VERTICAL)
+// ------------------------
+
+// Make the div behave like a button
+.btn-group-vertical {
+  display: block;
+}
+
+// Space out series of button groups
+.btn-group-vertical + .btn-group-vertical {
+  margin-top: 5px;
+}
+
+// Float them, remove border radius, then re-add to first and last elements
+.btn-group-vertical .btn {
+  display: block;
+  width: 100%;
+  margin-top: -1px;
+  padding-top: 5px;
+  .border-radius(0);
+}
+.btn-group-vertical .btn.btn-large {
+  padding-top: 10px;
+}
+// Set corners individual because sometimes a single button can be in a .btn-group-vertical and we need :first-child and :last-child to both match
+.btn-group-vertical .btn:first-child {
+  margin-top: 0;
+   -webkit-border-top-left-radius: 4px;
+       -moz-border-radius-topleft: 4px;
+           border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+      -moz-border-radius-topright: 4px;
+          border-top-right-radius: 4px;
+}
+.btn-group-vertical .btn:last-child {
+   -webkit-border-bottom-left-radius: 4px;
+       -moz-border-radius-bottomleft: 4px;
+           border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+      -moz-border-radius-bottomright: 4px;
+          border-bottom-right-radius: 4px;
+}
+// Reset corners for large buttons
+.btn-group-vertical .btn.large:first-child {
+  margin-top: 0;
+   -webkit-border-top-left-radius: 6px;
+       -moz-border-radius-topleft: 6px;
+           border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+      -moz-border-radius-topright: 6px;
+          border-top-right-radius: 6px;
+}
+.btn-group-vertical .btn.large:last-child {
+   -webkit-border-bottom-left-radius: 6px;
+       -moz-border-radius-bottomleft: 6px;
+           border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+      -moz-border-radius-bottomright: 6px;
+          border-bottom-right-radius: 6px;
+}
+
+// On hover/focus/active, bring the proper btn to front
+.btn-group-vertical .btn:hover,
+.btn-group-vertical .btn:focus,
+.btn-group-vertical .btn:active,
+.btn-group-vertical .btn.active {
+  z-index: 2;
+}
+
+.btn.tweet-trash {
+    height: 20px;
+    margin-top: -4px !important;
+}
+
+.tweet-cell {
+    width: 60px;
+    padding-right: 0px !important;
+}
+
