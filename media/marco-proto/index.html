@@ -134,7 +134,7 @@
                                                                             </ul>
                                                                             <!-- the following comment is actually used by knockout -->
                                                                             <!-- /ko -->
-                                                                            <button class="btn btn-mini" data-bind="click: toggleActive">
+                                                                            <button class="btn" data-bind="click: toggleActive">
                                                                                 <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
                                                                                 </i>
                                                                             </button>
@@ -326,40 +326,41 @@
                         <div>
                             <div>
                                 <div>
-                                    <table class="table table-condensed">
-                                        <tbody data-bind="foreach: bookmarksList">
-                                            <tr>
-                                                <td data-bind="click: $parent.loadBookmark">
-                                                    <a data-bind="text: name, attr: { href: $parent.getUrl($data) }">name</a>
-                                                </td>
-                                                <td class="tweet-cell">
-                                                    <a href="https://twitter.com/share" class="twitter-share-button" data-bind="attr: {'data-url': $parent.getUrl($data)}"
-                                                    data-lang="en" data-size="medium" data-count="none">Tweet</a>
-                                                    <script>
-                                                    !
-function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (!d.getElementById(id)) {
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }
-}(document, "script", "twitter-wjs");
-                                                    </script>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
-                                                        <i class="icon-trash">
-                                                        </i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p data-bind="visible: bookmarksList().length === 0">
-                                        Bookmarks save the map and active layers. You currently have no bookmarks.
-                                    </p>
+                                    <div id="bookmarks-table">
+                                        <table class="table table-condensed">
+                                            <tbody data-bind="foreach: bookmarksList">
+                                                <tr>
+                                                    <td data-bind="click: $parent.loadBookmark">
+                                                        <a data-bind="text: name, attr: { href: $parent.getUrl($data) }">name</a>
+                                                    </td>
+                                                    <td class="tweet-cell">
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-bind="attr: {'data-url': $parent.getUrl($data)}"
+                                                        data-lang="en" data-size="medium" data-count="none">Tweet</a>
+                                                        <script>
+                                                            ! function(d, s, id) {
+                                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                                if (!d.getElementById(id)) {
+                                                                    js = d.createElement(s);
+                                                                    js.id = id;
+                                                                    js.src = "//platform.twitter.com/widgets.js";
+                                                                    fjs.parentNode.insertBefore(js, fjs);
+                                                                }
+                                                            }(document, "script", "twitter-wjs");
+                                                        </script>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
+                                                            <i class="icon-trash">
+                                                            </i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p data-bind="visible: bookmarksList().length === 0">
+                                            Bookmarks save the map and active layers. You currently have no bookmarks.
+                                        </p>
+                                    </div>
                                 </div>
                                 <hr/>
                                 <h4>

@@ -45,7 +45,10 @@ body {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
   
 }
-
+#bookmarks-table {
+  max-height: 150px;
+  overflow-y: auto;
+}
 #pos {
   position: absolute;
   background: white;
