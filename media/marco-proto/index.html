@@ -122,7 +122,7 @@
                                                                         <div class="btn-group layer-buttons pull-right">
                                                                             <!-- the following comment is actually used by knockout -->
                                                                             <!-- ko if: subLayers.length -->
-                                                                            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                                                                            <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                                                 <span class="caret">
                                                                                 </span>
                                                                             </button>
@@ -190,6 +190,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group pull-right">
+                                                    <button class="btn" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></button>
                                                     <button class="btn" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
                                                         <i class="icon-circle-arrow-up">
                                                         </i>
@@ -313,6 +314,21 @@
             </footer>
         </div>
         <!--/.fluid-container-->
+        <div style="display:none" id="opacity-popover" class="popover fade bottom in">
+            <div class="arrow">
+            </div>
+            <div class="popover-inner">
+                <h3 class="popover-title">
+                    Layer Opacity
+                </h3>
+                <div class="popover-content" data-bind="if: selectedLayer">
+                    <div class="controls">
+                        <div class="slider" data-bind="jqSlider: selectedLayer().opacity, jqOptions: { min: 0, max: 100, range: 'min' }"></div>
+                        <button class="btn pull-right" data-bind="click: hideOpacity">ok</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div style="display:none" id="bookmark-popover" class="popover fade left in"
         data-bind="with: bookmarks">
             <div class="arrow">
@@ -391,44 +407,21 @@
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-collapse.js"></script>
      -->
-        <script src="assets/js/jquery.js">
-        </script>
-        <script src="assets/js/jquery.ba-bbq.js">
-        </script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js">
-        </script>
-        <script src="assets/js/bootstrap-modal.js">
-                        
-        </script>
-        <script src="assets/js/bootstrap-dropdown.js">
-                        
-        </script>
-        <script src="assets/js/bootstrap-tab.js">
-                        
-        </script>
-        <script src="assets/js/bootstrap-tooltip.js">
-                        
-        </script>
-        <script src="assets/js/bootstrap-popover.js">
-                        
-        </script>
-        <script src="assets/js/bootstrap-typeahead.js">
-                        
-        </script>
-        <script src="assets/js/knockout-2.1.0.js">
-                        
-        </script>
-        <script src="assets/js/knockout-sortable.js">
-                        
-        </script>
-        <script src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false">
-                        
-        </script>
-        <script src="assets/openlayers/OpenLayers.js">
-                        
-        </script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/jquery.ba-bbq.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
+        <script src="assets/js/knockout-2.1.0.js"></script>
+        <script src="assets/js/knockout-bindings.js"></script>
+        <script src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>
+        <script src="assets/openlayers/OpenLayers.js"></script>
         <script>
-                                var app = {};
+            var app = {};
         </script>
         <script src="fixtures.js">
                         

@@ -10,6 +10,14 @@ function layerModel(options, parent) {
     self.legend = options.legend || false;
     self.legendVisibility = ko.observable(false);
     
+
+    // opacity
+    self.opacity = ko.observable(50);
+    self.opacity.subscribe(function (newOpacity) {
+    	self.layer.setOpacity(newOpacity / 100);
+    });
+
+
 	// is the layer visible?
 	self.active = ko.observable(false);
 
@@ -298,7 +306,25 @@ function viewModel() {
 
 		}
 	};
+	self.selectedLayer = ko.observable();
+	self.showOpacity = function (layer, event) {
+		var $button = $(event.target),
+			$popover = $('#opacity-popover');
 
+		self.selectedLayer(layer);
+		if ($popover.is(":visible")) {
+			$popover.hide();
+		} 
+		$popover.show().position({
+			"my": "center top",
+			"at": "center bottom",
+			"of": $button
+		});
+	
+	}
+	self.hideOpacity = function (self, event) {
+		$('#opacity-popover').hide();		
+	}
 
 	// show coords info in pointer
 	self.showPointerInfo = ko.observable(false);
