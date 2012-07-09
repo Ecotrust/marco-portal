@@ -9,6 +9,7 @@ function layerModel(options, parent) {
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
     self.legendVisibility = ko.observable(false);
+    self.themes = [];
     
 
     // opacity
@@ -347,7 +348,9 @@ function viewModel() {
 			var layers = [];
 			$.each(theme.layers, function (j, layer_id) {
 				// create a layerModel and add it to the list of layers
-				layers.push(self.layerIndex[layer_id]);
+				var layer = self.layerIndex[layer_id];
+                layer.themes.push(theme);
+                layers.push(layer);
 			});
 			self.themes.push(new themeModel(theme.name, layers));
 		});

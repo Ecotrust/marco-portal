@@ -47,9 +47,15 @@ $(document).ready(function () {
 	
 	// autocomplete for filter
 	$('.search-query').typeahead({
-		source: $.map(app.viewModel.layerIndex, function (layer) {
-			return layer.name;
-		})
+		source: function () {
+            var layers = [];
+            $.each(app.viewModel.layerIndex, function (index, layer) {
+                $.each(layer.themes, function (index, theme) {
+                    layers.push( layer.name + ' (' + theme.name + ')' );
+                });
+            });
+            return layers;
+		}()
 	});
 
 	// handle coordinate indicator on pointer

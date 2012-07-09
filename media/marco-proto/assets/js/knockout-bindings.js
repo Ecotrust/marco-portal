@@ -55,7 +55,7 @@ ko.bindingHandlers.jqSlider = {
         $(element).slider(options);
 
         //handle the value changing in the UI
-        ko.utils.registerEventHandler(element, "slidechange", function() {
+        ko.utils.registerEventHandler(element, "slide", function() {
             //would need to do some more work here, if you want to bind against non-observables
             var observable = valueAccessor();
             observable($(element).slider("value"));
