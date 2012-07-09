@@ -60,6 +60,9 @@ body {
   margin-bottom: 10px;
 }
 
+#map-info {
+  margin-top: 10px !important;
+}
 #pos {
   position: absolute;
   background: white;
