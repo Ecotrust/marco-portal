@@ -48,14 +48,14 @@ $(document).ready(function () {
 	// autocomplete for filter
 	$('.search-query').typeahead({
 		source: function () {
-            var layers = [];
-            $.each(app.viewModel.layerIndex, function (index, layer) {
-                $.each(layer.themes, function (index, theme) {
-                    layers.push( layer.name + ' (' + theme.name + ')' );
-                });
-            });
-            return layers;
-		}()
+            var keys = [];
+            for (var searchTerm in app.viewModel.layerSearchIndex) {
+                if (app.viewModel.layerSearchIndex.hasOwnProperty(searchTerm)) {
+                    keys.push(searchTerm);
+                }
+            }
+            return keys;
+        }()
 	});
 
 	// handle coordinate indicator on pointer

@@ -66,17 +66,19 @@ function layerModel(options, parent) {
 
 	self.activateLayer = function () {
 		var layer = this;
-        //factor out the following into an addLayerToMap function in map.js
-		app.addLayerToMap(layer);
-		// add it to the top of the active layers
-		app.viewModel.activeLayers.unshift(layer);
-		// set the active flag
-		layer.active(true);
+        if (!layer.active()) {
+            //factor out the following into an addLayerToMap function in map.js
+            app.addLayerToMap(layer);
+            // add it to the top of the active layers
+            app.viewModel.activeLayers.unshift(layer);
+            // set the active flag
+            layer.active(true);
 
-		// save reference in parent layer
-		if (layer.parent) {
-			layer.parent.activeSublayer(layer);
-		}
+            // save reference in parent layer
+            if (layer.parent) {
+                layer.parent.activeSublayer(layer);
+            }
+        }
 	};
 
 	self.toggleActive = function () {
@@ -156,23 +158,25 @@ function layerModel(options, parent) {
 	return self;
 }
 
-function themeModel(name, layers) {
+function themeModel(name) {
 	var self = this;
 
 	self.name = name;
 
 	// array of layers
-	self.layers = layers;
+	self.layers = [];
 
-	self.setActiveTheme = function (theme) {
+	self.setActiveTheme = function () {
+        var theme = this;
 		if (self.isActiveTheme(theme)) {
 			app.viewModel.activeTheme(null);
 		} else {
 			app.viewModel.activeTheme(theme);
 		}
 	};
-
-	self.isActiveTheme = function (theme) {
+    
+	self.isActiveTheme = function () {
+        var theme = this;
 		return app.viewModel.activeTheme() === theme;
 	};
 
@@ -269,6 +273,7 @@ function viewModel() {
 
 	// index for filter autocomplete and lookups
 	self.layerIndex = {};
+    self.layerSearchIndex = {};
 
 	// viewmodel for bookmarks
 	self.bookmarks = new bookmarkModel();
@@ -344,22 +349,28 @@ function viewModel() {
 		});
 
 		// load themes
-		$.each(data.themes, function (i, theme) {
-			var layers = [];
-			$.each(theme.layers, function (j, layer_id) {
+		$.each(data.themes, function (i, themeFixture) {
+			var layers = [],
+                theme = new themeModel(themeFixture.name);
+			$.each(themeFixture.layers, function (j, layer_id) {
 				// create a layerModel and add it to the list of layers
-				var layer = self.layerIndex[layer_id];
-                layer.themes.push(theme);
-                layers.push(layer);
+				var layer = self.layerIndex[layer_id], 
+                    searchTerm = layer.name + ' (' + themeFixture.name + ')';
+                layer.themes.push(themeFixture);
+                theme.layers.push(layer);
+                self.layerSearchIndex[searchTerm] = {layer: layer, theme: theme};
 			});
-			self.themes.push(new themeModel(theme.name, layers));
+			self.themes.push(theme);
 		});
 	};
 
 	// handle the search form
 	self.searchTerm = ko.observable();
 	self.layerSearch = function () {
-			
+        var layer = self.layerSearchIndex[self.searchTerm()].layer,
+            theme = self.layerSearchIndex[self.searchTerm()].theme;
+        self.activeTheme(theme);
+        layer.activateLayer();
 	};
 
 	// do this stuff when the active layers change

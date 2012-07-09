@@ -221,7 +221,7 @@
                             <!-- theme buttons -->
                             <div>
                                 <div class="btn-group theme-buttons" data-bind="foreach: themes">
-                                    <button class="btn" data-bind="click: setActiveTheme, css: { 'btn-inverse': isActiveTheme($data) }">
+                                    <button class="btn" data-bind="click: setActiveTheme, css: { 'btn-inverse': isActiveTheme() }">
                                         <span data-bind="text: name">
                                             Themes
                                         </span>
