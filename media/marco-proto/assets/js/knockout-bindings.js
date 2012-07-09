@@ -48,6 +48,29 @@ var prepareTemplateOptions = function(valueAccessor) {
     return result;
 };
 
+ko.bindingHandlers.jqSlider = {
+    init: function(element, valueAccessor, allBindingsAccessor) {
+        //initialize the control
+        var options = allBindingsAccessor().jqOptions || {};
+        $(element).slider(options);
+
+        //handle the value changing in the UI
+        ko.utils.registerEventHandler(element, "slide", function() {
+            //would need to do some more work here, if you want to bind against non-observables
+            var observable = valueAccessor();
+            observable($(element).slider("value"));
+        });
+
+    },
+    //handle the model value changing
+    update: function(element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        $(element).slider("value", value);   
+
+    }
+};
+
+
 //connect items with observableArrays
 ko.bindingHandlers.sortable = {
     init: function(element, valueAccessor, allBindingsAccessor, data, context) {

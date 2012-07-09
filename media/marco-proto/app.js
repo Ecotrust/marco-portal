@@ -47,9 +47,15 @@ $(document).ready(function () {
 	
 	// autocomplete for filter
 	$('.search-query').typeahead({
-		source: $.map(app.viewModel.layerIndex, function (layer) {
-			return layer.name;
-		})
+		source: function () {
+            var keys = [];
+            for (var searchTerm in app.viewModel.layerSearchIndex) {
+                if (app.viewModel.layerSearchIndex.hasOwnProperty(searchTerm)) {
+                    keys.push(searchTerm);
+                }
+            }
+            return keys;
+        }()
 	});
 
 	// handle coordinate indicator on pointer

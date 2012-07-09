@@ -99,28 +99,32 @@ app.fixture = {
 		name: "Fishing Effort",
 		type: 'radio',
 		id: 501,
-		subLayers: [15, 16, 17, 18]
-	}, {
+		subLayers: [{
 		name: "All Gear Types",
 		type: "XYZ",
 		url: "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png",
 		legend: "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png",
-		id: 15
+		id: 15,
+		parent: 501
 	}, {
 		name: "Bottom Gear Types",
 		type: "XYZ",
 		url: "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png",
-		id: 16
+		id: 16,
+		parent: 501
 	}, {
 		name: "Pelagic Gear Types",
 		type: "XYZ",
 		url: "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png",
-		id: 17
+		id: 17,
+		parent: 501
 	}, {
 		name: "Summer Flounder Landings",
 		type: "XYZ",
 		url: "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png",
-		id: 18
+		id: 18,
+		parent: 501
+	}]
 	}, {
 		name: "Danger Zones",
 		type: "XYZ",
