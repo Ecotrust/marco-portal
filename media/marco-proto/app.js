@@ -24,10 +24,10 @@ app.restoreState = {};
 
 
 app.viewModel = new viewModel();
-app.viewModel.loadLayers(app.fixture);
-ko.applyBindings(app.viewModel);
-
-
+$.getJSON('/layer_manager/get_json', function(data) {
+    app.viewModel.loadLayers(data);
+    ko.applyBindings(app.viewModel);
+});
 // initialize the map
 app.init();
 // Google.v3 uses EPSG:900913 as projection, so we have to
