@@ -2,14 +2,14 @@ function layerModel(options, parent) {
 	var self = this;
 
 	// properties
-	self.id = options.id;
-	self.name = options.name;
-	self.url = options.url;
-	self.type = options.type;
+	self.id = options.id || null;
+	self.name = ko.observable(options.name || null);
+	self.url = ko.observable(options.url || null);
+	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
     self.legendVisibility = ko.observable(false);
-    self.themes = [];
+    self.themes = ko.observableArray();
     
 
     // opacity
@@ -170,7 +170,7 @@ function themeModel(name) {
 	self.name = name;
 
 	// array of layers
-	self.layers = [];
+	self.layers = ko.observableArray();
 
 	self.setActiveTheme = function () {
         var theme = this;
@@ -273,6 +273,9 @@ function bookmarkModel($popover) {
 function viewModel() {
 	var self = this;
 
+	// admin viewmodel, false unless admin.js is included
+	self.admin = false;
+
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
 
@@ -280,7 +283,7 @@ function viewModel() {
 	self.activeTheme = ko.observable();
 
 	// list of theme models
-	self.themes = [];
+	self.themes = ko.observableArray();
 
 	// index for filter autocomplete and lookups
 	self.layerIndex = {};
@@ -420,3 +423,4 @@ function viewModel() {
 
 	return self;
 }
+

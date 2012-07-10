@@ -24,6 +24,7 @@ app.restoreState = {};
 
 
 app.viewModel = new viewModel();
+app.viewModel.admin = new adminModel() || false;
 app.viewModel.loadLayers(app.fixture);
 ko.applyBindings(app.viewModel);
 
