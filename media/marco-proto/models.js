@@ -38,10 +38,10 @@ function layerModel(options, parent) {
 	// save a ref to the parent, if it exists
 	if (parent) {
 		self.parent = parent;
-		self.fullName = self.parent.name + " (" + self.name + ")";
+		self.fullName = self.parent.name() + " (" + self.name() + ")";
 
 	} else {
-    	self.fullName = self.name;
+    	self.fullName = self.name();
 	}
     
 
@@ -206,7 +206,6 @@ function bookmarkModel($popover) {
 	self.loadBookmark = function (bookmark) {
     
         app.saveStateMode = false;
-        console.log(bookmark.name);
 		app.loadState(bookmark.state);
 
 		// show the alert for resting state
@@ -353,6 +352,7 @@ function viewModel() {
 	}
 	self.hideOpacity = function (self, event) {
 		$('#opacity-popover').hide();		
+        app.updateUrl();
 	}
 
 	// show coords info in pointer
@@ -378,7 +378,7 @@ function viewModel() {
 			$.each(themeFixture.layers, function (j, layer_id) {
 				// create a layerModel and add it to the list of layers
 				var layer = self.layerIndex[layer_id], 
-                    searchTerm = layer.name + ' (' + themeFixture.name + ')';
+                    searchTerm = layer.name() + ' (' + themeFixture.name + ')';
                 layer.themes.push(themeFixture);
                 theme.layers.push(layer);
                 self.layerSearchIndex[searchTerm] = {layer: layer, theme: theme};

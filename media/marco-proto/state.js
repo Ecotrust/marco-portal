@@ -7,7 +7,7 @@ app.getState = function () {
     var center = app.map.getCenter().transform(
     new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
         layers = $.map(app.viewModel.activeLayers(), function(layer) {
-            return layer.id;
+            return {id: layer.id, opacity: layer.opacity()};
         });        
     return {
         location: {
@@ -33,8 +33,9 @@ app.loadState = function( state) {
     });
     // turn on the layers that should be active
     if (state.activeLayers) {
-        $.each(state.activeLayers, function(index, layer_id) {
-            app.viewModel.layerIndex[layer_id].activateLayer();
+        $.each(state.activeLayers, function(index, layer) {
+            app.viewModel.layerIndex[layer.id].activateLayer();
+            app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
         });
     }
 
@@ -57,6 +58,5 @@ app.updateUrl = function () {
     if (app.saveStateMode) {
         app.restoreState = state;
     }
-		
     window.location.hash = $.param(state);
 };
