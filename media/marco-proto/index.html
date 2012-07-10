@@ -349,7 +349,7 @@
                                                 <tr>
                                                     <td>
                                                         <span data-bind="click: $parent.loadBookmark">
-                                                        <a data-bind="text: name">name</a>
+                                                        <a data-bind="text: name, attr: {href: $parent.getUrl($data)}">name</a>
                                                         </span>
                                                     </td>
                                                     <td class="tweet-cell">
