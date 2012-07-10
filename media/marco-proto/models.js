@@ -293,6 +293,15 @@ function viewModel() {
     	self.showLegend(! self.showLegend());
     	app.map.render('map');
     };
+    self.hasActiveLegends = ko.computed( function() {
+        var hasLegends = false;
+        $.each(self.activeLayers(), function(index, layer) {
+            if (layer.legend) {
+                hasLegends = true;
+            }
+        });
+        return hasLegends;
+    });
 
 	// show bookmark stuff
 	self.showBookmarks = function (self, event) {
@@ -379,7 +388,7 @@ function viewModel() {
 		// initial index
 		var index = 300;
 		app.state.activeLayers = [];
-		self.showLegend(false);
+		//self.showLegend(false);
 		$.each(self.activeLayers(), function (i, layer) {
 			// set the zindex on the openlayers layer
 			// layers at the beginning of activeLayers
@@ -387,11 +396,13 @@ function viewModel() {
 			// also save the layer state
             app.setLayerZIndex(layer, index);
 			index--;
-			if (layer.legend) {
-				self.showLegend(true);
-			}
+			//if (layer.legend) {
+			//	self.showLegend(true);
+			//}
 		});
-
+        if ( ! self.hasActiveLegends() ) {
+            self.showLegend(false);
+        }
 		// update the url hash
 		app.updateUrl();
 	});

@@ -236,7 +236,7 @@
                                 <div id="map-wrapper" class="span9" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
                                   <div id="map-buttons">
-                                      <p><button class="btn pull-right" data-bind="click: toggleLegend">
+                                      <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
                                           <span data-bind="visible: showLegend()">Hide Legend</span>
                                           <span data-bind="visible: ! showLegend()">Show Legend</span>
                                         </button></p>
