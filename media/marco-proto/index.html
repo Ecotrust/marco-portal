@@ -88,6 +88,17 @@
                                 <a href="#active" data-toggle="tab">Active  
                                 <span class="badge badge-inverse" data-bind="text: activeLayers().length">0</span></a>
                             </li>
+                            <!-- IF USER IS AUTHENTICATED -->
+                            <li class="dropdown">
+                               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                   Administration
+                                   <b class="caret"></b>
+                                 </a>
+                               <ul class="dropdown-menu">
+                                 <li>add layer</li>
+                               </ul> 
+                            <!-- endif -->
+                             </li>
                         </ul>
                         <!-- tab body -->
                         <div id="myTabContent" class="tab-content">
@@ -101,7 +112,7 @@
                                                 <div class="accordion-heading" data-bind="click: setActiveTheme">
                                                     <a class="accordion-toggle"><span data-bind="text: name">Themes</span></a>
                                                 </div>
-                                                <div class="accordion-body collapse" data-bind="css: { in: isActiveTheme($data) }">
+                                                <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
                                                     <div class="accordion-inner">
                                                         <table class="table">
                                                             <tbody data-bind="foreach: layers ">
@@ -119,25 +130,25 @@
                                                                         </span>
                                                                     </td>
                                                                     <td>
-                                                                        <div class="btn-group layer-buttons pull-right">
-                                                                            <!-- the following comment is actually used by knockout -->
-                                                                            <!-- ko if: subLayers.length -->
-                                                                            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                                                                <span class="caret">
-                                                                                </span>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu layer-menu" data-bind="foreach: subLayers, event: { mouseleave: closeMenu }">
-                                                                                <li data-bind="click: toggleActive">
-                                                                                    <a><span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                    <span data-bind="text: name"></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                            <!-- the following comment is actually used by knockout -->
-                                                                            <!-- /ko -->
-                                                                            <button class="btn" data-bind="click: toggleActive">
-                                                                                <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
-                                                                                </i>
-                                                                            </button>
+                                                                        <div class="btn-group">
+                                                                            <div class="layer-buttons">
+                                                                                <div data-bind="if: subLayers.length > 0">
+                                                                                    <button class="btn dropdown-toggle" data-toggle="dropdown" >
+                                                                                        <span class="caret">
+                                                                                        </span>
+                                                                                    </button>
+                                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                        <li data-bind="click: toggleActive, foreach: subLayers">
+                                                                                            <a><span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                            <span data-bind="text: name"></a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <button class="btn" data-bind="click: toggleActive">
+                                                                                    <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
+                                                                                    </i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -279,7 +290,7 @@
                                                       <span data-bind="text: fullName"></span>
                                                     </a>
                                                     </div>
-                                                    <div class="accordion-body collapse" data-bind="css: { in: legendVisibility }">
+                                                    <div class="accordion-body collapse" data-bind="css: { 'in': legendVisibility }">
                                                         <div class="accordion-inner">
                                                             <img data-bind="attr: { src: legend }" />
                                                         </div>
