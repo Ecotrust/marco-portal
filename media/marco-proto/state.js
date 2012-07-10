@@ -19,7 +19,12 @@ app.getState = function () {
 // load state from fixture or server
 app.loadState = function( state) {
     // turn off active laters
-    $.each(app.viewModel.activeLayers(), function (index, layer) {
+    // create a copy of the activeLayers list and use that copy to iteratively deactivate
+    var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
+        return layer;
+    });
+    //var activeLayers = $.extend({}, app.viewModel.activeLayers());
+    $.each(activeLayers, function (index, layer) {
         layer.deactivateLayer();
     });
     // turn on the layers that should be active

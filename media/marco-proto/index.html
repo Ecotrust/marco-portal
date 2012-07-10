@@ -236,11 +236,11 @@
                                 <div id="map-wrapper" class="span9" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
                                   <div id="map-buttons">
-                                      <p><button class="btn pull-right" data-bind="click: toggleLegend">
+                                      <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
                                           <span data-bind="visible: showLegend()">Hide Legend</span>
                                           <span data-bind="visible: ! showLegend()">Show Legend</span>
                                         </button></p>
-                                      <p><button class="btn pull-right" data-bind="click: showBookmarks">
+                                      <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
                                           <i class="icon-flag">
                                           </i>
                                           Bookmarks
@@ -347,8 +347,10 @@
                                         <table class="table table-condensed">
                                             <tbody data-bind="foreach: bookmarksList">
                                                 <tr>
-                                                    <td data-bind="click: $parent.loadBookmark">
-                                                        <a data-bind="text: name, attr: { href: $parent.getUrl($data) }">name</a>
+                                                    <td>
+                                                        <span data-bind="click: $parent.loadBookmark">
+                                                        <a data-bind="text: name, attr: {href: $parent.getUrl($data)}">name</a>
+                                                        </span>
                                                     </td>
                                                     <td class="tweet-cell">
                                                         <a href="https://twitter.com/share" class="twitter-share-button" data-bind="attr: {'data-url': $parent.getUrl($data)}"

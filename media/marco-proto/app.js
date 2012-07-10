@@ -67,6 +67,12 @@ $(document).ready(function () {
 			left: e.pageX + 20,
 			top: e.pageY + 20
 		});
-	});
+	});       
+});
 
+$(document).click(function (e) {
+    if (e.target.id === "bookmarks-button") {
+    } else if (!$(e.target).closest("#bookmark-popover").length) {
+        $('#bookmark-popover').hide();
+    }
 });

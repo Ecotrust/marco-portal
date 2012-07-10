@@ -16,6 +16,9 @@ app.init = function () {
     map.addControl(new OpenLayers.Control.LayerSwitcher( {
         roundedCorner: true
     }));
+    map.addControl(new OpenLayers.Control.ZoomBox( {
+        //enables zooming to a given extent on the map by holding down shift key while dragging the mouse
+    }));
     map.addControl(new OpenLayers.Control.MousePosition({
         element: document.getElementById('pos')
     }));
