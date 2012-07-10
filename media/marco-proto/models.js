@@ -167,6 +167,7 @@ function themeModel(name) {
 	self.layers = [];
 
 	self.setActiveTheme = function () {
+        $('#dataTab').trigger('click');
         var theme = this;
 		if (self.isActiveTheme(theme)) {
 			app.viewModel.activeTheme(null);
