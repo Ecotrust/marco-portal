@@ -96,7 +96,7 @@ app.addLayerToMap = function(layer) {
         //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
         app.map.addLayer(layer.layer);            
     }
-    layer.layer.opacity = .5
+    layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
 }
 

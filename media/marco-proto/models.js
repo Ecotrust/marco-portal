@@ -13,9 +13,9 @@ function layerModel(options, parent) {
     
 
     // opacity
-    self.opacity = ko.observable(50);
+    self.opacity = ko.observable(.5);
     self.opacity.subscribe(function (newOpacity) {
-    	self.layer.setOpacity(newOpacity / 100);
+    	self.layer.setOpacity(newOpacity);
     });
 
 
