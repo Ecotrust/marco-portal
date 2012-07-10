@@ -1,3 +1,7 @@
+// represents whether or not restoreState is currently being updated
+// example use:  saveStateMode will be false when a user is viewing a bookmark 
+app.saveStateMode = true; 
+
 // save the state of app
 app.getState = function () {
     var center = app.map.getCenter().transform(
@@ -48,5 +52,11 @@ app.loadStateFromHash = function (hash) {
 
 // update the hash
 app.updateUrl = function () {
-    window.location.hash = $.param(app.getState());
+    var state = app.getState();
+    // save the restore state
+    if (app.saveStateMode) {
+        app.restoreState = state;
+    }
+		
+    window.location.hash = $.param(state);
 };

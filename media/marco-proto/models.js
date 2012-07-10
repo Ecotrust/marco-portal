@@ -61,7 +61,7 @@ function layerModel(options, parent) {
         	layer.activeSublayer().deactivateLayer();
         	layer.activeSublayer(false);
         }
-
+        
 	};
 
 	self.activateLayer = function () {
@@ -81,8 +81,14 @@ function layerModel(options, parent) {
         }
 	};
 
+    // bound to click handler for layer switching
 	self.toggleActive = function () {
 		var layer = this;
+        
+        // start saving restore state again and remove restore state message from map view
+        app.saveStateMode = true;
+		app.viewModel.error(null);
+        
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -167,8 +173,11 @@ function themeModel(name) {
 	self.layers = [];
 
 	self.setActiveTheme = function () {
-        $('#dataTab').trigger('click');
         var theme = this;
+        
+        // ensure data tab is activated
+        $('#dataTab').tab('show');
+        
 		if (self.isActiveTheme(theme)) {
 			app.viewModel.activeTheme(null);
 		} else {
@@ -185,7 +194,8 @@ function themeModel(name) {
 }
 
 function bookmarkModel($popover) {
-	var self = this;
+    var self = this;
+    
 	// name of the bookmark
 	self.bookmarkName = ko.observable();
 
@@ -194,16 +204,15 @@ function bookmarkModel($popover) {
 
 	// load state from bookmark
 	self.loadBookmark = function (bookmark) {
-		// save the restore state
-		app.restoreState = app.getState();
-		
+    
+        app.saveStateMode = false;
         console.log(bookmark.name);
 		app.loadState(bookmark.state);
 
 		// show the alert for resting state
 		app.viewModel.error("restoreState");
 		$('#bookmark-popover').hide();
-
+        
 	}
 
 	self.restoreState = function () {
@@ -253,7 +262,7 @@ function bookmarkModel($popover) {
 	self.cancel = function () {
 		$('#bookmark-popover').hide();
 	}
-
+    
 	// load the bookmarks
 	self.getBookmarks();
 
