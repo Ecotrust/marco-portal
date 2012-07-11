@@ -155,11 +155,11 @@ function layerModel(options, parent) {
 	return self;
 }
 
-function themeModel(name) {
+function themeModel(options) {
 	var self = this;
 
-	self.name = name;
-
+	self.name = options.name;
+	self.id = options.id
 	// array of layers
 	self.layers = ko.observableArray();
 
