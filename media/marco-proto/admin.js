@@ -26,13 +26,12 @@ var adminModel = function () {
 
 		// deref themes
 		postData = {
-			themes: $.map(self.activeLayer().themes(), function (theme) {
+			themes: $.map(layer.themes(), function (theme) {
 					return theme.id;
 				}),
 			name: layer.name(),
 			url: layer.url()
-		}
-		
+		};
 
 		$('.layer-modal').modal('hide');
 		$.ajax({
