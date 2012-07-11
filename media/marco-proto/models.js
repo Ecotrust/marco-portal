@@ -39,6 +39,7 @@ function layerModel(options, parent) {
     self.toggleLegendVisibility = function() {
         var layer = this;
         layer.legendVisibility(!layer.legendVisibility());
+        
     }
 
 	self.deactivateLayer = function () {

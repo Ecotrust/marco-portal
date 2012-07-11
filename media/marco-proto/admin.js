@@ -18,24 +18,27 @@ var adminModel = function () {
 	};
 
 	self.saveActiveLayer = function () {
-		var layer = $.extend({}, self.activeLayer());
+		var layer = self.activeLayer(), postData = {};
+
+		// $.each(layer.themes(), function (index, theme) {
+		// 	theme.layers.push(layer);
+		// });
 
 		// deref themes
+		postData = {
+			themes: $.map(self.activeLayer().themes(), function (theme) {
+					return theme.id;
+				}),
+			name: layer.name(),
+			url: layer.url()
+		}
 		
-		$.each(layer.themes(), function (index, theme) {
-			theme.layers.push(layer);
-		});
 
-		layer.themes = $.map(self.activeLayer().themes(), function (theme) {
-			console.dir(theme);
-			return theme.id;
-		});
 		$('.layer-modal').modal('hide');
-		debugger;
 		$.ajax({
 		  type: 'POST',
-		  url: '//data-viewer/layer',
-		  data: ko.toJS(layer),
+		  url: '/data-viewer/layer',
+		  data: postData,
 		  success: function () {
 		  	debugger;
 		  },
