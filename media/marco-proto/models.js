@@ -349,31 +349,6 @@ function viewModel() {
 	};
 
 
-	// load layers from fixture or the server
-	self.loadLayers = function (data) {
-
-		// load layers
-		$.each(data.layers, function (i, layer) {
-			var layerViewModel = new layerModel(layer);
-			self.layerIndex[layer.id] = layerViewModel;
-		});
-
-		// load themes
-		$.each(data.themes, function (i, themeFixture) {
-			var layers = [],
-                theme = new themeModel(themeFixture.name);
-			$.each(themeFixture.layers, function (j, layer_id) {
-				// create a layerModel and add it to the list of layers
-				var layer = self.layerIndex[layer_id], 
-                    searchTerm = layer.name + ' (' + themeFixture.name + ')';
-                layer.themes.push(themeFixture);
-                theme.layers.push(layer);
-                self.layerSearchIndex[searchTerm] = {layer: layer, theme: theme};
-			});
-			self.themes.push(theme);
-		});
-	};
-
 	// handle the search form
 	self.searchTerm = ko.observable();
 	self.layerSearch = function () {
@@ -382,6 +357,8 @@ function viewModel() {
         self.activeTheme(theme);
         layer.activateLayer();
 	};
+
+
 
 	// do this stuff when the active layers change
 	self.activeLayers.subscribe(function () {
