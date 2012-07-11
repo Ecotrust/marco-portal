@@ -15,3 +15,15 @@ def test(request):
     }
     #return render_to_response('../media/marco-proto/layers.html', RequestContext(request, params))
     return HttpResponseRedirect('/media/marco-proto/index.html')
+
+def create_layer(request):
+    if request.method != 'POST':
+	return httpResponse('Action not permitted', status=403)
+    import pdb
+    pdb.set_trace()
+
+def update_layer(request, layer_id):
+    if request.method != 'POST':
+	return httpResponse('Action not permitted', status=403)
+    import pdb
+    pdb.set_trace()
