@@ -37,7 +37,7 @@ var adminModel = function () {
 		$('.layer-modal').modal('hide');
 		$.ajax({
 		  type: 'POST',
-		  url: '/data-viewer/layer',
+		  url: '/data_viewer/layer',
 		  data: postData,
 		  success: function () {
 		  	debugger;
