@@ -119,16 +119,20 @@
                                                             <tbody data-bind="foreach: layers ">
                                                                 <tr>
                                                                     <td data-bind="click: toggleActive">
-                                                                        <i class="icon-align-justify">
-                                                                        </i>
-                                                                        <span data-bind="text: name">
-                                                                        </span>
-                                                                        <span data-bind="visible: activeSublayer">
-                                                                            (
-                                                                            <span data-bind="text: activeSublayer().name">
+                                                                        <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }">
+                                                                            <i class="icon-align-justify">
+                                                                            </i>
+                                                                            <span data-bind="text: name">
                                                                             </span>
-                                                                            )
-                                                                        </span>
+                                                                            <span data-bind="visible: activeSublayer">
+                                                                                (
+                                                                                <span data-bind="text: activeSublayer().name">
+                                                                                </span>
+                                                                                )
+                                                                            </span>
+                                                                            <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
+                                                                            </i>
+                                                                        </button>
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn-group">
