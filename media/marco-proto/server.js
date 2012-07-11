@@ -13,7 +13,7 @@ app.viewModel.loadLayers = function (data) {
 	// load themes
 	$.each(data.themes, function (i, themeFixture) {
 		var layers = [],
-            theme = new themeModel(themeFixture.name);
+            theme = new themeModel(themeFixture);
 		$.each(themeFixture.layers, function (j, layer_id) {
 			// create a layerModel and add it to the list of layers
 			var layer = self.layerIndex[layer_id], 
