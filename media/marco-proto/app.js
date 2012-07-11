@@ -23,9 +23,9 @@ app.restoreState = {};
 
 
 
-app.viewModel = new viewModel();
 
 app.viewModel.admin = new adminModel() || false;
+
 ko.applyBindings(app.viewModel);
 
 

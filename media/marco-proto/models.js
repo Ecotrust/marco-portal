@@ -2,20 +2,20 @@ function layerModel(options, parent) {
 	var self = this;
 
 	// properties
-	self.id = options.id;
-	self.name = options.name;
-	self.url = options.url;
-	self.type = options.type;
+	self.id = options.id || null;
+	self.name = ko.observable(options.name || null);
+	self.url = ko.observable(options.url || null);
+	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
     self.legendVisibility = ko.observable(false);
-    self.themes = [];
+    self.themes = ko.observableArray();
     
 
     // opacity
-    self.opacity = ko.observable(50);
+    self.opacity = ko.observable(.5);
     self.opacity.subscribe(function (newOpacity) {
-    	self.layer.setOpacity(newOpacity / 100);
+    	self.layer.setOpacity(newOpacity);
     });
 
 
@@ -26,22 +26,13 @@ function layerModel(options, parent) {
 
 	self.subLayers = [];
 
-	// add sublayers if they exist
-	if (options.subLayers) {	
-		$.each(options.subLayers, function (i, layer_options) {
-			var subLayer = new layerModel(layer_options, self);
-			app.viewModel.layerIndex[subLayer.id] = subLayer;
-			self.subLayers.push(subLayer);
-		});
-	}
-
 	// save a ref to the parent, if it exists
 	if (parent) {
 		self.parent = parent;
-		self.fullName = self.parent.name + " (" + self.name + ")";
+		self.fullName = self.parent.name() + " (" + self.name() + ")";
 
 	} else {
-    	self.fullName = self.name;
+    	self.fullName = self.name();
 	}
     
 
@@ -61,7 +52,7 @@ function layerModel(options, parent) {
         	layer.activeSublayer().deactivateLayer();
         	layer.activeSublayer(false);
         }
-
+        
 	};
 
 	self.activateLayer = function () {
@@ -81,8 +72,14 @@ function layerModel(options, parent) {
         }
 	};
 
+    // bound to click handler for layer switching
 	self.toggleActive = function () {
 		var layer = this;
+        
+        // start saving restore state again and remove restore state message from map view
+        app.saveStateMode = true;
+		app.viewModel.error(null);
+        
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -164,10 +161,14 @@ function themeModel(name) {
 	self.name = name;
 
 	// array of layers
-	self.layers = [];
+	self.layers = ko.observableArray();
 
 	self.setActiveTheme = function () {
         var theme = this;
+        
+        // ensure data tab is activated
+        $('#dataTab').tab('show');
+        
 		if (self.isActiveTheme(theme)) {
 			app.viewModel.activeTheme(null);
 		} else {
@@ -184,7 +185,8 @@ function themeModel(name) {
 }
 
 function bookmarkModel($popover) {
-	var self = this;
+    var self = this;
+    
 	// name of the bookmark
 	self.bookmarkName = ko.observable();
 
@@ -193,16 +195,14 @@ function bookmarkModel($popover) {
 
 	// load state from bookmark
 	self.loadBookmark = function (bookmark) {
-		// save the restore state
-		app.restoreState = app.getState();
-		
-        console.log(bookmark.name);
+    
+        app.saveStateMode = false;
 		app.loadState(bookmark.state);
 
 		// show the alert for resting state
 		app.viewModel.error("restoreState");
 		$('#bookmark-popover').hide();
-
+        
 	}
 
 	self.restoreState = function () {
@@ -252,7 +252,7 @@ function bookmarkModel($popover) {
 	self.cancel = function () {
 		$('#bookmark-popover').hide();
 	}
-
+    
 	// load the bookmarks
 	self.getBookmarks();
 
@@ -263,6 +263,9 @@ function bookmarkModel($popover) {
 function viewModel() {
 	var self = this;
 
+	// admin viewmodel, false unless admin.js is included
+	self.admin = false;
+
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
 
@@ -270,7 +273,7 @@ function viewModel() {
 	self.activeTheme = ko.observable();
 
 	// list of theme models
-	self.themes = [];
+	self.themes = ko.observableArray();
 
 	// index for filter autocomplete and lookups
 	self.layerIndex = {};
@@ -340,6 +343,7 @@ function viewModel() {
 	}
 	self.hideOpacity = function (self, event) {
 		$('#opacity-popover').hide();		
+        app.updateUrl();
 	}
 
 	// show coords info in pointer
@@ -347,6 +351,7 @@ function viewModel() {
 	self.togglePointerInfo = function () {
 		self.showPointerInfo(!self.showPointerInfo());
 	};
+
 
 
 	// handle the search form
@@ -387,3 +392,6 @@ function viewModel() {
 
 	return self;
 }
+
+
+app.viewModel = new viewModel();

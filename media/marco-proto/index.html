@@ -54,7 +54,7 @@
                                 <a data-bind="click: loadLayersFromFixture">Load Layers From Fixture</a>
                             </li>
                             <li>
-                                <a data-bind="click: loadLayersFromFixture">Load Layers From Fixture</a>
+                                <a data-bind="click: loadLayersFromServer">Load Layers From Server</a>
                             </li>
                             <li class="divider">
                             </li>
@@ -87,7 +87,7 @@
                         <!-- tab controls -->
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="active">
-                                <a href="#data" data-toggle="tab">Data</a>
+                                <a href="#data" data-toggle="tab" id="dataTab">Data</a>
                             </li>
                             <li>
                                 <a href="#designs" data-toggle="tab">Designs</a>
@@ -96,6 +96,17 @@
                                 <a href="#active" data-toggle="tab">Active  
                                 <span class="badge badge-inverse" data-bind="text: activeLayers().length">0</span></a>
                             </li>
+                            <!-- IF USER IS AUTHENTICATED -->
+                            <li class="dropdown">
+                               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                   Administration
+                                   <b class="caret"></b>
+                                 </a>
+                               <ul class="dropdown-menu">
+                                 <li><a data-toggle="modal" href="#add-layer-modal" data-bind="click: admin.addLayer">add layer</a></li>
+                               </ul> 
+                            <!-- endif -->
+                             </li>
                         </ul>
                         <!-- tab body -->
                         <div id="myTabContent" class="tab-content">
@@ -109,7 +120,7 @@
                                                 <div class="accordion-heading" data-bind="click: setActiveTheme">
                                                     <a class="accordion-toggle"><span data-bind="text: name">Themes</span></a>
                                                 </div>
-                                                <div class="accordion-body collapse" data-bind="css: { in: isActiveTheme($data) }">
+                                                <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
                                                     <div class="accordion-inner">
                                                         <table class="table">
                                                             <tbody data-bind="foreach: layers ">
@@ -127,25 +138,25 @@
                                                                         </span>
                                                                     </td>
                                                                     <td>
-                                                                        <div class="btn-group layer-buttons pull-right">
-                                                                            <!-- the following comment is actually used by knockout -->
-                                                                            <!-- ko if: subLayers.length -->
-                                                                            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                                                                <span class="caret">
-                                                                                </span>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu layer-menu" data-bind="foreach: subLayers, event: { mouseleave: closeMenu }">
-                                                                                <li data-bind="click: toggleActive">
-                                                                                    <a><span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                    <span data-bind="text: name"></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                            <!-- the following comment is actually used by knockout -->
-                                                                            <!-- /ko -->
-                                                                            <button class="btn" data-bind="click: toggleActive">
-                                                                                <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
-                                                                                </i>
-                                                                            </button>
+                                                                        <div class="btn-group">
+                                                                            <div class="layer-buttons">
+                                                                                <div data-bind="if: subLayers.length > 0">
+                                                                                    <button class="btn dropdown-toggle" data-toggle="dropdown" >
+                                                                                        <span class="caret">
+                                                                                        </span>
+                                                                                    </button>
+                                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                        <li data-bind="click: toggleActive, foreach: subLayers">
+                                                                                            <a><span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                            <span data-bind="text: name"></a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <button class="btn" data-bind="click: toggleActive">
+                                                                                    <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
+                                                                                    </i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -287,7 +298,7 @@
                                                       <span data-bind="text: fullName"></span>
                                                     </a>
                                                     </div>
-                                                    <div class="accordion-body collapse" data-bind="css: { in: legendVisibility }">
+                                                    <div class="accordion-body collapse" data-bind="css: { 'in': legendVisibility }">
                                                         <div class="accordion-inner">
                                                             <img data-bind="attr: { src: legend }" />
                                                         </div>
@@ -323,6 +334,46 @@
             </footer>
         </div>
         <!--/.fluid-container-->
+        <!-- IF USER IS AUTHENTICATED -->
+      <div class="modal hide layer-modal" id="add-layer-modal" data-bind="with: admin">
+        <div class="modal-header" data-bind="if: activeLayer">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h3>add a layer</h3>
+        </div>
+        <div class="modal-body">
+         <form class="form-horizontal" data-bind="submit: saveActiveLayer, with: activeLayer()">
+           <fieldset>
+             <legend>Layer Information</legend>
+             <div class="control-group">
+               <label class="control-label">Name</label>
+               <div class="controls">
+                 <input type="text" class="input-xlarge" data-bind="value: name">
+                 <p class="help-block">Supporting help text</p>
+               </div>
+             </div>
+             <div class="control-group">
+               <label class="control-label">URL</label>
+               <div class="controls">
+                 <input type="text" class="input-xlarge" id="input01" data-bind="value: url">
+                 <p class="help-block">Supporting help text</p>
+               </div>
+             </div>
+             <div class="control-group">
+               <label class="control-label">Name</label>
+               <div class="controls">
+                 <select multiple="true" data-bind="selectedOptions: themes, options: $root.themes, optionsText: 'name'"></select>
+                 <p class="help-block">Supporting help text</p>
+               </div>
+             </div>
+           </fieldset>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn" data-dismiss="modal">Close</a>
+          <a href="#" class="btn btn-primary" data-bind="click: saveActiveLayer">Save changes</a>
+        </div>
+      </div>
+        <!-- ENDIF -->
         <div style="display:none" id="opacity-popover" class="popover fade bottom in">
             <div class="arrow">
             </div>
@@ -332,7 +383,7 @@
                 </h3>
                 <div class="popover-content" data-bind="if: selectedLayer">
                     <div class="controls">
-                        <div class="slider" data-bind="jqSlider: selectedLayer().opacity, jqOptions: { min: 0, max: 100, range: 'min' }"></div>
+                        <div class="slider" data-bind="jqSlider: selectedLayer().opacity, jqOptions: { min: 0, max: 1, step: .01, range: 'min' }"></div>
                         <button class="btn pull-right" data-bind="click: hideOpacity">ok</button></div>
                     </div>
                 </div>
@@ -437,8 +488,13 @@
         <script src="fixtures.js"></script>
         <script src="map.js"></script>
         <script src="state.js"></script>
-        <script src="server.js"></script>
         <script src="models.js"></script>
+        <script src="server.js"></script>
+
+        <!-- IF USER IS AUTHENTICATED -->
+        <script src="admin.js"></script>
+
+        <!-- ENDIF -->
         <script src="app.js"></script>
         <script>
         !

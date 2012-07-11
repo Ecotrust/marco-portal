@@ -1,9 +1,13 @@
+// represents whether or not restoreState is currently being updated
+// example use:  saveStateMode will be false when a user is viewing a bookmark 
+app.saveStateMode = true; 
+
 // save the state of app
 app.getState = function () {
     var center = app.map.getCenter().transform(
     new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
         layers = $.map(app.viewModel.activeLayers(), function(layer) {
-            return layer.id;
+            return {id: layer.id, opacity: layer.opacity()};
         });        
     return {
         location: {
@@ -29,18 +33,13 @@ app.loadState = function(state) {
     });
     // turn on the layers that should be active
     if (state.activeLayers) {
-<<<<<<< Updated upstream
-        $.each(state.activeLayers, function(index, layer_id) {
-            app.viewModel.layerIndex[layer_id].activateLayer();
-=======
-        $.each(state.activeLayers, function(index, layer) {
+       $.each(state.activeLayers, function(index, layer) {
             if (app.viewModel.layerIndex[layer.id]) {
                 app.viewModel.layerIndex[layer.id].activateLayer();
                 app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
             }
             
->>>>>>> Stashed changes
-        });
+       });
     }
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
@@ -57,5 +56,11 @@ app.loadStateFromHash = function (hash) {
 
 // update the hash
 app.updateUrl = function () {
-    window.location.hash = $.param(app.getState());
+
+    var state = app.getState();
+    // save the restore state
+    if (app.saveStateMode) {
+        app.restoreState = state;
+    }
+    window.location.hash = $.param(state);
 };
