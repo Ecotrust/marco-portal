@@ -132,23 +132,18 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn-group">
-                                                                            <div class="layer-buttons">
-                                                                                <div data-bind="if: subLayers.length > 0">
-                                                                                    <button class="btn dropdown-toggle" data-toggle="dropdown" >
-                                                                                        <span class="caret">
-                                                                                        </span>
-                                                                                    </button>
-                                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
-                                                                                        <li data-bind="click: toggleActive, foreach: subLayers">
-                                                                                            <a><span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                            <span data-bind="text: name"></a>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <button class="btn" data-bind="click: toggleActive">
-                                                                                    <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
-                                                                                    </i>
+                                                                            <div data-bind="if: subLayers.length > 0">
+                                                                                <button class="btn dropdown-toggle" data-toggle="dropdown" >
+                                                                                    <span class="caret">
+                                                                                    </span>
                                                                                 </button>
+                                                                                <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                    <li data-bind="foreach: subLayers">
+                                                                                        <a data-bind="click: toggleActive">
+                                                                                            <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                        <span data-bind="text: name"></a>
+                                                                                    </li>
+                                                                                </ul>
                                                                             </div>
                                                                         </div>
                                                                     </td>
