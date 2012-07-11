@@ -77,6 +77,14 @@ body {
   overflow-y: auto;
 }
 
+#data-accordion .btn-layer {
+  width: 100%;
+  text-align: left;
+}
+#data-accordion .btn-layer i.check {
+  padding-top: 4px;
+}
+
 .attribution {
   font-size: 10px;
 }

@@ -46,7 +46,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Profile</a>
+                                <a data-bind="click: admin.toggleAdmin">
+                                    <i data-bind="css: { 'icon-check': admin.adminMode, 'icon-check-empty': ! admin.adminMode() }"></i> Administration</a>
                             </li>
                             <li class="divider">
                             </li>
@@ -97,7 +98,7 @@
                                 <span class="badge badge-inverse" data-bind="text: activeLayers().length">0</span></a>
                             </li>
                             <!-- IF USER IS AUTHENTICATED -->
-                            <li class="dropdown">
+                            <li class="dropdown" data-bind="if: admin.adminMode">
                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                    Administration
                                    <b class="caret"></b>
@@ -126,36 +127,35 @@
                                                             <tbody data-bind="foreach: layers ">
                                                                 <tr>
                                                                     <td data-bind="click: toggleActive">
-                                                                        <i class="icon-align-justify">
-                                                                        </i>
-                                                                        <span data-bind="text: name">
-                                                                        </span>
-                                                                        <span data-bind="visible: activeSublayer">
-                                                                            (
-                                                                            <span data-bind="text: activeSublayer().name">
+                                                                        <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }">
+                                                                            <i class="icon-align-justify">
+                                                                            </i>
+                                                                            <span data-bind="text: name">
                                                                             </span>
-                                                                            )
-                                                                        </span>
+                                                                            <span data-bind="visible: activeSublayer">
+                                                                                (
+                                                                                <span data-bind="text: activeSublayer().name">
+                                                                                </span>
+                                                                                )
+                                                                            </span>
+                                                                            <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
+                                                                            </i>
+                                                                        </button>
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn-group">
-                                                                            <div class="layer-buttons">
-                                                                                <div data-bind="if: subLayers.length > 0">
-                                                                                    <button class="btn dropdown-toggle" data-toggle="dropdown" >
-                                                                                        <span class="caret">
-                                                                                        </span>
-                                                                                    </button>
-                                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
-                                                                                        <li data-bind="click: toggleActive, foreach: subLayers">
-                                                                                            <a><span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                            <span data-bind="text: name"></a>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <button class="btn" data-bind="click: toggleActive">
-                                                                                    <i data-bind="css: { 'icon-eye-open': active, 'icon-eye-close': ! active() }">
-                                                                                    </i>
+                                                                            <div data-bind="if: subLayers.length > 0">
+                                                                                <button class="btn dropdown-toggle" data-toggle="dropdown" >
+                                                                                    <span class="caret">
+                                                                                    </span>
                                                                                 </button>
+                                                                                <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                    <li data-bind="foreach: subLayers">
+                                                                                        <a data-bind="click: toggleActive">
+                                                                                            <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                        <span data-bind="text: name"></a>
+                                                                                    </li>
+                                                                                </ul>
                                                                             </div>
                                                                         </div>
                                                                     </td>
