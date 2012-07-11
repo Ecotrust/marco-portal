@@ -26,15 +26,6 @@ function layerModel(options, parent) {
 
 	self.subLayers = [];
 
-	// add sublayers if they exist
-	if (options.subLayers) {	
-		$.each(options.subLayers, function (i, layer_options) {
-			var subLayer = new layerModel(layer_options, self);
-			app.viewModel.layerIndex[subLayer.id] = subLayer;
-			self.subLayers.push(subLayer);
-		});
-	}
-
 	// save a ref to the parent, if it exists
 	if (parent) {
 		self.parent = parent;
@@ -369,6 +360,14 @@ function viewModel() {
 		$.each(data.layers, function (i, layer) {
 			var layerViewModel = new layerModel(layer);
 			self.layerIndex[layer.id] = layerViewModel;
+            // add sublayers if they exist
+            if (layer.subLayers) {	
+                $.each(layer.subLayers, function (i, layer_options) {
+                    var subLayer = new layerModel(layer_options, layerViewModel);
+                    app.viewModel.layerIndex[subLayer.id] = subLayer;
+                    layerViewModel.subLayers.push(subLayer);
+                });
+            }
 		});
 
 		// load themes
@@ -382,6 +381,12 @@ function viewModel() {
                 layer.themes.push(themeFixture);
                 theme.layers.push(layer);
                 self.layerSearchIndex[searchTerm] = {layer: layer, theme: theme};
+                if (layer.subLayers) {
+                    $.each(layer.subLayers, function (i, subLayer) {
+                        var searchTerm = layer.name() + ' / ' + subLayer.name() + ' (' + themeFixture.name + ')';
+                        self.layerSearchIndex[searchTerm] = {layer: subLayer, theme: theme};
+                    });
+                }
 			});
 			self.themes.push(theme);
 		});
