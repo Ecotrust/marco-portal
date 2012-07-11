@@ -23,6 +23,19 @@ var adminModel = function () {
 			theme.layers.push(layer);
 		});
 		$('.layer-modal').modal('hide');
+
+		$.ajax({
+		  type: 'POST',
+		  url: '//data-viewer/layer',
+		  data: ko.toJS(layer),
+		  dataType: 'json',
+		  success: function () {
+		  	debugger;
+		  },
+		  error: function () {
+		  	debugger;
+		  }
+		});
 	};
 
 	return self;
