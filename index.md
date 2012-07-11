@@ -80,11 +80,10 @@ tagline:
           <h3>Development Team</h3>
           <p>
             <ul>
-              <li>The Nature Conservancy</li>
-              <li>Monmouth University</li>
+              <li>The Nature Conservancy</li>              
               <li>Ecotrust</li>              
               <li>Rutgers - Center for Remote Sensing and Spatial Analysis</li>
-              <li>University of Delaware</li>
+              <li>Monmouth University</li>
             </ul>
           </p>
         </div>
