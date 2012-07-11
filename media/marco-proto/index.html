@@ -46,7 +46,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Profile</a>
+                                <a data-bind="click: admin.toggleAdmin">
+                                    <i data-bind="css: { 'icon-check': admin.adminMode, 'icon-check-empty': ! admin.adminMode() }"></i> Administration</a>
                             </li>
                             <li class="divider">
                             </li>
@@ -89,7 +90,7 @@
                                 <span class="badge badge-inverse" data-bind="text: activeLayers().length">0</span></a>
                             </li>
                             <!-- IF USER IS AUTHENTICATED -->
-                            <li class="dropdown">
+                            <li class="dropdown" data-bind="if: admin.adminMode">
                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                    Administration
                                    <b class="caret"></b>
