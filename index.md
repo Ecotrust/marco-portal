@@ -65,7 +65,7 @@ tagline:
 		<div class="row blocks">
 			<div class="span5">
 				<div class="well">
-					<h3>Project</h3>
+					<h3>Project Links</h3>
 					<p>
 						<ul>
 							<li><a href="http://midatlanticocean.org/map_portal.html">What is the MARCO Portal?</a></li>							
@@ -75,6 +75,20 @@ tagline:
 					</p>
 				</div>
 			</div>
+      <div class="span5">
+        <div class="well">
+          <h3>Development Team</h3>
+          <p>
+            <ul>
+              <li>The Nature Conservancy</li>
+              <li>Monmouth University</li>
+              <li>Ecotrust</li>              
+              <li>Rutgers - Center for Remote Sensing and Spatial Analysis</li>
+              <li>University of Delaware</li>
+            </ul>
+          </p>
+        </div>
+      </div>
 		</div>
 	</div>
 </div>
