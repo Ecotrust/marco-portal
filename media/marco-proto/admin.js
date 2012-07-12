@@ -24,12 +24,19 @@ var adminModel = function () {
 	};
 
 	self.saveActiveLayer = function () {
-		var layer = self.activeLayer(), postData, themes;
+		var layer = self.activeLayer(), postData, themes, url;
 
 		// $.each(layer.themes(), function (index, theme) {
 		// 	theme.layers.push(layer);
 		// });
-
+		if (layer.id) {
+			// save existing layer
+			url = '/data_viewer/layer/' + id;
+		} else {
+			// create new layer
+			url = '/data_viewer/layer'
+		}
+	
 		// deref themes
 		themes = $.map(layer.themes(), function (theme) {
 					return theme.id;
@@ -44,7 +51,7 @@ var adminModel = function () {
 		$('.layer-modal').modal('hide');
 		$.ajax({
 		  type: 'POST',
-		  url: '/data_viewer/layer',
+		  url: url,
 		  data: postData,
 		  traditional: true,
 		  success: function () {
