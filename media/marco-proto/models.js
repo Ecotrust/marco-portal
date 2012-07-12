@@ -339,22 +339,26 @@ function viewModel() {
 	};
 	self.selectedLayer = ko.observable();
 	self.showOpacity = function (layer, event) {
-		var $button = $(event.target),
+		var $button = $(event.target).closest('button'),
 			$popover = $('#opacity-popover');
-
-		self.selectedLayer(layer);
-		if ($popover.is(":visible")) {
-			$popover.hide();
-		} 
-		$popover.show().position({
-			"my": "center top",
-			"at": "center bottom",
-			"of": $button
-		});
+        
+        self.selectedLayer(layer);
+        
+        if ( $button.hasClass('active') ) {
+            self.hideOpacity();
+        } else {
+            $popover.show().position({
+                "my": "center top",
+                "at": "center bottom",
+                "of": $button
+            });
+            $button.addClass('active');
+        }
 	
 	}
 	self.hideOpacity = function (self, event) {
-		$('#opacity-popover').hide();		
+		$('#opacity-popover').hide();
+        $('.opacity-button.active').removeClass('active');
         app.updateUrl();
 	}
 
