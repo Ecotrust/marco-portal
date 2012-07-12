@@ -77,8 +77,8 @@
 			        </a>
 			      <div class="pull-right">
 			        <ul class="nav">
+			          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a a href="<?php echo get_bloginfo('wpurl'); ?>/news">Contact Us</a></li>
 			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
-			          <li class="<?php echo $pagename == 'contact' ? 'active' : null ?>"><a a href="<?php echo get_bloginfo('wpurl'); ?>/contact">Contact Us</a></li>
 			          <li><a href="http://www.midatlanticocean.org/">Visit Marco Council</a></li>
 			        </ul>
 			        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
