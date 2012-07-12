@@ -45,7 +45,7 @@ var adminModel = function () {
 		  type: 'POST',
 		  url: '/data_viewer/layer',
 		  data: postData,
-		  dataType: 'json',
+		  traditional: true,
 		  success: function () {
 		  	debugger;
 		  },
