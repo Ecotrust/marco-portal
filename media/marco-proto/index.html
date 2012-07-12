@@ -419,6 +419,14 @@
                                                         </script>
                                                     </td>
                                                     <td>
+                                                        <button class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
+                                                            <a data-bind="attr: {href: $parent.getEmailHref($data)}">
+                                                            <i class="icon-envelope">
+                                                            </i>
+                                                            </a>
+                                                        </button>
+                                                    </td>
+                                                    <td>
                                                         <button class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
                                                             <i class="icon-trash">
                                                             </i>

@@ -243,6 +243,11 @@ function bookmarkModel($popover) {
 		return "#" + $.param(bookmark.state);
 	};
     
+    self.getEmailHref = function (bookmark) {
+        //return "mailto:?subject=MARCO Bookmark&body=" + self.getUrl(bookmark);
+        return "mailto:?subject=MARCO Bookmark";
+    };
+
 	// store the bookmarks to local storage or server
 	self.storeBookmarks = function () {
 		localStorage.setItem("marco-bookmarks", JSON.stringify(self.bookmarksList()));
