@@ -163,6 +163,7 @@ function themeModel(name) {
 	// array of layers
 	self.layers = ko.observableArray();
 
+    //add to active themes
 	self.setActiveTheme = function () {
         var theme = this;
         
@@ -170,15 +171,21 @@ function themeModel(name) {
         $('#dataTab').tab('show');
         
 		if (self.isActiveTheme(theme)) {
-			app.viewModel.activeTheme(null);
+			//app.viewModel.activeTheme(null);
+			app.viewModel.activeThemes.remove(theme);
 		} else {
-			app.viewModel.activeTheme(theme);
+			app.viewModel.activeThemes.push(theme);
 		}
 	};
     
+    //is in active themes
 	self.isActiveTheme = function () {
         var theme = this;
-		return app.viewModel.activeTheme() === theme;
+        if (app.viewModel.activeThemes.indexOf(theme) !== -1) {
+            return true;
+        }
+        return false;
+		//return app.viewModel.activeTheme() === theme;
 	};
 
 	return self;
@@ -213,8 +220,8 @@ function bookmarkModel($popover) {
 	}
 
 	self.removeBookmark = function (bookmark) {
-		self.bookmarksList.remove(bookmark);
-		$('#bookmark-popover').hide();
+        self.bookmarksList.remove(bookmark);
+		//$('#bookmark-popover').hide();
 		// store the bookmarks
 		self.storeBookmarks();
 	}
@@ -235,7 +242,7 @@ function bookmarkModel($popover) {
 	self.getUrl = function (bookmark) {
 		return "#" + $.param(bookmark.state);
 	};
-
+    
 	// store the bookmarks to local storage or server
 	self.storeBookmarks = function () {
 		localStorage.setItem("marco-bookmarks", JSON.stringify(self.bookmarksList()));
@@ -270,7 +277,7 @@ function viewModel() {
 	self.activeLayers = ko.observableArray();
 
 	// reference to active theme model
-	self.activeTheme = ko.observable();
+	self.activeThemes = ko.observableArray();
 
 	// list of theme models
 	self.themes = ko.observableArray();
@@ -397,7 +404,8 @@ function viewModel() {
 	self.layerSearch = function () {
         var layer = self.layerSearchIndex[self.searchTerm()].layer,
             theme = self.layerSearchIndex[self.searchTerm()].theme;
-        self.activeTheme(theme);
+        //self.activeTheme(theme);
+        self.activeThemes.push(theme);
         layer.activateLayer();
 	};
 
