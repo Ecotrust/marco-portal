@@ -27,7 +27,8 @@ def create_layer(request):
 	themes = request.POST.getlist('themes')
 	layer = layer_manager.models.Layer(
 	    url = url,
-	    name = name
+	    name = name,
+	    layer_type = 'XYZ'
 	)
 	layer.save()
 	theme_list = []
