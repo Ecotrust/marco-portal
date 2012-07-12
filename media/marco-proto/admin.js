@@ -18,17 +18,19 @@ var adminModel = function () {
 	};
 
 	self.saveActiveLayer = function () {
-		var layer = self.activeLayer(), postData = {};
+		var layer = self.activeLayer(), postData, themes;
 
 		// $.each(layer.themes(), function (index, theme) {
 		// 	theme.layers.push(layer);
 		// });
 
 		// deref themes
-		postData = {
-			themes: $.map(layer.themes(), function (theme) {
+		themes = $.map(layer.themes(), function (theme) {
 					return theme.id;
-				}),
+				});
+
+		postData = {
+			themes: themes,
 			name: layer.name(),
 			url: layer.url()
 		};
