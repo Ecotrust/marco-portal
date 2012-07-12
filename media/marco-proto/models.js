@@ -240,12 +240,12 @@ function bookmarkModel($popover) {
 
 	// get the url from a bookmark
 	self.getUrl = function (bookmark) {
-		return "#" + $.param(bookmark.state);
+        var host = window.location.href.split('#')[0];
+		return host + "#" + $.param(bookmark.state);
 	};
     
     self.getEmailHref = function (bookmark) {
-        //return "mailto:?subject=MARCO Bookmark&body=" + self.getUrl(bookmark);
-        return "mailto:?subject=MARCO Bookmark";
+        return "mailto:?subject=MARCO Bookmark&body=" + self.getUrl(bookmark).replace(/&/g, '%26');
     };
 
 	// store the bookmarks to local storage or server
