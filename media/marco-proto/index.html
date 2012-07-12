@@ -259,8 +259,8 @@
                             <div class="row-fluid">
                                 <!-- IF ADMIN USER -->
                                 <div data-bind="if: showMapPanel(), css: { 'span3': showMapPanel() }">
-                                    <form data-bind="with: admin.activeLayer()">
-                                      <fieldset>
+                                    <form>
+                                      <fieldset data-bind="with: admin.activeLayer()">
                                         <legend>Layer Information</legend>
                                         <div class="control-group">
                                           <label class="control-label">Name</label>
@@ -284,7 +284,7 @@
                                           </div>
                                         </div>
                                       </fieldset>
-                                      <button class="btn btn-primary">save</button>
+                                      <button class="btn btn-primary" data-bind="click: admin.saveActiveLayer">save</button>
                                     </form>
                                 </div>
 

@@ -15,6 +15,7 @@ var adminModel = function () {
 		self.activeLayer(new layerModel({
 			name: null
 		}));
+		app.viewModel.showMapPanel(true);
 	};
 
 	self.editLayer = function (layer) {
