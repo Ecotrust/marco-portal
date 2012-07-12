@@ -17,6 +17,11 @@ var adminModel = function () {
 		}));
 	};
 
+	self.editLayer = function (layer) {
+		self.activeLayer($.extend({}, layer));
+		app.viewModel.showMapPanel(true);
+	};
+
 	self.saveActiveLayer = function () {
 		var layer = self.activeLayer(), postData, themes;
 
@@ -40,6 +45,7 @@ var adminModel = function () {
 		  type: 'POST',
 		  url: '/data_viewer/layer',
 		  data: postData,
+		  dataType: 'json',
 		  success: function () {
 		  	debugger;
 		  },

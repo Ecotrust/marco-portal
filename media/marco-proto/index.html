@@ -126,21 +126,26 @@
                                                         <table class="table">
                                                             <tbody data-bind="foreach: layers ">
                                                                 <tr>
-                                                                    <td data-bind="click: toggleActive">
-                                                                        <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }">
-                                                                            <i class="icon-align-justify">
-                                                                            </i>
-                                                                            <span data-bind="text: name">
-                                                                            </span>
-                                                                            <span data-bind="visible: activeSublayer">
-                                                                                (
-                                                                                <span data-bind="text: activeSublayer().name">
+                                                                    <td >
+                                                                        <div class="btn-group">
+                                                                            <button class="btn" data-bind="css: { 'btn-success': active() }, click: toggleActive">
+                                                                                <i class="icon-align-justify">
+                                                                                </i>
+                                                                                <span data-bind="text: name">
                                                                                 </span>
-                                                                                )
-                                                                            </span>
-                                                                            <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
-                                                                            </i>
-                                                                        </button>
+                                                                                <span data-bind="visible: activeSublayer">
+                                                                                    (
+                                                                                    <span data-bind="text: activeSublayer().name">
+                                                                                    </span>
+                                                                                    )
+                                                                                </span>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
+                                                                                </i>
+                                                                            </button>
+
+                                                                            <!-- IF ADMIN USER -->
+                                                                            <button class="btn" data-bind="visible: $root.admin.adminMode(), click: $root.admin.editLayer">edit</button>
+                                                                        </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn-group">
@@ -252,7 +257,39 @@
                     <div class="row-fluid">
                         <div class="span12">
                             <div class="row-fluid">
-                                <div id="map-wrapper" class="span9" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
+                                <!-- IF ADMIN USER -->
+                                <div data-bind="if: showMapPanel(), css: { 'span3': showMapPanel() }">
+                                    <form data-bind="with: admin.activeLayer()">
+                                      <fieldset>
+                                        <legend>Layer Information</legend>
+                                        <div class="control-group">
+                                          <label class="control-label">Name</label>
+                                          <div class="controls">
+                                            <input type="text" data-bind="value: name">
+                                            <p class="help-block">Supporting help text</p>
+                                          </div>
+                                        </div>
+                                        <div class="control-group">
+                                          <label class="control-label">URL</label>
+                                          <div class="controls">
+                                            <input type="text" id="input01" data-bind="value: url">
+                                            <p class="help-block">Supporting help text</p>
+                                          </div>
+                                        </div>
+                                        <div class="control-group">
+                                          <label class="control-label">Name</label>
+                                          <div class="controls">
+                                            <select multiple="true" data-bind="selectedOptions: themes, options: $root.themes, optionsText: 'name'"></select>
+                                            <p class="help-block">Supporting help text</p>
+                                          </div>
+                                        </div>
+                                      </fieldset>
+                                      <button class="btn btn-primary">save</button>
+                                    </form>
+                                </div>
+
+                                <!-- END IF ADMIN USER -->
+                                <div id="map-wrapper" class="span9" data-bind="css: { span9: showMapPanel(), span12: ! showMapPanel() }">
                                   <div id="map"></div>
                                   <div id="map-buttons">
                                       <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
@@ -334,46 +371,7 @@
             </footer>
         </div>
         <!--/.fluid-container-->
-        <!-- IF USER IS AUTHENTICATED -->
-      <div class="modal hide layer-modal" id="add-layer-modal" data-bind="with: admin">
-        <div class="modal-header" data-bind="if: activeLayer">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h3>add a layer</h3>
-        </div>
-        <div class="modal-body">
-         <form class="form-horizontal" data-bind="submit: saveActiveLayer, with: activeLayer()">
-           <fieldset>
-             <legend>Layer Information</legend>
-             <div class="control-group">
-               <label class="control-label">Name</label>
-               <div class="controls">
-                 <input type="text" class="input-xlarge" data-bind="value: name">
-                 <p class="help-block">Supporting help text</p>
-               </div>
-             </div>
-             <div class="control-group">
-               <label class="control-label">URL</label>
-               <div class="controls">
-                 <input type="text" class="input-xlarge" id="input01" data-bind="value: url">
-                 <p class="help-block">Supporting help text</p>
-               </div>
-             </div>
-             <div class="control-group">
-               <label class="control-label">Name</label>
-               <div class="controls">
-                 <select multiple="true" data-bind="selectedOptions: themes, options: $root.themes, optionsText: 'name'"></select>
-                 <p class="help-block">Supporting help text</p>
-               </div>
-             </div>
-           </fieldset>
-         </form>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn" data-dismiss="modal">Close</a>
-          <a href="#" class="btn btn-primary" data-bind="click: saveActiveLayer">Save changes</a>
-        </div>
-      </div>
-        <!-- ENDIF -->
+        
         <div style="display:none" id="opacity-popover" class="popover fade bottom in">
             <div class="arrow">
             </div>

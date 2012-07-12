@@ -80,7 +80,10 @@ function layerModel(options, parent) {
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
 		app.viewModel.error(null);
-        
+
+		// save a ref to the active layer for editing,etc
+        app.viewModel.activeLayer(layer);
+
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -273,6 +276,9 @@ function viewModel() {
 	// reference to active theme model
 	self.activeTheme = ko.observable();
 
+	// reference to active layer for editing, etc
+	self.activeLayer = ko.observable();
+
 	// list of theme models
 	self.themes = ko.observableArray();
 
@@ -291,10 +297,16 @@ function viewModel() {
     	self.error(null);
     };
 
+    // shrink the map to show admin or legend panel
+    self.showMapPanel = ko.observable(false);
+
     //show Legend by default
     self.showLegend = ko.observable(false);
+
+
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
+    	self.showMapPanel(! self.showMapPanel());
     	app.map.render('map');
     };
     self.hasActiveLegends = ko.computed( function() {
@@ -306,6 +318,7 @@ function viewModel() {
         });
         return hasLegends;
     });
+
 
 	// show bookmark stuff
 	self.showBookmarks = function (self, event) {
