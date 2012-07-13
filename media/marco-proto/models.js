@@ -86,6 +86,7 @@ function layerModel(options, parent) {
 
         // don't do any of this if we are in admin mode
         if (app.viewModel.admin && app.viewModel.admin.adminMode()) {
+        	app.viewModel.admin.editLayer(layer);
         	return false;
         }
 

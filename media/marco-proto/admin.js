@@ -8,6 +8,10 @@ var adminModel = function () {
 	//     "editLayer"
 	//     "editTheme"
 	self.adminMode = ko.observable(false);
+	
+	self.objectForEditing = ko.observable();
+	self.activeObject = ko.observable();
+
 	self.toggleAdmin = function () {
 		if (self.adminMode()) {
 			// toggle admin mode off
@@ -21,24 +25,28 @@ var adminModel = function () {
 	};
 
 	self.addLayer = function () {
-		app.viewModel.activeLayer(new layerModel({}));
-		self.layerForEditing($.extend({}, new layerModel({})));
+		self.activeObject(new layerModel({}));
+		self.objectForEditing($.extend({}, new layerModel({})));
 		self.adminMode('editLayer');
 	};
 
-	self.layerForEditing = ko.observable();
-	self.editLayer = function () {
-		self.layerForEditing($.extend({}, app.viewModel.activeLayer()));
+	self.editLayer = function (layer) {
+		self.activeObject(layer);
+		self.objectForEditing($.extend({}, layer));
 		self.adminMode('editLayer');
+	};
+
+	self.editTheme = function (theme) {
+
 	};
 
 	self.cancelEdit = function () {
-		self.layerForEditing(false);
+		self.objectForEditing(false);
 		self.adminMode(true);
-	}
+	};
 
 	self.saveActiveLayer = function () {
-		var layer = self.layerForEditing(), postData, themes, url, update=false, oldLayerActive=false;
+		var layer = self.objectForEditing(), postData, themes, url, update=false, oldLayerActive=false;
 
 		if (layer.id) {
 			// save existing layer
@@ -52,7 +60,6 @@ var adminModel = function () {
         
 		// deref themes
 		themes = $.map(layer.themes(), function (theme) {
-					console.log(theme);
 					return theme.id; 
 				});
 		postData = {
@@ -78,9 +85,9 @@ var adminModel = function () {
 				$.each(layer.themes(), function (index, theme) {
 					if (update) {
 						// remove the old layer
-						themes.layers.remove(app.viewModel.activeLayer());
+						themes.layers.remove(self.activeLayer());
 					}
-					theme.layers.push(newLayer);
+					theme.layers.unshift(newLayer);
 				});
 
 			},
