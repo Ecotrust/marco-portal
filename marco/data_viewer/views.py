@@ -23,23 +23,23 @@ def create_layer(request):
     if request.method != 'POST':
 	return httpResponse('Action not permitted', status=403)
     try:
-	url = request.POST['url']
-	name = request.POST['name']
-	themes = request.POST.getlist('themes')
-	layer = Layer(
-	    url = url,
-	    name = name,
-	    layer_type = 'XYZ'
-	)
-	layer.save()
-	theme_list = []
-	for theme_id in themes:
-	    theme = Theme.objects.get(id=theme_id)
-	    theme_list.append(theme)
-	layer.theme = theme_list
-	layer.save()
+        url = request.POST['url']
+        name = request.POST['name']
+        themes = request.POST.getlist('themes')
+        layer = Layer(
+            url = url,
+            name = name,
+            layer_type = 'XYZ'
+        )
+        layer.save()
+        theme_list = []
+        for theme_id in themes:
+            theme = Theme.objects.get(id=theme_id)
+            theme_list.append(theme)
+        layer.theme = theme_list
+        layer.save()
     except Exception, e:
-        return HttpResponse(result + e.message, status=500)
+        return HttpResponse(e.message, status=500)
 
     result = {
         "status_code":1,  
@@ -51,6 +51,6 @@ def create_layer(request):
 
 def update_layer(request, layer_id):
     if request.method != 'POST':
-	return httpResponse('Action not permitted', status=403)
+        return httpResponse('Action not permitted', status=403)
     import pdb
     pdb.set_trace()

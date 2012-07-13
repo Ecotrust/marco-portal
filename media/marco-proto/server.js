@@ -32,7 +32,7 @@ app.viewModel.loadLayersFromFixture = function () {
 
 
 app.viewModel.loadLayersFromServer = function () {
-	$.getJSON('/layer_manager/get_json', function(data) {
+	$.getJSON('/data_viewer/get_json', function(data) {
 	    app.viewModel.loadLayers(data);
 	});	
 };

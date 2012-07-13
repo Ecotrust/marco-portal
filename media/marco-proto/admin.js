@@ -31,7 +31,7 @@ var adminModel = function () {
 		// });
 		if (layer.id) {
 			// save existing layer
-			url = '/data_viewer/layer/' + id;
+			url = '/data_viewer/layer/' + layer.id;
 		} else {
 			// create new layer
 			url = '/data_viewer/layer'
