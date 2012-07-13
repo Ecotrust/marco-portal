@@ -21,7 +21,7 @@ def create_layer(request):
         return HttpResponse('Action not permitted', status=403)
     
     try:
-        url, name, type, themes = get_layer_components(request)
+        url, name, type, themes = get_layer_components(request.POST)
         
         layer = Layer(
             url = url,
@@ -51,7 +51,7 @@ def update_layer(request, layer_id):
         return HttpResponse("Layer object with id '%s' not found" %layer_id, status=404)
 
     try:
-        url, name, type, themes = get_layer_components(request)
+        url, name, type, themes = get_layer_components(request.POST)
         
         layer.url = url
         layer.name = name        
@@ -69,23 +69,16 @@ def update_layer(request, layer_id):
     result = layer_result(layer, message="Edited Successfully")
     return HttpResponse(simplejson.dumps(result))
     
-def get_layer_components(request):
-    try:
-        url = request.POST['url']
-    except:
-        url = ''
-    try:
-        name = request.POST['name']
-    except:
-        name = ''
-    try:
-        type = request.POST['type']
-    except:
-        type = 'XYZ'
-    try:
-        themes = request.POST.getlist('themes')   
-    except:
-        themes = []
+    
+def get_layer_components(request_dict, url='', name='', type='XYZ', themes=[]):
+    if 'url' in request_dict:
+        url = request_dict['url']
+    if 'name' in request_dict:
+        name = request_dict['name']
+    if 'type' in request_dict:
+        type = request_dict['type']
+    if 'themes' in request_dict:
+        themes = request_dict.getlist('themes') 
     return url, name, type, themes
     
     
