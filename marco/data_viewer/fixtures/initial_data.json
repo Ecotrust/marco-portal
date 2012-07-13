@@ -1,0 +1,58 @@
+[
+    {
+        "pk": 1, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Administrative"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Conservation"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Energy"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Fishing"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Military"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Ocean"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Recreation"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_viewer.theme", 
+        "fields": {
+            "name": "Maritime Industries"
+        }
+    }
+]

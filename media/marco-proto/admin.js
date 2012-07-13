@@ -36,12 +36,12 @@ var adminModel = function () {
 			// create new layer
 			url = '/data_viewer/layer'
 		}
-	
+        
 		// deref themes
 		themes = $.map(layer.themes(), function (theme) {
-					return theme.id;
+					return theme.id; 
 				});
-
+        
 		postData = {
 			themes: themes,
 			name: layer.name(),
@@ -55,10 +55,10 @@ var adminModel = function () {
 		  data: postData,
 		  traditional: true,
 		  success: function () {
-		  	debugger;
+		  	console.log('successful post');
 		  },
 		  error: function () {
-		  	debugger;
+		  	console.log('failed post');
 		  }
 		});
 	};

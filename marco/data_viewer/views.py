@@ -33,10 +33,10 @@ def create_layer(request):
         )
         layer.save()
         theme_list = []
+        
         for theme_id in themes:
             theme = Theme.objects.get(id=theme_id)
-            theme_list.append(theme)
-        layer.theme = theme_list
+            layer.themes.add(theme)
         layer.save()
     except Exception, e:
         return HttpResponse(e.message, status=500)
