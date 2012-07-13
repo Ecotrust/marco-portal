@@ -1,6 +1,6 @@
 # Create your views here.
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils import simplejson
 from models import *
@@ -17,57 +17,50 @@ def getJson(request):
 
 
 def create_layer(request):
-    if request.method != 'POST':
-        return HttpResponse('Action not permitted', status=403)
-    
-    try:
-        url, name, type, themes = get_layer_components(request.POST)
-        
-        layer = Layer(
-            url = url,
-            name = name,
-            layer_type = type
-        )
-        layer.save()
-        
-        for theme_id in themes:
-            theme = Theme.objects.get(id=theme_id)
-            layer.themes.add(theme)
-        layer.save()
-    except Exception, e:
-        return HttpResponse(e.message, status=500)
+    if request.POST:
+        try:
+            url, name, type, themes = get_layer_components(request.POST)
+            layer = Layer(
+                url = url,
+                name = name,
+                layer_type = type
+            )
+            layer.save()
+            
+            for theme_id in themes:
+                theme = Theme.objects.get(id=theme_id)
+                layer.themes.add(theme)
+            layer.save()
+            
+        except Exception, e:
+            return HttpResponse(e.message, status=500)
 
-    result = layer_result(layer, message="Saved Successfully")            
-    return HttpResponse(simplejson.dumps(result))
+        result = layer_result(layer, message="Saved Successfully")            
+        return HttpResponse(simplejson.dumps(result))
 
     
 def update_layer(request, layer_id):
-    if request.method != 'POST':
-        return HttpResponse('Action not permitted', status=403)
+    if request.POST:
+        layer = get_object_or_404(Layer, layer_id)
         
-    try: 
-        layer = Layer.objects.get(id=layer_id)
-    except Exception, e:
-        return HttpResponse("Layer object with id '%s' not found" %layer_id, status=404)
+        try:
+            url, name, type, themes = get_layer_components(request.POST)
+            layer.url = url
+            layer.name = name        
+            layer.save()
+            
+            for theme in layer.themes.all():
+                layer.themes.remove(theme)
+            for theme_id in themes:
+                theme = Theme.objects.get(id=theme_id)
+                layer.themes.add(theme)            
+            layer.save()  
+            
+        except Exception, e:
+            return HttpResponse(e.message, status=500)
 
-    try:
-        url, name, type, themes = get_layer_components(request.POST)
-        
-        layer.url = url
-        layer.name = name        
-        layer.save()
-        
-        for theme in layer.themes.all():
-            layer.themes.remove(theme)
-        for theme_id in themes:
-            theme = Theme.objects.get(id=theme_id)
-            layer.themes.add(theme)            
-        layer.save()        
-    except Exception, e:
-        return HttpResponse(e.message, status=500)
-
-    result = layer_result(layer, message="Edited Successfully")
-    return HttpResponse(simplejson.dumps(result))
+        result = layer_result(layer, message="Edited Successfully")
+        return HttpResponse(simplejson.dumps(result))
     
     
 def get_layer_components(request_dict, url='', name='', type='XYZ', themes=[]):
