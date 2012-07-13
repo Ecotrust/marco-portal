@@ -41,8 +41,6 @@ def create_layer(request):
     
 def update_layer(request, layer_id):
     if request.POST:
-        import pdb
-        pdb.set_trace()
         layer = get_object_or_404(Layer, id=layer_id)
         
         try:
