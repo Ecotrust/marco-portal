@@ -27,13 +27,13 @@ app.restoreState = {};
 app.viewModel.admin = new adminModel() || false;
 
 ko.applyBindings(app.viewModel);
-
+app.viewModel.loadLayersFromFixture();
 
 // initialize the map
 app.init();
 // Google.v3 uses EPSG:900913 as projection, so we have to
 // transform our coordinates
-app.map.setCenter(new OpenLayers.LonLat(-66.0, 41.5).transform(
+app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
 
 
