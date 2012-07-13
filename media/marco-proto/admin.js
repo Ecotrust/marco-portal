@@ -47,12 +47,12 @@ var adminModel = function () {
 			// create new layer
 			url = '/data_viewer/layer'
 		}
-	
+        
 		// deref themes
 		themes = $.map(layer.themes(), function (theme) {
-					return theme.id;
+					return theme.id; 
 				});
-
+        
 		postData = {
 			themes: themes,
 			name: layer.name,

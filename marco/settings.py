@@ -31,7 +31,8 @@ INSTALLED_APPS += ( 'clipping',
                     'drawing',
                     'reports',
                     'data_viewer',
-                    'django.contrib.humanize')
+                    'django.contrib.humanize',
+                    'flatblocks' )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
