@@ -23,7 +23,7 @@ Template Name: Homepage
 			<!-- Example row of columns -->
 			<div class="row bugs">
 			  <div class="span4">
-				<a href="<?php echo get_bloginfo('wpurl'); ?>/news">
+				<a href="<?php echo get_bloginfo('wpurl'); ?>/learn">
 					<div class="wrapper">
 					      <div class="icon" id="learn-img"></div>
 					      <h3>Learn</h3>
@@ -32,7 +32,7 @@ Template Name: Homepage
 				</a>
 			  </div>
 			  <div class="span4">
-			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/data">
+			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/explore">
 				    <div class="wrapper">
 						<div class="icon" id="explore-img"></div>				      
 				      	<h3>Explore</h3>
