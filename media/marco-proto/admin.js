@@ -34,6 +34,7 @@ var adminModel = function () {
 		self.activeObject(layer);
 		self.objectForEditing($.extend({}, layer));
 		self.adminMode('editLayer');
+		console.dir(layer.themes());
 	};
 
 	self.editTheme = function (theme) {
@@ -47,7 +48,6 @@ var adminModel = function () {
 
 	self.saveActiveLayer = function () {
 		var layer = self.objectForEditing(), postData, themes, url, update=false, oldLayerActive=false;
-
 		if (layer.id) {
 			// save existing layer
 			url = '/data_viewer/layer/' + layer.id;
@@ -82,11 +82,15 @@ var adminModel = function () {
 		   			// edited layer was active, keep it active
 		   			newLayer.activateLayer();
 		   		}
+
+		   		// updating, remove from existing themes
+		   		if (update) {
+		   			$.each(app.viewModel.themes(), function (index, theme) {
+		   				theme.layers.remove(self.activeObject());
+		   			});
+		   		}
+
 				$.each(layer.themes(), function (index, theme) {
-					if (update) {
-						// remove the old layer
-						themes.layers.remove(self.activeLayer());
-					}
 					theme.layers.unshift(newLayer);
 				});
 
