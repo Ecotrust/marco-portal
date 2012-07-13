@@ -31,6 +31,7 @@ INSTALLED_APPS += ( 'clipping',
                     'drawing',
                     'reports',
                     'data_viewer',
+                    'explore',
                     'django.contrib.humanize',
                     'flatblocks' )
 

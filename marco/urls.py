@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     (r'^sdc/', include('scenarios.urls')),
     (r'^drawing/', include('drawing.urls')),
     (r'^data_viewer/', include('data_viewer.urls')),
+    (r'^explore/', include('explore.urls')),
 )
