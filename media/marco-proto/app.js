@@ -24,8 +24,6 @@ app.restoreState = {};
 
 
 
-app.viewModel.admin = new adminModel() || false;
-
 ko.applyBindings(app.viewModel);
 app.viewModel.loadLayersFromServer();
 

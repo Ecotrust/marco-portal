@@ -84,12 +84,6 @@ function layerModel(options, parent) {
 		// save a ref to the active layer for editing,etc
         app.viewModel.activeLayer(layer);
 
-        // don't do any of this if we are in admin mode
-        if (app.viewModel.admin && app.viewModel.admin.adminMode()) {
-        	app.viewModel.admin.editLayer(layer);
-        	return false;
-        }
-
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -167,7 +161,6 @@ function layerModel(options, parent) {
 
 function themeModel(options) {
 	var self = this;
-
 	self.name = options.name;
 	self.id = options.id
 	// array of layers
@@ -284,9 +277,6 @@ function bookmarkModel($popover) {
 
 function viewModel() {
 	var self = this;
-
-	// admin viewmodel, false unless admin.js is included
-	self.admin = false;
 
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
