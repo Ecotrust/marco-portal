@@ -6,17 +6,19 @@ import madrona.layer_manager as layer_manager
 from django.utils import simplejson
 from models import *
 
-def test(request):
 
-    json =  layer_manager.views.test(0).content
-    #import pdb
-    #pdb.set_trace()
-    #json = 'hi'
-    params = {
-        'layers': json
+def getJson(request):
+    json = {
+        "state": {
+        "activeLayers": []
+    },
+    "layers": [layer.toDict for layer in Layer.objects.filter(is_sublayer=False)],
+    "themes": [theme.toDict for theme in Theme.objects.all()],
+    "success": True
     }
-    #return render_to_response('../media/marco-proto/layers.html', RequestContext(request, params))
-    return HttpResponseRedirect('/media/marco-proto/index.html')
+    return HttpResponse(simplejson.dumps(json))
+
+
 
 def create_layer(request):
     if request.method != 'POST':
