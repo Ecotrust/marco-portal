@@ -41,7 +41,9 @@ def create_layer(request):
     
 def update_layer(request, layer_id):
     if request.POST:
-        layer = get_object_or_404(Layer, layer_id)
+        import pdb
+        pdb.set_trace()
+        layer = get_object_or_404(Layer, id=layer_id)
         
         try:
             url, name, type, themes = get_layer_components(request.POST)
