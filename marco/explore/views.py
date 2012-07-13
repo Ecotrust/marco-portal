@@ -4,11 +4,10 @@ from data_viewer.models import *
 
 
 def data_catalog(request, template='catalog.html'):
-    if request.POST:
-        themes = Theme.objects.all()
-        layers = Layer.objects.all()
-        context = {'themes': themes, 'layers': layers}
-        return render_to_response(template, RequestContext(request, context)) 
+    themes = Theme.objects.all()
+    layers = Layer.objects.all()
+    context = {'themes': themes, 'layers': layers}
+    return render_to_response(template, RequestContext(request, context)) 
 
 def data_needs(request):
     pass
