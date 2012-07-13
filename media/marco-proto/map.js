@@ -61,7 +61,7 @@ app.addLayerToMap = function(layer) {
             	
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
                 //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
-                layer.url(),
+                layer.url,
                 $.extend({}, opts, 
                     {
                         sphericalMercator: true
@@ -76,7 +76,7 @@ app.addLayerToMap = function(layer) {
                     projection: new OpenLayers.Projection('EPSG:3857'),
                     strategies: [new OpenLayers.Strategy.Fixed()],
                     protocol: new OpenLayers.Protocol.HTTP({
-                        url: layer.url(),
+                        url: layer.url,
                         format: new OpenLayers.Format.GeoJSON()
                     })
                 }
@@ -85,7 +85,7 @@ app.addLayerToMap = function(layer) {
             // adding layer to the map for the first time		
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
                 //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
-                layer.url(),
+                layer.url,
                 $.extend({}, opts, 
                     {
                         sphericalMercator: true
