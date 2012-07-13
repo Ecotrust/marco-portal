@@ -38,11 +38,13 @@ var adminModel = function () {
 	}
 
 	self.saveActiveLayer = function () {
-		var layer = self.layerForEditing(), postData, themes, url;
+		var layer = self.layerForEditing(), postData, themes, url, update=false, oldLayerActive=false;
 
 		if (layer.id) {
 			// save existing layer
 			url = '/data_viewer/layer/' + layer.id;
+			update = true;
+			oldLayerActive = layer.active();
 		} else {
 			// create new layer
 			url = '/data_viewer/layer'
@@ -58,9 +60,7 @@ var adminModel = function () {
 			name: layer.name,
 			url: layer.url
 		};
-		
-		// update the frontend
-		//$.extend(app.viewModel.activeLayer(), self.layerForEditing());
+
 		self.adminMode(true);
 		$.ajax({
 		   type: 'POST',
@@ -70,7 +70,16 @@ var adminModel = function () {
 		   dataType: 'json',
 		   success: function (data) {
 		   		var newLayer = new layerModel(data.layer);
+
+		   		if (oldLayerActive) {
+		   			// edited layer was active, keep it active
+		   			newLayer.activateLayer();
+		   		}
 				$.each(layer.themes(), function (index, theme) {
+					if (update) {
+						// remove the old layer
+						themes.layers.remove(app.viewModel.activeLayer());
+					}
 					theme.layers.push(newLayer);
 				});
 
