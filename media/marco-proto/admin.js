@@ -2,33 +2,44 @@
 var adminModel = function () {
 	var self = this;
 
-	// reference to currently edited layer
-	self.activeLayer = ko.observable(false);
-
 	// show admin menus
+	// options are
+	// 	   true --- base editing mode 
+	//     "editLayer"
+	//     "editTheme"
 	self.adminMode = ko.observable(false);
 	self.toggleAdmin = function () {
-		self.adminMode(! self.adminMode());
+		if (self.adminMode()) {
+			// toggle admin mode off
+			self.adminMode(false);
+			app.viewModel.showMapPanel(true);
+		} else {		
+			// toggle admin mode on
+			self.adminMode(! self.adminMode());
+			app.viewModel.showMapPanel(false);
+		}
 	};
 
 	self.addLayer = function () {
-		self.activeLayer(new layerModel({
-			name: null
-		}));
-		app.viewModel.showMapPanel(true);
+		app.viewModel.activeLayer(new layerModel({}));
+		self.layerForEditing($.extend({}, new layerModel({})));
+		self.adminMode('editLayer');
 	};
 
-	self.editLayer = function (layer) {
-		self.activeLayer($.extend({}, layer));
-		app.viewModel.showMapPanel(true);
+	self.layerForEditing = ko.observable();
+	self.editLayer = function () {
+		self.layerForEditing($.extend({}, app.viewModel.activeLayer()));
+		self.adminMode('editLayer');
 	};
+
+	self.cancelEdit = function () {
+		self.layerForEditing(false);
+		self.adminMode(true);
+	}
 
 	self.saveActiveLayer = function () {
-		var layer = self.activeLayer(), postData, themes, url;
+		var layer = self.layerForEditing(), postData, themes, url;
 
-		// $.each(layer.themes(), function (index, theme) {
-		// 	theme.layers.push(layer);
-		// });
 		if (layer.id) {
 			// save existing layer
 			url = '/data_viewer/layer/' + layer.id;
@@ -44,22 +55,29 @@ var adminModel = function () {
 
 		postData = {
 			themes: themes,
-			name: layer.name(),
-			url: layer.url()
+			name: layer.name,
+			url: layer.url
 		};
 
-		$('.layer-modal').modal('hide');
+		// update the frontend
+		//$.extend(app.viewModel.activeLayer(), self.layerForEditing());
+		self.adminMode(true);
 		$.ajax({
-		  type: 'POST',
-		  url: url,
-		  data: postData,
-		  traditional: true,
-		  success: function () {
-		  	debugger;
-		  },
-		  error: function () {
-		  	debugger;
-		  }
+		   type: 'POST',
+		   url: url,
+		   data: postData,
+		   traditional: true,
+		   dataType: 'json',
+		   success: function (data) {
+		   		var layer = new layerModel(data.layer);
+				$.each(layer.themes(), function (index, theme) {
+					theme.layers.push(layer);
+				});
+
+			},
+		   error: function () {
+		   	console.log('error');
+		   }
 		});
 	};
 

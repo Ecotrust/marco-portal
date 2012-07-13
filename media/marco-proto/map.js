@@ -59,7 +59,7 @@ app.addLayerToMap = function(layer) {
 
             app.map.addControl(layer.utfcontrol); 
             	
-            layer.layer = new OpenLayers.Layer.XYZ(layer.name(), 
+            layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
                 //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
                 layer.url(),
                 $.extend({}, opts, 
@@ -71,7 +71,7 @@ app.addLayerToMap = function(layer) {
             
         } else if (layer.type == 'Vector') {
             layer.layer = new OpenLayers.Layer.Vector(
-                layer.name(),
+                layer.name,
                 {
                     projection: new OpenLayers.Projection('EPSG:3857'),
                     strategies: [new OpenLayers.Strategy.Fixed()],
@@ -83,7 +83,7 @@ app.addLayerToMap = function(layer) {
             );
         } else { //if XYZ with no utfgrid
             // adding layer to the map for the first time		
-            layer.layer = new OpenLayers.Layer.XYZ(layer.name(), 
+            layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
                 //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
                 layer.url(),
                 $.extend({}, opts, 

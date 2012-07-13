@@ -3,8 +3,8 @@ function layerModel(options, parent) {
 
 	// properties
 	self.id = options.id || null;
-	self.name = ko.observable(options.name || null);
-	self.url = ko.observable(options.url || null);
+	self.name = options.name || null;
+	self.url = options.url || null;
 	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
@@ -29,10 +29,10 @@ function layerModel(options, parent) {
 	// save a ref to the parent, if it exists
 	if (parent) {
 		self.parent = parent;
-		self.fullName = self.parent.name() + " (" + self.name() + ")";
+		self.fullName = self.parent.name + " (" + self.name + ")";
 
 	} else {
-    	self.fullName = self.name();
+    	self.fullName = self.name;
 	}
     
 
@@ -83,6 +83,11 @@ function layerModel(options, parent) {
 
 		// save a ref to the active layer for editing,etc
         app.viewModel.activeLayer(layer);
+
+        // don't do any of this if we are in admin mode
+        if (app.viewModel.admin && app.viewModel.admin.adminMode()) {
+        	return false;
+        }
 
 		if (layer.active()) {
 			// layer is active
@@ -288,11 +293,11 @@ function viewModel() {
 	// reference to active theme model
 	self.activeThemes = ko.observableArray();
 
-	// reference to active layer for editing, etc
-	self.activeLayer = ko.observable();
-
 	// list of theme models
 	self.themes = ko.observableArray();
+
+	// last clicked layer for editing, etc
+	self.activeLayer = ko.observable();
 
 	// index for filter autocomplete and lookups
 	self.layerIndex = {};
@@ -309,8 +314,8 @@ function viewModel() {
     	self.error(null);
     };
 
-    // shrink the map to show admin or legend panel
-    self.showMapPanel = ko.observable(false);
+    // show the map?
+    self.showMapPanel = ko.observable(true);
 
     //show Legend by default
     self.showLegend = ko.observable(false);
@@ -318,7 +323,6 @@ function viewModel() {
 
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
-    	self.showMapPanel(! self.showMapPanel());
     	app.map.render('map');
     };
     self.hasActiveLegends = ko.computed( function() {
