@@ -10,3 +10,5 @@ def data_catalog(request, template='catalog.html'):
         context = {'themes': themes, 'layers': layers}
         return render_to_response(template, RequestContext(request, context)) 
 
+def data_needs(request):
+    pass
