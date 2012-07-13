@@ -45,7 +45,8 @@ def create_layer(request):
         "status_code":1,  
         "success":True, 
         "message":"Saved successfully",
-        "layer": layer.toDict
+        "layer": layer.toDict,
+        "themes": [theme.id for theme in layer.themes.all()]
     }              
     return HttpResponse(simplejson.dumps(result))
 

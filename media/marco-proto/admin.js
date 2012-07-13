@@ -50,15 +50,15 @@ var adminModel = function () {
         
 		// deref themes
 		themes = $.map(layer.themes(), function (theme) {
+					console.log(theme);
 					return theme.id; 
 				});
-        
 		postData = {
 			themes: themes,
 			name: layer.name,
 			url: layer.url
 		};
-
+		
 		// update the frontend
 		//$.extend(app.viewModel.activeLayer(), self.layerForEditing());
 		self.adminMode(true);
@@ -69,9 +69,9 @@ var adminModel = function () {
 		   traditional: true,
 		   dataType: 'json',
 		   success: function (data) {
-		   		var layer = new layerModel(data.layer);
+		   		var newLayer = new layerModel(data.layer);
 				$.each(layer.themes(), function (index, theme) {
-					theme.layers.push(layer);
+					theme.layers.push(newLayer);
 				});
 
 			},

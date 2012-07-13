@@ -27,7 +27,7 @@ app.restoreState = {};
 app.viewModel.admin = new adminModel() || false;
 
 ko.applyBindings(app.viewModel);
-app.viewModel.loadLayersFromFixture();
+app.viewModel.loadLayersFromServer();
 
 // initialize the map
 app.init();

@@ -18,7 +18,7 @@ app.viewModel.loadLayers = function (data) {
 			// create a layerModel and add it to the list of layers
 			var layer = self.layerIndex[layer_id], 
                 searchTerm = layer.name + ' (' + themeFixture.name + ')';
-            layer.themes.push(themeFixture);
+            layer.themes.push(theme);
             theme.layers.push(layer);
             self.layerSearchIndex[searchTerm] = {layer: layer, theme: theme};
 		});
