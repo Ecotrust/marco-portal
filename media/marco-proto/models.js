@@ -167,6 +167,7 @@ function themeModel(options) {
 	// array of layers
 	self.layers = ko.observableArray();
 
+    //add to active themes
 	self.setActiveTheme = function () {
         var theme = this;
         
@@ -174,15 +175,21 @@ function themeModel(options) {
         $('#dataTab').tab('show');
         
 		if (self.isActiveTheme(theme)) {
-			app.viewModel.activeTheme(null);
+			//app.viewModel.activeTheme(null);
+			app.viewModel.activeThemes.remove(theme);
 		} else {
-			app.viewModel.activeTheme(theme);
+			app.viewModel.activeThemes.push(theme);
 		}
 	};
     
+    //is in active themes
 	self.isActiveTheme = function () {
         var theme = this;
-		return app.viewModel.activeTheme() === theme;
+        if (app.viewModel.activeThemes.indexOf(theme) !== -1) {
+            return true;
+        }
+        return false;
+		//return app.viewModel.activeTheme() === theme;
 	};
 
 	return self;
@@ -217,8 +224,8 @@ function bookmarkModel($popover) {
 	}
 
 	self.removeBookmark = function (bookmark) {
-		self.bookmarksList.remove(bookmark);
-		$('#bookmark-popover').hide();
+        self.bookmarksList.remove(bookmark);
+		//$('#bookmark-popover').hide();
 		// store the bookmarks
 		self.storeBookmarks();
 	}
@@ -237,8 +244,13 @@ function bookmarkModel($popover) {
 
 	// get the url from a bookmark
 	self.getUrl = function (bookmark) {
-		return "#" + $.param(bookmark.state);
+        var host = window.location.href.split('#')[0];
+		return host + "#" + $.param(bookmark.state);
 	};
+    
+    self.getEmailHref = function (bookmark) {
+        return "mailto:?subject=MARCO Bookmark&body=" + self.getUrl(bookmark).replace(/&/g, '%26');
+    };
 
 	// store the bookmarks to local storage or server
 	self.storeBookmarks = function () {
@@ -274,7 +286,7 @@ function viewModel() {
 	self.activeLayers = ko.observableArray();
 
 	// reference to active theme model
-	self.activeTheme = ko.observable();
+	self.activeThemes = ko.observableArray();
 
 	// reference to active layer for editing, etc
 	self.activeLayer = ko.observable();
@@ -341,22 +353,26 @@ function viewModel() {
 	};
 	self.selectedLayer = ko.observable();
 	self.showOpacity = function (layer, event) {
-		var $button = $(event.target),
+		var $button = $(event.target).closest('button'),
 			$popover = $('#opacity-popover');
-
-		self.selectedLayer(layer);
-		if ($popover.is(":visible")) {
-			$popover.hide();
-		} 
-		$popover.show().position({
-			"my": "center top",
-			"at": "center bottom",
-			"of": $button
-		});
+        
+        self.selectedLayer(layer);
+        
+        if ( $button.hasClass('active') ) {
+            self.hideOpacity();
+        } else {
+            $popover.show().position({
+                "my": "center top",
+                "at": "center bottom",
+                "of": $button
+            });
+            $button.addClass('active');
+        }
 	
 	}
 	self.hideOpacity = function (self, event) {
-		$('#opacity-popover').hide();		
+		$('#opacity-popover').hide();
+        $('.opacity-button.active').removeClass('active');
         app.updateUrl();
 	}
 
@@ -373,7 +389,8 @@ function viewModel() {
 	self.layerSearch = function () {
         var layer = self.layerSearchIndex[self.searchTerm()].layer,
             theme = self.layerSearchIndex[self.searchTerm()].theme;
-        self.activeTheme(theme);
+        //self.activeTheme(theme);
+        self.activeThemes.push(theme);
         layer.activateLayer();
 	};
 
