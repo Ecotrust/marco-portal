@@ -114,24 +114,22 @@
                                                             <tbody data-bind="foreach: layers ">
                                                                 <tr>
                                                                     <td>
-                                                                        <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }, click: toggleActive">
-                                                                            <i class="icon-align-justify">
-                                                                            </i>
-                                                                            <span data-bind="text: name">
-                                                                            </span>
-                                                                            <span data-bind="visible: activeSublayer">
-                                                                                (
-                                                                                <span data-bind="text: activeSublayer().name">
+                                                                        <div class="btn-group btn-group-layer">
+                                                                            <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }, click: toggleActive">
+                                                                                <i class="icon-align-justify">
+                                                                                </i>
+                                                                                <span data-bind="text: name">
                                                                                 </span>
-                                                                                )
-                                                                            </span>
-                                                                            <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
-                                                                            </i>
-                                                                        </button>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="btn-group">
-                                                                            <div data-bind="if: subLayers.length > 0">
+                                                                                <span data-bind="visible: activeSublayer">
+                                                                                    (
+                                                                                    <span data-bind="text: activeSublayer().name">
+                                                                                    </span>
+                                                                                    )
+                                                                                </span>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
+                                                                                </i>
+                                                                            </button>
+                                                                            <!-- ko if: subLayers.length > 0 -->
                                                                                 <button class="btn dropdown-toggle" data-toggle="dropdown" >
                                                                                     <span class="caret">
                                                                                     </span>
@@ -140,10 +138,10 @@
                                                                                     <li data-bind="foreach: subLayers">
                                                                                         <a data-bind="click: toggleActive">
                                                                                             <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                        <span data-bind="text: name"></a>
+                                                                                        <span data-bind="text: name"></span></a>
                                                                                     </li>
                                                                                 </ul>
-                                                                            </div>
+                                                                            <!-- /ko -->
                                                                         </div>
                                                                     </td>
                                                                 </tr>
