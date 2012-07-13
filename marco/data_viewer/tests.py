@@ -7,8 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from django.test.client import Client
-from madrona.layer_manager import *
-from madrona.layer_manager.models import Theme, Layer
+from models import Theme, Layer
 import simplejson
 
 class SimpleTest(TestCase):

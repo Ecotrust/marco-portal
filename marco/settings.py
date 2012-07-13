@@ -31,7 +31,6 @@ INSTALLED_APPS += ( 'clipping',
                     'drawing',
                     'reports',
                     'data_viewer',
-                    'madrona.layer_manager',
                     'django.contrib.humanize')
 
 GEOMETRY_DB_SRID = 99996

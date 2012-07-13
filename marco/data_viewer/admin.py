@@ -1,5 +1,5 @@
 from django.contrib import admin
-from madrona.layer_manager.models import * 
+from models import * 
 
 class ThemeAdmin(admin.ModelAdmin):
     #list_display = ('name')
