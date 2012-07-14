@@ -74,10 +74,10 @@
                         <!-- end header -->
                         <div class="container">
                             <div id="content" class="clearfix row-fluid">
-                                <div id="main" class="span8 clearfix" role="main">
+                                <div id="main" class="span9 clearfix" role="main">
                                     {% block  main %}{% endblock %}
                                 </div>
-                                    <div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
+                                    <div id="sidebar1" class="fluid-sidebar sidebar span3" role="complementary">
                                         <div id="linkcat-5" class="widget widget_links">
                                             <h4 class="widgettitle">
                                                 Data
@@ -136,20 +136,9 @@
                                 </footer>
                             </div>
                             <!-- end #container -->
-                            <!-- scripts are now optimized via Modernizr.load -->
-                            <script src="http://dev.marco.marineplanning.org/portal/wp-content/themes/marco/library/js/scripts.js">
-                            </script>
-                            <!--[if lt IE 7 ]>
-                                <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js">
-                                </script>
-                                <script>
-                                window.attachEvent('onload', function() {
-    CFInstall.check({
-        mode: 'overlay'
-    })
-})
-                                </script>
-                            <![endif]-->
+                            <!-- scripts are now optimized via Modernizr.load -->\
+                            <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
+
+                            <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
                     </body>
-                    
                     </html>
