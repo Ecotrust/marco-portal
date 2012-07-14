@@ -5,7 +5,7 @@ from viewer.models import *
 
 
 def data_catalog(request, template='catalog.html'):
-    themes = Theme.objects.all()
+    themes = Theme.objects.all().order_by('id')
     context = {'themes': themes}
     return render_to_response(template, RequestContext(request, context)) 
 
