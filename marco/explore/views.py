@@ -6,8 +6,7 @@ from data_viewer.models import *
 
 def data_catalog(request, template='catalog.html'):
     themes = Theme.objects.all()
-    layers = Layer.objects.all()
-    context = {'themes': themes, 'layers': layers}
+    context = {'themes': themes}
     return render_to_response(template, RequestContext(request, context)) 
 
 def data_needs(request):
