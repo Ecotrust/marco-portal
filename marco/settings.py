@@ -30,7 +30,7 @@ INSTALLED_APPS += ( 'clipping',
                     'scenarios', 
                     'drawing',
                     'reports',
-                    'data_viewer',
+                    'viewer',
                     'explore',
                     'django.contrib.humanize',
                     'flatblocks' )
