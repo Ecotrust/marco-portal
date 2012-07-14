@@ -32,10 +32,9 @@
                             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
                             </script>
                         <![endif]-->
-                        <link rel="stylesheet" href="{{MEDIA_URL}}/marco/css/bootstrap.css">
-                        <link rel="stylesheet" href="{{MEDIA_URL}}/marco/style.css">
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap.css">
                         <!-- marco stylesheet -->
-                        <link rel="stylesheet" href="{{MEDIA_URL}}/marco/css/marco_style.css">
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.css">
                     </head>
                     
                     <body class="blog">
@@ -76,6 +75,8 @@
                         <div class="container">
                             <div id="content" class="clearfix row-fluid">
                                 <div id="main" class="span8 clearfix" role="main">
+                                    {% block  main %}{% endblock %}
+                                </div>
                                     <div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
                                         <div id="linkcat-5" class="widget widget_links">
                                             <h4 class="widgettitle">
