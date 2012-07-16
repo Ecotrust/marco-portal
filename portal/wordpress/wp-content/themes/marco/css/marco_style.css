@@ -235,12 +235,15 @@ hr {
 	list-style: none;
 	margin-left: 0;
 }
-.sidebar h4 {
+.sidebar h3 {
 	font-size: 18px;
-	margin-bottom: 5px;
+}
+.sidebar h3 a, .sidebar h3 a:visited {
+	color: #2d8998;
 }
 .sidebar a {
 	color: #333;
+
 }
 
 img + h3 {
