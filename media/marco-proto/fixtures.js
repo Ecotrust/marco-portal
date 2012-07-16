@@ -219,27 +219,35 @@ app.fixture = {
 	}],
 	themes: [{
 		name: "Administrative",
+		id: 1,
 		layers: [1, 2, 3, 104, 5]
 	}, {
 		name: "Conservation",
+		id: 2,
 		layers: [6, 7, 8, 101, 9, 10, 11, 12, 13, 102]
 	}, {
 		name: "Energy",
+		id: 3,
 		layers: [14, 114]
 	}, {
 		name: "Fishing",
+		id: 4,
 		layers: [501]
 	}, {
 		name: "Military",
+		id: 5,
 		layers: [19, 20, 21]
 	}, {
 		name: "Ocean",
+		id: 6,
 		layers: [22, 23, 24, 25]
 	}, {
 		name: "Recreation",
+		id: 7,
 		layers: [222, 223]
 	}, {
 		name: "Maritime Industries",
+		id: 8,
 		layers: [224, 225, 226, 227, 228, 229, 230, 231, 232]
 	}]
 }

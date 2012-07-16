@@ -3,8 +3,8 @@ function layerModel(options, parent) {
 
 	// properties
 	self.id = options.id || null;
-	self.name = ko.observable(options.name || null);
-	self.url = ko.observable(options.url || null);
+	self.name = options.name || null;
+	self.url = options.url || null;
 	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
@@ -29,16 +29,17 @@ function layerModel(options, parent) {
 	// save a ref to the parent, if it exists
 	if (parent) {
 		self.parent = parent;
-		self.fullName = self.parent.name() + " (" + self.name() + ")";
+		self.fullName = self.parent.name + " (" + self.name + ")";
 
 	} else {
-    	self.fullName = self.name();
+    	self.fullName = self.name;
 	}
     
 
     self.toggleLegendVisibility = function() {
         var layer = this;
         layer.legendVisibility(!layer.legendVisibility());
+        
     }
 
 	self.deactivateLayer = function () {
@@ -79,7 +80,10 @@ function layerModel(options, parent) {
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
 		app.viewModel.error(null);
-        
+
+		// save a ref to the active layer for editing,etc
+        app.viewModel.activeLayer(layer);
+
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -155,14 +159,14 @@ function layerModel(options, parent) {
 	return self;
 }
 
-function themeModel(name) {
+function themeModel(options) {
 	var self = this;
-
-	self.name = name;
-
+	self.name = options.name;
+	self.id = options.id
 	// array of layers
 	self.layers = ko.observableArray();
 
+    //add to active themes
 	self.setActiveTheme = function () {
         var theme = this;
         
@@ -170,15 +174,21 @@ function themeModel(name) {
         $('#dataTab').tab('show');
         
 		if (self.isActiveTheme(theme)) {
-			app.viewModel.activeTheme(null);
+			//app.viewModel.activeTheme(null);
+			app.viewModel.activeThemes.remove(theme);
 		} else {
-			app.viewModel.activeTheme(theme);
+			app.viewModel.activeThemes.push(theme);
 		}
 	};
     
+    //is in active themes
 	self.isActiveTheme = function () {
         var theme = this;
-		return app.viewModel.activeTheme() === theme;
+        if (app.viewModel.activeThemes.indexOf(theme) !== -1) {
+            return true;
+        }
+        return false;
+		//return app.viewModel.activeTheme() === theme;
 	};
 
 	return self;
@@ -213,8 +223,8 @@ function bookmarkModel($popover) {
 	}
 
 	self.removeBookmark = function (bookmark) {
-		self.bookmarksList.remove(bookmark);
-		$('#bookmark-popover').hide();
+        self.bookmarksList.remove(bookmark);
+		//$('#bookmark-popover').hide();
 		// store the bookmarks
 		self.storeBookmarks();
 	}
@@ -233,8 +243,13 @@ function bookmarkModel($popover) {
 
 	// get the url from a bookmark
 	self.getUrl = function (bookmark) {
-		return "#" + $.param(bookmark.state);
+        var host = window.location.href.split('#')[0];
+		return host + "#" + $.param(bookmark.state);
 	};
+    
+    self.getEmailHref = function (bookmark) {
+        return "mailto:?subject=MARCO Bookmark&body=" + self.getUrl(bookmark).replace(/&/g, '%26');
+    };
 
 	// store the bookmarks to local storage or server
 	self.storeBookmarks = function () {
@@ -263,17 +278,17 @@ function bookmarkModel($popover) {
 function viewModel() {
 	var self = this;
 
-	// admin viewmodel, false unless admin.js is included
-	self.admin = false;
-
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
 
 	// reference to active theme model
-	self.activeTheme = ko.observable();
+	self.activeThemes = ko.observableArray();
 
 	// list of theme models
 	self.themes = ko.observableArray();
+
+	// last clicked layer for editing, etc
+	self.activeLayer = ko.observable();
 
 	// index for filter autocomplete and lookups
 	self.layerIndex = {};
@@ -290,8 +305,13 @@ function viewModel() {
     	self.error(null);
     };
 
+    // show the map?
+    self.showMapPanel = ko.observable(true);
+
     //show Legend by default
     self.showLegend = ko.observable(false);
+
+
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
     	app.map.render('map');
@@ -305,6 +325,7 @@ function viewModel() {
         });
         return hasLegends;
     });
+
 
 	// show bookmark stuff
 	self.showBookmarks = function (self, event) {
@@ -327,22 +348,26 @@ function viewModel() {
 	};
 	self.selectedLayer = ko.observable();
 	self.showOpacity = function (layer, event) {
-		var $button = $(event.target),
+		var $button = $(event.target).closest('button'),
 			$popover = $('#opacity-popover');
-
-		self.selectedLayer(layer);
-		if ($popover.is(":visible")) {
-			$popover.hide();
-		} 
-		$popover.show().position({
-			"my": "center top",
-			"at": "center bottom",
-			"of": $button
-		});
+        
+        self.selectedLayer(layer);
+        
+        if ( $button.hasClass('active') ) {
+            self.hideOpacity();
+        } else {
+            $popover.show().position({
+                "my": "center top",
+                "at": "center bottom",
+                "of": $button
+            });
+            $button.addClass('active');
+        }
 	
 	}
 	self.hideOpacity = function (self, event) {
-		$('#opacity-popover').hide();		
+		$('#opacity-popover').hide();
+        $('.opacity-button.active').removeClass('active');
         app.updateUrl();
 	}
 
@@ -353,53 +378,18 @@ function viewModel() {
 	};
 
 
-	// load layers from fixture or the server
-	self.loadLayers = function (data) {
-
-		// load layers
-		$.each(data.layers, function (i, layer) {
-			var layerViewModel = new layerModel(layer);
-			self.layerIndex[layer.id] = layerViewModel;
-            // add sublayers if they exist
-            if (layer.subLayers) {	
-                $.each(layer.subLayers, function (i, layer_options) {
-                    var subLayer = new layerModel(layer_options, layerViewModel);
-                    app.viewModel.layerIndex[subLayer.id] = subLayer;
-                    layerViewModel.subLayers.push(subLayer);
-                });
-            }
-		});
-
-		// load themes
-		$.each(data.themes, function (i, themeFixture) {
-			var layers = [],
-                theme = new themeModel(themeFixture.name);
-			$.each(themeFixture.layers, function (j, layer_id) {
-				// create a layerModel and add it to the list of layers
-				var layer = self.layerIndex[layer_id], 
-                    searchTerm = layer.name() + ' (' + themeFixture.name + ')';
-                layer.themes.push(themeFixture);
-                theme.layers.push(layer);
-                self.layerSearchIndex[searchTerm] = {layer: layer, theme: theme};
-                if (layer.subLayers) {
-                    $.each(layer.subLayers, function (i, subLayer) {
-                        var searchTerm = layer.name() + ' / ' + subLayer.name() + ' (' + themeFixture.name + ')';
-                        self.layerSearchIndex[searchTerm] = {layer: subLayer, theme: theme};
-                    });
-                }
-			});
-			self.themes.push(theme);
-		});
-	};
 
 	// handle the search form
 	self.searchTerm = ko.observable();
 	self.layerSearch = function () {
         var layer = self.layerSearchIndex[self.searchTerm()].layer,
             theme = self.layerSearchIndex[self.searchTerm()].theme;
-        self.activeTheme(theme);
+        //self.activeTheme(theme);
+        self.activeThemes.push(theme);
         layer.activateLayer();
 	};
+
+
 
 	// do this stuff when the active layers change
 	self.activeLayers.subscribe(function () {
@@ -429,3 +419,5 @@ function viewModel() {
 	return self;
 }
 
+
+app.viewModel = new viewModel();

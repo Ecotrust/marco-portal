@@ -9,7 +9,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'marco',
-        'USER': 'postgres',
+        'USER': 'eknuth',
     }
 }
 
@@ -30,7 +30,10 @@ INSTALLED_APPS += ( 'clipping',
                     'scenarios', 
                     'drawing',
                     'reports',
-                    'django.contrib.humanize' )
+                    'viewer',
+                    'explore',
+                    'django.contrib.humanize',
+                    'flatblocks' )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon

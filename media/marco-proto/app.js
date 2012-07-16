@@ -23,17 +23,15 @@ app.restoreState = {};
 
 
 
-app.viewModel = new viewModel();
-app.viewModel.admin = new adminModel() || false;
-app.viewModel.loadLayers(app.fixture);
-ko.applyBindings(app.viewModel);
 
+ko.applyBindings(app.viewModel);
+app.viewModel.loadLayersFromServer();
 
 // initialize the map
 app.init();
 // Google.v3 uses EPSG:900913 as projection, so we have to
 // transform our coordinates
-app.map.setCenter(new OpenLayers.LonLat(-66.0, 41.5).transform(
+app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
 
 
@@ -72,8 +70,17 @@ $(document).ready(function () {
 });
 
 $(document).click(function (e) {
-    if (e.target.id === "bookmarks-button") {
-    } else if (!$(e.target).closest("#bookmark-popover").length) {
+    if ( e.target.id === "bookmarks-button" ) {
+    } else if ( !$(e.target).closest("#bookmark-popover").length ) {
         $('#bookmark-popover').hide();
+    }
+    var op_pvr_event = $(e.target).closest("#opacity-popover").length;
+    var op_btn_event = $(e.target).closest(".opacity-button").length;
+    //console.log('opacity popover click: ' + op_pvr_event);
+    //console.log('opacity button click: ' + op_btn_event);
+    if ( !op_pvr_event && !op_btn_event ) {
+        //console.log('hiding opacity popover');
+        //$('#opacity-popover').hide();
+        app.viewModel.hideOpacity();
     }
 });

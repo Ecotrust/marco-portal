@@ -21,7 +21,7 @@ app.getState = function () {
 
 
 // load state from fixture or server
-app.loadState = function( state) {
+app.loadState = function(state) {
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
     var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
@@ -33,10 +33,13 @@ app.loadState = function( state) {
     });
     // turn on the layers that should be active
     if (state.activeLayers) {
-        $.each(state.activeLayers, function(index, layer) {
-            app.viewModel.layerIndex[layer.id].activateLayer();
-            app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
-        });
+       $.each(state.activeLayers, function(index, layer) {
+            if (app.viewModel.layerIndex[layer.id]) {
+                app.viewModel.layerIndex[layer.id].activateLayer();
+                app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
+            }
+            
+       });
     }
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
@@ -53,6 +56,7 @@ app.loadStateFromHash = function (hash) {
 
 // update the hash
 app.updateUrl = function () {
+
     var state = app.getState();
     // save the restore state
     if (app.saveStateMode) {

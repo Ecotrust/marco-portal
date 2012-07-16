@@ -14,7 +14,7 @@ Template Name: Homepage
 			      <img class="span12" src="<?php echo get_template_directory_uri(); ?>/img/map-depth.png"/>
 			      <div class="caption">
 			        <h2>Resources for Mid-Atlantic <strong>ocean planning.</strong></h2>
-			        <p class="pull-right"><a>Launch Marine Planner Now &gt;</a></p>
+			        <p class="pull-right"><a href="http://dev.marco.marineplanning.org">Launch Marine Planner Now &gt;</a></p>
 			      </div>
 			    </div>
 			  </div>
@@ -41,7 +41,7 @@ Template Name: Homepage
 				 </a>
 			 </div>
 			  <div class="span4">
-			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/tools">			  	
+			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">			  	
 				    <div class="wrapper">
 				    	<div class="icon" id="visualize-img"></div>
 				     	<h3>Visualize</h3>

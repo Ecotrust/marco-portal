@@ -1,0 +1,61 @@
+{% extends 'explore_base.html' %} 
+{% block main %}
+{% load flatblock_tags %}
+
+<!--  foreach theme  -->
+{% for theme in themes %}
+<div class="theme">
+	<div>
+		<div class="pull-right">
+		    <img src="http://placekitten.com/280/200" />
+		</div>
+		<h2>
+		    {{ theme.name }}
+		</h2>
+		<p>
+            {{ theme.description }} <!-- not sure whether this is the right strategy or whether we should use flatblocks -->
+		    Tofu incididunt keytar, nostrud ennui vinyl skateboard street art cardigan
+		    irure veniam occupy direct trade consectetur sriracha. Pour-over organic
+		    kogi flexitarian 3 wolf moon terry richardson. Banksy wolf enim readymade
+		    minim biodiesel. Hella anim officia tempor ullamco aliquip, vice eiusmod.
+		    Small batch VHS put a bird on it mixtape, nostrud sartorial fugiat 3 wolf
+		    moon. Nesciunt blog wes anderson salvia eiusmod DIY helvetica ullamco.
+		    Stumptown kale chips high life irony.
+		</p>
+	</div>
+	<div id="{{ theme.name }}-accordion" class="accordion">
+	    <div class="accordion-group">
+	        <div class="accordion-heading">
+	            <a href="#{{ theme.name }}-layers" data-parent="#{{ theme.name }}" data-toggle="collapse"
+	            class="accordion-toggle">
+		      {{ theme.name }}
+		    </a>
+	        </div>
+	        <div class="accordion-body collapse" id="{{ theme.name }}-layers">
+	            <div class="accordion-inner">
+	                <table class="table table-striped table-condensed">
+	                	<tbody>
+	                		<!-- foreach layer -->
+                            {% for layer in theme.layer_set.all %}
+	                		<tr>
+                                <td>{{layer.name}}</td>
+                                <td><a href="{{layer.bookmark}}">view in planner</a></td>
+                                <td><a href="{{layer.map_tiles}}">map tiles</a></td>
+                                <td><a href="{{layer.kml}}">kml</a></td>
+                                <td><a href="{{layer.data_download}}">data download</a></td>
+                                <td><a href="{{layer.metadata}}">metadata</a></td>
+                                <td><a href="{{layer.source}}">source</a></td>
+                            </tr>
+                            {% endfor layer_set %}
+	                		<!-- end foreach layer -->
+	                	</tbody>
+	                </table>
+	           	</div>
+	        </div>
+	    </div>
+	</div>
+</div>
+{% endfor themes%}
+<!-- endforeach theme -->
+
+{% endblock %}

@@ -1,0 +1,767 @@
+[
+  {
+    "pk": 32,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "AIS Shipping Density",
+      "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 33,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Dredging",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 1,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "Vector",
+      "name": "BOEM Protraction Diagram",
+      "url": "data/vector/BOEMProtractionNoDecimals.json",
+      "sublayer": [],
+      "theme": [
+        1
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 2,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Marine Jurisdictions",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        1
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 34,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Dredge Spoil Sites",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 3,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "OCS Administrative Boundaries",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        1
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 4,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "OCS Blocks UTF",
+      "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png",
+      "sublayer": [],
+      "theme": [
+        1
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/Legend.png"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Regional Ocean Councils",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        1
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 6,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Benthic Habitats",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 7,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Coldwater Corals",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 8,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "EFH Overlay",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 9,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "WMS",
+      "name": "Essential Fish Habitat",
+      "url": "http://egisws02.nos.noaa.gov/ArcGIS/services/NMFS/HAPC/MapServer/WMSServer?service=WMS",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 10,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Marine Mammals and Sea Turtles",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 11,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "New Jersey Baseline Data",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 12,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Seabed Form",
+      "url": "http://s3.amazonaws.com/marco-public-2d/Geophysical/SeabedForm/${z}/${x}/${y}.png",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 13,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Waterbird Survey",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 14,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Vulnerability to Sea Level Rise",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 15,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "WMS",
+      "name": "U.S. Marine Protected Areas",
+      "url": "http://egisws02.nos.noaa.gov/ArcGIS/services/MPA/MPA_Inventory/MapServer/WMSServer?service=WMS",
+      "sublayer": [],
+      "theme": [
+        2
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 16,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Wind Speed",
+      "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png",
+      "sublayer": [],
+      "theme": [
+        3
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/Legend.png"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Wind Energy Areas",
+      "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/${z}/${x}/${y}.png",
+      "sublayer": [],
+      "theme": [
+        3
+      ],
+      "is_sublayer": false,
+      "utfurl": "data/utfgrids/weas/${z}/${x}/${y}.json",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 18,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "All Gear Types",
+      "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png",
+      "sublayer": [
+        22
+      ],
+      "theme": [
+        4
+      ],
+      "is_sublayer": true,
+      "utfurl": "",
+      "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Bottom Gear Types",
+      "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png",
+      "sublayer": [
+        22
+      ],
+      "theme": [
+        4
+      ],
+      "is_sublayer": true,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 20,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Pelagic Gear Types",
+      "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png",
+      "sublayer": [
+        22
+      ],
+      "theme": [
+        4
+      ],
+      "is_sublayer": true,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 21,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Summer Flounder Landings",
+      "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png",
+      "sublayer": [
+        22
+      ],
+      "theme": [
+        4
+      ],
+      "is_sublayer": true,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 22,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "radio",
+      "name": "Fishing Effort",
+      "url": "",
+      "sublayer": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "theme": [
+        4
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 23,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Danger Zones",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        5
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 24,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Oil and Gas Stipulations",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        5
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 25,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Wind Stipulations",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        5
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 26,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Bathymetry",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        6
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 27,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Depth Contours",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        6
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 28,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Major Canyons",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        6
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 29,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Sediment Grain Size",
+      "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png",
+      "sublayer": [],
+      "theme": [
+        6
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/Legend.png"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Artificial Reefs",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        7
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 31,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Recreational Uses",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        7
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 35,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Marina Construction",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 36,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Maryland Shoals",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 37,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Ports",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 38,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Sand Mining",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 39,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "XYZ",
+      "name": "Ship Traffic Separation Zones",
+      "url": "",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 40,
+    "model": "layer_manager.layer",
+    "fields": {
+      "layer_type": "Vector",
+      "name": "Submarine Cables",
+      "url": "data/vector/SubmarineCablesNoDecimals.json",
+      "sublayer": [],
+      "theme": [
+        8
+      ],
+      "is_sublayer": false,
+      "utfurl": "",
+      "legend": ""
+    }
+  },
+  {
+    "pk": 1,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "name": "Administrative"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "name": "Conservation"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        16,
+        17
+      ],
+      "name": "Energy"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "name": "Fishing"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        23,
+        24,
+        25
+      ],
+      "name": "Military"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "name": "Ocean"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        30,
+        31
+      ],
+      "name": "Recreation"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "layer_manager.theme",
+    "fields": {
+      "layer": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "name": "Maritime Industries"
+    }
+  }
+]

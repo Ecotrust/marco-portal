@@ -1,0 +1,144 @@
+<!doctype html>
+<!--[if IEMobile 7 ]>
+    <html dir="ltr" lang="en-US" class="no-js iem7">
+    <![endif]-->
+    <!--[if lt IE 7 ]>
+        <html dir="ltr" lang="en-US" class="no-js ie6">
+        <![endif]-->
+        <!--[if IE 7 ]>
+            <html dir="ltr" lang="en-US" class="no-js ie7">
+            <![endif]-->
+            <!--[if IE 8 ]>
+                <html dir="ltr" lang="en-US" class="no-js ie8">
+                <![endif]-->
+                <!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]>
+                    <!-->
+                    <html dir="ltr" lang="en-US" class="no-js">
+                    <!--<![endif]-->
+                    
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                        <title>
+                        </title>
+                        <meta name="viewport" content="initial-scale=1.0">
+                        <!-- media-queries.js (fallback) -->
+                        <!--[if lt IE 9]>
+                            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js">
+                            </script>
+                        <![endif]-->
+                        <!-- html5.js -->
+                        <!--[if lt IE 9]>
+                            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+                            </script>
+                        <![endif]-->
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap.css">
+                        <!-- marco stylesheet -->
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.css">
+                    </head>
+                    
+                    <body class="blog">
+                        <header role="banner">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <div class="container">
+                                        <a href="http://dev.marco.marineplanning.org/portal">
+                        <img class="span4" src="http://dev.marco.marineplanning.org/portal/wp-content/themes/marco/img/marco-logo.gif"/>
+                    </a>
+                                        <div class="pull-right">
+                                            <ul class="nav">
+                                                <li class="active">
+                                                    <a a href="http://dev.marco.marineplanning.org/portal/news">News</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="http://dev.marco.marineplanning.org/portal/about">About the&nbsp;Portal</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://www.midatlanticocean.org/">Visit Marco Council</a>
+                                                </li>
+                                            </ul>
+                                            <form class="form-search pull-right" action="http://dev.marco.marineplanning.org/portal/"
+                                            method="get">
+                                                <input type="text" class="input-medium search-box" name="s" id="search"
+                                                value="">
+                                                <button type="submit" class="btn">
+                                                    Search
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <!--/.nav-collapse -->
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- end header -->
+                        <div class="container">
+                            <div id="content" class="clearfix row-fluid">
+                                <div id="main" class="span9 clearfix" role="main">
+                                    {% block  main %}{% endblock %}
+                                </div>
+                                    <div id="sidebar1" class="fluid-sidebar sidebar span3" role="complementary">
+                                        <div id="linkcat-5" class="widget widget_links">
+                                            <h4 class="widgettitle">
+                                                Data
+                                            </h4>
+                                            <ul class='xoxo blogroll'>
+                                                <li>
+                                                    <a href="http://test">Mid-Atlantic Ocean Data Files</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://www.test">Other Data Resources</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://test">Web Mapping Services</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="linkcat-4" class="widget widget_links">
+                                            <h4 class="widgettitle">
+                                                Maps
+                                            </h4>
+                                            <ul class='xoxo blogroll'>
+                                                <li>
+                                                    <a href="http://test.com">Mid-Atlantic Ocean Planner</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="recent-posts-3" class="widget widget_recent_entries">
+                                            <h4 class="widgettitle">
+                                                News
+                                            </h4>
+                                            <ul>
+                                                <li>
+                                                    <a href="http://dev.marco.marineplanning.org/portal/hello-world/" title="Hello world!">Hello world!</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end #content -->
+                                <hr>
+                                <footer>
+                                    <div class="row">
+                                        <div class="span8">
+                                            <p>
+                                                Contact info goes here
+                                            </p>
+                                        </div>
+                                        <div class="span4 social">
+                                            <h5>
+                                                connect with us
+                                                <img src="http://dev.marco.marineplanning.org/portal/wp-content/themes/marco/img/social.png"
+                                                />
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                            <!-- end #container -->
+                            <!-- scripts are now optimized via Modernizr.load -->\
+                            <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
+
+                            <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
+                    </body>
+                    </html>

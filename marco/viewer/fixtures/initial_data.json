@@ -1,0 +1,283 @@
+[
+    {
+        "pk": 1, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Administrative"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Conservation"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Energy"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Fishing"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Military"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Ocean"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Recreation"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "viewer.theme", 
+        "fields": {
+            "name": "Maritime Industries"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "OCS Lease Blocks", 
+            "source": null, 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [], 
+            "themes": [
+                1
+            ], 
+            "bookmark": null, 
+            "is_sublayer": false, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/Legend.png", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Wind Energy Areas", 
+            "source": null, 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [], 
+            "themes": [
+                3
+            ], 
+            "bookmark": null, 
+            "is_sublayer": false, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Sediment Grain Size", 
+            "source": null, 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [], 
+            "themes": [
+                6
+            ], 
+            "bookmark": null, 
+            "is_sublayer": false, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/Legend.png", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "AIS Shipping Data", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [], 
+            "themes": [
+                8
+            ], 
+            "bookmark": null, 
+            "is_sublayer": false, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "All Gear Types", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [
+                15
+            ], 
+            "themes": [], 
+            "bookmark": null, 
+            "is_sublayer": true, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Bottom Gear Types", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [
+                15
+            ], 
+            "themes": [], 
+            "bookmark": null, 
+            "is_sublayer": true, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Pelagic Gear Types", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [
+                15
+            ], 
+            "themes": [], 
+            "bookmark": null, 
+            "is_sublayer": true, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Summer Flounder Landings", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "sublayer": [
+                15
+            ], 
+            "themes": [], 
+            "bookmark": null, 
+            "is_sublayer": true, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Fishing Effort", 
+            "source": null, 
+            "url": "", 
+            "kml": null, 
+            "sublayer": [
+                11, 
+                13, 
+                12, 
+                14
+            ], 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "is_sublayer": false, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "map_tiles": null
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "viewer.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Wind Speed", 
+            "source": "http://www.nrel.gov/gis/wind.html", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "sublayer": [], 
+            "themes": [
+                3
+            ], 
+            "bookmark": "http://localhost:8000/media/marco-proto/index.html#location%5Bx%5D=-71.37231445312406&location%5By%5D=38.457524829585964&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "is_sublayer": false, 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/Legend.png", 
+            "data_download": "", 
+            "map_tiles": ""
+        }
+    }
+]
