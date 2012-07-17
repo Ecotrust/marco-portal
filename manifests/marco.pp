@@ -55,6 +55,11 @@ file {'/vagrant/portal/wordpress/wp-config.php':
   notify  => Service['apache2']
 }
 
+exec { "/usr/sbin/a2enmod rewrite" :
+      unless => "/bin/readlink -e /etc/apache2/mods-enabled/rewrite.load",
+      notify => Service[apache2]
+ }
+
 service { 'apache2':
     ensure => running,
     subscribe => File["/etc/apache2/conf.d/vhost.conf"],
