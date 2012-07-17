@@ -1,6 +1,13 @@
 Alias /portal /vagrant/portal/wordpress
 <Location /portal>
-  AllowOverride All
   Order allow,deny
   Allow from all
+  <IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /portal/
+  RewriteRule ^index\.php$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /portal/index.php [L]
+  </IfModule>
 </Location>
