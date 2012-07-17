@@ -28,6 +28,14 @@ class mysql-server {
     command => "mysqladmin -uroot password $root_password",
   }
 
+  
+  exec { "Create Databse":
+    subscribe => [ Package["mysql-server"], Package["mysql-client"] ],
+    refreshonly => true,
+    path => "/bin:/usr/bin",
+    command => "mysqladmin -u dba_user -p create marco",
+  }
+
 }
 
 include mysql-server
