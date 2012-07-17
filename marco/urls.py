@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     (r'^drawing/', include('drawing.urls')),
     (r'^data_viewer/', include('viewer.urls')),
     (r'^explore/', include('explore.urls')),
+    (r'^visualize/', include('visualize.urls')),
 )
