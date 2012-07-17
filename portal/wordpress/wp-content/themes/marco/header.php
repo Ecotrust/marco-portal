@@ -73,7 +73,7 @@
 			  <div class="navbar-inner">
 			    <div class="container">
 			        <a href="<?php echo get_bloginfo('wpurl'); ?>">
-			        	<img class="span4" src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
+			        	<img src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
 			        </a>
 			      <div class="pull-right">
 			        <ul class="nav">
