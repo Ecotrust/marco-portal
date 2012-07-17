@@ -21,7 +21,7 @@ class mysql-server {
   package { "mysql-server": ensure => installed, require => Exec["apt-update"]}
 
   exec { "Set MySQL server root password":
-    subscribe => [ Package["mysql-server"], Package["mysql-client"] ],
+    subscribe => [ Package["mysql-server"], Package["mysql-client"], Exec['Create Database'] ],
     refreshonly => true,
     unless => "mysqladmin -uroot -p$root_password status",
     path => "/bin:/usr/bin",
@@ -33,7 +33,7 @@ class mysql-server {
     subscribe => [ Package["mysql-server"], Package["mysql-client"] ],
     refreshonly => true,
     path => "/bin:/usr/bin",
-    command => "mysqladmin -u dba_user -p create marco",
+    command => "mysqladmin -uroot create marco",
   }
 
 }
