@@ -29,7 +29,7 @@ class mysql-server {
   }
 
   
-  exec { "Create Databse":
+  exec { "Create Database":
     subscribe => [ Package["mysql-server"], Package["mysql-client"] ],
     refreshonly => true,
     path => "/bin:/usr/bin",
