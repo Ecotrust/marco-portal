@@ -21,7 +21,7 @@ class mysql-server {
   package { "mysql-server": ensure => installed, require => Exec["apt-update"]}
 
   exec { "Set MySQL server root password":
-    subscribe => [ Package["mysql-server"], Package["mysql-client"], Exec['Create Database'] ],
+    subscribe => [ Exec['Restore Database'] ],
     refreshonly => true,
     unless => "mysqladmin -uroot -p$root_password status",
     path => "/bin:/usr/bin",
@@ -35,6 +35,14 @@ class mysql-server {
     path => "/bin:/usr/bin",
     command => "mysqladmin -uroot create marco",
   }
+
+  exec { "Restore Database":
+    subscribe => [ Exec['Create Database'] ],
+    refreshonly => true,
+    path => "/bin:/usr/bin",
+    command => "mysql -uroot marco < /vagrant/portal/marco_wordpress.sql",
+  }
+
 
 }
 
