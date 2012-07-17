@@ -51,7 +51,7 @@ file {'/etc/apache2/conf.d/vhost.conf':
 
 file {'/vagrant/portal/wordpress/wp-config.php':
   ensure => file,
-  content => template("vhost.erb"),
+  content => template("wp-config.erb"),
   notify  => Service['apache2']
 }
 
