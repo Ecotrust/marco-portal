@@ -17,6 +17,7 @@ hr {
 }
 .navbar {
 	border-bottom: 2px solid #ccc;
+	height: 90px;
 }
 .navbar-inner {
 	width: 940px;
@@ -34,15 +35,15 @@ hr {
 .navbar .nav > li a {
 	text-transform: uppercase;
 	width: 80px;
-	height: 50px;
+	height: 45px;
 	text-align: center;
 	background-color: white;
-	padding-top: 40px;
+	padding-top: 35px;
 	font-size: 12px;
 	border-left: 1px solid #ccc;
 }
 .navbar .nav > li:hover a, .navbar .nav > li.active a, .navbar .nav > li:hover a:visited {
-	height: 48px;
+	height: 41px;
 	background-color: #eee !important;
 	color: #333;
 	border-bottom: 4px solid #2d8998;
@@ -62,7 +63,7 @@ hr {
 		color: #333;
 	}	
 .navbar form {
-	margin-top: 32px;
+	margin-top: 26px;
 }
 
 .navbar img {
