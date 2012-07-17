@@ -57,7 +57,8 @@ file {'/vagrant/portal/wordpress/wp-config.php':
 
 exec { "/usr/sbin/a2enmod rewrite" :
       unless => "/bin/readlink -e /etc/apache2/mods-enabled/rewrite.load",
-      notify => Service[apache2]
+      notify => Service[apache2],
+      subscribe => Package["libapache2-mod-php5"]
  }
 
 service { 'apache2':
