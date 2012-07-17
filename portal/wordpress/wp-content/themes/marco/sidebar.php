@@ -6,7 +6,6 @@
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>/learn/energy">Energy</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>/learn/fishing">Fishing</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>/learn/military">Military</a></li>
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>/learn/ocean">Ocean</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>/learn/recreation">Recreation</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>/learn/maritime-industries">Maritime Industries</a></li>
 					</ul>
