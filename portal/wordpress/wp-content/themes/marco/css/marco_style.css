@@ -16,7 +16,7 @@ hr {
 	border-top: 1px solid #ccc;
 }
 .navbar {
-	border-bottom: 2px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	height: 90px;
 }
 .navbar-inner {
@@ -35,7 +35,7 @@ hr {
 .navbar .nav > li a {
 	text-transform: uppercase;
 	width: 80px;
-	height: 45px;
+	height: 44px;
 	text-align: center;
 	background-color: white;
 	padding-top: 35px;
