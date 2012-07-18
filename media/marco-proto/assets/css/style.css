@@ -77,6 +77,10 @@ body {
   overflow-y: auto;
 }
 
+#legend-accordion .accordion-toggle {
+    font-size: 12px;
+}
+
 #data-accordion .btn-group-layer .btn-layer {
   width: 90%;
   text-align: left;
