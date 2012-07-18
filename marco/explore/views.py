@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from viewer.models import *
+from data_manager.models import *
 
 
 def data_catalog(request, template='catalog.html'):

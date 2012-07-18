@@ -50,12 +50,12 @@ var adminModel = function () {
 		var layer = self.objectForEditing(), postData, themes, url, update=false, oldLayerActive=false;
 		if (layer.id) {
 			// save existing layer
-			url = '/data_viewer/layer/' + layer.id;
+			url = '/data_manager/layer/' + layer.id;
 			update = true;
 			oldLayerActive = layer.active();
 		} else {
 			// create new layer
-			url = '/data_viewer/layer'
+			url = '/data_manager/layer'
 		}
         
 		// deref themes
