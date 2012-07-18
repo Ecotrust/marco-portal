@@ -182,8 +182,12 @@ postgresql::database { "marco":
 }
 
 
+#python::venv::isolate { "/usr/local/venv/marco":
+#  requirements => "/vagrant/requirements.txt"
+#  subscribe => [Package['python-mapnik'], Package['build-essential']]
+#}
+
 python::venv::isolate { "/usr/local/venv/marco":
-  requirements => "/vagrant/requirements.txt",
-  subscribe => [Package['python-mapnik'], Package['build-essential']]
+  requirements => "/vagrant/requirements.txt"
 }
 
