@@ -89,6 +89,10 @@ body {
   padding-top: 4px;
 }
 
+#data-accordion .dropdown-menu {
+  right: 26px;
+}
+
 .attribution {
   font-size: 10px;
 }
