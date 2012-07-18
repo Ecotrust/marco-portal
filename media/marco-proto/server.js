@@ -43,6 +43,15 @@ app.viewModel.loadLayers = function(data) {
 		});
 		self.themes.push(theme);
 	});
+	app.typeAheadSource = (function () {
+            var keys = [];
+            for (var searchTerm in app.viewModel.layerSearchIndex) {
+                if (app.viewModel.layerSearchIndex.hasOwnProperty(searchTerm)) {
+                    keys.push(searchTerm);
+                }
+            }
+            return keys;
+        })();
 };
 app.viewModel.loadLayersFromFixture = function() {
 	app.viewModel.loadLayers(app.fixture);
@@ -50,7 +59,7 @@ app.viewModel.loadLayersFromFixture = function() {
 
 
 app.viewModel.loadLayersFromServer = function() {
-	$.getJSON('/data_manager/get_json', function(data) {
+	$.getJSON('/data_viewer/get_json', function(data) {
 		app.viewModel.loadLayers(data);
 	});
 };

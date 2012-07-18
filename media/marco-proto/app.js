@@ -45,17 +45,10 @@ $(document).ready(function () {
 	$(window).resize(app.onResize);
 	
 	// autocomplete for filter
-	$('.search-query').typeahead({
-		source: function () {
-            var keys = [];
-            for (var searchTerm in app.viewModel.layerSearchIndex) {
-                if (app.viewModel.layerSearchIndex.hasOwnProperty(searchTerm)) {
-                    keys.push(searchTerm);
-                }
-            }
-            return keys;
-        }()
+	$('.search-box').typeahead({
+		source: app.typeAheadSource 
 	});
+
 
 	// handle coordinate indicator on pointer
 	$('#map').bind('mouseleave mouseenter', function (e) {

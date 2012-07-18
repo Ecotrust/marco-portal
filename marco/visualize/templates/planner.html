@@ -158,14 +158,16 @@
                                 <!-- /row -->
                                 <div class="row-fluid">
                                     <div class="well">
-                                        <div class="span12">
-                                            <form class="form-search" data-bind="submit: layerSearch">
-                                                <input type="text" class="search-query" data-provide="typeahead" data-bind="value: searchTerm">
+                                        <form class="form-search" data-bind="submit: layerSearch">
+                                            <div class="span8">
+                                                <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm">
+                                            </div>
+                                            <div class="span4">
                                                 <button type="submit" class="btn">
                                                     Search
                                                 </button>
-                                            </form>
-                                        </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

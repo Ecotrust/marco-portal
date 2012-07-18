@@ -1,3 +1,4 @@
 # pip requirements file for MARCO
 
-django-picklefield>=0.2.0
+django==1.4
+madrona
