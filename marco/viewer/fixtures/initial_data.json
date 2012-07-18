@@ -235,7 +235,7 @@
         "pk": 15, 
         "model": "viewer.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "radio", 
             "name": "Fishing Effort", 
             "source": null, 
             "url": "", 
