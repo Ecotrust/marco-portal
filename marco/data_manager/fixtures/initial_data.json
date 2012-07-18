@@ -64,7 +64,7 @@
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [], 
+            "sublayers": [], 
             "themes": [
                 1
             ], 
@@ -86,7 +86,7 @@
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [], 
+            "sublayers": [], 
             "themes": [
                 3
             ], 
@@ -108,7 +108,7 @@
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [], 
+            "sublayers": [], 
             "themes": [
                 6
             ], 
@@ -130,7 +130,7 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [], 
+            "sublayers": [], 
             "themes": [
                 8
             ], 
@@ -152,10 +152,10 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [
-                15
+            "sublayers": [], 
+            "themes": [
+                4
             ], 
-            "themes": [], 
             "bookmark": null, 
             "is_sublayer": true, 
             "metadata": null, 
@@ -174,10 +174,10 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [
-                15
+            "sublayers": [], 
+            "themes": [
+                4
             ], 
-            "themes": [], 
             "bookmark": null, 
             "is_sublayer": true, 
             "metadata": null, 
@@ -196,10 +196,10 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [
-                15
+            "sublayers": [], 
+            "themes": [
+                4
             ], 
-            "themes": [], 
             "bookmark": null, 
             "is_sublayer": true, 
             "metadata": null, 
@@ -218,10 +218,10 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayer": [
-                15
+            "sublayers": [], 
+            "themes": [
+                4
             ], 
-            "themes": [], 
             "bookmark": null, 
             "is_sublayer": true, 
             "metadata": null, 
@@ -240,10 +240,10 @@
             "source": null, 
             "url": "", 
             "kml": null, 
-            "sublayer": [
-                11, 
-                13, 
-                12, 
+            "sublayers": [
+                11,
+                12,
+                13,
                 14
             ], 
             "themes": [
@@ -267,7 +267,7 @@
             "source": "http://www.nrel.gov/gis/wind.html", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
-            "sublayer": [], 
+            "sublayers": [], 
             "themes": [
                 3
             ], 

@@ -37,16 +37,19 @@
 	                	<tbody>
 	                		<!-- foreach layer -->
                             {% for layer in theme.layer_set.all %}
-	                		<tr>
-                                <td>{{layer.name}}</td>
-                                <td><a href="{{layer.bookmark}}">view</a></td>
-                                <td><a href="{{layer.map_tiles}}">map tiles</a></td>
-                                <td><a href="{{layer.kml}}">kml</a></td>
-                                <td><a href="{{layer.data_download}}">data</a></td>
-                                <td><a href="{{layer.fact_sheet}}">fact sheet</a></td>
-                                <td><a href="{{layer.metadata}}">metadata</a></td>
-                                <td><a href="{{layer.source}}">source</a></td>
-                            </tr>
+                                {% if layer.is_parent %}
+                                {% else %}
+                                <tr>
+                                    <td>{{layer.name}}</td>
+                                    <td><a href="{{layer.bookmark}}">view</a></td>
+                                    <td><a href="{{layer.map_tiles}}">map tiles</a></td>
+                                    <td><a href="{{layer.kml}}">kml</a></td>
+                                    <td><a href="{{layer.data_download}}">data</a></td>
+                                    <td><a href="{{layer.fact_sheet}}">fact sheet</a></td>
+                                    <td><a href="{{layer.metadata}}">metadata</a></td>
+                                    <td><a href="{{layer.source}}">source</a></td>
+                                </tr>
+                                {% endif %}
                             {% endfor layer_set %}
 	                		<!-- end foreach layer -->
 	                	</tbody>

@@ -27,7 +27,7 @@ class Layer(models.Model):
     name = models.CharField(max_length=100)
     layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     url = models.CharField(max_length=255, blank=True, null=True)
-    sublayer = models.ManyToManyField('self', blank=True, null=True)
+    sublayers = models.ManyToManyField('self', blank=True, null=True)
     themes = models.ManyToManyField("Theme", blank=True, null=True)
     is_sublayer = models.BooleanField(default=False)
     legend = models.CharField(max_length=255, blank=True, null=True)
@@ -42,10 +42,13 @@ class Layer(models.Model):
     fact_sheet = models.CharField(max_length=255, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
     
-
     def __unicode__(self):
         return unicode('%s' % (self.name))
 
+    @property
+    def is_parent(self):
+        return self.sublayers.all().count() > 0 and not self.is_sublayer
+    
     @property
     def toDict(self):
         sublayers = [
@@ -58,7 +61,7 @@ class Layer(models.Model):
                 'parent': self.id,
                 'legend': layer.legend 
             } 
-            for layer in self.sublayer.all()
+            for layer in self.sublayers.all()
         ]
         layers_dict = {
             'name': self.name,

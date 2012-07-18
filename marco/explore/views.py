@@ -5,9 +5,10 @@ from data_manager.models import *
 
 
 def data_catalog(request, template='catalog.html'):
-    themes = Theme.objects.all().order_by('id')
+    themes = Theme.objects.all().order_by('name')
     context = {'themes': themes}
     return render_to_response(template, RequestContext(request, context)) 
 
 def data_needs(request):
     pass
+    
