@@ -39,6 +39,7 @@ class Layer(models.Model):
     kml = models.CharField(max_length=255, blank=True, null=True)
     data_download = models.CharField(max_length=255, blank=True, null=True)
     metadata = models.CharField(max_length=255, blank=True, null=True)
+    fact_sheet = models.CharField(max_length=255, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
     
 

@@ -39,10 +39,11 @@
                             {% for layer in theme.layer_set.all %}
 	                		<tr>
                                 <td>{{layer.name}}</td>
-                                <td><a href="{{layer.bookmark}}">view in planner</a></td>
+                                <td><a href="{{layer.bookmark}}">view</a></td>
                                 <td><a href="{{layer.map_tiles}}">map tiles</a></td>
                                 <td><a href="{{layer.kml}}">kml</a></td>
-                                <td><a href="{{layer.data_download}}">data download</a></td>
+                                <td><a href="{{layer.data_download}}">data</a></td>
+                                <td><a href="{{layer.fact_sheet}}">fact sheet</a></td>
                                 <td><a href="{{layer.metadata}}">metadata</a></td>
                                 <td><a href="{{layer.source}}">source</a></td>
                             </tr>

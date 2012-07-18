@@ -1,63 +1,63 @@
 [
     {
         "pk": 1, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Administrative"
         }
     }, 
     {
         "pk": 2, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Conservation"
         }
     }, 
     {
         "pk": 3, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Energy"
         }
     }, 
     {
         "pk": 4, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Fishing"
         }
     }, 
     {
         "pk": 5, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Military"
         }
     }, 
     {
         "pk": 6, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Ocean"
         }
     }, 
     {
         "pk": 7, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Recreation"
         }
     }, 
     {
         "pk": 8, 
-        "model": "viewer.theme", 
+        "model": "data_manager.theme", 
         "fields": {
             "name": "Maritime Industries"
         }
     }, 
     {
         "pk": 6, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "OCS Lease Blocks", 
@@ -79,7 +79,7 @@
     }, 
     {
         "pk": 8, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "Wind Energy Areas", 
@@ -101,7 +101,7 @@
     }, 
     {
         "pk": 9, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "Sediment Grain Size", 
@@ -123,7 +123,7 @@
     }, 
     {
         "pk": 10, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "AIS Shipping Data", 
@@ -145,7 +145,7 @@
     }, 
     {
         "pk": 11, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "All Gear Types", 
@@ -167,7 +167,7 @@
     }, 
     {
         "pk": 12, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "Bottom Gear Types", 
@@ -189,7 +189,7 @@
     }, 
     {
         "pk": 13, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "Pelagic Gear Types", 
@@ -211,7 +211,7 @@
     }, 
     {
         "pk": 14, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "Summer Flounder Landings", 
@@ -233,7 +233,7 @@
     }, 
     {
         "pk": 15, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "radio", 
             "name": "Fishing Effort", 
@@ -260,7 +260,7 @@
     }, 
     {
         "pk": 7, 
-        "model": "viewer.layer", 
+        "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "name": "Wind Speed", 
