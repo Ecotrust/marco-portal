@@ -382,11 +382,11 @@ function viewModel() {
 	// handle the search form
 	self.searchTerm = ko.observable();
 	self.layerSearch = function () {
-        var layer = self.layerSearchIndex[self.searchTerm()].layer,
-            theme = self.layerSearchIndex[self.searchTerm()].theme;
+		var found = self.layerSearchIndex[self.searchTerm()];
+        
         //self.activeTheme(theme);
-        self.activeThemes.push(theme);
-        layer.activateLayer();
+        self.activeThemes.push(found.theme);
+        found.layer.activateLayer();
 	};
 
 
@@ -396,6 +396,7 @@ function viewModel() {
 		// initial index
 		var index = 300;
 		app.state.activeLayers = [];
+
 		//self.showLegend(false);
 		$.each(self.activeLayers(), function (i, layer) {
 			// set the zindex on the openlayers layer

@@ -44,9 +44,7 @@ $(document).ready(function () {
 	app.onResize();
 	$(window).resize(app.onResize);
 	
-	// autocomplete for filter
-	$('.search-query').typeahead({
-		source: function () {
+	app.typeAheadSource = (function () {
             var keys = [];
             for (var searchTerm in app.viewModel.layerSearchIndex) {
                 if (app.viewModel.layerSearchIndex.hasOwnProperty(searchTerm)) {
@@ -54,9 +52,13 @@ $(document).ready(function () {
                 }
             }
             return keys;
-        }()
+        })();
+	// autocomplete for filter
+	$('.search-box').typeahead({
+		source: app.typeAheadSource 
 	});
 
+	
 	// handle coordinate indicator on pointer
 	$('#map').bind('mouseleave mouseenter', function (e) {
 		$('#pos').toggle();
