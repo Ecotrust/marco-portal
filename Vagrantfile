@@ -55,10 +55,10 @@ Vagrant::Config.run do |config|
   # # }
   #
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "scripts/puppet/manifests"
     puppet.manifest_file  = "marco.pp"
-    puppet.options = ["--templatedir","/vagrant/manifests/files"]
-    #puppet.module_path = "manifests/modules"
+    puppet.module_path = "scripts/puppet/modules"
+    puppet.options = ["--templatedir","/vagrant/scripts/puppet/manifests/files"]
   end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles

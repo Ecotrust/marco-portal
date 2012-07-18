@@ -81,3 +81,65 @@ service { 'apache2':
     ensure => running,
     subscribe => File["/etc/apache2/conf.d/vhost.conf"],
 }
+
+
+package { "build-essential":
+    ensure => "installed"
+
+}
+
+package { "libapache2-mod-wsgi":
+    ensure => "installed"
+
+}
+
+package { "python-software-properties":
+    ensure => "installed"
+
+}
+
+package { "git-core":
+    ensure => "latest"
+}
+
+package { "subversion":
+    ensure => "latest"
+}
+
+package { "mercurial":
+    ensure => "latest"
+}
+
+package { "csstidy":
+    ensure => "latest"
+}
+
+package { "python-gdal":
+    ensure => "latest"
+}
+
+package { "python-mapnik":
+    ensure => "latest"
+}
+
+package { "python-imaging":
+    ensure => "latest"
+}
+
+package { "python-numpy":
+    ensure => "latest"
+}
+
+package { "python-psycopg2":
+    ensure => "latest"
+}
+
+class { "postgresql::server": version => "9.1",
+    listen_addresses => 'localhost',
+    max_connections => 100,
+    shared_buffers => '24MB',
+}
+
+postgresql::database { "marco":
+  owner => "vagrant",
+}
