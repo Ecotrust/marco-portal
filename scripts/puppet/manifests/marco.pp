@@ -166,6 +166,11 @@ package { "python-virtualenv":
     ensure => "latest"
 }
 
+package { "python-dev":
+    ensure => "latest"
+}
+
+
 class { "postgresql::server": version => "9.1",
     listen_addresses => 'localhost',
     max_connections => 100,
