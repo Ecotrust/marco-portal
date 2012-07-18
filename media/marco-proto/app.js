@@ -44,21 +44,12 @@ $(document).ready(function () {
 	app.onResize();
 	$(window).resize(app.onResize);
 	
-	app.typeAheadSource = (function () {
-            var keys = [];
-            for (var searchTerm in app.viewModel.layerSearchIndex) {
-                if (app.viewModel.layerSearchIndex.hasOwnProperty(searchTerm)) {
-                    keys.push(searchTerm);
-                }
-            }
-            return keys;
-        })();
 	// autocomplete for filter
 	$('.search-box').typeahead({
 		source: app.typeAheadSource 
 	});
 
-	
+
 	// handle coordinate indicator on pointer
 	$('#map').bind('mouseleave mouseenter', function (e) {
 		$('#pos').toggle();
