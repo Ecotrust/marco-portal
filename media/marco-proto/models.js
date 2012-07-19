@@ -49,6 +49,7 @@ function layerModel(options, parent) {
 		layer.active(false);
         
         app.setLayerVisibility(layer, false);
+        layer.opacity(.5);
         
         if (layer.activeSublayer()) {
         	layer.activeSublayer().deactivateLayer();
