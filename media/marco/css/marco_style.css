@@ -312,3 +312,7 @@ img + h3 {
 .btn.active-layer {
 	background-color: blue;
 }
+
+#active .btn-group {
+	width: 100%;
+}
