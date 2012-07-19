@@ -459,7 +459,6 @@ function viewModel() {
 
 
 app.viewModel = new viewModel();
-=======
 function layerModel(options, parent) {
 	var self = this;
 

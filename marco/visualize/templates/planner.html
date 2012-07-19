@@ -91,26 +91,29 @@
                                     <div class="row-fluid">
                                         <div class="span12">
                                             <!-- data accordion -->
-                                            <div class="accordion" id="data-accordion" data-bind="foreach: themes">
-                                                <div class="accordion-group">
-                                                    <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}">
-                                                        <div>
-                                                            <a class="accordion-toggle"  data-bind="click: setOpenTheme"><span data-bind="text: name">Themes</span></a>
-                                                          
+                                            <div id="data-accordion">
+                                                <div class="accordion" data-bind="foreach: themes">
+                                                    <div class="accordion-group">
+                                                        <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}, 
+                                                        css: { 'active': isActiveTheme() }">
+                                                            <div>
+                                                                <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
+                                                              
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="accordion-body collapse" data-bind="css: { 'in': isInOpenThemes() }">
-                                                        <div class="accordion-inner">
-                                                            <table class="table table-bordered">
-                                                                <tbody data-bind="foreach: layers ">
-                                                                    <tr data-bind="event: {'hover': showTooltip}, css: { nosublayers: subLayers.length === 0 } ">
-                                                                        <td>
-                                                                            <div style="display:none" class="layer-popover popover fade right in">
-                                                                                <div class="arrow">
-                                                                                </div>
-                                                                                <div class="popover-inner">
-                                                                                    <div class="popover-content" data-bind="event: {'mouseout': hideTooltip}">
-                                                                                        <span data-bind="text: description"></span>
+                                                        <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
+                                                            <div class="accordion-inner">
+                                                                <table class="table table-bordered">
+                                                                    <tbody data-bind="foreach: layers ">
+                                                                        <tr data-bind="event: {'hover': showTooltip}, css: { nosublayers: subLayers.length === 0 } ">
+                                                                            <td>
+                                                                                <div style="display:none" class="layer-popover popover fade bottom in">
+                                                                                    <div class="arrow">
+                                                                                    </div>
+                                                                                    <div class="popover-inner">
+                                                                                        <div class="popover-content" data-bind="event: {'mouseout': hideTooltip}">
+                                                                                            <span data-bind="text: description"></span>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="btn-group btn-group-layer">
@@ -250,9 +253,9 @@
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
                                       </button></p>
-                                      <p><button class="btn pull-right">
+                                    <!--   <p><button class="btn pull-right">
                                           Coordinates &amp; Depth
-                                      </button></p>
+                                      </button></p> -->
                                   </div>
                                   <div id="error-overlay">
                                         <div data-bind="visible: error() === 'restoreState'">
