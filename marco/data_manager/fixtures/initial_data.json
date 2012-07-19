@@ -74,7 +74,8 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/Legend.png", 
             "data_download": null, 
-            "map_tiles": null
+            "map_tiles": null,
+            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
         }
     }, 
     {

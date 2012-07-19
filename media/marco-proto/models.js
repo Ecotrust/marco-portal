@@ -8,6 +8,7 @@ function layerModel(options, parent) {
 	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
+    self.description = options.description || null;
     self.legendVisibility = ko.observable(false);
     self.themes = ko.observableArray();
     
