@@ -75,7 +75,7 @@ hr {
 
 }
 
-.sidebar-nav {
+.frame {
 	border: 1px solid #ccc;
 }
 
@@ -110,6 +110,15 @@ hr {
   -moz-border-bottom-right-radius: 0px;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
+}
+
+.frame .form-search {
+	padding: 10px 10px 20px 10px;
+}
+
+.frame .form-search .btn {
+	margin-left: -12px;
+	margin-top: 0px;
 }
 
 .showcase {

@@ -52,7 +52,7 @@
         
         <div class="container-fluid" id="primary-content">
             <div class="row-fluid">
-                <div class="span4">
+                <div class="span4 frame">
                     <div class="sidebar-nav">
                         <!-- tab controls -->
                         <ul id="myTab" class="nav nav-tabs">
@@ -140,20 +140,6 @@
                                     <!-- /span -->
                                 </div>
                                 <!-- /row -->
-                                <div class="row-fluid">
-                                    <div class="well">
-                                        <form class="form-search" data-bind="submit: layerSearch">
-                                            <div class="span8">
-                                                <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm">
-                                            </div>
-                                            <div class="span4">
-                                                <button type="submit" class="btn">
-                                                    Search
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /data-tab -->
                             <!-- design tab -->
@@ -203,8 +189,22 @@
                             </div>
                             <!-- /active-tab -->
                         </div>
+
                     </div>
-                    <!--/.well -->
+                    <div class="row-fluid">
+                        <div class="span12 frame">
+                            <form class="form-search" data-bind="submit: layerSearch">
+                                <div class="span8">
+                                    <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm">
+                                </div>
+                                <div class="span4">
+                                    <button type="submit" class="btn">
+                                        Search
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <!--/span-->
                 <div class="span8">
