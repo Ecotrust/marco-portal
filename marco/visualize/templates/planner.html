@@ -94,14 +94,12 @@
                                             <div id="data-accordion">
                                                 <div class="accordion" data-bind="foreach: themes">
                                                     <div class="accordion-group">
-                                                        <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}, 
-                                                        css: { 'active': isActiveTheme() }">
+                                                        <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}, css: { 'active': isOpenTheme() }">
                                                             <div>
-                                                                <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
-                                                              
+                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme"><span data-bind="text: name">Themes</span></a>
                                                             </div>
                                                         </div>
-                                                        <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
+                                                        <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
                                                             <div class="accordion-inner">
                                                                 <table class="table table-bordered">
                                                                     <tbody data-bind="foreach: layers ">
