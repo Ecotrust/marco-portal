@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   padding-bottom: 40px;
 }
@@ -171,4 +172,182 @@ a.disabled-link:hover {
 
 #bookmark-popover {
   z-index: 1400;
+=======
+body {
+  padding-bottom: 40px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+#map {
+  height: 800px;
+  margin-bottom: 15px;
+}
+
+#map-wrapper {
+  position: relative;
+}
+
+#map-buttons {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  z-index: 1020;
+}
+#map-buttons button {
+  width: 150px;
+}
+
+#error-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1250; 
+  width: 100%;
+  font-size: 16px;
+  color: white;
+  
+}
+#error-overlay > div {
+  padding: 10px;
+  background-color: rgb(45, 137,152);
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(45, 137, 152, 0.65);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##2d899800, endColorstr=#2d899800);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  
+}
+#bookmarks-table {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#opacity-popover .controls {
+  width: 100%;
+  height: 40px;
+}
+
+#opacity-popover .btn {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#map-info {
+  margin-top: 10px !important;
+}
+#pos {
+  position: absolute;
+  background: white;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  padding: 5px 10px;
+  display: none;
+  z-index: 1000;
+}
+
+#data-accordion, #legend-accordion {
+  height: 400px;
+  overflow-y: auto;
+}
+
+#legend-accordion .accordion-toggle {
+    font-size: 12px;
+}
+
+#data-accordion .btn-group-layer .btn-layer {
+  width: 95%;
+  text-align: left;
+}
+#data-accordion .nosublayers .btn-group-layer .btn-layer {
+  width: 100%;
+}
+#data-accordion i.check {
+  padding-top: 4px;
+}
+
+#data-accordion .dropdown-menu {
+  right: 26px;
+}
+
+.attribution {
+  font-size: 10px;
+}
+.theme-buttons {
+  margin-bottom: 15px;
+}
+
+img.olTileImage {
+    max-width: 256px !important;
+}
+
+div.olLayerGoogleCopyright,
+div.olLayerGooglePoweredBy
+{
+  display: none !important;
+}
+.sidebar-nav {
+  height: 600px;
+}
+
+.tab-content {
+  overflow: visible;
+}
+.in {
+  overflow: visible;
+}
+
+.layer-buttons {
+  position: relative;
+}
+.layer-menu {
+  position: absolute;
+}
+
+.dropdown-menu: {
+  z-index: 1100 !important;
+}
+
+.btn .badge {
+  margin-top: -5px !important;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+.olImageLoadError { 
+    /* when OL encounters a 404, don't display the pink image */
+    display: none !important;
+}
+
+
+// hide some stuff when using sortable
+// so the controls don't show
+
+.ui-sortable-helper .btn {
+  display: none;
+}
+
+
+a.disabled-link,
+a.disabled-link:visited ,
+a.disabled-link:active,
+a.disabled-link:hover {
+    color:#aaa !important;
+}
+
+.btn.tweet-trash {
+    height: 20px;
+    margin-top: -4px !important;
+}
+
+.tweet-cell {
+    width: 60px;
+    padding-right: 0px !important;
+}
+
+#bookmark-popover {
+  z-index: 1400;
+>>>>>>> e6b11f7edaa3ef2806e9828092c8a1b60e00687b
 }

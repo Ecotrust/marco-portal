@@ -101,9 +101,9 @@
                                                     </div>
                                                     <div class="accordion-body collapse" data-bind="css: { 'in': isInOpenThemes() }">
                                                         <div class="accordion-inner">
-                                                            <table class="table">
+                                                            <table class="table table-bordered">
                                                                 <tbody data-bind="foreach: layers ">
-                                                                    <tr data-bind="event: {'hover': showTooltip}">
+                                                                    <tr data-bind="event: {'hover': showTooltip}, css: { nosublayers: subLayers.length === 0 } ">
                                                                         <td>
                                                                             <div style="display:none" class="layer-popover popover fade right in">
                                                                                 <div class="arrow">
@@ -115,7 +115,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="btn-group btn-group-layer">
-                                                                                <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }, click: toggleActive">
+                                                                                <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
                                                                                     <i class="icon-align-justify">
                                                                                     </i>
                                                                                     <span data-bind="text: name">
@@ -218,7 +218,6 @@
                     </div>
                 </div>
                 <!--/span-->
-                
                 <div class="span8">
                     <div class="row-fluid">
                         <div class="span12">
