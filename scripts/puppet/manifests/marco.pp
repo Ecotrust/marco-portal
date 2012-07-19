@@ -59,7 +59,7 @@ class mysql-server {
 include mysql-server
 
 
-file {'/etc/apache2/conf.d/vhost.conf':
+file {'/etc/apache2/sites-available/default':
   ensure => file,
   content => template("vhost.erb"),
   notify  => Service['apache2']
@@ -148,6 +148,14 @@ package { "csstidy":
 package { "python-gdal":
     ensure => "latest"
 }
+package { "vim":
+    ensure => "latest"
+}
+
+exec { "Add SRID":
+  subscribe => Package['python-gdal'] ,
+  command => "echo '<99996> +proj=aea +lat_1=37.25 +lat_2=40.25 +lat_0=36 +lon_0=-72 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs <>' | cat >>/usr/share/proj/epsg' ,
+}
 
 
 package { "python-imaging":
@@ -186,12 +194,8 @@ postgresql::database { "marco":
 }
 
 
-#python::venv::isolate { "/usr/local/venv/marco":
-#  requirements => "/vagrant/requirements.txt"
-#  subscribe => [Package['python-mapnik'], Package['build-essential']]
-#}
-
 python::venv::isolate { "/usr/local/venv/marco":
   requirements => "/vagrant/requirements.txt"
+  subscribe => [Package['python-mapnik'], Package['build-essential']]
 }
 
