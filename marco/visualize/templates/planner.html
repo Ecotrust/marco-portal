@@ -79,11 +79,11 @@
                                             <div class="accordion-group">
                                                 <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}">
                                                     <div>
-                                                        <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
+                                                        <a class="accordion-toggle"  data-bind="click: setOpenTheme"><span data-bind="text: name">Themes</span></a>
                                                       
                                                     </div>
                                                 </div>
-                                                <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
+                                                <div class="accordion-body collapse" data-bind="css: { 'in': isInOpenThemes() }">
                                                     <div class="accordion-inner">
                                                         <table class="table">
                                                             <tbody data-bind="foreach: layers ">
@@ -215,6 +215,7 @@
                     </div>
                 </div>
                 <!--/span-->
+                
                 <div class="span8">
                     <div class="row-fluid">
                         <div class="span12">
@@ -293,12 +294,11 @@
                             </div>
                         </div>
                         <div class="row-fluid">
-                            <div class="span6">
+                            <div class="span12">
                                 <h3>
-                                    About This Map
+                                    <span data-bind="text: activeThemeName"></span>
                                 </h3>
-                            </div>
-                            <div class="span6">
+                                <span data-bind="text: themeText"></span>
                             </div>
                         </div>
                     </div>

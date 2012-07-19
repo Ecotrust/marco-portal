@@ -195,38 +195,56 @@ function layerModel(options, parent) {
 function themeModel(options) {
 	var self = this;
 	self.name = options.name;
-	self.id = options.id
+	self.id = options.id;
+    self.description = options.description;
+    
 	// array of layers
 	self.layers = ko.observableArray();
 
-    //add to active themes
-	self.setActiveTheme = function () {
+    //add to open themes
+	self.setOpenTheme = function () {
         var theme = this;
         
         // ensure data tab is activated
         $('#dataTab').tab('show');
         
-		if (self.isActiveTheme(theme)) {
+		if (self.isInOpenThemes(theme)) {
 			//app.viewModel.activeTheme(null);
-			app.viewModel.activeThemes.remove(theme);
+			app.viewModel.openThemes.remove(theme);
 		} else {
-			app.viewModel.activeThemes.push(theme);
+			app.viewModel.openThemes.push(theme);
 		}
 	};
     
-    //is in active themes
-	self.isActiveTheme = function () {
+    //is in openThemes
+	self.isInOpenThemes = function () {
         var theme = this;
-        if (app.viewModel.activeThemes.indexOf(theme) !== -1) {
+        if (app.viewModel.openThemes.indexOf(theme) !== -1) {
             return true;
         }
         return false;
-		//return app.viewModel.activeTheme() === theme;
 	};
 
+    //display theme text below the map
+    self.setActiveTheme = function() {
+        var theme = this;
+        app.viewModel.activeTheme(theme);
+        app.viewModel.activeThemeName(self.name);
+        app.viewModel.themeText(theme.description);
+    };
+    
+    // is active theme
+    self.isActiveTheme = function() {
+        var theme = this; 
+        if ( app.viewModel.activeTheme() == theme ) {
+            return true;
+        }
+        return false;
+    };
+   
     self.hideTooltip = function (theme, event) {
         $('.layer-popover').hide();
-    }
+    };
     
 	return self;
 }
@@ -318,14 +336,21 @@ function viewModel() {
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
 
-	// reference to active theme model
-	self.activeThemes = ko.observableArray();
+	// reference to open themes in accordion
+	self.openThemes = ko.observableArray();
+    
+    // reference to active theme model/name for display text
+    self.activeTheme = ko.observable();    
+    self.activeThemeName = ko.observable();
 
 	// list of theme models
 	self.themes = ko.observableArray();
 
 	// last clicked layer for editing, etc
 	self.activeLayer = ko.observable();
+    
+    // theme text currently on display
+    self.themeText = ko.observable();
 
 	// index for filter autocomplete and lookups
 	self.layerIndex = {};
@@ -422,7 +447,7 @@ function viewModel() {
 		var found = self.layerSearchIndex[self.searchTerm()];
         
         //self.activeTheme(theme);
-        self.activeThemes.push(found.theme);
+        self.openThemes.push(found.theme);
         found.layer.activateLayer();
 	};
 

@@ -3,56 +3,195 @@
         "pk": 1, 
         "model": "data_manager.theme", 
         "fields": {
-            "name": "Administrative"
+            "name": "Administrative", 
+            "description": "Administrative theme."
         }
     }, 
     {
         "pk": 2, 
         "model": "data_manager.theme", 
         "fields": {
-            "name": "Conservation"
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Energy"
+            "name": "Conservation", 
+            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
         }
     }, 
     {
         "pk": 4, 
         "model": "data_manager.theme", 
         "fields": {
-            "name": "Fishing"
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Military"
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Ocean"
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Recreation"
+            "name": "Fishing", 
+            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. We will be paying close attention to dynamic and variable environments with different depths, outcrops, substrates, and slopes, which provide foundations for deep sea corals, rare sponges, and anemones that form the food sources for lobsters, crabs, flounders, hakes, skates, monkfish, and tilefish."
         }
     }, 
     {
         "pk": 8, 
         "model": "data_manager.theme", 
         "fields": {
-            "name": "Maritime Industries"
+            "name": "Maritime Industries", 
+            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. The largest port on the Eastern seaboard (New York\u2013New Jersey), the nation\u2019s top port in fruits and juices (Wilmington), and a port that reaches over a third of the country overnight (Baltimore) are all in the Mid-Atlantic. And every minute of every day, the ranks and ships of the U.S. Coast Guard and other agencies work to ensure that our ports and shipping lanes are accessible and safe."
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "name": "Military", 
+            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations . The U.S. Coast Guard works vigilantly with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe."
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "name": "Ocean", 
+            "description": "Ocean theme."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "name": "Recreation", 
+            "description": "Recreation theme."
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "name": "Energy", 
+            "description": "Energy theme."
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Bottom Gear Types", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "fact_sheet": null, 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "sublayers": [
+                15
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "description": null
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Pelagic Gear Types", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "fact_sheet": null, 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "sublayers": [
+                15
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "description": null
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Summer Flounder Landings", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "fact_sheet": null, 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "sublayers": [
+                15
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "description": null
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "name": "Fishing Effort", 
+            "source": null, 
+            "url": "", 
+            "kml": null, 
+            "fact_sheet": null, 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "sublayers": [
+                12, 
+                13, 
+                14, 
+                11
+            ], 
+            "is_sublayer": false, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "description": null
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "Wind Speed", 
+            "source": "http://www.nrel.gov/gis/wind.html", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "fact_sheet": null, 
+            "themes": [
+                3
+            ], 
+            "bookmark": "http://localhost:8000/media/marco-proto/index.html#location%5Bx%5D=-71.37231445312406&location%5By%5D=38.457524829585964&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/Legend.png", 
+            "data_download": "", 
+            "description": null
         }
     }, 
     {
@@ -64,17 +203,18 @@
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayers": [], 
+            "fact_sheet": null, 
             "themes": [
                 1
             ], 
             "bookmark": null, 
+            "sublayers": [], 
             "is_sublayer": false, 
+            "map_tiles": null, 
             "metadata": null, 
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/Legend.png", 
             "data_download": null, 
-            "map_tiles": null,
             "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
         }
     }, 
@@ -87,17 +227,19 @@
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayers": [], 
+            "fact_sheet": null, 
             "themes": [
                 3
             ], 
             "bookmark": null, 
+            "sublayers": [], 
             "is_sublayer": false, 
+            "map_tiles": null, 
             "metadata": null, 
             "utfurl": "", 
             "legend": "", 
             "data_download": null, 
-            "map_tiles": null
+            "description": null
         }
     }, 
     {
@@ -109,17 +251,19 @@
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayers": [], 
+            "fact_sheet": null, 
             "themes": [
                 6
             ], 
             "bookmark": null, 
+            "sublayers": [], 
             "is_sublayer": false, 
+            "map_tiles": null, 
             "metadata": null, 
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/Legend.png", 
             "data_download": null, 
-            "map_tiles": null
+            "description": null
         }
     }, 
     {
@@ -131,17 +275,19 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayers": [], 
+            "fact_sheet": null, 
             "themes": [
                 8
             ], 
             "bookmark": null, 
+            "sublayers": [], 
             "is_sublayer": false, 
+            "map_tiles": null, 
             "metadata": null, 
             "utfurl": "", 
             "legend": "", 
             "data_download": null, 
-            "map_tiles": null
+            "description": null
         }
     }, 
     {
@@ -153,132 +299,21 @@
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
-            "sublayers": [], 
+            "fact_sheet": null, 
             "themes": [
                 4
             ], 
             "bookmark": null, 
+            "sublayers": [
+                15
+            ], 
             "is_sublayer": true, 
+            "map_tiles": null, 
             "metadata": null, 
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png", 
             "data_download": null, 
-            "map_tiles": null
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "name": "Bottom Gear Types", 
-            "source": null, 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "sublayers": [], 
-            "themes": [
-                4
-            ], 
-            "bookmark": null, 
-            "is_sublayer": true, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "map_tiles": null
-        }
-    }, 
-    {
-        "pk": 13, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "name": "Pelagic Gear Types", 
-            "source": null, 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "sublayers": [], 
-            "themes": [
-                4
-            ], 
-            "bookmark": null, 
-            "is_sublayer": true, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "map_tiles": null
-        }
-    }, 
-    {
-        "pk": 14, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "name": "Summer Flounder Landings", 
-            "source": null, 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "sublayers": [], 
-            "themes": [
-                4
-            ], 
-            "bookmark": null, 
-            "is_sublayer": true, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "map_tiles": null
-        }
-    }, 
-    {
-        "pk": 15, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "name": "Fishing Effort", 
-            "source": null, 
-            "url": "", 
-            "kml": null, 
-            "sublayers": [
-                11,
-                12,
-                13,
-                14
-            ], 
-            "themes": [
-                4
-            ], 
-            "bookmark": null, 
-            "is_sublayer": false, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "map_tiles": null
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "name": "Wind Speed", 
-            "source": "http://www.nrel.gov/gis/wind.html", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
-            "sublayers": [], 
-            "themes": [
-                3
-            ], 
-            "bookmark": "http://localhost:8000/media/marco-proto/index.html#location%5Bx%5D=-71.37231445312406&location%5By%5D=38.457524829585964&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "is_sublayer": false, 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/Legend.png", 
-            "data_download": "", 
-            "map_tiles": ""
+            "description": null
         }
     }
 ]
