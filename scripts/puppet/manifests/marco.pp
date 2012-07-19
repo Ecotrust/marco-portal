@@ -170,6 +170,10 @@ package { "python-dev":
     ensure => "latest"
 }
 
+package { "inotify-tools":
+    ensure => "latest"
+}
+
 
 class { "postgresql::server": version => "9.1",
     listen_addresses => 'localhost',

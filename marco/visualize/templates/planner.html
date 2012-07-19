@@ -12,6 +12,8 @@
         <!-- Le styles -->
         <link href="{{media}}/marco-proto/assets/css/bootstrap.css" rel="stylesheet">
         <link href="{{media}}/marco-proto/assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{media}}/marco/css/marco_style.css" rel="stylesheet">
+
         <link href="{{media}}/marco-proto/assets/css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css"
         type="text/css" media="all" />
@@ -30,51 +32,25 @@
     </head>
     
     <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
+        <header role="banner">
+            <div class="navbar">
+              <div class="navbar-inner">
                 <div class="container-fluid">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <a href="">
+                        <img src="{{media}}marco/img/marco-logo.gif"/>
                     </a>
-                    <a class="brand" href="#">Planning Tool</a>
-                    <div class="btn-group pull-right">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown">
-                          <i class="icon-user"></i> Username
-                          <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a data-bind="click: loadLayersFromFixture">Load Layers From Fixture</a>
-                            </li>
-                            <li>
-                                <a data-bind="click: loadLayersFromServer">Load Layers From Server</a>
-                            </li>
-                            <li class="divider">
-                            </li>
-                            <li>
-                                <a href="#">Sign Out</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="nav-collapse">
-                        <ul class="nav">
-                            <li class="active">
-                                <a href="#">Portal</a>
-                            </li>
-                            <li>
-                                <a href="#help">Help</a>
-                            </li>
-                            <li>
-                                <a href="#about">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/.nav-collapse -->
+                  <div class="pull-right">
+                    <ul class="nav">
+                      <li class=""><a a href="http://localhost:8010/portal/news">News</a></li>
+                      <li class=""><a href="http://localhost:8010/portal/about">About the&nbsp;Portal</a></li>
+                      <li><a href="http://www.midatlanticocean.org/">Visit Marco Council</a></li>
+                    </ul>
+                  </div><!--/.nav-collapse -->
                 </div>
+              </div>
             </div>
-        </div>
+        </header> <!-- end header -->
+        
         <div class="container-fluid" id="primary-content">
             <div class="row-fluid">
                 <div class="span4">
@@ -324,11 +300,7 @@
             </div>
             <!--/row-->
             <hr>
-            <footer>
-                <p>
-                    &copy; Company 2012
-                </p>
-            </footer>
+          
         </div>
         <!--/.fluid-container-->
         
