@@ -9,7 +9,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'marco',
-        'USER': 'eknuth',
+        'USER': 'vagrant',
     }
 }
 
