@@ -20,8 +20,10 @@ function layerModel(options, parent) {
     });
 
 
-	// is the layer visible?
+	// is the layer in the active panel?
 	self.active = ko.observable(false);
+    // is the layer enabled?
+    self.enabled = ko.observable(false);
 
     self.activeSublayer = ko.observable(false);
 
@@ -47,6 +49,7 @@ function layerModel(options, parent) {
 		var layer = this;
 		app.viewModel.activeLayers.remove(layer);
 		layer.active(false);
+        layer.enabled(false);
         
         app.setLayerVisibility(layer, false);
         layer.opacity(.5);
@@ -67,6 +70,7 @@ function layerModel(options, parent) {
             app.viewModel.activeLayers.unshift(layer);
             // set the active flag
             layer.active(true);
+            layer.enabled(true);
 
             // save reference in parent layer
             if (layer.parent) {
@@ -78,11 +82,11 @@ function layerModel(options, parent) {
     // bound to click handler for layer visibility switching in Active panel
     self.toggleVisible = function() {
         var layer = this;
-        if ( layer.active() ) {
-            layer.active(false);
+        if ( layer.enabled() ) {
+            layer.enabled(false);
             app.setLayerVisibility(layer, false);
         } else {
-            layer.active(true);
+            layer.enabled(true);
             app.setLayerVisibility(layer, true);
         }
     }
@@ -124,6 +128,7 @@ function layerModel(options, parent) {
 				// layer has sublayer, activate first layer
 				layer.subLayers[0].activateLayer();
 				layer.active(true);
+                layer.enabled(true);
 			} else {
 				// otherwise just activate the layer
 				layer.activateLayer();

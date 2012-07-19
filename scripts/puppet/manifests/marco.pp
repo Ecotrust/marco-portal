@@ -61,7 +61,7 @@ include mysql-server
 
 file {'/etc/apache2/sites-available/default':
   ensure => file,
-  content => template("vhost.erb"),
+  content => template("vhost.conf"),
   notify  => Service['apache2']
 }
 
@@ -81,7 +81,7 @@ exec { "/usr/sbin/a2enmod rewrite" :
 
 service { 'apache2':
     ensure => running,
-    subscribe => File["/etc/apache2/conf.d/vhost.conf"],
+    subscribe => File["/etc/apache2/sites-available/default"],
 }
 
 
@@ -154,9 +154,8 @@ package { "vim":
 
 exec { "Add SRID":
   subscribe => Package['python-gdal'] ,
-  command => "echo '<99996> +proj=aea +lat_1=37.25 +lat_2=40.25 +lat_0=36 +lon_0=-72 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs <>' | cat >>/usr/share/proj/epsg' ,
+  command => "/bin/echo '<99996> +proj=aea +lat_1=37.25 +lat_2=40.25 +lat_0=36 +lon_0=-72 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs <>' | cat >>/usr/share/proj/epsg"
 }
-
 
 package { "python-imaging":
     ensure => "latest"
@@ -195,7 +194,7 @@ postgresql::database { "marco":
 
 
 python::venv::isolate { "/usr/local/venv/marco":
-  requirements => "/vagrant/requirements.txt"
+  requirements => "/vagrant/requirements.txt",
   subscribe => [Package['python-mapnik'], Package['build-essential']]
 }
 
