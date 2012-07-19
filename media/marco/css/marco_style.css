@@ -75,6 +75,10 @@ hr {
 
 }
 
+.sidebar-nav {
+	border: 1px solid #ccc;
+}
+
 .form-search .btn {
 	font-size: 9px;
 	text-transform: uppercase;
