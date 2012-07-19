@@ -235,7 +235,7 @@
                     <div class="row-fluid" data-bind="visible: showMapPanel">
                         <div class="span12">
                             <div class="row-fluid" >
-                                <div id="map-wrapper" data-bind="css: { span10: showLegend(), span12: ! showLegend() }">
+                                <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
                                   <div id="map-buttons">
                                       <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
@@ -270,21 +270,13 @@
                                         </div>
                                   </div>
                                 </div>
-                                <div data-bind="visible: showLegend()" class="span2">
+                                <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
-                                        <div class="accordion" id="legend-accordion" data-bind="foreach: activeLayers">
+                                        <div data-bind="foreach: activeLayers">
                                             <div data-bind="if: legend">
-                                                <div class="accordion-group">
-                                                    <div class="accordion-heading" data-bind="click: toggleLegendVisibility">
-                                                        <a class="accordion-toggle">
-                                                      <span data-bind="text: fullName"></span>
-                                                    </a>
-                                                    </div>
-                                                    <div class="accordion-body collapse" data-bind="css: { 'in': legendVisibility }">
-                                                        <div class="accordion-inner">
-                                                            <img data-bind="attr: { src: legend }" />
-                                                        </div>
-                                                    </div>
+                                                <span class="pagination-centered" data-bind="text: fullName"></span>
+                                                <div data-bind="css: { 'in': legendVisibility }">
+                                                    <img data-bind="attr: { src: legend }" />
                                                 </div>
                                             </div>
                                         </div>
