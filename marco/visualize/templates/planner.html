@@ -185,14 +185,12 @@
                                     <tbody data-bind="sortable: { data: activeLayers, options: { forceHelperSize: true } }">
                                         <tr>
                                             <td>
-                                                <button class="btn btn-layer" data-bind="css: { 'btn-success': enabled() }, click: toggleVisible">
-                                                    <i class="icon-align-justify"></i>
-                                                    <span data-bind="text: fullName"></span>
-                                                    <i class="pull-right icon-large check" data-bind="css: { 'icon-check': enabled(), 'icon-check-empty': ! enabled() }"></i>
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group pull-right">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-layer" data-bind="css: { 'active': enabled() }, click: toggleVisible">
+                                                        <i class="icon-align-justify"></i>
+                                                        <span data-bind="text: fullName"></span>
+                                                        <i class="pull-right icon-large check" data-bind="css: { 'icon-check': enabled(), 'icon-check-empty': ! enabled() }"></i>
+                                                    </button>
                                                     <button class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></button>
                                                     <button class="btn" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
                                                         <i class="icon-circle-arrow-up">
