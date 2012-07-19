@@ -102,7 +102,7 @@
                                         <!-- data accordion -->
                                         <div class="accordion" id="data-accordion" data-bind="foreach: themes">
                                             <div class="accordion-group">
-                                                <div class="accordion-heading">
+                                                <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}">
                                                     <div>
                                                         <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
                                                       
@@ -112,8 +112,17 @@
                                                     <div class="accordion-inner">
                                                         <table class="table">
                                                             <tbody data-bind="foreach: layers ">
-                                                                <tr>
+                                                                <tr data-bind="event: {'hover': showTooltip}">
                                                                     <td>
+                                                                        <div style="display:none" class="layer-popover popover fade right in">
+                                                                            <div class="arrow">
+                                                                            </div>
+                                                                            <div class="popover-inner">
+                                                                                <div class="popover-content" data-bind="event: {'mouseout': hideTooltip}">
+                                                                                    <span data-bind="text: name"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="btn-group btn-group-layer">
                                                                             <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }, click: toggleActive">
                                                                                 <i class="icon-align-justify">
@@ -369,6 +378,7 @@
                                                             }(document, "script", "twitter-wjs");
                                                         </script>
                                                     </td>
+                                                    <!--
                                                     <td>
                                                         <button class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
                                                             <a data-bind="attr: {href: $parent.getEmailHref($data)}">
@@ -377,6 +387,7 @@
                                                             </a>
                                                         </button>
                                                     </td>
+                                                    -->
                                                     <td>
                                                         <button class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
                                                             <i class="icon-trash">

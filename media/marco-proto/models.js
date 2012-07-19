@@ -149,6 +149,19 @@ function layerModel(options, parent) {
 	self.isBottomLayer = function (layer) {
 		return app.viewModel.activeLayers.indexOf(layer) === app.viewModel.activeLayers().length - 1;
 	}
+    
+    self.showTooltip = function (layer, event) {
+        $('.layer-popover').hide(); 
+        $(event.target).find('.popover').show().position({
+            "my": "right middle",
+            "at": "left middle",
+            "of": $(event.target)
+        });
+    }
+    
+    self.hideTooltip = function (layer, event) {
+        $('.layer-popover').hide();
+    }
 
 	// remove the layer dropdrown menu
 	self.closeMenu = function (layer, event) {
@@ -191,6 +204,10 @@ function themeModel(options) {
 		//return app.viewModel.activeTheme() === theme;
 	};
 
+    self.hideTooltip = function (theme, event) {
+        $('.layer-popover').hide();
+    }
+    
 	return self;
 }
 
@@ -248,7 +265,7 @@ function bookmarkModel($popover) {
 	};
     
     self.getEmailHref = function (bookmark) {
-        return "mailto:?subject=MARCO Bookmark&body=" + self.getUrl(bookmark).replace(/&/g, '%26');
+        return "mailto:?subject=MARCO Bookmark&body=<a href='" + self.getUrl(bookmark).replace(/&/g, '%26') + "'>bookmark</a>";
     };
 
 	// store the bookmarks to local storage or server

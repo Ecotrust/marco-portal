@@ -63,10 +63,19 @@ $(document).ready(function () {
 });
 
 $(document).click(function (e) {
+    //removing bookmark popover from view
     if ( e.target.id === "bookmarks-button" ) {
     } else if ( !$(e.target).closest("#bookmark-popover").length ) {
         $('#bookmark-popover').hide();
     }
+    
+    //removing layer tooltip popover from view
+    var layer_pvr_event = $(e.target).closest(".layer-popover").length;
+    if ( !layer_pvr_event ) {
+        $(".layer-popover").hide();
+    }
+    
+    //removing opacity popover from view
     var op_pvr_event = $(e.target).closest("#opacity-popover").length;
     var op_btn_event = $(e.target).closest(".opacity-button").length;
     //console.log('opacity popover click: ' + op_pvr_event);
