@@ -52,7 +52,7 @@
         
         <div class="container-fluid" id="primary-content">
             <div class="row-fluid">
-                <div class="span4 frame">
+                <div class="span4 frame tabs">
                     <div class="sidebar-nav">
                         <!-- tab controls -->
                         <ul id="myTab" class="nav nav-tabs">
@@ -91,63 +91,65 @@
                                     <div class="row-fluid">
                                         <div class="span12">
                                             <!-- data accordion -->
-                                            <div class="accordion" id="data-accordion" data-bind="foreach: themes">
-                                                <div class="accordion-group">
-                                                    <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}, 
-                                                    css: { 'active': isActiveTheme() }">
-                                                        <div>
-                                                            <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
-                                                          
+                                            <div id="data-accordion">
+                                                <div class="accordion" data-bind="foreach: themes">
+                                                    <div class="accordion-group">
+                                                        <div class="accordion-heading" data-bind="event: {'mouseover': hideTooltip}, 
+                                                        css: { 'active': isActiveTheme() }">
+                                                            <div>
+                                                                <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
+                                                              
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
-                                                        <div class="accordion-inner">
-                                                            <table class="table table-bordered">
-                                                                <tbody data-bind="foreach: layers ">
-                                                                    <tr data-bind="event: {'hover': showTooltip}, css: { nosublayers: subLayers.length === 0 } ">
-                                                                        <td>
-                                                                            <div style="display:none" class="layer-popover popover fade right in">
-                                                                                <div class="arrow">
-                                                                                </div>
-                                                                                <div class="popover-inner">
-                                                                                    <div class="popover-content" data-bind="event: {'mouseout': hideTooltip}">
-                                                                                        <span data-bind="text: description"></span>
+                                                        <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
+                                                            <div class="accordion-inner">
+                                                                <table class="table table-bordered">
+                                                                    <tbody data-bind="foreach: layers ">
+                                                                        <tr data-bind="event: {'hover': showTooltip}, css: { nosublayers: subLayers.length === 0 } ">
+                                                                            <td>
+                                                                                <div style="display:none" class="layer-popover popover fade bottom in">
+                                                                                    <div class="arrow">
+                                                                                    </div>
+                                                                                    <div class="popover-inner">
+                                                                                        <div class="popover-content" data-bind="event: {'mouseout': hideTooltip}">
+                                                                                            <span data-bind="text: description"></span>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="btn-group btn-group-layer">
-                                                                                <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
-                                                                                    <i class="icon-align-justify">
-                                                                                    </i>
-                                                                                    <span data-bind="text: name">
-                                                                                    </span>
-                                                                                    <span data-bind="visible: activeSublayer">
-                                                                                        (
-                                                                                        <span data-bind="text: activeSublayer().name">
+                                                                                <div class="btn-group btn-group-layer">
+                                                                                    <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
+                                                                                        <i class="icon-align-justify">
+                                                                                        </i>
+                                                                                        <span data-bind="text: name">
                                                                                         </span>
-                                                                                        )
-                                                                                    </span>
-                                                                                    <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
-                                                                                    </i>
-                                                                                </button>
-                                                                                <!-- ko if: subLayers.length > 0 -->
-                                                                                    <button class="btn dropdown-toggle" data-toggle="dropdown" >
-                                                                                        <span class="caret">
+                                                                                        <span data-bind="visible: activeSublayer">
+                                                                                            (
+                                                                                            <span data-bind="text: activeSublayer().name">
+                                                                                            </span>
+                                                                                            )
                                                                                         </span>
+                                                                                        <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
+                                                                                        </i>
                                                                                     </button>
-                                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
-                                                                                        <li data-bind="foreach: subLayers">
-                                                                                            <a data-bind="click: toggleActive">
-                                                                                                <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                            <span data-bind="text: name"></span></a>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                <!-- /ko -->
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
+                                                                                    <!-- ko if: subLayers.length > 0 -->
+                                                                                        <button class="btn dropdown-toggle" data-toggle="dropdown" >
+                                                                                            <span class="caret">
+                                                                                            </span>
+                                                                                        </button>
+                                                                                        <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                            <li data-bind="foreach: subLayers">
+                                                                                                <a data-bind="click: toggleActive">
+                                                                                                    <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                                <span data-bind="text: name"></span></a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    <!-- /ko -->
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
