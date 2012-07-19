@@ -70,6 +70,7 @@ $(document).click(function (e) {
     if ( !layer_pvr_event ) {
         $(".layer-popover").hide();
     }
+
     
     //removing opacity popover from view
     var op_pvr_event = $(e.target).closest("#opacity-popover").length;
