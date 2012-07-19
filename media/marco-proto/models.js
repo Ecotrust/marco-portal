@@ -74,6 +74,19 @@ function layerModel(options, parent) {
         }
 	};
 
+    // bound to click handler for layer visibility switching in Active panel
+    self.toggleVisible = function() {
+        var layer = this;
+        if ( layer.active() ) {
+            layer.active(false);
+            app.setLayerVisibility(layer, false);
+        } else {
+            layer.active(true);
+            app.setLayerVisibility(layer, true);
+        }
+    }
+            
+    
     // bound to click handler for layer switching
 	self.toggleActive = function () {
 		var layer = this;
