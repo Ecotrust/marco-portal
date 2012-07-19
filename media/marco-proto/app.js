@@ -44,10 +44,6 @@ $(document).ready(function () {
 	app.onResize();
 	$(window).resize(app.onResize);
 	
-	// autocomplete for filter
-	$('.search-box').typeahead({
-		source: app.typeAheadSource 
-	});
 
 
 	// handle coordinate indicator on pointer
