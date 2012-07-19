@@ -313,6 +313,10 @@ img + h3 {
 	background-color: blue;
 }
 
-#active .btn-group {
-	width: 100%;
+#active .btn-layer {
+	width: 75%;
+	text-align: left;
+}
+#active .btn-layer i {
+	margin-top: 4px;
 }
