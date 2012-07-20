@@ -324,3 +324,6 @@ img + h3 {
 #active .btn-layer i {
 	margin-top: 4px;
 }
+#data-accordion li.layer {
+	margin-bottom: 10px;
+}

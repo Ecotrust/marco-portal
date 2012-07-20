@@ -172,17 +172,15 @@ function layerModel(options, parent) {
 	}
     
     self.showTooltip = function (layer, event) {
-        $('.layer-popover').hide(); 
-        $(event.target).find('.popover').show().position({
-            "my": "center top",
-            "at": "center bottom",
+        $('#layer-popover').hide(); 
+        app.viewModel.layerToolTipText(layer.description);
+        $('#layer-popover').show().position({
+            "my": "right middle",
+            "at": "left middle",
             "of": $(event.target)
         });
     }
     
-    self.hideTooltip = function (layer, event) {
-        $('.layer-popover').hide();
-    }
 
 	// remove the layer dropdrown menu
 	self.closeMenu = function (layer, event) {
@@ -360,6 +358,9 @@ function viewModel() {
 	// viewmodel for bookmarks
 	self.bookmarks = new bookmarkModel();
 
+	// text for tooltip popup
+	self.layerToolTipText = ko.observable();
+
 	// set the error type
 	// can be one of:
 	// 	restoreState
@@ -433,6 +434,10 @@ function viewModel() {
         $('.opacity-button.active').removeClass('active');
         app.updateUrl();
 	}
+    self.hideTooltip = function () {
+	    $('#layer-popover').hide();
+	}
+
 
 	// show coords info in pointer
 	self.showPointerInfo = ko.observable(false);
