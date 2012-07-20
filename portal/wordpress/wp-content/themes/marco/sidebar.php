@@ -29,11 +29,12 @@
 					</ul>
 					<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Visualize</a></h3>
 					<ul class="unstyled">
-						<li><a href="/visualize">Planning Tool</a></li>
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
+						<ul>
+                            <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Planning Tools</a></li>
+                            <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#cartography">Cartography</a></li>
+                            <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#collaboration">Collaboration</a></li>
+                            <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#interactivity">Interactivity</a></li>
+                        </ul>
 					</ul>
 		
 				</div>
