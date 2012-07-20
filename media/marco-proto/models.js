@@ -445,13 +445,18 @@ function viewModel() {
 	// handle the search form
 	self.searchTerm = ko.observable();
 	self.layerSearch = function () {
-		var found = self.layerSearchIndex[self.searchTerm()];
-        
+		var found = self.layerSearchIndex[self.searchTerm()];	
         //self.activeTheme(theme);
         self.openThemes.push(found.theme);
         found.layer.activateLayer();
 	};
+	self.keySearch = function (_, event) {
 
+		if (event.which === 13) {
+			self.searchTerm($('.typeahead .active').text());
+			self.layerSearch();
+		}
+	}
 
 
 	// do this stuff when the active layers change

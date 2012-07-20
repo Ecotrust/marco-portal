@@ -30,6 +30,10 @@ app.viewModel.loadLayersFromServer().done( function () {
     if (app.hash) {
         app.loadStateFromHash(app.hash);
     }
+	// autocomplete for filter
+    $('.search-box').typeahead({
+    	source: app.typeAheadSource 
+    });
 });
 
 // initialize the map
@@ -40,13 +44,15 @@ app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
 
 
-
 $(document).ready(function () {
 	app.onResize();
 	$(window).resize(app.onResize);
 	
 
-
+	// if we have the hash state go ahead and load it now
+	if (app.hash) {
+		app.loadStateFromHash(app.hash);
+	}
 	// handle coordinate indicator on pointer
 	$('#map').bind('mouseleave mouseenter', function (e) {
 		$('#pos').toggle();
@@ -56,7 +62,8 @@ $(document).ready(function () {
 			left: e.pageX + 20,
 			top: e.pageY + 20
 		});
-	});       
+	});   
+
 });
 
 $(document).click(function (e) {
