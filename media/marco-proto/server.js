@@ -52,12 +52,7 @@ app.viewModel.loadLayers = function(data) {
             }
             return keys;
         })();
-    // autocomplete for filter
-    $(document).ready(function () {    	
-	    $('.search-box').typeahead({
-	    	source: app.typeAheadSource 
-	    });
-    });
+  
 
 };
 app.viewModel.loadLayersFromFixture = function() {
