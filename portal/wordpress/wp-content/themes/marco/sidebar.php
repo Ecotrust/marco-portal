@@ -24,12 +24,12 @@
 					</ul>
 					<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/explore">Explore</a></h3>
 					<ul class="unstyled">
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Data Catalog</a></li>
-						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Data Priorities</a></li>
+						<li><a href="/explore/catalog">Data Catalog</a></li>
+						<li><a href="/explore/needs">Data Priorities</a></li>
 					</ul>
 					<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Visualize</a></h3>
 					<ul class="unstyled">
-						<li><a href="http://dev.marco.marineplanning.org">Planning Tool</a></li>
+						<li><a href="/visualize">Planning Tool</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
 						<li><a href="<?php echo get_bloginfo('wpurl'); ?>">Feature</a></li>
