@@ -50,7 +50,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	        <div class="accordion-heading">
 	            <a href="#{{ theme_dict.theme.name }}-layers" data-parent="#{{ theme_dict.theme.name }}" data-toggle="collapse"
 	            class="accordion-toggle">
-		      {{ theme_dict.theme.name }}
+                <span class="theme-name">{{ theme_dict.theme.name }}</span>
 		    </a>
 	        </div>
 	        <div class="accordion-body collapse" id="{{ theme_dict.theme.name }}-layers">
@@ -62,7 +62,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 {% if layer.is_parent %}
                                 {% else %}
                                 <tr>
-                                    <td>{{layer.name}}</td>
+                                    <td class="layer-name">{{layer.name}}</td>
                                     <td><a href="{{layer.bookmark}}" target="_blank">view</a></td>
                                     <td><a href="{{layer.map_tiles}}" target="_blank">map tiles</a></td>
                                     <td><a href="{{layer.kml}}" target="_blank">kml</a></td>
@@ -86,6 +86,34 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 {% endblock %}
 {% block javascript %}
-    <script>
-    </script>
+<script>
+    $(document).ready( function() {
+        var layers = [],
+            layer_index = {};
+        $('.theme').each( function(index, theme) {
+            var theme_name = $(theme).find('.theme-name').text();
+            $(theme).find('.layer-name').each( function(index, layer) {
+                var name = $(layer).text() + ' (' + theme_name + ')';
+                layers.push(name);
+                layer_index[name] = { 
+                    accordion: $($(theme).find('.accordion-body')),
+                    layer: $(layer)
+                };
+            });
+        });
+        $('.search-box').typeahead( {
+            source: layers.sort()
+        });
+        $('.form-search').submit( function(event) {
+            var layer = layer_index[$(this).find('input').val()]
+                accordion = layer.accordion,
+                theme_top = accordion.closest('.theme').offset().top;
+            event.preventDefault();
+            accordion.addClass('in');
+            $(window).scrollTop(theme_top);
+            layer.layer.closest('tr').effect("pulsate", {times:2 }, 500);
+        });
+        
+    });
+</script>
 {% endblock %}
