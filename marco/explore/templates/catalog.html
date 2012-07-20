@@ -3,14 +3,36 @@
 {% load flatblock_tags %}
 
 <!--  foreach theme  -->
+<h2>Data Catalog</h2>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<div class="row-fluid search-row">
+    <div class="span12 ">
+        <h3>Data Layer Search</h3>
+        <form class="form-search">
+            <div class="span8">
+                <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
+            </div>
+            <div class="span4">
+                <button type="submit" class="btn">
+                    find
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 {% for theme_dict in themes %}
 <div class="theme">
 	<div class="theme-context">
         <div class="row-fluid">
             <div class="span8">
-                <h2>
+                <h3>
                     {{ theme_dict.theme.name }}
-                </h2>
+                </h3>
                 <p>
                     {{ theme_dict.theme.description }} 
                 </p>           
@@ -62,4 +84,8 @@
 {% endfor themes%}
 <!-- endforeach theme -->
 
+{% endblock %}
+{% block javascript %}
+    <script>
+    </script>
 {% endblock %}

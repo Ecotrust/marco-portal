@@ -122,9 +122,13 @@ hr {
 	margin-top: -5px;
 }
 
-#data .form-search .btn {
-	margin-left: -14px;
+#data .form-search .btn, .search-row .form-search .btn {
+	margin-left: -15px;
 	margin-top: 0px;
+}
+
+.search-row {
+	margin: 20px 0px;
 }
 
 .showcase {
@@ -293,16 +297,16 @@ img + h3 {
 	margin-top: 10px;
 }
 
-.sidebar-nav .accordion-group {
+.accordion-group {
 	margin-bottom: 0px;
 }
 
-.sidebar-nav .accordion-heading {
+.accordion-heading {
 /*	text-transform: uppercase;
 */	font-size: 16px;
 
 }
-.sidebar-nav .accordion-heading.active {
+.accordion-heading.active {
 	border-left: 3px solid #2d8998;
 	margin-left: -1px;
 		
@@ -326,4 +330,8 @@ img + h3 {
 }
 #data-accordion li.layer {
 	margin-bottom: 10px;
+}
+
+.theme .theme-context {
+	margin-bottom: 20px;
 }
