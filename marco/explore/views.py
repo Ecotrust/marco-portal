@@ -9,6 +9,8 @@ def data_catalog(request, template='catalog.html'):
     context = {'themes': themes}
     return render_to_response(template, RequestContext(request, context)) 
 
-def data_needs(request):
-    pass
+def data_needs(request, template='needs.html'):
+    layers = Layer.objects.all().order_by('name')
+    context = {'layers': layers}
+    return render_to_response(template, RequestContext(request, context)) 
     

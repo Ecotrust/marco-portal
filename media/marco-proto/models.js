@@ -174,8 +174,8 @@ function layerModel(options, parent) {
     self.showTooltip = function (layer, event) {
         $('.layer-popover').hide(); 
         $(event.target).find('.popover').show().position({
-            "my": "right middle",
-            "at": "left middle",
+            "my": "center top",
+            "at": "center bottom",
             "of": $(event.target)
         });
     }

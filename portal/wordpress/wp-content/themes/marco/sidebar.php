@@ -1,4 +1,4 @@
-				<div id="sidebar1" class="fluid-sidebar sidebar span4" role="complementary">
+				<div id="sidebar1" class="fluid-sidebar sidebar span3" role="complementary">
 					<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/learn">Learn</a></h3>
 					<ul class="unstyled">
 						 <?php
