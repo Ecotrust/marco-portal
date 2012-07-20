@@ -298,8 +298,8 @@ img + h3 {
 }
 
 .sidebar-nav .accordion-heading {
-	text-transform: uppercase;
-	font-size: 16px;
+/*	text-transform: uppercase;
+*/	font-size: 16px;
 
 }
 .sidebar-nav .accordion-heading.active {
@@ -323,4 +323,7 @@ img + h3 {
 }
 #active .btn-layer i {
 	margin-top: 4px;
+}
+#data-accordion li.layer {
+	margin-bottom: 10px;
 }
