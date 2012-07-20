@@ -31,6 +31,9 @@ hr {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 }
+.navbar-narrow {
+	width: 940px;
+}
 
 .navbar .nav > li a {
 	text-transform: uppercase;
