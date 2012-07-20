@@ -250,3 +250,7 @@ hr {
 img + h3 {
 	margin-top: 10px;
 }
+
+.post_content img.size-full {
+	margin-bottom: 20px;
+}
