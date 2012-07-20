@@ -94,7 +94,7 @@
                                             <div id="data-accordion">
                                                 <div class="accordion" data-bind="foreach: themes">
                                                     <div class="accordion-group">
-                                                        <div class="accordion-heading" data-bind="event: {'mouseover': $root.hideTooltip}, css: { 'active': isOpenTheme() }">
+                                                        <div class="accordion-heading" data-bind="event: {'mouseenter': $root.hideTooltip}, css: { 'active': isOpenTheme() }">
                                                             <div>
                                                                 <a class="accordion-toggle"  data-bind="click: setOpenTheme"><span data-bind="text: name">Themes</span></a>
                                                             </div>

@@ -76,7 +76,7 @@ $(document).click(function (e) {
     //removing layer tooltip popover from view
     var layer_pvr_event = $(e.target).closest(".layer-popover").length;
     if ( !layer_pvr_event ) {
-        $(".layer-popover").hide();
+        $("#layer-popover").hide();
     }
 
     
