@@ -25,7 +25,12 @@ app.restoreState = {};
 
 
 ko.applyBindings(app.viewModel);
-app.viewModel.loadLayersFromServer();
+app.viewModel.loadLayersFromServer().done( function () {
+    // if we have the hash state go ahead and load it now
+    if (app.hash) {
+        app.loadStateFromHash(app.hash);
+    }
+});
 
 // initialize the map
 app.init();
@@ -35,10 +40,6 @@ app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
 
 
-// if we have the hash state go ahead and load it now
-if (app.hash) {
-	app.loadStateFromHash(app.hash);
-}
 
 $(document).ready(function () {
 	app.onResize();

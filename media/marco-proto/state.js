@@ -46,17 +46,15 @@ app.loadState = function(state) {
     // transform our coordinates
     app.map.setCenter(new OpenLayers.LonLat(state.location.x, state.location.y).transform(
     new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), state.location.zoom);
-
 };
 
 // load the state from the url hash
-app.loadStateFromHash = function (hash) {
+app.loadStateFromHash = function (hash) {    
     app.loadState($.deparam(hash.slice(1)));
 };
 
 // update the hash
 app.updateUrl = function () {
-
     var state = app.getState();
     // save the restore state
     if (app.saveStateMode) {

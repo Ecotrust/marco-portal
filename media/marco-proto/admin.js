@@ -34,7 +34,6 @@ var adminModel = function () {
 		self.activeObject(layer);
 		self.objectForEditing($.extend({}, layer));
 		self.adminMode('editLayer');
-		console.dir(layer.themes());
 	};
 
 	self.editTheme = function (theme) {
