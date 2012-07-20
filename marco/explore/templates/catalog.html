@@ -41,13 +41,13 @@
                                 {% else %}
                                 <tr>
                                     <td>{{layer.name}}</td>
-                                    <td><a href="{{layer.bookmark}}">view</a></td>
-                                    <td><a href="{{layer.map_tiles}}">map tiles</a></td>
-                                    <td><a href="{{layer.kml}}">kml</a></td>
-                                    <td><a href="{{layer.data_download}}">data</a></td>
-                                    <td><a href="{{layer.fact_sheet}}">fact sheet</a></td>
-                                    <td><a href="{{layer.metadata}}">metadata</a></td>
-                                    <td><a href="{{layer.source}}">source</a></td>
+                                    <td><a href="{{layer.bookmark}}" target="_blank">view</a></td>
+                                    <td><a href="{{layer.map_tiles}}" target="_blank">map tiles</a></td>
+                                    <td><a href="{{layer.kml}}" target="_blank">kml</a></td>
+                                    <td><a href="{{layer.data_download}}" target="_blank">data</a></td>
+                                    <td><a href="{{layer.fact_sheet}}" target="_blank">fact sheet</a></td>
+                                    <td><a href="{{layer.metadata}}" target="_blank">metadata</a></td>
+                                    <td><a href="{{layer.source}}" target="_blank">source</a></td>
                                 </tr>
                                 {% endif %}
                             {% endfor layer_set %}

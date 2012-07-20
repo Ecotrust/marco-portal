@@ -200,21 +200,21 @@
         "fields": {
             "layer_type": "XYZ", 
             "name": "OCS Lease Blocks", 
-            "source": null, 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "fact_sheet": null, 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "fact_sheet": "", 
             "themes": [
                 1
             ], 
-            "bookmark": null, 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "sublayers": [], 
             "is_sublayer": false, 
-            "map_tiles": null, 
-            "metadata": null, 
+            "map_tiles": "", 
+            "metadata": "", 
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/Legend.png", 
-            "data_download": null, 
+            "data_download": "", 
             "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
         }
     }, 
