@@ -77,3 +77,16 @@ class Layer(models.Model):
             'description': self.description
         }
         return layers_dict
+
+class DataNeed(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    source = models.CharField(max_length=255, blank=True, null=True)
+    status = models.TextField(blank=True, null=True)
+    contact = models.CharField(max_length=255, blank=True, null=True)
+    contact_email = models.CharField(max_length=255, blank=True, null=True)
+    expected_date = models.CharField(max_length=255, blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return unicode('%s' % (self.name))

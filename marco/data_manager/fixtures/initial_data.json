@@ -171,6 +171,32 @@
         }
     }, 
     {
+        "pk": 11, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "name": "All Gear Types", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "fact_sheet": null, 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "sublayers": [
+                15
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png", 
+            "data_download": null, 
+            "description": null
+        }
+    }, 
+    {
         "pk": 7, 
         "model": "data_manager.layer", 
         "fields": {
@@ -291,29 +317,59 @@
         }
     }, 
     {
-        "pk": 11, 
-        "model": "data_manager.layer", 
+        "pk": 1, 
+        "model": "data_manager.dataneed", 
         "fields": {
-            "layer_type": "XYZ", 
-            "name": "All Gear Types", 
-            "source": null, 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "fact_sheet": null, 
-            "themes": [
-                4
-            ], 
-            "bookmark": null, 
-            "sublayers": [
-                15
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": null, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png", 
-            "data_download": null, 
-            "description": null
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Military, hazard and restricted areas", 
+            "expected_date": "Unknown ", 
+            "notes": "DOD has produced draft East Coast OCS Wind Energy Assessment for BOEM; in addition, DOD Oil and Gas Stipulation Layer exists on Cadastre\r\n", 
+            "source": "USCG & DOD including ACOE, Navy, etc. ", 
+            "contact": "Brian Smith, NOAA CSC  ", 
+            "contact_email": "brian.m.smith@noaa.gov", 
+            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Coldwater coral locations  ", 
+            "expected_date": "June, 2012 ", 
+            "notes": "Points represent only where corals were observed.  The absence of a point does not necessarily indicate the absence of corals. \r\n", 
+            "source": "Multiple sources ", 
+            "contact": "Dan Dorfman , NOAA Biogeography Branch  ", 
+            "contact_email": "dan.dorfman@noaa.gov", 
+            "description": "Known point locations on coldwater corals and associated taxonomic information in Mid-Atlantic\r\n"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Marine Mammals--Sightings per Unit Effort (SPUE) ", 
+            "expected_date": "As soon as vetted by Portal Data Review Team ", 
+            "notes": "Need to add summary data layers with SPUE grids combined for multiple species and seasons (e.g. all toothed whales).  Assessed species include include fin whale, humpback whale, minke whale, northern Atlantic right whale, sperm whale, sei whale, Atlantic whitesided dolphin, bottlenose dolphin, harbor porpoise, and Atlantic striped dolphin.\r\n", 
+            "source": "\"TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes\" ", 
+            "contact": "Jennifer Greene, The Nature Conservancy ", 
+            "contact_email": "jgreene@tnc.org", 
+            "description": "\"Important areas for marine mammals were\r\ndetermined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected. The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\"\r\n"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Turtles --Sightings per Unit Effort (SPUE) ", 
+            "expected_date": "As soon as vetted by Portal Data Review Team ", 
+            "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n", 
+            "source": "\"TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes\" ", 
+            "contact": "Jennifer Greene, The Nature Conservancy ", 
+            "contact_email": "jgreene@tnc.org", 
+            "description": "Important areas for sea turtles were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected.  The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
         }
     }
 ]

@@ -15,42 +15,30 @@
 			</h3>
 			<p> 
 				{{ layer.description }}
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
 			<div class="row-fluid">
 				<div class="span6">
 					<dl>
 						<dt>Source</dt>
-						<dd>
-							TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment
-							(MRA) for the Northeast and Virginia Capes
-						</dd>
+                            <dd>{{ layer.source }}</dd>
 						<dt>Status</dt>
-						<dd>Efforts underway to incorporate authorized data into Portal</dd>
+                            <dd>{{ layer.status }}</dd>
 						<dt>Contact</dt>
-						<dd>
-							Contact<br/>
-							Contact<br/>
-							Contact<br/>
-						</dd>
+                            <dd>
+                                {% if layer.contact_email %}
+                                    <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
+                                {% else %}
+                                    {{ layer.contact }}
+                                {% endif %}
+                            </dd>
 					</dl>
 				</div>
 				<div class="span6">
 					<dl>
 						<dt>Expected Date of Upload to Portal</dt>
-						<dd>Someday</dd>
+                            <dd>{{ layer.expected_date }}</dd>
 						<dt>Notes</dt>
-						<dd>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. 
-						</dd>
+						<dd>{{ layer.notes }}</dd>
 					</dl>
 				</div>
 			</div>
