@@ -30,7 +30,6 @@
 					<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Visualize</a></h3>
 					<ul class="unstyled">
 						<ul>
-                            <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Planning Tools</a></li>
                             <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#cartography">Cartography</a></li>
                             <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#collaboration">Collaboration</a></li>
                             <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#interactivity">Interactivity</a></li>
