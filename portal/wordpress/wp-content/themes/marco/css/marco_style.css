@@ -255,3 +255,11 @@ img + h3 {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
+.carousel-control {
+	display: none;
+}
+.carousel img {
+	 border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
