@@ -11,7 +11,7 @@ Template Name: Homepage
 			<div class="row">
 			  <div class="span12">
 
-			  	<div id="marco-carousel" class="showcase carousel slide">
+			  	<div id="marco-carousel" class="showcase carousel slide carousel-fade">
 			  	  <!-- Carousel items -->
 			  	  <div class="carousel-inner">
 			  	    <div class="item active">
@@ -58,8 +58,8 @@ Template Name: Homepage
 			  	    </div>
 			  	  </div>
 			  	  <!-- Carousel nav -->
-			  	  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-			  	  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			  	<!--   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			  	  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
 			  	</div>
 			  </div>
 			</div>
