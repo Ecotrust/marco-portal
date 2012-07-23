@@ -228,6 +228,9 @@ hr {
 	text-transform: uppercase;
 }
 
+.sidebar {
+	margin-top: 5px;
+}
 
 .sidebar ul {
 	list-style: none;
