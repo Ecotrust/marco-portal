@@ -246,7 +246,11 @@ hr {
 	color: #333;
 
 }
-
+.sidebar .active {
+	font-weight: bold;
+	pointer-events: none;
+   	cursor: default;
+}
 img + h3 {
 	margin-top: 10px;
 }

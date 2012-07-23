@@ -14,7 +14,12 @@
 
 						echo "<ul class='styled'>";
 						foreach ($learn_children as $child) {
-							printf("<li><a href='%s/learn/%s'>%s</a></li>", get_bloginfo('wpurl'), $child->post_name, $child->post_title);
+							if ( $post->post_name == $child->post_name) {
+								echo "<li class='active'>";
+							} else {
+								echo "<li>";
+							}
+							printf("<a href='%s/learn/%s'>%s</a></li>", get_bloginfo('wpurl'), $child->post_name, $child->post_title);
 
 	    				}
 	    				echo "</ul>";
