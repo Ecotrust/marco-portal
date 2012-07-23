@@ -130,7 +130,7 @@ hr {
 	font-size: 20px;
 	line-height: 1;
 	color: white;
-	top: 250px;
+	top: 175px;
 	left: 0;
 	padding: 10px 15px 3px 30px;
 }
@@ -249,4 +249,9 @@ hr {
 
 img + h3 {
 	margin-top: 10px;
+}
+
+.post_content img.size-full {
+	margin-top: 10px;
+	margin-bottom: 20px;
 }

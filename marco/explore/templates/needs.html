@@ -16,30 +16,32 @@
 			<p> 
 				{{ layer.description }}
 			</p>
-			<div class="row-fluid">
-				<div class="span6">
-					<dl>
-						<dt>Source</dt>
-                            <dd>{{ layer.source }}</dd>
-						<dt>Status</dt>
-                            <dd>{{ layer.status }}</dd>
-						<dt>Contact</dt>
-                            <dd>
-                                {% if layer.contact_email %}
-                                    <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
-                                {% else %}
-                                    {{ layer.contact }}
-                                {% endif %}
-                            </dd>
-					</dl>
-				</div>
-				<div class="span6">
-					<dl>
-						<dt>Expected Date of Upload to Portal</dt>
-                            <dd>{{ layer.expected_date }}</dd>
-						<dt>Notes</dt>
-						<dd>{{ layer.notes }}</dd>
-					</dl>
+			<div class="well">
+				<div class="row-fluid">
+					<div class="span6">
+						<dl>
+							<dt>Source</dt>
+	                            <dd>{{ layer.source }}</dd>
+							<dt>Status</dt>
+	                            <dd>{{ layer.status }}</dd>
+							<dt>Contact</dt>
+	                            <dd>
+	                                {% if layer.contact_email %}
+	                                    <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
+	                                {% else %}
+	                                    {{ layer.contact }}
+	                                {% endif %}
+	                            </dd>
+						</dl>
+					</div>
+					<div class="span6">
+						<dl>
+							<dt>Expected Date of Upload to Portal</dt>
+	                            <dd>{{ layer.expected_date }}</dd>
+							<dt>Notes</dt>
+							<dd>{{ layer.notes }}</dd>
+						</dl>
+					</div>
 				</div>
 			</div>
 		</div>

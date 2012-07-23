@@ -14,10 +14,10 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     <div class="span12 ">
         <h3>Data Layer Search</h3>
         <form class="form-search">
-            <div class="span8">
+            <div class="span10">
                 <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
             </div>
-            <div class="span4">
+            <div class="span2">
                 <button type="submit" class="btn">
                     find
                 </button>
@@ -29,7 +29,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 <div class="theme">
 	<div class="theme-context">
         <div class="row-fluid">
-            <div class="span8">
+            <div class="span12">
+                <a name="{{ theme_dict.theme.name }}"></a>
                 <h3>
                     {{ theme_dict.theme.name }}
                 </h3>
@@ -39,9 +40,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 <p class="pull-right"> 
                     <a href="{{theme_dict.learn_link}}" class="btn">Read More...</a>
                 </p>
-            </div>
-            <div class="span4">
-                <img src="http://placekitten.com/300/220" /> 
             </div>
         </div>
 	</div>
@@ -53,7 +51,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 <span class="theme-name">{{ theme_dict.theme.name }}</span>
 		    </a>
 	        </div>
-	        <div class="accordion-body collapse" id="{{ theme_dict.theme.name }}-layers">
+	        <div class="accordion-body collapse in" id="{{ theme_dict.theme.name }}-layers">
 	            <div class="accordion-inner">
 	                <table class="table table-striped table-condensed">
 	                	<tbody>
