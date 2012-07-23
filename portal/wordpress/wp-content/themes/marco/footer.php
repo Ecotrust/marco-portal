@@ -3,7 +3,10 @@
 			<footer>
 			  <div class="row">
 			    <div class="span8">
-			      <p>Contact info goes here</p>
+			      <p>Contact Us:<br/>
+			      	info@portal.midatlanticocean.org<br/>
+			      	732-263-5392
+			      </p>
 			    </div>
 			    <div class="span4 social">
 			        <h5>connect with us <img src="<?php echo get_template_directory_uri(); ?>/img/social.png"/></h5>              
