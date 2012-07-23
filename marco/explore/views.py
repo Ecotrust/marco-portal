@@ -30,9 +30,10 @@ def linkify(text):
 def get_domain():
     from django.contrib.sites.models import Site
     try:
-        domain = Site.objects.all()[0].domain
+        domain = Site.objects.all()[0].domain 
         if 'localhost' in domain:
-            domain = 'http://localhost:8010'
+            domain = 'localhost:8010'
+        domain = 'http://' + domain
     except:
         domain = '..'   
     return domain
