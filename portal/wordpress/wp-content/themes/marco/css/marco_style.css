@@ -251,6 +251,9 @@ img + h3 {
 .post_content img.size-full {
 	margin-top: 10px;
 	margin-bottom: 20px;
+	 border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 .carousel-control {
 	display: none;
