@@ -270,10 +270,13 @@ img + h3 {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 }
-.carousel-fade .item {
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
+
+.carousel .item {
+	-webkit-transition: opacity 1.5s ease-in-out; 
+	-moz-transition: opacity 1.5s ease-in-out; 
+	-ms-transition: opacity 1.5s ease-in-out; 
+	-o-transition: opacity 1.5s ease-in-out; 
+	transition: opacity 1.5s ease-in-out;
 }
+.carousel .active.left {left:0;opacity:0;z-index:2;}
+.carousel .next {left:0;opacity:1;z-index:1;}
