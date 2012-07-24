@@ -26,7 +26,8 @@
 		$(document).ready(function () {
 			$('#marco-carousel').carousel({
 			  interval: 5000
-			}).carousel(Math.round(Math.random() * $('.carousel .item').length));
+			});
+			$('#marco-carousel').carousel(Math.round(Math.random() * $('.carousel .item').length));
 		});
 		</script>
 		<!--[if lt IE 7 ]>
