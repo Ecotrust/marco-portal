@@ -24,8 +24,10 @@
 
 		<script>
 		$(document).ready(function () {
-			$('#marco-carousel').carousel();
-			$('#marco-carousel').carousel(Math.round(Math.random() * $('.carousel .item').length));
+			$('#marco-carousel').carousel({
+			  interval: 8000
+			});
+			//$('#marco-carousel').carousel(Math.round(Math.random() * $('.carousel .item').length));
 		});
 		</script>
 		<!--[if lt IE 7 ]>
