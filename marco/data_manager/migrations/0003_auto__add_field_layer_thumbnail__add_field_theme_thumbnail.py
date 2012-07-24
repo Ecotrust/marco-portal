@@ -10,13 +10,21 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Layer.thumbnail'
         db.add_column('data_manager_layer', 'thumbnail',
-                      self.gf('sorl.thumbnail.fields.ImageField')(max_length=100, null=True, blank=True),
+                      self.gf('django.db.models.fields.URLField')(max_length=255, null=True, blank=True),
+                      keep_default=False)
+
+        # Adding field 'Theme.thumbnail'
+        db.add_column('data_manager_theme', 'thumbnail',
+                      self.gf('django.db.models.fields.URLField')(max_length=255, null=True, blank=True),
                       keep_default=False)
 
 
     def backwards(self, orm):
         # Deleting field 'Layer.thumbnail'
         db.delete_column('data_manager_layer', 'thumbnail')
+
+        # Deleting field 'Theme.thumbnail'
+        db.delete_column('data_manager_theme', 'thumbnail')
 
 
     models = {
@@ -49,7 +57,7 @@ class Migration(SchemaMigration):
             'source': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'sublayers': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'sublayers_rel_+'", 'null': 'True', 'to': "orm['data_manager.Layer']"}),
             'themes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['data_manager.Theme']", 'null': 'True', 'blank': 'True'}),
-            'thumbnail': ('sorl.thumbnail.fields.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'thumbnail': ('django.db.models.fields.URLField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'url': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'utfurl': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
         },
@@ -57,7 +65,8 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Theme'},
             'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'thumbnail': ('django.db.models.fields.URLField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
         }
     }
 
