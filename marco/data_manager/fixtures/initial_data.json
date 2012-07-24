@@ -510,31 +510,6 @@
         }
     }, 
     {
-        "pk": 8, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "name": "Wind Energy Areas", 
-            "source": null, 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "fact_sheet": null, 
-            "thumbnail": null, 
-            "themes": [
-                3
-            ], 
-            "bookmark": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": null, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "description": null
-        }
-    }, 
-    {
         "pk": 9, 
         "model": "data_manager.layer", 
         "fields": {
@@ -607,6 +582,31 @@
             "legend": "", 
             "data_download": null, 
             "description": null
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "name": "Wind Energy Areas", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
         }
     }, 
     {
