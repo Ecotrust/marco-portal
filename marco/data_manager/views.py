@@ -9,7 +9,7 @@ from models import *
 def getJson(request):
     json = {
         "state": { "activeLayers": [] },
-        "layers": [layer.toDict for layer in Layer.objects.filter(is_sublayer=False).order_by('name')],
+        "layers": [layer.toDict for layer in Layer.objects.filter(is_sublayer=False).exclude(layer_type='placeholder').order_by('name')],
         "themes": [theme.toDict for theme in Theme.objects.all().order_by('name')],
         "success": True
     }

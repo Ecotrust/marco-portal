@@ -2,3 +2,4 @@
 
 django==1.4
 madrona
+# sorl-thumbnail

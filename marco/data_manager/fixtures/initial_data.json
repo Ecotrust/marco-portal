@@ -1,32 +1,9 @@
 [
     {
-        "pk": 1, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Administrative", 
-            "description": "Administrative theme."
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Conservation", 
-            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "name": "Fishing", 
-            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. We will be paying close attention to dynamic and variable environments with different depths, outcrops, substrates, and slopes, which provide foundations for deep sea corals, rare sponges, and anemones that form the food sources for lobsters, crabs, flounders, hakes, skates, monkfish, and tilefish."
-        }
-    }, 
-    {
         "pk": 8, 
         "model": "data_manager.theme", 
         "fields": {
+            "thumbnail": null, 
             "name": "Maritime Industries", 
             "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. The largest port on the Eastern seaboard (New York\u2013New Jersey), the nation\u2019s top port in fruits and juices (Wilmington), and a port that reaches over a third of the country overnight (Baltimore) are all in the Mid-Atlantic. And every minute of every day, the ranks and ships of the U.S. Coast Guard and other agencies work to ensure that our ports and shipping lanes are accessible and safe."
         }
@@ -35,6 +12,7 @@
         "pk": 5, 
         "model": "data_manager.theme", 
         "fields": {
+            "thumbnail": null, 
             "name": "Military", 
             "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations . The U.S. Coast Guard works vigilantly with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe."
         }
@@ -43,6 +21,7 @@
         "pk": 6, 
         "model": "data_manager.theme", 
         "fields": {
+            "thumbnail": null, 
             "name": "Ocean", 
             "description": "Ocean theme."
         }
@@ -51,16 +30,45 @@
         "pk": 7, 
         "model": "data_manager.theme", 
         "fields": {
+            "thumbnail": null, 
             "name": "Recreation", 
             "description": "Recreation theme."
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
+            "name": "Administrative", 
+            "description": "Administrative theme."
         }
     }, 
     {
         "pk": 3, 
         "model": "data_manager.theme", 
         "fields": {
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
             "name": "Energy", 
             "description": "Energy theme."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": null, 
+            "name": "Conservation", 
+            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": null, 
+            "name": "Fishing", 
+            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. We will be paying close attention to dynamic and variable environments with different depths, outcrops, substrates, and slopes, which provide foundations for deep sea corals, rare sponges, and anemones that form the food sources for lobsters, crabs, flounders, hakes, skates, monkfish, and tilefish."
         }
     }, 
     {
@@ -73,6 +81,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 4
             ], 
@@ -99,6 +108,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 4
             ], 
@@ -125,6 +135,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 4
             ], 
@@ -151,6 +162,7 @@
             "url": "", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 4
             ], 
@@ -180,6 +192,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 4
             ], 
@@ -197,6 +210,231 @@
         }
     }, 
     {
+        "pk": 17, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Protraction Diagram Boundaries", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "OCS Administrative Boundaries", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Regional Ocean Councils", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Artificial Reefs", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                7
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Endangered Whales (SPUE)", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "2001-2003 Waterbird Survey", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "EFH Overlays", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Benthic Habitats", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Marine Mammal Migration Paths", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 7, 
         "model": "data_manager.layer", 
         "fields": {
@@ -206,6 +444,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 3
             ], 
@@ -221,6 +460,31 @@
         }
     }, 
     {
+        "pk": 16, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Marine Jurisdictions", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service."
+        }
+    }, 
+    {
         "pk": 6, 
         "model": "data_manager.layer", 
         "fields": {
@@ -230,6 +494,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
             "fact_sheet": "", 
+            "thumbnail": null, 
             "themes": [
                 1
             ], 
@@ -254,6 +519,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 3
             ], 
@@ -278,6 +544,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 6
             ], 
@@ -293,6 +560,31 @@
         }
     }, 
     {
+        "pk": 26, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "name": "Important Bird Habitats", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 10, 
         "model": "data_manager.layer", 
         "fields": {
@@ -302,6 +594,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
             "kml": null, 
             "fact_sheet": null, 
+            "thumbnail": null, 
             "themes": [
                 8
             ], 
@@ -314,6 +607,20 @@
             "legend": "", 
             "data_download": null, 
             "description": null
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Turtles --Sightings per Unit Effort (SPUE) ", 
+            "expected_date": "As soon as vetted by Portal Data Review Team ", 
+            "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n", 
+            "source": "\"TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes\" ", 
+            "contact": "Jennifer Greene, The Nature Conservancy ", 
+            "contact_email": "jgreene@tnc.org", 
+            "description": "Important areas for sea turtles were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected.  The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
         }
     }, 
     {
@@ -356,20 +663,6 @@
             "contact": "Jennifer Greene, The Nature Conservancy ", 
             "contact_email": "jgreene@tnc.org", 
             "description": "\"Important areas for marine mammals were\r\ndetermined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected. The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\"\r\n"
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
-            "name": "Turtles --Sightings per Unit Effort (SPUE) ", 
-            "expected_date": "As soon as vetted by Portal Data Review Team ", 
-            "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n", 
-            "source": "\"TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes\" ", 
-            "contact": "Jennifer Greene, The Nature Conservancy ", 
-            "contact_email": "jgreene@tnc.org", 
-            "description": "Important areas for sea turtles were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected.  The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
         }
     }
 ]

@@ -1,15 +1,17 @@
 from django.db import models
+#from sorl.thumbnail import ImageField
 
 class Theme(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    thumbnail = models.URLField(max_length=255, blank=True, null=True)
 
     def __unicode__(self):
         return unicode('%s' % (self.name))
 
     @property
     def toDict(self):
-        layers = [layer.id for layer in self.layer_set.filter(is_sublayer=False)]
+        layers = [layer.id for layer in self.layer_set.filter(is_sublayer=False).exclude(layer_type='placeholder')]
         themes_dict = {
             'id': self.id,
             'name': self.name,
@@ -24,6 +26,7 @@ class Layer(models.Model):
         ('WMS', 'WMS'),
         ('radio', 'radio'),
         ('Vector', 'Vector'),
+        ('placeholder', 'placeholder'),
     )
     name = models.CharField(max_length=100)
     layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
@@ -43,6 +46,7 @@ class Layer(models.Model):
     metadata = models.CharField(max_length=255, blank=True, null=True)
     fact_sheet = models.CharField(max_length=255, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
+    thumbnail = models.URLField(max_length=255, blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
