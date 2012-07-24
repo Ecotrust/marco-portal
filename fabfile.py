@@ -20,5 +20,8 @@ def all():
    env.hosts = [dev_server, prod_server]
 
 
-def deploy(): 
+def install():
+	run('cd /usr/local/apps/marco/marco-portal/ && /vagrant/marco/manage.py --noinput syncdb && /usr/local/venv/marco/bin/python /vagrant/marco/manage.py migrate')
+
+def update(): 
    run('cd /usr/local/apps/marco/marco-portal/ && git fetch && git merge origin/master')

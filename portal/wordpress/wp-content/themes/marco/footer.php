@@ -2,8 +2,8 @@
 
 			<footer>
 			  <div class="row">
-			    <div class="span8">
-			      <p>Contact Us:<br/>
+			    <div class="span8 social">
+			      <h5>Contact Us</h5>
 			      	info@portal.midatlanticocean.org<br/>
 			      	732-263-5392
 			      </p>
@@ -25,9 +25,9 @@
 		<script>
 		$(document).ready(function () {
 			$('#marco-carousel').carousel({
-			  interval: 8000
+			  interval: 4500
 			});
-			//$('#marco-carousel').carousel(Math.round(Math.random() * $('.carousel .item').length));
+			$('#marco-carousel').carousel(<?php echo rand(1, 6); ?>);
 		});
 		</script>
 		<!--[if lt IE 7 ]>
