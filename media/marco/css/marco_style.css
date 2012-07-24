@@ -335,3 +335,7 @@ img + h3 {
 .theme .theme-context {
 	margin-bottom: 20px;
 }
+
+.link-not-available {
+	color: #aaa;
+}
