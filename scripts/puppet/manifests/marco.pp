@@ -13,8 +13,6 @@ class apt {
 }
 
 
-
-
 include apt
 
 exec { "add-apt":
@@ -114,6 +112,10 @@ package { "libapache2-mod-php5":
 
 }
 
+package { "python-kombu":
+    ensure => "installed"
+}
+
 package { "build-essential":
     ensure => "installed"
 
@@ -152,8 +154,10 @@ package { "vim":
     ensure => "latest"
 }
 
+# add the srid if it doesn't already exist
 exec { "Add SRID":
   subscribe => Package['python-gdal'] ,
+  onlyif => '/bin/grep -Fxq "<99996>" /usr/share/proj/epsg',
   command => "/bin/echo '<99996> +proj=aea +lat_1=37.25 +lat_2=40.25 +lat_0=36 +lon_0=-72 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs <>' | cat >>/usr/share/proj/epsg"
 }
 
@@ -195,6 +199,23 @@ postgresql::database { "marco":
 
 python::venv::isolate { "/usr/local/venv/marco":
   requirements => "/vagrant/requirements.txt",
-  subscribe => [Package['python-mapnik'], Package['build-essential']]
+  subscribe => [Package['python-mapnik'], Package['build-essential']],
+  notify =>  [Exec["Add PostGIS SRID 4326"], Exec["Add PostGIS SRID 99996"]]
 }
 
+exec { "Add PostGIS SRID 99996":
+  path => "/bin:/usr/bin",
+  command => "/usr/local/venv/marco/bin/python /vagrant/marco/manage.py add_srid 99996",
+}
+
+exec { "Add PostGIS SRID 4326":
+  path => "/bin:/usr/bin",
+  command => "/usr/local/venv/marco/bin/python /vagrant/marco/manage.py add_srid 4326",
+}
+
+
+exec { "Django Syncdb":
+  path => "/bin:/usr/bin",
+  command => "/usr/local/venv/marco/bin/python /vagrant/marco/manage.py --noinput syncdb && /usr/local/venv/marco/bin/python /vagrant/marco/manage.py migrate",
+  subscribe => [Exec["Add PostGIS SRID 4326"], Exec["Add PostGIS SRID 99996"]]
+}

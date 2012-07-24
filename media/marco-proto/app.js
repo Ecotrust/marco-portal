@@ -3,7 +3,7 @@
 app.hash = window.location.hash;
 
 app.onResize = function() {
-	var height = $(window).height() * .60;
+	var height = $(window).height() * .70;
 	$("#map").height(height);
 	$("#data-accordion").height(height);
 	$("#legend-accordion").height(height);

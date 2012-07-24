@@ -1,4 +1,4 @@
-				<div id="sidebar1" class="fluid-sidebar sidebar span3" role="complementary">
+				<div id="sidebar1" class="fluid-sidebar sidebar span2" role="complementary">
 					<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/learn">Learn</a></h3>
 					<ul class="unstyled">
 						 <?php
@@ -14,7 +14,12 @@
 
 						echo "<ul class='styled'>";
 						foreach ($learn_children as $child) {
-							printf("<li><a href='%s/learn/%s'>%s</a></li>", get_bloginfo('wpurl'), $child->post_name, $child->post_title);
+							if ( $post->post_name == $child->post_name) {
+								echo "<li class='active'>";
+							} else {
+								echo "<li>";
+							}
+							printf("<a href='%s/learn/%s'>%s</a></li>", get_bloginfo('wpurl'), $child->post_name, $child->post_title);
 
 	    				}
 	    				echo "</ul>";

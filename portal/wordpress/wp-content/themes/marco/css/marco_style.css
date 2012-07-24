@@ -229,7 +229,7 @@ hr {
 }
 
 .sidebar {
-	margin-top: 15px;
+	margin-top: 5px;
 }
 
 .sidebar ul {
@@ -246,7 +246,11 @@ hr {
 	color: #333;
 
 }
-
+.sidebar .active {
+	font-weight: bold;
+	pointer-events: none;
+   	cursor: default;
+}
 img + h3 {
 	margin-top: 10px;
 }
@@ -254,4 +258,25 @@ img + h3 {
 .post_content img.size-full {
 	margin-top: 10px;
 	margin-bottom: 20px;
+	 border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
+.carousel-control {
+	display: none;
+}
+.carousel img {
+	 border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.carousel .item {
+	-webkit-transition: opacity 1.5s ease-in-out; 
+	-moz-transition: opacity 1.5s ease-in-out; 
+	-ms-transition: opacity 1.5s ease-in-out; 
+	-o-transition: opacity 1.5s ease-in-out; 
+	transition: opacity 1.5s ease-in-out;
+}
+.carousel .active.left {left:0;opacity:0;z-index:2;}
+.carousel .next {left:0;opacity:1;z-index:1;}
