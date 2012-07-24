@@ -15,7 +15,7 @@ Template Name: Homepage
 			  	  <!-- Carousel items -->
 			  	  <div class="carousel-inner">
 			  	    <div class="item active">
-			  	    	<img class="span12" src="<?php echo get_template_directory_uri(); ?>/img/map-depth.png"/>
+			  	    	<img class="span12" src="<?php echo get_template_directory_uri(); ?>/img/map-depth.jpg"/>
 			  	    	<div class="caption">
 			  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning.</strong></h2>
 			  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner Now &gt;</a></p>
@@ -59,7 +59,7 @@ Template Name: Homepage
 			  	  </div>
 			  	  <!-- Carousel nav -->
 			  	<!--   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-			  	  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
+		  	  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
 			  	</div>
 			  </div>
 			</div>
