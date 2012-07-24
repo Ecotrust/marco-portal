@@ -1,6 +1,7 @@
 
 function layerModel(options, parent) {
-	var self = this;
+	var self = this,
+		$descriptionTemp;
 
 	// properties
 	self.id = options.id || null;
@@ -9,10 +10,20 @@ function layerModel(options, parent) {
 	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
-    self.description = options.description || null;
     self.legendVisibility = ko.observable(false);
     self.themes = ko.observableArray();
     
+    // set target blank for all links
+    if (options.description) {
+    	$descriptionTemp = $("<div/>", { html: options.description });
+    	$descriptionTemp.find('a').each(function () {
+    		$(this).attr('target', '_blank');
+    		console.log($(this).html());
+    	});
+    	self.description = $descriptionTemp.html();
+    } else {
+    	self.description = null;
+    }
 
     // opacity
     self.opacity = ko.observable(.5);
