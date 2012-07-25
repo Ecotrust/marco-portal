@@ -81,6 +81,7 @@ app.addLayerToMap = function(layer) {
                     })
                 }
             );
+            app.addAttribution(layer);
         } else { //if XYZ with no utfgrid
             // adding layer to the map for the first time		
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
@@ -100,7 +101,48 @@ app.addLayerToMap = function(layer) {
     layer.layer.setVisibility(true);
 }
 
-
+app.addAttribution = function(layer) {
+    layer.layer.events.register("mouseover", layer, function(e) {
+        var feature = this.layer.getFeatureById(e.target._featureId);
+        if ( feature ) {
+            var attrs = this.attributes,
+                title = this.attributeTitle,
+                event = this.attributeEvent,
+                output = '';
+            if ( event === "mouseover" ) {
+                for (var i = 0; i < attrs.length; i++) {
+                    display = attrs[i].display,
+                    field = feature.data[attrs[i].field];
+                    output += display + ' ' + field + '\n';
+                }
+                app.viewModel.attributeTitle(title);
+                app.viewModel.attributeData(output);
+            }
+        }
+    });
+    layer.layer.events.register("click", layer, function(e) {
+        var feature = this.layer.getFeatureById(e.target._featureId);
+        if ( feature ) {
+            var attrs = this.attributes,
+                title = this.attributeTitle,
+                event = this.attributeEvent,
+                output = '';
+            if ( event === "click" ) {
+                for (var i = 0; i < attrs.length; i++) {
+                    display = attrs[i].display,
+                    field = feature.data[attrs[i].field];
+                    output += display + ' ' + field + '\n';
+                }
+                app.viewModel.attributeTitle(title);
+                app.viewModel.attributeData(output);
+            }
+        }
+    });
+    layer.layer.events.register("mouseout", layer.layer, function(e) {
+        app.viewModel.attributeTitle(false);
+        app.viewModel.attributeData(false);
+    });
+}
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it

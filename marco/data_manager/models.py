@@ -48,12 +48,27 @@ class Layer(models.Model):
     source = models.CharField(max_length=255, blank=True, null=True)
     thumbnail = models.URLField(max_length=255, blank=True, null=True)
     
+    #geojson javascript attribution
+    EVENT_CHOICES = (
+        ('click', 'click'),
+        ('mouseover', 'mouseover')
+    )
+    attribute_title = models.CharField(max_length=255, blank=True, null=True)
+    attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
+    attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
+    
     def __unicode__(self):
         return unicode('%s' % (self.name))
 
     @property
     def is_parent(self):
         return self.sublayers.all().count() > 0 and not self.is_sublayer
+    
+    @property
+    def serialize_attributes(self):
+        return {'title': self.attribute_title, 
+                'event': self.attribute_event,
+                'attributes': [{'display': attr.display_name, 'field': attr.field_name} for attr in self.attribute_fields.all().order_by('order')]}
     
     @property
     def toDict(self):
@@ -66,7 +81,8 @@ class Layer(models.Model):
                 'utfurl': layer.utfurl,
                 'parent': self.id,
                 'legend': layer.legend,
-                'description': layer.description
+                'description': layer.description,
+                'attributes': self.serialize_attributes
             } 
             for layer in self.sublayers.all()
         ]
@@ -78,10 +94,20 @@ class Layer(models.Model):
             'utfurl': self.utfurl,
             'subLayers': sublayers,
             'legend': self.legend,
-            'description': self.description
+            'description': self.description,
+            'attributes': self.serialize_attributes
         }
         return layers_dict
 
+class AttributeInfo(models.Model):
+    display_name = models.CharField(max_length=255, blank=True, null=True)
+    field_name = models.CharField(max_length=255, blank=True, null=True)
+    order = models.IntegerField(default=1)
+    
+    def __unicode__(self):
+        return unicode('%s' % (self.field_name)) 
+    
+        
 class DataNeed(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)

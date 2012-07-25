@@ -225,6 +225,12 @@
                                           Coordinates &amp; Depth
                                       </button></p> -->
                                   </div>
+                                  <div id="attribute-data">
+                                    <div data-bind="visible: attributeData" style="display: none">
+                                        <span data-bind="text: attributeTitle"></span>
+                                        <span data-bind="text: attributeData"></span>
+                                    </div>
+                                  </div>
                                   <div id="error-overlay">
                                         <div data-bind="visible: error() === 'restoreState'" style="display:none">
                                             <div>
