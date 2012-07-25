@@ -191,7 +191,7 @@ function layerModel(options, parent) {
         $('#layer-popover').show().position({
             "my": "right middle",
             "at": "left middle",
-            "of": $(event.target)
+            "of": $(event.target).closest(".btn-group")
         });
     }
     

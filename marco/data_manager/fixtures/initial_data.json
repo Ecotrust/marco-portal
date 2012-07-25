@@ -132,6 +132,36 @@
         }
     }, 
     {
+        "pk": 17, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Protraction Diagram Boundaries", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
+            "kml": "", 
+            "attribute_fields": [
+                3
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 26, 
         "model": "data_manager.layer", 
         "fields": {
@@ -338,34 +368,6 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png", 
             "data_download": null, 
             "description": null
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "attribute_event": "click", 
-            "name": "Protraction Diagram Boundaries", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": null, 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
         }
     }, 
     {
@@ -690,6 +692,15 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "NAME", 
+            "display_name": "", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "PROT_NAME", 
             "display_name": "", 
             "order": 1
         }
