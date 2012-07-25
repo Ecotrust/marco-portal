@@ -12,6 +12,9 @@ function layerModel(options, parent) {
     self.legend = options.legend || false;
     self.legendVisibility = ko.observable(false);
     self.themes = ko.observableArray();
+    self.attributeTitle = options.attributes ? options.attributes['title'] : null;
+    self.attributes = options.attributes ? options.attributes['attributes'] : [];
+    self.attributeEvent = options.attributes ? options.attributes['event'] : [];
     
     // set target blank for all links
     if (options.description) {
@@ -371,6 +374,10 @@ function viewModel() {
 
 	// text for tooltip popup
 	self.layerToolTipText = ko.observable();
+    
+    // attribute data
+    self.attributeTitle = ko.observable(false);
+    self.attributeData = ko.observable(false);
 
 	// set the error type
 	// can be one of:

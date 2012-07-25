@@ -72,20 +72,139 @@
         }
     }, 
     {
+        "pk": 20, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Artificial Reefs", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
+            "kml": "", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "mouseover", 
+            "name": "Wind Energy Areas", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
+            "kml": "", 
+            "attribute_fields": [
+                1
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "attribute_event": "click", 
+            "name": "Important Bird Habitats", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": null, 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": null, 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "AIS Shipping Data", 
+            "source": null, 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
+            "kml": null, 
+            "attribute_fields": [], 
+            "fact_sheet": null, 
+            "thumbnail": null, 
+            "themes": [
+                8
+            ], 
+            "bookmark": null, 
+            "attribute_title": null, 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "description": null
+        }
+    }, 
+    {
         "pk": 12, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "Bottom Gear Types", 
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 4
             ], 
             "bookmark": null, 
+            "attribute_title": null, 
             "sublayers": [
                 15
             ], 
@@ -103,16 +222,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "Pelagic Gear Types", 
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 4
             ], 
             "bookmark": null, 
+            "attribute_title": null, 
             "sublayers": [
                 15
             ], 
@@ -130,16 +252,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "Summer Flounder Landings", 
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
             "kml": null, 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 4
             ], 
             "bookmark": null, 
+            "attribute_title": null, 
             "sublayers": [
                 15
             ], 
@@ -157,16 +282,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "radio", 
+            "attribute_event": "click", 
             "name": "Fishing Effort", 
             "source": null, 
             "url": "", 
             "kml": null, 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 4
             ], 
             "bookmark": null, 
+            "attribute_title": null, 
             "sublayers": [
                 12, 
                 13, 
@@ -187,16 +315,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "All Gear Types", 
             "source": null, 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
             "kml": null, 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 4
             ], 
             "bookmark": null, 
+            "attribute_title": null, 
             "sublayers": [
                 15
             ], 
@@ -214,16 +345,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "Protraction Diagram Boundaries", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 1
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -239,16 +373,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "OCS Administrative Boundaries", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 1
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -264,41 +401,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "Regional Ocean Councils", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 1
             ], 
             "bookmark": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 20, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "name": "Artificial Reefs", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "fact_sheet": "", 
-            "thumbnail": null, 
-            "themes": [
-                7
-            ], 
-            "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -314,16 +429,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "Endangered Whales (SPUE)", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 2
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -339,16 +457,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "2001-2003 Waterbird Survey", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 2
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -364,16 +485,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "EFH Overlays", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 2
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -389,16 +513,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "Benthic Habitats", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 2
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -414,16 +541,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "Marine Mammal Migration Paths", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 2
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -439,16 +569,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "Wind Speed", 
             "source": "http://www.nrel.gov/gis/wind.html", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 3
             ], 
             "bookmark": "http://localhost:8000/media/marco-proto/index.html#location%5Bx%5D=-71.37231445312406&location%5By%5D=38.457524829585964&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -464,16 +597,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "attribute_event": "click", 
             "name": "Marine Jurisdictions", 
             "source": "", 
             "url": "", 
             "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": "", 
             "themes": [
                 1
             ], 
             "bookmark": "", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -489,16 +625,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "OCS Lease Blocks", 
             "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": null, 
             "themes": [
                 1
             ], 
             "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -514,16 +653,19 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "attribute_event": "click", 
             "name": "Sediment Grain Size", 
             "source": null, 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
             "kml": null, 
+            "attribute_fields": [], 
             "fact_sheet": null, 
             "thumbnail": null, 
             "themes": [
                 6
             ], 
             "bookmark": null, 
+            "attribute_title": null, 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": null, 
@@ -535,78 +677,35 @@
         }
     }, 
     {
-        "pk": 26, 
-        "model": "data_manager.layer", 
+        "pk": 1, 
+        "model": "data_manager.attributeinfo", 
         "fields": {
-            "layer_type": "placeholder", 
-            "name": "Important Bird Habitats", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "fact_sheet": "", 
-            "thumbnail": null, 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
+            "field_name": "STATE", 
+            "display_name": "State:", 
+            "order": 1
         }
     }, 
     {
-        "pk": 10, 
-        "model": "data_manager.layer", 
+        "pk": 2, 
+        "model": "data_manager.attributeinfo", 
         "fields": {
-            "layer_type": "XYZ", 
-            "name": "AIS Shipping Data", 
-            "source": null, 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "fact_sheet": null, 
-            "thumbnail": null, 
-            "themes": [
-                8
-            ], 
-            "bookmark": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": null, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "description": null
+            "field_name": "NAME", 
+            "display_name": "", 
+            "order": 1
         }
     }, 
     {
-        "pk": 8, 
-        "model": "data_manager.layer", 
+        "pk": 3, 
+        "model": "data_manager.dataneed", 
         "fields": {
-            "layer_type": "Vector", 
-            "name": "Wind Energy Areas", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
-            "kml": "", 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                3
-            ], 
-            "bookmark": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Marine Mammals--Sightings per Unit Effort (SPUE) ", 
+            "expected_date": "As soon as vetted by Portal Data Review Team ", 
+            "notes": "Need to add summary data layers with SPUE grids combined for multiple species and seasons (e.g. all toothed whales).  Assessed species include include fin whale, humpback whale, minke whale, northern Atlantic right whale, sperm whale, sei whale, Atlantic whitesided dolphin, bottlenose dolphin, harbor porpoise, and Atlantic striped dolphin.\r\n", 
+            "source": "\"TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes\" ", 
+            "contact": "Jennifer Greene, The Nature Conservancy ", 
+            "contact_email": "jgreene@tnc.org", 
+            "description": "\"Important areas for marine mammals were\r\ndetermined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected. The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\"\r\n"
         }
     }, 
     {
@@ -649,20 +748,6 @@
             "contact": "Dan Dorfman , NOAA Biogeography Branch  ", 
             "contact_email": "dan.dorfman@noaa.gov", 
             "description": "Known point locations on coldwater corals and associated taxonomic information in Mid-Atlantic\r\n"
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
-            "name": "Marine Mammals--Sightings per Unit Effort (SPUE) ", 
-            "expected_date": "As soon as vetted by Portal Data Review Team ", 
-            "notes": "Need to add summary data layers with SPUE grids combined for multiple species and seasons (e.g. all toothed whales).  Assessed species include include fin whale, humpback whale, minke whale, northern Atlantic right whale, sperm whale, sei whale, Atlantic whitesided dolphin, bottlenose dolphin, harbor porpoise, and Atlantic striped dolphin.\r\n", 
-            "source": "\"TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes\" ", 
-            "contact": "Jennifer Greene, The Nature Conservancy ", 
-            "contact_email": "jgreene@tnc.org", 
-            "description": "\"Important areas for marine mammals were\r\ndetermined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected. The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\"\r\n"
         }
     }
 ]
