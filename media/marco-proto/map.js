@@ -78,7 +78,14 @@ app.addLayerToMap = function(layer) {
                     protocol: new OpenLayers.Protocol.HTTP({
                         url: layer.url,
                         format: new OpenLayers.Format.GeoJSON()
-                    })
+                    }),
+                    //style: {
+                        //fillColor: '#aaa',
+                        //strokeWidth
+                        //strokeColor
+                        //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+                        //title: 'testing'
+                    //}
                 }
             );
             app.addAttribution(layer);
@@ -102,43 +109,19 @@ app.addLayerToMap = function(layer) {
 }
 
 app.addAttribution = function(layer) {
-    layer.layer.events.register("mouseover", layer, function(e) {
+    app.map.events.register(layer.attributeEvent, layer, function(e) {
         var feature = this.layer.getFeatureById(e.target._featureId);
         if ( feature ) {
             var attrs = this.attributes,
-                title = this.attributeTitle,
-                event = this.attributeEvent,
-                output = '';
-            if ( event === "mouseover" ) {
-                for (var i = 0; i < attrs.length; i++) {
-                    display = attrs[i].display,
-                    field = feature.data[attrs[i].field];
-                    output += display + ' ' + field + '\n';
-                }
-                app.viewModel.attributeTitle(title);
-                app.viewModel.attributeData(output);
-            }
+                title = this.attributeTitle;
+            app.viewModel.attributeTitle(title);            
+            app.viewModel.attributeData($.map(attrs, function(attr) { 
+                return { 'display': attr.display, 'data': feature.data[attr.field] }; 
+            }));
         }
+        return true;
     });
-    layer.layer.events.register("click", layer, function(e) {
-        var feature = this.layer.getFeatureById(e.target._featureId);
-        if ( feature ) {
-            var attrs = this.attributes,
-                title = this.attributeTitle,
-                event = this.attributeEvent,
-                output = '';
-            if ( event === "click" ) {
-                for (var i = 0; i < attrs.length; i++) {
-                    display = attrs[i].display,
-                    field = feature.data[attrs[i].field];
-                    output += display + ' ' + field + '\n';
-                }
-                app.viewModel.attributeTitle(title);
-                app.viewModel.attributeData(output);
-            }
-        }
-    });
-    layer.layer.events.register("mouseout", layer.layer, function(e) {
+    app.map.events.register("mouseout", layer.layer, function(e) {
         app.viewModel.attributeTitle(false);
         app.viewModel.attributeData(false);
     });

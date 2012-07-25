@@ -228,7 +228,12 @@
                                   <div id="attribute-data">
                                     <div data-bind="visible: attributeData" style="display: none">
                                         <span data-bind="text: attributeTitle"></span>
-                                        <span data-bind="text: attributeData"></span>
+                                        <table>
+                                            <tr data-bind="foreach: attributeData">
+                                                <td data-bind="text: display">
+                                                <td data-bind="text: data">
+                                            </tr>
+                                        </table>
                                     </div>
                                   </div>
                                   <div id="error-overlay">
