@@ -285,15 +285,15 @@ img + h3 {
 	margin-top: 20px;
 }
 
-.learn-page img {
+img {
  	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;	
 }
-.learn-page .image {
+ .image {
 	position: relative;
 }
-.learn-page .image .caption {
+.image .caption {
 	position: absolute;
 	text-transform: uppercase;
 	width: 90%;
@@ -301,7 +301,7 @@ img + h3 {
 	font-weight: bold;
 	line-height: .75;
 	color: white;
-	bottom: -1px;
+	bottom: -3px;
 	left: 20px;
 	opacity: .6;
 
@@ -318,4 +318,9 @@ img + h3 {
 .learn-page h3 {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+.theme.image .caption {
+	bottom: 18px;
+	font-size: 36px;
 }
