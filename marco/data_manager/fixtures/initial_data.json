@@ -454,6 +454,62 @@
         }
     }, 
     {
+        "pk": 32, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Marine Jurisdictions (Vector)", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/MarineJurisdictionNoDecimals.json", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Seabed Form", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 10, 
         "model": "data_manager.layer", 
         "fields": {
@@ -479,6 +535,34 @@
             "legend": "", 
             "data_download": null, 
             "description": null
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Waterbird Survey (2001-2003)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
         }
     }, 
     {
@@ -632,34 +716,6 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/Legend.png", 
             "data_download": null, 
             "description": null
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "attribute_event": "click", 
-            "name": "2001-2003 Waterbird Survey", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": null, 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
         }
     }, 
     {
@@ -828,6 +884,34 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/Legend.png", 
             "data_download": null, 
             "description": null
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Submarine Cables", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                8
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
         }
     }, 
     {
