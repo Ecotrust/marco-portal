@@ -322,5 +322,7 @@ img {
 
 .theme.image .caption {
 	bottom: 18px;
-	font-size: 36px;
+	font-size: 56px;
+	opacity: .8;
+	word-spacing: 1;
 }

@@ -80,7 +80,7 @@ Template Name: Homepage
 				    <div class="wrapper">
 						<div class="icon" id="explore-img"></div>				      
 				      	<h3>Explore</h3>
-				       	<p>Access our data catalog and links to other data and services</p>
+				       	<p>Access our current data and see future information needs.</p>
 				     </div>
 				 </a>
 			 </div>
