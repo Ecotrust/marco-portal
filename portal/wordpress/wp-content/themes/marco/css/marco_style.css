@@ -281,6 +281,10 @@ img + h3 {
 .carousel .active.left {left:0;opacity:0;z-index:2;}
 .carousel .next {left:0;opacity:1;z-index:1;}
 
+.learn-page {
+	margin-top: 20px;
+}
+
 .learn-page img {
  	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -291,20 +295,33 @@ img + h3 {
 }
 .learn-page .image .caption {
 	position: absolute;
-	background-color: rgb(45, 137,152);
-	/* RGBa with 0.6 opacity */
-	background-color: rgba(45, 137, 152, 0.65);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##2d899800, endColorstr=#2d899800);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	
-	position: absolute;
+	text-transform: uppercase;
 	width: 90%;
-	font-size: 14px;
+	font-size: 32px;
+	font-weight: bold;
 	line-height: 1;
 	color: white;
-	bottom: 12px;
-	padding: 10px 5px 10px 20px;
+	bottom: -5px;
+	left: 20px;
+	opacity: .6;
 
+
+}
+/*
+.learn-page .image:hover img {
+	border: 2px solid #2d8998;
+
+}*/
+
+.learn-page .image:hover .caption {
+	/*color: #2d8998;*/
+    /*font-style: italic;*/
+    opacity: 1;
+  	
+}
+
+
+.learn-page h3 {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
