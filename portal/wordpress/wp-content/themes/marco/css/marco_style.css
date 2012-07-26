@@ -282,9 +282,9 @@ img + h3 {
 .carousel .next {left:0;opacity:1;z-index:1;}
 
 .learn-page img {
- 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;	
+ 	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
 }
 .learn-page .image {
 	position: relative;
@@ -301,7 +301,7 @@ img + h3 {
 	
 	position: absolute;
 	width: 90%;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1;
 	color: white;
 	bottom: 12px;
