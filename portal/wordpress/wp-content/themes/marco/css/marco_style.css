@@ -326,3 +326,7 @@ img {
 	opacity: .8;
 	word-spacing: 1;
 }
+.btn-icon {
+	margin-top: 5px;
+	font-size: 18px;
+}
