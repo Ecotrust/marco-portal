@@ -79,7 +79,7 @@
 			        <ul class="nav">
 			          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>
 			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
-			          <li><a href="http://www.midatlanticocean.org/" target="_blank">Visit Marco Council</a></li>
+			          <li><a href="http://www.midatlanticocean.org/" target="_blank">Visit MARCO</a></li>
 			        </ul>
 			        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
 			          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">

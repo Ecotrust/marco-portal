@@ -71,7 +71,7 @@ Template Name: Homepage
 					<div class="wrapper">
 					      <div class="icon" id="learn-img"></div>
 					      <h3>Learn</h3>
-					      <p>Read the latest news and updates on Mid-Atlantic planning.</p>
+					      <p>Understand the range of regional ocean planning needs.</p>
 					</div>
 				</a>
 			  </div>
@@ -80,7 +80,7 @@ Template Name: Homepage
 				    <div class="wrapper">
 						<div class="icon" id="explore-img"></div>				      
 				      	<h3>Explore</h3>
-				       	<p>Access our data catalog and links to other data and services</p>
+				       	<p>Access our current data and see future information needs.</p>
 				     </div>
 				 </a>
 			 </div>
