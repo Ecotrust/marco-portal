@@ -75,7 +75,10 @@ hr {
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: white;
 	color: #ccc;
+}
 
+.navbar .pull-right {
+    *position: absolute;
 }
 
 .form-search .btn {
