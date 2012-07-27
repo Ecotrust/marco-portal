@@ -357,6 +357,11 @@ img + h3 {
 	opacity: .7;
 }
 
+.catalog-page {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 .catalog-page .image:hover .caption {
     opacity: 1;
 }
