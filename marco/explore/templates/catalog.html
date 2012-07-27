@@ -27,7 +27,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
             <div class="span6">
                 <a name="{{ theme_dict.theme.name }}"></a>
                 <h3>
-                    {{ theme_dict.theme.name }}
+                    {{ theme_dict.theme.display_name }}
                 </h3>
                 <p>
                     {{ theme_dict.theme.description }} 
@@ -43,7 +43,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                 <div class="thumbnail">
                     <img src="{{MEDIA_URL}}marco/img/themes/{{theme_dict.theme.name}}.jpg" alt="">
                     <div class="caption">
-                      <h5 class="title">{{ theme_dict.theme.name }}</h5>
+                      <h5 class="title">{{ theme_dict.theme.display_name }}</h5>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
 	    <div>
             <h4>
                 <span class="theme-name" data-name="{{theme_dict.theme.name}}" data-thumbnail=" {{theme_dict.theme.thumbnail}} ">
-                    {{ theme_dict.theme.name }} Data Layers
+                    {{ theme_dict.theme.display_name }} Data Layers
                 </span>
             </h4>
 	        <div>

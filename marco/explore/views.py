@@ -5,7 +5,7 @@ from data_manager.models import *
 
 
 def data_catalog(request, template='catalog.html'):
-    themes = Theme.objects.all().order_by('name')
+    themes = Theme.objects.all().order_by('display_name')
     themes_with_links = add_learn_links(themes)
     context = {'themes': themes_with_links}
     return render_to_response(template, RequestContext(request, context)) 

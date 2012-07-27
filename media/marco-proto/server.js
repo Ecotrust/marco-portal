@@ -23,7 +23,7 @@ app.viewModel.loadLayers = function(data) {
 		$.each(themeFixture.layers, function(j, layer_id) {
 			// create a layerModel and add it to the list of layers
 			var layer = self.layerIndex[layer_id],
-				searchTerm = layer.name + ' (' + themeFixture.name + ')';
+				searchTerm = layer.name + ' (' + themeFixture.display_name + ')';
 			layer.themes.push(theme);
 			theme.layers.push(layer);
 			self.layerSearchIndex[searchTerm] = {
@@ -32,7 +32,7 @@ app.viewModel.loadLayers = function(data) {
 			};
 			if (layer.subLayers) {
 				$.each(layer.subLayers, function(i, subLayer) {
-					var searchTerm = layer.name + ' / ' + subLayer.name + ' (' + themeFixture.name + ')';
+					var searchTerm = layer.name + ' / ' + subLayer.name + ' (' + themeFixture.display_name + ')';
 					self.layerSearchIndex[searchTerm] = {
 						layer: subLayer,
 						theme: theme
