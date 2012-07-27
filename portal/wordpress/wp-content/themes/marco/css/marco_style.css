@@ -75,7 +75,10 @@ hr {
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: white;
 	color: #ccc;
+}
 
+.navbar .pull-right {
+    *position: absolute;
 }
 
 .form-search .btn {
@@ -123,7 +126,7 @@ hr {
 	/* RGBa with 0.6 opacity */
 	background-color: rgba(45, 137, 152, 0.65);
 	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##2d899800, endColorstr=#2d899800);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#2d899800, endColorstr=#2d899800);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	
