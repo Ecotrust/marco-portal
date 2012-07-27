@@ -10,16 +10,6 @@
         }
     }, 
     {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "", 
-            "display_name": "Conservation", 
-            "name": "conservation", 
-            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
-        }
-    }, 
-    {
         "pk": 3, 
         "model": "data_manager.theme", 
         "fields": {
@@ -50,16 +40,6 @@
         }
     }, 
     {
-        "pk": 6, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "", 
-            "display_name": "Ocean", 
-            "name": "ocean", 
-            "description": "Ocean theme."
-        }
-    }, 
-    {
         "pk": 7, 
         "model": "data_manager.theme", 
         "fields": {
@@ -67,6 +47,16 @@
             "display_name": "Recreation", 
             "name": "recreation", 
             "description": "Recreation theme."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Marine Life", 
+            "name": "conservation", 
+            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
         }
     }, 
     {
@@ -867,34 +857,6 @@
         }
     }, 
     {
-        "pk": 9, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sediment Grain Size", 
-            "source": null, 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
-            "kml": null, 
-            "attribute_fields": [], 
-            "fact_sheet": null, 
-            "thumbnail": null, 
-            "themes": [
-                6
-            ], 
-            "bookmark": null, 
-            "attribute_title": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": null, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/Legend.png", 
-            "data_download": null, 
-            "description": null
-        }
-    }, 
-    {
         "pk": 34, 
         "model": "data_manager.layer", 
         "fields": {
@@ -918,6 +880,34 @@
             "metadata": "", 
             "utfurl": "", 
             "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sediment Grain Size", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/Legend.png", 
             "data_download": "", 
             "description": ""
         }
