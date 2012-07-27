@@ -18,6 +18,7 @@ hr {
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: 90px;
+        background-color: white;
 }
 .navbar-inner {
 	width: 940px;
@@ -27,6 +28,7 @@ hr {
 	padding-right: 0px;
 	margin-left: auto;
 	margin-right: auto;
+	filter: none;
 	box-shadow: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
