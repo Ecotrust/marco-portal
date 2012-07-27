@@ -2,7 +2,7 @@ from django.contrib import admin
 from models import * 
 
 class ThemeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id')
+    list_display = ('display_name', 'name', 'id')
     pass
 
 class LayerAdmin(admin.ModelAdmin):

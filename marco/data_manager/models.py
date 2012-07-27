@@ -2,6 +2,7 @@ from django.db import models
 #from sorl.thumbnail import ImageField
 
 class Theme(models.Model):
+    display_name = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     thumbnail = models.URLField(max_length=255, blank=True, null=True)
@@ -14,7 +15,7 @@ class Theme(models.Model):
         layers = [layer.id for layer in self.layer_set.filter(is_sublayer=False).exclude(layer_type='placeholder')]
         themes_dict = {
             'id': self.id,
-            'name': self.name,
+            'display_name': self.display_name,
             'layers': layers,
             'description': self.description
         }

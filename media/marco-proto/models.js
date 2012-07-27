@@ -207,7 +207,7 @@ function layerModel(options, parent) {
 
 function themeModel(options) {
 	var self = this;
-	self.name = options.name;
+	self.name = options.display_name;
 	self.id = options.id;
     self.description = options.description;
     

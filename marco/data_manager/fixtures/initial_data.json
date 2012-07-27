@@ -1,47 +1,22 @@
 [
     {
-        "pk": 8, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": null, 
-            "name": "Maritime Industries", 
-            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. The largest port on the Eastern seaboard (New York\u2013New Jersey), the nation\u2019s top port in fruits and juices (Wilmington), and a port that reaches over a third of the country overnight (Baltimore) are all in the Mid-Atlantic. And every minute of every day, the ranks and ships of the U.S. Coast Guard and other agencies work to ensure that our ports and shipping lanes are accessible and safe."
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": null, 
-            "name": "Military", 
-            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations . The U.S. Coast Guard works vigilantly with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe."
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": null, 
-            "name": "Ocean", 
-            "description": "Ocean theme."
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": null, 
-            "name": "Recreation", 
-            "description": "Recreation theme."
-        }
-    }, 
-    {
         "pk": 1, 
         "model": "data_manager.theme", 
         "fields": {
             "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "name": "Administrative", 
+            "display_name": "Administrative", 
+            "name": "administrative", 
             "description": "Administrative theme."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Conservation", 
+            "name": "conservation", 
+            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
         }
     }, 
     {
@@ -49,26 +24,120 @@
         "model": "data_manager.theme", 
         "fields": {
             "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "name": "Energy", 
+            "display_name": "Renewable Energy", 
+            "name": "energy", 
             "description": "Energy theme."
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": null, 
-            "name": "Conservation", 
-            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
         }
     }, 
     {
         "pk": 4, 
         "model": "data_manager.theme", 
         "fields": {
-            "thumbnail": null, 
-            "name": "Fishing", 
+            "thumbnail": "", 
+            "display_name": "Fishing", 
+            "name": "fishing", 
             "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. We will be paying close attention to dynamic and variable environments with different depths, outcrops, substrates, and slopes, which provide foundations for deep sea corals, rare sponges, and anemones that form the food sources for lobsters, crabs, flounders, hakes, skates, monkfish, and tilefish."
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Security", 
+            "name": "military", 
+            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations . The U.S. Coast Guard works vigilantly with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe."
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Ocean", 
+            "name": "ocean", 
+            "description": "Ocean theme."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Recreation", 
+            "name": "recreation", 
+            "description": "Recreation theme."
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Maritime", 
+            "name": "maritime-industries", 
+            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. The largest port on the Eastern seaboard (New York\u2013New Jersey), the nation\u2019s top port in fruits and juices (Wilmington), and a port that reaches over a third of the country overnight (Baltimore) are all in the Mid-Atlantic. And every minute of every day, the ranks and ships of the U.S. Coast Guard and other agencies work to ensure that our ports and shipping lanes are accessible and safe."
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Seabed Form", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "attribute_event": "click", 
+            "name": "Fishing Effort", 
+            "source": null, 
+            "url": "", 
+            "kml": null, 
+            "attribute_fields": [], 
+            "fact_sheet": null, 
+            "thumbnail": null, 
+            "themes": [
+                4
+            ], 
+            "bookmark": null, 
+            "attribute_title": null, 
+            "sublayers": [
+                12, 
+                13, 
+                14, 
+                11
+            ], 
+            "is_sublayer": false, 
+            "map_tiles": null, 
+            "metadata": null, 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": null, 
+            "description": null
         }
     }, 
     {
@@ -482,34 +551,6 @@
         }
     }, 
     {
-        "pk": 33, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Seabed Form", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 10, 
         "model": "data_manager.layer", 
         "fields": {
@@ -647,39 +688,6 @@
                 15
             ], 
             "is_sublayer": true, 
-            "map_tiles": null, 
-            "metadata": null, 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": null, 
-            "description": null
-        }
-    }, 
-    {
-        "pk": 15, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "attribute_event": "click", 
-            "name": "Fishing Effort", 
-            "source": null, 
-            "url": "", 
-            "kml": null, 
-            "attribute_fields": [], 
-            "fact_sheet": null, 
-            "thumbnail": null, 
-            "themes": [
-                4
-            ], 
-            "bookmark": null, 
-            "attribute_title": null, 
-            "sublayers": [
-                12, 
-                13, 
-                14, 
-                11
-            ], 
-            "is_sublayer": false, 
             "map_tiles": null, 
             "metadata": null, 
             "utfurl": "", 
@@ -942,6 +950,20 @@
         }
     }, 
     {
+        "pk": 1, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Military, hazard and restricted areas", 
+            "expected_date": "Unknown ", 
+            "notes": "DOD has produced draft East Coast OCS Wind Energy Assessment for BOEM; in addition, DOD Oil and Gas Stipulation Layer exists on Cadastre\r\n", 
+            "source": "USCG & DOD including ACOE, Navy, etc. ", 
+            "contact": "Brian Smith, NOAA CSC  ", 
+            "contact_email": "brian.m.smith@noaa.gov", 
+            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
+        }
+    }, 
+    {
         "pk": 3, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -967,20 +989,6 @@
             "contact": "Jennifer Greene, The Nature Conservancy ", 
             "contact_email": "jgreene@tnc.org", 
             "description": "Important areas for sea turtles were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected.  The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
-        }
-    }, 
-    {
-        "pk": 1, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
-            "name": "Military, hazard and restricted areas", 
-            "expected_date": "Unknown ", 
-            "notes": "DOD has produced draft East Coast OCS Wind Energy Assessment for BOEM; in addition, DOD Oil and Gas Stipulation Layer exists on Cadastre\r\n", 
-            "source": "USCG & DOD including ACOE, Navy, etc. ", 
-            "contact": "Brian Smith, NOAA CSC  ", 
-            "contact_email": "brian.m.smith@noaa.gov", 
-            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
         }
     }, 
     {
