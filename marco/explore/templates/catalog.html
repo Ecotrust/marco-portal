@@ -21,7 +21,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
     </div>
 </div>
 {% for theme_dict in themes %}
-<div class="theme">
+<div class="theme catalog-page">
 	<div class="theme-context">
         <div class="row-fluid">
             <div class="span6">
@@ -31,21 +31,18 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                 </h3>
                 <p>
                     {{ theme_dict.theme.description }} 
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                </p>           
-                <p class="pull-right"> 
-                    <a href="{{theme_dict.learn_link}}" class="btn">Read More...</a>
-                </p>
+                    <span class="pull-right"><a href="{{theme_dict.learn_link}}">Read More... </a></span>
+                </p>  
             </div>
             <div class="span6">
-                <div class="thumbnail">
-                    <img src="{{MEDIA_URL}}marco/img/themes/{{theme_dict.theme.name}}.jpg" alt="">
-                    <div class="caption">
-                      <h5 class="title">{{ theme_dict.theme.display_name }}</h5>
+                <a href="{{theme_dict.learn_link}}">
+                    <div class="image">
+                        <img src="{{MEDIA_URL}}marco/img/themes/{{theme_dict.theme.name}}.jpg" alt="">
+                        <div class="caption">
+                          {{ theme_dict.theme.display_name }}
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 	</div>

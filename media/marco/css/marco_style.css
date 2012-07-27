@@ -340,3 +340,28 @@ img + h3 {
 .link-not-available {
 	color: #aaa;
 }
+
+.image {
+	position: relative;
+}
+.image .caption {
+	position: absolute;
+	text-transform: uppercase;
+	width: 90%;
+	font-size: 36px;
+	font-weight: bold;
+	line-height: .75;
+	color: white;
+	bottom: -3px;
+	left: 20px;
+	opacity: .7;
+}
+
+.catalog-page {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.catalog-page .image:hover .caption {
+    opacity: 1;
+}
