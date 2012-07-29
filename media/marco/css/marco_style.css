@@ -344,6 +344,13 @@ img + h3 {
 .image {
 	position: relative;
 }
+
+.image img {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 5px;
+}
+
 .image .caption {
 	position: absolute;
 	text-transform: uppercase;
