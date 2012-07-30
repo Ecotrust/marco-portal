@@ -119,6 +119,36 @@
         }
     }, 
     {
+        "pk": 17, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Protraction Diagram Boundaries", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
+            "attribute_fields": [
+                3
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data set contains Official Protraction Diagram (OPD) outlines. OPDs are approximately 2 degrees wide by approximately one degree high (OPDs north of 48 degrees are approximately 3 degrees wide).  OPDs are further subdivided into blocks. Where the OPD hits the UTM zone boundary, that zone boundary will be a geodesic line - which will appear slightly curved on the UTM plane. OPDs are numbered using the United Nations International Map of the World Numbering System, and are generally named for land or hydrographic features contained within the limits of the diagram. Further information on the historic development of OPD's can be found in OCS Report MMS 99-0006: Boundary Development on the Outer Continental Shelf. <br><br>\r\nBecause GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact OPD coordinates or areas. The Official Protraction Diagrams (OPDs) and Supplemental Official Block Diagrams (SOBDs), available on the web in pdf format, serve as the legal definition for MMS offshore boundary coordinates and area descriptions."
+        }
+    }, 
+    {
         "pk": 15, 
         "model": "data_manager.layer", 
         "fields": {
@@ -400,36 +430,6 @@
             "thumbnail": "", 
             "themes": [
                 3
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Protraction Diagram Boundaries", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
-            "kml": "", 
-            "attribute_fields": [
-                3
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
             ], 
             "bookmark": "", 
             "attribute_title": "", 

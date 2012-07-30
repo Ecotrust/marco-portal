@@ -372,3 +372,7 @@ img + h3 {
 .catalog-page .image:hover .caption {
     opacity: 1;
 }
+
+.layer-popover .layer-tooltip {
+  width: 380px;
+}
