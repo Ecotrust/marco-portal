@@ -187,7 +187,7 @@ function layerModel(options, parent) {
     
     self.showTooltip = function (layer, event) {
         $('#layer-popover').hide();
-        if ( layer.activeSublayer() ) {
+        if ( layer.activeSublayer() && layer.activeSublayer().description ) {
             var layerActual = layer.activeSublayer();
         } else {
             var layerActual = layer;
