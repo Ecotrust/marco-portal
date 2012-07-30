@@ -3,7 +3,8 @@ layout: post
 title: "Using ESRI's Ocean Basemap with OpenLayers"
 description: ""
 category: 
-tags: []
+tags: [javascript, cartography, design, planner]
+author: Edwin Knuth
 ---
 {% include JB/setup %}
 ESRI has produced a basemap that is perfect for use in marine projects.  ESRI's [Ocean Basemap](http://www.arcgis.com/home/item.html?id=6348e67824504fc9a62976434bf0d8d5) features beautiful cartography and includes marine placenames.  It is a natural fit for the MARCO planning tool and works well with [OpenLayers](http://openlayers.org/), the javascript web mapping library we are using for the project.
