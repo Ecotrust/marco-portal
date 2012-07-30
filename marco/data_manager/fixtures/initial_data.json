@@ -70,6 +70,55 @@
         }
     }, 
     {
+        "pk": 21, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "attribute_event": "click", 
+            "name": "Endangered Whales (SPUE)", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                35, 
+                36, 
+                37, 
+                38, 
+                39, 
+                40, 
+                41, 
+                42, 
+                43, 
+                44, 
+                45, 
+                46, 
+                47, 
+                48, 
+                49, 
+                50, 
+                51, 
+                27, 
+                28, 
+                29
+            ], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 15, 
         "model": "data_manager.layer", 
         "fields": {
@@ -451,38 +500,6 @@
         }
     }, 
     {
-        "pk": 21, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "attribute_event": "click", 
-            "name": "Endangered Whales (SPUE)", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                27, 
-                28, 
-                29
-            ], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 31, 
         "model": "data_manager.layer", 
         "fields": {
@@ -659,6 +676,394 @@
         }
     }, 
     {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Benthic Habitats", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Fin Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Narwhals (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Narwhals (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSpring/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Narwhals (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 23, 
         "model": "data_manager.layer", 
         "fields": {
@@ -687,29 +1092,31 @@
         }
     }, 
     {
-        "pk": 24, 
+        "pk": 49, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "placeholder", 
+            "layer_type": "XYZ", 
             "attribute_event": "click", 
-            "name": "Benthic Habitats", 
+            "name": "Sperm Whales (Spring)", 
             "source": "", 
-            "url": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png", 
             "kml": "", 
             "attribute_fields": [], 
             "fact_sheet": "", 
-            "thumbnail": null, 
+            "thumbnail": "", 
             "themes": [
                 2
             ], 
             "bookmark": "", 
-            "attribute_title": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
             "map_tiles": "", 
             "metadata": "", 
             "utfurl": "", 
-            "legend": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
         }
@@ -743,6 +1150,36 @@
         }
     }, 
     {
+        "pk": 43, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Narwhals (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 6, 
         "model": "data_manager.layer", 
         "fields": {
@@ -771,6 +1208,36 @@
         }
     }, 
     {
+        "pk": 44, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 34, 
         "model": "data_manager.layer", 
         "fields": {
@@ -794,6 +1261,36 @@
             "metadata": "", 
             "utfurl": "", 
             "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
         }
@@ -908,6 +1405,36 @@
             "metadata": "", 
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
         }

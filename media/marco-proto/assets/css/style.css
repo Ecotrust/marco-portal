@@ -113,6 +113,8 @@ body {
 
 #data-accordion .dropdown-menu {
   right: 26px;
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 .attribution {
