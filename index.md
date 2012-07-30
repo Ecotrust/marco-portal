@@ -22,7 +22,7 @@ tagline:
   </div>	
   {% for post in site.posts limit:2 %}
   <div class="span3">
-    <h3>{{ post.title }}</h3>
+    <h3><a href="{{BASE_PATH}}{{ post.url }}">{{ post.title }}</a></h3>
 	<div class="date">{{ post.date | date_to_long_string }}</div>
     <p>{{ post.content | strip_html | truncatewords: 25 }}</p>    
     <p class="pull-right">
