@@ -186,9 +186,14 @@ function layerModel(options, parent) {
 	}
     
     self.showTooltip = function (layer, event) {
-        $('#layer-popover').hide(); 
-        if ( layer.description ) {
-            app.viewModel.layerToolTipText(layer.description);
+        $('#layer-popover').hide();
+        if ( layer.activeSublayer() ) {
+            var layerActual = layer.activeSublayer();
+        } else {
+            var layerActual = layer;
+        }
+        if ( layerActual.description ) {
+            app.viewModel.layerToolTipText(layerActual.description);
             $('#layer-popover').show().position({
                 "my": "right middle",
                 "at": "left middle",
