@@ -115,7 +115,67 @@
             "utfurl": "", 
             "legend": "", 
             "data_download": "", 
-            "description": ""
+            "description": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. By integrating this information at a regional level, the Conservancy is able to provide both a greater understanding of the interrelated biological diversity of the marine ecoregion, and a clearer picture of the current condition of its natural areas and the challenges to their continued persistence. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are:\u00a0\u00a0coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. Geospatial data obtained from the United States Navy included point shapefiles of valid sightings for numerous marine mammal and turtle species and pre-calculated effort grids for each season. Sightings data were taken from NMFS-NEFSC Aerial Surveys, NMFSNEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  SPUE was calculated for each species, for each season, and for each ten minute square."
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Artificial Reefs", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources. In the case of Delaware, digital data was received directly from a state agency. For Maryland, The Nature Conservancy compiled reef data from numerous sources, including state agencies. For the remaining states GIS data was created from lat/long coordinates of reef corners found on public web sites."
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "mouseover", 
+            "name": "Major Canyons", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/MajorCanyons.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data layer represents major canyons of the Mid-Atlantic Coast. Approximate boundaries were digitized on-screen over a raster bathymetry layer. Canyon names come from NOAA charts and other various sources. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries."
         }
     }, 
     {
@@ -300,62 +360,6 @@
         }
     }, 
     {
-        "pk": 33, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Seabed Form", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 30, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Essential Fish Habitat", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 16, 
         "model": "data_manager.layer", 
         "fields": {
@@ -412,66 +416,6 @@
         }
     }, 
     {
-        "pk": 20, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Artificial Reefs", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
-            "kml": "", 
-            "attribute_fields": [
-                2
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 8, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "mouseover", 
-            "name": "Wind Energy Areas", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
-            "kml": "", 
-            "attribute_fields": [
-                1
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                3
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 26, 
         "model": "data_manager.layer", 
         "fields": {
@@ -500,18 +444,16 @@
         }
     }, 
     {
-        "pk": 31, 
+        "pk": 22, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "mouseover", 
-            "name": "Major Canyons", 
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Waterbird Survey (2001-2003)", 
             "source": "", 
-            "url": "/media/data_manager/geojson/MajorCanyons.json", 
-            "kml": "", 
-            "attribute_fields": [
-                2
-            ], 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": "", 
             "themes": [
@@ -524,9 +466,9 @@
             "map_tiles": "", 
             "metadata": "", 
             "utfurl": "", 
-            "legend": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
             "data_download": "", 
-            "description": ""
+            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. This application is based on their Marine Mammal and Seabird Computer Database Analysis System (MMS-CDAS). The origin of the underlying data is a U.S. Fish & Wildlife Service aerial survey conducted between December, 2001 and March, 2003. <br><br>All waterbird species in the USFWS database from winter surveys only were exported to density blocks. Information in the MMS application suggests the winter surveys only are valid for calculating densities because they were flown on specific transects. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay)."
         }
     }, 
     {
@@ -538,7 +480,7 @@
             "name": "AIS Shipping Data", 
             "source": "", 
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
-            "kml": "", 
+            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
             "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": "", 
@@ -1120,34 +1062,6 @@
         }
     }, 
     {
-        "pk": 34, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Submarine Cables", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                8
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 50, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1173,90 +1087,6 @@
             "metadata": "", 
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 9, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sediment Grain Size", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Waterbird Survey (2001-2003)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Wind Speed", 
-            "source": "http://www.nrel.gov/gis/wind.html", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                3
-            ], 
-            "bookmark": "http://localhost:8000/media/marco-proto/index.html#location%5Bx%5D=-71.37231445312406&location%5By%5D=38.457524829585964&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
             "data_download": "", 
             "description": ""
         }
@@ -1409,6 +1239,176 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
             "data_download": "", 
             "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses.<br><br>\r\nReported information includes fishing effort, location and gear type for each trip, among other information. This particular data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009)."
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Seabed Form", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
+            "data_download": "", 
+            "description": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. By integrating this information at a regional level, the Conservancy is able to provide both a greater understanding of the interrelated biological diversity of the marine ecoregion, and a clearer picture of the current condition of its natural areas and the challenges to their continued persistence. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are:\u00a0\u00a0coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. <br><br>\r\nSeabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance."
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Essential Fish Habitat", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
+            "data_download": "", 
+            "description": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.<br><br>\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location.<br><br>\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder."
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sediment Grain Size", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
+            "data_download": "", 
+            "description": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. By integrating this information at a regional level, the Conservancy is able to provide both a greater understanding of the interrelated biological diversity of the marine ecoregion, and a clearer picture of the current condition of its natural areas and the challenges to their continued persistence. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are:\u00a0\u00a0coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. <br><br>\r\nThis particular layer was created from interpolation of usSEABED point data. usSEABED's averaged grain-size for each sample produced a robust interpretation of sediment texture, showing local variation as well as large-scale patterns. The point samples were interpolated using the Kriging interpolation method in ArcGIS to create surfaces representing the area between sample points at a cell size of 500 meters. We classified grain-size according to organisms' preferences, and assigned names to these classes based on the Wentworth (1922) scheme.\u00a0"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Submarine Cables", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Submarine_Cables_Files/Submarine_Cables.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                8
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This represents cables that have been laid underwater or buried beneath the seabed."
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "mouseover", 
+            "name": "Wind Energy Areas", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Management/WEA_Files/WEA.kmz", 
+            "attribute_fields": [
+                1
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "Secretary Salazar announced the Department of the Interior's \"Smart from the Start\" initiative on November 23, 2010. As part of this initiative, a critical element is the identification of Wind Energy Areas (WEA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WEAs are offshore locations that appear most suitable for wind energy development. Secretary Salazar identified the WEAs on February 7, 2011 in a joint announcement with Secretary Chu of the U.S. Department of Energy as part of the National Strategic Work Plan for Offshore Wind. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Wind Speed", 
+            "source": "http://www.nrel.gov/gis/wind.html", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "http://localhost:8000/media/marco-proto/index.html#location%5Bx%5D=-71.37231445312406&location%5By%5D=38.457524829585964&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
+            "data_download": "", 
+            "description": "Annual average wind speeds are closely related to the available energy at a particular location and are categorized in these data by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam."
         }
     }, 
     {
