@@ -187,12 +187,14 @@ function layerModel(options, parent) {
     
     self.showTooltip = function (layer, event) {
         $('#layer-popover').hide(); 
-        app.viewModel.layerToolTipText(layer.description);
-        $('#layer-popover').show().position({
-            "my": "right middle",
-            "at": "left middle",
-            "of": $(event.target).closest(".btn-group")
-        });
+        if ( layer.description ) {
+            app.viewModel.layerToolTipText(layer.description);
+            $('#layer-popover').show().position({
+                "my": "right middle",
+                "at": "left middle",
+                "of": $(event.target).closest(".btn-group")
+            });
+        }
     }
     
 
