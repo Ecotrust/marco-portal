@@ -28,6 +28,9 @@
 			  interval: 4500
 			});
 			$('#marco-carousel').carousel(<?php echo rand(1, 6); ?>);
+			$('#visualize-carousel').carousel({
+			  interval: 4500
+			});
 		});
 		</script>
 		<!--[if lt IE 7 ]>
