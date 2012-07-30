@@ -66,6 +66,21 @@ class Layer(models.Model):
         return self.sublayers.all().count() > 0 and not self.is_sublayer
     
     @property
+    def parent(self):
+        if self.is_sublayer:
+            return self.sublayers.all()[0]
+        return self
+    
+    @property
+    def tooltip(self):
+        if self.description and self.description.strip() != '':
+            return self.description
+        elif self.parent.description and self.parent.description.strip() != '':
+            return self.parent.description
+        else:
+            return None
+            
+    @property
     def serialize_attributes(self):
         return {'title': self.attribute_title, 
                 'event': self.attribute_event,

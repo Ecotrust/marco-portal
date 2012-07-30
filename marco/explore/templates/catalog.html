@@ -58,16 +58,15 @@ The Data Catalog gathers available data and recruits new data about ocean resour
 	                <table class="table table-striped table-condensed">
 	                	<tbody>
 	                		<!-- foreach layer -->
-                            {% for layer in theme_dict.theme.layer_set.all %}
+                            {% for layer in theme_dict.layers %}
                                 {% if layer.is_parent %}
                                 {% else %}
                                 <tr>
                                     <td>
-                                        <span class="layer-name" rel="popover" 
-                                                data-description="{% if layer.description %} {{layer.description}} {% endif %}" 
+                                        <span class="layer-name catalog-tooltip" rel="popover" 
                                                 data-name="{{layer.name}}" 
                                                 data-thumbnail="{{layer.thumbnail}}"
-                                                data-content="{{layer.description}}">{{layer.name}}
+                                                data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">{{layer.name}}
                                         </span>
                                     </td>
                                     {% if layer.bookmark %}
@@ -107,7 +106,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     {% endif %}
                                 </tr>
                                 {% endif %}
-                            {% endfor layer_set %}
+                            {% endfor layers %}
 	                		<!-- end foreach layer -->
 	                	</tbody>
 	                </table>
@@ -169,7 +168,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
             //theme.find('.thumbnail img').attr('src', thumbnail);
         });
         //overriding the template here to remove empty space for title
-        $('.layer-name').popover({template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'});
+        $('.layer-name').popover({template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'});
         
     });
 </script>
