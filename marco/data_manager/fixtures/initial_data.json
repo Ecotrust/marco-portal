@@ -1298,36 +1298,6 @@
         }
     }, 
     {
-        "pk": 8, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "mouseover", 
-            "name": "Wind Energy Areas", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Management/WEA_Files/WEA.kmz", 
-            "attribute_fields": [
-                1
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                3
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/wind_energy_areas.htm", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "WEAs are offshore locations that appear most suitable for wind energy development. "
-        }
-    }, 
-    {
         "pk": 30, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1381,6 +1351,36 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
             "data_download": "", 
             "description": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. "
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "mouseover", 
+            "name": "Wind Energy Areas", 
+            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx", 
+            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Management/WEA_Files/WEA.kmz", 
+            "attribute_fields": [
+                1
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.5658203125002&location%5By%5D=38.280823516230726&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/wind_energy_areas.htm", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "WEAs are offshore locations that appear most suitable for wind energy development. "
         }
     }, 
     {
