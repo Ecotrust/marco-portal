@@ -1,4 +1,5 @@
 from django.db import models
+from utils import get_domain
 #from sorl.thumbnail import ImageField
 
 class Theme(models.Model):
@@ -11,11 +12,19 @@ class Theme(models.Model):
         return unicode('%s' % (self.name))
 
     @property
+    def learn_link(self):
+        if self.name in ['security', 'fishing', 'maritime-industries', 'energy']:
+            domain = get_domain()
+            return '%s/portal/learn/%s' %(domain, self.name)
+        return None
+        
+    @property
     def toDict(self):
         layers = [layer.id for layer in self.layer_set.filter(is_sublayer=False).exclude(layer_type='placeholder')]
         themes_dict = {
             'id': self.id,
             'display_name': self.display_name,
+            'learn_link': self.learn_link,
             'layers': layers,
             'description': self.description
         }
@@ -72,6 +81,11 @@ class Layer(models.Model):
         return self
     
     @property
+    def learn_link(self):
+        theme = self.themes.all()[0]
+        return theme.learn_link
+        
+    @property
     def tooltip(self):
         if self.description and self.description.strip() != '':
             return self.description
@@ -98,6 +112,7 @@ class Layer(models.Model):
                 'parent': self.id,
                 'legend': layer.legend,
                 'description': layer.description,
+                'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes
             } 
             for layer in self.sublayers.all()
@@ -111,6 +126,7 @@ class Layer(models.Model):
             'subLayers': sublayers,
             'legend': self.legend,
             'description': self.description,
+            'learn_link': self.learn_link,
             'attributes': self.serialize_attributes
         }
         return layers_dict

@@ -10,6 +10,7 @@ function layerModel(options, parent) {
 	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;
+    self.learn_link = options.learn_link || null;
     self.legendVisibility = ko.observable(false);
     self.themes = ko.observableArray();
     self.attributeTitle = options.attributes ? options.attributes['title'] : null;
@@ -203,6 +204,13 @@ function layerModel(options, parent) {
 		return app.viewModel.activeLayers.indexOf(layer) === app.viewModel.activeLayers().length - 1;
 	}
     
+    // display descriptive text below the map
+    self.showDescription = function (layer) {
+        app.viewModel.activeName(layer.name);
+        app.viewModel.activeText(layer.description);
+        app.viewModel.activeLearnLink(layer.learn_link);
+    }
+    
     self.showTooltip = function (layer, event) {
         $('#layer-popover').hide();
         if ( layer.activeSublayer() && layer.activeSublayer().description ) {
@@ -235,6 +243,7 @@ function themeModel(options) {
 	self.name = options.display_name;
 	self.id = options.id;
     self.description = options.description;
+    self.learn_link = options.learn_link;
     
 	// array of layers
 	self.layers = ko.observableArray();
@@ -280,6 +289,13 @@ function themeModel(options) {
         return false;
     };
    
+    // display descriptive text below the map
+    self.showDescription = function (theme) {
+        app.viewModel.activeName(theme.name);
+        app.viewModel.activeText(theme.description);
+        app.viewModel.activeLearnLink(theme.learn_link);
+    }
+    
     self.hideTooltip = function (theme, event) {
         $('.layer-popover').hide();
     };
@@ -399,6 +415,11 @@ function viewModel() {
 
 	// text for tooltip popup
 	self.layerToolTipText = ko.observable();
+    
+    // descriptive text below the map 
+    self.activeName = ko.observable();
+    self.activeText = ko.observable();
+    self.activeLearnLink = ko.observable();
     
     // attribute data
     self.attributeTitle = ko.observable(false);

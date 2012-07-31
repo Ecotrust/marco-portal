@@ -96,7 +96,7 @@
                                                     <div class="accordion-group">
                                                         <div class="accordion-heading" data-bind="event: {'mouseenter': $root.hideTooltip}, css: { 'active': isOpenTheme() }">
                                                             <div>
-                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme"><span data-bind="text: name">Themes</span></a>
+                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme, event: {'hover': showDescription}"><span data-bind="text: name">Themes</span></a>
                                                             </div>
                                                         </div>
                                                         <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
@@ -104,7 +104,7 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer">
-                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showTooltip}">
+                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
                                                                                 <i class="icon-align-justify"></i>
                                                                                 <span data-bind="text: name"></span>
                                                                                 <span data-bind="visible: activeSublayer">
@@ -269,21 +269,21 @@
                         <div class="row-fluid">
                             <div class="span12">
                                 <h3>
-                                    <span data-bind="text: activeThemeName"></span>
+                                    <span data-bind="text: activeName"></span>
                                 </h3>
-                                <span data-bind="text: themeText"></span>
+                                <span data-bind="text: activeText"></span>
+                                <a data-bind="visible: activeLearnLink(), attr: { href: activeLearnLink }" target="_blank">Learn More...</a>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <!--/row-->
                 </div>
-                <!--/span-->
+                <!--/row-->
             </div>
-            <!--/row-->
-            <hr>
-          
+            <!--/span-->
         </div>
+        <!--/row-->
+        <hr>
+          
         <!--/.fluid-container-->
         
         <div style="display:none" id="opacity-popover" class="popover fade bottom in">

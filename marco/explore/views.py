@@ -2,6 +2,7 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from data_manager.models import *
+from utils import get_domain
 
 
 def data_catalog(request, template='catalog.html'):
@@ -34,13 +35,3 @@ def add_learn_links(themes):
 def linkify(text):
     return text.lower().replace(' ', '-')
     
-def get_domain():
-    from django.contrib.sites.models import Site
-    try:
-        domain = Site.objects.all()[0].domain 
-        if 'localhost' in domain:
-            domain = 'localhost:8010'
-        domain = 'http://' + domain
-    except:
-        domain = '..'   
-    return domain
