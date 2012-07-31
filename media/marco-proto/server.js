@@ -26,19 +26,21 @@ app.viewModel.loadLayers = function(data) {
 				searchTerm = layer.name + ' (' + themeFixture.display_name + ')';
 			layer.themes.push(theme);
 			theme.layers.push(layer);
-			self.layerSearchIndex[searchTerm] = {
-				layer: layer,
-				theme: theme
-			};
-			if (layer.subLayers) {
+            
+			if (!layer.subLayers.length) { //if the layer does not have sublayers
+                self.layerSearchIndex[searchTerm] = {
+                    layer: layer,
+                    theme: theme
+                };
+            } else { //if the layer has sublayers
 				$.each(layer.subLayers, function(i, subLayer) {
-					var searchTerm = layer.name + ' / ' + subLayer.name + ' (' + themeFixture.display_name + ')';
+					var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ')';
 					self.layerSearchIndex[searchTerm] = {
 						layer: subLayer,
 						theme: theme
 					};
 				});
-			}
+			} 
 
 		});
 		self.themes.push(theme);
