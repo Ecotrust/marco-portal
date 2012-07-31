@@ -1,22 +1,12 @@
 [
     {
-        "pk": 1, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "display_name": "Administrative", 
-            "name": "administrative", 
-            "description": "Administrative theme."
-        }
-    }, 
-    {
         "pk": 3, 
         "model": "data_manager.theme", 
         "fields": {
             "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
             "display_name": "Renewable Energy", 
             "name": "energy", 
-            "description": "Energy theme."
+            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n"
         }
     }, 
     {
@@ -26,7 +16,7 @@
             "thumbnail": "", 
             "display_name": "Fishing", 
             "name": "fishing", 
-            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. We will be paying close attention to dynamic and variable environments with different depths, outcrops, substrates, and slopes, which provide foundations for deep sea corals, rare sponges, and anemones that form the food sources for lobsters, crabs, flounders, hakes, skates, monkfish, and tilefish."
+            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. "
         }
     }, 
     {
@@ -35,28 +25,8 @@
         "fields": {
             "thumbnail": "", 
             "display_name": "Security", 
-            "name": "military", 
-            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations . The U.S. Coast Guard works vigilantly with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe."
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "", 
-            "display_name": "Recreation", 
-            "name": "recreation", 
-            "description": "Recreation theme."
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "", 
-            "display_name": "Marine Life", 
-            "name": "conservation", 
-            "description": "The Mid-Atlantic region represents 10% of all U.S. offshore wind potential, a huge resource that could help meet the growing electricity demand in the region, while reducing carbon emissions. Wind, wave, and tidal energy are resources that can help meet growing electricity needs, as well as reduce greenhouse gas emissions by over 50% in our five-state region."
+            "name": "security", 
+            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. "
         }
     }, 
     {
@@ -66,7 +36,128 @@
             "thumbnail": "", 
             "display_name": "Maritime", 
             "name": "maritime-industries", 
-            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. The largest port on the Eastern seaboard (New York\u2013New Jersey), the nation\u2019s top port in fruits and juices (Wilmington), and a port that reaches over a third of the country overnight (Baltimore) are all in the Mid-Atlantic. And every minute of every day, the ranks and ships of the U.S. Coast Guard and other agencies work to ensure that our ports and shipping lanes are accessible and safe."
+            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. "
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Marine Life", 
+            "name": "conservation", 
+            "description": "Marine Life description..."
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
+            "display_name": "Administrative", 
+            "name": "administrative", 
+            "description": "Administrative description..."
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "", 
+            "display_name": "Recreation", 
+            "name": "recreation", 
+            "description": "Recreation description..."
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "attribute_event": "click", 
+            "name": "Fishing Effort", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                4
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                11, 
+                12, 
+                13, 
+                14
+            ], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). "
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "OCS Administrative Boundaries", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary)."
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Protraction Diagram Boundaries", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
+            "attribute_fields": [
+                3
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data set contains Official Protraction Diagram (OPD) outlines."
         }
     }, 
     {
@@ -115,7 +206,35 @@
             "utfurl": "", 
             "legend": "", 
             "data_download": "", 
-            "description": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. By integrating this information at a regional level, the Conservancy is able to provide both a greater understanding of the interrelated biological diversity of the marine ecoregion, and a clearer picture of the current condition of its natural areas and the challenges to their continued persistence. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are:\u00a0\u00a0coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. Geospatial data obtained from the United States Navy included point shapefiles of valid sightings for numerous marine mammal and turtle species and pre-calculated effort grids for each season. Sightings data were taken from NMFS-NEFSC Aerial Surveys, NMFSNEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  SPUE was calculated for each species, for each season, and for each ten minute square."
+            "description": "Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  "
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Regional Ocean Councils", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
+            "data_download": "", 
+            "description": ""
         }
     }, 
     {
@@ -145,128 +264,7 @@
             "utfurl": "", 
             "legend": "", 
             "data_download": "", 
-            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources. In the case of Delaware, digital data was received directly from a state agency. For Maryland, The Nature Conservancy compiled reef data from numerous sources, including state agencies. For the remaining states GIS data was created from lat/long coordinates of reef corners found on public web sites."
-        }
-    }, 
-    {
-        "pk": 31, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "mouseover", 
-            "name": "Major Canyons", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/MajorCanyons.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz", 
-            "attribute_fields": [
-                2
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "This data layer represents major canyons of the Mid-Atlantic Coast. Approximate boundaries were digitized on-screen over a raster bathymetry layer. Canyon names come from NOAA charts and other various sources. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries."
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Protraction Diagram Boundaries", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
-            "attribute_fields": [
-                3
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "This data set contains Official Protraction Diagram (OPD) outlines. OPDs are approximately 2 degrees wide by approximately one degree high (OPDs north of 48 degrees are approximately 3 degrees wide).  OPDs are further subdivided into blocks. Where the OPD hits the UTM zone boundary, that zone boundary will be a geodesic line - which will appear slightly curved on the UTM plane. OPDs are numbered using the United Nations International Map of the World Numbering System, and are generally named for land or hydrographic features contained within the limits of the diagram. Further information on the historic development of OPD's can be found in OCS Report MMS 99-0006: Boundary Development on the Outer Continental Shelf. <br><br>\r\nBecause GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact OPD coordinates or areas. The Official Protraction Diagrams (OPDs) and Supplemental Official Block Diagrams (SOBDs), available on the web in pdf format, serve as the legal definition for MMS offshore boundary coordinates and area descriptions."
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "OCS Administrative Boundaries", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary). The boundaries will provide the basis for more accurate delineation of OCS planning areas; assist in determining affected state status under the Coastal Zone Management Act and OCS Lands Act; and assist in the section 18 comparative analyses to determine an equitable sharing of developmental benefits and environmental risks among regions."
-        }
-    }, 
-    {
-        "pk": 15, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "attribute_event": "click", 
-            "name": "Fishing Effort", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                4
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                11, 
-                12, 
-                13, 
-                14
-            ], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses."
+            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources."
         }
     }, 
     {
@@ -330,6 +328,36 @@
         }
     }, 
     {
+        "pk": 31, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "mouseover", 
+            "name": "Major Canyons", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/MajorCanyons.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data layer represents major canyons of the Mid-Atlantic Coast. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries."
+        }
+    }, 
+    {
         "pk": 29, 
         "model": "data_manager.layer", 
         "fields": {
@@ -388,34 +416,6 @@
         }
     }, 
     {
-        "pk": 19, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Regional Ocean Councils", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 26, 
         "model": "data_manager.layer", 
         "fields": {
@@ -439,6 +439,62 @@
             "metadata": "", 
             "utfurl": "", 
             "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "attribute_event": "click", 
+            "name": "EFH Overlays", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "AIS Shipping Data", 
+            "source": "", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
+            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                8
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
             "data_download": "", 
             "description": ""
         }
@@ -468,35 +524,35 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
             "data_download": "", 
-            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. This application is based on their Marine Mammal and Seabird Computer Database Analysis System (MMS-CDAS). The origin of the underlying data is a U.S. Fish & Wildlife Service aerial survey conducted between December, 2001 and March, 2003. <br><br>All waterbird species in the USFWS database from winter surveys only were exported to density blocks. Information in the MMS application suggests the winter surveys only are valid for calculating densities because they were flown on specific transects. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay)."
+            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. "
         }
     }, 
     {
-        "pk": 10, 
+        "pk": 6, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "attribute_event": "click", 
-            "name": "AIS Shipping Data", 
-            "source": "", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
-            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
+            "name": "OCS Lease Blocks", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
             "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": "", 
             "themes": [
-                8
+                1
             ], 
-            "bookmark": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "attribute_title": "", 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
             "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
+            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
+            "legend": "", 
             "data_download": "", 
-            "description": ""
+            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
         }
     }, 
     {
@@ -888,34 +944,6 @@
         }
     }, 
     {
-        "pk": 23, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "attribute_event": "click", 
-            "name": "EFH Overlays", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": null, 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 49, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1001,34 +1029,6 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "OCS Lease Blocks", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": null, 
-            "themes": [
-                1
-            ], 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "attribute_title": null, 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/Legend.png", 
-            "data_download": "", 
-            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
         }
     }, 
     {
@@ -1148,7 +1148,7 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
             "data_download": "", 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses.<br><br>\r\nReported information includes fishing effort, location and gear type for each trip, among other information. This particular data set represents fishing effort (days fished) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009)."
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS)."
         }
     }, 
     {
@@ -1178,7 +1178,7 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/legend.png", 
             "data_download": "", 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses.<br><br>\r\nReported information includes fishing effort, location and gear type for each trip, among other information. This particular data set represents fishing effort (days fished) by bottom contacting mobile gear compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009)."
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS)."
         }
     }, 
     {
@@ -1208,7 +1208,7 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
             "data_download": "", 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses.<br><br>\r\nReported information includes fishing effort, location and gear type for each trip, among other information. This particular data set represents fishing effort (days fished) by pelagic gear compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009)."
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). "
         }
     }, 
     {
@@ -1238,91 +1238,7 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
             "data_download": "", 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses.<br><br>\r\nReported information includes fishing effort, location and gear type for each trip, among other information. This particular data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009)."
-        }
-    }, 
-    {
-        "pk": 33, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Seabed Form", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
-            "data_download": "", 
-            "description": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. By integrating this information at a regional level, the Conservancy is able to provide both a greater understanding of the interrelated biological diversity of the marine ecoregion, and a clearer picture of the current condition of its natural areas and the challenges to their continued persistence. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are:\u00a0\u00a0coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. <br><br>\r\nSeabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance."
-        }
-    }, 
-    {
-        "pk": 30, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Essential Fish Habitat", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
-            "data_download": "", 
-            "description": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.<br><br>\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location.<br><br>\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder."
-        }
-    }, 
-    {
-        "pk": 9, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sediment Grain Size", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
-            "data_download": "", 
-            "description": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. By integrating this information at a regional level, the Conservancy is able to provide both a greater understanding of the interrelated biological diversity of the marine ecoregion, and a clearer picture of the current condition of its natural areas and the challenges to their continued persistence. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are:\u00a0\u00a0coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. <br><br>\r\nThis particular layer was created from interpolation of usSEABED point data. usSEABED's averaged grain-size for each sample produced a robust interpretation of sediment texture, showing local variation as well as large-scale patterns. The point samples were interpolated using the Kriging interpolation method in ArcGIS to create surfaces representing the area between sample points at a cell size of 500 meters. We classified grain-size according to organisms' preferences, and assigned names to these classes based on the Wentworth (1922) scheme.\u00a0"
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). "
         }
     }, 
     {
@@ -1354,6 +1270,34 @@
         }
     }, 
     {
+        "pk": 9, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sediment Grain Size", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
+            "data_download": "", 
+            "description": "The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. "
+        }
+    }, 
+    {
         "pk": 8, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1376,11 +1320,67 @@
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
-            "metadata": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/wind_energy_areas.htm", 
             "utfurl": "", 
             "legend": "", 
             "data_download": "", 
-            "description": "Secretary Salazar announced the Department of the Interior's \"Smart from the Start\" initiative on November 23, 2010. As part of this initiative, a critical element is the identification of Wind Energy Areas (WEA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WEAs are offshore locations that appear most suitable for wind energy development. Secretary Salazar identified the WEAs on February 7, 2011 in a joint announcement with Secretary Chu of the U.S. Department of Energy as part of the National Strategic Work Plan for Offshore Wind. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments."
+            "description": "WEAs are offshore locations that appear most suitable for wind energy development. "
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Essential Fish Habitat", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
+            "data_download": "", 
+            "description": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). "
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Seabed Form", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
+            "data_download": "", 
+            "description": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. "
         }
     }, 
     {
@@ -1408,7 +1408,7 @@
             "utfurl": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
             "data_download": "", 
-            "description": "Annual average wind speeds are closely related to the available energy at a particular location and are categorized in these data by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam."
+            "description": "Annual average wind speeds are closely related to the available energy at a particular location and are categorized in these data by their value at a height of 90 meters above the surface. "
         }
     }, 
     {
