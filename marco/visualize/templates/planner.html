@@ -255,9 +255,9 @@
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
                                         <div data-bind="foreach: activeLayers">
-                                            <div data-bind="if: legend">
+                                            <div data-bind="if: legend" style="padding-bottom: 10px;">
                                                 <span class="pagination-centered" data-bind="text: name"></span>
-                                                <div data-bind="css: { 'in': legendVisibility }">
+                                                <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 2px;">
                                                     <img data-bind="attr: { src: legend }" />
                                                 </div>
                                             </div>
