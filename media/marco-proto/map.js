@@ -50,33 +50,7 @@ app.addLayerToMap = function(layer) {
             });
             //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
             app.map.addLayer(layer.utfgrid); 
-            
-            layer.utfcontrol = new OpenLayers.Control.UTFGrid({
-                layers: [layer.utfgrid],
-                handlerMode: 'hover',
-                callback: function(infoLookup) {
-                    app.viewModel.attributeTitle(false);
-                    app.viewModel.attributeData(false);
-                    if (infoLookup) {
-                        var info, 
-                            msg;
-                        for (var idx in infoLookup) {
-                            info = infoLookup[idx];
-                            if (info && info.data) {                                     
-                                msg = info.data.OBJECTID;
-                            } else {
-                                app.viewModel.attributeTitle(false);
-                                app.viewModel.attributeData(false);
-                            }
-                        }
-                        if (info && info.data) {
-                            app.viewModel.attributeTitle('');
-                            app.viewModel.attributeData([{'display': 'ID: ', 'data': msg}]);
-                        }
-                    } 
-                    //document.getElementById("info").innerHTML = msg;
-                }
-            });
+            layer.utfcontrol = app.addUTFControl(layer);
 
             app.map.addControl(layer.utfcontrol); 
             	
@@ -124,9 +98,41 @@ app.addLayerToMap = function(layer) {
         }
         //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
         app.map.addLayer(layer.layer);            
+    } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
+        layer.utfcontrol = app.addUTFControl(layer);
+        app.map.addControl(layer.utfcontrol); 
     }
     layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
+}
+
+app.addUTFControl = function(layer) {
+    return new OpenLayers.Control.UTFGrid({
+        layers: [layer.utfgrid],
+        handlerMode: 'hover',
+        callback: function(infoLookup) {
+            app.viewModel.attributeTitle(false);
+            app.viewModel.attributeData(false);
+            if (infoLookup) {
+                var info, 
+                    msg;
+                for (var idx in infoLookup) {
+                    info = infoLookup[idx];
+                    if (info && info.data) {                                     
+                        msg = info.data.OBJECTID;
+                    } else {
+                        app.viewModel.attributeTitle(false);
+                        app.viewModel.attributeData(false);
+                    }
+                }
+                if (info && info.data) {
+                    app.viewModel.attributeTitle('');
+                    app.viewModel.attributeData([{'display': 'ID: ', 'data': msg}]);
+                }
+            } 
+            //document.getElementById("info").innerHTML = msg;
+        }
+    });
 }
 
 app.addUTFAttribution = function(layer) {
@@ -135,7 +141,6 @@ app.addUTFAttribution = function(layer) {
         //app.viewModel.attributeData( [{'display': '', 'data': this.utfgrid.id}] ); 
         var feature = this.layer.getFeatureById(e.target._featureId);
         if ( feature ) {
-            debugger;
             app.viewModel.attributeTitle(this.layer.name);
             app.viewModel.attributeData( [{'display': '', 'data': this.utfgrid.id}] ); 
         }

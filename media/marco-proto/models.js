@@ -63,6 +63,25 @@ function layerModel(options, parent) {
 	self.deactivateLayer = function () {
 		var layer = this;
 		app.viewModel.activeLayers.remove(layer);
+        
+        //remove related utfgrid layer
+        if ( layer.utfgrid ) {
+            //removing utfgrid and utfcontrol from app.map
+            //expected this to prevent continued utf attribution, but it still appears...
+            //var layer_index = app.map.layers.indexOf(layer.utfgrid);
+            //if ( layer_index !== -1 ) {
+            //    app.map.layers.splice(layer_index, 1);
+            //}
+            //var control_index = app.map.controls.indexOf(layer.utfcontrol);
+            //if ( control_index !== -1 ) {
+            //    app.map.controls.splice(control_index, 1);
+            //}
+            
+            //the following prevents continued utf attribution, 
+            //is then re-created when layer is re-added (in app.addLayerToMap)
+            layer.utfcontrol.destroy();
+        }
+        
 		layer.active(false);
         layer.enabled(false);
         
@@ -79,8 +98,7 @@ function layerModel(options, parent) {
 	self.activateLayer = function () {
 		var layer = this;
         if (!layer.active()) {
-            //factor out the following into an addLayerToMap function in map.js
-            app.addLayerToMap(layer);
+            app.addLayerToMap(layer);            
             // add it to the top of the active layers
             app.viewModel.activeLayers.unshift(layer);
             // set the active flag
