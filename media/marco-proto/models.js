@@ -181,7 +181,6 @@ function layerModel(options, parent) {
 			app.viewModel.activeLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current - 1, 0, layer);
 		});
-
 	};
 
 	self.lowerLayer = function (layer, event) {
@@ -545,10 +544,20 @@ function viewModel() {
 			//if (layer.legend) {
 			//	self.showLegend(true);
 			//}
+            if (layer.utfurl) { //remove utfcontrol for all layers (utfcontrol for top layer will be re-established below)
+                layer.utfcontrol.destroy();
+            }
 		});
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
+        
+        var topLayer = self.activeLayers()[0];        
+        if (topLayer && topLayer.utfurl) { //ensure utfgrid is activated (when relevant) for top layer
+            topLayer.utfcontrol = app.addUTFControl(topLayer);
+            app.map.addControl(topLayer.utfcontrol); 
+        }
+        
 		// update the url hash
 		app.updateUrl();
 	});

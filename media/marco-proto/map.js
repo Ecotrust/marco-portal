@@ -92,8 +92,8 @@ app.addLayerToMap = function(layer) {
             });
             //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
             app.map.addLayer(layer.utfgrid); 
+            
             layer.utfcontrol = app.addUTFControl(layer);
-
             app.map.addControl(layer.utfcontrol); 
             	
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
@@ -101,7 +101,8 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 $.extend({}, opts, 
                     {
-                        sphericalMercator: true
+                        sphericalMercator: true,
+                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
                     }
                 )
             );  
@@ -126,7 +127,7 @@ app.addLayerToMap = function(layer) {
                     //}
                 }
             );
-            app.addAttribution(layer);
+            app.addVectorAttribution(layer);
         } else { //if XYZ with no utfgrid
             // adding layer to the map for the first time		
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
@@ -207,7 +208,7 @@ app.addUTFAttribution = function(layer) {
     
 }
 
-app.addAttribution = function(layer) {
+app.addVectorAttribution = function(layer) {
     app.map.events.register(layer.attributeEvent, layer, function(e) {
         var feature = this.layer.getFeatureById(e.target._featureId);
         if ( feature ) {
