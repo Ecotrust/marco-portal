@@ -376,3 +376,9 @@ img + h3 {
 .layer-popover .layer-tooltip {
   width: 380px;
 }
+
+#SimpleLayerSwitcher_30 {
+  border-radius: 4px;
+  right: 0px !important;
+  width: 150px !important;
+}
