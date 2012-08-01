@@ -34,6 +34,13 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
+    /* need api key from http://bingmapsportal.com/
+    bingHybrid = new OpenLayers.Layer.Bing({
+        name: "Bing Hybrid",
+        key: "",
+        type: "AerialWithLabels"
+    });
+    */
     nauticalCharts = new OpenLayers.Layer.WMS("Nautical Charts", "http://egisws02.nos.noaa.gov/ArcGIS/services/RNC/NOAA_RNC/ImageServer/WMSServer", 
         {
             layers: 'null'
