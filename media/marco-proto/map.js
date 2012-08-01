@@ -12,6 +12,7 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
+    
     openStreetMap = new OpenLayers.Layer.OSM("Open Street Map", "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png", {
         sphericalMercator: true,
         isBaseLayer: true,
@@ -34,6 +35,7 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
+    
     /* need api key from http://bingmapsportal.com/
     bingHybrid = new OpenLayers.Layer.Bing({
         name: "Bing Hybrid",
@@ -41,6 +43,7 @@ app.init = function () {
         type: "AerialWithLabels"
     });
     */
+    
     nauticalCharts = new OpenLayers.Layer.WMS("Nautical Charts", "http://egisws02.nos.noaa.gov/ArcGIS/services/RNC/NOAA_RNC/ImageServer/WMSServer", 
         {
             layers: 'null'
@@ -53,6 +56,8 @@ app.init = function () {
     );
     
     map.addLayers([esriOcean, openStreetMap, googleStreet, googleTerrain, googleSatellite, nauticalCharts]);
+    
+    //map.addLayers([esriOcean]);
     esriOcean.setZIndex(100);
 
     map.addControl(new SimpleLayerSwitcher());
@@ -129,7 +134,8 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 $.extend({}, opts, 
                     {
-                        sphericalMercator: true
+                        sphericalMercator: true,
+                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
                     }
                 )
             );
