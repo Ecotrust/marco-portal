@@ -528,62 +528,6 @@
         }
     }, 
     {
-        "pk": 6, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "OCS Lease Blocks", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Test/ocsb2/ocsb/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
-        }
-    }, 
-    {
-        "pk": 24, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Benthic Habitats", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 35, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1062,6 +1006,34 @@
         }
     }, 
     {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Benthic Habitats (South)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 50, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1089,6 +1061,34 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "OCS Lease Blocks", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
         }
     }, 
     {
@@ -1409,6 +1409,90 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
             "data_download": "", 
             "description": "Annual average wind speeds are closely related to the available energy at a particular location and are categorized in these data by their value at a height of 90 meters above the surface. "
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Benthic Habitats (North)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "attribute_event": "click", 
+            "name": "Sea Level Rise Vulnerability", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "attribute_event": "click", 
+            "name": "Ship Traffic Separation Zones", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                8
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
         }
     }, 
     {
