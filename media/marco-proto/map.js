@@ -60,11 +60,8 @@ app.init = function () {
     //map.addLayers([esriOcean]);
     esriOcean.setZIndex(100);
 
-    try {
-        map.addControl(new SimpleLayerSwitcher());
-    } catch (e) {
-        map.addControl(new OpenLayers.Control.LayerSwitcher());
-    }
+    map.addControl(new SimpleLayerSwitcher());
+    
     map.addControl(new OpenLayers.Control.ZoomBox( {
         //enables zooming to a given extent on the map by holding down shift key while dragging the mouse
     }));
