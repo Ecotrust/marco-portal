@@ -16,6 +16,7 @@ function layerModel(options, parent) {
     self.attributeTitle = options.attributes ? options.attributes['title'] : null;
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
     self.attributeEvent = options.attributes ? options.attributes['event'] : [];
+    self.color = options.color || "#ee9900";
     
     // set target blank for all links
     if (options.description) {

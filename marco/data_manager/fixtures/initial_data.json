@@ -1,15 +1,5 @@
 [
     {
-        "pk": 3, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "display_name": "Renewable Energy", 
-            "name": "energy", 
-            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n"
-        }
-    }, 
-    {
         "pk": 4, 
         "model": "data_manager.theme", 
         "fields": {
@@ -70,10 +60,193 @@
         }
     }, 
     {
+        "pk": 3, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
+            "display_name": "Renewable Energy", 
+            "name": "energy", 
+            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#0070FF", 
+            "attribute_event": "click", 
+            "name": "Artificial Reefs", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources."
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#A90303", 
+            "attribute_event": "mouseover", 
+            "name": "Major Canyons", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/MajorCanyons.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data layer represents major canyons of the Mid-Atlantic Coast. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries."
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#A68C5D", 
+            "attribute_event": "click", 
+            "name": "Protraction Diagram Boundaries", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
+            "attribute_fields": [
+                3
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data set contains Official Protraction Diagram (OPD) outlines."
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Endangered Whales (SPUE)", 
+            "source": "", 
+            "url": "", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                27, 
+                28, 
+                29, 
+                35, 
+                36, 
+                37, 
+                39, 
+                38, 
+                40, 
+                45, 
+                41, 
+                46, 
+                47, 
+                48, 
+                42, 
+                49, 
+                43, 
+                44, 
+                50, 
+                51
+            ], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  "
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Regional Ocean Councils", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
         "pk": 15, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "radio", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Fishing Effort", 
             "source": "", 
@@ -107,6 +280,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "Vector", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "OCS Administrative Boundaries", 
             "source": "", 
@@ -131,147 +305,11 @@
         }
     }, 
     {
-        "pk": 17, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Protraction Diagram Boundaries", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
-            "attribute_fields": [
-                3
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "This data set contains Official Protraction Diagram (OPD) outlines."
-        }
-    }, 
-    {
-        "pk": 21, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "attribute_event": "click", 
-            "name": "Endangered Whales (SPUE)", 
-            "source": "", 
-            "url": "", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                35, 
-                36, 
-                37, 
-                38, 
-                39, 
-                40, 
-                41, 
-                42, 
-                43, 
-                44, 
-                45, 
-                46, 
-                47, 
-                48, 
-                49, 
-                50, 
-                51, 
-                27, 
-                28, 
-                29
-            ], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  "
-        }
-    }, 
-    {
-        "pk": 19, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Regional Ocean Councils", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 20, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Artificial Reefs", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz", 
-            "attribute_fields": [
-                2
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources."
-        }
-    }, 
-    {
         "pk": 27, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Fin Whales (Spring)", 
             "source": "", 
@@ -302,6 +340,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Fin Whales (Summer)", 
             "source": "", 
@@ -328,40 +367,11 @@
         }
     }, 
     {
-        "pk": 31, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "mouseover", 
-            "name": "Major Canyons", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/MajorCanyons.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz", 
-            "attribute_fields": [
-                2
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "This data layer represents major canyons of the Mid-Atlantic Coast. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries."
-        }
-    }, 
-    {
         "pk": 29, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Fin Whales (Winter)", 
             "source": "", 
@@ -392,6 +402,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Marine Jurisdictions", 
             "source": "", 
@@ -420,6 +431,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Important Bird Habitats", 
             "source": "", 
@@ -448,6 +460,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "EFH Overlays", 
             "source": "", 
@@ -476,6 +489,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "AIS Shipping Data", 
             "source": "", 
@@ -504,6 +518,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Waterbird Survey (2001-2003)", 
             "source": "", 
@@ -528,38 +543,11 @@
         }
     }, 
     {
-        "pk": 6, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "OCS Lease Blocks", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
-        }
-    }, 
-    {
         "pk": 35, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Fin Whales (Winter)", 
             "source": "", 
@@ -590,6 +578,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Humpback Whales (Fall)", 
             "source": "", 
@@ -616,340 +605,11 @@
         }
     }, 
     {
-        "pk": 37, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Humpback Whales (Spring)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 39, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Humpback Whales (Winter)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 38, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Humpback Whales (Summer)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSummer/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 40, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Narwhals (Fall)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 45, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sei Whales (Summer)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesSummer/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 41, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Narwhals (Spring)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSpring/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 46, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sei Whales (Winter)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 47, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sei Whales (Fall)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 48, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sperm Whales (Fall)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesFall/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 42, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Narwhals (Summer)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 49, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sperm Whales (Spring)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 25, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "placeholder", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Marine Mammal Migration Paths", 
             "source": "", 
@@ -974,158 +634,11 @@
         }
     }, 
     {
-        "pk": 43, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Narwhals (Winter)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 44, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sei Whales (Spring)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 24, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Benthic Habitats (South)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 50, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sperm Whales (Summer)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
-        "pk": 51, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "attribute_event": "click", 
-            "name": "Sperm Whales (Winter)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesWinter/${z}/${x}/${y}.png", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [
-                21
-            ], 
-            "is_sublayer": true, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 11, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "All Gear Types", 
             "source": "", 
@@ -1156,6 +669,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Bottom Gear Types", 
             "source": "", 
@@ -1186,6 +700,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Pelagic Gear Types", 
             "source": "", 
@@ -1216,6 +731,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Summer Flounder Landings", 
             "source": "", 
@@ -1242,10 +758,42 @@
         }
     }, 
     {
+        "pk": 8, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#e66101", 
+            "attribute_event": "mouseover", 
+            "name": "Wind Energy Areas", 
+            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx", 
+            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Management/WEA_Files/WEA.kmz", 
+            "attribute_fields": [
+                1
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.5658203125002&location%5By%5D=38.280823516230726&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/wind_energy_areas.htm", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "WEAs are offshore locations that appear most suitable for wind energy development. "
+        }
+    }, 
+    {
         "pk": 34, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "Vector", 
+            "vector_color": "#70338F", 
             "attribute_event": "click", 
             "name": "Submarine Cables", 
             "source": "", 
@@ -1274,6 +822,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Sediment Grain Size", 
             "source": "", 
@@ -1302,6 +851,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Essential Fish Habitat", 
             "source": "", 
@@ -1330,6 +880,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Seabed Form", 
             "source": "", 
@@ -1354,33 +905,555 @@
         }
     }, 
     {
-        "pk": 8, 
+        "pk": 43, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "mouseover", 
-            "name": "Wind Energy Areas", 
-            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx", 
-            "url": "/media/data_manager/geojson/WindEnergyAreas.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Management/WEA_Files/WEA.kmz", 
-            "attribute_fields": [
-                1
-            ], 
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Narwhals (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": "", 
             "themes": [
-                3
+                2
             ], 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.5658203125002&location%5By%5D=38.280823516230726&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#FF0505", 
+            "attribute_event": "click", 
+            "name": "Ship Traffic Separation Zones", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                8
+            ], 
+            "bookmark": "", 
             "attribute_title": "", 
             "sublayers": [], 
             "is_sublayer": false, 
             "map_tiles": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Energy/WEA/wind_energy_areas.htm", 
+            "metadata": "", 
             "utfurl": "", 
             "legend": "", 
             "data_download": "", 
-            "description": "WEAs are offshore locations that appear most suitable for wind energy development. "
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "OCS Lease Blocks", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management."
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Humpback Whales (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Narwhals (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Narwhals (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSpring/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sei Whales (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Fall)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesFall/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Narwhals (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Spring)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Benthic Habitats (South)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Summer)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "name": "Sperm Whales (Winter)", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesWinter/${z}/${x}/${y}.png", 
+            "kml": "", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [
+                21
+            ], 
+            "is_sublayer": true, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_download": "", 
+            "description": ""
         }
     }, 
     {
@@ -1388,6 +1461,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Wind Speed", 
             "source": "http://www.nrel.gov/gis/wind.html", 
@@ -1416,6 +1490,7 @@
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Benthic Habitats (North)", 
             "source": "", 
@@ -1440,38 +1515,11 @@
         }
     }, 
     {
-        "pk": 54, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "attribute_event": "click", 
-            "name": "Ship Traffic Separation Zones", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
-            "kml": "", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                8
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": ""
-        }
-    }, 
-    {
         "pk": 53, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
+            "vector_color": null, 
             "attribute_event": "click", 
             "name": "Sea Level Rise Vulnerability", 
             "source": "", 

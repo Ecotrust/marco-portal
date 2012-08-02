@@ -122,14 +122,16 @@ app.addLayerToMap = function(layer) {
                         url: layer.url,
                         format: new OpenLayers.Format.GeoJSON()
                     }),
-                    //style: {
-                    //    fillColor: '#e66101',
-                    //    strokeDashStyle: "dash"
-                        //strokeWidth
-                        //strokeColor
+                    style: {
+                        fillColor: layer.color,
+                        fillOpacity: .4,
+                        //strokeDashStyle: "dash",
+                        //strokeOpacity: 1,
+                        strokeColor: layer.color,
+                        strokeOpacity: .8
                         //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                         //title: 'testing'
-                    //}
+                    }
                 }
             );
             app.addVectorAttribution(layer);

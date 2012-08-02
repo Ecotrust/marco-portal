@@ -66,6 +66,7 @@ class Layer(models.Model):
     attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
+    vector_color = models.CharField(max_length=7, blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -113,7 +114,8 @@ class Layer(models.Model):
                 'legend': layer.legend,
                 'description': layer.description,
                 'learn_link': layer.learn_link,
-                'attributes': self.serialize_attributes
+                'attributes': self.serialize_attributes,
+                'color': self.vector_color
             } 
             for layer in self.sublayers.all()
         ]
@@ -127,7 +129,8 @@ class Layer(models.Model):
             'legend': self.legend,
             'description': self.description,
             'learn_link': self.learn_link,
-            'attributes': self.serialize_attributes
+            'attributes': self.serialize_attributes,
+            'color': self.vector_color
         }
         return layers_dict
 
