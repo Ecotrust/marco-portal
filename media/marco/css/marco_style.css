@@ -389,7 +389,7 @@ img + h3 {
   top: 8px;
   right: 8px;
   z-index: 1020;
-  background: rgba(255,255,255,0.4);
+  //background: rgba(255,255,255,0.4);
   border-radius: 4px;
   padding: 2px;
 }
