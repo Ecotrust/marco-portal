@@ -452,7 +452,7 @@ function viewModel() {
 
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
-    	app.map.render('map');
+    	//app.map.render('map');
     };
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
