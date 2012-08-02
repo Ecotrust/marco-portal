@@ -377,6 +377,11 @@ img + h3 {
   width: 380px;
 }
 
+#legend-wrapper {
+  max-height: 80%;
+  overflow-y: auto;
+}
+
 #SimpleLayerSwitcher_30 {
   border-radius: 4px;
   right: 0px !important;

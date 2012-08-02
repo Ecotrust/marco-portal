@@ -60,7 +60,11 @@ app.init = function () {
     //map.addLayers([esriOcean]);
     esriOcean.setZIndex(100);
 
-    map.addControl(new SimpleLayerSwitcher());
+    try {
+        map.addControl(new SimpleLayerSwitcher());
+    } catch (e) {
+        map.addControl(new OpenLayers.Control.LayerSwitcher());
+    }
     map.addControl(new OpenLayers.Control.ZoomBox( {
         //enables zooming to a given extent on the map by holding down shift key while dragging the mouse
     }));
@@ -119,7 +123,8 @@ app.addLayerToMap = function(layer) {
                         format: new OpenLayers.Format.GeoJSON()
                     }),
                     //style: {
-                        //fillColor: '#aaa',
+                    //    fillColor: '#e66101',
+                    //    strokeDashStyle: "dash"
                         //strokeWidth
                         //strokeColor
                         //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
