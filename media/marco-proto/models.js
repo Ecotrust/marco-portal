@@ -23,7 +23,7 @@ function layerModel(options, parent) {
     	$descriptionTemp = $("<div/>", { html: options.description });
     	$descriptionTemp.find('a').each(function () {
     		$(this).attr('target', '_blank');
-    		console.log($(this).html());
+    		//console.log($(this).html());
     	});
     	self.description = $descriptionTemp.html();
     } else {
@@ -436,9 +436,19 @@ function viewModel() {
     // show the map?
     self.showMapPanel = ko.observable(true);
 
+    //show/hide the list of basemaps
+    self.showBasemaps = function (self, event) {
+        var $layerSwitcher = $('#SimpleLayerSwitcher_30');
+        if ($layerSwitcher.is(":visible")) {
+            $layerSwitcher.hide();
+        } else {
+            $layerSwitcher.show();
+        }
+    }
+    
+    
     //show Legend by default
     self.showLegend = ko.observable(false);
-
 
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());

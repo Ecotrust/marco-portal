@@ -382,8 +382,76 @@ img + h3 {
   overflow-y: auto;
 }
 
-#SimpleLayerSwitcher_30 {
+/* Rules for the layer switcher */
+
+#basemaps {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1020;
+  background: rgba(255,255,255,0.4);
   border-radius: 4px;
-  right: 0px !important;
-  width: 150px !important;
+  padding: 2px;
+}
+
+#basemaps a {
+    display: block;
+    margin: 1px;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+    font-family: Helvetica;
+    text-decoration: none;
+    text-align: center;
+    height: 22px;
+    width: 22px;
+    line-height: 22px;
+    background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+
+#basemaps a:hover {
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+.SimpleLayerSwitcher {
+  position:absolute;
+  top:10px;
+  right:35px;
+  background-color:whiteSmoke;
+  border:1px solid #ccc;
+  border-radius:4px;
+  max-width:150px;
+  display:none;
+}
+
+.SimpleLayerSwitcher a.basey {
+  display:block;
+  text-decoration:none;
+  color:#838383;
+  padding:2px 5px 2px 5px;
+}
+
+.SimpleLayerSwitcher a.basey-on {
+  color:#000;
+  background-color: #eeeeee;
+  //background-image: url('carat.png');
+  //background-repeat: no-repeat;
+  //background-position: 7px 9px;
+}
+
+.SimpleLayerSwitcher a {
+  border-top:1px solid #eee;
+}
+
+.SimpleLayerSwitcher a:hover {
+  color:#000;
+  background-color:#eeeeee;
+}
+
+.SimpleLayerSwitcher a.basey-off {
+  display:block;
 }
