@@ -70,37 +70,6 @@
         }
     }, 
     {
-        "pk": 20, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "vector_color": "#0070FF", 
-            "attribute_event": "click", 
-            "name": "Artificial Reefs", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz", 
-            "attribute_fields": [
-                2
-            ], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources."
-        }
-    }, 
-    {
         "pk": 31, 
         "model": "data_manager.layer", 
         "fields": {
@@ -137,7 +106,7 @@
         "fields": {
             "layer_type": "Vector", 
             "vector_color": "#A68C5D", 
-            "attribute_event": "click", 
+            "attribute_event": "mouseover", 
             "name": "Protraction Diagram Boundaries", 
             "source": "", 
             "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
@@ -160,6 +129,37 @@
             "legend": "", 
             "data_download": "", 
             "description": "This data set contains Official Protraction Diagram (OPD) outlines."
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#0070FF", 
+            "attribute_event": "mouseover", 
+            "name": "Artificial Reefs", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz", 
+            "attribute_fields": [
+                2
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "These are polygon locations of Mid-Atlantic artificial reefs. They were compiled from various state sources."
         }
     }, 
     {
@@ -1544,15 +1544,6 @@
         }
     }, 
     {
-        "pk": 1, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "STATE", 
-            "display_name": "State:", 
-            "order": 1
-        }
-    }, 
-    {
         "pk": 2, 
         "model": "data_manager.attributeinfo", 
         "fields": {
@@ -1567,6 +1558,15 @@
         "fields": {
             "field_name": "PROT_NAME", 
             "display_name": "", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "STATE", 
+            "display_name": "WEA:  ", 
             "order": 1
         }
     }, 
