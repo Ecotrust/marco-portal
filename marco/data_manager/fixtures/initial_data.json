@@ -101,19 +101,17 @@
         }
     }, 
     {
-        "pk": 17, 
+        "pk": 18, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "Vector", 
-            "vector_color": "#A68C5D", 
-            "attribute_event": "mouseover", 
-            "name": "Protraction Diagram Boundaries", 
+            "vector_color": "#333333", 
+            "attribute_event": "click", 
+            "name": "OCS Boundaries", 
             "source": "", 
-            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
-            "attribute_fields": [
-                3
-            ], 
+            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "attribute_fields": [], 
             "fact_sheet": "", 
             "thumbnail": "", 
             "themes": [
@@ -128,7 +126,7 @@
             "utfurl": "", 
             "legend": "", 
             "data_download": "", 
-            "description": "This data set contains Official Protraction Diagram (OPD) outlines."
+            "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary)."
         }
     }, 
     {
@@ -163,13 +161,44 @@
         }
     }, 
     {
+        "pk": 17, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "vector_color": "#A68C5D", 
+            "attribute_event": "mouseover", 
+            "name": "Protraction Boundaries", 
+            "source": "", 
+            "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz", 
+            "attribute_fields": [
+                3
+            ], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                1
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "", 
+            "data_download": "", 
+            "description": "This data set contains Official Protraction Diagram (OPD) outlines."
+        }
+    }, 
+    {
         "pk": 21, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "radio", 
-            "vector_color": null, 
+            "vector_color": "", 
             "attribute_event": "click", 
-            "name": "Endangered Whales (SPUE)", 
+            "name": "Endangered Whales", 
             "source": "", 
             "url": "", 
             "kml": "", 
@@ -182,26 +211,26 @@
             "bookmark": "", 
             "attribute_title": "", 
             "sublayers": [
-                27, 
-                28, 
-                29, 
                 35, 
                 36, 
                 37, 
-                39, 
                 38, 
+                39, 
                 40, 
-                45, 
                 41, 
+                42, 
+                43, 
+                44, 
+                45, 
                 46, 
                 47, 
                 48, 
-                42, 
                 49, 
-                43, 
-                44, 
                 50, 
-                51
+                51, 
+                27, 
+                28, 
+                29
             ], 
             "is_sublayer": false, 
             "map_tiles": "", 
@@ -273,35 +302,6 @@
             "legend": "", 
             "data_download": "", 
             "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). "
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "vector_color": null, 
-            "attribute_event": "click", 
-            "name": "OCS Administrative Boundaries", 
-            "source": "", 
-            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                1
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "", 
-            "data_download": "", 
-            "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary)."
         }
     }, 
     {
@@ -456,6 +456,35 @@
         }
     }, 
     {
+        "pk": 22, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "name": "Waterbird Survey", 
+            "source": "", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                2
+            ], 
+            "bookmark": "", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
+            "data_download": "", 
+            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. (2001-2003)"
+        }
+    }, 
+    {
         "pk": 23, 
         "model": "data_manager.layer", 
         "fields": {
@@ -511,35 +540,6 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
             "data_download": "", 
             "description": ""
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "vector_color": null, 
-            "attribute_event": "click", 
-            "name": "Waterbird Survey (2001-2003)", 
-            "source": "", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                2
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
-            "data_download": "", 
-            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. "
         }
     }, 
     {
@@ -993,6 +993,35 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "name": "Wind Speed", 
+            "source": "http://www.nrel.gov/gis/wind.html", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/${z}/${x}/${y}.png", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "attribute_fields": [], 
+            "fact_sheet": "", 
+            "thumbnail": "", 
+            "themes": [
+                3
+            ], 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.62075195312462&location%5By%5D=38.706459372318534&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "attribute_title": "", 
+            "sublayers": [], 
+            "is_sublayer": false, 
+            "map_tiles": "", 
+            "metadata": "", 
+            "utfurl": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
+            "data_download": "", 
+            "description": "Annual average wind speeds are closely related to the available energy at a particular location and are categorized in these data by their value at a height of 90 meters above the surface. "
         }
     }, 
     {
@@ -1454,35 +1483,6 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_download": "", 
             "description": ""
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "vector_color": null, 
-            "attribute_event": "click", 
-            "name": "Wind Speed", 
-            "source": "http://www.nrel.gov/gis/wind.html", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/${z}/${x}/${y}.png", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
-            "attribute_fields": [], 
-            "fact_sheet": "", 
-            "thumbnail": "", 
-            "themes": [
-                3
-            ], 
-            "bookmark": "", 
-            "attribute_title": "", 
-            "sublayers": [], 
-            "is_sublayer": false, 
-            "map_tiles": "", 
-            "metadata": "", 
-            "utfurl": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
-            "data_download": "", 
-            "description": "Annual average wind speeds are closely related to the available energy at a particular location and are categorized in these data by their value at a height of 90 meters above the surface. "
         }
     }, 
     {
