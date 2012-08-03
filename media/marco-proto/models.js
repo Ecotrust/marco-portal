@@ -43,6 +43,7 @@ function layerModel(options, parent) {
     self.enabled = ko.observable(false);
 
     self.activeSublayer = ko.observable(false);
+    self.enabledSublayer = ko.observable(false);
 
 	self.subLayers = [];
 
@@ -93,12 +94,14 @@ function layerModel(options, parent) {
         if (layer.activeSublayer()) {
         	layer.activeSublayer().deactivateLayer();
         	layer.activeSublayer(false);
+            layer.enabledSublayer(false);
         }
         
 	};
 
 	self.activateLayer = function () {
 		var layer = this;
+        
         if (!layer.active()) {
             app.addLayerToMap(layer);            
             // add it to the top of the active layers
@@ -110,6 +113,7 @@ function layerModel(options, parent) {
             // save reference in parent layer
             if (layer.parent) {
                 layer.parent.activeSublayer(layer);
+                layer.parent.enabledSublayer(layer);
             }
         }
 	};
@@ -119,9 +123,15 @@ function layerModel(options, parent) {
         var layer = this;
         if ( layer.enabled() ) {
             layer.enabled(false);
+            if (layer.parent) {
+                layer.parent.enabled(false);
+            }
             app.setLayerVisibility(layer, false);
         } else {
             layer.enabled(true);
+            if (layer.parent) {
+                layer.parent.enabled(true);
+            }
             app.setLayerVisibility(layer, true);
         }
     }
@@ -130,14 +140,13 @@ function layerModel(options, parent) {
     // bound to click handler for layer switching
 	self.toggleActive = function () {
 		var layer = this;
-        
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
 		app.viewModel.error(null);
 
 		// save a ref to the active layer for editing,etc
         app.viewModel.activeLayer(layer);
-
+        
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -146,7 +155,8 @@ function layerModel(options, parent) {
 				// turn off the parent shell layer
 				layer.parent.active(false);
 				layer.parent.activeSublayer(false);
-
+				layer.parent.enabled(false);
+                layer.parent.enabledSublayer(false);
 			}
 		} else {
 			// layer has a parent
@@ -158,6 +168,7 @@ function layerModel(options, parent) {
 				}
 				// turn on the parent
 				layer.parent.active(true);
+                layer.parent.enabled(true);
 			}
 			if (layer.subLayers.length) {
 				// layer has sublayer, activate first layer
