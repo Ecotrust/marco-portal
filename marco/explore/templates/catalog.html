@@ -69,41 +69,62 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                                 data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">{{layer.name}}
                                         </span>
                                     </td>
-                                    {% if layer.bookmark %}
-                                    <td><a href="{{layer.bookmark}}" target="_blank">view</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">view</td>
-                                    {% endif %}
-                                    {% if layer.map_tiles %}
-                                    <td><a href="{{layer.map_tiles}}" target="_blank">map tiles</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">map tiles</td>
-                                    {% endif %}
-                                    {% if layer.kml %}
-                                    <td><a href="{{layer.kml}}" target="_blank">kml</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">kml</td>
-                                    {% endif %}
-                                    {% if layer.data_download %}
-                                    <td><a href="{{layer.data_download}}" target="_blank">data</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">data</td>
-                                    {% endif %}
-                                    {% if layer.fact_sheet %}
-                                    <td><a href="{{layer.fact_sheet}}" target="_blank">description</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">fact sheet</td>
-                                    {% endif %}
-                                    {% if layer.metadata %}
-                                    <td><a href="{{layer.metadata}}" target="_blank">metadata</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">metadata</td>
-                                    {% endif %}
-                                    {% if layer.source %}
-                                    <td><a href="{{layer.source}}" target="_blank">source</a></td>
-                                    {% else %}
-                                    <td class="link-not-available">source</td>
-                                    {% endif %}
+                                    <td>
+                                        {% if layer.bookmark %}
+                                            <a href="{{layer.bookmark}}" target="_blank">
+                                            <span rel="tooltip" title="View in the Planner">view</span>
+                                            </a>
+                                        {% else %}<span class="link-not-available">view</span>
+                                        {% endif %}
+                                    </td>                        
+                                    <td>            
+                                        {% if layer.map_tiles %}
+                                        <a href="{{layer.map_tiles}}" target="_blank">
+                                        <span rel="tooltip" title="Download Map Tiles">map tiles</span>
+                                        </a>
+                                        {% else %}<span class="link-not-available">map tiles</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if layer.kml %}
+                                        <a href="{{layer.kml}}" target="_blank">
+                                        <span rel="tooltip" title="Download the KML">kml</span>
+                                        </a>
+                                        {% else %}<span class="link-not-available">kml</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if layer.data_download %}
+                                        <a href="{{layer.data_download}}" target="_blank">
+                                        <span rel="tooltip" title="Download the Data">data</span>
+                                        </a>
+                                        {% else %}<span class="link-not-available">data</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if layer.fact_sheet %}
+                                        <a href="{{layer.fact_sheet}}" target="_blank">
+                                        <span rel="tooltip" title="View a Description">description</span>
+                                        </a>
+                                        {% else %}<span class="link-not-available">fact sheet</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if layer.metadata %}
+                                        <a href="{{layer.metadata}}" target="_blank">
+                                        <span rel="tooltip" title="View the Metadata">metadata</span>
+                                        </a>
+                                        {% else %}<span class="link-not-available">metadata</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if layer.source %}
+                                        <a href="{{layer.source}}" target="_blank">
+                                        <span rel="tooltip" title="Download the Source">source</span>
+                                        </a>
+                                        {% else %}<span class="link-not-available">source</span>
+                                        {% endif %}
+                                    </td>
                                 </tr>
                                 {% endif %}
                             {% endfor layers %}

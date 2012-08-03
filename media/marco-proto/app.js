@@ -6,7 +6,7 @@ app.onResize = function() {
 	var height = $(window).height() * .70;
 	$("#map").height(height);
 	$(".tabs").height(height);
-	$("#legend-accordion").height(height);
+	$("#legend-wrapper").height(height);
 	$("#data-accordion").height(height - 90);
 	app.map.render('map');
 };
