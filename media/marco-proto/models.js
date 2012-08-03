@@ -112,7 +112,9 @@ function layerModel(options, parent) {
 
             // save reference in parent layer
             if (layer.parent) {
+                layer.parent.active(true);
                 layer.parent.activeSublayer(layer);
+                layer.parent.enabled(true);
                 layer.parent.enabledSublayer(layer);
             }
         }
