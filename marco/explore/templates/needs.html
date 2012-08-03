@@ -17,24 +17,17 @@
 				{{ layer.description }}
 			</p>
 			<div class="well">
-				<dl>
-					<dt>Source</dt>
-                        <dd>{{ layer.source }}</dd>
-					<dt>Status</dt>
-                        <dd>{{ layer.status }}</dd>
-					<dt>Contact</dt>
-                        <dd>
-                            {% if layer.contact_email %}
-                                <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
-                            {% else %}
-                                {{ layer.contact }}
-                            {% endif %}
-                        </dd>
-					<dt>Expected Date of Upload to Portal</dt>
-                        <dd>{{ layer.expected_date }}</dd>
-					<dt>Notes</dt>
-					<dd>{{ layer.notes }}</dd>
-				</dl>
+				<div><strong>Source: </strong>{{ layer.source }}</div>
+				<div><strong>Status: </strong>{{ layer.status }}</div>
+				<div><strong>Contact: </strong>
+                    {% if layer.contact_email %}
+                        <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
+                    {% else %}
+                        {{ layer.contact }}
+                    {% endif %}
+                </div>
+				<div><strong>Expected Date of Upload to Portal: </strong>{{ layer.expected_date }}</div>
+				<div><strong>Notes: </strong>{{ layer.notes }}</div>
 			</div>
 		</div>
 	</div></li>
