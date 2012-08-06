@@ -3,13 +3,14 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from data_manager.models import *
 from utils import get_domain
+import settings
 
 
 def data_catalog(request, template='catalog.html'):
     themes = Theme.objects.all().order_by('display_name')
     themes_with_links = add_learn_links(themes)
     ordered_layers = add_ordered_layers_lists(themes_with_links)
-    context = {'themes': themes_with_links}
+    context = {'themes': themes_with_links, 'SITE_URL' : settings.SITE_URL}
     return render_to_response(template, RequestContext(request, context)) 
 
 def data_needs(request, template='needs.html'):
