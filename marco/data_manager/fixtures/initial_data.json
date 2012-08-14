@@ -164,7 +164,7 @@
         "pk": 17, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "Vector", 
+            "layer_type": "placeholder", 
             "vector_color": "#A68C5D", 
             "attribute_event": "mouseover", 
             "name": "Protraction Boundaries", 

@@ -72,7 +72,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     <td>
                                         {% if layer.bookmark %}
                                             <a href="{{layer.bookmark}}" target="_blank">
-                                            <span rel="tooltip" title="View in the Planner">view</span>
+                                            <span rel="tooltip" title="View in Marine Planner">view</span>
                                             </a>
                                         {% else %}<span class="link-not-available">view</span>
                                         {% endif %}
@@ -88,7 +88,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     <td>
                                         {% if layer.kml %}
                                         <a href="{{layer.kml}}" target="_blank">
-                                        <span rel="tooltip" title="Download the KML">kml</span>
+                                        <span rel="tooltip" title="Download to View in Google Earth">kml</span>
                                         </a>
                                         {% else %}<span class="link-not-available">kml</span>
                                         {% endif %}
@@ -96,7 +96,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     <td>
                                         {% if layer.data_download %}
                                         <a href="{{layer.data_download}}" target="_blank">
-                                        <span rel="tooltip" title="Download the Data">data</span>
+                                        <span rel="tooltip" title="Download ESRI Formatted Dataset">data</span>
                                         </a>
                                         {% else %}<span class="link-not-available">data</span>
                                         {% endif %}
@@ -104,7 +104,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     <td>
                                         {% if layer.fact_sheet %}
                                         <a href="{{layer.fact_sheet}}" target="_blank">
-                                        <span rel="tooltip" title="View a Description">description</span>
+                                        <span rel="tooltip" title="View Description">description</span>
                                         </a>
                                         {% else %}<span class="link-not-available">description</span>
                                         {% endif %}
@@ -112,7 +112,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     <td>
                                         {% if layer.metadata %}
                                         <a href="{{layer.metadata}}" target="_blank">
-                                        <span rel="tooltip" title="View the Metadata">metadata</span>
+                                        <span rel="tooltip" title="Download Metadata">metadata</span>
                                         </a>
                                         {% else %}<span class="link-not-available">metadata</span>
                                         {% endif %}
@@ -120,7 +120,7 @@ The Data Catalog gathers available data and recruits new data about ocean resour
                                     <td>
                                         {% if layer.source %}
                                         <a href="{{layer.source}}" target="_blank">
-                                        <span rel="tooltip" title="Download the Source">source</span>
+                                        <span rel="tooltip" title="Link to Dataset Source Provider">source</span>
                                         </a>
                                         {% else %}<span class="link-not-available">source</span>
                                         {% endif %}
