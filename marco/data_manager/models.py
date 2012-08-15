@@ -47,8 +47,16 @@ class Layer(models.Model):
     legend = models.CharField(max_length=255, blank=True, null=True)
     utfurl = models.CharField(max_length=255, blank=True, null=True)
     
-    #data catalog links
+    #tooltip
     description = models.TextField(blank=True, null=True)
+    
+    #data description (updated fact sheet) page -- MIGHT REMOVE THESE -- USING WORDPRESS DB INSTEAD
+    data_overview = models.TextField(blank=True, null=True)
+    data_status = models.CharField(max_length=255, blank=True, null=True)
+    data_source = models.CharField(max_length=255, blank=True, null=True)
+    data_notes = models.TextField(blank=True, null=True)
+    
+    #data catalog links    
     bookmark = models.CharField(max_length=755, blank=True, null=True)
     map_tiles = models.CharField(max_length=255, blank=True, null=True)
     kml = models.CharField(max_length=255, blank=True, null=True)
@@ -152,6 +160,11 @@ class DataNeed(models.Model):
     contact_email = models.CharField(max_length=255, blank=True, null=True)
     expected_date = models.CharField(max_length=255, blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+    themes = models.ManyToManyField("Theme", blank=True, null=True)
 
+    @property
+    def html_name(self):
+        return self.name.lower().replace(' ', '-')
+    
     def __unicode__(self):
         return unicode('%s' % (self.name))
