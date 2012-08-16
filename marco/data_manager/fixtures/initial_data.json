@@ -175,39 +175,6 @@
         }
     }, 
     {
-        "pk": 54, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "description": "This data set represents ship traffic separation zones, which separate the lanes in which ships proceed in opposite or nearly opposite directions or separate traffic lanes designated for particular classes of ships proceeding in the same direction. ", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "#FF0505", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Ship Traffic Separation Zones", 
-            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 26, 
         "model": "data_manager.layer", 
         "fields": {
@@ -237,6 +204,39 @@
             "data_notes": null, 
             "name": "Important Bird Habitats", 
             "url": "", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "description": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=16&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/marinejurisdictions ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Marine Jurisdictions", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
             "sublayers": []
         }
     }, 
@@ -279,6 +279,39 @@
         }
     }, 
     {
+        "pk": 54, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                8
+            ], 
+            "description": "This data set represents ship traffic separation zones, which separate the lanes in which ships proceed in opposite or nearly opposite directions or separate traffic lanes designated for particular classes of ships proceeding in the same direction. ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.17058692351058&location%5By%5D=38.88627168774735&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=54&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/shipping ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "#FF0505", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Ship Traffic Separation Zones", 
+            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 20, 
         "model": "data_manager.layer", 
         "fields": {
@@ -288,7 +321,7 @@
                 2
             ], 
             "description": "This dataset shows general polygon locations of Mid-Atlantic artificial reefs. ", 
-            "bookmark": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.88494239225973&location%5By%5D=38.757880606543196&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=20&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz", 
             "source": "", 
             "utfurl": "", 
@@ -314,18 +347,18 @@
         }
     }, 
     {
-        "pk": 16, 
+        "pk": 53, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
-                1
+                2
             ], 
-            "description": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=16&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "description": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.41228614226024&location%5By%5D=38.74931297143301&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=53&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "kml": "", 
-            "source": "", 
+            "source": "http://pubs.usgs.gov/dds/dds68/ ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
@@ -337,43 +370,10 @@
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/legend.png", 
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Marine Jurisdictions", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 53, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": null, 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": null, 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/legend.png", 
-            "data_status": null, 
-            "data_source": null, 
-            "data_notes": null, 
             "name": "Sea Level Rise Vulnerability", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/${z}/${x}/${y}.png", 
             "sublayers": []
@@ -677,18 +677,18 @@
         }
     }, 
     {
-        "pk": 24, 
+        "pk": 23, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "placeholder", 
             "fact_sheet": "", 
             "themes": [
                 2
             ], 
-            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
+            "description": "This data layer represents an overlay of Essential Fish Habitat (EFH) polygons for numerous species, including: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
             "bookmark": "", 
             "kml": "", 
-            "source": "", 
+            "source": "http://www.habitat.noaa.gov/protection/efh/habitatmapper.html ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
@@ -704,74 +704,8 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Benthic Habitats (South)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay).", 
-            "bookmark": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Waterbird Survey", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 10, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.", 
-            "bookmark": "", 
-            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "AIS Shipping Data", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
+            "name": "EFH Overlays", 
+            "url": "", 
             "sublayers": []
         }
     }, 
@@ -879,18 +813,51 @@
         }
     }, 
     {
-        "pk": 23, 
+        "pk": 22, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "placeholder", 
+            "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
                 2
             ], 
-            "description": "This data layer represents an overlay of Essential Fish Habitat (EFH) polygons for numerous species, including: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
-            "bookmark": "", 
+            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-75.04949317351051&location%5By%5D=38.51759834101328&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=22&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
+            "source": "http://www.fws.gov/chesapeakebay/ ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Waterbird Survey", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.75310645475983&location%5By%5D=38.12110263349955&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=24&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "kml": "", 
-            "source": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
@@ -906,8 +873,8 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "EFH Overlays", 
-            "url": "", 
+            "name": "Benthic Habitats (South)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
             "sublayers": []
         }
     }, 
@@ -1087,35 +1054,140 @@
         }
     }, 
     {
-        "pk": 6, 
+        "pk": 11, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
-                1
+                4
             ], 
-            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/ocsleaseblocks", 
-            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_All_Gear_Types_Files/Fishing_Effort_All_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
             "metadata": "", 
-            "vector_color": null, 
+            "vector_color": "", 
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
-            "data_overview": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "All Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Bottom_Gear_Types_Files/Fishing_Effort_Bottom_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Bottom Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=13&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Pelagic Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                8
+            ], 
+            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.17058692351058&location%5By%5D=38.88627168774735&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
+            "source": "http://www.marinecadastre.gov/AIS/default.aspx ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
-            "legend": "", 
-            "data_status": null, 
-            "data_source": null, 
-            "data_notes": null, 
-            "name": "OCS Lease Blocks", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "AIS Shipping Data", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
             "sublayers": []
         }
     }, 
@@ -1166,7 +1238,7 @@
             "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary).", 
             "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "source": "", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
@@ -1188,128 +1260,23 @@
         }
     }, 
     {
-        "pk": 11, 
+        "pk": 6, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
-                4
+                1
             ], 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_All_Gear_Types_Files/Fishing_Effort_All_Gear_Types.kmz", 
-            "source": "", 
-            "utfurl": "", 
+            "description": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.0897766113308&location%5By%5D=38.720389611375886&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ", 
+            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
             "thumbnail": "", 
             "data_download": "", 
             "metadata": "", 
             "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "All Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Bottom_Gear_Types_Files/Fishing_Effort_Bottom_Gear_Types.kmz", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Bottom Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
-        "pk": 13, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=13&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Pelagic Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
-        "pk": 34, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "description": "These data represent cables that have been laid underwater or buried beneath the seabed. This layer was created to allow for visualization, querying and downloading of NOAA\u2019s Electronic Navigational Charts. \r\n", 
-            "bookmark": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Submarine_Cables_Files/Submarine_Cables.kmz", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "#70338F", 
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
@@ -1320,8 +1287,8 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Submarine Cables", 
-            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
+            "name": "OCS Lease Blocks", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
             "sublayers": []
         }
     }, 
@@ -1361,35 +1328,35 @@
         }
     }, 
     {
-        "pk": 9, 
+        "pk": 34, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "Vector", 
             "fact_sheet": "", 
             "themes": [
-                2
+                8
             ], 
-            "description": "The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. ", 
-            "bookmark": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
-            "source": "", 
+            "description": "These data represent cables that have been laid underwater or buried beneath the seabed. This layer was created to allow for visualization, querying and downloading of NOAA\u2019s Electronic Navigational Charts. \r\n", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.70916114226047&location%5By%5D=39.10826742702105&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=34&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Submarine_Cables_Files/Submarine_Cables.kmz", 
+            "source": "http://ocs-spatial.ncd.noaa.gov/viewer.htm ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
             "metadata": "", 
-            "vector_color": null, 
+            "vector_color": "#70338F", 
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
-            "data_overview": null, 
+            "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
-            "data_status": null, 
-            "data_source": null, 
-            "data_notes": null, 
-            "name": "Sediment Grain Size", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Submarine Cables", 
+            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
             "sublayers": []
         }
     }, 
@@ -1469,9 +1436,9 @@
                 2
             ], 
             "description": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. ", 
-            "bookmark": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-71.53734733387785&location%5By%5D=39.3890273319599&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
-            "source": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
@@ -1489,6 +1456,39 @@
             "data_notes": "", 
             "name": "Seabed Forms", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.41228614226024&location%5By%5D=38.74931297143301&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=9&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sediment Grain Size", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
             "sublayers": []
         }
     }, 
@@ -1528,6 +1528,41 @@
         }
     }, 
     {
+        "pk": 14, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Summer Flounder Landings", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 52, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1537,9 +1572,9 @@
                 2
             ], 
             "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.\r\n", 
-            "bookmark": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-71.11638770476&location%5By%5D=40.06498338580124&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=52&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "kml": "", 
-            "source": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
@@ -1767,41 +1802,6 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
             "sublayers": [
                 21
-            ]
-        }
-    }, 
-    {
-        "pk": 14, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Summer Flounder Landings", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
-            "sublayers": [
-                15
             ]
         }
     }, 
