@@ -1,37 +1,10 @@
 {% extends 'explore_base.html' %} 
 
 {% block main %}
+{% load flatblock_tags %}
 
-<h2>Data Priorities</h2>
-<p>
-	The Mid-Atlantic Regional Council on the Ocean (MARCO) has developed the following list that identifies some of the 
-    highest priority unmet ocean planning data needs as well as data currently under development, but not yet available 
-    for the Mid-Atlantic Region. The Northeast Regional Ocean Council (NROC) shares many of these data needs, and MARCO 
-    and NROC are coordinating on the collection and development of data that cover both regions. The data and information 
-    identified for MARCO are fundamental to moving forward with regional ocean planning efforts in the Mid-Atlantic, 
-    especially in light of state and federal goals for accelerating offshore wind power development along the Atlantic 
-    Coast. Federal agencies have both data and expertise that could help meet these needs and many relevant studies are 
-    currently underway.
-</p>
-<p>
-    We are specifically asking governmental representatives and others in the Mid-Atlantic region:
-    <ul>
-        <li>Do you have spatial data that might address an identified data gap? </li>
-        <li>Are you aware of any plans to collect data that might address specific identified data gaps?</li>
-        <li>Are there additional ocean planning data needs we have not identified?</li>
-    </ul>
-    We welcome your responses to these inquiries, and request that you send information and suggestions to 
-    <a href:'mailto:info@portal.midatlanticocean.org'>info@portal.midatlanticocean.org</a>
-</p>
-<p>
-    The data needs list includes attributes for the source of the data, the status of data development, the point of contact 
-    for the data, the expected date by which the data will be uploaded to the portal, and already known information about the 
-    data. In some cases, the data and information exist or are currently under development, but significant additional effort 
-    (e.g. permissions, analysis and formatting) will be required to acquire and prepare the data for use within the regional 
-    planning portal. In other cases, the data likely do not currently exist and additional survey and analysis efforts will be 
-    needed. As ocean planning moves forward, we expect that additional data needs will be identified (e.g., for socio-economic 
-    data) and this list will be updated accordingly.
-</p>
+<h2>{% flatblock "data_needs_title" %}</h2>
+{% flatblock "data_needs_intro" %}
 
 <div class="row-fluid search-row">
     <div class="span12 ">
