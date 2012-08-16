@@ -95,6 +95,7 @@
                                                 <a href="{{domain}}/portal/explore">Explore</a>
                                             </h3>
                                             <ul class='xoxo blogroll'>
+                                                {% load flatblock_tags %}
                                                 <li><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
                                                 <li><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
                                             </ul>
