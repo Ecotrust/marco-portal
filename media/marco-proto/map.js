@@ -12,6 +12,7 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
+    
     openStreetMap = new OpenLayers.Layer.OSM("Open Street Map", "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png", {
         sphericalMercator: true,
         isBaseLayer: true,
@@ -34,6 +35,7 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
+    
     /* need api key from http://bingmapsportal.com/
     bingHybrid = new OpenLayers.Layer.Bing({
         name: "Bing Hybrid",
@@ -41,6 +43,7 @@ app.init = function () {
         type: "AerialWithLabels"
     });
     */
+    
     nauticalCharts = new OpenLayers.Layer.WMS("Nautical Charts", "http://egisws02.nos.noaa.gov/ArcGIS/services/RNC/NOAA_RNC/ImageServer/WMSServer", 
         {
             layers: 'null'
@@ -53,9 +56,12 @@ app.init = function () {
     );
     
     map.addLayers([esriOcean, openStreetMap, googleStreet, googleTerrain, googleSatellite, nauticalCharts]);
+    
+    //map.addLayers([esriOcean]);
     esriOcean.setZIndex(100);
 
     map.addControl(new SimpleLayerSwitcher());
+    
     map.addControl(new OpenLayers.Control.ZoomBox( {
         //enables zooming to a given extent on the map by holding down shift key while dragging the mouse
     }));
@@ -87,8 +93,8 @@ app.addLayerToMap = function(layer) {
             });
             //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
             app.map.addLayer(layer.utfgrid); 
+            
             layer.utfcontrol = app.addUTFControl(layer);
-
             app.map.addControl(layer.utfcontrol); 
             	
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
@@ -96,7 +102,8 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 $.extend({}, opts, 
                     {
-                        sphericalMercator: true
+                        sphericalMercator: true,
+                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
                     }
                 )
             );  
@@ -112,16 +119,19 @@ app.addLayerToMap = function(layer) {
                         url: layer.url,
                         format: new OpenLayers.Format.GeoJSON()
                     }),
-                    //style: {
-                        //fillColor: '#aaa',
-                        //strokeWidth
-                        //strokeColor
+                    style: {
+                        fillColor: layer.color,
+                        fillOpacity: .4,
+                        //strokeDashStyle: "dash",
+                        //strokeOpacity: 1,
+                        strokeColor: layer.color,
+                        strokeOpacity: .8
                         //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                         //title: 'testing'
-                    //}
+                    }
                 }
             );
-            app.addAttribution(layer);
+            app.addVectorAttribution(layer);
         } else { //if XYZ with no utfgrid
             // adding layer to the map for the first time		
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
@@ -129,7 +139,8 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 $.extend({}, opts, 
                     {
-                        sphericalMercator: true
+                        sphericalMercator: true,
+                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
                     }
                 )
             );
@@ -201,7 +212,7 @@ app.addUTFAttribution = function(layer) {
     
 }
 
-app.addAttribution = function(layer) {
+app.addVectorAttribution = function(layer) {
     app.map.events.register(layer.attributeEvent, layer, function(e) {
         var feature = this.layer.getFeatureById(e.target._featureId);
         if ( feature ) {

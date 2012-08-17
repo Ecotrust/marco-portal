@@ -16,13 +16,14 @@ function layerModel(options, parent) {
     self.attributeTitle = options.attributes ? options.attributes['title'] : null;
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
     self.attributeEvent = options.attributes ? options.attributes['event'] : [];
+    self.color = options.color || "#ee9900";
     
     // set target blank for all links
     if (options.description) {
     	$descriptionTemp = $("<div/>", { html: options.description });
     	$descriptionTemp.find('a').each(function () {
     		$(this).attr('target', '_blank');
-    		console.log($(this).html());
+    		//console.log($(this).html());
     	});
     	self.description = $descriptionTemp.html();
     } else {
@@ -42,6 +43,7 @@ function layerModel(options, parent) {
     self.enabled = ko.observable(false);
 
     self.activeSublayer = ko.observable(false);
+    self.enabledSublayer = ko.observable(false);
 
 	self.subLayers = [];
 
@@ -92,12 +94,14 @@ function layerModel(options, parent) {
         if (layer.activeSublayer()) {
         	layer.activeSublayer().deactivateLayer();
         	layer.activeSublayer(false);
+            layer.enabledSublayer(false);
         }
         
 	};
 
 	self.activateLayer = function () {
 		var layer = this;
+        
         if (!layer.active()) {
             app.addLayerToMap(layer);            
             // add it to the top of the active layers
@@ -108,7 +112,10 @@ function layerModel(options, parent) {
 
             // save reference in parent layer
             if (layer.parent) {
+                layer.parent.active(true);
                 layer.parent.activeSublayer(layer);
+                layer.parent.enabled(true);
+                layer.parent.enabledSublayer(layer);
             }
         }
 	};
@@ -118,9 +125,15 @@ function layerModel(options, parent) {
         var layer = this;
         if ( layer.enabled() ) {
             layer.enabled(false);
+            if (layer.parent) {
+                layer.parent.enabled(false);
+            }
             app.setLayerVisibility(layer, false);
         } else {
             layer.enabled(true);
+            if (layer.parent) {
+                layer.parent.enabled(true);
+            }
             app.setLayerVisibility(layer, true);
         }
     }
@@ -129,14 +142,13 @@ function layerModel(options, parent) {
     // bound to click handler for layer switching
 	self.toggleActive = function () {
 		var layer = this;
-        
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
 		app.viewModel.error(null);
 
 		// save a ref to the active layer for editing,etc
         app.viewModel.activeLayer(layer);
-
+        
 		if (layer.active()) {
 			// layer is active
 			layer.deactivateLayer();
@@ -145,7 +157,8 @@ function layerModel(options, parent) {
 				// turn off the parent shell layer
 				layer.parent.active(false);
 				layer.parent.activeSublayer(false);
-
+				layer.parent.enabled(false);
+                layer.parent.enabledSublayer(false);
 			}
 		} else {
 			// layer has a parent
@@ -157,6 +170,7 @@ function layerModel(options, parent) {
 				}
 				// turn on the parent
 				layer.parent.active(true);
+                layer.parent.enabled(true);
 			}
 			if (layer.subLayers.length) {
 				// layer has sublayer, activate first layer
@@ -181,7 +195,6 @@ function layerModel(options, parent) {
 			app.viewModel.activeLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current - 1, 0, layer);
 		});
-
 	};
 
 	self.lowerLayer = function (layer, event) {
@@ -436,13 +449,23 @@ function viewModel() {
     // show the map?
     self.showMapPanel = ko.observable(true);
 
+    //show/hide the list of basemaps
+    self.showBasemaps = function (self, event) {
+        var $layerSwitcher = $('#SimpleLayerSwitcher_30');
+        if ($layerSwitcher.is(":visible")) {
+            $layerSwitcher.hide();
+        } else {
+            $layerSwitcher.show();
+        }
+    }
+    
+    
     //show Legend by default
     self.showLegend = ko.observable(false);
 
-
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
-    	app.map.render('map');
+    	//app.map.render('map');
     };
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
@@ -545,10 +568,20 @@ function viewModel() {
 			//if (layer.legend) {
 			//	self.showLegend(true);
 			//}
+            if (layer.utfurl) { //remove utfcontrol for all layers (utfcontrol for top layer will be re-established below)
+                layer.utfcontrol.destroy();
+            }
 		});
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
+        
+        var topLayer = self.activeLayers()[0];        
+        if (topLayer && topLayer.utfurl) { //ensure utfgrid is activated (when relevant) for top layer
+            topLayer.utfcontrol = app.addUTFControl(topLayer);
+            app.map.addControl(topLayer.utfcontrol); 
+        }
+        
 		// update the url hash
 		app.updateUrl();
 	});

@@ -1,0 +1,37 @@
+{% extends 'learn_base.html' %} 
+{% block main %}
+
+<h2>MARCO Data Layers</h2>
+<p>
+	This is a list of data layers
+</p>
+<ul class="unstyled">
+	{% for layer in layers %}
+	<li><div class="theme">
+		<div>
+			<h3>
+			    {{ layer.name }}
+			</h3>
+			<p> 
+				{{ layer.description }}
+			</p>
+			<div class="well">
+				<div><strong>Source: </strong>{{ layer.source }}</div>
+				<div><strong>Status: </strong>{{ layer.status }}</div>
+				<div><strong>Contact: </strong>
+                    {% if layer.contact_email %}
+                        <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
+                    {% else %}
+                        {{ layer.contact }}
+                    {% endif %}
+                </div>
+				<div><strong>Expected Date of Upload to Portal: </strong>{{ layer.expected_date }}</div>
+				<div><strong>Notes: </strong>{{ layer.notes }}</div>
+			</div>
+		</div>
+	</div></li>
+	{% endfor themes%}
+</ul>
+<!-- endforeach theme -->
+
+{% endblock %}

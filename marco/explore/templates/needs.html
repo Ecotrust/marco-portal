@@ -1,45 +1,104 @@
 {% extends 'explore_base.html' %} 
+
 {% block main %}
 {% load flatblock_tags %}
 
-<h2>Spatial Data Needs and Updates</h2>
-<p>
-	This is a list of data priorities
-</p>
-<ul class="unstyled">
-	{% for layer in layers %}
-	<li><div class="theme">
-		<div>
-			<h3>
-			    {{ layer.name }}
-			</h3>
-			<p> 
-				{{ layer.description }}
-			</p>
-			<div class="well">
-				<dl>
-					<dt>Source</dt>
-                        <dd>{{ layer.source }}</dd>
-					<dt>Status</dt>
-                        <dd>{{ layer.status }}</dd>
-					<dt>Contact</dt>
-                        <dd>
-                            {% if layer.contact_email %}
-                                <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
-                            {% else %}
-                                {{ layer.contact }}
-                            {% endif %}
-                        </dd>
-					<dt>Expected Date of Upload to Portal</dt>
-                        <dd>{{ layer.expected_date }}</dd>
-					<dt>Notes</dt>
-					<dd>{{ layer.notes }}</dd>
-				</dl>
-			</div>
-		</div>
-	</div></li>
-	{% endfor themes%}
-</ul>
-<!-- endforeach theme -->
+<h2>{% flatblock "data_needs_title" %}</h2>
+{% flatblock "data_needs_intro" %}
 
+<div class="row-fluid search-row">
+    <div class="span12 ">
+        <h3>Data Layer Search</h3>
+        <form class="form-search">
+            <div class="span10">
+                <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
+            </div>
+            <div class="span2">
+                <button type="submit" class="btn">
+                    find
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="accordion">
+  {% for theme in themes %}
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{theme.name}}">
+          <h3>{{ theme.display_name }}</h3>
+        </a>
+      </div>
+      <div id="{{theme.name}}" class="accordion-body collapse" style="height: 0px; ">
+        <div class="accordion-inner">
+          
+            <ul class="unstyled">
+                {% for key, needs in theme_dict.items %}
+                    {% if key == theme %}
+                        {% for need in needs %}
+                            <li><div class="data-need">
+                                <div>
+                                    <h4>
+                                        {{ need.name }}
+                                    </h4>
+                                    <p> 
+                                        {{ need.description }}
+                                    </p>
+                                    <div class="well">
+                                        <div><strong>Source: </strong>{{ need.source }}</div>
+                                        <div><strong>Status: </strong>{{ need.status }}</div>
+                                        <div><strong>Contact: </strong>
+                                            {% if need.contact_email %}
+                                                <a href="mailto:{{need.contact_email}}">{{ need.contact }}</a>
+                                            {% else %}
+                                                {{ need.contact }}
+                                            {% endif %}
+                                        </div>
+                                        <div><strong>Expected Date of Upload to Portal: </strong>{{ need.expected_date }}</div>
+                                        <div><strong>Notes: </strong>{{ need.notes }}</div>
+                                    </div>
+                                </div>
+                            </div></li>
+                        {% endfor needs%}
+                    {% endif %}
+                {% endfor items%}
+            </ul>
+          
+        </div>
+      </div>
+    </div>
+  {% endfor themes %}
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready( function() {
+        var layers = [],
+            layer_index = {};
+        $('.data-need').each( function(index, need) {
+            var data_name = $.trim($(need).find('h4').text());     
+            layers.push(data_name);
+            layer_index[data_name] = { 
+                layer: $(need)
+            };
+        });
+        $('.search-box').typeahead( {
+            source: layers.sort()
+        });
+        $('.form-search').submit( function(event) {
+            var layer = layer_index[$(this).find('input').val()];
+            event.preventDefault();
+            //$(layer.layer.closest('.accordion-body')).addClass('in');
+            $(layer.layer.closest('.accordion-body')).collapse('show');
+            layer.layer.find('h4').effect("pulsate", {times:2 }, 500);
+            setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top-100)}, 200);
+            //$('html, body').animate( { setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top)}, 200) }, 'slow');
+        });
+        
+    });
+</script>
 {% endblock %}

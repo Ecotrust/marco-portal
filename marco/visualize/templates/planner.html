@@ -59,9 +59,9 @@
                             <li class="active">
                                 <a href="#data" data-toggle="tab" id="dataTab">Data</a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="#designs" data-toggle="tab">Designs</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="#active" data-toggle="tab">Active  
                                     <span data-bind="visible: activeLayers().length > 0">
@@ -106,14 +106,14 @@
                                                                         <div class="btn-group btn-group-layer">
                                                                             <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
                                                                                 <i class="icon-align-justify"></i>
-                                                                                <span data-bind="text: name"></span>
-                                                                                <span data-bind="visible: activeSublayer">
-                                                                                    (
-                                                                                    <span data-bind="text: activeSublayer().name"></span>
-                                                                                    )
+                                                                                <span data-bind="visible: ! activeSublayer()">
+                                                                                    <span data-bind="text: name"></span>
                                                                                 </span>
-                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
-                                                                                </i>
+                                                                                <span data-bind="visible: activeSublayer">
+                                                                                    <span data-bind="text: activeSublayer().name"></span>
+                                                                                </span>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && enabled(), 
+                                                                                                                                         'icon-check-empty': active() && ! enabled()}"></i>
                                                                             </button>
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                                 <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -208,14 +208,18 @@
                             <div class="row-fluid" >
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
+                                  <div id="basemaps">
+                                      <a id="basemap-button" class="btn pull-right" data-bind="click: showBasemaps">
+                                          <i class="icon-globe"></i>
+                                      </a>
+                                  </div>
                                   <div id="map-buttons">
                                       <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
                                           <span data-bind="visible: showLegend()">Hide Legend</span>
                                           <span data-bind="visible: ! showLegend()">Show Legend</span>
                                         </button></p>
                                       <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
-                                          <i class="icon-flag">
-                                          </i>
+                                          <i class="icon-flag"></i>
                                           Bookmarks
                                           <span data-bind="visible: bookmarks.bookmarksList().length > 0">
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
@@ -255,10 +259,12 @@
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
                                         <div data-bind="foreach: activeLayers">
-                                            <div data-bind="if: legend" style="padding-bottom: 10px;">
-                                                <span class="pagination-centered" data-bind="text: name"></span>
-                                                <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 2px;">
-                                                    <img data-bind="attr: { src: legend }" />
+                                            <div data-bind="if: legend">
+                                                <div style="padding-bottom: 10px;">
+                                                    <span class="pagination-centered" data-bind="text: name"></span>
+                                                    <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
+                                                        <img data-bind="attr: { src: legend }" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -393,7 +399,8 @@
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-collapse.js"></script>
      -->
-        <link rel="stylesheet" type="text/css" href="http://www.transportparadise.co.uk/layerswitcher/layerswitcher.css" />
+        <!--<link rel="stylesheet" type="text/css" href="http://www.transportparadise.co.uk/layerswitcher/layerswitcher.css" />
+        <link rel="stylesheet" type="text/css" src="{{media}}/marco-proto/assets/css/simplelayerswitcher.css" />-->
         <script src="{{media}}/marco-proto/assets/js/jquery.js"></script>
         <script src="{{media}}/marco-proto/assets/js/jquery.ba-bbq.js"></script>
         <script src="{{media}}/marco-proto/assets/js/jquery-ui.js"></script>
@@ -409,7 +416,8 @@
      <!-- <script src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>-->
         <script src="http://maps.google.com/maps/api/js?v=3.6&amp;sensor=false"></script>
         <script src="{{media}}/marco-proto/assets/openlayers/OpenLayers.js"></script>
-        <script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>
+        <script src="{{media}}/marco-proto/assets/js/simplelayerswitcher.js"></script>
+        <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};
         </script>

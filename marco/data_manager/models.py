@@ -47,8 +47,16 @@ class Layer(models.Model):
     legend = models.CharField(max_length=255, blank=True, null=True)
     utfurl = models.CharField(max_length=255, blank=True, null=True)
     
-    #data catalog links
+    #tooltip
     description = models.TextField(blank=True, null=True)
+    
+    #data description (updated fact sheet) page -- MIGHT REMOVE THESE -- USING WORDPRESS DB INSTEAD
+    data_overview = models.TextField(blank=True, null=True)
+    data_status = models.CharField(max_length=255, blank=True, null=True)
+    data_source = models.CharField(max_length=255, blank=True, null=True)
+    data_notes = models.TextField(blank=True, null=True)
+    
+    #data catalog links    
     bookmark = models.CharField(max_length=755, blank=True, null=True)
     map_tiles = models.CharField(max_length=255, blank=True, null=True)
     kml = models.CharField(max_length=255, blank=True, null=True)
@@ -66,6 +74,7 @@ class Layer(models.Model):
     attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
+    vector_color = models.CharField(max_length=7, blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -113,7 +122,8 @@ class Layer(models.Model):
                 'legend': layer.legend,
                 'description': layer.description,
                 'learn_link': layer.learn_link,
-                'attributes': self.serialize_attributes
+                'attributes': self.serialize_attributes,
+                'color': self.vector_color
             } 
             for layer in self.sublayers.all()
         ]
@@ -127,7 +137,8 @@ class Layer(models.Model):
             'legend': self.legend,
             'description': self.description,
             'learn_link': self.learn_link,
-            'attributes': self.serialize_attributes
+            'attributes': self.serialize_attributes,
+            'color': self.vector_color
         }
         return layers_dict
 
@@ -149,6 +160,11 @@ class DataNeed(models.Model):
     contact_email = models.CharField(max_length=255, blank=True, null=True)
     expected_date = models.CharField(max_length=255, blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+    themes = models.ManyToManyField("Theme", blank=True, null=True)
 
+    @property
+    def html_name(self):
+        return self.name.lower().replace(' ', '-')
+    
     def __unicode__(self):
         return unicode('%s' % (self.name))
