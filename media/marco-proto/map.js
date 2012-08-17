@@ -163,12 +163,14 @@ app.addUTFControl = function(layer) {
             app.viewModel.attributeTitle(false);
             app.viewModel.attributeData(false);
             if (infoLookup) {
+                //debugger;
                 var info, 
                     msg;
                 for (var idx in infoLookup) {
                     info = infoLookup[idx];
                     if (info && info.data) {                                     
-                        msg = info.data.OBJECTID;
+                        //msg = info.data.OBJECTID;
+                        msg = info.data['SEABEDFORM'];
                     } else {
                         app.viewModel.attributeTitle(false);
                         app.viewModel.attributeData(false);
@@ -176,7 +178,15 @@ app.addUTFControl = function(layer) {
                 }
                 if (info && info.data) {
                     app.viewModel.attributeTitle('');
-                    app.viewModel.attributeData([{'display': 'ID: ', 'data': msg}]);
+                    newmsg = '';
+                    for (field in info.data) {
+                        newmsg += info.data[field];
+                        //debugger;
+                    }
+                    //app.viewModel.attributeData($.map(info.data, function(attr) { 
+                    //    return { 'display': attr.display, 'data': info.data[attr] }; 
+                    //}));
+                    app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
                 }
             } 
             //document.getElementById("info").innerHTML = msg;
@@ -191,6 +201,10 @@ app.addUTFAttribution = function(layer) {
         var feature = this.layer.getFeatureById(e.target._featureId);
         if ( feature ) {
             app.viewModel.attributeTitle(this.layer.name);
+            //debugger;
+            //app.viewModel.attributeData($.map(attrs, function(attr) { 
+            //    return { 'display': attr.display, 'data': feature.data[attr.field] }; 
+            //}));
             app.viewModel.attributeData( [{'display': '', 'data': this.utfgrid.id}] ); 
         }
         /*var feature = this.layer.getFeatureById(e.target._featureId);
