@@ -125,13 +125,13 @@
                                     <td>
                                         {% if layer.fact_sheet %}
                                         <a href="{{layer.fact_sheet}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_description_link_tooltip" %}">
-                                                {% flatblock "data_catalog_description_link" %}
+                                            <span rel="tooltip" title="{% flatblock "data_catalog_factsheet_link_tooltip" %}">
+                                                {% flatblock "data_catalog_factsheet_link" %}
                                             </span>
                                         </a>
                                         {% else %}
                                         <span class="link-not-available">
-                                            {% flatblock "data_catalog_description_link" %}
+                                            {% flatblock "data_catalog_factsheet_link" %}
                                         </span>
                                         {% endif %}
                                     </td>
