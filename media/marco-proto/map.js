@@ -157,36 +157,29 @@ app.addLayerToMap = function(layer) {
 
 app.addUTFControl = function(layer) {
     return new OpenLayers.Control.UTFGrid({
+        attributes: layer.attributes,
         layers: [layer.utfgrid],
         handlerMode: 'hover',
         callback: function(infoLookup) {
             app.viewModel.attributeTitle(false);
             app.viewModel.attributeData(false);
             if (infoLookup) {
-                //debugger;
                 var info, 
                     msg;
+                //wish the following for loop wasn't needed (seems wrong when it's only going to loop once)
                 for (var idx in infoLookup) {
                     info = infoLookup[idx];
-                    if (info && info.data) {                                     
-                        //msg = info.data.OBJECTID;
-                        msg = info.data['SEABEDFORM'];
+                    if (info && info.data) {  
+                        app.viewModel.attributeTitle('');
+                        newmsg = '';
+                        $.each(this.attributes, function(index, obj) {
+                            newmsg += info.data[obj.field];
+                        });
+                        app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
                     } else {
                         app.viewModel.attributeTitle(false);
                         app.viewModel.attributeData(false);
                     }
-                }
-                if (info && info.data) {
-                    app.viewModel.attributeTitle('');
-                    newmsg = '';
-                    for (field in info.data) {
-                        newmsg += info.data[field];
-                        //debugger;
-                    }
-                    //app.viewModel.attributeData($.map(info.data, function(attr) { 
-                    //    return { 'display': attr.display, 'data': info.data[attr] }; 
-                    //}));
-                    app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
                 }
             } 
             //document.getElementById("info").innerHTML = msg;
