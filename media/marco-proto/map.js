@@ -187,6 +187,7 @@ app.addUTFControl = function(layer) {
     });
 }
 
+//maybe this isn't used at all anymore...?
 app.addUTFAttribution = function(layer) {
     app.map.events.register("mouseover", layer, function(e) {
         //app.viewModel.attributeTitle(this.layer.name);

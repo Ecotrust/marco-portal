@@ -217,7 +217,8 @@
                                       <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
                                           <span data-bind="visible: showLegend()">Hide Legend</span>
                                           <span data-bind="visible: ! showLegend()">Show Legend</span>
-                                        </button></p>
+                                         </button>
+                                      </p>
                                       <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
                                           <i class="icon-flag"></i>
                                           Bookmarks
@@ -259,6 +260,7 @@
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
                                         <div data-bind="foreach: activeLayers">
+                                          <div data-bind="if: enabled">
                                             <div data-bind="if: legend">
                                                 <div style="padding-bottom: 10px;">
                                                     <span class="pagination-centered" data-bind="text: name"></span>
@@ -267,6 +269,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                          </div>
                                         </div>
                                     </div>
                                 </div>

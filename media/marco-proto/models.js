@@ -65,7 +65,10 @@ function layerModel(options, parent) {
 
 	self.deactivateLayer = function () {
 		var layer = this;
+        // remove from active layers
 		app.viewModel.activeLayers.remove(layer);
+        // remove from visible layers
+        app.viewModel.enabledLayers.remove(layer);
         
         //remove related utfgrid layer
         if ( layer.utfgrid ) {
@@ -106,6 +109,8 @@ function layerModel(options, parent) {
             app.addLayerToMap(layer);            
             // add it to the top of the active layers
             app.viewModel.activeLayers.unshift(layer);
+            // add it to the visible layers
+            app.viewModel.enabledLayers.unshift(layer);
             // set the active flag
             layer.active(true);
             layer.enabled(true);
@@ -124,12 +129,15 @@ function layerModel(options, parent) {
     self.toggleVisible = function() {
         var layer = this;
         if ( layer.enabled() ) {
+            app.viewModel.enabledLayers.remove(layer);
+            
             layer.enabled(false);
             if (layer.parent) {
                 layer.parent.enabled(false);
             }
             app.setLayerVisibility(layer, false);
         } else {
+            app.viewModel.enabledLayers.unshift(layer);
             layer.enabled(true);
             if (layer.parent) {
                 layer.parent.enabled(true);
@@ -402,6 +410,9 @@ function viewModel() {
 
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
+    
+    // list of visible layermodels 
+    self.enabledLayers = ko.observableArray();
 
 	// reference to open themes in accordion
 	self.openThemes = ko.observableArray();
@@ -469,7 +480,7 @@ function viewModel() {
     };
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
-        $.each(self.activeLayers(), function(index, layer) {
+        $.each(self.enabledLayers(), function(index, layer) {
             if (layer.legend) {
                 hasLegends = true;
             }
@@ -576,6 +587,7 @@ function viewModel() {
             self.showLegend(false);
         }
         
+        //will eventually want to adjust so that it is the top-most 'visible' layer (not simple the top-most layer)
         var topLayer = self.activeLayers()[0];        
         if (topLayer && topLayer.utfurl) { //ensure utfgrid is activated (when relevant) for top layer
             topLayer.utfcontrol = app.addUTFControl(topLayer);
@@ -586,6 +598,12 @@ function viewModel() {
 		app.updateUrl();
 	});
     
+	// do this stuff when the visible layers change
+	self.enabledLayers.subscribe(function () {
+        if ( ! self.hasActiveLegends() ) {
+            self.showLegend(false);
+        }
+    });    
 
 	return self;
 }
