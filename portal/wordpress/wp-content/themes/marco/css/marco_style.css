@@ -237,8 +237,9 @@ hr {
 	text-transform: uppercase;
 }
 
-.sidebar {
-	margin-top: 5px;
+#sidebar-nav {
+	position: fixed;
+	top: 110px;
 }
 
 .sidebar ul {
