@@ -45,6 +45,7 @@ class Layer(models.Model):
     themes = models.ManyToManyField("Theme", blank=True, null=True)
     is_sublayer = models.BooleanField(default=False)
     legend = models.CharField(max_length=255, blank=True, null=True)
+    legend_title = models.CharField(max_length=255, blank=True, null=True)
     utfurl = models.CharField(max_length=255, blank=True, null=True)
     
     #tooltip
@@ -120,6 +121,7 @@ class Layer(models.Model):
                 'utfurl': layer.utfurl,
                 'parent': self.id,
                 'legend': layer.legend,
+                'legend_title': layer.legend_title,
                 'description': layer.description,
                 'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes,
@@ -135,6 +137,7 @@ class Layer(models.Model):
             'utfurl': self.utfurl,
             'subLayers': sublayers,
             'legend': self.legend,
+            'legend_title': self.legend_title,
             'description': self.description,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,
