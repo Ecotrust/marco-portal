@@ -73,6 +73,41 @@ app.init = function () {
         // update the url when we move
         app.updateUrl();
     });
+    
+    // callback functions for vector attribution (SelectFeature Control)
+    var report = function(e) {
+        var layer = e.feature.layer.layerModel;
+        if ( layer ) {
+            var attrs = layer.attributes,
+                title = layer.attributeTitle;
+            app.viewModel.attributeTitle(title);            
+            app.viewModel.attributeData($.map(attrs, function(attr) { 
+                return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
+            }));
+        }
+    };
+      
+    var clearout = function(e) {
+        //document.getElementById("output").innerHTML = ""; 
+        app.viewModel.attributeTitle(false);
+        app.viewModel.attributeData(false);
+    };  
+    
+    map.vectorList = [];
+    map.selectFeatureControl = new OpenLayers.Control.SelectFeature(map.vectorList, {
+        hover: true,
+        //highlightOnly: true,
+        renderIntent: "temporary",
+        cancelBubble: false,
+        eventListeners: {
+            beforefeaturehighlighted: report,
+            featurehighlighted: report,
+            featureunhighlighted: clearout
+        }
+    });
+    map.addControl(map.selectFeatureControl);
+    map.selectFeatureControl.activate();  
+    
 
     app.map = map;
 }
@@ -107,6 +142,7 @@ app.addLayerToMap = function(layer) {
                     }
                 )
             );  
+            app.map.addLayer(layer.layer);  
             //app.addUTFAttribution(layer);
         } else if (layer.type == 'Vector') {
             layer.layer = new OpenLayers.Layer.Vector(
@@ -125,13 +161,19 @@ app.addLayerToMap = function(layer) {
                         //strokeDashStyle: "dash",
                         //strokeOpacity: 1,
                         strokeColor: layer.color,
-                        strokeOpacity: .8
+                        strokeOpacity: .8,
                         //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                         //title: 'testing'
-                    }
+                        pointRadius: 2
+                    },
+                    layerModel: layer
                 }
             );
-            app.addVectorAttribution(layer);
+            //app.addVectorAttribution(layer);
+            app.map.addLayer(layer.layer);  
+            //selectFeatureControl = app.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0];
+            app.map.vectorList.unshift(layer.layer);
+            app.map.selectFeatureControl.setLayer(app.map.vectorList);
         } else { //if XYZ with no utfgrid
             // adding layer to the map for the first time		
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
@@ -144,9 +186,10 @@ app.addLayerToMap = function(layer) {
                     }
                 )
             );
+            app.map.addLayer(layer.layer);  
         }
+        //app.map.addLayer(layer.layer);  
         //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
-        app.map.addLayer(layer.layer);            
     } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
         layer.utfcontrol = app.addUTFControl(layer);
         app.map.addControl(layer.utfcontrol); 
@@ -184,58 +227,6 @@ app.addUTFControl = function(layer) {
             } 
             //document.getElementById("info").innerHTML = msg;
         }
-    });
-}
-
-//maybe this isn't used at all anymore...?
-app.addUTFAttribution = function(layer) {
-    app.map.events.register("mouseover", layer, function(e) {
-        //app.viewModel.attributeTitle(this.layer.name);
-        //app.viewModel.attributeData( [{'display': '', 'data': this.utfgrid.id}] ); 
-        var feature = this.layer.getFeatureById(e.target._featureId);
-        if ( feature ) {
-            app.viewModel.attributeTitle(this.layer.name);
-            //debugger;
-            //app.viewModel.attributeData($.map(attrs, function(attr) { 
-            //    return { 'display': attr.display, 'data': feature.data[attr.field] }; 
-            //}));
-            app.viewModel.attributeData( [{'display': '', 'data': this.utfgrid.id}] ); 
-        }
-        /*var feature = this.layer.getFeatureById(e.target._featureId);
-        if ( feature ) {
-            var attrs = this.attributes,
-                title = this.attributeTitle;
-            app.viewModel.attributeTitle(title);            
-            app.viewModel.attributeData($.map(attrs, function(attr) { 
-                return { 'display': attr.display, 'data': feature.data[attr.field] }; 
-            }));
-        }
-        return true;*/
-    });
-    
-    app.map.events.register("mouseout", layer.layer, function(e) {
-        app.viewModel.attributeTitle(false);
-        app.viewModel.attributeData(false);
-    });
-    
-}
-
-app.addVectorAttribution = function(layer) {
-    app.map.events.register(layer.attributeEvent, layer, function(e) {
-        var feature = this.layer.getFeatureById(e.target._featureId);
-        if ( feature ) {
-            var attrs = this.attributes,
-                title = this.attributeTitle;
-            app.viewModel.attributeTitle(title);            
-            app.viewModel.attributeData($.map(attrs, function(attr) { 
-                return { 'display': attr.display, 'data': feature.data[attr.field] }; 
-            }));
-        }
-        return true;
-    });
-    app.map.events.register("mouseout", layer.layer, function(e) {
-        app.viewModel.attributeTitle(false);
-        app.viewModel.attributeData(false);
     });
 }
 

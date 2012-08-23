@@ -23,7 +23,6 @@ function layerModel(options, parent) {
     	$descriptionTemp = $("<div/>", { html: options.description });
     	$descriptionTemp.find('a').each(function () {
     		$(this).attr('target', '_blank');
-    		//console.log($(this).html());
     	});
     	self.description = $descriptionTemp.html();
     } else {
@@ -566,9 +565,9 @@ function viewModel() {
 	self.activeLayers.subscribe(function () {
 		// initial index
 		var index = 300;
-		app.state.activeLayers = [];
-
-		//self.showLegend(false);
+		app.state.activeLayers = [];        
+        
+        //self.showLegend(false);
 		$.each(self.activeLayers(), function (i, layer) {
 			// set the zindex on the openlayers layer
 			// layers at the beginning of activeLayers
@@ -576,18 +575,21 @@ function viewModel() {
 			// also save the layer state
             app.setLayerZIndex(layer, index);
 			index--;
-			//if (layer.legend) {
-			//	self.showLegend(true);
-			//}
+            
             if (layer.utfurl) { //remove utfcontrol for all layers (utfcontrol for top layer will be re-established below)
                 layer.utfcontrol.destroy();
             }
 		});
+        // re-ordering map layers by z value
+        app.map.layers.sort( function(a,b) 
+        { 
+            return a.getZIndex()-b.getZIndex() 
+        });
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
         
-        //will eventually want to adjust so that it is the top-most 'visible' layer (not simple the top-most layer)
+        // will eventually want to adjust so that it is the top-most 'visible' layer (not simple the top-most layer)
         var topLayer = self.activeLayers()[0];        
         if (topLayer && topLayer.utfurl) { //ensure utfgrid is activated (when relevant) for top layer
             topLayer.utfcontrol = app.addUTFControl(topLayer);
@@ -596,6 +598,16 @@ function viewModel() {
         
 		// update the url hash
 		app.updateUrl();
+        
+        // re-ordering vectorList
+        app.map.vectorList = [];
+        $.each(self.activeLayers(), function (i, layer) {
+            if ( layer.layer.CLASS_NAME === "OpenLayers.Layer.Vector" ) {
+                app.map.vectorList.push(layer.layer);
+            }
+        });
+        app.map.selectFeatureControl.setLayer(app.map.vectorList);
+        
 	});
     
 	// do this stuff when the visible layers change
