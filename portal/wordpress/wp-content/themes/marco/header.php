@@ -34,7 +34,7 @@
 		
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
-			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 		<![endif]-->
 
 		<!-- html5.js -->
@@ -69,7 +69,7 @@
 	<body <?php body_class(); ?>>
 
 		<header role="banner">
-			<div class="navbar">
+			<div class="navbar navbar-fixed-top">
 			  <div class="navbar-inner">
 			    <div class="container">
 			        <a href="<?php echo get_bloginfo('wpurl'); ?>">
