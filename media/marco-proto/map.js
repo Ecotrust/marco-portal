@@ -79,11 +79,16 @@ app.init = function () {
         var layer = e.feature.layer.layerModel;
         if ( layer ) {
             var attrs = layer.attributes,
-                title = layer.attributeTitle;
-            app.viewModel.attributeTitle(title);            
-            app.viewModel.attributeData($.map(attrs, function(attr) { 
-                return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
-            }));
+                title = e.feature.data[attrs[0].field],
+                text = [];
+            app.viewModel.attributeTitle(title); 
+            for (var i=1; i<attrs.length; i++) {
+                text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+            }
+            app.viewModel.attributeData(text);
+            //app.viewModel.attributeData($.map(attrs, function(attr) { 
+            //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
+            //}));
         }
     };
       

@@ -128,7 +128,9 @@
             "attribute_event": "mouseover", 
             "map_tiles": "", 
             "attribute_fields": [
-                2
+                2, 
+                11, 
+                12
             ], 
             "vector_fill": 0.4, 
             "data_overview": "", 
@@ -2163,6 +2165,24 @@
             "field_name": "INFO", 
             "display_name": "", 
             "order": 1
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "PRB_METHOD", 
+            "display_name": "Probability Method: ", 
+            "order": 3
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "CORAL_PROB", 
+            "display_name": "Coral Probability:  ", 
+            "order": 2
         }
     }, 
     {
