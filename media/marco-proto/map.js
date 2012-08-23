@@ -132,8 +132,8 @@ app.addLayerToMap = function(layer) {
             layer.utfcontrol = app.addUTFControl(layer);
             app.map.addControl(layer.utfcontrol); 
             	
-            layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
-                //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
+            layer.layer = new OpenLayers.Layer.XYZ(
+                layer.name, 
                 layer.url,
                 $.extend({}, opts, 
                     {
@@ -144,7 +144,7 @@ app.addLayerToMap = function(layer) {
             );  
             app.map.addLayer(layer.layer);  
             //app.addUTFAttribution(layer);
-        } else if (layer.type == 'Vector') {
+        } else if (layer.type === 'Vector') {
             layer.layer = new OpenLayers.Layer.Vector(
                 layer.name,
                 {
@@ -157,7 +157,7 @@ app.addLayerToMap = function(layer) {
                     }),
                     style: {
                         fillColor: layer.color,
-                        fillOpacity: .4,
+                        fillOpacity: layer.fillOpacity,
                         //strokeDashStyle: "dash",
                         //strokeOpacity: 1,
                         strokeColor: layer.color,

@@ -70,42 +70,6 @@
         }
     }, 
     {
-        "pk": 9, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. ", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.41228614226024&location%5By%5D=38.74931297143301&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=9&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
-            "utfurl": "/media/data_manager/utfgrid/sediment_grain_size/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                6
-            ], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sediment Grain Size", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
-            "legend_title": "Sediment Grain Size (mm)", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 31, 
         "model": "data_manager.layer", 
         "fields": {
@@ -128,6 +92,7 @@
             "attribute_fields": [
                 2
             ], 
+            "vector_fill": 0.4, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -137,7 +102,44 @@
             "data_notes": "", 
             "name": "Submarine Canyons", 
             "url": "/media/data_manager/geojson/MajorCanyons.json", 
-            "legend_title": null, 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.41228614226024&location%5By%5D=38.74931297143301&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=9&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "utfurl": "/media/data_manager/utfgrid/sediment_grain_size/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                6
+            ], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sediment Grain Size", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png", 
+            "legend_title": "Sediment Grain Size (mm)", 
             "sublayers": []
         }
     }, 
@@ -162,6 +164,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -175,40 +178,6 @@
             "sublayers": [
                 21
             ]
-        }
-    }, 
-    {
-        "pk": 26, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": null, 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": null, 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": null, 
-            "attribute_title": null, 
-            "is_sublayer": false, 
-            "legend": "", 
-            "data_status": null, 
-            "data_source": null, 
-            "data_notes": null, 
-            "name": "Important Bird Habitats", 
-            "url": "", 
-            "legend_title": null, 
-            "sublayers": []
         }
     }, 
     {
@@ -234,6 +203,7 @@
             "attribute_fields": [
                 2
             ], 
+            "vector_fill": 0.4, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -243,6 +213,41 @@
             "data_notes": "", 
             "name": "Artificial Reefs", 
             "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
+            "thumbnail": null, 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": null, 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": null, 
+            "attribute_title": null, 
+            "is_sublayer": false, 
+            "legend": "", 
+            "data_status": null, 
+            "data_source": null, 
+            "data_notes": null, 
+            "name": "Important Bird Habitats", 
+            "url": "", 
             "legend_title": null, 
             "sublayers": []
         }
@@ -268,6 +273,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": null, 
             "attribute_title": null, 
             "is_sublayer": false, 
@@ -302,6 +308,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -340,6 +347,7 @@
             "attribute_fields": [
                 8
             ], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -374,6 +382,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -408,6 +417,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -419,42 +429,6 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
             "legend_title": "Commercial Shipping Density", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 11, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_All_Gear_Types_Files/Fishing_Effort_All_Gear_Types.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "All Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
-            "legend_title": "All Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
@@ -478,6 +452,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -490,6 +465,43 @@
             "legend_title": null, 
             "sublayers": [
                 56
+            ]
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_All_Gear_Types_Files/Fishing_Effort_All_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "All Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
+            "legend_title": "All Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
+            "sublayers": [
+                15
             ]
         }
     }, 
@@ -514,6 +526,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -526,148 +539,6 @@
             "legend_title": "Bottom Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
             "sublayers": [
                 15
-            ]
-        }
-    }, 
-    {
-        "pk": 39, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Humpback Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
-            "legend_title": null, 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 40, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
-            "legend_title": null, 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "#333333", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "OCS Boundaries", 
-            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
-            "legend_title": null, 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 35, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Fin Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
-            "legend_title": null, 
-            "sublayers": [
-                21
             ]
         }
     }, 
@@ -692,6 +563,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -728,6 +600,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -764,6 +637,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -800,6 +674,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -836,6 +711,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -872,6 +748,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -908,6 +785,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -942,6 +820,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -978,6 +857,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1019,6 +899,7 @@
             "attribute_fields": [
                 3
             ], 
+            "vector_fill": null, 
             "data_overview": null, 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1053,6 +934,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1087,6 +969,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": null, 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1123,6 +1006,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1159,6 +1043,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1172,24 +1057,24 @@
             "sublayers": [
                 39, 
                 49, 
-                44, 
-                45, 
                 51, 
+                44, 
+                37, 
                 43, 
                 40, 
-                50, 
-                35, 
-                37, 
                 36, 
+                35, 
                 41, 
                 29, 
                 28, 
                 48, 
                 27, 
                 42, 
-                38, 
                 46, 
-                47
+                47, 
+                50, 
+                38, 
+                45
             ]
         }
     }, 
@@ -1214,6 +1099,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1250,6 +1136,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1259,76 +1146,6 @@
             "data_notes": "", 
             "name": "Fin Whales (Spring)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesSpring/${z}/${x}/${y}.png", 
-            "legend_title": null, 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 54, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "description": "This data set represents ship traffic separation zones, which separate the lanes in which ships proceed in opposite or nearly opposite directions or separate traffic lanes designated for particular classes of ships proceeding in the same direction. ", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.17058692351058&location%5By%5D=38.88627168774735&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=54&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/shipping ", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "#FF0505", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Ship Traffic Separation Zones", 
-            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
-            "legend_title": null, 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 42, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
             "legend_title": null, 
             "sublayers": [
                 21
@@ -1356,6 +1173,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1392,6 +1210,7 @@
             "attribute_fields": [
                 5
             ], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "ID: ", 
             "is_sublayer": false, 
@@ -1428,6 +1247,7 @@
             "attribute_fields": [
                 8
             ], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1462,6 +1282,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1498,6 +1319,7 @@
             "attribute_fields": [
                 9
             ], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1512,15 +1334,15 @@
         }
     }, 
     {
-        "pk": 46, 
+        "pk": 59, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "WMS", 
             "fact_sheet": "", 
             "themes": [
-                2
+                5
             ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "description": "", 
             "bookmark": "", 
             "kml": "", 
             "source": "", 
@@ -1532,80 +1354,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sei Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
-            "legend_title": null, 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 47, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "kml": "", 
-            "source": "", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sei Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
-            "legend_title": null, 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 8, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                3
-            ], 
-            "description": "This data set identfies Wind Energy Areas (WEA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WEAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.5658203125002&location%5By%5D=38.280823516230726&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "", 
-            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "#e66101", 
-            "attribute_event": "mouseover", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                1
-            ], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1613,43 +1362,9 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Wind Planning Areas", 
-            "url": "/media/data_manager/geojson/WindPlanningAreas.json", 
-            "legend_title": null, 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 22, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-75.04949317351051&location%5By%5D=38.51759834101328&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=22&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
-            "source": "http://www.fws.gov/chesapeakebay/ ", 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Waterbird Survey", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
-            "legend_title": "Waterbird Survey <p style=\"margin: 0 0 3px; text-align: left\">(# birds per sq km)</p>", 
+            "name": "Danger Zones & Restricted Areas", 
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/19", 
+            "legend_title": "", 
             "sublayers": []
         }
     }, 
@@ -1674,6 +1389,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1708,6 +1424,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1744,6 +1461,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1778,6 +1496,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1794,7 +1513,44 @@
         }
     }, 
     {
-        "pk": 33, 
+        "pk": 8, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                3
+            ], 
+            "description": "This data set identfies Wind Energy Areas (WEA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WEAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.5658203125002&location%5By%5D=38.280823516230726&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "", 
+            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "#e66101", 
+            "attribute_event": "mouseover", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                1
+            ], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Wind Planning Areas", 
+            "url": "/media/data_manager/geojson/WindPlanningAreas.json", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 39, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1802,31 +1558,287 @@
             "themes": [
                 2
             ], 
-            "description": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. ", 
-            "bookmark": "/visualize/#location%5Bx%5D=-71.53734733387785&location%5By%5D=39.3890273319599&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
-            "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
             "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/seabed_form.zip", 
+            "data_download": "", 
             "metadata": "", 
             "vector_color": "", 
             "attribute_event": "click", 
             "map_tiles": "", 
-            "attribute_fields": [
-                4
-            ], 
+            "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
-            "is_sublayer": false, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Seabed Forms", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "name": "Humpback Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Right Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "description": "Administrative Boundaries extending from the Submerged Lands Act Boundary seaward to the limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile limit, or other marine boundary).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "#333333", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "OCS Boundaries", 
+            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
             "legend_title": null, 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Fin Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                8
+            ], 
+            "description": "This data set represents ship traffic separation zones, which separate the lanes in which ships proceed in opposite or nearly opposite directions or separate traffic lanes designated for particular classes of ships proceeding in the same direction. ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.17058692351058&location%5By%5D=38.88627168774735&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=54&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/shipping ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "#FF0505", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Ship Traffic Separation Zones", 
+            "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json", 
+            "legend_title": null, 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Right Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sei Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "kml": "", 
+            "source": "", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sei Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": [
+                21
+            ]
         }
     }, 
     {
@@ -1850,6 +1862,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1886,6 +1899,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
@@ -1920,6 +1934,7 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [], 
+            "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1933,6 +1948,78 @@
             "sublayers": [
                 15
             ]
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-75.04949317351051&location%5By%5D=38.51759834101328&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=22&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz", 
+            "source": "http://www.fws.gov/chesapeakebay/ ", 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Waterbird Survey", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
+            "legend_title": "Waterbird Survey <p style=\"margin: 0 0 3px; text-align: left\">(# birds per sq km)</p>", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's derived digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-71.53734733387785&location%5By%5D=39.3890273319599&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/seabed_form.zip", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                4
+            ], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Seabed Forms", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "legend_title": null, 
+            "sublayers": []
         }
     }, 
     {
@@ -2281,40 +2368,6 @@
         }
     }, 
     {
-        "pk": 4, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
-            "name": "Turtles-Sightings per Unit Effort (SPUE) ", 
-            "expected_date": "As soon as vetted by Portal Data Review Team ", 
-            "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n", 
-            "themes": [
-                2
-            ], 
-            "source": "TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes", 
-            "contact": "The Nature Conservancy ", 
-            "contact_email": "", 
-            "description": "Important areas for sea turtles were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected.  The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
-        }
-    }, 
-    {
-        "pk": 13, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Data available", 
-            "name": "Automatic Identification System (AIS) shipping data", 
-            "expected_date": "June 2012", 
-            "notes": "", 
-            "themes": [
-                8
-            ], 
-            "source": "NOAA", 
-            "contact": "The Nature Conservancy", 
-            "contact_email": "", 
-            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed."
-        }
-    }, 
-    {
         "pk": 5, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -2380,6 +2433,40 @@
             "contact": "The Nature Conservancy ", 
             "contact_email": "", 
             "description": "Target species richness refers to the total number of target species by age class observed within a TMS summed and mapped based on all available data (1965-2004).  Persistence refers to the sum of the number of decades that a given target species was present (1-4) for combined juvenile and adult observations.  Habitat refers to the number of target species whose EFH overlapped each TMS determined and summarized by total target species and by age class.\r\n"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n", 
+            "name": "Turtles-Sightings per Unit Effort (SPUE) ", 
+            "expected_date": "As soon as vetted by Portal Data Review Team ", 
+            "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n", 
+            "themes": [
+                2
+            ], 
+            "source": "TNC NAM ERA compiled data;  source of data U.S. Navy Marine Resource Assessment (MRA) for the Northeast and Virginia Capes", 
+            "contact": "The Nature Conservancy ", 
+            "contact_email": "", 
+            "description": "Important areas for sea turtles were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected.  The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Data available", 
+            "name": "Automatic Identification System (AIS) shipping data", 
+            "expected_date": "June 2012", 
+            "notes": "", 
+            "themes": [
+                8
+            ], 
+            "source": "NOAA", 
+            "contact": "The Nature Conservancy", 
+            "contact_email": "", 
+            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed."
         }
     }, 
     {

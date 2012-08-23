@@ -76,6 +76,7 @@ class Layer(models.Model):
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
     vector_color = models.CharField(max_length=7, blank=True, null=True)
+    vector_fill = models.FloatField(blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -125,7 +126,8 @@ class Layer(models.Model):
                 'description': layer.description,
                 'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes,
-                'color': self.vector_color
+                'color': self.vector_color,
+                'fill_opacity': self.vector_fill
             } 
             for layer in self.sublayers.all()
         ]
@@ -141,7 +143,8 @@ class Layer(models.Model):
             'description': self.description,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,
-            'color': self.vector_color
+            'color': self.vector_color,
+            'fill_opacity': self.vector_fill
         }
         return layers_dict
 
