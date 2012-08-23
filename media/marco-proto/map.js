@@ -174,6 +174,28 @@ app.addLayerToMap = function(layer) {
             //selectFeatureControl = app.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0];
             app.map.vectorList.unshift(layer.layer);
             app.map.selectFeatureControl.setLayer(app.map.vectorList);
+        } else if (layer.type === 'ArcRest') {
+            layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
+                layer.name, 
+                layer.url,
+                {
+                    layers: "show:"+layer.arcgislayers,
+                    srs: 'EPSG:3857'
+                }
+            );
+            app.map.addLayer(layer.layer);  
+        } else if (layer.type === 'WMS') {
+            layer.layer = new OpenLayers.Layer.WMS(
+                layer.name, 
+                layer.url,
+                {
+                    //'layers': 'topp:tasmania_cities', transparent: true, format: 'image/gif'
+                },
+                {
+                    isBaseLayer: false
+                }
+            );
+            app.map.addLayer(layer.layer);  
         } else { //if XYZ with no utfgrid
             // adding layer to the map for the first time		
             layer.layer = new OpenLayers.Layer.XYZ(layer.name, 

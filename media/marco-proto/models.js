@@ -7,6 +7,7 @@ function layerModel(options, parent) {
 	self.id = options.id || null;
 	self.name = options.name || null;
 	self.url = options.url || null;
+    self.arcgislayers = options.arcgis_layers || 0;
 	self.type = options.type || null;
 	self.utfurl = options.utfurl || false; 
     self.legend = options.legend || false;

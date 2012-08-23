@@ -34,6 +34,7 @@ class Layer(models.Model):
     TYPE_CHOICES = (
         ('XYZ', 'XYZ'),
         ('WMS', 'WMS'),
+        ('ArcRest', 'ArcRest'),
         ('radio', 'radio'),
         ('Vector', 'Vector'),
         ('placeholder', 'placeholder'),
@@ -41,6 +42,7 @@ class Layer(models.Model):
     name = models.CharField(max_length=100)
     layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     url = models.CharField(max_length=255, blank=True, null=True)
+    arcgis_layers = models.CharField(max_length=255, blank=True, null=True)
     sublayers = models.ManyToManyField('self', blank=True, null=True)
     themes = models.ManyToManyField("Theme", blank=True, null=True)
     is_sublayer = models.BooleanField(default=False)
@@ -119,6 +121,7 @@ class Layer(models.Model):
                 'name': layer.name,
                 'type': layer.layer_type,
                 'url': layer.url,
+                'arcgis_layers': layer.arcgis_layers,
                 'utfurl': layer.utfurl,
                 'parent': self.id,
                 'legend': layer.legend,
@@ -136,6 +139,7 @@ class Layer(models.Model):
             'name': self.name,
             'type': self.layer_type,
             'url': self.url,
+            'arcgis_layers': self.arcgis_layers,
             'utfurl': self.utfurl,
             'subLayers': sublayers,
             'legend': self.legend,
