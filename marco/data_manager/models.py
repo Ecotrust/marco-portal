@@ -34,6 +34,7 @@ class Layer(models.Model):
     TYPE_CHOICES = (
         ('XYZ', 'XYZ'),
         ('WMS', 'WMS'),
+        ('ArcRest', 'ArcRest'),
         ('radio', 'radio'),
         ('Vector', 'Vector'),
         ('placeholder', 'placeholder'),
@@ -41,10 +42,12 @@ class Layer(models.Model):
     name = models.CharField(max_length=100)
     layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     url = models.CharField(max_length=255, blank=True, null=True)
+    arcgis_layers = models.CharField(max_length=255, blank=True, null=True)
     sublayers = models.ManyToManyField('self', blank=True, null=True)
     themes = models.ManyToManyField("Theme", blank=True, null=True)
     is_sublayer = models.BooleanField(default=False)
     legend = models.CharField(max_length=255, blank=True, null=True)
+    legend_title = models.CharField(max_length=255, blank=True, null=True)
     utfurl = models.CharField(max_length=255, blank=True, null=True)
     
     #tooltip
@@ -75,6 +78,7 @@ class Layer(models.Model):
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
     vector_color = models.CharField(max_length=7, blank=True, null=True)
+    vector_fill = models.FloatField(blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -117,13 +121,16 @@ class Layer(models.Model):
                 'name': layer.name,
                 'type': layer.layer_type,
                 'url': layer.url,
+                'arcgis_layers': layer.arcgis_layers,
                 'utfurl': layer.utfurl,
                 'parent': self.id,
                 'legend': layer.legend,
+                'legend_title': layer.legend_title,
                 'description': layer.description,
                 'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes,
-                'color': self.vector_color
+                'color': self.vector_color,
+                'fill_opacity': self.vector_fill
             } 
             for layer in self.sublayers.all()
         ]
@@ -132,13 +139,16 @@ class Layer(models.Model):
             'name': self.name,
             'type': self.layer_type,
             'url': self.url,
+            'arcgis_layers': self.arcgis_layers,
             'utfurl': self.utfurl,
             'subLayers': sublayers,
             'legend': self.legend,
+            'legend_title': self.legend_title,
             'description': self.description,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,
-            'color': self.vector_color
+            'color': self.vector_color,
+            'fill_opacity': self.vector_fill
         }
         return layers_dict
 

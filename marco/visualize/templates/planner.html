@@ -105,6 +105,7 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer">
+                                                                            <!-- ko ifnot: subLayers.length > 0 -->
                                                                             <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
                                                                                 <i class="icon-align-justify"></i>
                                                                                 <span data-bind="visible: ! activeSublayer()">
@@ -116,18 +117,27 @@
                                                                                 <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && enabled(), 
                                                                                                                                          'icon-check-empty': active() && ! enabled()}"></i>
                                                                             </button>
+                                                                            <!-- /ko -->
                                                                             <!-- ko if: subLayers.length > 0 -->
-                                                                                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                                                                    <span class="caret">
-                                                                                    </span>
-                                                                                </button>
-                                                                                <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
-                                                                                    <li data-bind="foreach: subLayers">
-                                                                                        <a data-bind="click: toggleActive">
-                                                                                            <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
-                                                                                        <span data-bind="text: name"></span></a>
-                                                                                    </li>
-                                                                                </ul>
+                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, event: {'hover': showDescription}" data-toggle="dropdown">
+                                                                                <i class="icon-align-justify"></i>
+                                                                                <span data-bind="visible: ! activeSublayer()">
+                                                                                    <span data-bind="text: name"></span>
+                                                                                </span>
+                                                                                <span data-bind="visible: activeSublayer">
+                                                                                    <span data-bind="text: activeSublayer().name"></span>
+                                                                                </span>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && enabled(), 
+                                                                                                                                         'icon-check-empty': active() && ! enabled()}"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                <li data-bind="foreach: subLayers">
+                                                                                    <a data-bind="click: toggleActive">
+                                                                                        <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                        <span data-bind="text: name"></span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
                                                                             <!-- /ko -->
                                                                         </div>
                                                                     </li>  
@@ -264,7 +274,7 @@
                                           <div data-bind="if: enabled">
                                             <div data-bind="if: legend">
                                                 <div style="padding-bottom: 10px;">
-                                                    <span class="pagination-centered" data-bind="text: name"></span>
+                                                    <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
                                                     <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
                                                         <img data-bind="attr: { src: legend }" />
                                                     </div>
