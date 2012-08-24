@@ -77,7 +77,14 @@
 			        <a href="<?php echo get_bloginfo('wpurl'); ?>">
 			        	<img src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
 			        </a>
-			      <div class="pull-right">
+			       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+			      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			     	 <span class="icon-bar"></span>
+			      	 <span class="icon-bar"></span>
+			      	 <span class="icon-bar"></span>
+			      </a>
+			       
+			      <div class="pull-right nav-collapse">
 			        <ul class="nav">
 			          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>
 			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>

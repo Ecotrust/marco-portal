@@ -5,6 +5,7 @@ body {
 h1, h2, h3, h4 {
 	font-weight: normal;
 	color: #2d8998;
+	line-height: 1;
 }
 
 h2 {
@@ -25,7 +26,6 @@ hr {
         background-color: white;
 }
 .navbar-inner {
-	width: 940px;
 	background-color: white !important;
 	background-image: none !important;
 	padding-left: 0px;
@@ -91,7 +91,7 @@ hr {
 	background-color: #2d8998;
 	background-image: none;
 	color: white;
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-right: 0px;
 	margin-left: -5px;
 	border-radius: 30px;
@@ -272,6 +272,9 @@ img + h3 {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 }
+.carousel {
+	clear: both;
+}
 .carousel-control {
 	display: none;
 }
@@ -355,4 +358,76 @@ img {
 .btn-icon {
 	margin-top: 5px;
 	font-size: 18px;
+}
+
+
+
+@media (max-width: 767px) {
+	.nav-collapse form {
+		width: 100%;
+	}
+	.nav-collapse form input {
+		width: auto;
+		margin-left: 10px;
+	}
+	body {
+		margin-top: 0px;
+	}
+	#sidebar-nav {
+		position: relative;
+		top: 0px;
+	}
+	.nav-collapse {
+		width: 100%;
+	}
+	.nav-collapse .nav {
+		float: left;
+	}
+	.nav-collapse .nav > li {
+		float: left;
+	}
+	.showcase {
+		margin-top: 10px;
+	}
+}
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+	body {
+		margin-top: 0px;
+	}
+	#sidebar-nav {
+		position: relative;
+		top: 0px;
+	}
+	.nav-collapse {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+
+	.nav-collapse .nav {
+		float: left;
+	}
+	.nav-collapse .nav > li {
+		float: left;
+	}
+	.showcase {
+		margin-top: 5px;
+	}
+	.showcase .caption {
+		top: 100px;
+	}
+
+}
+
+@media (max-width: 359px) {
+	.navbar img {
+		width: 80%;
+	}
+	.nav-collapse .nav > li {
+		width: 98px;
+	}
+	.navbar .nav > li a {
+		width: auto;
+	}
 }
