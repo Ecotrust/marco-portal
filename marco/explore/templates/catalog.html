@@ -67,95 +67,99 @@
                                         </span>
                                     </td>
                                     <td>
-                                        {% if layer.bookmark %}
-                                        <a href="{{layer.bookmark}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_view_link_tooltip" %}">
-                                                {% flatblock "data_catalog_view_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_view_link" %}
-                                        </span>
-                                        {% endif %}
-                                    </td>                        
-                                    <td>            
-                                        {% if layer.map_tiles %}
-                                        <a href="{{layer.map_tiles}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_maptiles_link_tooltip" %}">
-                                                {% flatblock "data_catalog_maptiles_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_maptiles_link" %}
-                                        </span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if layer.kml %}
-                                        <a href="{{layer.kml}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_kml_link_tooltip" %}">
-                                                {% flatblock "data_catalog_kml_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_kml_link" %}
-                                        </span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if layer.data_download %}
-                                        <a href="{{layer.data_download}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_data_link_tooltip" %}">
-                                                {% flatblock "data_catalog_data_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_data_link" %}
-                                        </span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if layer.fact_sheet %}
-                                        <a href="{{layer.fact_sheet}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_factsheet_link_tooltip" %}">
-                                                {% flatblock "data_catalog_factsheet_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_factsheet_link" %}
-                                        </span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if layer.metadata %}
-                                        <a href="{{layer.metadata}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_metadata_link_tooltip" %}">
-                                                {% flatblock "data_catalog_metadata_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_metadata_link" %}
-                                        </span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if layer.source %}
-                                        <a href="{{layer.source}}" target="_blank">
-                                            <span rel="tooltip" title="{% flatblock "data_catalog_source_link_tooltip" %}">
-                                                {% flatblock "data_catalog_source_link" %}
-                                            </span>
-                                        </a>
-                                        {% else %}
-                                        <span class="link-not-available">
-                                            {% flatblock "data_catalog_source_link" %}
-                                        </span>
-                                        {% endif %}
+                                        <ul class="unstyled">
+                                            <li>
+                                                {% if layer.bookmark %}
+                                                <a href="{{layer.bookmark}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_view_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_view_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_view_link" %}
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if layer.map_tiles %}
+                                                <a href="{{layer.map_tiles}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_maptiles_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_maptiles_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_maptiles_link" %}
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if layer.kml %}
+                                                <a href="{{layer.kml}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_kml_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_kml_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_kml_link" %}
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if layer.data_download %}
+                                                <a href="{{layer.data_download}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_data_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_data_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_data_link" %}
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if layer.fact_sheet %}
+                                                <a href="{{layer.fact_sheet}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_factsheet_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_factsheet_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_factsheet_link" %}
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                               {% if layer.metadata %}
+                                                <a href="{{layer.metadata}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_metadata_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_metadata_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_metadata_link" %}
+                                                </span>
+                                                {% endif %}
+                                                {% if layer.source %}
+                                            </li>
+                                            <li>
+                                                <a href="{{layer.source}}" target="_blank">
+                                                    <span rel="tooltip" title="{% flatblock "data_catalog_source_link_tooltip" %}">
+                                                        {% flatblock "data_catalog_source_link" %}
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <span class="link-not-available">
+                                                    {% flatblock "data_catalog_source_link" %}
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 {% endif %}

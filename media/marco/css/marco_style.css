@@ -341,7 +341,10 @@ img + h3 {
 .theme .theme-context {
 	margin-bottom: 20px;
 }
-
+.theme li {
+	display: inline;
+	padding-left: 10px;
+}
 .link-not-available {
 	color: #aaa;
 }
@@ -494,7 +497,9 @@ img + h3 {
 	h3 {
 		font-size: 18px !important;
 	}
-
+	.theme li {
+		padding-left: 0px;
+	}
 }
 
 
