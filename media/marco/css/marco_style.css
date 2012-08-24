@@ -378,10 +378,10 @@ img + h3 {
     opacity: 1;
 }
 
-.layer-popover .layer-tooltip {
+/*.layer-popover .layer-tooltip {
   width: 380px;
 }
-
+*/
 #legend-wrapper {
   max-height: 80%;
   overflow-y: auto;
