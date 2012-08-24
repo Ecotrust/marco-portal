@@ -87,9 +87,9 @@ function layerModel(options, parent) {
             //    app.map.controls.splice(control_index, 1);
             //}
             
-            //the following prevents continued utf attribution, 
-            //is then re-created when layer is re-added (in app.addLayerToMap)
-            layer.utfcontrol.destroy();
+            //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
+            app.map.UTFControl.layers.splice( $.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
+            
         }
         
 		layer.active(false);
@@ -125,6 +125,11 @@ function layerModel(options, parent) {
                 layer.parent.activeSublayer(layer);
                 layer.parent.enabled(true);
                 layer.parent.enabledSublayer(layer);
+            }
+            
+            //add utfgrid if applicable
+            if ( layer.utfgrid ) {
+                app.map.UTFControl.layers.unshift(layer.utfgrid);
             }
         }
 	};
@@ -580,10 +585,11 @@ function viewModel() {
 			// also save the layer state
             app.setLayerZIndex(layer, index);
 			index--;
-            
+            /*
             if (layer.utfurl) { //remove utfcontrol for all layers (utfcontrol for top layer will be re-established below)
                 layer.utfcontrol.destroy();
             }
+            */
 		});
         // re-ordering map layers by z value
         app.map.layers.sort( function(a,b) 
@@ -593,14 +599,14 @@ function viewModel() {
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
-        
+        /*
         // will eventually want to adjust so that it is the top-most 'visible' layer (not simple the top-most layer)
         var topLayer = self.activeLayers()[0];        
         if (topLayer && topLayer.utfurl) { //ensure utfgrid is activated (when relevant) for top layer
             topLayer.utfcontrol = app.addUTFControl(topLayer);
             app.map.addControl(topLayer.utfcontrol); 
         }
-        
+        */
 		// update the url hash
 		app.updateUrl();
         
@@ -612,7 +618,6 @@ function viewModel() {
             }
         });
         app.map.selectFeatureControl.setLayer(app.map.vectorList);
-        
 	});
     
 	// do this stuff when the visible layers change

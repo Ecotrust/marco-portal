@@ -113,6 +113,51 @@ app.init = function () {
     map.addControl(map.selectFeatureControl);
     map.selectFeatureControl.activate();  
     
+    map.UTFControl = new OpenLayers.Control.UTFGrid({
+        //attributes: layer.attributes,
+        layers: [],
+        handlerMode: 'hover',
+        callback: function(infoLookup) {
+            app.viewModel.attributeTitle(false);
+            app.viewModel.attributeData(false);
+            if (infoLookup) {
+                var info, 
+                    msg;
+                //wish the following for loop wasn't needed (seems wrong when it's only going to loop once)
+                for (var idx in infoLookup) {
+                    info = infoLookup[idx];
+                    if (info && info.data) { 
+                        newmsg = '';
+                        var attributes;
+                        $.each(this.layers, function (layer_index, potential_layer) {
+                            var hasAllAttributes = true;
+                            $.each(potential_layer.layerModel.attributes, function (attr_index, attr_obj) {
+                                if ( !(attr_obj.field in info.data) ) {
+                                    hasAllAttributes = false;
+                                }
+                            });
+                            if (hasAllAttributes) {
+                                attributes = potential_layer.layerModel.attributes;
+                                return true;
+                            }
+                        });
+                        if (attributes) { 
+                            $.each(attributes, function(index, obj) {
+                                newmsg += info.data[obj.field];
+                            });
+                            app.viewModel.attributeTitle('');
+                            app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
+                        } 
+                    } /*else {
+                        app.viewModel.attributeTitle(false);
+                        app.viewModel.attributeData(false);
+                    }*/
+                }
+            } 
+            //document.getElementById("info").innerHTML = msg;
+        }
+    });
+    map.addControl(map.UTFControl);    
 
     app.map = map;
 }
@@ -124,6 +169,7 @@ app.addLayerToMap = function(layer) {
         };
         if (layer.utfurl) {
             layer.utfgrid = new OpenLayers.Layer.UTFGrid({
+                layerModel: layer,
                 url: layer.utfurl,
                 sphericalMercator: true,
                                  
@@ -134,8 +180,9 @@ app.addLayerToMap = function(layer) {
             //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
             app.map.addLayer(layer.utfgrid); 
             
-            layer.utfcontrol = app.addUTFControl(layer);
-            app.map.addControl(layer.utfcontrol); 
+            //app.map.UTFControl.layers = [layer.utfgrid];
+            //layer.utfcontrol = app.addUTFControl(layer);
+            //app.map.addControl(layer.utfcontrol); 
             	
             layer.layer = new OpenLayers.Layer.XYZ(
                 layer.name, 
@@ -226,44 +273,13 @@ app.addLayerToMap = function(layer) {
         //app.map.addLayer(layer.layer);  
         //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
     } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
-        layer.utfcontrol = app.addUTFControl(layer);
-        app.map.addControl(layer.utfcontrol); 
+        //layer.utfcontrol = app.addUTFControl(layer);
+        //app.map.addControl(layer.utfcontrol); 
     }
     layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
 }
 
-app.addUTFControl = function(layer) {
-    return new OpenLayers.Control.UTFGrid({
-        attributes: layer.attributes,
-        layers: [layer.utfgrid],
-        handlerMode: 'hover',
-        callback: function(infoLookup) {
-            app.viewModel.attributeTitle(false);
-            app.viewModel.attributeData(false);
-            if (infoLookup) {
-                var info, 
-                    msg;
-                //wish the following for loop wasn't needed (seems wrong when it's only going to loop once)
-                for (var idx in infoLookup) {
-                    info = infoLookup[idx];
-                    if (info && info.data) {  
-                        app.viewModel.attributeTitle('');
-                        newmsg = '';
-                        $.each(this.attributes, function(index, obj) {
-                            newmsg += info.data[obj.field];
-                        });
-                        app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
-                    } else {
-                        app.viewModel.attributeTitle(false);
-                        app.viewModel.attributeData(false);
-                    }
-                }
-            } 
-            //document.getElementById("info").innerHTML = msg;
-        }
-    });
-}
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it
