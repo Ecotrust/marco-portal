@@ -77,13 +77,18 @@ app.init = function () {
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
         var layer = e.feature.layer.layerModel;
-        if ( layer ) {
+        if ( layer.attributes.length ) {
             var attrs = layer.attributes,
-                title = layer.attributeTitle;
-            app.viewModel.attributeTitle(title);            
-            app.viewModel.attributeData($.map(attrs, function(attr) { 
-                return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
-            }));
+                title = e.feature.data[attrs[0].field],
+                text = [];
+            app.viewModel.attributeTitle(title); 
+            for (var i=1; i<attrs.length; i++) {
+                text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+            }
+            app.viewModel.attributeData(text);
+            //app.viewModel.attributeData($.map(attrs, function(attr) { 
+            //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
+            //}));
         }
     };
       
@@ -145,6 +150,24 @@ app.addLayerToMap = function(layer) {
             app.map.addLayer(layer.layer);  
             //app.addUTFAttribution(layer);
         } else if (layer.type === 'Vector') {
+            var styleMap = new OpenLayers.StyleMap( {
+                fillColor: layer.color,
+                fillOpacity: layer.fillOpacity,
+                //strokeDashStyle: "dash",
+                //strokeOpacity: 1,
+                strokeColor: layer.color,
+                strokeOpacity: .8,
+                //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+                //title: 'testing'
+                pointRadius: 2
+            });
+            if (layer.lookupField) {
+                var mylookup = {};
+                $.each(layer.lookupPairs, function(index, pair) { 
+                    mylookup[pair.value] = {strokeColor: pair.color}; 
+                });
+                styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
+            }
             layer.layer = new OpenLayers.Layer.Vector(
                 layer.name,
                 {
@@ -155,17 +178,7 @@ app.addLayerToMap = function(layer) {
                         url: layer.url,
                         format: new OpenLayers.Format.GeoJSON()
                     }),
-                    style: {
-                        fillColor: layer.color,
-                        fillOpacity: layer.fillOpacity,
-                        //strokeDashStyle: "dash",
-                        //strokeOpacity: 1,
-                        strokeColor: layer.color,
-                        strokeOpacity: .8,
-                        //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
-                        //title: 'testing'
-                        pointRadius: 2
-                    },
+                    styleMap: styleMap,                    
                     layerModel: layer
                 }
             );

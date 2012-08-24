@@ -77,6 +77,8 @@ class Layer(models.Model):
     attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
+    lookup_field = models.CharField(max_length=255, blank=True, null=True)
+    lookup_table = models.ManyToManyField('LookupInfo', blank=True, null=True)
     vector_color = models.CharField(max_length=7, blank=True, null=True)
     vector_fill = models.FloatField(blank=True, null=True)
     
@@ -114,6 +116,11 @@ class Layer(models.Model):
                 'attributes': [{'display': attr.display_name, 'field': attr.field_name} for attr in self.attribute_fields.all().order_by('order')]}
     
     @property
+    def serialize_lookups(self):
+        return {'field': self.lookup_field, 
+                'pairs': [{'value': lookup.value, 'color': lookup.color} for lookup in self.lookup_table.all()]}
+    
+    @property
     def toDict(self):
         sublayers = [
             {
@@ -129,6 +136,7 @@ class Layer(models.Model):
                 'description': layer.description,
                 'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes,
+                'lookups': self.serialize_lookups,
                 'color': self.vector_color,
                 'fill_opacity': self.vector_fill
             } 
@@ -147,6 +155,7 @@ class Layer(models.Model):
             'description': self.description,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,
+            'lookups': self.serialize_lookups,
             'color': self.vector_color,
             'fill_opacity': self.vector_fill
         }
@@ -159,6 +168,13 @@ class AttributeInfo(models.Model):
     
     def __unicode__(self):
         return unicode('%s' % (self.field_name)) 
+    
+class LookupInfo(models.Model):
+    value = models.CharField(max_length=255, blank=True, null=True)
+    color = models.CharField(max_length=7, blank=True, null=True)
+    
+    def __unicode__(self):
+        return unicode('%s' % (self.value)) 
     
         
 class DataNeed(models.Model):

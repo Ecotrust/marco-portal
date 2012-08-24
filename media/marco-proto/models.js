@@ -18,6 +18,8 @@ function layerModel(options, parent) {
     self.attributeTitle = options.attributes ? options.attributes['title'] : null;
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
     self.attributeEvent = options.attributes ? options.attributes['event'] : [];
+    self.lookupField = options.lookups ? options.lookups['field'] : null;
+    self.lookupPairs = options.lookups ? options.lookups['pairs'] : [];
     self.color = options.color || "#ee9900";
     self.fillOpacity = options.fill_opacity || 0.0;
     
@@ -483,7 +485,7 @@ function viewModel() {
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
         $.each(self.enabledLayers(), function(index, layer) {
-            if (layer.legend) {
+            if (layer.legend || layer.legendTitle) {
                 hasLegends = true;
             }
         });

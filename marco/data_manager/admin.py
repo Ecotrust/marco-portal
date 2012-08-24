@@ -13,11 +13,15 @@ class LayerAdmin(admin.ModelAdmin):
 class AttributeInfoAdmin(admin.ModelAdmin):
     list_display = ('display_name', 'field_name', 'order')
 
+class LookupInfoAdmin(admin.ModelAdmin):
+    list_display = ('value', 'color')
+
 class DataNeedAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
 
 admin.site.register(Theme, ThemeAdmin)
 admin.site.register(Layer, LayerAdmin)
 admin.site.register(AttributeInfo, AttributeInfoAdmin)
+admin.site.register(LookupInfo, LookupInfoAdmin)
 admin.site.register(DataNeed, DataNeedAdmin)
 
