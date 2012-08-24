@@ -51,6 +51,7 @@ hr {
 	padding-top: 35px;
 	font-size: 12px;
 	border-left: 1px solid #ccc;
+	-webkit-font-smoothing: antialiased;
 }
 .navbar .nav > li:hover a, .navbar .nav > li.active a, .navbar .nav > li:hover a:visited {
 	height: 41px;
@@ -125,7 +126,7 @@ hr {
 }
 #sidebar-nav {
 	position: fixed;
-	top: 110px;
+	top: 115px;
 }
 #sidebar-nav h3 {
 	margin-bottom: 5px;
