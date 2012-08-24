@@ -485,7 +485,7 @@ function viewModel() {
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
         $.each(self.enabledLayers(), function(index, layer) {
-            if (layer.legend) {
+            if (layer.legend || layer.legendTitle) {
                 hasLegends = true;
             }
         });
