@@ -1704,7 +1704,12 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [
-                9
+                9, 
+                18, 
+                19, 
+                20, 
+                21, 
+                22
             ], 
             "vector_fill": null, 
             "data_overview": "", 
@@ -2341,6 +2346,51 @@
             "field_name": "CORAL_PROB", 
             "display_name": "Coral Probability:  ", 
             "order": 2
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ORDER_", 
+            "display_name": "Order", 
+            "order": 2
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "SUBORDER", 
+            "display_name": "Suborder", 
+            "order": 3
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "FAMILY", 
+            "display_name": "Family", 
+            "order": 4
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "CITATION1", 
+            "display_name": "Citations", 
+            "order": 5
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "CITATION2", 
+            "display_name": "", 
+            "order": 6
         }
     }, 
     {
