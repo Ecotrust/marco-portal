@@ -121,38 +121,35 @@ app.init = function () {
             app.viewModel.attributeTitle(false);
             app.viewModel.attributeData(false);
             if (infoLookup) {
-                var info, 
-                    msg;
-                //wish the following for loop wasn't needed (seems wrong when it's only going to loop once)
-                for (var idx in infoLookup) {
-                    info = infoLookup[idx];
-                    if (info && info.data) { 
-                        newmsg = '';
-                        var attributes;
-                        $.each(this.layers, function (layer_index, potential_layer) {
-                            var hasAllAttributes = true;
-                            $.each(potential_layer.layerModel.attributes, function (attr_index, attr_obj) {
-                                if ( !(attr_obj.field in info.data) ) {
-                                    hasAllAttributes = false;
-                                }
-                            });
-                            if (hasAllAttributes) {
-                                attributes = potential_layer.layerModel.attributes;
-                                return true;
+                var attributes;
+                $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
+                    if (!attributes) { //only loop if attributes has not yet been populated
+                        for (var idx in infoLookup) {
+                            if (!attributes) { //only loop if attributes has not yet been populated
+                                var info = infoLookup[idx];
+                                if (info && info.data) { 
+                                    var newmsg = '',
+                                        hasAllAttributes = true;
+                                    $.each(potential_layer.attributes, function (attr_index, attr_obj) {
+                                        if ( !(attr_obj.field in info.data) ) {
+                                            hasAllAttributes = false;
+                                        }
+                                    });
+                                    if (hasAllAttributes) {
+                                        attributes = potential_layer.attributes;
+                                    }
+                                    if (attributes) { 
+                                        $.each(attributes, function(index, obj) {
+                                            newmsg += info.data[obj.field];
+                                        });
+                                        app.viewModel.attributeTitle('');
+                                        app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
+                                    } 
+                                } 
                             }
-                        });
-                        if (attributes) { 
-                            $.each(attributes, function(index, obj) {
-                                newmsg += info.data[obj.field];
-                            });
-                            app.viewModel.attributeTitle('');
-                            app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
-                        } 
-                    } /*else {
-                        app.viewModel.attributeTitle(false);
-                        app.viewModel.attributeData(false);
-                    }*/
-                }
+                        }
+                    }
+                });
             } 
             //document.getElementById("info").innerHTML = msg;
         }

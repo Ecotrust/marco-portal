@@ -43,11 +43,11 @@ function layerModel(options, parent) {
 
 	// is the layer in the active panel?
 	self.active = ko.observable(false);
-    // is the layer enabled?
-    self.enabled = ko.observable(false);
+    // is the layer visible?
+    self.visible = ko.observable(false);
 
     self.activeSublayer = ko.observable(false);
-    self.enabledSublayer = ko.observable(false);
+    self.visibleSublayer = ko.observable(false);
 
 	self.subLayers = [];
 
@@ -72,28 +72,16 @@ function layerModel(options, parent) {
         // remove from active layers
 		app.viewModel.activeLayers.remove(layer);
         // remove from visible layers
-        app.viewModel.enabledLayers.remove(layer);
+        app.viewModel.visibleLayers.remove(layer);
         
         //remove related utfgrid layer
         if ( layer.utfgrid ) {
-            //removing utfgrid and utfcontrol from app.map
-            //expected this to prevent continued utf attribution, but it still appears...
-            //var layer_index = app.map.layers.indexOf(layer.utfgrid);
-            //if ( layer_index !== -1 ) {
-            //    app.map.layers.splice(layer_index, 1);
-            //}
-            //var control_index = app.map.controls.indexOf(layer.utfcontrol);
-            //if ( control_index !== -1 ) {
-            //    app.map.controls.splice(control_index, 1);
-            //}
-            
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice( $.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
-            
         }
         
 		layer.active(false);
-        layer.enabled(false);
+        layer.visible(false);
         
         app.setLayerVisibility(layer, false);
         layer.opacity(.5);
@@ -101,7 +89,7 @@ function layerModel(options, parent) {
         if (layer.activeSublayer()) {
         	layer.activeSublayer().deactivateLayer();
         	layer.activeSublayer(false);
-            layer.enabledSublayer(false);
+            layer.visibleSublayer(false);
         }
         
 	};
@@ -114,17 +102,17 @@ function layerModel(options, parent) {
             // add it to the top of the active layers
             app.viewModel.activeLayers.unshift(layer);
             // add it to the visible layers
-            app.viewModel.enabledLayers.unshift(layer);
+            app.viewModel.visibleLayers.unshift(layer);
             // set the active flag
             layer.active(true);
-            layer.enabled(true);
+            layer.visible(true);
 
             // save reference in parent layer
             if (layer.parent) {
                 layer.parent.active(true);
                 layer.parent.activeSublayer(layer);
-                layer.parent.enabled(true);
-                layer.parent.enabledSublayer(layer);
+                layer.parent.visible(true);
+                layer.parent.visibleSublayer(layer);
             }
             
             //add utfgrid if applicable
@@ -137,21 +125,43 @@ function layerModel(options, parent) {
     // bound to click handler for layer visibility switching in Active panel
     self.toggleVisible = function() {
         var layer = this;
-        if ( layer.enabled() ) {
-            app.viewModel.enabledLayers.remove(layer);
+        if ( layer.visible() ) { //make invisilbe
+            app.viewModel.visibleLayers.remove(layer);
             
-            layer.enabled(false);
+            layer.visible(false);
             if (layer.parent) {
-                layer.parent.enabled(false);
+                layer.parent.visible(false);
             }
             app.setLayerVisibility(layer, false);
-        } else {
-            app.viewModel.enabledLayers.unshift(layer);
-            layer.enabled(true);
+            
+            //remove related utfgrid layer
+            if ( layer.utfgrid ) {
+                //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
+                app.map.UTFControl.layers.splice( $.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
+            }
+        } else { //make visible
+            //app.viewModel.enabledLayers.unshift(layer);
+            
+            layer.visible(true);
             if (layer.parent) {
-                layer.parent.enabled(true);
+                layer.parent.visible(true);
             }
             app.setLayerVisibility(layer, true);
+            
+            //re-ordering visible list to match activeLayers ordering
+            app.viewModel.visibleLayers.splice(0,app.viewModel.visibleLayers().length);
+            $.each(app.viewModel.activeLayers(), function (i, layer) {
+                if (layer.visible()) {
+                    app.viewModel.visibleLayers.push(layer);
+                }
+            });
+            
+            //add utfgrid if applicable
+            if ( layer.utfgrid ) {
+                //debugger;
+                app.map.UTFControl.layers.splice( $.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
+                //app.map.UTFControl.layers.unshift(layer.utfgrid);
+            }            
         }
     }
             
@@ -174,8 +184,8 @@ function layerModel(options, parent) {
 				// turn off the parent shell layer
 				layer.parent.active(false);
 				layer.parent.activeSublayer(false);
-				layer.parent.enabled(false);
-                layer.parent.enabledSublayer(false);
+				layer.parent.visible(false);
+                layer.parent.visibleSublayer(false);
 			}
 		} else {
 			// layer has a parent
@@ -187,13 +197,13 @@ function layerModel(options, parent) {
 				}
 				// turn on the parent
 				layer.parent.active(true);
-                layer.parent.enabled(true);
+                layer.parent.visible(true);
 			}
 			if (layer.subLayers.length) {
 				// layer has sublayer, activate first layer
 				layer.subLayers[0].activateLayer();
 				layer.active(true);
-                layer.enabled(true);
+                layer.visible(true);
 			} else {
 				// otherwise just activate the layer
 				layer.activateLayer();
@@ -210,7 +220,9 @@ function layerModel(options, parent) {
 		}
 		$(event.target).closest('tr').fadeOut('fast', function () {
 			app.viewModel.activeLayers.remove(layer);
+            app.viewModel.visibleLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current - 1, 0, layer);
+			app.viewModel.visibleLayers.splice(current - 1, 0, layer);
 		});
 	};
 
@@ -222,7 +234,9 @@ function layerModel(options, parent) {
 		}
 		$(event.target).closest('tr').fadeOut('fast', function () {
 			app.viewModel.activeLayers.remove(layer);
+			app.viewModel.visibleLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current + 1, 0, layer);
+			app.viewModel.visibleLayers.splice(current + 1, 0, layer);
 		});
 	};
 
@@ -421,7 +435,7 @@ function viewModel() {
 	self.activeLayers = ko.observableArray();
     
     // list of visible layermodels 
-    self.enabledLayers = ko.observableArray();
+    self.visibleLayers = ko.observableArray();
 
 	// reference to open themes in accordion
 	self.openThemes = ko.observableArray();
@@ -489,7 +503,7 @@ function viewModel() {
     };
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
-        $.each(self.enabledLayers(), function(index, layer) {
+        $.each(self.visibleLayers(), function(index, layer) {
             if (layer.legend || layer.legendTitle) {
                 hasLegends = true;
             }
@@ -617,11 +631,18 @@ function viewModel() {
                 app.map.vectorList.push(layer.layer);
             }
         });
+        
+        //re-ordering visible list to match activeLayers ordering
+        self.visibleLayers.splice(0,self.visibleLayers().length);
+        $.each(self.activeLayers(), function (i, layer) {
+            self.visibleLayers.push(layer);
+        });
+        
         app.map.selectFeatureControl.setLayer(app.map.vectorList);
 	});
     
 	// do this stuff when the visible layers change
-	self.enabledLayers.subscribe(function () {
+	self.visibleLayers.subscribe(function () {
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
