@@ -33,6 +33,8 @@
                             </script>
                         <![endif]-->
                         <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap.css">
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap-responsive.css">
+
                         <!-- marco stylesheet -->
                         <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.css">
                         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css">
@@ -42,13 +44,19 @@
                     
                     <body class="blog">
                         <header role="banner">
-                            <div class="navbar">
-                                <div class="navbar-inner navbar-narrow">
+                            <div class="navbar navbar-fixed-top">
+                                <div class="navbar-inner">
                                     <div class="container">
                                         <a href="/portal">
-                        <img src="/portal/wp-content/themes/marco/img/marco-logo.gif"/>
-                    </a>
-                                        <div class="pull-right">
+                                            <img src="/portal/wp-content/themes/marco/img/marco-logo.gif"/>
+                                        </a>
+                                         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                             <span class="icon-bar"></span>
+                                             <span class="icon-bar"></span>
+                                             <span class="icon-bar"></span>
+                                         </a>
+                                          
+                                        <div class="pull-right nav-collapse">
                                             <ul class="nav">
                                                 <li>
                                                     <a a href="/portal/news">News</a>
@@ -81,37 +89,39 @@
                                     {% block  main %}{% endblock %}
                                 </div>
                                     <div id="sidebar1" class="fluid-sidebar sidebar span2" role="complementary">
-                                        <div id="linkcat-5" class="widget widget_links">
-                                            <h3 class="widgettitle">
-                                                <a href="{{domain}}/portal/learn">Learn</a>
-                                            </h3>
-                                            <ul class='xoxo blogroll'>
-                                                <li><a href="{{domain}}/portal/learn/fishing">Fishing</a></li>
-                                                <li><a href="{{domain}}/portal/learn/maritime-industries">Maritime</a></li>
-                                                <li><a href="{{domain}}/portal/learn/energy">Renewable Energy</a></li>
-                                                <li><a href="{{domain}}/portal/learn/security">Security</a></li>
-                                            </ul>
-                                        </div>
-                                        <div id="linkcat-4" class="widget widget_links">
-                                            <h3 class="widgettitle">
-                                                <a href="{{domain}}/portal/explore">Explore</a>
-                                            </h3>
-                                            <ul class='xoxo blogroll'>
-                                                {% load flatblock_tags %}
-                                                <li><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
-                                                <li><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
-                                            </ul>
-                                        </div>
-                                        <div id="recent-posts-3" class="widget widget_recent_entries">
-                                            <h3 class="widgettitle">
-                                                <a href="{{domain}}/portal/visualize">Visualize</a>
-                                            </h3>
-                                            <ul>
-                                                <li><a href="/visualize" target="_blank">Marine Planner</a></li>
-                                                <li><a href="/portal/visualize#cartography">Cartography</a></li>
-                                                <li><a href="/portal/visualize#collaboration">Collaboration</a></li>
-                                                <li><a href="/portal/visualize#interactivity">Interactivity</a></li>
-                                            </ul>
+                                        <div id="sidebar-nav">
+                                            <div id="linkcat-5" class="widget widget_links">
+                                                <h3 class="widgettitle">
+                                                    <a href="{{domain}}/portal/learn">Learn</a>
+                                                </h3>
+                                                <ul class='xoxo blogroll'>
+                                                    <li><a href="{{domain}}/portal/learn/fishing">Fishing</a></li>
+                                                    <li><a href="{{domain}}/portal/learn/maritime-industries">Maritime</a></li>
+                                                    <li><a href="{{domain}}/portal/learn/energy">Renewable Energy</a></li>
+                                                    <li><a href="{{domain}}/portal/learn/security">Security</a></li>
+                                                </ul>
+                                            </div>
+                                            <div id="linkcat-4" class="widget widget_links">
+                                                <h3 class="widgettitle">
+                                                    <a href="{{domain}}/portal/explore">Explore</a>
+                                                </h3>
+                                                <ul class='xoxo blogroll'>
+                                                    {% load flatblock_tags %}
+                                                    <li><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
+                                                    <li><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
+                                                </ul>
+                                            </div>
+                                            <div id="recent-posts-3" class="widget widget_recent_entries">
+                                                <h3 class="widgettitle">
+                                                    <a href="{{domain}}/portal/visualize">Visualize</a>
+                                                </h3>
+                                                <ul>
+                                                    <li><a href="/visualize" target="_blank">Marine Planner</a></li>
+                                                    <li><a href="/portal/visualize#cartography">Cartography</a></li>
+                                                    <li><a href="/portal/visualize#collaboration">Collaboration</a></li>
+                                                    <li><a href="/portal/visualize#interactivity">Interactivity</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

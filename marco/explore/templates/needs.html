@@ -10,14 +10,10 @@
     <div class="span12 ">
         <h3>Data Layer Search</h3>
         <form class="form-search">
-            <div class="span10">
-                <input type="text" class="search-box span12" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
-            </div>
-            <div class="span2">
-                <button type="submit" class="btn">
-                    find
-                </button>
-            </div>
+            <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
+            <button type="submit" class="btn">
+                find
+            </button>
         </form>
     </div>
 </div>
