@@ -150,6 +150,24 @@ app.addLayerToMap = function(layer) {
             app.map.addLayer(layer.layer);  
             //app.addUTFAttribution(layer);
         } else if (layer.type === 'Vector') {
+            var styleMap = new OpenLayers.StyleMap( {
+                fillColor: layer.color,
+                fillOpacity: layer.fillOpacity,
+                //strokeDashStyle: "dash",
+                //strokeOpacity: 1,
+                strokeColor: layer.color,
+                strokeOpacity: .8,
+                //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+                //title: 'testing'
+                pointRadius: 2
+            });
+            if (layer.lookupField) {
+                var mylookup = {};
+                $.each(layer.lookupPairs, function(index, pair) { 
+                    mylookup[pair.value] = {strokeColor: pair.color}; 
+                });
+                styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
+            }
             layer.layer = new OpenLayers.Layer.Vector(
                 layer.name,
                 {
@@ -160,17 +178,7 @@ app.addLayerToMap = function(layer) {
                         url: layer.url,
                         format: new OpenLayers.Format.GeoJSON()
                     }),
-                    style: {
-                        fillColor: layer.color,
-                        fillOpacity: layer.fillOpacity,
-                        //strokeDashStyle: "dash",
-                        //strokeOpacity: 1,
-                        strokeColor: layer.color,
-                        strokeOpacity: .8,
-                        //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
-                        //title: 'testing'
-                        pointRadius: 2
-                    },
+                    styleMap: styleMap,                    
                     layerModel: layer
                 }
             );
