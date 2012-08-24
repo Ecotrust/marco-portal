@@ -23,20 +23,20 @@ hr {
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: 90px;
+        background-color: white;
 }
 .navbar-inner {
+	border: none !important;
 	background-color: white !important;
 	background-image: none !important;
 	padding-left: 0px;
 	padding-right: 0px;
 	margin-left: auto;
 	margin-right: auto;
+	filter: none;
 	box-shadow: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
-}
-.navbar-narrow {
-	width: 940px;
 }
 
 .navbar .nav > li a {
@@ -80,8 +80,8 @@ hr {
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: white;
 	color: #ccc;
-
 }
+
 
 .frame {
 	border: 1px solid #ccc;
@@ -93,7 +93,7 @@ hr {
 	background-color: #2d8998;
 	background-image: none;
 	color: white;
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-right: 0px;
 	margin-left: -5px;
 	border-radius: 30px;
@@ -108,6 +108,7 @@ hr {
 }
 
 .form-search input {
+	width: 60%;
 	background-color: #eee;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -127,14 +128,14 @@ hr {
 }
 
 #data .form-search .btn, .search-row .form-search .btn {
-	margin-left: -15px;
+	margin-left: -16px;
 	margin-top: 0px;
 }
 
-.search-row {
+/*.search-row {
 	margin: 20px 0px;
 }
-
+*/
 .showcase {
 	position: relative;
 }
@@ -458,4 +459,92 @@ img + h3 {
 
 .SimpleLayerSwitcher a.basey-off {
   display:block;
+}
+
+@media (max-width: 767px) {
+	.navbar .nav > li a {
+		width: 70px;
+	}
+	.nav-collapse form {
+		width: 100%;
+	}
+	.nav-collapse form input {
+		width: auto;
+		margin-left: 10px;
+	}
+	body {
+		margin-top: 0px;
+	}
+	#sidebar-nav {
+		position: relative;
+		top: 0px;
+	}
+	.nav-collapse {
+		width: 100%;
+	}
+	.nav-collapse .nav {
+		float: left;
+	}
+	.nav-collapse .nav > li {
+		float: left;
+	}
+	.showcase {
+		margin-top: 10px;
+	}
+	h3 {
+		font-size: 18px !important;
+	}
+
+}
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+	body {
+		margin-top: 0px;
+	}
+	#sidebar-nav {
+		position: relative;
+		top: 0px;
+	}
+	.nav-collapse {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+
+	.nav-collapse .nav {
+		float: left;
+	}
+	.nav-collapse .nav > li {
+		float: left;
+	}
+	.navbar form {
+		margin-right: 10px;
+	}
+	.showcase {
+		margin-top: 5px;
+	}
+	.showcase .caption {
+		top: 100px;
+	}
+
+}
+
+@media (max-width: 359px) {
+	.nav-collapse .nav > li {
+		width: 88px !important;
+	}
+	.navbar .nav > li a {
+		width: 60px !important;
+		font-size: 10px;
+	}
+	.navbar img {
+		width: 80%;
+	}
+	.nav-collapse .nav > li {
+		width: 98px;
+	}
+	.navbar .nav > li a {
+		width: auto;
+	}
+
 }

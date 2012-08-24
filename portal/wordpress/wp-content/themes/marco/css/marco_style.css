@@ -389,6 +389,37 @@ img {
 	.showcase {
 		margin-top: 10px;
 	}
+	.showcase .caption {
+		position: static;
+		border-radius: 10px;
+		padding-top: 1px;
+		padding-left: 10px;
+		width: auto;
+		height: auto;
+		padding-bottom: 10px;
+		margin-top: 10px;
+	}
+	.showcase .caption p {
+		font-size: 12px;
+		margin-top: -5px;
+	}
+	.showcase .caption h2{
+		font-size: 14px;
+	}
+	.showcase img, .post_content img.size-full {
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	.bugs {
+		margin-top: 0px
+	}
+	.theme.image .caption {
+		font-size: 28px;
+		bottom: 0px;
+	}
 }
 
 
