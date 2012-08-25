@@ -114,8 +114,8 @@
                                                                                 <span data-bind="visible: activeSublayer">
                                                                                     <span data-bind="text: activeSublayer().name"></span>
                                                                                 </span>
-                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && enabled(), 
-                                                                                                                                         'icon-check-empty': active() && ! enabled()}"></i>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && visible(), 
+                                                                                                                                         'icon-check-empty': active() && ! visible()}"></i>
                                                                             </button>
                                                                             <!-- /ko -->
                                                                             <!-- ko if: subLayers.length > 0 -->
@@ -127,8 +127,8 @@
                                                                                 <span data-bind="visible: activeSublayer">
                                                                                     <span data-bind="text: activeSublayer().name"></span>
                                                                                 </span>
-                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && enabled(), 
-                                                                                                                                         'icon-check-empty': active() && ! enabled()}"></i>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && visible(), 
+                                                                                                                                         'icon-check-empty': active() && ! visible()}"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
                                                                                 <li data-bind="foreach: subLayers">
@@ -182,10 +182,10 @@
                                         <tr>
                                             <td>
                                                 <div class="btn-group">
-                                                    <button class="btn btn-layer" data-bind="css: { 'active': enabled() }, click: toggleVisible">
+                                                    <button class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <i class="icon-align-justify"></i>
                                                         <span data-bind="text: name"></span>
-                                                        <i class="pull-right icon-large check" data-bind="css: { 'icon-check': enabled(), 'icon-check-empty': ! enabled() }"></i>
+                                                        <i class="pull-right icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i>
                                                     </button>
                                                     <button class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></button>
                                                     <button class="btn" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
@@ -271,7 +271,7 @@
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
                                         <div data-bind="foreach: activeLayers">
-                                          <div data-bind="if: enabled">
+                                          <div data-bind="if: visible">
                                             <div data-bind="if: legendTitle || legend">
                                                 <div style="padding-bottom: 10px;">
                                                     <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
