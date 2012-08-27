@@ -181,7 +181,14 @@
 <script>
     $(document).ready( function() {
         var layers = [],
-            layer_index = {};
+            layer_index = {},
+            search =  function(val) {
+                var layer = layer_index[val],
+                    theme_top = layer.layer.closest('.theme').offset().top;
+                $(window).scrollTop(theme_top);
+                layer.layer.closest('tr').effect("pulsate", {times:2 }, 500);
+            };
+
         $('.theme').each( function(index, theme) {
             var theme_name = $(theme).find('.theme-name').text();
             $(theme).find('.layer-name').each( function(index, layer) {
@@ -195,14 +202,22 @@
         $('.search-box').typeahead( {
             source: layers.sort()
         });
-        $('.form-search').submit( function(event) {
-            var layer = layer_index[$(this).find('input').val()]
-                theme_top = layer.layer.closest('.theme').offset().top;
+        $('.form-search').submit(function (event) {
             event.preventDefault();
-            $(window).scrollTop(theme_top);
-            layer.layer.closest('tr').effect("pulsate", {times:2 }, 500);
+            search($(this).find('input').val());
         });
         
+        $('input').on('keyup', function (event) {
+            event.preventDefault();    
+            if (event.which === 13) {
+                search($(this).val());
+            }
+        });
+
+        $('ul.typeahead').on('click', 'li', function () {
+            search($(this).text());
+        });
+
         $('.theme-name').on('hover', function() {
             var span = $(this),
                 name = span.data('name'),

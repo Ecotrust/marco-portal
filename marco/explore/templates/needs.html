@@ -76,7 +76,15 @@
 <script>
     $(document).ready( function() {
         var layers = [],
-            layer_index = {};
+            layer_index = {}, 
+            search = function (val) {
+               var layer = layer_index[val];
+               //$(layer.layer.closest('.accordion-body')).addClass('in');
+               $(layer.layer.closest('.accordion-body')).collapse('show');
+               layer.layer.find('h4').effect("pulsate", {times:2 }, 500);
+               setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top-100)}, 200);
+               //$('html, body').animate( { setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top)}, 200) }, 'slow');
+           };
         $('.data-need').each( function(index, need) {
             var data_name = $.trim($(need).find('h4').text());     
             layers.push(data_name);
@@ -87,16 +95,20 @@
         $('.search-box').typeahead( {
             source: layers.sort()
         });
-        $('.form-search').submit( function(event) {
-            var layer = layer_index[$(this).find('input').val()];
+        $('.form-search').submit(function (event) {
             event.preventDefault();
-            //$(layer.layer.closest('.accordion-body')).addClass('in');
-            $(layer.layer.closest('.accordion-body')).collapse('show');
-            layer.layer.find('h4').effect("pulsate", {times:2 }, 500);
-            setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top-100)}, 200);
-            //$('html, body').animate( { setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top)}, 200) }, 'slow');
+            search($(this).find('input').val());
+        });
+        $('input').on('keyup', function (event) {
+            event.preventDefault();    
+            if (event.which === 13) {
+                search($(this).val());
+            }
         });
         
+        $('ul.typeahead').on('click', 'li', function () {
+            search($(this).text());
+        });
     });
 </script>
 {% endblock %}
