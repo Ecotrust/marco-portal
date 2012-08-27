@@ -291,13 +291,13 @@
             "attribute_event": "mouseover", 
             "map_tiles": "", 
             "attribute_fields": [
-                2
+                23
             ], 
             "vector_fill": 0.4, 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": false, 
-            "lookup_field": null, 
+            "lookup_field": "", 
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ArtificialReefs/legend.png", 
             "data_status": "", 
             "data_source": "", 
@@ -2470,6 +2470,15 @@
             "field_name": "CORAL_PROB", 
             "display_name": "Coral Probability", 
             "order": 2
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "NAME", 
+            "display_name": "Reef Name", 
+            "order": 1
         }
     }, 
     {
