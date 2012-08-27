@@ -381,7 +381,7 @@ img + h3 {
 .image .caption {
 	position: absolute;
 	text-transform: uppercase;
-	width: 90%;
+	width: 80%;
 	font-size: 36px;
 	font-weight: bold;
 	line-height: .75;
