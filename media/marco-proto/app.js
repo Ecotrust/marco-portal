@@ -65,6 +65,11 @@ $(document).ready(function () {
 		});
 	});   
 
+	$('.icon-remove-sign').on('click', function (event) {
+		$(event.target).prev('input').val('').focus();
+	});
+
+
 });
 
 $(document).click(function (e) {

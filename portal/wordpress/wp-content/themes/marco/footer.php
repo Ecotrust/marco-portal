@@ -18,7 +18,6 @@
 		</div> <!-- end #container -->
 		
 		<!-- scripts are now optimized via Modernizr.load -->	
-		<script src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
 		<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap-transition.js"></script>
 		<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap-carousel.js"></script>
 
@@ -48,6 +47,10 @@
 					$(event.target).find('.text').hide();
 				}
 			);
+
+			$('.icon-remove-sign').on('click', function (event) {
+				$(event.target).prev('input').val('').focus();
+			});
 
 		});
 		</script>

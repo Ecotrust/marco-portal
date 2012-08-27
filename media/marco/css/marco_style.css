@@ -100,7 +100,7 @@ hr {
 	color: white;
 	margin-top: 0px;
 	margin-right: 0px;
-	margin-left: -5px;
+	margin-left: -7px;
 	border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
@@ -125,6 +125,11 @@ hr {
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
 }
+input + i.icon-remove-sign {
+	margin-left: -20px;
+	padding-right: 5px;
+	margin-top: 4px;
+}
 #sidebar-nav {
 	position: fixed;
 	top: 115px;
@@ -140,7 +145,7 @@ hr {
 }
 
 #data .form-search .btn, .search-row .form-search .btn {
-	margin-left: -16px;
+	margin-left: -7px;
 	margin-top: 0px;
 }
 
