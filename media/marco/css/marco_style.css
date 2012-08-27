@@ -100,7 +100,7 @@ hr {
 	color: white;
 	margin-top: 0px;
 	margin-right: 0px;
-	margin-left: -5px;
+	margin-left: -7px;
 	border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
@@ -125,6 +125,11 @@ hr {
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
 }
+input + i.icon-remove-sign {
+	margin-left: -20px;
+	padding-right: 5px;
+	margin-top: 4px;
+}
 #sidebar-nav {
 	position: fixed;
 	top: 115px;
@@ -140,7 +145,7 @@ hr {
 }
 
 #data .form-search .btn, .search-row .form-search .btn {
-	margin-left: -16px;
+	margin-left: -7px;
 	margin-top: 0px;
 }
 
@@ -160,7 +165,7 @@ hr {
 	/* RGBa with 0.6 opacity */
 	background-color: rgba(45, 137, 152, 0.65);
 	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##2d899800, endColorstr=#2d899800);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#2d899800, endColorstr=#2d899800);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	
@@ -187,6 +192,8 @@ hr {
 .showcase a {
 	color: white;
 }
+
+
 .bugs {
 	margin-top: 10px;
 	text-align: center;
@@ -374,7 +381,7 @@ img + h3 {
 .image .caption {
 	position: absolute;
 	text-transform: uppercase;
-	width: 90%;
+	width: 80%;
 	font-size: 36px;
 	font-weight: bold;
 	line-height: .75;
@@ -475,6 +482,8 @@ img + h3 {
 .SimpleLayerSwitcher a.basey-off {
   display:block;
 }
+
+
 
 @media (max-width: 767px) {
 	.navbar .nav > li a {

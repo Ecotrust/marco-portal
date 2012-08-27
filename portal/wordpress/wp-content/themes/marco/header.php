@@ -25,11 +25,15 @@
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/l/apple-touch-icon.png">
 		<!-- For everything else -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
+		
 		
 		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo get_template_directory_uri(); ?>/library/js/libs/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
 		
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+
 		<script src="<?php echo get_template_directory_uri(); ?>/library/js/modernizr.full.min.js"></script>
 		
 		<!-- media-queries.js (fallback) -->
@@ -92,6 +96,7 @@
 			        </ul>
 			        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
 			          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">
+			          <i class="icon-remove-sign icon-large"></i>	
 			          <button type="submit" class="btn">Search</button>
 			        </form>
 			      </div><!--/.nav-collapse -->

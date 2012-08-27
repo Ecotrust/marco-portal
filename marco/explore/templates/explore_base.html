@@ -72,6 +72,7 @@
                                             method="get">
                                                 <input type="text" class="input-medium search-box" name="s" id="search"
                                                 value="">
+                                                <i class="icon-remove-sign icon-large"></i> 
                                                 <button type="submit" class="btn">
                                                     Search
                                                 </button>
@@ -152,6 +153,13 @@
                             <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
                             <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
                             <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
+                            <script>
+                            $('.icon-remove-sign').on('click', function (event) {
+                                $(event.target).prev('input').val('').focus();
+                            });
+
+                            
+                            </script>
                             {% block javascript %}
                             {% endblock %}
                     </body>
