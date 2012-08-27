@@ -242,10 +242,10 @@
                                       </button></p> -->
                                   </div>
                                   <div id="vector-attribute-data">
-                                    <div data-bind="visible: vectorAttributeData" style="display: none">
+                                    <div data-bind="visible: attributeData" style="display: none">
                                       <dl>
-                                        <dt><span data-bind="text: vectorAttributeTitle"></span></dt>
-                                        <dl data-bind="foreach: vectorAttributeData">
+                                        <dt><span data-bind="text: attributeTitle()"></span></dt>
+                                        <dl data-bind="foreach: attributeData()">
                                             <dt data-bind="text: display"></dt>
                                             <dd data-bind="text: data"></dd>
                                         </dl>
@@ -259,6 +259,7 @@
                                         </table>-->
                                     </div>
                                   </div>
+                                  <!--
                                   <div id="utf-attribute-data">
                                     <div data-bind="visible: utfAttributeData" style="display: none">   
                                       <dl>
@@ -268,14 +269,9 @@
                                             <dd data-bind="text: data"></dd>
                                         </dl>
                                       </dl>
-                                        <!--<table data-bind="foreach: utfAttributeData">
-                                            <tr>
-                                                <td data-bind="text: display">
-                                                <td data-bind="text: data">
-                                            </tr>
-                                        </table>-->
                                     </div>
                                   </div>
+                                  -->
                                   <div id="error-overlay">
                                         <div data-bind="visible: error() === 'restoreState'" style="display:none">
                                             <div>

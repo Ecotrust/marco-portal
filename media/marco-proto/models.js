@@ -469,10 +469,12 @@ function viewModel() {
     self.activeLearnLink = ko.observable();
     
     // attribute data
-    self.vectorAttributeTitle = ko.observable(false);
-    self.vectorAttributeData = ko.observable(false);
-    self.utfAttributeTitle = ko.observable(false);
-    self.utfAttributeData = ko.observable(false);
+    //self.vectorAttributeTitle = ko.observable(false);
+    //self.vectorAttributeData = ko.observable(false);
+    //self.utfAttributeTitle = ko.observable(false);
+    //self.utfAttributeData = ko.observable(false);
+    self.attributeTitle = ko.observable(false);
+    self.attributeData = ko.observable(false);
 
 	// set the error type
 	// can be one of:
@@ -648,8 +650,26 @@ function viewModel() {
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
-    });    
+    });  
 
+    /*
+    // output single attribute (for now...)
+    self.vectorAttributeTitle.subscribe(function () {
+        if ( !self.utfAttributeTitle() ) {
+            self.attributeTitle(self.vectorAttributeTitle()); 
+            self.attributeData(self.vectorAttributeData());
+        }
+    });
+
+    // output single attribute (for now...)
+    self.utfAttributeTitle.subscribe(function () {
+        if ( !self.vectorAttributeTitle() ) {
+            self.attributeTitle(self.utfAttributeTitle()); 
+            self.attributeData(self.utfAttributeData());
+        }
+    });
+    */
+    
 	return self;
 }
 

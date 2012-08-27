@@ -5,6 +5,7 @@ from utils import get_domain
 class Theme(models.Model):
     display_name = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
+    header_image = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     thumbnail = models.URLField(max_length=255, blank=True, null=True)
 

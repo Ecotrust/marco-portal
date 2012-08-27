@@ -77,15 +77,16 @@ app.init = function () {
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
         var layer = e.feature.layer.layerModel;
+        //debugger;
         if ( layer.attributes.length ) {
             var attrs = layer.attributes,
                 title = layer.name,
                 text = [];
-            app.viewModel.vectorAttributeTitle(title); 
+            app.viewModel.attributeTitle(title); 
             for (var i=0; i<attrs.length; i++) {
                 text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
             }
-            app.viewModel.vectorAttributeData(text);
+            app.viewModel.attributeData(text);
             //app.viewModel.attributeData($.map(attrs, function(attr) { 
             //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
             //}));
@@ -94,32 +95,36 @@ app.init = function () {
       
     var clearout = function(e) {
         //document.getElementById("output").innerHTML = ""; 
-        app.viewModel.vectorAttributeTitle(false);
-        app.viewModel.vectorAttributeData(false);
+        app.viewModel.attributeTitle(false);
+        app.viewModel.attributeData(false);
     };  
     
     map.vectorList = [];
     map.selectFeatureControl = new OpenLayers.Control.SelectFeature(map.vectorList, {
-        hover: true,
-        //highlightOnly: true,
+        //hover: true,
+        highlightOnly: false,
         renderIntent: "temporary",
         cancelBubble: false,
         eventListeners: {
-            beforefeaturehighlighted: report,
+            //beforefeaturehighlighted: report,
             featurehighlighted: report,
+            //boxselectionend: report,
             featureunhighlighted: clearout
         }
     });
+    //map.selectFeatureControl.handlers['feature'].stopDown=false;
+    //map.selectFeatureControl.handlers['feature'].stopUp=false;
+    //debugger;
     map.addControl(map.selectFeatureControl);
     map.selectFeatureControl.activate();  
     
     map.UTFControl = new OpenLayers.Control.UTFGrid({
         //attributes: layer.attributes,
         layers: [],
-        handlerMode: 'hover',
+        handlerMode: 'click',
         callback: function(infoLookup) {
-            app.viewModel.utfAttributeTitle(false);
-            app.viewModel.utfAttributeData(false);
+            app.viewModel.attributeTitle(false);
+            app.viewModel.attributeData(false);
             if (infoLookup) {
                 var attributes;
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
@@ -139,11 +144,12 @@ app.init = function () {
                                         attributes = potential_layer.attributes;
                                     }
                                     if (attributes) { 
+                                        //debugger;
                                         $.each(attributes, function(index, obj) {
                                             newmsg += info.data[obj.field];
                                         });
-                                        app.viewModel.utfAttributeTitle(potential_layer.name);
-                                        app.viewModel.utfAttributeData([{'display': '', 'data': newmsg}]);
+                                        app.viewModel.attributeTitle(potential_layer.name);
+                                        app.viewModel.attributeData([{'display': potential_layer.attributeTitle, 'data': newmsg}]);
                                     } 
                                 } 
                             }
@@ -211,6 +217,7 @@ app.addLayerToMap = function(layer) {
                     mylookup[pair.value] = {strokeColor: pair.color}; 
                 });
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
+                //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
             }
             layer.layer = new OpenLayers.Layer.Vector(
                 layer.name,

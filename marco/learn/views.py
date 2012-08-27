@@ -6,7 +6,7 @@ from utils import get_domain
 import settings
 
 
-def data_layers(request, data_layer=None, template='data_layers.html'):
+def learn_page(request, theme_name=None, template='theme_page.html'):
     #themes_with_links = add_learn_links(themes)
     ordered_list = get_ordered_list()
     context = {'theme_list': ordered_list, 'domain': get_domain()}
