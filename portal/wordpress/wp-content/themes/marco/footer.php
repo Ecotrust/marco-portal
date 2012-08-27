@@ -31,6 +31,24 @@
 			$('#visualize-carousel').carousel({
 			  interval: 4500
 			});
+
+			$('.attrib').hover(
+				function (event) {
+					var $target = $(event.target), 
+						$text = $target.find('.text');
+					$text.show().position({
+						of: $target,
+						my: "right top",
+						at: "left bottom",
+						offset: "2px"
+					});
+						
+				},
+				function (event) {
+					$(event.target).find('.text').hide();
+				}
+			);
+
 		});
 		</script>
 		<!--[if lt IE 7 ]>

@@ -160,7 +160,7 @@ hr {
 	/* RGBa with 0.6 opacity */
 	background-color: rgba(45, 137, 152, 0.65);
 	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##2d899800, endColorstr=#2d899800);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#2d899800, endColorstr=#2d899800);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	
@@ -187,6 +187,8 @@ hr {
 .showcase a {
 	color: white;
 }
+
+
 .bugs {
 	margin-top: 10px;
 	text-align: center;
@@ -475,6 +477,8 @@ img + h3 {
 .SimpleLayerSwitcher a.basey-off {
   display:block;
 }
+
+
 
 @media (max-width: 767px) {
 	.navbar .nav > li a {
