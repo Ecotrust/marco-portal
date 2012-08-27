@@ -52,6 +52,7 @@ hr {
 	font-size: 12px;
 	border-left: 1px solid #ccc;
 	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
 }
 .navbar .nav > li:hover a, .navbar .nav > li.active a, .navbar .nav > li:hover a:visited {
 	height: 41px;
