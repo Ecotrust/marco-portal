@@ -241,15 +241,39 @@
                                           Coordinates &amp; Depth
                                       </button></p> -->
                                   </div>
-                                  <div id="attribute-data">
-                                    <div data-bind="visible: attributeData" style="display: none">
-                                        <span data-bind="text: attributeTitle"></span>
-                                        <table data-bind="foreach: attributeData">
+                                  <div id="vector-attribute-data">
+                                    <div data-bind="visible: vectorAttributeData" style="display: none">
+                                      <dl>
+                                        <dt><span data-bind="text: vectorAttributeTitle"></span></dt>
+                                        <dl data-bind="foreach: vectorAttributeData">
+                                            <dt data-bind="text: display"></dt>
+                                            <dd data-bind="text: data"></dd>
+                                        </dl>
+                                      </dl>
+                                        <!--<span data-bind="text: vectorAttributeTitle"></span>
+                                        <table data-bind="foreach: vectorAttributeData">
                                             <tr>
                                                 <td data-bind="text: display">
                                                 <td data-bind="text: data">
                                             </tr>
-                                        </table>
+                                        </table>-->
+                                    </div>
+                                  </div>
+                                  <div id="utf-attribute-data">
+                                    <div data-bind="visible: utfAttributeData" style="display: none">   
+                                      <dl>
+                                        <dt><span data-bind="text: utfAttributeTitle"></span></dt>
+                                        <dl data-bind="foreach: utfAttributeData">
+                                            <dt data-bind="text: display"></dt>
+                                            <dd data-bind="text: data"></dd>
+                                        </dl>
+                                      </dl>
+                                        <!--<table data-bind="foreach: utfAttributeData">
+                                            <tr>
+                                                <td data-bind="text: display">
+                                                <td data-bind="text: data">
+                                            </tr>
+                                        </table>-->
                                     </div>
                                   </div>
                                   <div id="error-overlay">

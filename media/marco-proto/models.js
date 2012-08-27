@@ -469,8 +469,10 @@ function viewModel() {
     self.activeLearnLink = ko.observable();
     
     // attribute data
-    self.attributeTitle = ko.observable(false);
-    self.attributeData = ko.observable(false);
+    self.vectorAttributeTitle = ko.observable(false);
+    self.vectorAttributeData = ko.observable(false);
+    self.utfAttributeTitle = ko.observable(false);
+    self.utfAttributeData = ko.observable(false);
 
 	// set the error type
 	// can be one of:

@@ -79,13 +79,13 @@ app.init = function () {
         var layer = e.feature.layer.layerModel;
         if ( layer.attributes.length ) {
             var attrs = layer.attributes,
-                title = e.feature.data[attrs[0].field],
+                title = layer.name,
                 text = [];
-            app.viewModel.attributeTitle(title); 
-            for (var i=1; i<attrs.length; i++) {
+            app.viewModel.vectorAttributeTitle(title); 
+            for (var i=0; i<attrs.length; i++) {
                 text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
             }
-            app.viewModel.attributeData(text);
+            app.viewModel.vectorAttributeData(text);
             //app.viewModel.attributeData($.map(attrs, function(attr) { 
             //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
             //}));
@@ -94,8 +94,8 @@ app.init = function () {
       
     var clearout = function(e) {
         //document.getElementById("output").innerHTML = ""; 
-        app.viewModel.attributeTitle(false);
-        app.viewModel.attributeData(false);
+        app.viewModel.vectorAttributeTitle(false);
+        app.viewModel.vectorAttributeData(false);
     };  
     
     map.vectorList = [];
@@ -118,8 +118,8 @@ app.init = function () {
         layers: [],
         handlerMode: 'hover',
         callback: function(infoLookup) {
-            app.viewModel.attributeTitle(false);
-            app.viewModel.attributeData(false);
+            app.viewModel.utfAttributeTitle(false);
+            app.viewModel.utfAttributeData(false);
             if (infoLookup) {
                 var attributes;
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
@@ -142,8 +142,8 @@ app.init = function () {
                                         $.each(attributes, function(index, obj) {
                                             newmsg += info.data[obj.field];
                                         });
-                                        app.viewModel.attributeTitle('');
-                                        app.viewModel.attributeData([{'display': '', 'data': newmsg}]);
+                                        app.viewModel.utfAttributeTitle(potential_layer.name);
+                                        app.viewModel.utfAttributeData([{'display': '', 'data': newmsg}]);
                                     } 
                                 } 
                             }
