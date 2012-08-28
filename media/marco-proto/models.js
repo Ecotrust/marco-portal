@@ -79,6 +79,10 @@ function layerModel(options, parent) {
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice( $.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
         }
+        if ( app.viewModel.attributeTitle() === layer.name ) {
+            app.viewModel.attributeTitle(false);
+            app.viewModel.attributeData(false);
+        }
         
 		layer.active(false);
         layer.visible(false);
@@ -138,6 +142,10 @@ function layerModel(options, parent) {
             if ( layer.utfgrid ) {
                 //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
                 app.map.UTFControl.layers.splice( $.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
+            }
+            if ( app.viewModel.attributeTitle() === layer.name ) {
+                app.viewModel.attributeTitle(false);
+                app.viewModel.attributeData(false);
             }
         } else { //make visible
             //app.viewModel.enabledLayers.unshift(layer);

@@ -145,11 +145,14 @@ app.init = function () {
                                     }
                                     if (attributes) { 
                                         //debugger;
+                                        var attribute_objs = [];
                                         $.each(attributes, function(index, obj) {
-                                            newmsg += info.data[obj.field];
+                                            //newmsg += info.data[obj.field];
+                                            attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
                                         });
                                         app.viewModel.attributeTitle(potential_layer.name);
-                                        app.viewModel.attributeData([{'display': potential_layer.attributeTitle, 'data': newmsg}]);
+                                        //app.viewModel.attributeData([{'display': potential_layer.attributeTitle, 'data': newmsg}]);
+                                        app.viewModel.attributeData(attribute_objs);
                                     } 
                                 } 
                             }
