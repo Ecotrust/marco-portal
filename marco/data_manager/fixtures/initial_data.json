@@ -92,7 +92,7 @@
             "lookup_table": [], 
             "utfurl": "", 
             "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Artificial_Reefs.zip", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/artificial_reefs.zip", 
             "metadata": "", 
             "vector_color": "#0070FF", 
             "attribute_event": "mouseover", 
