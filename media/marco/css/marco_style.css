@@ -170,7 +170,6 @@ input + i.icon-remove-sign {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#2d899800, endColorstr=#2d899800);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	
 	position: absolute;
 	width: 260px;
 	font-size: 20px;
@@ -391,6 +390,10 @@ img + h3 {
 	bottom: -3px;
 	left: 20px;
 	opacity: .7;
+}
+
+.theme.image .caption {
+	font-size: 56px;
 }
 
 .catalog-page {

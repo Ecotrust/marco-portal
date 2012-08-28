@@ -1,12 +1,17 @@
-{% extends 'learn_base.html' %} 
+{% extends 'explore_base.html' %} 
 {% block main %}
-
-<h2>MARCO Data Layers</h2>
-<p>
-	This is a list of data layers
-</p>
+<div class="row">
+	<div class="span12">
+		<div class="theme image">
+			<img src="http://placehold.it/1250x350">
+			<div class="caption">
+				{{ theme.name }}
+			</div>
+		</div>
+	</div>
+</div>
 <ul class="unstyled">
-	{% for layer in layers %}
+	{% for layer in theme.layers %}
 	<li><div class="theme">
 		<div>
 			<h3>
@@ -15,19 +20,7 @@
 			<p> 
 				{{ layer.description }}
 			</p>
-			<div class="well">
-				<div><strong>Source: </strong>{{ layer.source }}</div>
-				<div><strong>Status: </strong>{{ layer.status }}</div>
-				<div><strong>Contact: </strong>
-                    {% if layer.contact_email %}
-                        <a href="mailto:{{layer.contact_email}}">{{ layer.contact }}</a>
-                    {% else %}
-                        {{ layer.contact }}
-                    {% endif %}
-                </div>
-				<div><strong>Expected Date of Upload to Portal: </strong>{{ layer.expected_date }}</div>
-				<div><strong>Notes: </strong>{{ layer.notes }}</div>
-			</div>
+		
 		</div>
 	</div></li>
 	{% endfor themes%}

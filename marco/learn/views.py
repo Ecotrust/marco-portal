@@ -8,8 +8,9 @@ import settings
 
 def learn_page(request, theme_name=None, template='theme_page.html'):
     #themes_with_links = add_learn_links(themes)
-    ordered_list = get_ordered_list()
-    context = {'theme_list': ordered_list, 'domain': get_domain()}
+    theme = get_object_or_404(Theme, name = theme_name)
+    theme.layers = theme.layer_set.all().order_by('name')
+    context = {'theme': theme, 'domain': get_domain()}
     return render_to_response(template, RequestContext(request, context)) 
 
 def get_ordered_list():
