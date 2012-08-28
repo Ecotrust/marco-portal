@@ -119,7 +119,7 @@ class Layer(models.Model):
     @property
     def serialize_lookups(self):
         return {'field': self.lookup_field, 
-                'pairs': [{'value': lookup.value, 'color': lookup.color} for lookup in self.lookup_table.all()]}
+                'details': [{'value': lookup.value, 'color': lookup.color, 'dashstyle': lookup.dashstyle, 'fill': lookup.fill} for lookup in self.lookup_table.all()]}
     
     @property
     def toDict(self):
@@ -171,8 +171,18 @@ class AttributeInfo(models.Model):
         return unicode('%s' % (self.field_name)) 
     
 class LookupInfo(models.Model):
+    DASH_CHOICES = (
+        ('dot', 'dot'),
+        ('dash', 'dash'),
+        ('dashdot', 'dashdot'),
+        ('longdash', 'longdash'),
+        ('longdashdot', 'longdashdot'),
+        ('solid', 'solid')
+    )
     value = models.CharField(max_length=255, blank=True, null=True)
     color = models.CharField(max_length=7, blank=True, null=True)
+    dashstyle = models.CharField(max_length=11, choices=DASH_CHOICES, default='solid')
+    fill = models.BooleanField(default=False)
     
     def __unicode__(self):
         return unicode('%s' % (self.value)) 

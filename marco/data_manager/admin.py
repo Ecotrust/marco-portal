@@ -14,7 +14,7 @@ class AttributeInfoAdmin(admin.ModelAdmin):
     list_display = ('field_name', 'display_name', 'order')
 
 class LookupInfoAdmin(admin.ModelAdmin):
-    list_display = ('value', 'color')
+    list_display = ('value', 'color', 'dashstyle', 'fill')
 
 class DataNeedAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')

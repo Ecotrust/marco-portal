@@ -19,7 +19,7 @@ function layerModel(options, parent) {
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
     self.attributeEvent = options.attributes ? options.attributes['event'] : [];
     self.lookupField = options.lookups ? options.lookups['field'] : null;
-    self.lookupPairs = options.lookups ? options.lookups['pairs'] : [];
+    self.lookupDetails = options.lookups ? options.lookups['details'] : [];
     self.color = options.color || "#ee9900";
     self.fillOpacity = options.fill_opacity || 0.0;
     

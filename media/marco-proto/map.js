@@ -216,9 +216,14 @@ app.addLayerToMap = function(layer) {
             });
             if (layer.lookupField) {
                 var mylookup = {};
-                $.each(layer.lookupPairs, function(index, pair) { 
-                    mylookup[pair.value] = {strokeColor: pair.color}; 
+                $.each(layer.lookupDetails, function(index, details) {                  
+                    mylookup[details.value] = { strokeColor: details.color, 
+                                                strokeDashstyle: details.dashstyle, 
+                                                fill: details.fill,
+                                                fillColor: details.color, 
+                                                fillOpacity: 1 }; 
                 });
+                //console.dir(mylookup);
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
                 //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
             }
