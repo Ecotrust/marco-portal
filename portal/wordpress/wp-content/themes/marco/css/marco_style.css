@@ -121,6 +121,8 @@ input + i.icon-remove-sign {
 	margin-left: -20px;
 	padding-right: 5px;
 	margin-top: 4px;
+	opacity: .5;
+	filter: alpha(opacity=50);
 }
 .showcase {
 	position: relative;
