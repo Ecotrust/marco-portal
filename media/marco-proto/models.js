@@ -187,7 +187,6 @@ function layerModel(options, parent) {
                 layer.showSublayers(true);
             } else {
                 //turn off layer
-                console.dir(layer);
                 layer.deactivateLayer();
                 layer.showSublayers(false);
             }
