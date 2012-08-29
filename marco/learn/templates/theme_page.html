@@ -1,30 +1,50 @@
 {% extends 'explore_base.html' %} 
 {% block main %}
-<div class="row">
+<div class="row-fluid">
 	<div class="span12">
 		<div class="theme image">
-			<img src="http://placehold.it/1250x350">
+			{% if theme.header_image %}
+				<img src="{{theme.header_image}}"/>
+			{% else %}
+				<img src="http://placehold.it/1250x350">
+			{% endif %}
 			<div class="caption">
 				{{ theme.name }}
 			</div>
 		</div>
 	</div>
 </div>
-<ul class="unstyled">
-	{% for layer in theme.layers %}
-	<li><div class="theme">
-		<div>
-			<h3>
-			    {{ layer.name }}
-			</h3>
-			<p> 
-				{{ layer.description }}
-			</p>
-		
+<div class="row-fluid">
+	<div class="span12">
+		{% for layer in theme.layers %}
+		<div class="row theme">
+		    <div class="well">	
+				<h3>
+			    	{{ layer.name }}	
+			    </h3>
+			    <p class="pull-right">
+			    	<a class="btn btn" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
+			    	<a class="btn btn" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
+			    </p>
+			    <strong>source:</strong>
+	    		<p>{{ layer.data_source }}</p>
+	    		<strong>overview:</strong>
+	    		<p>{{ layer.data_overview }}</p>
+	    		<strong>notes:</strong>
+	    		<p>{{ layer.data_notes }}</p>
+		    </div>
 		</div>
-	</div></li>
-	{% endfor themes%}
-</ul>
+		{% endfor themes%}
+	</div>
+</div>
 <!-- endforeach theme -->
 
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function () {
+	$('[rel=tooltip]').tooltip();
+});
+</script>
 {% endblock %}

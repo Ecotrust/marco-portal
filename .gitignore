@@ -5,7 +5,8 @@ mediaroot/*
 deploy/*
 data/*
 env/*
-
+.vagrant
+portal/*.sql
 /marco-media
 /marco.log
 /grassdata

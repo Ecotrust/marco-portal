@@ -396,6 +396,10 @@ img + h3 {
 	font-size: 56px;
 }
 
+.theme .btn img {
+	height: 18px;
+}
+
 .catalog-page {
     padding-bottom: 10px;
     padding-top: 10px;

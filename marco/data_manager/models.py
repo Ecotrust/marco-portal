@@ -1,5 +1,6 @@
 from django.db import models
 from utils import get_domain
+from django.template.defaultfilters import slugify
 #from sorl.thumbnail import ImageField
 
 class Theme(models.Model):
@@ -96,6 +97,10 @@ class Layer(models.Model):
             return self.sublayers.all()[0]
         return self
     
+    @property
+    def slug(self):
+        return slugify(self.name)
+
     @property
     def learn_link(self):
         theme = self.themes.all()[0]
