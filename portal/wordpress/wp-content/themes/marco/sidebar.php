@@ -2,7 +2,7 @@
 	<div id="sidebar-nav">
 		<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/learn">Learn</a></h3>
 		<ul class="unstyled">
-			 <?php
+<!-- 			 <?php
 			// Set up the objects needed
 			//$my_wp_query = new WP_Query();
 			//$all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
@@ -26,7 +26,7 @@
 			echo "</ul>";
 			// echo what we get back from WP to the browser
 			//echo '<pre>'.print_r($learn_children,true).'</pre>';
-			?>
+			?> -->
         	<li><a href="/learn/fishing">Fishing</a></li>
         	<li><a href="/learn/maritime">Maritime</a></li>
         	<li><a href="/learn/energy">Renewable Energy</a></li>
