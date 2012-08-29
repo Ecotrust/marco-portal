@@ -103,9 +103,8 @@
                                                             <div class="accordion-inner">
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
-                                                                        <div class="btn-group btn-group-layer">
-                                                                            <!-- ko ifnot: subLayers.length > 0 -->
-                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
+                                                                        <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
+                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">                                                                                
                                                                                 <i class="icon-align-justify"></i>
                                                                                 <span data-bind="visible: ! activeSublayer()">
                                                                                     <span data-bind="text: name"></span>
@@ -116,19 +115,7 @@
                                                                                 <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                          'icon-check-empty': active() && ! visible()}"></i>
                                                                             </button>
-                                                                            <!-- /ko -->
                                                                             <!-- ko if: subLayers.length > 0 -->
-                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, event: {'hover': showDescription}" data-toggle="dropdown">                                                                                
-                                                                                <i class="icon-align-justify"></i>
-                                                                                <span data-bind="visible: ! activeSublayer()">
-                                                                                    <span data-bind="text: name"></span>
-                                                                                </span>
-                                                                                <span data-bind="visible: activeSublayer">
-                                                                                    <span data-bind="text: activeSublayer().name"></span>
-                                                                                </span>
-                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() && visible(), 
-                                                                                                                                         'icon-check-empty': active() && ! visible()}"></i>
-                                                                            </button>
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
                                                                                 <li data-bind="foreach: subLayers">
                                                                                     <a data-bind="click: toggleActive">

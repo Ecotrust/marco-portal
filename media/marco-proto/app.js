@@ -89,10 +89,7 @@ $(document).click(function (e) {
     //removing opacity popover from view
     var op_pvr_event = $(e.target).closest("#opacity-popover").length;
     var op_btn_event = $(e.target).closest(".opacity-button").length;
-    //console.log('opacity popover click: ' + op_pvr_event);
-    //console.log('opacity button click: ' + op_btn_event);
     if ( !op_pvr_event && !op_btn_event ) {
-        //console.log('hiding opacity popover');
         //$('#opacity-popover').hide();
         app.viewModel.hideOpacity();
     }

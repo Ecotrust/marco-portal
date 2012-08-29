@@ -231,7 +231,6 @@ app.addLayerToMap = function(layer) {
                                                 fillOpacity: 1,
                                                 externalGraphic: details.graphic }; 
                 });
-                //console.dir(mylookup);
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
                 //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
             }

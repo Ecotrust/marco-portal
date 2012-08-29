@@ -8,14 +8,16 @@ app.getState = function () {
     new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
         layers = $.map(app.viewModel.activeLayers(), function(layer) {
             return {id: layer.id, opacity: layer.opacity()};
-        });        
+        });   
+        
     return {
         location: {
             x: center.lon,
             y: center.lat,
             zoom: app.map.getZoom()
         },
-        activeLayers: layers.reverse()
+        activeLayers: layers.reverse(),
+        basemap: {name: app.map.baseLayer.name}
     }
 };
 
@@ -41,6 +43,10 @@ app.loadState = function(state) {
             
        });
     }
+    
+    if (state.basemap) {
+        app.map.setBaseLayer(app.map.getLayersByName(state.basemap.name)[0]);
+    }
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
@@ -56,6 +62,7 @@ app.loadStateFromHash = function (hash) {
 // update the hash
 app.updateUrl = function () {
     var state = app.getState();
+    
     // save the restore state
     if (app.saveStateMode) {
         app.restoreState = state;
