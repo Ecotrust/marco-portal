@@ -84,7 +84,9 @@ app.init = function () {
                 text = [];
             app.viewModel.attributeTitle(title); 
             for (var i=0; i<attrs.length; i++) {
-                text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                if ( e.feature.data[attrs[i].field] ) {
+                    text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                }
             }
             app.viewModel.attributeData(text);
             //app.viewModel.attributeData($.map(attrs, function(attr) { 
@@ -210,15 +212,26 @@ app.addLayerToMap = function(layer) {
                 //strokeOpacity: 1,
                 strokeColor: layer.color,
                 strokeOpacity: .8,
+                //strokeLinecap: "square",
                 //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                 //title: 'testing'
-                pointRadius: 2
+                pointRadius: 2,
+                externalGraphic: layer.graphic,
+                graphicWidth: 6,
+                graphicHeight: 6,
+                graphicOpacity: 1
             });
             if (layer.lookupField) {
                 var mylookup = {};
-                $.each(layer.lookupPairs, function(index, pair) { 
-                    mylookup[pair.value] = {strokeColor: pair.color}; 
+                $.each(layer.lookupDetails, function(index, details) {                  
+                    mylookup[details.value] = { strokeColor: details.color, 
+                                                strokeDashstyle: details.dashstyle, 
+                                                fill: details.fill,
+                                                fillColor: details.color, 
+                                                fillOpacity: 1,
+                                                externalGraphic: details.graphic }; 
                 });
+                //console.dir(mylookup);
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
                 //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
             }

@@ -83,6 +83,7 @@ class Layer(models.Model):
     lookup_table = models.ManyToManyField('LookupInfo', blank=True, null=True)
     vector_color = models.CharField(max_length=7, blank=True, null=True)
     vector_fill = models.FloatField(blank=True, null=True)
+    vector_graphic = models.CharField(max_length=255, blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -124,7 +125,7 @@ class Layer(models.Model):
     @property
     def serialize_lookups(self):
         return {'field': self.lookup_field, 
-                'pairs': [{'value': lookup.value, 'color': lookup.color} for lookup in self.lookup_table.all()]}
+                'details': [{'value': lookup.value, 'color': lookup.color, 'dashstyle': lookup.dashstyle, 'fill': lookup.fill, 'graphic': lookup.graphic} for lookup in self.lookup_table.all()]}
     
     @property
     def toDict(self):
@@ -144,7 +145,8 @@ class Layer(models.Model):
                 'attributes': self.serialize_attributes,
                 'lookups': self.serialize_lookups,
                 'color': self.vector_color,
-                'fill_opacity': self.vector_fill
+                'fill_opacity': self.vector_fill,
+                'graphic': self.vector_graphic
             } 
             for layer in self.sublayers.all()
         ]
@@ -163,7 +165,8 @@ class Layer(models.Model):
             'attributes': self.serialize_attributes,
             'lookups': self.serialize_lookups,
             'color': self.vector_color,
-            'fill_opacity': self.vector_fill
+            'fill_opacity': self.vector_fill,
+            'graphic': self.vector_graphic
         }
         return layers_dict
 
@@ -176,8 +179,19 @@ class AttributeInfo(models.Model):
         return unicode('%s' % (self.field_name)) 
     
 class LookupInfo(models.Model):
+    DASH_CHOICES = (
+        ('dot', 'dot'),
+        ('dash', 'dash'),
+        ('dashdot', 'dashdot'),
+        ('longdash', 'longdash'),
+        ('longdashdot', 'longdashdot'),
+        ('solid', 'solid')
+    )
     value = models.CharField(max_length=255, blank=True, null=True)
     color = models.CharField(max_length=7, blank=True, null=True)
+    dashstyle = models.CharField(max_length=11, choices=DASH_CHOICES, default='solid')
+    fill = models.BooleanField(default=False)
+    graphic = models.CharField(max_length=255, blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.value)) 
