@@ -173,11 +173,27 @@ function layerModel(options, parent) {
             }            
         }
     }
-            
+           
+    self.showSublayers = ko.observable(false);
     
     // bound to click handler for layer switching
 	self.toggleActive = function () {
 		var layer = this;
+        
+        //handle possible dropdown/sublayer behavior
+        if (layer.subLayers.length) {
+            if ( !layer.activeSublayer() ) { 
+                //show drop-down menu
+                layer.showSublayers(true);
+            } else {
+                //turn off layer
+                console.dir(layer);
+                layer.deactivateLayer();
+                layer.showSublayers(false);
+            }
+            return;
+        }
+        
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
 		app.viewModel.error(null);
