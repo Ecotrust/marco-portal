@@ -39,10 +39,14 @@ app.viewModel.loadLayers = function(data) {
 						layer: subLayer,
 						theme: theme
 					};
-				});
+				});  
+                layer.subLayers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
 			} 
 
 		});
+        //sort by name
+        theme.layers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
+        
 		self.themes.push(theme);
 	});
 	app.typeAheadSource = (function () {
