@@ -56,7 +56,7 @@ class Layer(models.Model):
     #tooltip
     description = models.TextField(blank=True, null=True)
     
-    #data description (updated fact sheet) page -- MIGHT REMOVE THESE -- USING WORDPRESS DB INSTEAD
+    #data description (updated fact sheet) (now the Learn pages)
     data_overview = models.TextField(blank=True, null=True)
     data_status = models.CharField(max_length=255, blank=True, null=True)
     data_source = models.CharField(max_length=255, blank=True, null=True)
@@ -141,7 +141,7 @@ class Layer(models.Model):
                 'parent': self.id,
                 'legend': layer.legend,
                 'legend_title': layer.legend_title,
-                'description': layer.description,
+                'description': layer.tooltip,
                 'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes,
                 'lookups': self.serialize_lookups,

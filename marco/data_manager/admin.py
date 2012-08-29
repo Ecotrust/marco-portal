@@ -8,7 +8,7 @@ class ThemeAdmin(admin.ModelAdmin):
 class LayerAdmin(admin.ModelAdmin):
     list_display = ('name', 'layer_type', 'url')
     search_fields = ['name', 'layer_type']
-    #ordering = ('name',)
+    ordering = ('name',)
 
 class AttributeInfoAdmin(admin.ModelAdmin):
     list_display = ('field_name', 'display_name', 'order')
