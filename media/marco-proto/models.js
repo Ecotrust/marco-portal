@@ -22,6 +22,7 @@ function layerModel(options, parent) {
     self.lookupDetails = options.lookups ? options.lookups['details'] : [];
     self.color = options.color || "#ee9900";
     self.fillOpacity = options.fill_opacity || 0.0;
+    self.graphic = options.graphic || null;
     
     // set target blank for all links
     if (options.description) {
