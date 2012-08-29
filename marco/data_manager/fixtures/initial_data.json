@@ -1,79 +1,86 @@
 [
     {
-        "pk": 8, 
+        "pk": 5, 
         "model": "data_manager.theme", 
         "fields": {
+            "display_name": "Security", 
+            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. ", 
+            "overview": null, 
+            "header_image": null, 
             "thumbnail": "", 
-            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. ", 
-            "display_name": "Maritime", 
-            "name": "maritime-industries", 
-            "header_image": null
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "", 
-            "description": "Marine Life description...", 
-            "display_name": "Marine Life", 
-            "name": "conservation", 
-            "header_image": null
+            "name": "security"
         }
     }, 
     {
         "pk": 1, 
         "model": "data_manager.theme", 
         "fields": {
-            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "description": "Administrative description...", 
             "display_name": "Administrative", 
-            "name": "administrative", 
-            "header_image": null
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "thumbnail": "", 
-            "description": "Recreation description...", 
-            "display_name": "Recreation", 
-            "name": "recreation", 
-            "header_image": null
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "data_manager.theme", 
-        "fields": {
+            "description": "Numerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide a regulatory context to help facilitate well-informed ocean planning decisions.", 
+            "overview": "Numerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide a regulatory context to help facilitate well-informed ocean planning decisions. In general, these boundary data are not intended for use at scales greater than 1:25,000.", 
+            "header_image": "", 
             "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n", 
-            "display_name": "Renewable Energy", 
-            "name": "energy", 
-            "header_image": null
+            "name": "administrative"
         }
     }, 
     {
         "pk": 4, 
         "model": "data_manager.theme", 
         "fields": {
-            "thumbnail": "", 
-            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. ", 
             "display_name": "Fishing", 
-            "name": "fishing", 
-            "header_image": null
+            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. ", 
+            "overview": "The Mid-Atlantic supports commercial and recreational fisheries and provides income, food, and enjoyment for millions of people. In 2010, commercial harvests totaled over 800 million pounds and the ex-vessel value was more than $500m. Important species include menhaden, sea scallop, surf clam, ocean quahog clam, summer flounder, lobster, squid, and striped bass. An estimated 2.6 million recreational anglers participated in 17 million saltwater fishing trips in 2009, mainly targeting striped bass, summer flounder, black seabass, tautog, scup, bluefish, drum, weakfish, spot, and croaker. Data compiled here represent fishing effort and are derived from National Marine Fisheries Service Fishing Vessel Trip Reports. Additional map layers indicating commercial and recreational fishing interests are currently being developed in close coordination with fishery stakeholders and management entities.", 
+            "header_image": "", 
+            "thumbnail": "", 
+            "name": "fishing"
         }
     }, 
     {
-        "pk": 5, 
+        "pk": 2, 
         "model": "data_manager.theme", 
         "fields": {
+            "display_name": "Marine Life", 
+            "description": "Marine Life description...", 
+            "overview": "The Mid-Atlantic region is well known for nutrient-rich and highly productive waters. Its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals.  ", 
+            "header_image": "", 
             "thumbnail": "", 
-            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. ", 
-            "display_name": "Security", 
-            "name": "security", 
-            "header_image": null
+            "name": "conservation"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "display_name": "Maritime", 
+            "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. ", 
+            "overview": "Mid-Atlantic maritime industries include shipping, transport, tourism, dredging, offshore sand mining, and some of the nation\u2019s busiest ports at New York-New Jersey, Philadelphia, Wilmington, Baltimore, and Norfolk. Selected Automatic Identification System data, collected by the Coast Guard in 2009, highlight frequently travelled shipping routes near port entrances and are an indication of vessel traffic patterns.", 
+            "header_image": "", 
+            "thumbnail": "", 
+            "name": "maritime-industries"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "display_name": "Renewable Energy", 
+            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n", 
+            "overview": "Offshore wind in the Mid-Atlantic holds the potential to produce more than 60 gigawatts of energy and ocean waves could generate 120,000 gigawatts hours of power every year. These renewable energy sources could help meet growing electricity demands in the region and may help to reduce carbon emissions. The information presented here should help to raise awareness of the benefits of renewable energy and assist decision makers manage resources effectively and minimize conflicts.", 
+            "header_image": "", 
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
+            "name": "energy"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "display_name": "Recreation", 
+            "description": "Recreation description...", 
+            "overview": null, 
+            "header_image": null, 
+            "thumbnail": "", 
+            "name": "recreation"
         }
     }, 
     {
@@ -1061,47 +1068,6 @@
         }
     }, 
     {
-        "pk": 14, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": null, 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Summer Flounder Landings", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
         "pk": 10, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1308,6 +1274,84 @@
         }
     }, 
     {
+        "pk": 34, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                8
+            ], 
+            "description": "These data represent cables that have been laid underwater or buried beneath the seabed. This layer was created to allow for visualization, querying and downloading of NOAA\u2019s Electronic Navigational Charts. \r\n", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.70916114226047&location%5By%5D=39.10826742702105&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=34&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": null, 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Submarine_Cables_Files/Submarine_Cables.kmz", 
+            "source": "http://ocs-spatial.ncd.noaa.gov/viewer.htm ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "#70338F", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": null, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/SubmarineCables/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Submarine Cables", 
+            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "", 
+            "bookmark": "", 
+            "vector_graphic": null, 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": null, 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Fathom Lines", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png", 
+            "arcgis_layers": null, 
+            "legend_title": null, 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 21, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1344,25 +1388,25 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
+                51, 
                 39, 
                 49, 
                 46, 
                 47, 
                 44, 
-                51, 
+                42, 
                 43, 
                 35, 
                 41, 
                 28, 
                 36, 
-                37, 
                 40, 
                 29, 
-                42, 
                 48, 
                 27, 
                 61, 
                 50, 
+                37, 
                 38, 
                 45
             ]
@@ -1492,58 +1536,19 @@
         }
     }, 
     {
-        "pk": 34, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "description": "These data represent cables that have been laid underwater or buried beneath the seabed. This layer was created to allow for visualization, querying and downloading of NOAA\u2019s Electronic Navigational Charts. \r\n", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.70916114226047&location%5By%5D=39.10826742702105&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=34&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": null, 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Submarine_Cables_Files/Submarine_Cables.kmz", 
-            "source": "http://ocs-spatial.ncd.noaa.gov/viewer.htm ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "#70338F", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": null, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/SubmarineCables/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Submarine Cables", 
-            "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 57, 
+        "pk": 50, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
-                4
+                2
             ], 
-            "description": "", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
             "bookmark": "", 
             "vector_graphic": null, 
             "kml": "", 
-            "source": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
             "lookup_table": [], 
             "utfurl": "", 
             "thumbnail": "", 
@@ -1556,17 +1561,19 @@
             "vector_fill": null, 
             "data_overview": "", 
             "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": null, 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Fathom Lines", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png", 
-            "arcgis_layers": null, 
-            "legend_title": null, 
-            "sublayers": []
+            "name": "Sperm Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
         }
     }, 
     {
@@ -1824,47 +1831,6 @@
         }
     }, 
     {
-        "pk": 50, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sperm Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 37, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2071,47 +2037,6 @@
         }
     }, 
     {
-        "pk": 13, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=13&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": null, 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Pelagic Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Pelagic Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
         "pk": 23, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2308,6 +2233,88 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": null, 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Summer Flounder Landings", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=13&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": null, 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Pelagic Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Pelagic Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
+            "sublayers": [
+                15
+            ]
         }
     }, 
     {
@@ -2937,57 +2944,6 @@
         }
     }, 
     {
-        "pk": 24, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Data under development", 
-            "name": "Cultural use areas", 
-            "expected_date": "June 2013", 
-            "notes": "Development and use of these data based on outcome of discussions between Tribal leaders and state and federal agency representatives.", 
-            "themes": [
-                1
-            ], 
-            "source": "Tribal leaders", 
-            "contact": "MARCO", 
-            "contact_email": "", 
-            "description": "Areas significant to Tribal Nations and other cultures."
-        }
-    }, 
-    {
-        "pk": 1, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n", 
-            "name": "Military, hazard and restricted areas", 
-            "expected_date": "Unknown ", 
-            "notes": "\r\n", 
-            "themes": [
-                5
-            ], 
-            "source": "USCG & DOD including ACOE, Navy, etc. ", 
-            "contact": "NOAA CSC  ", 
-            "contact_email": "", 
-            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
-        }
-    }, 
-    {
-        "pk": 15, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Data under development", 
-            "name": "Marine mammal migration paths", 
-            "expected_date": "Early 2014", 
-            "notes": "Multiple data collection efforts ongoing currently, including AMAPPS (funded by BOEM), BRI study (funded by DOE), and VA Aquarium study (funded by VACZM).", 
-            "themes": [
-                2
-            ], 
-            "source": "DOE grant to BRI. VA CZM Section 309 grant to VA Aquarium, others to be determined.", 
-            "contact": "Multiple contacts; see notes", 
-            "contact_email": "", 
-            "description": "Critical seasonal migratory pathways for large whales (toothed and baleen), dolphins and porpoises."
-        }
-    }, 
-    {
         "pk": 22, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -3036,6 +2992,57 @@
             "contact": "Rutgers CRSSA ", 
             "contact_email": "", 
             "description": "Spatial data interpreted and created using National Marine Fisheries Service Fishing Vessel Trip Report (VTR) databases summarized and mapped in consultation with commercial fishing stakeholders to illustrate the distribution, timing, and intensity of commercial fishing activity, with attributes for gear type and harvest species. Additional attributes collected through stakeholder engagement may include information about the specific socio-economic and cultural values of fishing locations to communities."
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Data under development", 
+            "name": "Cultural use areas", 
+            "expected_date": "June 2013", 
+            "notes": "Development and use of these data based on outcome of discussions between Tribal leaders and state and federal agency representatives.", 
+            "themes": [
+                1
+            ], 
+            "source": "Tribal leaders", 
+            "contact": "MARCO", 
+            "contact_email": "", 
+            "description": "Areas significant to Tribal Nations and other cultures."
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n", 
+            "name": "Military, hazard and restricted areas", 
+            "expected_date": "Unknown ", 
+            "notes": "\r\n", 
+            "themes": [
+                5
+            ], 
+            "source": "USCG & DOD including ACOE, Navy, etc. ", 
+            "contact": "NOAA CSC  ", 
+            "contact_email": "", 
+            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Data under development", 
+            "name": "Marine mammal migration paths", 
+            "expected_date": "Early 2014", 
+            "notes": "Multiple data collection efforts ongoing currently, including AMAPPS (funded by BOEM), BRI study (funded by DOE), and VA Aquarium study (funded by VACZM).", 
+            "themes": [
+                2
+            ], 
+            "source": "DOE grant to BRI. VA CZM Section 309 grant to VA Aquarium, others to be determined.", 
+            "contact": "Multiple contacts; see notes", 
+            "contact_email": "", 
+            "description": "Critical seasonal migratory pathways for large whales (toothed and baleen), dolphins and porpoises."
         }
     }, 
     {
