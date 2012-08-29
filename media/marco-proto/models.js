@@ -38,7 +38,13 @@ function layerModel(options, parent) {
     // opacity
     self.opacity = ko.observable(.5);
     self.opacity.subscribe(function (newOpacity) {
-    	self.layer.setOpacity(newOpacity);
+        if ( self.layer.CLASS_NAME === "OpenLayers.Layer.Vector" ) {
+            self.layer.styleMap.styles.default.defaultStyle.strokeOpacity = newOpacity;
+            self.layer.styleMap.styles.default.defaultStyle.graphicOpacity = newOpacity;
+            self.layer.redraw();
+        } else {
+            self.layer.setOpacity(newOpacity);
+        }
     });
 
 
