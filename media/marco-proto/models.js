@@ -383,7 +383,6 @@ function bookmarkModel($popover) {
 
 	// load state from bookmark
 	self.loadBookmark = function (bookmark) {
-    
         app.saveStateMode = false;
 		app.loadState(bookmark.state);
 
@@ -398,6 +397,7 @@ function bookmarkModel($popover) {
 		app.viewModel.error(null);
 		// restore the state
 		app.loadState(app.restoreState);
+        app.saveStateMode = true;
 	}
 
 	self.removeBookmark = function (bookmark) {
