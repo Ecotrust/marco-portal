@@ -211,15 +211,15 @@ app.addLayerToMap = function(layer) {
                 //strokeDashStyle: "dash",
                 //strokeOpacity: 1,
                 strokeColor: layer.color,
-                strokeOpacity: .8,
+                strokeOpacity: .5,
                 //strokeLinecap: "square",
                 //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                 //title: 'testing'
                 pointRadius: 2,
                 externalGraphic: layer.graphic,
-                graphicWidth: 6,
-                graphicHeight: 6,
-                graphicOpacity: 1
+                graphicWidth: 8,
+                graphicHeight: 8,
+                graphicOpacity: .5
             });
             if (layer.lookupField) {
                 var mylookup = {};
@@ -228,7 +228,7 @@ app.addLayerToMap = function(layer) {
                                                 strokeDashstyle: details.dashstyle, 
                                                 fill: details.fill,
                                                 fillColor: details.color, 
-                                                fillOpacity: 1,
+                                                fillOpacity: .5,
                                                 externalGraphic: details.graphic }; 
                 });
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
