@@ -642,7 +642,7 @@ function viewModel() {
         // re-ordering map layers by z value
         app.map.layers.sort( function(a,b) 
         { 
-            return a.getZIndex()-b.getZIndex() 
+            return a.getZIndex()-b.getZIndex(); 
         });
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
@@ -672,7 +672,9 @@ function viewModel() {
             self.visibleLayers.push(layer);
         });
         
+        //update attribute selection for vector layers 
         app.map.selectFeatureControl.setLayer(app.map.vectorList);
+        
 	});
     
 	// do this stuff when the visible layers change

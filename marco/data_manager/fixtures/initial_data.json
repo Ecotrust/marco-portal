@@ -2027,7 +2027,7 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Regional Ocean Councils", 
+            "name": "Regional Councils on the Ocean", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
