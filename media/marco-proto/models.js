@@ -109,11 +109,29 @@ function layerModel(options, parent) {
 		var layer = this;
         
         if (!layer.active()) {
-            app.addLayerToMap(layer);            
-            // add it to the top of the active layers
-            app.viewModel.activeLayers.unshift(layer);
-            // add it to the visible layers
-            app.viewModel.visibleLayers.unshift(layer);
+            app.addLayerToMap(layer);        
+
+            //changed the following so that 
+            //if the layer is an attributed vector layer, it will be added to the top of activeLayers
+            //otherwise, it will be added just before the first non-vector layer
+            if ( layer.type === "Vector" && layer.attributes.length) {
+                // add it to the top of the active layers
+                app.viewModel.activeLayers.unshift(layer);
+                // add it to the visible layers
+                app.viewModel.visibleLayers.unshift(layer);            
+            } else {
+                var index = 0;
+                $.each( app.viewModel.activeLayers(), function (i, layer) {
+                    if ( !(layer.type === "Vector" && layer.attributes.length) ) {
+                        return false;
+                    } else {
+                        index += 1;
+                    }
+                });
+                app.viewModel.activeLayers.splice(index, 0, layer);
+                app.viewModel.visibleLayers.splice(index, 0, layer); 
+            }
+            
             // set the active flag
             layer.active(true);
             layer.visible(true);
@@ -661,7 +679,7 @@ function viewModel() {
         // re-ordering vectorList
         app.map.vectorList = [];
         $.each(self.activeLayers(), function (i, layer) {
-            if ( layer.layer.CLASS_NAME === "OpenLayers.Layer.Vector" ) {
+            if ( layer.type === 'Vector' && layer.attributes.length ) {
                 app.map.vectorList.push(layer.layer);
             }
         });
