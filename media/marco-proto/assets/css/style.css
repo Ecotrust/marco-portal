@@ -130,7 +130,9 @@ body {
   text-align: left;
 }
 #data-accordion i.check {
-  padding-top: 4px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
 }
 
 #data-accordion .dropdown-menu {

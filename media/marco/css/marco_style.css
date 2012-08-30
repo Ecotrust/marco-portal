@@ -9,6 +9,9 @@ body {
 h1, h2, h3, h4 {
 	font-weight: normal;
 	color: #2d8998;
+	margin-bottom: 0px;
+	line-height: 1;
+
 }
 
 h2 {
