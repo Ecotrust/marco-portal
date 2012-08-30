@@ -114,9 +114,6 @@ app.init = function () {
             featureunhighlighted: clearout
         }
     });
-    //map.selectFeatureControl.handlers['feature'].stopDown=false;
-    //map.selectFeatureControl.handlers['feature'].stopUp=false;
-    //debugger;
     map.addControl(map.selectFeatureControl);
     map.selectFeatureControl.activate();  
     

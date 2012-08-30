@@ -5,7 +5,7 @@
         "fields": {
             "display_name": "Security", 
             "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. ", 
-            "overview": "", 
+            "overview": "The region is a busy corridor for commercial ship traffic and is home to the world\u2019s largest naval base as well as many other military installations and training grounds. The Coast Guard works and other agencies work to ensure that navigation routes for both commercial and defense vessels are accessible and safe. Data presented here are an overview of areas of potential hazard or restricted from public use and this information is important for spatial planning.", 
             "header_image": "/portal/assets/img/themes/security.jpg", 
             "thumbnail": "", 
             "name": "security"
@@ -16,9 +16,9 @@
         "model": "data_manager.theme", 
         "fields": {
             "display_name": "Recreation", 
-            "description": "Recreation description...", 
-            "overview": null, 
-            "header_image": null, 
+            "description": "The Mid-Atlantic boasts countless opportunities for entertainment and leisure activities and has flourishing travel, tourism, and outdoor recreation industries, many of which are focused on the region\u2019s natural features. ", 
+            "overview": "The Mid-Atlantic boasts countless opportunities for entertainment and leisure activities and has flourishing travel, tourism, and outdoor recreation industries, many of which are focused on the region\u2019s natural features. Visitors come from all over the country and around the world to enjoy the beaches, wetlands, and barrier islands where they surf, fish, kayak, and participate in organized or self-guided whale and bird watching tours. This information is useful to coastal and marine planners interested in accounting for current and future recreational use of natural resources.", 
+            "header_image": "", 
             "thumbnail": "", 
             "name": "recreation"
         }
@@ -1681,8 +1681,8 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
             "data_status": "", 
             "data_source": "", 
-            "data_notes": "", 
-            "name": "Regional Ocean Councils", 
+            "data_notes": "",
+            "name": "Regional Ocean Partnerships", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
@@ -2276,6 +2276,47 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "Map layers illustrating recreational fishing areas are being developed in consultation with recreational fishery stakeholders, to be added to Marine Planner by mid to late 2013.", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Recreational", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                56
+            ]
         }
     }, 
     {
