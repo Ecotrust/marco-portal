@@ -15,28 +15,28 @@
 		<br/>
 		<p>{{ theme.overview }}
 		{% for layer in theme.layers %}
-		<a name={{layer.slug}}></a>
-			<h3>
-		    	{{ layer.name }}	
-		    </h3>
-		    <p class="pull-right">
-		    	<a class="btn" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
-		    	<a class="btn" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
-		    </p>
-		    <p>{{layer.description}}</p>
-		    {% if layer.data_source %}
-		    	<strong>source:</strong>
-				<p>{{ layer.data_source }}</p>
-			{% endif %}	    			
-		    {% if layer.data_overview %}
-			<strong>overview:</strong>
-			<p>{{ layer.data_overview }}</p>
+			{% if layer.layer_type != "placeholder"  %}
+				<a name={{layer.slug}}></a>
+				<h3>
+			    	{{ layer.name }}	
+			    </h3>
+			    <p class="pull-right">
+			    	<a class="btn" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
+			    	<a class="btn" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
+			    </p>
+		        {% if layer.data_overview %}
+			    	<p>{{ layer.data_overview }}</p>
+		    	{% endif %}
+		    	{% if layer.data_source %}
+		    		<strong>source:</strong>
+					<p>{{ layer.data_source }}</p>
+				{% endif %}
+				{% if layer.data_notes %}
+					<strong>notes:</strong>
+					<p>{{ layer.data_notes }}</p>
+				{% endif %}
+				<br/>
 			{% endif %}
-			{% if layer.data_notes %}
-				<strong>notes:</strong>
-				<p>{{ layer.data_notes }}</p>
-			{% endif %}
-			<br/>
 		{% endfor %}
 	</div>
 </div>

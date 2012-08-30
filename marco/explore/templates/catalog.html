@@ -61,6 +61,7 @@
                                 {% else %}
                                 <tr>
                                     <td>
+                                        <a id="{{layer.slug}}"></a>
                                         <span class="layer-name catalog-tooltip" rel="popover" 
                                             data-name="{{layer.name}}" 
                                             data-thumbnail="{{layer.thumbnail}}"
@@ -188,6 +189,10 @@
                 $(window).scrollTop(theme_top);
                 layer.layer.closest('tr').effect("pulsate", {times:2 }, 500);
             };
+
+        if (window.location.hash) {
+            $(window).scrollTop($(window).scrollTop() - 100);
+        }
 
         $('.theme').each( function(index, theme) {
             var theme_name = $(theme).find('.theme-name').text();

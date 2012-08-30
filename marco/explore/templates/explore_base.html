@@ -96,10 +96,18 @@
                                                     <a href="{{domain}}/portal/learn">Learn</a>
                                                 </h3>
                                                 <ul class='xoxo blogroll'>
-                                                    <li><a href="{{domain}}/learn/fishing">Fishing</a></li>
-                                                    <li><a href="{{domain}}/learn/maritime-industries">Maritime</a></li>
-                                                    <li><a href="{{domain}}/learn/energy">Renewable Energy</a></li>
-                                                    <li><a href="{{domain}}/learn/security">Security</a></li>
+                                                    <li {% if theme.name == 'fishing' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/fishing">Fishing</a>
+                                                    </li>
+                                                    <li {% if theme.name == 'maritime-industries' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/maritime-industries">Maritime</a>
+                                                    </li>
+                                                    <li {% if theme.name == 'energy' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/energy">Renewable Energy</a>
+                                                    </li>
+                                                    <li {% if theme.name == 'security' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/security">Security</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div id="linkcat-4" class="widget widget_links">
@@ -122,6 +130,21 @@
                                                     <li><a href="/portal/visualize#collaboration">Collaboration</a></li>
                                                     <li><a href="/portal/visualize#interactivity">Interactivity</a></li>
                                                 </ul>
+                                            </div>
+                                            <div class="row-fluid feature-story">
+                                                <div class="span12">
+                                                    {% if theme.feature_image %}
+                                                        <img src="{{theme.feature_image}}">
+                                                    {% endif %}
+                                                    {% if theme.feature_excerpt %}
+                                                        <p>{{ theme.feature_excerpt }}</p>                      
+                                                    {% endif %}
+                                                    {% if theme.feature_link %}
+                                                    <div>
+                                                        <a href="" class="pull-right"><em>read more...</em></a>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -301,6 +301,8 @@ input + i.icon-remove-sign {
 	pointer-events: none;
    	cursor: default;
 }
+
+
 img + h3 {
 	margin-top: 10px;
 }

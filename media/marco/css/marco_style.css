@@ -140,6 +140,30 @@ input + i.icon-remove-sign {
 	margin-bottom: 5px;
 	line-height: 1;
 }
+#sidebar-nav ul a {
+	margin-left: 5px;
+}
+#sidebar-nav .active a {
+	margin-left: 3px;
+}
+#sidebar-nav .active {
+	border-left: 2px solid #2d8998;
+}
+
+#sidebar-nav .feature-story {
+	margin-top: 40px;
+}
+#sidebar-nav .feature-story img {
+	width: 100%;
+}
+#sidebar-nav .feature-story a{
+	color: #2d8998;
+}
+
+#sidebar-nav .feature-story p {
+	margin-bottom: 0px;
+}
+
 #data .form-search {
 	padding: 0px 0px 20px 10px;
 	margin-left: 20px;
