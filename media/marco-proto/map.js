@@ -248,8 +248,10 @@ app.addLayerToMap = function(layer) {
             //app.addVectorAttribution(layer);
             app.map.addLayer(layer.layer);  
             //selectFeatureControl = app.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0];
-            app.map.vectorList.unshift(layer.layer);
-            app.map.selectFeatureControl.setLayer(app.map.vectorList);
+            if (layer.attributes.length) {
+                app.map.vectorList.unshift(layer.layer);
+                app.map.selectFeatureControl.setLayer(app.map.vectorList);
+            }
         } else if (layer.type === 'ArcRest') {
             layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
                 layer.name, 
