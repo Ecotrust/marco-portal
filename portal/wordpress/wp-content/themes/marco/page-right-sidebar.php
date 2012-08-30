@@ -6,7 +6,7 @@ Template Name: Right Sidebar Page
 
 <?php get_header(); ?>
 			
-			<div id="content" class="row">
+			<div id="content" class="row-fluid">
 				<div id="main" class="span10" role="main">
 
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

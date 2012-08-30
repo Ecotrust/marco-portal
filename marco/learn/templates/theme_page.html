@@ -44,6 +44,30 @@
 
 {% endblock %}
 
+{% block sidebar %}
+	<div class="row-fluid feature-story">
+	    <div class="span12">
+	        {% if theme.feature_image %}
+	            <img src="{{theme.feature_image}}">
+	        {% endif %}
+	        {% if theme.feature_excerpt %}
+	            <p>{{ theme.feature_excerpt }}</p>                      
+	        {% endif %}
+	        {% if theme.feature_link %}
+	        <div>
+	            <a href="" class="pull-right"><em>read more...</em></a>
+	        </div>
+	        {% endif %}
+	    </div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<img src="/media/marco/img/themes/sheets/{{theme.name}}.png"/>
+		</div>
+	</div>
+{% endblock sidebar %}
+
+
 {% block javascript %}
 <script>
 $(document).ready(function () {

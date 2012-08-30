@@ -106,6 +106,7 @@ hr {
 }
 
 .form-search input {
+	width: 60%;
 	background-color: #eee;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -279,16 +280,16 @@ input + i.icon-remove-sign {
 
 #sidebar-nav {
 	position: fixed;
-	top: 110px;
+	top: 100px;
+	margin-top: 0px;
+	width: 186px;
 }
 
 .sidebar ul {
 	list-style: none;
 	margin-left: 0;
 }
-.sidebar h3 {
-	font-size: 18px;
-}
+
 .sidebar h3 a, .sidebar h3 a:visited {
 	color: #2d8998;
 }
@@ -296,19 +297,30 @@ input + i.icon-remove-sign {
 	color: #333;
 
 }
-.sidebar .active {
+.sidebar li a {
+	margin-left: 5px;
+}
+.sidebar h3 {
+	background-color: #ccc;
+	margin-bottom: 0px;
+	font-size: 18px;
+	padding: 5px;
 	font-weight: bold;
+	line-height: 1;
+
+}
+.sidebar .active {
+	border-left: 2px solid #2d8998;
 	pointer-events: none;
    	cursor: default;
-}
 
+}
 
 img + h3 {
 	margin-top: 10px;
 }
 
 .post_content img.size-full {
-	margin-top: 10px;
 	margin-bottom: 20px;
 	 border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -430,9 +442,6 @@ img {
 	}
 	.nav-collapse .nav > li {
 		float: left;
-	}
-	.showcase {
-		margin-top: 10px;
 	}
 	.showcase .caption {
 		position: static;

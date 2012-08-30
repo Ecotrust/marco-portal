@@ -85,7 +85,7 @@ Template Name: Homepage
 			  </div>
 			</div>
 
-			<!-- Example row of columns -->
+			<!-- Example mrow of columns -->
 			<div class="row bugs">
 			  <div class="span4">
 				<a href="<?php echo get_bloginfo('wpurl'); ?>/learn">

@@ -70,7 +70,7 @@
                                             </ul>
                                             <form class="form-search pull-right" action="/portal/"
                                             method="get">
-                                                <input type="text" class="input-medium search-box" name="s" id="search"
+                                                <input type="text" class="search-box" name="s" id="search"
                                                 value="">
                                                 <i class="icon-remove-sign icon-large"></i> 
                                                 <button type="submit" class="btn">
@@ -85,17 +85,17 @@
                         </header>
                         <!-- end header -->
                         <div class="container">
-                            <div id="content" class="clearfix row-fluid">
-                                <div id="main" class="span10 clearfix" role="main">
+                            <div id="content" class="row-fluid">
+                                <div id="main" class="span10" role="main">
                                     {% block  main %}{% endblock %}
                                 </div>
-                                    <div id="sidebar1" class="fluid-sidebar sidebar span2" role="complementary">
+                                    <div class="sidebar span2" role="complementary">
                                         <div id="sidebar-nav">
-                                            <div id="linkcat-5" class="widget widget_links">
-                                                <h3 class="widgettitle">
+                                            <div>
+                                                <h3>
                                                     <a href="{{domain}}/portal/learn">Learn</a>
                                                 </h3>
-                                                <ul class='xoxo blogroll'>
+                                                <ul>
                                                     <li {% if theme.name == 'fishing' %}class="active"{% endif %}>
                                                         <a href="{{domain}}/learn/fishing">Fishing</a>
                                                     </li>
@@ -110,11 +110,11 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div id="linkcat-4" class="widget widget_links">
-                                                <h3 class="widgettitle">
+                                            <div>
+                                                <h3>
                                                     <a href="{{domain}}/portal/explore">Explore</a>
                                                 </h3>
-                                                <ul class='xoxo blogroll'>
+                                                <ul>
                                                     {% load flatblock_tags %}
                                                     <li><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
                                                     <li><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
@@ -131,21 +131,8 @@
                                                     <li><a href="/portal/visualize#interactivity">Interactivity</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="row-fluid feature-story">
-                                                <div class="span12">
-                                                    {% if theme.feature_image %}
-                                                        <img src="{{theme.feature_image}}">
-                                                    {% endif %}
-                                                    {% if theme.feature_excerpt %}
-                                                        <p>{{ theme.feature_excerpt }}</p>                      
-                                                    {% endif %}
-                                                    {% if theme.feature_link %}
-                                                    <div>
-                                                        <a href="" class="pull-right"><em>read more...</em></a>
-                                                    </div>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
+                                            {% block sidebar %}
+                                            {% endblock sidebar %}
                                         </div>
                                     </div>
                                 </div>
