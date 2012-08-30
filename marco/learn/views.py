@@ -25,7 +25,7 @@ def add_learn_links(themes):
     context = []
     domain = get_domain()
     for theme in themes:
-        link = '%s/portal/learn/%s' %(domain, linkify(theme.name))
+        link = '%s/learn/%s' %(domain, linkify(theme.name))
         print link
         context.append({'theme': theme, 'learn_link': link})
     return context
