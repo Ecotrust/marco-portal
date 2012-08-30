@@ -129,10 +129,10 @@ body {
   width: 90%;
   text-align: left;
 }
-#data-accordion i.check {
+i.check {
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: 4px;
 }
 
 #data-accordion .dropdown-menu {
