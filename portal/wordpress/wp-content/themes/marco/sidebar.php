@@ -7,7 +7,7 @@
 		<? } ?>
 		<ul class="unstyled">
         	<li><a href="/learn/fishing">Fishing</a></li>
-        	<li><a href="/learn/maritime">Maritime</a></li>
+        	<li><a href="/learn/maritime-industries">Maritime</a></li>
         	<li><a href="/learn/energy">Renewable Energy</a></li>
         	<li><a href="/learn/security">Security</a></li>
 		</ul>

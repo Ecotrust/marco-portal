@@ -311,10 +311,10 @@ input + i.icon-remove-sign {
 	text-transform: uppercase;
 }
 
-.sidebar {
+/*.sidebar {
 	margin-top: 15px;
 }
-
+*/
 .sidebar ul {
 	list-style: none;
 	margin-left: 0;
@@ -577,10 +577,7 @@ img + h3 {
 	body {
 		margin-top: 0px;
 	}
-	#sidebar-nav {
-		position: relative;
-		top: 0px;
-	}
+
 	.nav-collapse {
 		width: 100%;
 		margin-bottom: 5px;
