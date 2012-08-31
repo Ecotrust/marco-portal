@@ -13,7 +13,7 @@ function layerModel(options, parent) {
     self.legend = options.legend || false;
     self.learn_link = options.learn_link || null;
     self.legendVisibility = ko.observable(false);
-    self.legendTitle = options.legend_title || false;
+    self.legendTitle = options.legend_title || self.name;
     self.themes = ko.observableArray();
     self.attributeTitle = options.attributes ? options.attributes['title'] : self.name;
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
@@ -79,7 +79,7 @@ function layerModel(options, parent) {
         // remove from active layers
 		app.viewModel.activeLayers.remove(layer);
         // remove from visible layers
-        app.viewModel.visibleLayers.remove(layer);
+        //app.viewModel.visibleLayers.remove(layer);
         
         //remove related utfgrid layer
         if ( layer.utfgrid ) {
@@ -118,7 +118,7 @@ function layerModel(options, parent) {
                 // add it to the top of the active layers
                 app.viewModel.activeLayers.unshift(layer);
                 // add it to the visible layers
-                app.viewModel.visibleLayers.unshift(layer);            
+                //app.viewModel.visibleLayers.unshift(layer);            
             } else {
                 var index = 0;
                 $.each( app.viewModel.activeLayers(), function (i, layer) {
@@ -129,7 +129,7 @@ function layerModel(options, parent) {
                     }
                 });
                 app.viewModel.activeLayers.splice(index, 0, layer);
-                app.viewModel.visibleLayers.splice(index, 0, layer); 
+                //app.viewModel.visibleLayers.splice(index, 0, layer); 
             }
             
             // set the active flag
@@ -148,6 +148,7 @@ function layerModel(options, parent) {
             if ( layer.utfgrid ) {
                 app.map.UTFControl.layers.unshift(layer.utfgrid);
             }
+            
         }
 	};
 
@@ -155,7 +156,7 @@ function layerModel(options, parent) {
     self.toggleVisible = function() {
         var layer = this;
         if ( layer.visible() ) { //make invisilbe
-            app.viewModel.visibleLayers.remove(layer);
+            //app.viewModel.visibleLayers.remove(layer);
             
             layer.visible(false);
             if (layer.parent) {
@@ -182,12 +183,13 @@ function layerModel(options, parent) {
             app.setLayerVisibility(layer, true);
             
             //re-ordering visible list to match activeLayers ordering
-            app.viewModel.visibleLayers.splice(0,app.viewModel.visibleLayers().length);
+            /*app.viewModel.visibleLayers.splice(0,app.viewModel.visibleLayers().length);
             $.each(app.viewModel.activeLayers(), function (i, layer) {
                 if (layer.visible()) {
                     app.viewModel.visibleLayers.push(layer);
                 }
             });
+            */
             
             //add utfgrid if applicable
             if ( layer.utfgrid ) {
@@ -274,9 +276,9 @@ function layerModel(options, parent) {
 		}
 		$(event.target).closest('tr').fadeOut('fast', function () {
 			app.viewModel.activeLayers.remove(layer);
-            app.viewModel.visibleLayers.remove(layer);
+            //app.viewModel.visibleLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current - 1, 0, layer);
-			app.viewModel.visibleLayers.splice(current - 1, 0, layer);
+			//app.viewModel.visibleLayers.splice(current - 1, 0, layer);
 		});
 	};
 
@@ -288,9 +290,9 @@ function layerModel(options, parent) {
 		}
 		$(event.target).closest('tr').fadeOut('fast', function () {
 			app.viewModel.activeLayers.remove(layer);
-			app.viewModel.visibleLayers.remove(layer);
+			//app.viewModel.visibleLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current + 1, 0, layer);
-			app.viewModel.visibleLayers.splice(current + 1, 0, layer);
+			//app.viewModel.visibleLayers.splice(current + 1, 0, layer);
 		});
 	};
 
@@ -488,8 +490,14 @@ function viewModel() {
 	// list of active layermodels
 	self.activeLayers = ko.observableArray();
     
-    // list of visible layermodels 
-    self.visibleLayers = ko.observableArray();
+    // list of visible layermodels in same order as activeLayers
+    self.visibleLayers = ko.computed( function() {
+        return $.map(self.activeLayers(), function (layer) {
+            if (layer.visible()) {
+                return layer;
+            }
+        });
+    });
 
 	// reference to open themes in accordion
 	self.openThemes = ko.observableArray();
@@ -552,13 +560,45 @@ function viewModel() {
     }
     
     
-    //show Legend by default
+    // is the legend panel visible?
     self.showLegend = ko.observable(false);
+    //self.activeLegendLayers = ko.observableArray();
+    
+    //app.viewModel.attributeData($.map(attrs, function(attr) { 
+    //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
+    //}));
+    self.activeLegendLayers = ko.computed( function() {
+        var layers = $.map(self.visibleLayers(), function(layer) {
+            if (layer.legend || layer.legendTitle) {
+                return layer;
+            }
+        });
+        console.dir(layers);
+        return layers;
+    });
+    /*
+    self.updateActiveLegendLayers = function() {
+        var legendLayers = [];
+        console.log('entering updateActiveLegendLayers');
+        $.each(self.visibleLayers(), function(index, layer) {
+            if (layer.legend || layer.legendTitle) {
+                legendLayers.push(layer);
+            }
+        });
+        self.activeLegendLayers(legendLayers);
+    };
+    */
+    self.legendButtonText = ko.computed( function() {
+        if ( self.showLegend() ) return "Hide Legend";
+        else return "Show Legend";
+    });
 
+    // toggle legend panel visibility
     self.toggleLegend = function () {
     	self.showLegend(! self.showLegend());
     	//app.map.render('map');
     };
+    // determine whether app is offering legends 
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
         $.each(self.visibleLayers(), function(index, layer) {
@@ -688,12 +728,6 @@ function viewModel() {
             if ( layer.type === 'Vector' && layer.attributes.length ) {
                 app.map.vectorList.push(layer.layer);
             }
-        });
-        
-        //re-ordering visible list to match activeLayers ordering
-        self.visibleLayers.splice(0,self.visibleLayers().length);
-        $.each(self.activeLayers(), function (i, layer) {
-            self.visibleLayers.push(layer);
         });
         
         //update attribute selection for vector layers 

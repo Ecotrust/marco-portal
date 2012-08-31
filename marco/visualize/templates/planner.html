@@ -215,8 +215,8 @@
                                   </div>
                                   <div id="map-buttons">
                                       <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
-                                          <span data-bind="visible: showLegend()"><i class="icon-list-ul"></i> Hide Legend</span>
-                                          <span data-bind="visible: ! showLegend()"><i class="icon-list-ul"></i> Show Legend</span>
+                                          <span data-bind="text: legendButtonText()"> <i class="icon-list-ul"></i> </span>
+                                          <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
                                          </button>
                                       </p>
                                       <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
@@ -279,9 +279,7 @@
                                 </div>
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
-                                        <div data-bind="foreach: activeLayers">
-                                          <div data-bind="if: visible">
-                                            <div data-bind="if: legendTitle || legend">
+                                        <div data-bind="foreach: activeLegendLayers">
                                                 <div style="padding-bottom: 10px;">
                                                     <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
                                                     <span data-bind="if: legend">
