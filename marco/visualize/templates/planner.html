@@ -227,13 +227,13 @@
                                          </button>
 
                                       </p>
-                                      <p><a id="bookmarks-a" class="btn pull-right" data-bind="click: showBookmarks">
+                                      <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
                                           <i class="icon-flag"></i>
                                           Bookmarks
                                           <span data-bind="visible: bookmarks.bookmarksList().length > 0">
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
-                                      </a></p>
+                                      </button></p>
                                     <!--   <p><a class="btn pull-right">
                                           Coordinates &amp; Depth
                                       </a></p> -->
@@ -408,10 +408,10 @@
                                 <form data-bind="submit: saveBookmark">
                                     <input type="text" data-bind="value: bookmarkName" class="input">
                                     <div class="pull-right">
-                                        <a data-bind="click: cancel" class="btn">cancel</a>
-                                        <a class="btn" type="submit">
+                                        <button data-bind="click: cancel" class="btn">cancel</button>
+                                        <button class="btn" type="submit">
                                             save
-                                        </a>
+                                        </button>
                                     </div>
                                 </form>
                             </div>

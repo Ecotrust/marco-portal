@@ -552,7 +552,9 @@ img + h3 {
   display:block;
 }
 
-
+.popover input {
+	width: 90%;
+}
 
 @media (max-width: 767px) {
 	.navbar .nav > li a {
