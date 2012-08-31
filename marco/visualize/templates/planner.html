@@ -103,7 +103,7 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
-                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">                                                                                
+                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
                                                                                 <i class="icon-align-justify"></i>
                                                                                 <span data-bind="visible: ! activeSublayer()">
                                                                                     <span data-bind="text: name"></span>
@@ -111,9 +111,9 @@
                                                                                 <span data-bind="visible: activeSublayer">
                                                                                     <span data-bind="text: activeSublayer().name"></span>
                                                                                 </span>
+                                                                                <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                                 <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                          'icon-check-empty': active() && ! visible()}"></i>
-                                                                                <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                             </a>
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
