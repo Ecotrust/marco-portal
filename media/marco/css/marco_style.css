@@ -400,12 +400,12 @@ img + h3 {
 	margin-top: -30px;
 	white-space: normal;
 }
-#active .btn-layer span {
-	margin-top: auto;
-	margin-bottom: auto;
-}
-#active > div {
+
+#active .btn-layer > div {
 	width: auto;
+	margin-top: 6px;
+	display: inline-block;
+	line-height: 1;
 }
 #data-accordion li.layer {
 	margin-bottom: 10px;
