@@ -148,6 +148,9 @@ input + i.icon-remove-sign {
 	padding: 5px;
 	font-weight: bold;
 	line-height: 1;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+
 
 }
 
