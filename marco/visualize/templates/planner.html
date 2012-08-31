@@ -114,6 +114,9 @@
                                                                                 </span>
                                                                                 <i class="icon-large check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                          'icon-check-empty': active() && ! visible()}"></i>
+                                                                                <!-- ko if: subLayers.length > 0 -->
+                                                                                <span class="pull-right" data-bind="style: {visibility: !active() ? 'visible': 'hidden'}"><span class="caret"></span></span>
+                                                                                <!-- /ko -->
                                                                             </button>
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
