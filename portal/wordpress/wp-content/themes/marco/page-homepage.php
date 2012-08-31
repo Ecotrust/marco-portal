@@ -17,7 +17,7 @@ Template Name: Homepage
 				  	    	<img class="span12" src="<?php echo get_template_directory_uri(); ?>/img/map-depth.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
-				  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
 				  	    	<div class="attrib">
 				  	    		<i class="icon-map-marker icon-white"></i>
@@ -28,7 +28,7 @@ Template Name: Homepage
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/dock.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
-				  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
 				  	    	<div class="attrib">
 				  	    		<i class="icon-map-marker icon-white"></i>
@@ -39,7 +39,7 @@ Template Name: Homepage
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/wave.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
-				  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
 				  	    	<div class="attrib">
 				  	    		<i class="icon-map-marker icon-white"></i>
@@ -50,7 +50,7 @@ Template Name: Homepage
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/barge.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
-				  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
 				  	    	<div class="attrib">
 				  	    		<i class="icon-map-marker icon-white"></i>
@@ -61,7 +61,7 @@ Template Name: Homepage
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/loaders.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
-				  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
 				  	    	<div class="attrib">
 				  	    		<i class="icon-map-marker icon-white"></i>
@@ -72,7 +72,7 @@ Template Name: Homepage
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/crab.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
-				  	    	  <p class="pull-right"><a href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
 				  	    	<div class="attrib">
 				  	    		<i class="icon-map-marker icon-white"></i>

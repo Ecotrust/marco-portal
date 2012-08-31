@@ -27,7 +27,7 @@
 		<? } ?>		
 		<ul class="unstyled">
 			<ul>
-                <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize" target="_blank">Marine Planner</a></li>
+                <li><a href="/visualize" target="_blank">Marine Planner</a></li>
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#cartography">Cartography</a></li>
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#collaboration">Collaboration</a></li>
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#interactivity">Interactivity</a></li>
