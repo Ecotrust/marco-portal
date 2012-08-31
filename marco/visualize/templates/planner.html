@@ -82,9 +82,9 @@
                                             <div class="span12">
                                                 <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
                                                 <i class="icon-remove-sign icon-large"></i> 
-                                                <button type="submit" class="btn">
+                                                <a type="submit" class="btn">
                                                     Search
-                                                </button>
+                                                </a>
                                             </div>
                                         </form>
                                     </div>
@@ -104,7 +104,7 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
-                                                                            <button class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">                                                                                
+                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">                                                                                
                                                                                 <i class="icon-align-justify"></i>
                                                                                 <span data-bind="visible: ! activeSublayer()">
                                                                                     <span data-bind="text: name"></span>
@@ -117,7 +117,7 @@
                                                                                 <!-- ko if: subLayers.length > 0 -->
                                                                                 <span class="pull-right" data-bind="style: {visibility: !active() ? 'visible': 'hidden'}"><span class="caret"></span></span>
                                                                                 <!-- /ko -->
-                                                                            </button>
+                                                                            </a>
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
                                                                                 <li data-bind="foreach: subLayers">
@@ -171,25 +171,32 @@
                                         <tr>
                                             <td>
                                                 <div class="btn-group">
-                                                    <button class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
-                                                        <i class="icon-align-justify"></i>
-                                                        <span data-bind="text: name"></span>
-                                                        <i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i>
-                                                    </button>
-                                                    <button class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></button>
-                                                    <button class="btn" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
-                                                        <i class="icon-circle-arrow-up">
-                                                        </i>
-                                                    </button>
-                                                    <button class="btn" data-bind="click: lowerLayer, css: { disabled: isBottomLayer($data) }">
-                                                        <i class="icon-circle-arrow-down">
-                                                        </i>
-                                                    </button>
-                                                    <button class="btn" data-bind="click: toggleActive">
-                                                        <i class="icon-remove">
-                                                        </i>
-                                                    </button>
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
+                                                        <!--<div>
+                                                            <i class="icon-align-justify"></i>
+                                                        </div>-->
+                                                        <div data-bind="text: name"></div>
+                                                        <div><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></div>
+                                                    </a>
+                                                    <div class="btn-group btn-group-vertical">
+                                                        <a class="btn btn-mini" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
+                                                            <i class="icon-circle-arrow-up">
+                                                            </i>
+                                                        </a>
+                                                        <a class="btn btn-mini" data-bind="click: lowerLayer, css: { disabled: isBottomLayer($data) }">
+                                                            <i class="icon-circle-arrow-down">
+                                                            </i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="btn-group btn-group-vertical">
+                                                        <a class="btn btn-mini" data-bind="click: toggleActive">
+                                                            <i class="icon-remove">
+                                                            </i>
+                                                        </a>
+                                                        <a class="btn  btn-mini opacity-a" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></a>
+                                                    </div>
                                                 </div>
+                                                
                                             </td>
                                         </tr>
                                     </tbody>
@@ -209,7 +216,7 @@
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
                                   <div id="basemaps">
-                                      <a id="basemap-button" class="btn pull-right" data-bind="click: showBasemaps">
+                                      <a id="basemap-a" class="btn pull-right" data-bind="click: showBasemaps">
                                           <i class="icon-globe"></i>
                                       </a>
                                   </div>
@@ -218,17 +225,18 @@
                                           <span data-bind="text: legendButtonText()"> <i class="icon-list-ul"></i> </span>
                                           <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
                                          </button>
+
                                       </p>
-                                      <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
+                                      <p><a id="bookmarks-a" class="btn pull-right" data-bind="click: showBookmarks">
                                           <i class="icon-flag"></i>
                                           Bookmarks
                                           <span data-bind="visible: bookmarks.bookmarksList().length > 0">
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
-                                      </button></p>
-                                    <!--   <p><button class="btn pull-right">
+                                      </a></p>
+                                    <!--   <p><a class="btn pull-right">
                                           Coordinates &amp; Depth
-                                      </button></p> -->
+                                      </a></p> -->
                                   </div>
                                   <div id="vector-attribute-data">
                                     <div data-bind="visible: attributeData" style="display: none">
@@ -266,12 +274,12 @@
                                             <div>
                                                 Bookmark restored.
                                                 <div class="pull-right">
-                                                    <button class="btn btn-mini" data-bind="click: clearError">
+                                                    <a class="btn btn-mini" data-bind="click: clearError">
                                                         Clear
-                                                    </button>
-                                                    <button class="btn btn-mini" data-bind="click: bookmarks.restoreState">
+                                                    </a>
+                                                    <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
                                                         Revert to previous?
-                                                    </button>
+                                                    </a>
                                                 </div>
                                           </div>
                                         </div>
@@ -355,7 +363,7 @@
                                                         </span>
                                                     </td>
                                                     <td class="tweet-cell">
-                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-bind="attr: {'data-url': $parent.getUrl($data)}"
+                                                        <a href="https://twitter.com/share" class="twitter-share-a" data-bind="attr: {'data-url': $parent.getUrl($data)}"
                                                         data-lang="en" data-size="medium" data-count="none">Tweet</a>
                                                         <script>
                                                             ! function(d, s, id) {
@@ -371,19 +379,19 @@
                                                     </td>
                                                     <!--
                                                     <td>
-                                                        <button class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
+                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
                                                             <a data-bind="attr: {href: $parent.getEmailHref($data)}">
                                                             <i class="icon-envelope">
                                                             </i>
                                                             </a>
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                     -->
                                                     <td>
-                                                        <button class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
+                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
                                                             <i class="icon-trash">
                                                             </i>
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -401,9 +409,9 @@
                                     <input type="text" data-bind="value: bookmarkName" class="input">
                                     <div class="pull-right">
                                         <a data-bind="click: cancel" class="btn">cancel</a>
-                                        <button class="btn" type="submit">
+                                        <a class="btn" type="submit">
                                             save
-                                        </button>
+                                        </a>
                                     </div>
                                 </form>
                             </div>
@@ -418,7 +426,7 @@
     <script src="assets/js/bootstrap-alert.js"></script>
    
     <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-a.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-collapse.js"></script>
      -->

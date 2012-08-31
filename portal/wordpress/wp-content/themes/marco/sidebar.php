@@ -23,11 +23,11 @@
 		<?php if ($post->post_name == 'visualize') { ?>
 			<h3 class="active"><a href="<?php echo get_bloginfo('wpurl'); ?>/explore">Visualize</a></h3>
 		<? }  else { ?>
-		<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/explore">Visualize</a></h3>
+		<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Visualize</a></h3>
 		<? } ?>		
 		<ul class="unstyled">
 			<ul>
-                <li><a href="/visualize" target="_blank">Marine Planner</a></li>
+                <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize" target="_blank">Marine Planner</a></li>
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#cartography">Cartography</a></li>
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#collaboration">Collaboration</a></li>
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#interactivity">Interactivity</a></li>

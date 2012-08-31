@@ -631,7 +631,7 @@ function viewModel() {
 	};
 	self.selectedLayer = ko.observable();
 	self.showOpacity = function (layer, event) {
-		var $button = $(event.target).closest('button'),
+		var $button = $(event.target).closest('a'),
 			$popover = $('#opacity-popover');
         
         self.selectedLayer(layer);

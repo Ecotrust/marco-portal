@@ -132,7 +132,7 @@ body {
 i.check {
   position: absolute;
   right: 10px;
-  top: 6px;
+  top: 12px;
 }
 
 #data-accordion .dropdown-menu {
