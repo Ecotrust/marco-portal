@@ -101,7 +101,7 @@ function layerModel(options, parent) {
         	layer.activeSublayer().deactivateLayer();
         	layer.activeSublayer(false);
             layer.visibleSublayer(false);
-        }
+        } 
         
 	};
 
@@ -206,7 +206,7 @@ function layerModel(options, parent) {
         
         //handle possible dropdown/sublayer behavior
         if (layer.subLayers.length) {
-            if ( !layer.activeSublayer() ) { 
+            if ( !layer.activeSublayer() ) {
                 //show drop-down menu
                 layer.showSublayers(true);
             } else {
@@ -236,7 +236,8 @@ function layerModel(options, parent) {
                 layer.parent.visibleSublayer(false);
 			}
 		} else {
-			// layer has a parent
+            // layer is not currently active
+			// if layer has a parent
 			if (layer.parent) {
 				// toggle sibling layers
 				if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
@@ -324,7 +325,7 @@ function layerModel(options, parent) {
 	// remove the layer dropdrown menu
 	self.closeMenu = function (layer, event) {
 		$(event.target).closest('.btn-group').removeClass('open');
-
+        layer.showSublayers(false);
 	}
 
 	return self;
