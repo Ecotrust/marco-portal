@@ -18,6 +18,8 @@ app.getState = function () {
         },
         activeLayers: layers.reverse(),
         basemap: {name: app.map.baseLayer.name}
+        //openThemes: app.viewModel.openThemes()
+        //and active tab
     }
 };
 
@@ -46,6 +48,10 @@ app.loadState = function(state) {
     
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap.name)[0]);
+    }
+    
+    if (state.openThemes) {
+        //app.viewModel.openThemes(state.openThemes);
     }
 
     // Google.v3 uses EPSG:900913 as projection, so we have to

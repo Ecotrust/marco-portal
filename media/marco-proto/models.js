@@ -78,8 +78,6 @@ function layerModel(options, parent) {
 		var layer = this;
         // remove from active layers
 		app.viewModel.activeLayers.remove(layer);
-        // remove from visible layers
-        //app.viewModel.visibleLayers.remove(layer);
         
         //remove related utfgrid layer
         if ( layer.utfgrid ) {
@@ -116,9 +114,7 @@ function layerModel(options, parent) {
             //otherwise, it will be added just before the first non-vector layer
             if ( layer.type === "Vector" && layer.attributes.length) {
                 // add it to the top of the active layers
-                app.viewModel.activeLayers.unshift(layer);
-                // add it to the visible layers
-                //app.viewModel.visibleLayers.unshift(layer);            
+                app.viewModel.activeLayers.unshift(layer);         
             } else {
                 var index = 0;
                 $.each( app.viewModel.activeLayers(), function (i, layer) {
@@ -129,7 +125,6 @@ function layerModel(options, parent) {
                     }
                 });
                 app.viewModel.activeLayers.splice(index, 0, layer);
-                //app.viewModel.visibleLayers.splice(index, 0, layer); 
             }
             
             // set the active flag
@@ -156,7 +151,6 @@ function layerModel(options, parent) {
     self.toggleVisible = function() {
         var layer = this;
         if ( layer.visible() ) { //make invisilbe
-            //app.viewModel.visibleLayers.remove(layer);
             
             layer.visible(false);
             if (layer.parent) {
@@ -174,28 +168,15 @@ function layerModel(options, parent) {
                 app.viewModel.attributeData(false);
             }
         } else { //make visible
-            //app.viewModel.enabledLayers.unshift(layer);
-            
             layer.visible(true);
             if (layer.parent) {
                 layer.parent.visible(true);
             }
-            app.setLayerVisibility(layer, true);
-            
-            //re-ordering visible list to match activeLayers ordering
-            /*app.viewModel.visibleLayers.splice(0,app.viewModel.visibleLayers().length);
-            $.each(app.viewModel.activeLayers(), function (i, layer) {
-                if (layer.visible()) {
-                    app.viewModel.visibleLayers.push(layer);
-                }
-            });
-            */
+            app.setLayerVisibility(layer, true);            
             
             //add utfgrid if applicable
             if ( layer.utfgrid ) {
-                //debugger;
                 app.map.UTFControl.layers.splice( $.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
-                //app.map.UTFControl.layers.unshift(layer.utfgrid);
             }            
         }
     }
@@ -276,9 +257,7 @@ function layerModel(options, parent) {
 		}
 		$(event.target).closest('tr').fadeOut('fast', function () {
 			app.viewModel.activeLayers.remove(layer);
-            //app.viewModel.visibleLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current - 1, 0, layer);
-			//app.viewModel.visibleLayers.splice(current - 1, 0, layer);
 		});
 	};
 
@@ -290,9 +269,7 @@ function layerModel(options, parent) {
 		}
 		$(event.target).closest('tr').fadeOut('fast', function () {
 			app.viewModel.activeLayers.remove(layer);
-			//app.viewModel.visibleLayers.remove(layer);
 			app.viewModel.activeLayers.splice(current + 1, 0, layer);
-			//app.viewModel.visibleLayers.splice(current + 1, 0, layer);
 		});
 	};
 
@@ -327,7 +304,6 @@ function layerModel(options, parent) {
             });
         }
     }
-    
 
 	// remove the layer dropdrown menu
 	self.closeMenu = function (layer, event) {
@@ -531,10 +507,6 @@ function viewModel() {
     self.activeLearnLink = ko.observable();
     
     // attribute data
-    //self.vectorAttributeTitle = ko.observable(false);
-    //self.vectorAttributeData = ko.observable(false);
-    //self.utfAttributeTitle = ko.observable(false);
-    //self.utfAttributeData = ko.observable(false);
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
 
@@ -562,32 +534,16 @@ function viewModel() {
     
     // is the legend panel visible?
     self.showLegend = ko.observable(false);
-    //self.activeLegendLayers = ko.observableArray();
     
-    //app.viewModel.attributeData($.map(attrs, function(attr) { 
-    //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
-    //}));
     self.activeLegendLayers = ko.computed( function() {
         var layers = $.map(self.visibleLayers(), function(layer) {
             if (layer.legend || layer.legendTitle) {
                 return layer;
             }
         });
-        console.dir(layers);
         return layers;
     });
-    /*
-    self.updateActiveLegendLayers = function() {
-        var legendLayers = [];
-        console.log('entering updateActiveLegendLayers');
-        $.each(self.visibleLayers(), function(index, layer) {
-            if (layer.legend || layer.legendTitle) {
-                legendLayers.push(layer);
-            }
-        });
-        self.activeLegendLayers(legendLayers);
-    };
-    */
+    
     self.legendButtonText = ko.computed( function() {
         if ( self.showLegend() ) return "Hide Legend";
         else return "Show Legend";
@@ -598,6 +554,7 @@ function viewModel() {
     	self.showLegend(! self.showLegend());
     	//app.map.render('map');
     };
+    
     // determine whether app is offering legends 
     self.hasActiveLegends = ko.computed( function() {
         var hasLegends = false;
@@ -703,6 +660,7 @@ function viewModel() {
             }
             */
 		});
+        
         // re-ordering map layers by z value
         app.map.layers.sort( function(a,b) 
         { 
@@ -711,14 +669,7 @@ function viewModel() {
         if ( ! self.hasActiveLegends() ) {
             self.showLegend(false);
         }
-        /*
-        // will eventually want to adjust so that it is the top-most 'visible' layer (not simple the top-most layer)
-        var topLayer = self.activeLayers()[0];        
-        if (topLayer && topLayer.utfurl) { //ensure utfgrid is activated (when relevant) for top layer
-            topLayer.utfcontrol = app.addUTFControl(topLayer);
-            app.map.addControl(topLayer.utfcontrol); 
-        }
-        */
+        
 		// update the url hash
 		app.updateUrl();
         
@@ -742,24 +693,6 @@ function viewModel() {
         }
     });  
 
-    /*
-    // output single attribute (for now...)
-    self.vectorAttributeTitle.subscribe(function () {
-        if ( !self.utfAttributeTitle() ) {
-            self.attributeTitle(self.vectorAttributeTitle()); 
-            self.attributeData(self.vectorAttributeData());
-        }
-    });
-
-    // output single attribute (for now...)
-    self.utfAttributeTitle.subscribe(function () {
-        if ( !self.vectorAttributeTitle() ) {
-            self.attributeTitle(self.utfAttributeTitle()); 
-            self.attributeData(self.utfAttributeData());
-        }
-    });
-    */
-    
 	return self;
 }
 
