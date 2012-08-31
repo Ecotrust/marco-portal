@@ -134,6 +134,11 @@ app.init = function () {
                                 if (info && info.data) { 
                                     var newmsg = '',
                                         hasAllAttributes = true;
+                                    // if info.data has all the attributes we're looking for
+                                    // we'll accept this layer as the attribution layer 
+                                    if ( ! potential_layer.attributes.length ) {
+                                        hasAllAttributes = false;
+                                    }
                                     $.each(potential_layer.attributes, function (attr_index, attr_obj) {
                                         if ( !(attr_obj.field in info.data) ) {
                                             hasAllAttributes = false;
