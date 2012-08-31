@@ -395,14 +395,12 @@ img + h3 {
 #active .btn-layer {
 	width: 65%;
 	text-align: left;
-	font-size: 16px;
 	height: 33px;
 	margin-top: -30px;
 	white-space: normal;
 }
 
 #active .btn-layer > div {
-	width: auto;
 	margin-top: 6px;
 	display: inline-block;
 	line-height: 1;
@@ -583,6 +581,7 @@ img + h3 {
 	.theme li {
 		padding-left: 0px;
 	}
+
 }
 
 
@@ -614,6 +613,10 @@ img + h3 {
 	#active .btn-layer {
 		width: 45%;
 		font-size: 12px;
+	}
+	.form-search input {
+		width: 55%;
+		margin-left: -18px;
 	}
 }
 

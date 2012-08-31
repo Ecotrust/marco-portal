@@ -134,7 +134,9 @@ i.check {
   right: 10px;
   top: 12px;
 }
-
+#data-accordion i.check {
+  top: 6px;
+}
 #data-accordion .dropdown-menu {
   right: 26px;
   max-height: 100px;
