@@ -23,7 +23,7 @@
 		<?php if ($post->post_name == 'visualize') { ?>
 			<h3 class="active"><a href="<?php echo get_bloginfo('wpurl'); ?>/explore">Visualize</a></h3>
 		<? }  else { ?>
-		<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/explore">Visualize</a></h3>
+		<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">Visualize</a></h3>
 		<? } ?>		
 		<ul class="unstyled">
 			<ul>
