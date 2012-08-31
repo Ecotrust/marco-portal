@@ -207,8 +207,13 @@ function layerModel(options, parent) {
         //handle possible dropdown/sublayer behavior
         if (layer.subLayers.length) {
             if ( !layer.activeSublayer() ) {
-                //show drop-down menu
-                layer.showSublayers(true);
+                if ( !layer.showSublayers() ) {
+                    //show drop-down menu
+                    layer.showSublayers(true);
+                } else {
+                    //hide drop-down menu
+                    layer.showSublayers(false);
+                }
             } else {
                 //turn off layer
                 layer.deactivateLayer();
