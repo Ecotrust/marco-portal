@@ -188,6 +188,7 @@
                     theme_top = layer.layer.closest('.theme').offset().top;
                 $(window).scrollTop(theme_top);
                 layer.layer.closest('tr').effect("pulsate", {times:2 }, 500);
+                setTimeout(function() {$(window).scrollTop(layer.layer.closest('tr').offset().top-300)}, 200);
             };
 
         if (window.location.hash) {
