@@ -16,6 +16,7 @@
 		<p>{{ theme.overview }}
 		{% for layer in theme.layers %}
 			{% if layer.layer_type != "placeholder"  %}
+			<div class="clearfix">
 				<a name={{layer.slug}}></a>
 				<h3>
 			    	{{ layer.name }}	
@@ -35,7 +36,8 @@
 					<strong>notes:</strong>
 					<p>{{ layer.data_notes }}</p>
 				{% endif %}
-				<br/>
+			</div>
+			<br/>
 			{% endif %}
 		{% endfor %}
 	</div>
