@@ -1,5 +1,20 @@
 [
     {
+        "pk": 2, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "feature_link": null, 
+            "display_name": "Marine Life", 
+            "description": "Marine Life description...", 
+            "overview": "The Mid-Atlantic region is well known for nutrient-rich and highly productive waters. Its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals.  ", 
+            "feature_image": null, 
+            "header_image": "", 
+            "feature_excerpt": null, 
+            "thumbnail": "", 
+            "name": "conservation"
+        }
+    }, 
+    {
         "pk": 5, 
         "model": "data_manager.theme", 
         "fields": {
@@ -27,36 +42,6 @@
             "feature_excerpt": null, 
             "thumbnail": "", 
             "name": "recreation"
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "feature_link": null, 
-            "display_name": "Marine Life", 
-            "description": "Marine Life description...", 
-            "overview": "The Mid-Atlantic region is well known for nutrient-rich and highly productive waters. Its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals.  ", 
-            "feature_image": null, 
-            "header_image": "", 
-            "feature_excerpt": null, 
-            "thumbnail": "", 
-            "name": "conservation"
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "feature_link": null, 
-            "display_name": "Fishing", 
-            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. ", 
-            "overview": "The Mid-Atlantic supports commercial and recreational fisheries and provides income, food, and enjoyment for millions of people. In 2010, commercial harvests totaled over 800 million pounds and the ex-vessel value was more than $500m. Important species include menhaden, sea scallop, surf clam, ocean quahog clam, summer flounder, lobster, squid, and striped bass. An estimated 2.6 million recreational anglers participated in 17 million saltwater fishing trips in 2009, mainly targeting striped bass, summer flounder, black seabass, tautog, scup, bluefish, drum, weakfish, spot, and croaker. Data compiled here represent fishing effort and are derived from National Marine Fisheries Service Fishing Vessel Trip Reports. Additional map layers indicating commercial and recreational fishing interests are currently being developed in close coordination with fishery stakeholders and management entities.", 
-            "feature_image": null, 
-            "header_image": "/portal/assets/fishing_boats1.jpg", 
-            "feature_excerpt": null, 
-            "thumbnail": "", 
-            "name": "fishing"
         }
     }, 
     {
@@ -102,6 +87,21 @@
             "feature_excerpt": null, 
             "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
             "name": "administrative"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "feature_link": null, 
+            "display_name": "Fishing", 
+            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. ", 
+            "overview": "The Mid-Atlantic supports commercial and recreational fisheries and provides income, food, and enjoyment for millions of people. In 2010, commercial harvests totaled over 800 million pounds and the ex-vessel value was more than $500m. Important species include menhaden, sea scallop, surf clam, ocean quahog clam, summer flounder, lobster, squid, and striped bass. An estimated 2.6 million recreational anglers participated in 17 million saltwater fishing trips in 2009, mainly targeting striped bass, summer flounder, black seabass, tautog, scup, bluefish, drum, weakfish, spot, and croaker. Data compiled here represent fishing effort and are derived from National Marine Fisheries Service Fishing Vessel Trip Reports. Additional map layers indicating commercial and recreational fishing interests are currently being developed in close coordination with fishery stakeholders and management entities.", 
+            "feature_image": null, 
+            "header_image": "/portal/assets/fishing_boats1.jpg", 
+            "feature_excerpt": null, 
+            "thumbnail": "", 
+            "name": "fishing"
         }
     }, 
     {
@@ -271,6 +271,45 @@
         }
     }, 
     {
+        "pk": 30, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). ", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Essential Fish Habitat", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "# of Overlapping EFH", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 25, 
         "model": "data_manager.layer", 
         "fields": {
@@ -433,53 +472,7 @@
         }
     }, 
     {
-        "pk": 52, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-71.11638770476&location%5By%5D=40.06498338580124&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=52&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
-            "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/benthic_habitats_north/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                8, 
-                24, 
-                25, 
-                26, 
-                27, 
-                28
-            ], 
-            "vector_fill": null, 
-            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Benthic Habitats (North)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats North (Download)</a>", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 35, 
+        "pk": 46, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -510,13 +503,52 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Fin Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
+            "name": "Sei Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
                 21
             ]
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                3
+            ], 
+            "description": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.62075195312462&location%5By%5D=38.706459372318534&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "source": "http://www.nrel.gov/gis/wind.html", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam. ", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Wind Speed", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Wind Speed at 90m (m/s)", 
+            "sublayers": []
         }
     }, 
     {
@@ -643,46 +675,7 @@
         }
     }, 
     {
-        "pk": 30, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). ", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Essential Fish Habitat", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "# of Overlapping EFH", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 46, 
+        "pk": 43, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -713,13 +706,93 @@
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Sei Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
+            "name": "Right Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
                 21
             ]
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "vector_graphic": null, 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Fin Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This layer represents areas of high avian density that were identified based on a ranking procedure, in which the individual grid boxes with non-zero densities were ranked in the order of highest to lowest total density, and those grid boxes that rank in the top 20 percent of all non-zero-density grid boxes were designated as high-density grid boxes.", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "This layer represents areas of high avian density that were identified based on a ranking procedure, in which the individual grid boxes with non-zero densities (i.e., those grid boxes with at least one bird sighting) were ranked in the order of highest to lowest total density, and those grid boxes that rank in the top 20 percent of all non-zero-density grid boxes were designated as high-density grid boxes (i.e., regions of high avian density). This is based on observations recorded from offshore ship surveys conducted between January 2008 and December 2009.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Important Bird Habitats", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {
@@ -889,6 +962,47 @@
             "sublayers": [
                 21
             ]
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data set is comprised of seabed position calculations that describe the topography of the area surrounding a particular cell on the seafloor. The calculations based on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-71.53734733387785&location%5By%5D=39.3890273319599&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Seabed_Form.zip", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                4
+            ], 
+            "vector_fill": null, 
+            "data_overview": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Seabed Forms", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {
@@ -1094,6 +1208,52 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "Commercial Shipping Density", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-71.11638770476&location%5By%5D=40.06498338580124&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=52&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/benthic_habitats_north/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                24, 
+                25, 
+                26, 
+                27, 
+                28, 
+                33
+            ], 
+            "vector_fill": null, 
+            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Benthic Habitats (North)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats North (Download)</a>", 
             "sublayers": []
         }
     }, 
@@ -1640,45 +1800,6 @@
         }
     }, 
     {
-        "pk": 7, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                3
-            ], 
-            "description": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.62075195312462&location%5By%5D=38.706459372318534&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
-            "source": "http://www.nrel.gov/gis/wind.html", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam. ", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Wind Speed", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Wind Speed at 90m (m/s)", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 19, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1832,27 +1953,27 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
+                37, 
                 39, 
                 27, 
+                48, 
                 49, 
-                51, 
-                44, 
+                46, 
                 42, 
-                37, 
-                43, 
+                44, 
+                51, 
+                35, 
                 36, 
                 28, 
                 61, 
-                38, 
                 40, 
                 47, 
-                45, 
                 41, 
-                29, 
                 50, 
-                48, 
-                46, 
-                35
+                38, 
+                43, 
+                29, 
+                45
             ]
         }
     }, 
@@ -2099,127 +2220,6 @@
         }
     }, 
     {
-        "pk": 43, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 29, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Fin Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 26, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This layer represents areas of high avian density that were identified based on a ranking procedure, in which the individual grid boxes with non-zero densities were ranked in the order of highest to lowest total density, and those grid boxes that rank in the top 20 percent of all non-zero-density grid boxes were designated as high-density grid boxes.", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "This layer represents areas of high avian density that were identified based on a ranking procedure, in which the individual grid boxes with non-zero densities (i.e., those grid boxes with at least one bird sighting) were ranked in the order of highest to lowest total density, and those grid boxes that rank in the top 20 percent of all non-zero-density grid boxes were designated as high-density grid boxes (i.e., regions of high avian density). This is based on observations recorded from offshore ship surveys conducted between January 2008 and December 2009.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Important Bird Habitats", 
-            "url": "", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 45, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2385,7 +2385,7 @@
         }
     }, 
     {
-        "pk": 33, 
+        "pk": 35, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -2393,33 +2393,72 @@
             "themes": [
                 2
             ], 
-            "description": "This data set is comprised of seabed position calculations that describe the topography of the area surrounding a particular cell on the seafloor. The calculations based on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-71.53734733387785&location%5By%5D=39.3890273319599&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "bookmark": "", 
+            "vector_graphic": null, 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
             "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json", 
+            "utfurl": "", 
             "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Seabed_Form.zip", 
+            "data_download": "", 
             "metadata": "", 
             "vector_color": "", 
             "attribute_event": "click", 
             "map_tiles": "", 
-            "attribute_fields": [
-                4
-            ], 
+            "attribute_fields": [], 
             "vector_fill": null, 
-            "data_overview": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.", 
+            "data_overview": "", 
             "attribute_title": "", 
-            "is_sublayer": false, 
+            "is_sublayer": true, 
             "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
             "data_status": "", 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Seabed Forms", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png", 
+            "name": "Fin Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "description": "Standardized compilation of published marine boundaries.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=16&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/marinejurisdictions ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Marine Jurisdictions", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
@@ -2464,45 +2503,6 @@
             "sublayers": [
                 15
             ]
-        }
-    }, 
-    {
-        "pk": 16, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "description": "Standardized compilation of published marine boundaries.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=16&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/marinejurisdictions ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Marine Jurisdictions", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
         }
     }, 
     {
@@ -2569,33 +2569,6 @@
             "field_name": "SEDIMENT", 
             "display_name": "Sediment", 
             "order": 4
-        }
-    }, 
-    {
-        "pk": 26, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "ASSOCIATED_SPECIES1", 
-            "display_name": "Species 1", 
-            "order": 5
-        }
-    }, 
-    {
-        "pk": 27, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "ASSOCIATED_SPECIES2", 
-            "display_name": "Species 2", 
-            "order": 6
-        }
-    }, 
-    {
-        "pk": 28, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "ASSOCIATED_SPECIES3", 
-            "display_name": "Species 3", 
-            "order": 7
         }
     }, 
     {
@@ -2833,6 +2806,42 @@
         }
     }, 
     {
+        "pk": 26, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ASSOCIATED", 
+            "display_name": "Species 1", 
+            "order": 5
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ASSOCIAT_1", 
+            "display_name": "Species 2", 
+            "order": 6
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ASSOCIAT_2", 
+            "display_name": "Species 3", 
+            "order": 7
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ECOLOGICAL_NORTH", 
+            "display_name": "Ecological Marine Unit", 
+            "order": 1
+        }
+    }, 
+    {
         "pk": 12, 
         "model": "data_manager.lookupinfo", 
         "fields": {
@@ -2965,23 +2974,6 @@
         }
     }, 
     {
-        "pk": 20, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Data under development", 
-            "name": "Commercial fishing activity", 
-            "expected_date": "June 2013", 
-            "notes": "These data will supplement or replace the relatively coarse scale VTR data currently displayed. Data will be processed in consultation with commercial fishery stakeholders to maximize its value for planning while maintaining appropriate confidentiality. Additional finer scale VTR derived data products will not be displayed without prior stakeholder review and approval by NMFS authorities.", 
-            "themes": [
-                4
-            ], 
-            "source": "Commercial fishers via MARCO stakeholder engagement efforts", 
-            "contact": "Rutgers CRSSA ", 
-            "contact_email": "", 
-            "description": "Spatial data interpreted and created using National Marine Fisheries Service Fishing Vessel Trip Report (VTR) databases summarized and mapped in consultation with commercial fishing stakeholders to illustrate the distribution, timing, and intensity of commercial fishing activity, with attributes for gear type and harvest species. Additional attributes collected through stakeholder engagement may include information about the specific socio-economic and cultural values of fishing locations to communities."
-        }
-    }, 
-    {
         "pk": 1, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -3064,6 +3056,23 @@
             "contact": "Rutgers CRSSA ", 
             "contact_email": "", 
             "description": "Areas where diving, surfing, swimming, nature viewing, etc. occur"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Data under development", 
+            "name": "Commercial fishing activity", 
+            "expected_date": "June 2013", 
+            "notes": "These data will supplement or replace the relatively coarse scale VTR data currently displayed. Data will be processed in consultation with commercial fishery stakeholders to maximize its value for planning while maintaining appropriate confidentiality. Additional finer scale VTR derived data products will not be displayed without prior stakeholder review and approval by NMFS authorities.", 
+            "themes": [
+                4
+            ], 
+            "source": "Commercial fishers via MARCO stakeholder engagement efforts", 
+            "contact": "Rutgers CRSSA ", 
+            "contact_email": "", 
+            "description": "Spatial data interpreted and created using National Marine Fisheries Service Fishing Vessel Trip Report (VTR) databases summarized and mapped in consultation with commercial fishing stakeholders to illustrate the distribution, timing, and intensity of commercial fishing activity, with attributes for gear type and harvest species. Additional attributes collected through stakeholder engagement may include information about the specific socio-economic and cultural values of fishing locations to communities."
         }
     }, 
     {

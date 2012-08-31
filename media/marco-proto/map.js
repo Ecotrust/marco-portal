@@ -77,7 +77,7 @@ app.init = function () {
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
         var layer = e.feature.layer.layerModel;
-        //debugger;
+        
         if ( layer.attributes.length ) {
             var attrs = layer.attributes,
                 title = layer.name,

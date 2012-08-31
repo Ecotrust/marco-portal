@@ -15,7 +15,7 @@ function layerModel(options, parent) {
     self.legendVisibility = ko.observable(false);
     self.legendTitle = options.legend_title || false;
     self.themes = ko.observableArray();
-    self.attributeTitle = options.attributes ? options.attributes['title'] : null;
+    self.attributeTitle = options.attributes ? options.attributes['title'] : self.name;
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
     self.attributeEvent = options.attributes ? options.attributes['event'] : [];
     self.lookupField = options.lookups ? options.lookups['field'] : null;
