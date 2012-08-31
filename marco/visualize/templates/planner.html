@@ -193,7 +193,7 @@
                                                             <i class="icon-remove">
                                                             </i>
                                                         </a>
-                                                        <a class="btn  btn-mini opacity-a" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></a>
+                                                        <a class="btn  btn-mini opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></a>
                                                     </div>
                                                 </div>
                                                 
@@ -227,13 +227,13 @@
                                          </button>
 
                                       </p>
-                                      <p><a id="bookmarks-a" class="btn pull-right" data-bind="click: showBookmarks">
+                                      <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
                                           <i class="icon-flag"></i>
                                           Bookmarks
                                           <span data-bind="visible: bookmarks.bookmarksList().length > 0">
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
-                                      </a></p>
+                                      </button></p>
                                     <!--   <p><a class="btn pull-right">
                                           Coordinates &amp; Depth
                                       </a></p> -->
@@ -408,10 +408,10 @@
                                 <form data-bind="submit: saveBookmark">
                                     <input type="text" data-bind="value: bookmarkName" class="input">
                                     <div class="pull-right">
-                                        <a data-bind="click: cancel" class="btn">cancel</a>
-                                        <a class="btn" type="submit">
+                                        <button data-bind="click: cancel" class="btn">cancel</button>
+                                        <button class="btn" type="submit">
                                             save
-                                        </a>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -432,15 +432,11 @@
      -->
         <!--<link rel="stylesheet" type="text/css" href="http://www.transportparadise.co.uk/layerswitcher/layerswitcher.css" />
         <link rel="stylesheet" type="text/css" src="{{media}}/marco-proto/assets/css/simplelayerswitcher.css" />-->
-        <script src="{{media}}/marco-proto/assets/js/jquery.js"></script>
+        <script src="{{media}}/marco/js/jquery.js"></script>
+        <script src="{{media}}/marco/js/bootstrap.min.js"></script>
+
         <script src="{{media}}/marco-proto/assets/js/jquery.ba-bbq.js"></script>
         <script src="{{media}}/marco-proto/assets/js/jquery-ui.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/bootstrap-modal.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/bootstrap-dropdown.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/bootstrap-tab.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/bootstrap-tooltip.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/bootstrap-popover.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/bootstrap-typeahead.js"></script>
         <script src="{{media}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
         <script src="{{media}}/marco-proto/assets/js/knockout-bindings.js"></script>
         <script src="{{media}}/marco-proto/assets/js/knockout.mapping-latest.js"></script>

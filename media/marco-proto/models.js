@@ -587,6 +587,7 @@ function viewModel() {
 		}
 	};
 	self.selectedLayer = ko.observable();
+
 	self.showOpacity = function (layer, event) {
 		var $button = $(event.target).closest('a'),
 			$popover = $('#opacity-popover');
@@ -599,11 +600,11 @@ function viewModel() {
             $popover.show().position({
                 "my": "center top",
                 "at": "center bottom",
-                "of": $button
+                "of": $button,
+                "offset": "0px 10px"
             });
             $button.addClass('active');
         }
-	
 	}
 	self.hideOpacity = function (self, event) {
 		$('#opacity-popover').hide();

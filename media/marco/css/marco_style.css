@@ -25,6 +25,9 @@ header h2 {
 hr {
 	border-top: 1px solid #ccc;
 }
+p {
+	padding-left: 5px;
+}
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: 90px;
@@ -326,6 +329,7 @@ input + i.icon-remove-sign {
 }
 .sidebar h3 {
 	font-size: 18px;
+	font-weight: normal;
 }
 .sidebar h3 a, .sidebar h3 a:visited {
 	color: #2d8998;
@@ -416,6 +420,11 @@ img + h3 {
 	display: inline;
 	padding-left: 10px;
 }
+
+.theme p {
+	padding-right: 5px;
+}
+
 .link-not-available {
 	color: #aaa;
 }
@@ -543,7 +552,9 @@ img + h3 {
   display:block;
 }
 
-
+.popover input {
+	width: 90%;
+}
 
 @media (max-width: 767px) {
 	.navbar .nav > li a {

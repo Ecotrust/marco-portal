@@ -13,14 +13,15 @@
 			</div>
 		</div>
 		<br/>
-		<p>{{ theme.overview }}
+		<p>{{ theme.overview }}</p>
+		<h3>Data Layers for {{ theme.display_name }}</h3>
 		{% for layer in theme.layers %}
 			{% if layer.layer_type != "placeholder"  %}
 			<div class="clearfix">
 				<a name={{layer.slug}}></a>
-				<h3>
+				<h4>
 			    	{{ layer.name }}	
-			    </h3>
+			    </h4>
 			    <p class="pull-right">
 			    	<a class="btn" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
 			    	<a class="btn" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
