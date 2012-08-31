@@ -581,6 +581,7 @@ img + h3 {
 	.theme li {
 		padding-left: 0px;
 	}
+
 }
 
 
@@ -614,8 +615,8 @@ img + h3 {
 		font-size: 12px;
 	}
 	.form-search input {
-		width: 60%;
-		margin-left: 18px;
+		width: 55%;
+		margin-left: -18px;
 	}
 }
 
