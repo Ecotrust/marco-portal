@@ -613,6 +613,10 @@ img + h3 {
 		width: 45%;
 		font-size: 12px;
 	}
+	.form-search input {
+		width: 60%;
+		margin-left: 18px;
+	}
 }
 
 @media (max-width: 359px) {
