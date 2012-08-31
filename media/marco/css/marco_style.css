@@ -9,7 +9,6 @@ body {
 h1, h2, h3, h4 {
 	font-weight: normal;
 	color: #2d8998;
-	margin-bottom: 0px;
 	line-height: 1;
 
 }
@@ -391,8 +390,19 @@ img + h3 {
 }
 
 #active .btn-layer {
-	width: 50%;
+	width: 65%;
 	text-align: left;
+	font-size: 16px;
+	height: 33px;
+	margin-top: -30px;
+	white-space: normal;
+}
+#active .btn-layer span {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+#active > div {
+	width: auto;
 }
 #data-accordion li.layer {
 	margin-bottom: 10px;
@@ -598,7 +608,10 @@ img + h3 {
 	.showcase .caption {
 		top: 100px;
 	}
-
+	#active .btn-layer {
+		width: 45%;
+		font-size: 12px;
+	}
 }
 
 @media (max-width: 359px) {
