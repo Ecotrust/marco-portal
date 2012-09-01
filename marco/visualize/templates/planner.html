@@ -10,8 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Le styles -->
-        <link href="{{media}}/marco-proto/assets/css/bootstrap.css" rel="stylesheet">
-        <link href="{{media}}/marco-proto/assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{media}}/marco/css/bootstrap.css" rel="stylesheet">
         <link href="{{media}}/marco/css/marco_style.css" rel="stylesheet">
 
         <link href="{{media}}/marco-proto/assets/css/style.css" rel="stylesheet">
@@ -104,7 +103,7 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
-                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">                                                                                
+                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
                                                                                 <i class="icon-align-justify"></i>
                                                                                 <span data-bind="visible: ! activeSublayer()">
                                                                                     <span data-bind="text: name"></span>
@@ -112,11 +111,9 @@
                                                                                 <span data-bind="visible: activeSublayer">
                                                                                     <span data-bind="text: activeSublayer().name"></span>
                                                                                 </span>
-                                                                                <i class="icon-large check" data-bind="css: { 'icon-check': active() && visible(), 
+                                                                                <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
+                                                                                <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                          'icon-check-empty': active() && ! visible()}"></i>
-                                                                                <!-- ko if: subLayers.length > 0 -->
-                                                                                <span class="pull-right" data-bind="style: {visibility: !active() ? 'visible': 'hidden'}"><span class="caret"></span></span>
-                                                                                <!-- /ko -->
                                                                             </a>
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
