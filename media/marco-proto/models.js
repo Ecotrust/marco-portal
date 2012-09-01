@@ -478,6 +478,12 @@ function viewModel() {
 	// reference to open themes in accordion
 	self.openThemes = ko.observableArray();
     
+    self.getOpenThemeIDs = function() {
+        return $.map(self.openThemes(), function(theme) {
+            return theme.id;
+        });
+    };
+    
     // reference to active theme model/name for display text
     self.activeTheme = ko.observable();    
     self.activeThemeName = ko.observable();

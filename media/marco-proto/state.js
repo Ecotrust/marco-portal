@@ -17,8 +17,8 @@ app.getState = function () {
             zoom: app.map.getZoom()
         },
         activeLayers: layers.reverse(),
-        basemap: {name: app.map.baseLayer.name}
-        //openThemes: app.viewModel.openThemes()
+        basemap: {name: app.map.baseLayer.name},
+        openThemes: {ids: app.viewModel.getOpenThemeIDs()}
         //and active tab
     }
 };
@@ -51,7 +51,13 @@ app.loadState = function(state) {
     }
     
     if (state.openThemes) {
-        //app.viewModel.openThemes(state.openThemes);
+        $.each(app.viewModel.themes(), function (i, theme) {
+            if ( $.inArray(theme.id, state.openThemes.ids) !== -1 || $.inArray(theme.id.toString(), state.openThemes.ids) !== -1 ) {
+                theme.setOpenTheme();
+            } else {
+                app.viewModel.openThemes.remove(theme);
+            }
+        });
     }
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
