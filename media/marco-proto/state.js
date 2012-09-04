@@ -5,11 +5,10 @@ app.saveStateMode = true;
 // save the state of app
 app.getState = function () {
     var center = app.map.getCenter().transform(
-    new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
-        layers = $.map(app.viewModel.activeLayers(), function(layer) {
-            return {id: layer.id, opacity: layer.opacity()};
-        });   
-        
+            new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
+                layers = $.map(app.viewModel.activeLayers(), function(layer) {
+                    return {id: layer.id, opacity: layer.opacity()};
+                });   
     return {
         location: {
             x: center.lon,
@@ -17,7 +16,10 @@ app.getState = function () {
             zoom: app.map.getZoom()
         },
         activeLayers: layers.reverse(),
-        basemap: {name: app.map.baseLayer.name}
+        basemap: {name: app.map.baseLayer.name},
+        openThemes: {ids: app.viewModel.getOpenThemeIDs()},
+        activeTab: {tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active'}
+        //and active tab
     }
 };
 
@@ -46,6 +48,23 @@ app.loadState = function(state) {
     
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap.name)[0]);
+    }
+    
+    if (state.activeTab && state.activeTab.tab === 'active') {
+        $('#activeTab').tab('show');
+    } else {
+        if (state.activeTab || state.openThemes) {
+            $('#dataTab').tab('show');
+            if (state.openThemes) {
+                $.each(app.viewModel.themes(), function (i, theme) {
+                    if ( $.inArray(theme.id, state.openThemes.ids) !== -1 || $.inArray(theme.id.toString(), state.openThemes.ids) !== -1 ) {
+                        theme.setOpenTheme();
+                    } else {
+                        app.viewModel.openThemes.remove(theme);
+                    }
+                });
+            } 
+        }
     }
 
     // Google.v3 uses EPSG:900913 as projection, so we have to

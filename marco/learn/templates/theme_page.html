@@ -29,14 +29,10 @@
 		        {% if layer.data_overview %}
 			    	<p>{{ layer.data_overview }}</p>
 		    	{% endif %}
-		    	{% if layer.data_source %}
-		    		<strong>source:</strong>
-					<p>{{ layer.data_source }}</p>
-				{% endif %}
-				{% if layer.data_notes %}
-					<strong>notes:</strong>
-					<p>{{ layer.data_notes }}</p>
-				{% endif %}
+                <div class="well">
+		    		<div><strong>Source: </strong>{{ layer.data_source }}</div>
+					<div><strong>Notes: </strong>{{ layer.data_notes }}</div>
+                </div>
 			</div>
 			<br/>
 			{% endif %}
