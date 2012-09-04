@@ -414,6 +414,11 @@ img + h3 {
 	color: #333;
 
 }
+#data-accordion .btn-group-layer .btn-layer {
+  width: 72%;
+  text-align: left;
+  overflow:hidden;
+}
 .btn-group-layer {
 	width: 100%;
 }
@@ -626,6 +631,10 @@ img + h3 {
 	.theme li {
 		padding-left: 0px;
 	}
+	#data-accordion .btn-group-layer .btn-layer {
+	  width: 72%;
+	  font-size: 12px;
+	}
 
 }
 
@@ -662,6 +671,10 @@ img + h3 {
 	.form-search input {
 		width: 55%;
 		margin-left: -18px;
+	}
+	#data-accordion .btn-group-layer .btn-layer {
+	  width: 72%;
+	  font-size: 12px;
 	}
 }
 

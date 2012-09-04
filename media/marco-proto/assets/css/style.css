@@ -125,10 +125,6 @@ body {
     font-size: 12px;
 }
 
-#data-accordion .btn-group-layer .btn-layer {
-  width: 90%;
-  text-align: left;
-}
 i.check {
   position: absolute;
   right: 10px;
@@ -326,10 +322,7 @@ body {
     font-size: 12px;
 }
 
-#data-accordion .btn-group-layer .btn-layer {
-  width: 87%;
-  text-align: left;
-}
+
 #data-accordion .btn-info-sign {
   width: 15px;
 }
