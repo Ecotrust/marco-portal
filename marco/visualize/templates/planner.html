@@ -95,7 +95,10 @@
                                                     <div class="accordion-group">
                                                         <div class="accordion-heading" data-bind="event: {'mouseenter': $root.hideTooltip}, css: { 'active': isOpenTheme() }">
                                                             <div>
-                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme, event: {'hover': showDescription}"><span data-bind="text: name">Themes</span></a>
+                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme, event: {'hover': showDescription}">
+
+                                                                    <span data-bind="text: name">Themes</span></a>
+
                                                             </div>
                                                         </div>
                                                         <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
@@ -103,8 +106,10 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
+                                                                            <button class="btn btn-info-sign">
+                                                                                <i class="icon-info-sign"></i>
+                                                                            </button>
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
-                                                                                <i class="icon-align-justify"></i>
                                                                                 <span data-bind="visible: ! activeSublayer()">
                                                                                     <span data-bind="text: name"></span>
                                                                                 </span>
@@ -112,9 +117,11 @@
                                                                                     <span data-bind="text: activeSublayer().name"></span>
                                                                                 </span>
                                                                                 <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
+
                                                                                 <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                          'icon-check-empty': active() && ! visible()}"></i>
                                                                             </a>
+
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
                                                                                 <li data-bind="foreach: subLayers">
@@ -284,6 +291,8 @@
                                 </div>
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
+                                        <h3>Legends</h3>
+                                        <hr/>
                                         <div data-bind="foreach: activeLegendLayers">
                                                 <div style="padding-bottom: 10px;">
                                                     <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>

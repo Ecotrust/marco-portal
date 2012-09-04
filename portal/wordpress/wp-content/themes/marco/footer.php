@@ -59,6 +59,7 @@
 			      var $input = $(input);
 			      feedback[$input.attr('name')] = $input.val();
 			   });
+	           feedback.url = window.location.href;
 			   $.post('/feedback/send', feedback, function () {
 			      $form.closest('.modal').modal('hide')
 			   });

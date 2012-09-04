@@ -423,7 +423,7 @@ img {
 #feedback-tab {
 	position: fixed;
 	left: -26px;
-	top: 50%;
+	top: 80%;
 	padding: 2px 8px;
 	border: 2px solid #333;
 	background-color: #ddd;

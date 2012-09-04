@@ -134,7 +134,7 @@ p {
 #feedback-tab {
 	position: fixed;
 	left: -26px;
-	top: 50%;
+	top: 80%;
 	padding: 2px 8px;
 	border: 2px solid #333;
 	background-color: #ddd;
@@ -508,6 +508,10 @@ img + h3 {
   overflow-y: auto;
 }
 
+#legend-wrapper hr {
+	margin: 0px !important;
+	/*margin-bottom: 5px;*/
+}
 /* Rules for the layer switcher */
 
 #basemaps {

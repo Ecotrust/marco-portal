@@ -327,8 +327,11 @@ body {
 }
 
 #data-accordion .btn-group-layer .btn-layer {
-  width: 95%;
+  width: 87%;
   text-align: left;
+}
+#data-accordion .btn-info-sign {
+  width: 15px;
 }
 
 #data-accordion i.check {
