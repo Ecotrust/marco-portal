@@ -33,7 +33,7 @@ p {
 	height: 90px;
         background-color: white;
 }
-.navbar-inner {
+.navbar .navbar-inner {
 	border: none !important;
 	background-color: white !important;
 	background-image: none !important;
@@ -106,7 +106,8 @@ p {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-left: -7px;
-	border-radius: 30px;
+	radius: 30px;
+	 border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
   	border-top-left-radius: 0px;
@@ -130,6 +131,30 @@ p {
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
 }
+#feedback-tab {
+	position: fixed;
+	left: -26px;
+	top: 80%;
+	padding: 2px 8px;
+	border: 2px solid #333;
+	background-color: #ddd;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-top-left-radius: 10px;
+	-moz-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	
+
+	-webkit-transform: rotate(90deg);	
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+
 input + i.icon-remove-sign {
 	margin-left: -20px;
 	padding-right: 5px;
@@ -145,7 +170,7 @@ input + i.icon-remove-sign {
 
 }
 .sidebar h3 {
-	background-color: #ccc;
+	background-color: #eee;
 	margin-bottom: 0px;
 	font-size: 18px;
 	padding: 5px;
@@ -409,6 +434,11 @@ img + h3 {
 	display: inline-block;
 	line-height: 1;
 }
+
+#active .btn-group + .btn-group {
+	margin-left: 12px;
+}
+
 #data-accordion li.layer {
 	margin-bottom: 10px;
 }
@@ -478,6 +508,10 @@ img + h3 {
   overflow-y: auto;
 }
 
+#legend-wrapper hr {
+	margin: 0px !important;
+	/*margin-bottom: 5px;*/
+}
 /* Rules for the layer switcher */
 
 #basemaps {

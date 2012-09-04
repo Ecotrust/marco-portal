@@ -44,6 +44,7 @@
                     
                     <body class="blog">
                         <header role="banner">
+                            {% include "feedback.html" %}  
                             <div class="navbar navbar-fixed-top">
                                 <div class="navbar-inner">
                                 <div class="container">
@@ -159,16 +160,31 @@
                             <!-- scripts are now optimized via Modernizr.load -->\
                             <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
                             <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery-ui.js"></script>
+                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-transition.js"></script>
                             <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-typeahead.js"></script>   
                             <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
                             <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
+                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
                             <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
                             <script>
+                            // handle the search clear buttons
                             $('.icon-remove-sign').on('click', function (event) {
                                 $(event.target).prev('input').val('').focus();
                             });
 
-                            
+                          $('#feedback-form').on('submit', function (event) {
+                            var feedback = {}, $form = $(this);
+                            event.preventDefault();
+                             $(this).find('input, textarea').each(function (i, input) {
+                                var $input = $(input);
+                                feedback[$input.attr('name')] = $input.val();
+                             });
+                             feedback.url = window.location.href;
+                             $.post('/feedback/send', feedback, function () {
+                                $form.closest('.modal').modal('hide')
+                             });
+                          });
+                                                        
                             </script>
                             {% block javascript %}
                             {% endblock %}

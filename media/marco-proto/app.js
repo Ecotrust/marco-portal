@@ -3,7 +3,7 @@
 app.hash = window.location.hash;
 
 app.onResize = function() {
-	var height = $(window).height() * .70;
+	var height = $(window).height() * .85;
 	$("#map").height(height);
 	$(".tabs").height(height);
 	$("#legend-wrapper").height(height);
@@ -70,6 +70,17 @@ $(document).ready(function () {
 	});
 
 
+});
+$('#feedback-form').on('submit', function (event) {
+  var feedback = {}, $form = $(this);
+  event.preventDefault();
+   $(this).find('input, textarea').each(function (i, input) {
+      var $input = $(input);
+      feedback[$input.attr('name')] = $input.val();
+   });
+   $.post('/feedback/send', feedback, function () {
+      $form.closest('.modal').modal('hide')
+   });
 });
 
 $(document).mousedown(function (e) {

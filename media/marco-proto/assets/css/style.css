@@ -222,7 +222,7 @@ a.disabled-link:hover {
 
 #bookmark-popover {
   z-index: 1400;
-=======
+}
 body {
   padding-bottom: 40px;
 }
@@ -232,11 +232,19 @@ body {
 #map {
   height: 800px;
   margin-bottom: 15px;
+ 
 }
 
 #map-wrapper {
   position: relative;
+/* -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+*/
 }
+
+
 
 #map-buttons {
   position: absolute;
@@ -319,12 +327,13 @@ body {
 }
 
 #data-accordion .btn-group-layer .btn-layer {
-  width: 95%;
+  width: 87%;
   text-align: left;
 }
-#data-accordion .nosublayers .btn-group-layer .btn-layer {
-  width: 100%;
+#data-accordion .btn-info-sign {
+  width: 15px;
 }
+
 #data-accordion i.check {
   padding-top: 4px;
 }
