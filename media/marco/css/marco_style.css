@@ -33,7 +33,7 @@ p {
 	height: 90px;
         background-color: white;
 }
-.navbar-inner {
+.navbar .navbar-inner {
 	border: none !important;
 	background-color: white !important;
 	background-image: none !important;
@@ -434,6 +434,11 @@ img + h3 {
 	display: inline-block;
 	line-height: 1;
 }
+
+#active .btn-group + .btn-group {
+	margin-left: 12px;
+}
+
 #data-accordion li.layer {
 	margin-bottom: 10px;
 }

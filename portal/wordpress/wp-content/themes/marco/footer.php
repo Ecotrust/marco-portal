@@ -52,10 +52,6 @@
 				$(event.target).prev('input').val('').focus();
 			});
 
-			$('#feedback-tabl').on('click', function (event) {
-
-			});
-
 
 		});
 		</script>
