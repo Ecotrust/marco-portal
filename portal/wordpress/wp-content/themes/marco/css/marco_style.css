@@ -421,15 +421,29 @@ img {
 }
 
 #feedback-tab {
-	position: absolute;
-	left: 0px;
+	position: fixed;
+	left: -26px;
 	top: 50%;
+	padding: 2px 8px;
+	border: 2px solid #333;
+	background-color: #ddd;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-top-left-radius: 10px;
+	-moz-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	
+
 	-webkit-transform: rotate(90deg);	
 	-moz-transform: rotate(90deg);
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
+
+
 
 @media (max-width: 767px) {
 	.nav-collapse form {

@@ -18,8 +18,8 @@
 		</div> <!-- end #container -->
 		
 		<!-- scripts are now optimized via Modernizr.load -->	
-		<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap-transition.js"></script>
-		<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap-carousel.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.min.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-ui.js"></script>
 
 		<script>
 		$(document).ready(function () {
@@ -51,6 +51,11 @@
 			$('.icon-remove-sign').on('click', function (event) {
 				$(event.target).prev('input').val('').focus();
 			});
+
+			$('#feedback-tabl').on('click', function (event) {
+
+			});
+
 
 		});
 		</script>
