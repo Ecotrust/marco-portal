@@ -104,52 +104,48 @@
 			  </div>
 			</div>
 		</header> <!-- end header -->
-		<div id="feedback-tab" data-toggle="modal" data-target="#feedback-modal">
-			feedback
-		</div>
-		<div id="feedback-modal" class="modal hide fade">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3>Feedback</h3>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal">
-				<div class="control-group">
-				  <label class="control-label" for="first-name">First Name</label>
-				  <div class="controls">
-				    <input class="input-xlarge" type="text" id="first-name" placeholder="First Name">
-				  </div>
-				</div>
-				<div class="control-group">
-				  <label class="control-label" for="first-name">Last Name</label>
-				  <div class="controls">
-				    <input class="input-xlarge" type="text" id="last-name" placeholder="Last Name">
-				  </div>
-				</div>
-				  <div class="control-group">
-				    <label class="control-label" for="inputEmail">Email Address</label>
-				    <div class="controls">
-				      <input class="input-xlarge" type="text" id="inputEmail" placeholder="Email Address">
-				    </div>
-				  </div>
-				  <div class="control-group">
-				    <label class="control-label" for="inputEmail">Comment</label>
-				    <div class="controls">
-				    	<textarea class="input-xlarge" rows="3"></textarea>
-				    </div>
-				  </div>
-				  <div class="control-group">
-				    <div class="controls">
-				      <label class="checkbox">
-				        <input type="checkbox"> Add me to the mailing list...
-				      </label>
-				    </div>
-				  </div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
-			</div>
-		</div>	
+	<div id="feedback-tab" data-toggle="modal" data-target="#feedback-modal">
+	    feedback
+	</div>
+	<div id="feedback-modal" class="modal hide fade">
+	    <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h3>Feedback</h3>
+	    </div>
+	    <form class="form-horizontal" id="feedback-form">
+	    <div class="modal-body">        
+	        <div class="control-group">
+	          <label class="control-label" for="name">Full Name</label>
+	          <div class="controls">
+	            <input class="input-xlarge" type="text" name="name" placeholder="Full Name" required>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="email">Email Address</label>
+	          <div class="controls">
+	            <input class="input-xlarge" type="email" name="email" placeholder="Email Address" required>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="comment">Comment</label>
+	          <div class="controls">
+	              <textarea class="input-xlarge" rows="3" name="comment" required></textarea>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <div class="controls">
+	            <label class="checkbox">
+	              <input type="checkbox" name='listAdd'> Add me to the mailing list...
+	            </label>
+	          </div>
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#" class="btn" data-dismiss="modal">Close</a>
+	        <button type="submit" class="btn btn-primary">Send Feedback</a>
+	    </div>
+	  </form>
+	</div>
+
+
 		<div class="container">

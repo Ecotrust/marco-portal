@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^explore/', include('explore.urls')),
     (r'^visualize/', include('visualize.urls')),
     (r'^planner/', include('visualize.urls')),
+    (r'^feedback/', include('feedback.urls')),
     (r'^$', redirect_to, {'url': '/portal/'}),
     (r'', include('madrona.common.urls')),
 )

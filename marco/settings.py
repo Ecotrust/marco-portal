@@ -34,6 +34,7 @@ INSTALLED_APPS += ( 'clipping',
                     'learn',
                     'explore',
                     'visualize',
+                    'feedback',
                     'django.contrib.humanize',
                     'flatblocks' )
 

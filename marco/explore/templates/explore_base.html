@@ -44,54 +44,7 @@
                     
                     <body class="blog">
                         <header role="banner">
-                            <div id="feedback-tab" data-toggle="modal" data-target="#feedback-modal">
-                                feedback
-                            </div>
-                            <div id="feedback-modal" class="modal hide fade">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h3>Feedback</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-horizontal">
-                                    <div class="control-group">
-                                      <label class="control-label" for="first-name">First Name</label>
-                                      <div class="controls">
-                                        <input class="input-xlarge" type="text" id="first-name" placeholder="First Name">
-                                      </div>
-                                    </div>
-                                    <div class="control-group">
-                                      <label class="control-label" for="first-name">Last Name</label>
-                                      <div class="controls">
-                                        <input class="input-xlarge" type="text" id="last-name" placeholder="Last Name">
-                                      </div>
-                                    </div>
-                                      <div class="control-group">
-                                        <label class="control-label" for="inputEmail">Email Address</label>
-                                        <div class="controls">
-                                          <input class="input-xlarge" type="text" id="inputEmail" placeholder="Email Address">
-                                        </div>
-                                      </div>
-                                      <div class="control-group">
-                                        <label class="control-label" for="inputEmail">Comment</label>
-                                        <div class="controls">
-                                            <textarea class="input-xlarge" rows="3"></textarea>
-                                        </div>
-                                      </div>
-                                      <div class="control-group">
-                                        <div class="controls">
-                                          <label class="checkbox">
-                                            <input type="checkbox"> Add me to the mailing list...
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#" class="btn" data-dismiss="modal">Close</a>
-                                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
-                                </div>
-                            </div>  
+                            {% include "feedback.html" %}  
                             <div class="navbar navbar-fixed-top">
                                 <div class="navbar-inner">
                                 <div class="container">
@@ -219,7 +172,18 @@
                                 $(event.target).prev('input').val('').focus();
                             });
 
-                            
+                              $('#feedback-form').on('submit', function (event) {
+                                var feedback = {}, $form = $(this);
+                                event.preventDefault();
+                                 $(this).find('input, textarea').each(function (i, input) {
+                                    var $input = $(input);
+                                    feedback[$input.attr('name')] = $input.val();
+                                 });
+                                 $.post('/feedback/send', feedback, function () {
+                                    $form.closest('.modal').modal('hide')
+                                 });
+                              });
+                                                        
                             </script>
                             {% block javascript %}
                             {% endblock %}
