@@ -13,7 +13,7 @@ function layerModel(options, parent) {
     self.legend = options.legend || false;
     self.learn_link = options.learn_link || null;
     self.legendVisibility = ko.observable(false);
-    self.legendTitle = options.legend_title || self.name;
+    self.legendTitle = options.legend_title || false;
     self.themes = ko.observableArray();
     self.attributeTitle = options.attributes ? options.attributes['title'] : self.name;
     self.attributes = options.attributes ? options.attributes['attributes'] : [];
