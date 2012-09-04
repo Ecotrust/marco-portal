@@ -83,7 +83,7 @@ $('#feedback-form').on('submit', function (event) {
    });
 });
 
-$(document).click(function (e) {
+$(document).mousedown(function (e) {
     //removing bookmark popover from view
     if ( e.target.id === "bookmarks-button" ) {
     } else if ( !$(e.target).closest("#bookmark-popover").length ) {
@@ -95,7 +95,6 @@ $(document).click(function (e) {
     if ( !layer_pvr_event ) {
         $("#layer-popover").hide();
     }
-
     
     //removing opacity popover from view
     var op_pvr_event = $(e.target).closest("#opacity-popover").length;
