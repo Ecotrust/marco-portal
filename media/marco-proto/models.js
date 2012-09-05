@@ -286,6 +286,7 @@ function layerModel(options, parent) {
         app.viewModel.activeName(layer.name);
         app.viewModel.activeText(layer.description);
         app.viewModel.activeLearnLink(layer.learn_link);
+        $('#description-overlay').show();
     }
     
     self.showTooltip = function (layer, event) {
@@ -596,6 +597,12 @@ function viewModel() {
     // close error-overlay
     self.closeAlert = function (self, event) {
         app.viewModel.error(null);
+    }
+    
+    // close layer description
+    self.closeDescription = function (self, event) {
+        app.viewModel.error(null);
+        $('#description-overlay').hide();
     }
 
 	// show bookmark stuff

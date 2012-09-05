@@ -95,7 +95,7 @@
                                                     <div class="accordion-group">
                                                         <div class="accordion-heading" data-bind="event: {'mouseenter': $root.hideTooltip}, css: { 'active': isOpenTheme() }">
                                                             <div>
-                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme, event: {'hover': showDescription}">
+                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme"> <!--event: {'hover': showDescription}-->
 
                                                                     <span data-bind="text: name">Themes</span></a>
 
@@ -106,10 +106,10 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
-                                                                            <button class="btn btn-info-sign">
+                                                                            <button class="btn btn-info-sign" data-bind="click: showDescription">
                                                                                 <i class="icon-info-sign"></i>
                                                                             </button>
-                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
+                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
                                                                                 <span data-bind="visible: ! activeSublayer()">
                                                                                     <span data-bind="text: name"></span>
                                                                                 </span>
@@ -279,13 +279,28 @@
                                         <div>
                                             Bookmark "<span data-bind="text: activeBookmark"></span>"
                                             <div class="pull-right">
-                                                <a href="#" style="margin-left: 10px;" class="close" data-bind="click: closeAlert"> x </button>
+                                                <a href="#" style="margin-left: 10px;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
                                                 <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
                                                     Return to Previous View
                                                 </a>
                                             </div>
                                         </div>
                                   </div>
+                                  
+                                  <!-- Description Overlay  style="display:none"-->
+                                    <div id ="description-overlay" class="row-fluid">
+                                        <div class="span10">
+                                            <span class="title" data-bind="text: activeName"></span> -- 
+                                            <span class="text" data-bind="text: activeText"></span>
+                                            <span class="text">
+                                                <a class="btn btn-info btn-mini" data-bind="visible: activeLearnLink(), attr: { href: activeLearnLink }" target="_blank">Learn More...</a>
+                                            </span>  
+                                        </div>
+                                        <div class="span2">
+                                            <a href="#" style="margin-left: 10px;" class="btn btn-mini close" data-bind="click: closeDescription"> x </a> 
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
@@ -305,15 +320,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span8 offset4">
-                                <h3>
-                                    <span data-bind="text: activeName"></span>
-                                </h3>
-                                <span data-bind="text: activeText"></span>
-                                <a data-bind="visible: activeLearnLink(), attr: { href: activeLearnLink }" target="_blank">Learn More...</a>
                             </div>
                         </div>
                     </div>
