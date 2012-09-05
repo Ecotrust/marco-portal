@@ -206,15 +206,6 @@ a.disabled-link:hover {
     color:#aaa !important;
 }
 
-.btn.tweet-trash {
-    height: 20px;
-    margin-top: -4px !important;
-}
-
-.tweet-cell {
-    width: 60px;
-    padding-right: 0px !important;
-}
 
 #bookmark-popover {
   z-index: 1400;
@@ -402,15 +393,23 @@ a.disabled-link:hover {
     color:#aaa !important;
 }
 
+
 .btn.tweet-trash {
     height: 20px;
-    margin-top: -4px !important;
+    font-size: 16px;
+}
+
+.btn.tweet-trash i {
+  margin-top: 3px;
+  margin-left: 2px;
+  padding: 0px;
 }
 
 .tweet-cell {
     width: 60px;
     padding-right: 0px !important;
 }
+
 
 #bookmark-popover {
   z-index: 1400;

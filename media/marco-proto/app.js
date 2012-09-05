@@ -3,7 +3,7 @@
 app.hash = window.location.hash;
 
 app.onResize = function() {
-	var height = $(window).height() * .85;
+	var height = $(window).height() * .825;
 	$("#map").height(height);
 	$(".tabs").height(height);
 	$("#legend-wrapper").height(height);
