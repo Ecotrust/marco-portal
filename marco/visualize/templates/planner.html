@@ -109,18 +109,20 @@
                                                                             <button class="btn btn-info-sign">
                                                                                 <i class="icon-info-sign"></i>
                                                                             </button>
-                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
-                                                                                <span data-bind="visible: ! activeSublayer()">
-                                                                                    <span data-bind="text: name"></span>
-                                                                                </span>
-                                                                                <span data-bind="visible: activeSublayer">
-                                                                                    <span data-bind="text: activeSublayer().name"></span>
-                                                                                </span>
-                                                                                <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
+                                                                                <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive, event: {'hover': showDescription}">
+                                                                                    <div>
+                                                                                    <span data-bind="visible: ! activeSublayer()">
+                                                                                        <span data-bind="text: name"></span>
+                                                                                    </span>
+                                                                                    <span data-bind="visible: activeSublayer">
+                                                                                        <span data-bind="text: activeSublayer().name"></span>
+                                                                                    </span>
+                                                                                    <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
 
-                                                                                <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
-                                                                                                                                         'icon-check-empty': active() && ! visible()}"></i>
-                                                                            </a>
+                                                                                    <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
+                                                                                                                                             'icon-check-empty': active() && ! visible()}"></i
+                                                                                                                                             >
+                                                                                </div></a>
 
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
@@ -237,6 +239,10 @@
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
                                       </a>
+                                      <a class="btn">
+                                        <i class="icon-fullscreen icon-large"></i>
+                                        <span>Fullscreen</span>
+                                    </a>
                                   </div>
                                   </div>
                                   <div id="map-buttons">

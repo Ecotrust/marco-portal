@@ -131,6 +131,9 @@ p {
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
 }
+.form-search i {
+	margin-left: -5px;
+}
 #feedback-tab {
 	position: fixed;
 	left: -26px;
@@ -156,7 +159,8 @@ p {
 
 
 input + i.icon-remove-sign {
-	margin-left: -20px;
+	margin-left: -24px;
+	margin-right: 4px;
 	padding-right: 5px;
 	margin-top: 4px;
 	opacity: .5;
@@ -216,7 +220,7 @@ input + i.icon-remove-sign {
 }
 
 #data .form-search .btn, .search-row .form-search .btn {
-	margin-left: -7px;
+	margin-left: -8px;
 	margin-top: 0px;
 }
 
@@ -414,32 +418,39 @@ img + h3 {
 	color: #333;
 
 }
-#data-accordion .btn-group-layer .btn-layer {
+#data-accordion .btn-group-layer .btn-layer  {
   width: 72%;
   text-align: left;
-  overflow:hidden;
+  overflow: hidden;
 }
-.btn-group-layer {
-	width: 100%;
-}
-.btn.active-layer {
-	background-color: blue;
+#data-accordion .btn-group-layer .btn-layer div {
+	width: 93%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-left: -5px;
 }
 
 #active .btn-layer {
 	width: 65%;
 	text-align: left;
-	height: 33px;
+	height: 35px;
 	margin-top: -30px;
 	white-space: normal;
 }
 
 #active .btn-layer > div {
-	margin-top: 6px;
 	display: inline-block;
 	line-height: 1;
+	margin-left: -5px;
+	margin-top: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 72%;
+	height: inherit;
 }
-
+#active .btn-group .btn-mini {
+	line-height: 17px;
+}
 #active .btn-group + .btn-group {
 	margin-left: 12px;
 }
@@ -567,7 +578,7 @@ img + h3 {
 }
 
 #basemaps:hover a {
-    width: 115px;
+    width: 120px;
 	
 }
 #basemaps:hover span {
