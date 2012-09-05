@@ -529,11 +529,17 @@ function viewModel() {
 
     //show/hide the list of basemaps
     self.showBasemaps = function (self, event) {
-        var $layerSwitcher = $('#SimpleLayerSwitcher_30');
+        var $layerSwitcher = $('#SimpleLayerSwitcher_30'),
+            $button = $(event.target).closest('.btn');
         if ($layerSwitcher.is(":visible")) {
             $layerSwitcher.hide();
         } else {
-            $layerSwitcher.show();
+            $layerSwitcher.show().position({
+                "my": "right top",
+                "at": "left top",
+                "of": $button,
+                offset: "0px 0px"
+            });
         }
     }
     
@@ -585,9 +591,10 @@ function viewModel() {
     });
 
 
+
 	// show bookmark stuff
 	self.showBookmarks = function (self, event) {
-		var $button = $(event.target),
+		var $button = $(event.target).closest('.btn'),
 			$popover = $('#bookmark-popover');
 
 		if ($popover.is(":visible")) {
@@ -599,7 +606,8 @@ function viewModel() {
 			$popover.show().position({
 				"my": "right middle",
 				"at": "left middle",
-				"of": $button
+				"of": $button,
+                offset: "-10px 0px"
 			});
 
 		}
