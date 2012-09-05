@@ -393,10 +393,11 @@ function bookmarkModel($popover) {
         app.saveStateMode = false;
 		app.loadState(bookmark.state);
 
+        app.viewModel.activeBookmark(bookmark.name);
+        
 		// show the alert for resting state
 		app.viewModel.error("restoreState");
 		$('#bookmark-popover').hide();
-        
 	}
 
 	self.restoreState = function () {
@@ -503,6 +504,8 @@ function viewModel() {
 
 	// viewmodel for bookmarks
 	self.bookmarks = new bookmarkModel();
+    
+    self.activeBookmark = ko.observable();
 
 	// text for tooltip popup
 	self.layerToolTipText = ko.observable();
@@ -553,6 +556,18 @@ function viewModel() {
                 return layer;
             }
         });
+        
+        // remove any layers with duplicate legend titles
+        var seen = {};
+        for (i=0; i<layers.length; i++) {
+            var title = layers[i].legendTitle ? layers[i].legendTitle : layers[i].name;
+            if (seen[title]) {
+                layers.splice(i,1);
+                i--;
+            } else {
+                seen[title] = true;
+            }        
+        }
         return layers;
     });
     
@@ -578,7 +593,10 @@ function viewModel() {
         return hasLegends;
     });
 
-
+    // close error-overlay
+    self.closeAlert = function (self, event) {
+        app.viewModel.error(null);
+    }
 
 	// show bookmark stuff
 	self.showBookmarks = function (self, event) {

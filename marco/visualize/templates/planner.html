@@ -281,19 +281,15 @@
                                     </div>
                                   </div>
                                   -->
-                                  <div id="error-overlay">
-                                        <div data-bind="visible: error() === 'restoreState'" style="display:none">
-                                            <div>
-                                                Bookmark restored.
-                                                <div class="pull-right">
-                                                    <a class="btn btn-mini" data-bind="click: clearError">
-                                                        Clear
-                                                    </a>
-                                                    <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
-                                                        Revert to previous?
-                                                    </a>
-                                                </div>
-                                          </div>
+                                  <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
+                                        <div>
+                                            Bookmark "<span data-bind="text: activeBookmark"></span>"
+                                            <div class="pull-right">
+                                                <a href="#" style="margin-left: 10px;" class="close" data-bind="click: closeAlert"> x </button>
+                                                <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
+                                                    Return to Previous View
+                                                </a>
+                                            </div>
                                         </div>
                                   </div>
                                 </div>
