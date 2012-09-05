@@ -547,6 +547,18 @@ function viewModel() {
                 return layer;
             }
         });
+        
+        // remove any layers with duplicate legend titles
+        var seen = {};
+        for (i=0; i<layers.length; i++) {
+            var title = layers[i].legendTitle ? layers[i].legendTitle : layers[i].name;
+            if (seen[title]) {
+                layers.splice(i,1);
+                i--;
+            } else {
+                seen[title] = true;
+            }        
+        }
         return layers;
     });
     
