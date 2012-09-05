@@ -451,6 +451,8 @@ img + h3 {
 .theme .theme-context {
 	margin-bottom: 20px;
 }
+
+
 .theme li {
 	display: inline;
 	padding-left: 10px;
@@ -458,6 +460,10 @@ img + h3 {
 
 .theme p {
 	padding-right: 5px;
+}
+
+.layer .overview {
+	margin-bottom: 10px;
 }
 
 .link-not-available {
