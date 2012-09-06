@@ -2,13 +2,18 @@
 // save the initial load hash so we can use it if set
 app.hash = window.location.hash;
 
-app.onResize = function() {
-	var height = $(window).height() * .825;
-	$("#map").height(height);
-	$(".tabs").height(height);
-	$("#legend-wrapper").height(height);
-	$("#data-accordion").height(height - 90);
-	app.map.render('map');
+app.onResize = function (percent) {
+
+	var height = $(window).height() * (percent || .825);
+  // when fullscreen be odd
+  if (height) {
+    console.log(height);
+  	$("#map").height(height);
+  	$(".tabs").height(height);
+  	$("#legend-wrapper").height(height);
+  	$("#data-accordion").height(height - 90);
+  	app.map.render('map');
+  }
 };
 
 
@@ -45,15 +50,34 @@ app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
 
 
+
+// fullscreen stuff
+// for security reasons, this event listener must be bound directly
 document.getElementById('btn-fullscreen').addEventListener('click', function() {
     if (BigScreen.enabled) {
-        BigScreen.request(document.getElementById('fullscreen'));
+        BigScreen.toggle(document.getElementById('map'));
         // You could also use .toggle(element)
     }
     else {
         // fallback for browsers that don't support full screen
     }
 }, false);
+
+BigScreen.onenter = function() {
+    // called when entering full screen
+    // make map fullscreen
+    //app.onResize(100);
+    // app.map.render('map');
+
+}
+
+BigScreen.onexit = function() {
+    // called when exiting full screen
+    // return to normal size
+    //app.onResize();
+}
+
+
 
 $(document).ready(function () {
 	app.onResize();
