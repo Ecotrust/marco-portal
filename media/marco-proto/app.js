@@ -45,6 +45,16 @@ app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
 
 
+document.getElementById('btn-fullscreen').addEventListener('click', function() {
+    if (BigScreen.enabled) {
+        BigScreen.request(document.getElementById('fullscreen'));
+        // You could also use .toggle(element)
+    }
+    else {
+        // fallback for browsers that don't support full screen
+    }
+}, false);
+
 $(document).ready(function () {
 	app.onResize();
 	$(window).resize(app.onResize);

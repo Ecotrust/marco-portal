@@ -213,6 +213,10 @@ input + i.icon-remove-sign {
 	margin-bottom: 0px;
 }
 
+#fullscreen {
+	background-color: white;
+}
+
 #data .form-search {
 	padding: 0px 0px 20px 10px;
 	margin-left: 20px;

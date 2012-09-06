@@ -51,7 +51,7 @@
         </header> <!-- end header -->
         {% include "feedback.html" %}  
         <div class="container-fluid" id="primary-content">
-            <div class="row-fluid">
+            <div class="row-fluid"   id="fullscreen">
                 <div class="span4 frame tabs">
                     <div class="sidebar-nav">
                         <!-- tab controls -->
@@ -220,7 +220,7 @@
                    
                     <div class="row-fluid" data-bind="visible: showMapPanel">
                         <div class="span12">
-                            <div class="row-fluid" >
+                            <div class="row-fluid">
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
                                   <div id="basemaps">
@@ -241,7 +241,7 @@
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
                                       </a>
-                                      <a class="btn">
+                                      <a class="btn" id="btn-fullscreen">
                                         <i class="icon-fullscreen icon-large"></i>
                                         <span>Fullscreen</span>
                                     </a>
@@ -464,6 +464,7 @@
         <script src="http://maps.google.com/maps/api/js?v=3.6&amp;sensor=false"></script>
         <script src="{{media}}/marco-proto/assets/openlayers/OpenLayers.js"></script>
         <script src="{{media}}/marco-proto/assets/js/simplelayerswitcher.js"></script>
+        <script src="{{media}}/marco/js/bigscreen.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};
