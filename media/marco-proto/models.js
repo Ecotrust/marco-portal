@@ -283,10 +283,14 @@ function layerModel(options, parent) {
     
     // display descriptive text below the map
     self.showDescription = function (layer) {
-        app.viewModel.activeName(layer.name);
-        app.viewModel.activeText(layer.description);
-        app.viewModel.activeLearnLink(layer.learn_link);
-        $('#description-overlay').show();
+        if ( $('#description-overlay').is(':visible') && layer.name === app.viewModel.activeName() ) {
+            $('#description-overlay').hide();
+        } else {
+            app.viewModel.activeName(layer.name);
+            app.viewModel.activeText(layer.description);
+            app.viewModel.activeLearnLink(layer.learn_link);
+            $('#description-overlay').show();
+        }
     }
     
     self.showTooltip = function (layer, event) {
