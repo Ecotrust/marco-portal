@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<br/>
-		<p>{{ theme.overview }}</p>
+		<p>{{ theme.overview|safe }}</p>
 		{% for layer in theme.layers %}
 			{% if layer.layer_type != "placeholder"  %}
 			<div class="clearfix layer">
