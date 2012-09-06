@@ -523,6 +523,10 @@ function viewModel() {
     // attribute data
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
+    
+    self.closeAttribution = function() {
+        self.attributeData(false);
+    }
 
 	// set the error type
 	// can be one of:
@@ -605,7 +609,6 @@ function viewModel() {
     
     // close layer description
     self.closeDescription = function (self, event) {
-        app.viewModel.error(null);
         $('#description-overlay').hide();
     }
 
