@@ -423,7 +423,7 @@ img + h3 {
 
 }
 #data-accordion .btn-group-layer .btn-layer  {
-  width: 89%;
+  width: 80%;
   text-align: left;
   overflow: hidden;
 }
@@ -726,7 +726,7 @@ img + h3 {
 		margin-left: -18px;
 	}
 	#data-accordion .btn-group-layer .btn-layer {
-	  width: 72%;
+	  width: 68%;
 	  font-size: 12px;
 	}
 
