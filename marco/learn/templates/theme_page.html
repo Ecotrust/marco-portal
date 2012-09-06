@@ -15,6 +15,8 @@
 		<br/>
 		<p>{{ theme.overview|safe }}</p>
 		{% for layer in theme.layers %}
+            {% if layer.is_parent %}
+            {% else %}
 			{% if layer.layer_type != "placeholder"  %}
 			<div class="clearfix layer">
 				<a name={{layer.slug}}></a>
@@ -39,6 +41,7 @@
 			</div>
 			<br/>
 			{% endif %}
+            {% endif %}
 		{% endfor %}
 	</div>
 </div>

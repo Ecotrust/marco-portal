@@ -609,7 +609,6 @@ function viewModel() {
     
     // close layer description
     self.closeDescription = function (self, event) {
-        app.viewModel.error(null);
         $('#description-overlay').hide();
     }
 
