@@ -107,7 +107,7 @@
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
                                                                             <button class="btn btn-info-sign" data-bind="click: showDescription">
-                                                                                <i class="icon-info-sign"></i>
+                                                                                <i class="icon-info-sign icon-large"></i>
                                                                             </button>
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
@@ -119,7 +119,7 @@
                                                                                         <span data-bind="text: activeSublayer().name"></span>
                                                                                     </span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
-                                                                                    <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
+                                                                                    <i class="check icon-large icon-check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                      'icon-check-empty': active() && ! visible()}">
                                                                                     </i>
                                                                                 </div>

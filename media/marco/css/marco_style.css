@@ -424,7 +424,7 @@ img + h3 {
   overflow: hidden;
 }
 #data-accordion .btn-group-layer .btn-layer div {
-	width: 93%;
+	width: 96%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-left: -5px;

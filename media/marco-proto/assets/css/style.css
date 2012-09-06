@@ -105,7 +105,7 @@ body {
 
 i.check {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 12px;
 }
 #data-accordion i.check {
@@ -326,6 +326,11 @@ body {
 
 #data-accordion .btn-info-sign {
   width: 15px;
+  
+}
+
+#data-accordion .icon-info-sign {
+  margin-left: -15px;
 }
 
 #data-accordion i.check {
