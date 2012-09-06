@@ -423,7 +423,7 @@ img + h3 {
 
 }
 #data-accordion .btn-group-layer .btn-layer  {
-  width: 72%;
+  width: 89%;
   text-align: left;
   overflow: hidden;
 }
@@ -434,38 +434,40 @@ img + h3 {
 	margin-left: -5px;
 }
 
-#active .btn-layer {
-	width: 65%;
-	text-align: left;
-	height: 35px;
-	margin-top: -30px;
-	white-space: normal;
+#active ul {
+	padding: 10px;
 }
-#active .btn-group .btn-info-sign {
-	height: 45px;
-	width: 35px;
-	margin-top: -30px;
-	font-size: 18px;
+
+#active ul li {
+	margin-bottom: 10px;
+}
+#active .btn {
+	padding-left: 0px;
+}
+#active .btn:last-child {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#active .btn-group {
+	width: 90%;
+}
+#active .btn-group .btn-layer {
+	text-align: left;
+	width: 70%;
+
 }
 
 
 #active .btn-layer > div {
 	display: inline-block;
 	line-height: 1;
-	margin-left: -5px;
+	padding-left: 8px;
 	margin-top: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	width: 72%;
 	height: inherit;
 }
-#active .btn-group .btn-mini {
-	line-height: 17px;
-}
-#active .btn-group + .btn-group {
-	margin-left: 12px;
-}
-
 
 #data-accordion li.layer {
 	margin-bottom: 10px;
@@ -715,8 +717,8 @@ img + h3 {
 	.showcase .caption {
 		top: 100px;
 	}
-	#active .btn-layer {
-		width: 45%;
+	#active .btn-group .btn-layer {
+		width: 65%;
 		font-size: 12px;
 	}
 	.form-search input {
@@ -727,6 +729,7 @@ img + h3 {
 	  width: 72%;
 	  font-size: 12px;
 	}
+
 }
 
 @media (max-width: 359px) {

@@ -106,10 +106,7 @@ body {
 i.check {
   position: absolute;
   right: 12px;
-  top: 12px;
-}
-#data-accordion i.check {
-  top: 6px;
+  top: 8px;
 }
 #data-accordion .dropdown-menu {
   right: 26px;
@@ -324,18 +321,10 @@ body {
 }
 
 
-#data-accordion .btn-info-sign {
-  width: 15px;
-  
-}
-
 #data-accordion .icon-info-sign {
   margin-left: -15px;
 }
 
-#data-accordion i.check {
-  padding-top: 4px;
-}
 
 #data-accordion .dropdown-menu {
   right: 26px;

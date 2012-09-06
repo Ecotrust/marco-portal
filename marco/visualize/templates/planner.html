@@ -106,9 +106,9 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
-                                                                            <button class="btn btn-info-sign" data-bind="click: showDescription">
+                                                                            <a class="btn btn-info-sign" data-bind="click: showDescription">
                                                                                 <i class="icon-info-sign icon-large"></i>
-                                                                            </button>
+                                                                            </a>
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
                                                                                 <div>
@@ -160,55 +160,41 @@
                             <!-- /design-tab -->
                             <!-- active layer tab -->
                             <div class="tab-pane fade" id="active">
-                                <div data-bind="visible: activeLayers().length === 0">
-                                    <div style="padding: 10px;">
-                                        <p>
-                                            You currently have no activated data layers. 
-                                        </p>
-                                        <p>
-                                            Any layers that are activated in the Data panel will also appear in this Active panel.
-                                        </p>
-                                        <p>
-                                            Layers in the Active panel can be adjusted in terms of their transparency and their ordering on the map.
-                                        </p>
-                                    </div>
-                                </div>
-                                <table class="table">
-                                    <tbody data-bind="sortable: { data: activeLayers, options: { forceHelperSize: true } }">
-                                        <tr>
-                                            <td>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div data-bind="visible: activeLayers().length === 0">
+                                            <div style="padding: 10px;">
+                                                <p>
+                                                    You currently have no activated data layers. 
+                                                </p>
+                                                <p>
+                                                    Any layers that are activated in the Data panel will also appear in this Active panel.
+                                                </p>
+                                                <p>
+                                                    Layers in the Active panel can be adjusted in terms of their transparency and their ordering on the map.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <ul class="unstyled" data-bind="sortable: { data: activeLayers, options: {  } }">
+                                            <li>
                                                 <div class="btn-group">
-                                                    <button class="btn btn-info-sign"><i class="icon-info-sign icon-large"></i></button>
+                                                    <a class="btn">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
                                                     <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
-                                                        <!--<div>
-                                                            <i class="icon-align-justify"></i>
-                                                        </div>-->
                                                         <div data-bind="text: name"></div>
                                                         <div><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></div>
                                                     </a>
-                                                  <!--  <div class="btn-group btn-group-vertical">
-                                                        <a class="btn btn-mini" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
-                                                            <i class="icon-circle-arrow-up">
-                                                            </i>
-                                                        </a>
-                                                        <a class="btn btn-mini" data-bind="click: lowerLayer, css: { disabled: isBottomLayer($data) }">
-                                                            <i class="icon-circle-arrow-down">
-                                                            </i>
-                                                        </a>
-                                                    </div>-->
-                                                    <div class="btn-group btn-group-vertical">
-                                                        <a class="btn btn-mini" data-bind="click: toggleActive">
-                                                            <i class="icon-remove">
-                                                            </i>
-                                                        </a>
-                                                        <a class="btn  btn-mini opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></a>
-                                                    </div>
+                                                    <a class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust icon-large"></i></a>
+                                                    <a class="btn" data-bind="click: toggleActive">
+                                                        <i class="icon-remove">
+                                                        </i>
+                                                    </a>
                                                 </div>
-                                                
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /active-tab -->
                         </div>
@@ -216,8 +202,7 @@
                     </div>
                 </div>
                 <!--/span-->
-                <div class="span8">
-                   
+                <div class="span8">       
                     <div class="row-fluid" data-bind="visible: showMapPanel">
                         <div class="span12">
                             <div class="row-fluid">
@@ -465,6 +450,7 @@
         <script src="{{media}}/marco-proto/assets/openlayers/OpenLayers.js"></script>
         <script src="{{media}}/marco-proto/assets/js/simplelayerswitcher.js"></script>
         <script src="{{media}}/marco/js/bigscreen.js"></script>
+        <script src="{{media}}/marco/js/jquery.ui.touch-punch.min.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};
