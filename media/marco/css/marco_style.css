@@ -213,6 +213,10 @@ input + i.icon-remove-sign {
 	margin-bottom: 0px;
 }
 
+#fullscreen {
+	background-color: white;
+}
+
 #data .form-search {
 	padding: 0px 0px 20px 10px;
 	margin-left: 20px;
@@ -424,7 +428,7 @@ img + h3 {
   overflow: hidden;
 }
 #data-accordion .btn-group-layer .btn-layer div {
-	width: 93%;
+	width: 96%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-left: -5px;
@@ -437,6 +441,13 @@ img + h3 {
 	margin-top: -30px;
 	white-space: normal;
 }
+#active .btn-group .btn-info-sign {
+	height: 45px;
+	width: 35px;
+	margin-top: -30px;
+	font-size: 18px;
+}
+
 
 #active .btn-layer > div {
 	display: inline-block;
@@ -454,6 +465,7 @@ img + h3 {
 #active .btn-group + .btn-group {
 	margin-left: 12px;
 }
+
 
 #data-accordion li.layer {
 	margin-bottom: 10px;

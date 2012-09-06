@@ -51,7 +51,7 @@
         </header> <!-- end header -->
         {% include "feedback.html" %}  
         <div class="container-fluid" id="primary-content">
-            <div class="row-fluid">
+            <div class="row-fluid"   id="fullscreen">
                 <div class="span4 frame tabs">
                     <div class="sidebar-nav">
                         <!-- tab controls -->
@@ -107,7 +107,7 @@
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
                                                                             <button class="btn btn-info-sign" data-bind="click: showDescription">
-                                                                                <i class="icon-info-sign"></i>
+                                                                                <i class="icon-info-sign icon-large"></i>
                                                                             </button>
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
@@ -119,7 +119,7 @@
                                                                                         <span data-bind="text: activeSublayer().name"></span>
                                                                                     </span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
-                                                                                    <i class="check icon-check" data-bind="css: { 'icon-check': active() && visible(), 
+                                                                                    <i class="check icon-large icon-check" data-bind="css: { 'icon-check': active() && visible(), 
                                                                                                                                      'icon-check-empty': active() && ! visible()}">
                                                                                     </i>
                                                                                 </div>
@@ -178,6 +178,7 @@
                                         <tr>
                                             <td>
                                                 <div class="btn-group">
+                                                    <button class="btn btn-info-sign"><i class="icon-info-sign icon-large"></i></button>
                                                     <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <!--<div>
                                                             <i class="icon-align-justify"></i>
@@ -185,7 +186,7 @@
                                                         <div data-bind="text: name"></div>
                                                         <div><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></div>
                                                     </a>
-                                                    <div class="btn-group btn-group-vertical">
+                                                  <!--  <div class="btn-group btn-group-vertical">
                                                         <a class="btn btn-mini" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
                                                             <i class="icon-circle-arrow-up">
                                                             </i>
@@ -194,7 +195,7 @@
                                                             <i class="icon-circle-arrow-down">
                                                             </i>
                                                         </a>
-                                                    </div>
+                                                    </div>-->
                                                     <div class="btn-group btn-group-vertical">
                                                         <a class="btn btn-mini" data-bind="click: toggleActive">
                                                             <i class="icon-remove">
@@ -219,7 +220,7 @@
                    
                     <div class="row-fluid" data-bind="visible: showMapPanel">
                         <div class="span12">
-                            <div class="row-fluid" >
+                            <div class="row-fluid">
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
                                   <div id="basemaps">
@@ -240,7 +241,7 @@
                                               (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
                                           </span>
                                       </a>
-                                      <a class="btn">
+                                      <a class="btn" id="btn-fullscreen">
                                         <i class="icon-fullscreen icon-large"></i>
                                         <span>Fullscreen</span>
                                     </a>
@@ -463,6 +464,7 @@
         <script src="http://maps.google.com/maps/api/js?v=3.6&amp;sensor=false"></script>
         <script src="{{media}}/marco-proto/assets/openlayers/OpenLayers.js"></script>
         <script src="{{media}}/marco-proto/assets/js/simplelayerswitcher.js"></script>
+        <script src="{{media}}/marco/js/bigscreen.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};

@@ -679,6 +679,16 @@ function viewModel() {
 		}
 	}
 
+    // self.goFullScreen = function () {
+    //     if (BigScreen.enabled) {
+    //            BigScreen.request($("#fullscreen"));
+    //            // You could also use .toggle(element)
+    //        }
+    //        else {
+    //            // fallback for browsers that don't support full screen
+    //        }
+    // }
+
 
 	// do this stuff when the active layers change
 	self.activeLayers.subscribe(function () {
