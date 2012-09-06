@@ -437,6 +437,13 @@ img + h3 {
 	margin-top: -30px;
 	white-space: normal;
 }
+#active .btn-group .btn-info-sign {
+	height: 45px;
+	width: 35px;
+	margin-top: -30px;
+	font-size: 18px;
+}
+
 
 #active .btn-layer > div {
 	display: inline-block;
@@ -454,6 +461,7 @@ img + h3 {
 #active .btn-group + .btn-group {
 	margin-left: 12px;
 }
+
 
 #data-accordion li.layer {
 	margin-bottom: 10px;
