@@ -286,7 +286,7 @@
                                         <div>
                                             Bookmark "<span data-bind="text: activeBookmark"></span>"
                                             <div class="pull-right">
-                                                <a href="#" style="margin-left: 10px;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
+                                                <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
                                                 <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
                                                     Return to Previous View
                                                 </a>
@@ -295,16 +295,16 @@
                                   </div>
                                   
                                   <!-- Description Overlay  style="display:none"-->
-                                    <div id ="description-overlay" class="row-fluid">
-                                        <div class="span10">
+                                    <div id ="description-overlay" class="row-fluid" style="display: none">
+                                        <div class="span11">
                                             <span class="title" data-bind="text: activeName"></span> -- 
                                             <span class="text" data-bind="text: activeText"></span>
                                             <span class="text">
                                                 <a class="btn btn-info btn-mini" data-bind="visible: activeLearnLink(), attr: { href: activeLearnLink }" target="_blank">Learn More...</a>
                                             </span>  
                                         </div>
-                                        <div class="span2">
-                                            <a href="#" style="margin-left: 10px;" class="btn btn-mini close" data-bind="click: closeDescription"> x </a> 
+                                        <div class="span1">
+                                            <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeDescription"> x </a> 
                                         </div>
                                     </div>
                                     
