@@ -523,6 +523,10 @@ function viewModel() {
     // attribute data
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
+    
+    self.closeAttribution = function() {
+        self.attributeData(false);
+    }
 
 	// set the error type
 	// can be one of:

@@ -223,7 +223,7 @@
                             <div class="row-fluid">
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
-                                  <div id="basemaps">
+                                  <div id="basemaps"> <!-- Basemaps, Legends, Bookmarks, and FullScreen buttons -->
                                     <div class="btn-group btn-group-vertical">
                                       <a id="basemap-button" class="btn" data-bind="click: showBasemaps">
                                           <i class="icon-globe icon-large"></i>
@@ -252,8 +252,11 @@
                                           Coordinates &amp; Depth
                                       </a></p> -->
                                   </div>
-                                  <div id="vector-attribute-data">
+                                  
+                                  <!-- Attribution Overlay -->
+                                  <div id="attribute-data">
                                     <div data-bind="visible: attributeData" style="display: none">
+                                      <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                       <dl>
                                         <dt><span data-bind="text: attributeTitle()"></span></dt>
                                         <dl data-bind="foreach: attributeData()">
@@ -261,28 +264,10 @@
                                             <dd data-bind="text: data"></dd>
                                         </dl>
                                       </dl>
-                                        <!--<span data-bind="text: vectorAttributeTitle"></span>
-                                        <table data-bind="foreach: vectorAttributeData">
-                                            <tr>
-                                                <td data-bind="text: display">
-                                                <td data-bind="text: data">
-                                            </tr>
-                                        </table>-->
                                     </div>
                                   </div>
-                                  <!--
-                                  <div id="utf-attribute-data">
-                                    <div data-bind="visible: utfAttributeData" style="display: none">   
-                                      <dl>
-                                        <dt><span data-bind="text: utfAttributeTitle"></span></dt>
-                                        <dl data-bind="foreach: utfAttributeData">
-                                            <dt data-bind="text: display"></dt>
-                                            <dd data-bind="text: data"></dd>
-                                        </dl>
-                                      </dl>
-                                    </div>
-                                  </div>
-                                  -->
+                                  
+                                  <!-- Bookmark Message -->
                                   <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
                                         <div>
                                             Bookmark "<span data-bind="text: activeBookmark"></span>"
@@ -308,8 +293,9 @@
                                             <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeDescription"> x </a> 
                                         </div>
                                     </div>
-                                    
                                 </div>
+                                
+                                <!-- Legends panel -->
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
                                         <h3>Legends</h3>
@@ -360,8 +346,7 @@
                 </div>
             </div>
         </div>
-        <div style="display:none" id="bookmark-popover" class="popover fade left in"
-        data-bind="with: bookmarks">
+        <div style="display:none" id="bookmark-popover" class="popover fade left in" data-bind="with: bookmarks">
             <div class="arrow">
             </div>
             <div class="popover-inner">

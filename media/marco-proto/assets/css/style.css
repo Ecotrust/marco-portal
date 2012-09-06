@@ -23,7 +23,7 @@ body {
   width: 150px;
 }
 
-#vector-attribute-data {
+#attribute-data {
   position: absolute;
   top: 20%;
   right: 0;
@@ -33,29 +33,7 @@ body {
   color: white;
   
 }
-#vector-attribute-data > div {
-  padding: 10px;
-  border-radius: 4px;
-  background-color: rgb(45, 137,152);
-  /* RGBa with 0.6 opacity */
-  background-color: rgba(45, 137, 152, 0.65);
-  /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##2d899800, endColorstr=#2d899800);
-  /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-}
-
-#utf-attribute-data {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  z-index: 1250; 
-  width: 250px;
-  font-size: 16px;
-  color: white;
-  
-}
-#utf-attribute-data > div {
+#attribute-data > div {
   padding: 10px;
   border-radius: 4px;
   background-color: rgb(45, 137,152);
