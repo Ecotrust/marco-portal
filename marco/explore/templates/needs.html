@@ -1,5 +1,4 @@
 {% extends 'explore_base.html' %} 
-
 {% block main %}
 {% load flatblock_tags %}
 
@@ -7,12 +6,11 @@
 {% flatblock "data_needs_intro" %}
 
 <div class="row-fluid search-row">
-    <div class="span12 ">
+    <div class="span12" style="margin: 15px 0;">
         <h3>Data Layer Search</h3>
         <form class="form-search">
             <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
             <i class="icon-remove-sign icon-large"></i> 
-
             <button type="submit" class="btn">
                 find
             </button>
@@ -20,18 +18,36 @@
     </div>
 </div>
 
-
-<div class="accordion">
-  {% for theme in themes %}
-    <div class="accordion-group">
-      <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{theme.name}}">
-          <h3>{{ theme.display_name }}</h3>
-        </a>
-      </div>
-      <div id="{{theme.name}}" class="accordion-body collapse" style="height: 0px; ">
-        <div class="accordion-inner">     
-            <ul class="unstyled">
+{% for theme in themes %}
+<div class="theme catalog-page">
+	<div>
+        <div class="row-fluid">
+            <div class="span6">
+                <a name="{{ theme_dict.theme.name }}"></a>
+                <h3>
+                    {{ theme.display_name }} Data Needs
+                </h3>
+                <p>
+                    {{ theme.description }} 
+                    <span class="pull-right"><a href="{{theme_dict.learn_link}}">Learn More... </a></span>
+                </p>  
+            </div>
+            <div class="span6">
+                <a href="{{theme_dict.learn_link}}">
+                    <div class="image">
+                        <img src="{{MEDIA_URL}}marco/img/themes/{{theme.name}}.jpg" alt="">
+                        <div class="caption">
+                          {{ theme.display_name }}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+	</div>
+    
+    <div id="{{theme.name}}">
+        <div> 
+              <ul class="unstyled">
                 {% for key, needs in theme_dict.items %}
                     {% if key == theme %}
                         {% for need in needs %}
@@ -61,13 +77,11 @@
                         {% endfor needs%}
                     {% endif %}
                 {% endfor items%}
-            </ul>          
+              </ul>
         </div>
-      </div>
     </div>
-  {% endfor themes %}
 </div>
-
+{% endfor themes %}
 {% endblock %}
 
 {% block javascript %}
@@ -78,7 +92,7 @@
             search = function (val) {
                var layer = layer_index[val];
                //$(layer.layer.closest('.accordion-body')).addClass('in');
-               $(layer.layer.closest('.accordion-body')).collapse('show');
+               //$(layer.layer.closest('.accordion-body')).collapse('show');
                layer.layer.find('h4').effect("pulsate", {times:2 }, 500);
                setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top-100)}, 200);
                //$('html, body').animate( { setTimeout(function() {$(window).scrollTop(layer.layer.find('h4').offset().top)}, 200) }, 'slow');
