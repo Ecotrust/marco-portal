@@ -187,7 +187,6 @@ input + i.icon-remove-sign {
 
 }
 .sidebar h3 {
-	background-color: #eee;
 	margin-bottom: 0px;
 	font-size: 18px;
 	padding: 5px;
@@ -198,11 +197,19 @@ input + i.icon-remove-sign {
 
 
 }
+.sidebar .active {
+	border-left: 2px solid #2d8998;
+	pointer-events: none;
+   	cursor: default;
 
+}
 .sidebar .active a {
 	margin-left: 0px;
 	padding-left: 3px;
 	font-weight: bold;
+}
+.sidebar .active h3 {
+	padding-left: 2px;
 }
 .sidebar li a {
 	margin-left: 5px;
@@ -431,7 +438,7 @@ img + h3 {
 .accordion-heading.active, .active .accordion-body {
 	border-left: 3px solid #2d8998;
 	margin-left: -1px;
-		
+	font-weight: bold;
 	background-color: #eee;
 	color: #333;
 
@@ -578,6 +585,10 @@ img + h3 {
 	border-radius: 10px;
 	overflow: hidden;
 	border: 1px solid #ccc;
+}
+#map {
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 #basemaps {

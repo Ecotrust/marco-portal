@@ -301,11 +301,9 @@ input + i.icon-remove-sign {
 	margin-left: 5px;
 }
 .sidebar h3 {
-	background-color: #eee;
 	margin-bottom: 0px;
 	font-size: 18px;
 	padding: 5px;
-	font-weight: bold;
 	line-height: 1;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -317,7 +315,9 @@ input + i.icon-remove-sign {
    	cursor: default;
 
 }
-
+.sidebar h3.active  {
+	padding-left: 2px;
+}
 img + h3 {
 	margin-top: 10px;
 }
