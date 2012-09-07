@@ -83,6 +83,7 @@
                                                 </span>
                                                 {% endif %}
                                             </li>
+                                            <!--
                                             <li>
                                                 {% if layer.map_tiles %}
                                                 <a href="{{layer.map_tiles}}" target="_blank">
@@ -96,6 +97,7 @@
                                                 </span>
                                                 {% endif %}
                                             </li>
+                                            -->
                                             <li>
                                                 {% if layer.kml %}
                                                 <a href="{{layer.kml}}" target="_blank">
@@ -147,9 +149,9 @@
                                                     {% flatblock "data_catalog_metadata_link" %}
                                                 </span>
                                                 {% endif %}
-                                                {% if layer.source %}
                                             </li>
                                             <li>
+                                                {% if layer.source %}
                                                 <a href="{{layer.source}}" target="_blank">
                                                     <span rel="tooltip" title="{% flatblock "data_catalog_source_link_tooltip" %}">
                                                         {% flatblock "data_catalog_source_link" %}
