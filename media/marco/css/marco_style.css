@@ -146,10 +146,9 @@ a:focus {
 	top: 80%;
 	padding: 2px 8px;
 	border: 2px solid #ccc;
-	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
-	background: rgba(0, 60, 136, 0.5);
-	opacity: .8;
-	filter: alpha(opacity=80);
+	background: #2d8998; /* fallback for IE - IE6 requires background shorthand*/
+	background: rgba(45,137,152, 1);
+
 	color: white;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
