@@ -1004,9 +1004,9 @@
             "legend_title": "", 
             "sublayers": [
                 13, 
+                14, 
                 11, 
-                12, 
-                14
+                12
             ]
         }
     }, 
@@ -1314,6 +1314,47 @@
         }
     }, 
     {
+        "pk": 13, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "Pelagic gear fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=13&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "Pelagic Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Pelagic Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 57, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1430,47 +1471,6 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 13, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "Pelagic gear fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=13&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Pelagic Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Pelagic Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
@@ -1854,7 +1854,7 @@
         }
     }, 
     {
-        "pk": 11, 
+        "pk": 14, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1862,10 +1862,10 @@
             "themes": [
                 4
             ], 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_All_Gear_Types_Files/Fishing_Effort_All_Gear_Types.kmz", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
             "source": "http://www.nefsc.noaa.gov/ ", 
             "lookup_table": [], 
             "utfurl": "", 
@@ -1877,18 +1877,18 @@
             "map_tiles": "", 
             "attribute_fields": [], 
             "vector_fill": null, 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "data_overview": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.", 
             "attribute_title": "", 
             "is_sublayer": true, 
             "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "All Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
+            "data_status": "Available", 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "Summer Flounder Landings", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
-            "legend_title": "All Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
+            "legend_title": "", 
             "sublayers": [
                 15
             ]
@@ -2014,6 +2014,47 @@
         }
     }, 
     {
+        "pk": 11, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_All_Gear_Types_Files/Fishing_Effort_All_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "All Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/AllGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "All Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 16, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2129,47 +2170,6 @@
             "legend_title": "", 
             "sublayers": [
                 21
-            ]
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Bottom_Gear_Types_Files/Fishing_Effort_Bottom_Gear_Types.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Bottom Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Bottom Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
-            "sublayers": [
-                15
             ]
         }
     }, 
@@ -2492,47 +2492,6 @@
         }
     }, 
     {
-        "pk": 14, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
-            "data_status": "Available", 
-            "data_source": "The Nature Conservancy", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "Summer Flounder Landings", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
         "pk": 54, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2569,6 +2528,47 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Bottom_Gear_Types_Files/Fishing_Effort_Bottom_Gear_Types.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/legend.png", 
+            "data_status": "", 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "Bottom Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/BottomGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Bottom Gear Types <p style=\"margin: 0 0 3px; text-align: left\">avg. # trips/year <p style=\"margin: 0 0 3px; text-align: left\">(2000-2009)", 
+            "sublayers": [
+                15
+            ]
         }
     }, 
     {
