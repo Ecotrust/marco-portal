@@ -677,52 +677,6 @@
         }
     }, 
     {
-        "pk": 65, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                3
-            ], 
-            "description": "", 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [
-                12, 
-                11
-            ], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                30, 
-                31, 
-                32
-            ], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "TYPE", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "AWC Routes & Hubs", 
-            "url": "/media/data_manager/geojson/AWCRoutesAndHubs.json", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 36, 
         "model": "data_manager.layer", 
         "fields": {
@@ -802,6 +756,52 @@
             "sublayers": [
                 21
             ]
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                3
+            ], 
+            "description": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [
+                12, 
+                11
+            ], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                30, 
+                31, 
+                32
+            ], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "TYPE", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png", 
+            "data_status": "", 
+            "data_source": "Atlantic Wind Connection", 
+            "data_notes": "", 
+            "name": "AWC Routes & Hubs", 
+            "url": "/media/data_manager/geojson/AWCRoutesAndHubs.json", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {
@@ -1808,52 +1808,6 @@
         }
     }, 
     {
-        "pk": 64, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "description": "", 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [
-                9, 
-                7, 
-                10, 
-                8
-            ], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                29
-            ], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "Type", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Shipping Lanes", 
-            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 14, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1895,6 +1849,52 @@
         }
     }, 
     {
+        "pk": 64, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                8
+            ], 
+            "description": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [
+                9, 
+                7, 
+                10, 
+                8
+            ], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                29
+            ], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "Type", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png", 
+            "data_status": "", 
+            "data_source": "NOAA", 
+            "data_notes": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ", 
+            "name": "Shipping Lanes", 
+            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 23, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1929,45 +1929,6 @@
             "name": "EFH Overlays", 
             "url": "", 
             "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 59, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "WMS", 
-            "fact_sheet": "", 
-            "themes": [
-                5
-            ], 
-            "description": "", 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": null, 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Danger Zones & Restricted Areas", 
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/19", 
-            "arcgis_layers": "19", 
             "legend_title": "", 
             "sublayers": []
         }
@@ -2052,6 +2013,45 @@
             "sublayers": [
                 15
             ]
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "WMS", 
+            "fact_sheet": "", 
+            "themes": [
+                5
+            ], 
+            "description": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "Department of Defense, U.S. Navy", 
+            "data_notes": "Area with naval or military presence. Caution should be used if navigating near these areas.", 
+            "name": "Danger Zones & Restricted Areas", 
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/19", 
+            "arcgis_layers": "19", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {
@@ -2495,7 +2495,7 @@
         "pk": 54, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "Vector", 
+            "layer_type": "placeholder", 
             "fact_sheet": "", 
             "themes": [
                 8
