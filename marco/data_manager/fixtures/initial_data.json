@@ -2014,52 +2014,6 @@
         }
     }, 
     {
-        "pk": 24, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.75310645475983&location%5By%5D=38.12110263349955&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=24&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
-            "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/benthic_habitats_south/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                8, 
-                24, 
-                25, 
-                26, 
-                27, 
-                28
-            ], 
-            "vector_fill": null, 
-            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "Available", 
-            "data_source": "The Nature Conservancy", 
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.", 
-            "name": "Benthic Habitats (South)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 16, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2275,7 +2229,7 @@
             "kml": "", 
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
             "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/benthic_habitats_north/${z}/${x}/${y}.json", 
+            "utfurl": "/media/data_manager/utfgrid/sne_benhab/${z}/${x}/${y}.json", 
             "thumbnail": "", 
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
             "metadata": "", 
@@ -2288,6 +2242,7 @@
                 26, 
                 27, 
                 28, 
+                57, 
                 33
             ], 
             "vector_fill": null, 
@@ -2486,6 +2441,53 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "Waterbird Survey <p style=\"margin: 0 0 3px; text-align: left\">(# birds per sq km)</p>", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.75310645475983&location%5By%5D=38.12110263349955&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=24&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/mab_benhab/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                8, 
+                24, 
+                25, 
+                26, 
+                27, 
+                28, 
+                57
+            ], 
+            "vector_fill": null, 
+            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "Available", 
+            "data_source": "The Nature Conservancy", 
+            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.", 
+            "name": "Benthic Habitats (South)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>", 
             "sublayers": []
         }
     }, 
@@ -2858,15 +2860,6 @@
         }
     }, 
     {
-        "pk": 33, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "ECOLOGICAL_NORTH", 
-            "display_name": "Ecological Marine Unit", 
-            "order": 1
-        }
-    }, 
-    {
         "pk": 34, 
         "model": "data_manager.attributeinfo", 
         "fields": {
@@ -3071,6 +3064,24 @@
             "field_name": "YELLOWTAIL", 
             "display_name": "Yellowtail Flounder", 
             "order": 18
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "HAB_NUM", 
+            "display_name": "Habitat Code", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ECOLOGICAL_NORTH", 
+            "display_name": "Ecological Marine Unit", 
+            "order": 2
         }
     }, 
     {
