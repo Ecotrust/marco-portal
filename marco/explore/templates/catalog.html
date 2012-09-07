@@ -2,12 +2,11 @@
 {% block main %}
 {% load flatblock_tags %}
 
-<!--  foreach theme  -->
 <h2>{% flatblock "data_catalog_title" %}</h2>
 {% flatblock "data_catalog_intro" %}
 
 <div class="row-fluid search-row">
-    <div class="span12 ">
+    <div class="span12" style="margin: 15px 0;">
         <h3>Data Layer Search</h3>
         <form class="form-search">
             <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
@@ -18,6 +17,7 @@
         </form>
     </div>
 </div>
+
 {% for theme_dict in themes %}
 <div class="theme catalog-page">
 	<div class="theme-context">
@@ -178,8 +178,8 @@
 </div>
 {% endfor themes%}
 <!-- endforeach theme -->
-
 {% endblock %}
+
 {% block javascript %}
 <script>
     $(document).ready( function() {
