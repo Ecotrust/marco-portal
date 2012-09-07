@@ -292,6 +292,7 @@ body {
 
 .accordion-inner {
   overflow: visible;
+  background: white;
 }
 
 #legend-accordion .accordion-toggle {
