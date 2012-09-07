@@ -170,7 +170,7 @@ app.init = function () {
     map.addControl(map.UTFControl);    
 
     app.map = map;
-}
+};
 
 app.addLayerToMap = function(layer) {
     if (!layer.layer) {
@@ -188,12 +188,10 @@ app.addLayerToMap = function(layer) {
                 useJSONP: false
             });
             //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
-            app.map.addLayer(layer.utfgrid); 
-            
+            app.map.addLayer(layer.utfgrid);           
             //app.map.UTFControl.layers = [layer.utfgrid];
             //layer.utfcontrol = app.addUTFControl(layer);
             //app.map.addControl(layer.utfcontrol); 
-            	
             layer.layer = new OpenLayers.Layer.XYZ(
                 layer.name, 
                 layer.url,
@@ -213,7 +211,7 @@ app.addLayerToMap = function(layer) {
                 //strokeDashStyle: "dash",
                 //strokeOpacity: 1,
                 strokeColor: layer.color,
-                strokeOpacity: .5,
+                strokeOpacity: 0.5,
                 //strokeLinecap: "square",
                 //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                 //title: 'testing'
@@ -221,7 +219,7 @@ app.addLayerToMap = function(layer) {
                 externalGraphic: layer.graphic,
                 graphicWidth: 8,
                 graphicHeight: 8,
-                graphicOpacity: .5
+                graphicOpacity: 0.5
             });
             if (layer.lookupField) {
                 var mylookup = {};
@@ -230,7 +228,7 @@ app.addLayerToMap = function(layer) {
                                                 strokeDashstyle: details.dashstyle, 
                                                 fill: details.fill,
                                                 fillColor: details.color, 
-                                                fillOpacity: .5,
+                                                fillOpacity: 0.5,
                                                 externalGraphic: details.graphic }; 
                 });
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
@@ -301,7 +299,7 @@ app.addLayerToMap = function(layer) {
     }
     layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
-}
+};
 
 
 app.setLayerVisibility = function(layer, visibility) {
@@ -309,8 +307,8 @@ app.setLayerVisibility = function(layer, visibility) {
     if (layer.layer) {
         layer.layer.setVisibility(visibility);
     }
-}
+};
 
 app.setLayerZIndex = function(layer, index) {
     layer.layer.setZIndex(index);
-}
+};
