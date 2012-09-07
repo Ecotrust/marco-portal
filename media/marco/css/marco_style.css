@@ -95,8 +95,11 @@ p {
 
 .frame {
 	border: 1px solid #ccc;
+	border-radius: 10px;
 }
-
+.sidebar-nav .nav-tabs li.active:first-child a, .sidebar-nav .nav-tabs li:first-child:hover a {
+	border-top-left-radius: 10px;
+}
 .form-search .btn {
 	font-size: 9px;
 	text-transform: uppercase;
@@ -422,6 +425,9 @@ img + h3 {
 	color: #333;
 
 }
+#data-accordion .btn i, #active .btn i {
+	font-size: 13px;
+}
 #data-accordion .btn-group-layer .btn-layer  {
   width: 80%;
   text-align: left;
@@ -540,8 +546,11 @@ img + h3 {
 }
 */
 #legend-wrapper {
+	border: 1px solid #ccc;
+	border-radius: 10px;
   max-height: 80%;
   overflow-y: auto;
+  padding: 10px;
 }
 
 #legend-wrapper hr {
@@ -549,6 +558,12 @@ img + h3 {
 	/*margin-bottom: 5px;*/
 }
 /* Rules for the layer switcher */
+
+#map-wrapper {
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+}
 
 #basemaps {
   position: absolute;

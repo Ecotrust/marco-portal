@@ -7,10 +7,9 @@ app.onResize = function (percent) {
 	var height = $(window).height() * (percent || .825);
   // when fullscreen be odd
   if (height) {
-    console.log(height);
   	$("#map").height(height);
   	$(".tabs").height(height);
-  	$("#legend-wrapper").height(height);
+  	$("#legend-wrapper").height(height - 20);
   	$("#data-accordion").height(height - 90);
   	app.map.render('map');
   }
