@@ -30,31 +30,16 @@
         }
     }, 
     {
-        "pk": 5, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "feature_link": null, 
-            "display_name": "Security", 
-            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. ", 
-            "overview": "The region is a busy corridor for commercial ship traffic and is home to the world\u2019s largest naval base as well as many other military installations and training grounds. The Coast Guard works and other agencies work to ensure that navigation routes for both commercial and defense vessels are accessible and safe. Data presented here are an overview of areas of potential hazard or restricted from public use and this information is important for spatial planning.", 
-            "feature_image": null, 
-            "header_image": "/portal/assets/img/themes/security.jpg", 
-            "feature_excerpt": null, 
-            "thumbnail": "", 
-            "name": "security"
-        }
-    }, 
-    {
         "pk": 1, 
         "model": "data_manager.theme", 
         "fields": {
-            "feature_link": null, 
+            "feature_link": "", 
             "display_name": "Administrative", 
             "description": "Numerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide a regulatory context to help facilitate well-informed ocean planning decisions.", 
-            "overview": "Numerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide a regulatory context to help facilitate well-informed ocean planning decisions. In general, these boundary data are not intended for use at scales greater than 1:25,000.", 
-            "feature_image": null, 
+            "overview": "<p>\r\nNumerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide administrative and regulatory contexts to help facilitate well-informed ocean planning decisions. \r\n<p>\r\nKey boundaries include: \r\n<ul><li>Submerged Lands Act Boundary \u2013 Also known as the state seaward boundary, this line serves to distinguish state and federal jurisdictions (3 nautical miles seaward from mean low low water [MLLW]).\r\n</li><li>8g Revenue Sharing Line \u2013 area where revenues from energy resources are shared by federal and coastal state governments (extends seaward 3 nautical miles from Submerged Lands Act Boundary).\r\n</li><li>Territorial Sea Boundary \u2013 region of U.S. sovereignty (extends from MLLW to 12 nautical miles from shore).\r\n</li><li>Exclusive Economic Zone \u2013 area of sole rights for resource use, research, and protection (extends from Territorial Sea Boundary to 200 nautical miles from shore).\r\n</li></ul>\r\n<p>\r\nImportant administrative areas include:\r\n<ul><li>Outer Continental Shelf (OCS) boundary \u2013 extends from the Submerged Lands Act Boundary seaward to the OCS.\r\n</li><li>OCS lease blocks \u2013 administrative boundaries generated to define small geographic areas that identify federal land ownership and support energy permitting and leasing processes by the Bureau of Ocean Energy Management.\r\n</li><li>Wind Planning Areas \u2013 groups of OCS lease blocks identified by the Bureau of Ocean Energy Management and State Task Forces.\r\n</li><li>Regional Ocean Partnerships \u2013 unofficial boundaries of Atlantic coast Regional Ocean Partnerships.\r\n</li><li>Fishery Management Areas \u2013 areas established by Regional Fishery Management Councils and the NOAA National Marine Fisheries Service.\r\n</li></ul>\r\n<p>\r\nNote: boundaries are provided courtesy of the responsible agencies and these parties should be consulted to ensure that map layers represented here are current and correctly interpreted.\r\n", 
+            "feature_image": "", 
             "header_image": "", 
-            "feature_excerpt": null, 
+            "feature_excerpt": "", 
             "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
             "name": "administrative"
         }
@@ -63,15 +48,30 @@
         "pk": 8, 
         "model": "data_manager.theme", 
         "fields": {
-            "feature_link": null, 
+            "feature_link": "", 
             "display_name": "Maritime", 
             "description": "The Mid-Atlantic ports are some of the busiest in the nation\u2019s seaport network, which unloads $3.8 billion in goods each day. ", 
-            "overview": "Mid-Atlantic maritime industries include shipping, transport, tourism, dredging, offshore sand mining, and some of the nation\u2019s busiest ports at New York-New Jersey, Philadelphia, Wilmington, Baltimore, and Norfolk. Selected Automatic Identification System data, collected by the Coast Guard in 2009, highlight frequently travelled shipping routes near port entrances and are an indication of vessel traffic patterns.", 
-            "feature_image": null, 
+            "overview": "<p>\r\nMid-Atlantic maritime industries include shipping, transport, tourism, dredging, offshore sand mining, and some of the nation\u2019s busiest ports at New York-New Jersey, Philadelphia, Wilmington, Baltimore, and Norfolk. These ports are crucial links in the nation\u2019s transportation system, constitute a key element of the economy, employ many thousands of people, and have the potential to serve as environmental stewards of our region\u2019s harbors and surrounds.\r\n<p>\r\nThe U.S. seaport network unloads $3.8 billion in goods each day and Mid-Atlantic ports are a huge contributor, maintaining several national distinctions. The country\u2019s top port for fruits and juices is Wilmington; the fourth busiest tanker port is Philadelphia; products that go through Baltimore\u2019s ports reach over a third of the country within a day and anything entering the U.S. on wheels--from cars to giant tractors--alight in Baltimore, making it the nation\u2019s top Ro-Ro (roll on-roll off) port. The world\u2019s largest natural deep water harbor is at Hampton Roads and it stays ice-free throughout the year, making it suitable for a conglomeration of military facilities, coal piers, shipyards, and miles of waterfront property and beaches which add to the diversity and stability of our nation. The region supports important points of departure for the nation\u2019s cruise ship industry and, in 2011, close to one million people vacationed on ocean cruises originating in New York and Baltimore.\r\n<p>\r\nThe MARCO Ocean Data Portal contains Automatic Identification System (AIS) information from 2009, processed to focus on highly travelled shipping routes near port entrances. AIS data are collected by the U.S. Coast Guard using automated two-way radio transmissions that track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal waters. AIS is required on all passenger vessels and vessels with gross tonnage greater than 300, so smaller vessel traffic is not represented in the database. MARCO is currently consulting with the Coast Guard and shipping industry stakeholders to evaluate how well these data indicate total ship traffic density and what additional data may be needed to fully represent shipping activity.\r\n<p>\r\nThe viability, safety, and growth needs of the commercial shipping industry need to be addressed in regional ocean planning. Accordingly, MARCO will consult with major port and navigation stakeholders to evaluate what additional map data may be needed to inform regional ocean planning decisions and help ensure stakeholder interests are well represented.\r\n", 
+            "feature_image": "", 
             "header_image": "/portal/assets/industry.jpg", 
-            "feature_excerpt": null, 
+            "feature_excerpt": "", 
             "thumbnail": "", 
             "name": "maritime-industries"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "feature_link": "", 
+            "display_name": "Security", 
+            "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. ", 
+            "overview": "<p>\r\nThe Mid-Atlantic region is a busy corridor for commercial and recreational ship traffic and is home to the world\u2019s largest naval base, as well as many other military installations and training grounds. The U.S. Coast Guard works with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe. Their security focus is on the safety of ports, vessels, and facilities, both on and away from shore and their presence is notable throughout the region, with bases in Norfolk, Baltimore, Cape May, and Staten Island.\r\n<p>\r\nThe Naval Station at Norfolk, Virginia supports 75 large ships and 130 aircraft on seven miles of piers and wharfs, and it houses the largest concentration of Navy personnel in the country. Every year, its Port Services branch oversees more than 3,000 maneuvers as ships arrive and depart their berths. Spatial planners and resource managers must account for this intensive activity and work with military leaders to ensure their missions are not compromised as planning decisions are made. \r\n<p>\r\nThe legal framework supporting maritime security in the U.S. is based on five principle laws:\r\n<ul><li>Espionage Act (1917) \u2013 enabled the Coast Guard to make regulations to prevent losses to harbors and vessels during national emergencies.\r\n</li><li>Magnusson Act (1950) \u2013 provided permanent port security regulations and allowance to control movement of foreign vessels in U.S. ports.\r\n</li><li>Ports and Waterways Safety Act (1972) \u2013 allowed additional protection for port facilities and improved efforts to avoid degrading the marine environment.\r\n</li><li>Maritime Transportation Security Act (2002) \u2013 provided broad authority to prevent acts of terrorism within U.S. waters. \r\n</li><li>International Ship and Port Facility Security Code (2002) \u2013 amendments to International Convention for the Safety of Life at Sea to enhance maritime security.\r\n</li></ul>\r\n<p>\r\nData under development for the Security theme will include areas with potential hazards or public use restrictions and other information deemed to be critical for spatial planning. To ensure that security interests are fully considered, regional ocean planning leads will include defense representatives and officials responsible for maintaining the security of our vessels, ports and Nation.\r\n", 
+            "feature_image": "", 
+            "header_image": "/portal/assets/img/themes/security.jpg", 
+            "feature_excerpt": "", 
+            "thumbnail": "", 
+            "name": "security"
         }
     }, 
     {
@@ -2014,52 +2014,6 @@
         }
     }, 
     {
-        "pk": 24, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.75310645475983&location%5By%5D=38.12110263349955&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=24&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
-            "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/benthic_habitats_south/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [
-                8, 
-                24, 
-                25, 
-                26, 
-                27, 
-                28
-            ], 
-            "vector_fill": null, 
-            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "Available", 
-            "data_source": "The Nature Conservancy", 
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.", 
-            "name": "Benthic Habitats (South)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 16, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2275,7 +2229,7 @@
             "kml": "", 
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
             "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/benthic_habitats_north/${z}/${x}/${y}.json", 
+            "utfurl": "/media/data_manager/utfgrid/sne_benhab/${z}/${x}/${y}.json", 
             "thumbnail": "", 
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
             "metadata": "", 
@@ -2288,6 +2242,7 @@
                 26, 
                 27, 
                 28, 
+                57, 
                 33
             ], 
             "vector_fill": null, 
@@ -2321,14 +2276,34 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
             "source": "http://www.habitat.noaa.gov/protection/efh/habitatmapper.html ", 
             "lookup_table": [], 
-            "utfurl": "", 
+            "utfurl": "/media/data_manager/utfgrid/efh_overlay/${z}/${x}/${y}.json", 
             "thumbnail": "", 
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/EFH_Overlays.zip", 
             "metadata": "", 
             "vector_color": "", 
             "attribute_event": "click", 
             "map_tiles": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                38, 
+                39, 
+                40, 
+                41, 
+                42, 
+                43, 
+                44, 
+                45, 
+                46, 
+                47, 
+                48, 
+                49, 
+                50, 
+                51, 
+                52, 
+                53, 
+                54, 
+                55, 
+                56
+            ], 
             "vector_fill": null, 
             "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
             "attribute_title": "", 
@@ -2466,6 +2441,53 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "Waterbird Survey <p style=\"margin: 0 0 3px; text-align: left\">(# birds per sq km)</p>", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.75310645475983&location%5By%5D=38.12110263349955&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=24&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/mab_benhab/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                8, 
+                24, 
+                25, 
+                26, 
+                27, 
+                28, 
+                57
+            ], 
+            "vector_fill": null, 
+            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "Available", 
+            "data_source": "The Nature Conservancy", 
+            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.", 
+            "name": "Benthic Habitats (South)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>", 
             "sublayers": []
         }
     }, 
@@ -2838,15 +2860,6 @@
         }
     }, 
     {
-        "pk": 33, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "ECOLOGICAL_NORTH", 
-            "display_name": "Ecological Marine Unit", 
-            "order": 1
-        }
-    }, 
-    {
         "pk": 34, 
         "model": "data_manager.attributeinfo", 
         "fields": {
@@ -2879,6 +2892,195 @@
         "fields": {
             "field_name": "EFFORT_KM", 
             "display_name": "Effort (km)", 
+            "order": 2
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "EFH_SUM", 
+            "display_name": "# Overlapping EFH", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "AMERCIAN_P", 
+            "display_name": "American Plaice", 
+            "order": 2
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ATLANTIC_H", 
+            "display_name": "Atlantic Herring", 
+            "order": 3
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ATLANTIC_1", 
+            "display_name": "Atlantic Halibut", 
+            "order": 4
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "HADDOCK", 
+            "display_name": "Haddock", 
+            "order": 5
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "MONKFISH", 
+            "display_name": "Monkfish", 
+            "order": 6
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "OCEAN_POUT", 
+            "display_name": "Ocean Pout", 
+            "order": 7
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "OFFSHORE_H", 
+            "display_name": "Offshore Hake", 
+            "order": 8
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "POLLOCK", 
+            "display_name": "Pollock", 
+            "order": 9
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "RED_HAKE", 
+            "display_name": "Red Hake", 
+            "order": 10
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "REDFISH", 
+            "display_name": "Redfish", 
+            "order": 11
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "SEA_SCALLO", 
+            "display_name": "Sea Scallop", 
+            "order": 12
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "SILVER_HAK", 
+            "display_name": "Silver Hake", 
+            "order": 13
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "TILEFISH", 
+            "display_name": "Tilefish", 
+            "order": 14
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "WHITE_HAKE", 
+            "display_name": "White Hake", 
+            "order": 15
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "WINDOW_PAN", 
+            "display_name": "Window Pane Flounder", 
+            "order": 16
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "WINTER_FLO", 
+            "display_name": "Winter Flounder", 
+            "order": 17
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "WITCH_FLOU", 
+            "display_name": "Witch Flounder", 
+            "order": 17
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "YELLOWTAIL", 
+            "display_name": "Yellowtail Flounder", 
+            "order": 18
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "HAB_NUM", 
+            "display_name": "Habitat Code", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "ECOLOGICAL_NORTH", 
+            "display_name": "Ecological Marine Unit", 
             "order": 2
         }
     }, 
