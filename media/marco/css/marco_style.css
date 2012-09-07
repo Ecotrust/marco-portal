@@ -631,32 +631,47 @@ img + h3 {
   border:1px solid #ccc;
   border-radius:4px;
   max-width:150px;
-  display:none;
+ text-align: left;
+ background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+ background: rgba(0, 60, 136, 0.5);
+ border-radius: 10px;
+ display: none;
+  overflow: hidden;
 }
 
 .SimpleLayerSwitcher a.basey {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
   display:block;
+  opacity: .6;
   text-decoration:none;
-  color:#838383;
-  padding:2px 5px 2px 5px;
+  color:white;
+  padding:5px 5px 5px 5px;
+  padding-left: 10px;
+ 
+  background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+  background: rgba(0, 60, 136, 0.5);
+  opacity: .8;
+  filter: alpha(opacity=80);
+
 }
 
 .SimpleLayerSwitcher a.basey-on {
-  color:#000;
-  background-color: #eeeeee;
+	font-weight: bold;
+	opacity: 1;
   //background-image: url('carat.png');
   //background-repeat: no-repeat;
   //background-position: 7px 9px;
 }
 
 .SimpleLayerSwitcher a {
-  border-top:1px solid #eee;
+  /*border-top:1px solid #eee;*/
 }
 
 .SimpleLayerSwitcher a:hover {
-  color:#000;
+	opacity: 1;
+/*  color:#000;
   background-color:#eeeeee;
-}
+*/}
 
 .SimpleLayerSwitcher a.basey-off {
   display:block;
