@@ -1,45 +1,42 @@
-
 // save the initial load hash so we can use it if set
 app.hash = window.location.hash;
 
-app.onResize = function (percent) {
+app.onResize = function(percent) {
 
-	var height = $(window).height() * (percent || .825);
+  var height = $(window).height() * (percent || 0.825);
   // when fullscreen be odd
   if (height) {
-  	$("#map").height(height);
+    $("#map").height(height);
     $("#map-wrapper").height(height);
-  	$(".tabs").height(height);
-  	$("#legend-wrapper").height(height - 20);
-  	$("#data-accordion").height(height - 92);
-  	app.map.render('map');
+    $(".tabs").height(height);
+    $("#legend-wrapper").height(height - 20);
+    $("#data-accordion").height(height - 92);
+    app.map.render('map');
   }
 };
 
 
 // state of the app
 app.state = {
-	//list of active layer ids in order they appear on the map
-	activeLayers: [],
-	location: {}
-}
+  //list of active layer ids in order they appear on the map
+  activeLayers: [],
+  location: {}
+};
 
 // property to store the state of the map for restoring
 app.restoreState = {};
 
 
-
-
 ko.applyBindings(app.viewModel);
-app.viewModel.loadLayersFromServer().done( function () {
-    // if we have the hash state go ahead and load it now
-    if (app.hash) {
-        app.loadStateFromHash(app.hash);
-    }
-	// autocomplete for filter
-    $('.search-box').typeahead({
-    	source: app.typeAheadSource 
-    });
+app.viewModel.loadLayersFromServer().done(function() {
+  // if we have the hash state go ahead and load it now
+  if (app.hash) {
+    app.loadStateFromHash(app.hash);
+  }
+  // autocomplete for filter
+  $('.search-box').typeahead({
+    source: app.typeAheadSource
+  });
 });
 
 // initialize the map
@@ -47,94 +44,90 @@ app.init();
 // Google.v3 uses EPSG:900913 as projection, so we have to
 // transform our coordinates
 app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
-	new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);		
-
+new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);
 
 
 // fullscreen stuff
 // for security reasons, this event listener must be bound directly
 document.getElementById('btn-fullscreen').addEventListener('click', function() {
-    if (BigScreen.enabled) {
-        BigScreen.toggle(document.getElementById('map'));
-        // You could also use .toggle(element)
-    }
-    else {
-        // fallback for browsers that don't support full screen
-    }
+  if (BigScreen.enabled) {
+    BigScreen.toggle(document.getElementById('map'));
+    // You could also use .toggle(element)
+  } else {
+    // fallback for browsers that don't support full screen
+  }
 }, false);
 
 BigScreen.onenter = function() {
-    // called when entering full screen
-    // make map fullscreen
-    //app.onResize(100);
-    // app.map.render('map');
-
-}
+  // called when entering full screen
+  // make map fullscreen
+  //app.onResize(100);
+  // app.map.render('map');
+};
 
 BigScreen.onexit = function() {
-    // called when exiting full screen
-    // return to normal size
-    //app.onResize();
-}
+  // called when exiting full screen
+  // return to normal size
+  //app.onResize();
+};
 
 
+$(document).ready(function() {
+  app.onResize();
+  $(window).resize(app.onResize);
 
-$(document).ready(function () {
-	app.onResize();
-	$(window).resize(app.onResize);
-	
 
-	// if we have the hash state go ahead and load it now
-	if (app.hash) {
-		app.loadStateFromHash(app.hash);
-	}
-	// handle coordinate indicator on pointer
-	$('#map').bind('mouseleave mouseenter', function (e) {
-		$('#pos').toggle();
-	});
-	$('#map').bind('mousemove', function (e) {
-		$('#pos').css({
-			left: e.pageX + 20,
-			top: e.pageY + 20
-		});
-	});   
+  // if we have the hash state go ahead and load it now
+  if (app.hash) {
+    app.loadStateFromHash(app.hash);
+  }
+  // handle coordinate indicator on pointer
+  $('#map').bind('mouseleave mouseenter', function(e) {
+    $('#pos').toggle();
+  });
+  $('#map').bind('mousemove', function(e) {
+    $('#pos').css({
+      left: e.pageX + 20,
+      top: e.pageY + 20
+    });
+  });
 
-	$('.icon-remove-sign').on('click', function (event) {
-		$(event.target).prev('input').val('').focus();
-	});
+  $('.icon-remove-sign').on('click', function(event) {
+    $(event.target).prev('input').val('').focus();
+  });
 
 
 });
-$('#feedback-form').on('submit', function (event) {
-  var feedback = {}, $form = $(this);
+$('#feedback-form').on('submit', function(event) {
+  var feedback = {},
+    $form = $(this);
   event.preventDefault();
-   $(this).find('input, textarea').each(function (i, input) {
-      var $input = $(input);
-      feedback[$input.attr('name')] = $input.val();
-   });
-   $.post('/feedback/send', feedback, function () {
-      $form.closest('.modal').modal('hide')
-   });
+  $(this).find('input, textarea').each(function(i, input) {
+    var $input = $(input);
+    feedback[$input.attr('name')] = $input.val();
+  });
+  $.post('/feedback/send', feedback, function() {
+    $form.closest('.modal').modal('hide');
+  });
 });
 
-$(document).mousedown(function (e) {
-    //removing bookmark popover from view
-    if ( e.target.id === "bookmarks-button" ) {
-    } else if ( !$(e.target).closest("#bookmark-popover").length ) {
-        $('#bookmark-popover').hide();
-    }
-    
-    //removing layer tooltip popover from view
-    var layer_pvr_event = $(e.target).closest(".layer-popover").length;
-    if ( !layer_pvr_event ) {
-        $("#layer-popover").hide();
-    }
-    
-    //removing opacity popover from view
-    var op_pvr_event = $(e.target).closest("#opacity-popover").length;
-    var op_btn_event = $(e.target).closest(".opacity-button").length;
-    if ( !op_pvr_event && !op_btn_event ) {
-        //$('#opacity-popover').hide();
-        app.viewModel.hideOpacity();
-    }
+$(document).mousedown(function(e) {
+  //removing bookmark popover from view
+  if (e.target.id === "bookmarks-button") {} else if (!$(e.target).closest("#bookmark-popover").length) {
+    $('#bookmark-popover').hide();
+  }
+
+  //removing layer tooltip popover from view
+  var layer_pvr_event = $(e.target).closest(".layer-popover").length;
+  if (!layer_pvr_event) {
+    $("#layer-popover").hide();
+  }
+
+  //removing opacity popover from view
+  var op_pvr_event = $(e.target).closest("#opacity-popover").length;
+  var op_btn_event = $(e.target).closest(".opacity-button").length;
+  if (!op_pvr_event && !op_btn_event) {
+    //$('#opacity-popover').hide();
+    app.viewModel.hideOpacity();
+  }
 });

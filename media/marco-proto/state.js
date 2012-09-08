@@ -25,7 +25,7 @@ app.getState = function () {
                         link: app.viewModel.activeLearnLink() },
         legends: { visible: app.viewModel.showLegend() ? 'true': 'false' }
         //and active tab
-    }
+    };
 };
 
 
