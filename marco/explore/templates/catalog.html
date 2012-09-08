@@ -125,8 +125,8 @@
                                                 {% endif %}
                                             </li>
                                             <li>
-                                                {% if layer.fact_sheet %}
-                                                <a href="{{layer.fact_sheet}}" target="_blank">
+                                                {% if layer.description_link %}
+                                                <a href="{{layer.description_link}}" target="_blank">
                                                     <span rel="tooltip" title="{% flatblock "data_catalog_factsheet_link_tooltip" %}">
                                                         {% flatblock "data_catalog_factsheet_link" %}
                                                     </span>
