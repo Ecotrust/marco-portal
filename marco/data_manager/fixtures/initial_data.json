@@ -862,7 +862,7 @@
             "lookup_table": [], 
             "utfurl": "", 
             "thumbnail": "", 
-            "data_download": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip", 
             "metadata": "", 
             "vector_color": "", 
             "attribute_event": "click", 
