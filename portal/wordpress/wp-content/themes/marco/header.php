@@ -90,7 +90,7 @@
 			       
 			      <div class="pull-right nav-collapse">
 			        <ul class="nav">
-			          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>
+			          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>
 			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
 			          <li><a href="http://www.midatlanticocean.org/" target="_blank">Visit MARCO</a></li>
 			        </ul>
@@ -132,17 +132,11 @@
 	              <textarea class="input-xlarge" rows="3" name="comment" required></textarea>
 	          </div>
 	        </div>
-	       <!-- <div class="control-group">
-	          <div class="controls">
-	            <label class="checkbox">
-	              <input type="checkbox" name='listAdd'> Add me to the mailing list...
-	            </label>
-	          </div>
-	        </div>-->
+
 	    </div>
 	    <div class="modal-footer">
-	        <a href="#" class="btn" data-dismiss="modal">Close</a>
-	        <button type="submit" class="btn btn-primary">Send Feedback</a>
+	        <button href="#" class="btn" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Send Feedback</button>
 	    </div>
 	  </form>
 	</div>
