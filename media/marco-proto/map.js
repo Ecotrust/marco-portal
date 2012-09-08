@@ -5,7 +5,7 @@ app.init = function () {
     var map = new OpenLayers.Map(null, {
         //allOverlays: true,
         displayProjection: new OpenLayers.Projection("EPSG:4326"),
-        projection: "EPSG:900913"
+        projection: "EPSG:3857"
     });
     esriOcean = new OpenLayers.Layer.XYZ("ESRI Ocean", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/${z}/${y}/${x}", {
         sphericalMercator: true,
