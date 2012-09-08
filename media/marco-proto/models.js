@@ -16,6 +16,7 @@ function layerModel(options, parent) {
     self.themes = ko.observableArray();
     self.attributeTitle = options.attributes ? options.attributes.title : self.name;
     self.attributes = options.attributes ? options.attributes.attributes : [];
+    self.compress_attributes = options.attributes ? options.attributes.compress_attributes : false;
     self.attributeEvent = options.attributes ? options.attributes.event : [];
     self.lookupField = options.lookups ? options.lookups.field : null;
     self.lookupDetails = options.lookups ? options.lookups.details : [];

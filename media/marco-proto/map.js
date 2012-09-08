@@ -148,8 +148,12 @@ app.init = function () {
                                         //debugger;
                                         var attribute_objs = [];
                                         $.each(attributes, function(index, obj) {
-                                            //newmsg += info.data[obj.field];
-                                            attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                            if ( potential_layer.compress_attributes ) {
+                                                var display = obj.display + ': ' + info.data[obj.field];
+                                                attribute_objs.push({'display': display, 'data': ''});
+                                            } else {
+                                                attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                            }
                                         });
                                         app.viewModel.attributeTitle(potential_layer.name);
                                         //app.viewModel.attributeData([{'display': potential_layer.attributeTitle, 'data': newmsg}]);
