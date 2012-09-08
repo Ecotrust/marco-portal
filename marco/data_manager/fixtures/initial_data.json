@@ -609,7 +609,7 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
             "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ", 
             "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/ocs_leaseblocks/${z}/${x}/${y}.json", 
+            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json", 
             "thumbnail": "", 
             "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx", 
             "metadata": "http://www.boemre.gov/ld/XMLmetadata/at_blks.htm", 
@@ -617,7 +617,8 @@
             "attribute_event": "click", 
             "map_tiles": "", 
             "attribute_fields": [
-                5
+                58, 
+                59
             ], 
             "vector_fill": null, 
             "data_overview": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management.", 
@@ -3081,6 +3082,24 @@
         "fields": {
             "field_name": "ECOLOGICAL_NORTH", 
             "display_name": "Ecological Marine Unit", 
+            "order": 2
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "BLOCK_NUMB", 
+            "display_name": "OCS Block Number", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "PROT_NUMBE", 
+            "display_name": "Protraction Number", 
             "order": 2
         }
     }, 
