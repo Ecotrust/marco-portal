@@ -433,45 +433,6 @@
         }
     }, 
     {
-        "pk": 7, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                3
-            ], 
-            "description": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.62075195312462&location%5By%5D=38.706459372318534&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
-            "source": "http://www.nrel.gov/gis/data_wind.html", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/High_Resolution/Atlantic_Coast_90m_Windspeed_Offshore_Wind_High_Resolution.zip", 
-            "metadata": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/metadata/atlantic_coast_metadata.htm", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam. ", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
-            "data_status": "Available", 
-            "data_source": "National Renewable Energy Laboratory", 
-            "data_notes": "This layer represents an estimate of offshore annual average wind speeds and is based primarily on data extrapolated from onshore wind data, which is a source of uncertainty in the dataset. For more information visit nrel.gov and search for Technical Report TP-500-45889.", 
-            "name": "Wind Speed", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Wind Speed at 90m (m/s)", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 41, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2322,6 +2283,53 @@
         }
     }, 
     {
+        "pk": 53, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "description": "This data layer shows both the coastal vulnerability index (CVI) and the data from which the CVI is calculated (tides, wave height, relative sea-level rise, coastal slope, geomorphology, and shoreline erosion and accretion rate) for the U.S. Atlantic Coast.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.41228614226024&location%5By%5D=38.74931297143301&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=53&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://pubs.usgs.gov/dds/dds68/ ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/slr_vulnerability/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "http://pubs.usgs.gov/dds/dds68/data/atlantic/", 
+            "metadata": "http://pubs.usgs.gov/dds/dds68/data/atlantic/atlantic.htm", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [
+                60, 
+                61, 
+                62, 
+                63, 
+                64, 
+                65, 
+                66
+            ], 
+            "vector_fill": null, 
+            "data_overview": "The goal of this project is to provide a preliminary overview of the relative susceptibility of the Nation's coast to sea-level rise through the use of a coastal vulnerability index (CVI). This initial classification is based upon the variables geomorphology, regional coastal slope, tide range, wave height, relative sea-level rise and shoreline erosion and accretion rates. The combination of these variables and their association to each other furnish a broad overview of regions where physical changes are likely to occur due to sea-level rise.\r\n\r\nThe purpose of this data layer is to allow the user to view both the coastal vulnerability index (CVI) and the data from which the CVI is calculated (tides, wave height, relative sea-level rise, coastal slope, geomorphology, and shoreline erosion and accretion rate) for the U.S. Atlantic Coast. The CVI provides insight into the relative potential for coastal change due to future sea-level rise.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/legend.png", 
+            "data_status": "Available", 
+            "data_source": "U.S. Geological Survey", 
+            "data_notes": "These data were created to be used for planning purposes only. They are designed to give a broad overview of vulnerability to sea level rise at a National scale.", 
+            "name": "Sea Level Rise Vulnerability", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 35, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2407,41 +2415,43 @@
         }
     }, 
     {
-        "pk": 53, 
+        "pk": 7, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
-                2
+                3
             ], 
-            "description": "This data layer shows both the coastal vulnerability index (CVI) and the data from which the CVI is calculated (tides, wave height, relative sea-level rise, coastal slope, geomorphology, and shoreline erosion and accretion rate) for the U.S. Atlantic Coast.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.41228614226024&location%5By%5D=38.74931297143301&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=53&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "description": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.62075195312462&location%5By%5D=38.706459372318534&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
             "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://pubs.usgs.gov/dds/dds68/ ", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml", 
+            "source": "http://www.nrel.gov/gis/data_wind.html", 
             "lookup_table": [], 
-            "utfurl": "", 
+            "utfurl": "/media/data_manager/utfgrid/windspeed90m/${z}/${x}/${y}.json", 
             "thumbnail": "", 
-            "data_download": "http://pubs.usgs.gov/dds/dds68/data/atlantic/", 
-            "metadata": "http://pubs.usgs.gov/dds/dds68/data/atlantic/atlantic.htm", 
+            "data_download": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/High_Resolution/Atlantic_Coast_90m_Windspeed_Offshore_Wind_High_Resolution.zip", 
+            "metadata": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/metadata/atlantic_coast_metadata.htm", 
             "vector_color": "", 
             "attribute_event": "click", 
             "map_tiles": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                67
+            ], 
             "vector_fill": null, 
-            "data_overview": "The goal of this project is to provide a preliminary overview of the relative susceptibility of the Nation's coast to sea-level rise through the use of a coastal vulnerability index (CVI). This initial classification is based upon the variables geomorphology, regional coastal slope, tide range, wave height, relative sea-level rise and shoreline erosion and accretion rates. The combination of these variables and their association to each other furnish a broad overview of regions where physical changes are likely to occur due to sea-level rise.\r\n\r\nThe purpose of this data layer is to allow the user to view both the coastal vulnerability index (CVI) and the data from which the CVI is calculated (tides, wave height, relative sea-level rise, coastal slope, geomorphology, and shoreline erosion and accretion rate) for the U.S. Atlantic Coast. The CVI provides insight into the relative potential for coastal change due to future sea-level rise.", 
+            "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam. ", 
             "attribute_title": "", 
             "is_sublayer": false, 
             "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/legend.png", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed/legend.png", 
             "data_status": "Available", 
-            "data_source": "U.S. Geological Survey", 
-            "data_notes": "These data were created to be used for planning purposes only. They are designed to give a broad overview of vulnerability to sea level rise at a National scale.", 
-            "name": "Sea Level Rise Vulnerability", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/${z}/${x}/${y}.png", 
+            "data_source": "National Renewable Energy Laboratory", 
+            "data_notes": "This layer represents an estimate of offshore annual average wind speeds and is based primarily on data extrapolated from onshore wind data, which is a source of uncertainty in the dataset. For more information visit nrel.gov and search for Technical Report TP-500-45889.", 
+            "name": "Wind Speed", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
-            "legend_title": "", 
+            "legend_title": "Wind Speed at 90m (m/s)", 
             "sublayers": []
         }
     }, 
@@ -3101,6 +3111,78 @@
             "field_name": "PROT_NUMBE", 
             "display_name": "Protraction Number", 
             "order": 2
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "CVI", 
+            "display_name": "Vulnerability", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "TIDE", 
+            "display_name": "Tide", 
+            "order": 2
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "WAVES", 
+            "display_name": "Waves", 
+            "order": 3
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "EROSION", 
+            "display_name": "Erosion", 
+            "order": 4
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "SEALEVEL", 
+            "display_name": "Sea Level", 
+            "order": 5
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "GEOMORPHOL", 
+            "display_name": "Geomorphology", 
+            "order": 6
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "SLOPE", 
+            "display_name": "Slope", 
+            "order": 7
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "SPEED_90", 
+            "display_name": "Speed (m/s)", 
+            "order": 1
         }
     }, 
     {
