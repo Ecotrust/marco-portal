@@ -178,7 +178,7 @@
                                         <ul class="unstyled" data-bind="sortable: { data: activeLayers, options: {  } }">
                                             <li>
                                                 <div class="btn-group">
-                                                    <button class="btn btn-info-sign"><i class="icon-info-sign icon-large" data-bind="click: toggleDescription"></i></button>
+                                                    <button class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive()}"><i class="icon-info-sign icon-large"></i></button>
                                                     <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <div data-bind="text: name"></div>
                                                         <div><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></div>
