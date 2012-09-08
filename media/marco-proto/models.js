@@ -48,7 +48,14 @@ function layerModel(options, parent) {
         }
     });
 
-
+    // is description active
+    self.infoActive = ko.observable(false);
+    app.viewModel.showDescription.subscribe( function() {
+        if ( app.viewModel.showDescription() === false ) {
+            self.infoActive(false);
+        }
+    });
+    
     // is the layer in the active panel?
     self.active = ko.observable(false);
     // is the layer visible?
@@ -282,14 +289,14 @@ function layerModel(options, parent) {
     };
 
     // display descriptive text below the map
-    self.showDescription = function(layer) {
-        if ($('#description-overlay').is(':visible') && layer.name === app.viewModel.activeName()) {
-            $('#description-overlay').hide();
+    self.toggleDescription = function(layer) {
+        if ( layer.infoActive() ) {
+            app.viewModel.showDescription(false);
         } else {
-            app.viewModel.activeName(layer.name);
-            app.viewModel.activeText(layer.description);
-            app.viewModel.activeLearnLink(layer.learn_link);
-            $('#description-overlay').show();
+            app.viewModel.showDescription(false);
+            app.viewModel.activeInfoLayer(layer);
+            self.infoActive(true);
+            app.viewModel.showDescription(true);
         }
     };
 
@@ -369,13 +376,6 @@ function themeModel(options) {
             return true;
         }
         return false;
-    };
-
-    // display descriptive text below the map
-    self.showDescription = function(theme) {
-        app.viewModel.activeName(theme.name);
-        app.viewModel.activeText(theme.description);
-        app.viewModel.activeLearnLink(theme.learn_link);
     };
 
     self.hideTooltip = function(theme, event) {
@@ -501,6 +501,9 @@ function viewModel() {
     // last clicked layer for editing, etc
     self.activeLayer = ko.observable();
 
+    // determines visibility of description overlay
+    self.showDescription = ko.observable();
+    
     // theme text currently on display
     self.themeText = ko.observable();
 
@@ -517,9 +520,7 @@ function viewModel() {
     self.layerToolTipText = ko.observable();
 
     // descriptive text below the map 
-    self.activeName = ko.observable();
-    self.activeText = ko.observable();
-    self.activeLearnLink = ko.observable();
+    self.activeInfoLayer = ko.observable(false);
 
     // attribute data
     self.attributeTitle = ko.observable(false);
@@ -610,7 +611,7 @@ function viewModel() {
 
     // close layer description
     self.closeDescription = function(self, event) {
-        $('#description-overlay').hide();
+        self.showDescription(false);
     };
 
     // show bookmark stuff

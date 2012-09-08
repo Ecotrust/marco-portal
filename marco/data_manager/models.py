@@ -110,7 +110,7 @@ class Layer(models.Model):
     @property
     def learn_link(self):
         theme = self.themes.all()[0]
-        return theme.learn_link
+        return "%s#%s" %(theme.learn_link, self.slug)
         
     @property
     def description_link(self):
