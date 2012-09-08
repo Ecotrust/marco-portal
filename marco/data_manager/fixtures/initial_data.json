@@ -2206,7 +2206,6 @@
             "map_tiles": "", 
             "attribute_fields": [
                 38, 
-                39, 
                 40, 
                 41, 
                 42, 
@@ -2223,7 +2222,8 @@
                 53, 
                 54, 
                 55, 
-                56
+                56, 
+                39
             ], 
             "vector_fill": null, 
             "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
@@ -2916,15 +2916,6 @@
         }
     }, 
     {
-        "pk": 39, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "AMERCIAN_P", 
-            "display_name": "American Plaice", 
-            "order": 2
-        }
-    }, 
-    {
         "pk": 40, 
         "model": "data_manager.attributeinfo", 
         "fields": {
@@ -3183,6 +3174,15 @@
             "field_name": "SPEED_90", 
             "display_name": "Speed (m/s)", 
             "order": 1
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "AMERICAN_P", 
+            "display_name": "American Plaice", 
+            "order": 2
         }
     }, 
     {

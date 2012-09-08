@@ -83,6 +83,7 @@ class Layer(models.Model):
     )
     attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
+    #compress_display = models.BooleanField(default=False)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
     lookup_field = models.CharField(max_length=255, blank=True, null=True)
     lookup_table = models.ManyToManyField('LookupInfo', blank=True, null=True)

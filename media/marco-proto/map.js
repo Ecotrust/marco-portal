@@ -89,9 +89,6 @@ app.init = function () {
                 }
             }
             app.viewModel.attributeData(text);
-            //app.viewModel.attributeData($.map(attrs, function(attr) { 
-            //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
-            //}));
         }
     };
       
