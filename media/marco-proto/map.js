@@ -263,7 +263,10 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 {
                     layers: "show:"+layer.arcgislayers,
-                    srs: 'EPSG:3857'
+                    transparent: true
+                },
+                {
+                    isBaseLayer: false
                 }
             );
             app.map.addLayer(layer.layer);  
