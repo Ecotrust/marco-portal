@@ -20,10 +20,8 @@ class Theme(models.Model):
 
     @property
     def learn_link(self):
-        if self.name in ['security', 'fishing', 'maritime-industries', 'energy']:
-            domain = get_domain(8000)
-            return '%s/learn/%s' %(domain, self.name)
-        return None
+        domain = get_domain(8000)
+        return '%s/learn/%s' %(domain, self.name)
         
     @property
     def toDict(self):
@@ -137,10 +135,8 @@ class Layer(models.Model):
     @property
     def description_link(self):
         theme_name = self.themes.all()[0].name
-        if theme_name in ['security', 'fishing', 'maritime-industries', 'energy']:
-            domain = get_domain(8000)
-            return '%s/learn/%s#%s' %(domain, theme_name, self.slug)
-        return None
+        domain = get_domain(8000)
+        return '%s/learn/%s#%s' %(domain, theme_name, self.slug)
         
     @property
     def tooltip(self):

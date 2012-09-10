@@ -97,11 +97,20 @@
                                                     <a href="{{domain8010}}/portal/learn">Learn</a>
                                                 </h3>
                                                 <ul>
+                                                    <li {% if theme.name == 'administrative' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/administrative">Administrative</a>
+                                                    </li>
                                                     <li {% if theme.name == 'fishing' %}class="active"{% endif %}>
                                                         <a href="{{domain}}/learn/fishing">Fishing</a>
                                                     </li>
+                                                    <li {% if theme.name == 'conservation' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/conservation">Marine Life</a>
+                                                    </li>
                                                     <li {% if theme.name == 'maritime-industries' %}class="active"{% endif %}>
                                                         <a href="{{domain}}/learn/maritime-industries">Maritime</a>
+                                                    </li>
+                                                    <li {% if theme.name == 'recreation' %}class="active"{% endif %}>
+                                                        <a href="{{domain}}/learn/recreation">Recreation</a>
                                                     </li>
                                                     <li {% if theme.name == 'energy' %}class="active"{% endif %}>
                                                         <a href="{{domain}}/learn/energy">Renewable Energy</a>
