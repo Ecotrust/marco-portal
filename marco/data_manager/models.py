@@ -109,6 +109,27 @@ class Layer(models.Model):
         return slugify(self.name)
 
     @property
+    def data_download_link(self):
+        if not self.data_download and self.is_sublayer:
+            return self.parent.data_download
+        else:
+            return self.data_download
+        
+    @property
+    def metadata_link(self):
+        if not self.metadata and self.is_sublayer:
+            return self.parent.metadata
+        else:
+            return self.metadata
+        
+    @property
+    def source_link(self):
+        if not self.source and self.is_sublayer:
+            return self.parent.source
+        else:
+            return self.source
+        
+    @property
     def learn_link(self):
         theme = self.themes.all()[0]
         return "%s#%s" %(theme.learn_link, self.slug)
