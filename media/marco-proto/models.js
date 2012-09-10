@@ -406,7 +406,7 @@ function bookmarkModel($popover) {
         app.viewModel.error("restoreState");
         $('#bookmark-popover').hide();
     };
-
+    
     self.restoreState = function() {
         // hide the error
         app.viewModel.error(null);
@@ -439,6 +439,10 @@ function bookmarkModel($popover) {
         var host = window.location.href.split('#')[0];
         return host + "#" + $.param(bookmark.state);
     };
+
+    self.prepareEmail = function(bookmark) {
+        app.viewModel.bookmarkEmail(self.getUrl(bookmark));
+    }
 
     self.getEmailHref = function(bookmark) {
         return "mailto:?subject=MARCO Bookmark&body=<a href='" + self.getUrl(bookmark).replace(/&/g, '%26') + "'>bookmark</a>";
@@ -516,6 +520,9 @@ function viewModel() {
     self.bookmarks = new bookmarkModel();
 
     self.activeBookmark = ko.observable();
+    
+    self.bookmarkEmail = ko.observable();
+        
 
     // text for tooltip popup
     self.layerToolTipText = ko.observable();

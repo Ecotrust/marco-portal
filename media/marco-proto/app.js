@@ -98,6 +98,20 @@ $(document).ready(function() {
 
 
 });
+
+$('#bookmark-form').on('submit', function(event) {
+  var inputs = {},
+    $form = $(this);
+  event.preventDefault();
+  $(this).find('input, textarea').each(function(i, input) {
+    var $input = $(input);
+    inputs[$input.attr('name')] = $input.val();
+  });
+  $.post('/feedback/bookmark', inputs, function() {
+    $form.closest('.modal').modal('hide');
+  });
+});
+
 $('#feedback-form').on('submit', function(event) {
   var feedback = {},
     $form = $(this);
