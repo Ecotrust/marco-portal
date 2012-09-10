@@ -56,6 +56,9 @@
 	                <table class="table table-striped table-condensed">
 	                	<tbody>
 	                		<!-- foreach layer -->
+                            {% if not theme_dict.layers %}
+                                <p>coming soon...</p>
+                            {% else %}
                             {% for layer in theme_dict.layers %}
                                 {% if layer.is_parent %}
                                 {% else %}
@@ -168,6 +171,7 @@
                                 </tr>
                                 {% endif %}
                             {% endfor layers %}
+                            {% endif %}
 	                		<!-- end foreach layer -->
 	                	</tbody>
 	                </table>
