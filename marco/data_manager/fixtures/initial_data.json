@@ -2123,46 +2123,6 @@
         }
     }, 
     {
-        "pk": 16, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "description": "Standardized compilation of published marine boundaries.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=16&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.csc.noaa.gov/digitalcoast/data/marinejurisdictions ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Marine Jurisdictions", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 26, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2247,6 +2207,46 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "description": "Standardized compilation of published marine boundaries.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.23671875000043&location%5By%5D=38.50040451028531&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=16&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/MMS_Jurs_Files/MMS_Jurs.kmz", 
+            "source": "http://www.csc.noaa.gov/digitalcoast/data/marinejurisdictions ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Minerals Management Service.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Marine Jurisdictions", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
             "sublayers": []
         }
     }, 
