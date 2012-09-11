@@ -10,14 +10,14 @@ def data_catalog(request, template='catalog.html'):
     themes = Theme.objects.all().order_by('display_name')
     themes_with_links = add_learn_links(themes)
     add_ordered_layers_lists(themes_with_links)
-    context = {'themes': themes_with_links}
+    context = {'themes': themes_with_links, 'domain': get_domain(8000), 'domain8010': get_domain()}
     return render_to_response(template, RequestContext(request, context)) 
 
 def data_needs(request, template='needs.html'):
     themes = Theme.objects.all().order_by('display_name')
     theme_dict = add_ordered_needs_lists(themes)
     #needs = DataNeed.objects.all().order_by('name')
-    context = {'themes': themes, 'theme_dict': theme_dict}
+    context = {'themes': themes, 'theme_dict': theme_dict, 'domain': get_domain(8000), 'domain8010': get_domain()}
     return render_to_response(template, RequestContext(request, context)) 
     
 def add_ordered_needs_lists(themes_list):
@@ -34,11 +34,8 @@ def add_ordered_layers_lists(themes_list):
     
 def add_learn_links(themes):
     context = []
-    domain = get_domain()
     for theme in themes:
-        link = '%s/portal/learn/%s' %(domain, linkify(theme.name))
-        #print link
-        context.append({'theme': theme, 'learn_link': link})
+        context.append({'theme': theme, 'learn_link': theme.learn_link})
     return context
     
 def linkify(text):

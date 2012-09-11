@@ -5,7 +5,7 @@ app.init = function () {
     var map = new OpenLayers.Map(null, {
         //allOverlays: true,
         displayProjection: new OpenLayers.Projection("EPSG:4326"),
-        projection: "EPSG:900913"
+        projection: "EPSG:3857"
     });
     esriOcean = new OpenLayers.Layer.XYZ("ESRI Ocean", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/${z}/${y}/${x}", {
         sphericalMercator: true,
@@ -89,9 +89,6 @@ app.init = function () {
                 }
             }
             app.viewModel.attributeData(text);
-            //app.viewModel.attributeData($.map(attrs, function(attr) { 
-            //    return { 'display': attr.display, 'data': e.feature.data[attr.field] }; 
-            //}));
         }
     };
       
@@ -151,8 +148,12 @@ app.init = function () {
                                         //debugger;
                                         var attribute_objs = [];
                                         $.each(attributes, function(index, obj) {
-                                            //newmsg += info.data[obj.field];
-                                            attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                            if ( potential_layer.compress_attributes ) {
+                                                var display = obj.display + ': ' + info.data[obj.field];
+                                                attribute_objs.push({'display': display, 'data': ''});
+                                            } else {
+                                                attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                            }
                                         });
                                         app.viewModel.attributeTitle(potential_layer.name);
                                         //app.viewModel.attributeData([{'display': potential_layer.attributeTitle, 'data': newmsg}]);
@@ -261,7 +262,10 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 {
                     layers: "show:"+layer.arcgislayers,
-                    srs: 'EPSG:3857'
+                    transparent: true
+                },
+                {
+                    isBaseLayer: false
                 }
             );
             app.map.addLayer(layer.layer);  

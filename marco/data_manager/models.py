@@ -20,10 +20,8 @@ class Theme(models.Model):
 
     @property
     def learn_link(self):
-        if self.name in ['security', 'fishing', 'maritime-industries', 'energy']:
-            domain = get_domain()
-            return '%s/portal/learn/%s' %(domain, self.name)
-        return None
+        domain = get_domain(8000)
+        return '%s/learn/%s' %(domain, self.name)
         
     @property
     def toDict(self):
@@ -83,6 +81,7 @@ class Layer(models.Model):
     )
     attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
+    compress_display = models.BooleanField(default=False)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
     lookup_field = models.CharField(max_length=255, blank=True, null=True)
     lookup_table = models.ManyToManyField('LookupInfo', blank=True, null=True)
@@ -108,9 +107,57 @@ class Layer(models.Model):
         return slugify(self.name)
 
     @property
+    def data_overview_text(self):
+        if not self.data_overview and self.is_sublayer:
+            return self.parent.data_overview
+        else:
+            return self.data_overview
+        
+    @property
+    def data_source_text(self):
+        if not self.data_source and self.is_sublayer:
+            return self.parent.data_source
+        else:
+            return self.data_source
+        
+    @property
+    def data_notes_text(self):
+        if not self.data_notes and self.is_sublayer:
+            return self.parent.data_notes
+        else:
+            return self.data_notes
+        
+    @property
+    def data_download_link(self):
+        if not self.data_download and self.is_sublayer:
+            return self.parent.data_download
+        else:
+            return self.data_download
+        
+    @property
+    def metadata_link(self):
+        if not self.metadata and self.is_sublayer:
+            return self.parent.metadata
+        else:
+            return self.metadata
+        
+    @property
+    def source_link(self):
+        if not self.source and self.is_sublayer:
+            return self.parent.source
+        else:
+            return self.source
+        
+    @property
     def learn_link(self):
         theme = self.themes.all()[0]
-        return theme.learn_link
+        return "%s#%s" %(theme.learn_link, self.slug)
+        
+    @property
+    def description_link(self):
+        theme_name = self.themes.all()[0].name
+        domain = get_domain(8000)
+        return '%s/learn/%s#%s' %(domain, theme_name, self.slug)
         
     @property
     def tooltip(self):
@@ -124,6 +171,7 @@ class Layer(models.Model):
     @property
     def serialize_attributes(self):
         return {'title': self.attribute_title, 
+                'compress_attributes': self.compress_display,
                 'event': self.attribute_event,
                 'attributes': [{'display': attr.display_name, 'field': attr.field_name} for attr in self.attribute_fields.all().order_by('order')]}
     
@@ -204,6 +252,7 @@ class LookupInfo(models.Model):
         
 class DataNeed(models.Model):
     name = models.CharField(max_length=100)
+    archived = models.BooleanField(default=False)
     description = models.TextField(blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
     status = models.TextField(blank=True, null=True)

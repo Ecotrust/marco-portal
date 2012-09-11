@@ -19,10 +19,8 @@ app.getState = function () {
         basemap: {name: app.map.baseLayer.name},
         openThemes: {ids: app.viewModel.getOpenThemeIDs()},
         activeTab: {tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active'},
-        description: {  visible: $('#description-overlay').is(':visible') ? 'true' : 'false', 
-                        name: app.viewModel.activeName(),
-                        text: app.viewModel.activeText(),
-                        link: app.viewModel.activeLearnLink() },
+        //description: {  visible: app.viewModel.showDescription(), 
+        //                layer_name: app.viewModel.activeInfoLayer().name },
         legends: { visible: app.viewModel.showLegend() ? 'true': 'false' }
         //and active tab
     };
@@ -72,14 +70,14 @@ app.loadState = function(state) {
         }
     }
     
-    if ( state.description && state.description.visible === "true" ) {
-        app.viewModel.activeName(state.description.name);
-        app.viewModel.activeText(state.description.text);
-        app.viewModel.activeLearnLink(state.description.link);
-        $('#description-overlay').show();
+    /*if ( state.description && state.description.visible === "true" ) {
+        //debugger;
+        //app.viewModel.activeInfoLayer(state.description.name);
+        //app.viewModel.showDescription(true);
+        app.viewModel.showDescription(false);
     } else {
-        $('#description-overlay').hide();
-    }
+        app.viewModel.showDescription(false);
+    }*/
     
     if ( state.legends && state.legends.visible === "true" ) {
         app.viewModel.showLegend(true);

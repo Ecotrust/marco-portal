@@ -51,6 +51,8 @@
                 {% for key, needs in theme_dict.items %}
                     {% if key == theme %}
                         {% for need in needs %}
+                            {% if need.archived %}
+                            {% else %}
                             <li><div class="data-need">
                                 <div>
                                     <h4>
@@ -74,6 +76,7 @@
                                     </div>
                                 </div>
                             </div></li>
+                            {% endif %}
                         {% endfor needs%}
                     {% endif %}
                 {% endfor items%}

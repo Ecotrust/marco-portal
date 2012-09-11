@@ -79,7 +79,7 @@
                                     <div class="span12 ">
                                         <form class="form-search" data-bind="submit: layerSearch">
                                             <div class="span12">
-                                                <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
+                                                <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis;">
                                                 <i class="icon-remove-sign icon-large"></i> 
                                                 <a type="submit" class="btn">
                                                     Search
@@ -106,7 +106,7 @@
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
                                                                     <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
                                                                         <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
-                                                                            <a class="btn btn-info-sign" data-bind="click: showDescription">
+                                                                            <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
                                                                                 <i class="icon-info-sign icon-large"></i>
                                                                             </a>
 
@@ -178,7 +178,7 @@
                                         <ul class="unstyled" data-bind="sortable: { data: activeLayers, options: {  } }">
                                             <li>
                                                 <div class="btn-group">
-                                                    <button class="btn btn-info-sign"><i class="icon-info-sign icon-large" data-bind="click: showDescription"></i></button>
+                                                    <button class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive()}"><i class="icon-info-sign icon-large"></i></button>
                                                     <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <div data-bind="text: name"></div>
                                                         <div><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></div>
@@ -254,26 +254,28 @@
                                   <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
                                         <div>
                                             Bookmark "<span data-bind="text: activeBookmark"></span>"
-                                            <div class="pull-right">
+                                            <span class="pull-right">
                                                 <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
                                                 <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
                                                     Return to Previous View
                                                 </a>
-                                            </div>
+                                            </span>
                                         </div>
                                   </div>
                                   
                                   <!-- Description Overlay  style="display:none"-->
-                                    <div id ="description-overlay" class="row-fluid" style="display: none">
+                                    <div id ="description-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription()" >
                                         <div class="span11">
-                                            <span class="title" data-bind="text: activeName"></span> -- 
-                                            <span class="text" data-bind="text: activeText"></span>
+                                            <span class="title" data-bind="text: activeInfoLayer().name"></span> -- 
+                                            <span class="text" data-bind="text: activeInfoLayer().description"></span>
                                             <span class="text">
-                                                <a class="btn btn-info btn-mini" data-bind="visible: activeLearnLink(), attr: { href: activeLearnLink }" target="_blank">Learn More...</a>
+                                                <a class="btn btn-info btn-mini" data-bind="attr: { href: activeInfoLayer().learn_link }" target="_blank">Learn More...</a>
                                             </span>  
                                         </div>
                                         <div class="span1">
-                                            <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeDescription"> x </a> 
+                                            <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
+                                            <!--<a class="btn pull-right" href="/explore/catalog#all-gear-types" rel="tooltip" data-placement="top" data-original-title="Download the data"><img src="http://localhost:8000/media/marco/ico/explore.png"></a>-->
+                                            <!--<a class="btn pull-right" data-bind="attr: { href: activeInfoLayer().learn_link }" rel="tooltip" data-placement="top" data-original-title="Learn more"><img src="http://localhost:8000/media/marco/ico/visualize.png"></a>-->
                                         </div>
                                     </div>
                                 </div>
@@ -281,6 +283,9 @@
                                 <!-- Legends panel -->
                                 <div data-bind="visible: showLegend()" class="span3">
                                     <div id="legend-wrapper">
+                                        <span class="pull-right">
+                                            <a href="#" style="margin-left: 10px; margin-top: 5px; opacity: .6;" class="btn btn-mini close" data-bind="click: toggleLegend"> x </a> 
+                                        </span>
                                         <h3>Legends</h3>
                                         <hr/>
                                         <div data-bind="foreach: activeLegendLayers">
@@ -365,16 +370,18 @@
                                                             }(document, "script", "twitter-wjs");
                                                         </script>
                                                     </td>
-                                                    <!--
+                                                    
                                                     <td>
-                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
-                                                            <a data-bind="attr: {href: $parent.getEmailHref($data)}">
-                                                            <i class="icon-envelope">
-                                                            </i>
-                                                            </a>
+                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.prepareEmail" data-toggle="modal" data-target="#bookmark-modal">
+                                                            <i class="icon-envelope icon-large"></i>
                                                         </a>
+                                                        <!--
+                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
+                                                            <a data-bind="attr: {href: $parent.getEmailHref($data)}"></a>
+                                                        </a>
+                                                        -->
                                                     </td>
-                                                    -->
+                                                    
                                                     <td>
                                                         <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
                                                             <i class="icon-trash icon-large">
@@ -408,6 +415,38 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Email Bookmark Form -->
+        <div id="bookmark-modal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Bookmark Email</h3>
+        </div>
+        <form class="form-horizontal" id="bookmark-form">
+        <div class="modal-body">        
+            <div class="control-group">
+              <label class="control-label" for="recipient">To</label>
+              <div class="controls">
+                <input class="input-xlarge" type="email" name="recipient" placeholder="Email Address" required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="body">Email Message</label>
+              <div class="controls">
+                  <textarea class="input-xlarge" rows="3" name="comment" placeholder="A link to your bookmark will be included in the email.  Include any additional text you would like to send here."></textarea>
+              </div>
+            </div>
+            <input type="hidden" name="link" data-bind="attr: {value: bookmarkEmail}">
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <button type="submit" class="btn btn-primary">Send</a>
+        </div>
+      </form>
+    </div>
+
+
+        
         <!-- Le javascript -->
         <!-- Placed at the end of the document so the pages load faster -->
         <!-- <script src="assets/js/bootstrap-transition.js"></script>

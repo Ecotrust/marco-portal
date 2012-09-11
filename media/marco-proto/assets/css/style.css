@@ -27,7 +27,7 @@ body {
   position: absolute;
   top: 20%;
   right: 0;
-  z-index: 1250; 
+  z-index: 950; 
   width: 250px;
   font-size: 16px;
   color: white;
@@ -141,6 +141,7 @@ div.olLayerGooglePoweredBy
 .olImageLoadError { 
     /* when OL encounters a 404, don't display the pink image */
     display: none !important;
+    background-color: transparent; 
 }
 
 
@@ -199,7 +200,7 @@ body {
 #description-overlay {
   position: absolute;
   bottom: 0;
-  z-index: 1250; 
+  z-index: 950; 
   width: 100%;
   font-size: 12px;
   background-color: rgb(224, 224, 224);
@@ -231,7 +232,7 @@ body {
 #error-overlay {
   position: absolute;
   top: 0;
-  z-index: 1250; 
+  z-index: 950; 
   width: 70%;
   margin-left: 15%;
   font-size: 16px;
@@ -395,5 +396,11 @@ a.disabled-link:hover {
 
 
 #bookmark-popover {
-  z-index: 1400;
+  left: 650px;
+  width: 300px;
+  z-index: 1250;
+}
+
+#bookmark-modal {
+  z-index: 1500;
 }
