@@ -107,6 +107,27 @@ class Layer(models.Model):
         return slugify(self.name)
 
     @property
+    def data_overview_text(self):
+        if not self.data_overview and self.is_sublayer:
+            return self.parent.data_overview
+        else:
+            return self.data_overview
+        
+    @property
+    def data_source_text(self):
+        if not self.data_source and self.is_sublayer:
+            return self.parent.data_source
+        else:
+            return self.data_source
+        
+    @property
+    def data_notes_text(self):
+        if not self.data_notes and self.is_sublayer:
+            return self.parent.data_notes
+        else:
+            return self.data_notes
+        
+    @property
     def data_download_link(self):
         if not self.data_download and self.is_sublayer:
             return self.parent.data_download
