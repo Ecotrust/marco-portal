@@ -572,6 +572,86 @@
         }
     }, 
     {
+        "pk": 60, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "description": "Areas where sightings of loggerhead, leatherback, or green sea turtles are common.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=60&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png", 
+            "data_status": "Available", 
+            "data_source": "New Jersey Department of Environmental Protection", 
+            "data_notes": "This data layer was created for use in the New Jersey Ocean/Wind Power Ecological Baseline Study. The overall goal of the study is to provide spatial and temporal data on species utilizing New Jersey offshore waters to assist in determining potential areas for wind power development. ", 
+            "name": "Sea Turtles", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Sea Turtles <p>Number of Species with Observations 2.5 Std. Dev. Above Average", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "ArcRest", 
+            "fact_sheet": "", 
+            "themes": [
+                5
+            ], 
+            "compress_display": false, 
+            "description": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.12142320573247&location%5By%5D=39.018699143559104&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "map_tiles": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png", 
+            "data_status": "", 
+            "data_source": "Department of Defense, U.S. Navy", 
+            "data_notes": "Area with naval or military presence. Caution should be used if navigating near these areas.", 
+            "name": "Danger Zones & Restricted Areas", 
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export", 
+            "arcgis_layers": "19", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 47, 
         "model": "data_manager.layer", 
         "fields": {
@@ -611,86 +691,6 @@
             "sublayers": [
                 21
             ]
-        }
-    }, 
-    {
-        "pk": 59, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "ArcRest", 
-            "fact_sheet": "", 
-            "themes": [
-                5
-            ], 
-            "compress_display": false, 
-            "description": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.12142320573247&location%5By%5D=39.018699143559104&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "Department of Defense, U.S. Navy", 
-            "data_notes": "Area with naval or military presence. Caution should be used if navigating near these areas.", 
-            "name": "Danger Zones & Restricted Areas", 
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export", 
-            "arcgis_layers": "19", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 60, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "description": "Areas where sightings of loggerhead, leatherback, or green sea turtles are common.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=60&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "map_tiles": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png", 
-            "data_status": "Available", 
-            "data_source": "New Jersey Department of Environmental Protection", 
-            "data_notes": "This data layer was created for use in the New Jersey Ocean/Wind Power Ecological Baseline Study. The overall goal of the study is to provide spatial and temporal data on species utilizing New Jersey offshore waters to assist in determining potential areas for wind power development. ", 
-            "name": "Sea Turtles", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
         }
     }, 
     {
