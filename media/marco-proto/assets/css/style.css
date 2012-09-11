@@ -141,6 +141,7 @@ div.olLayerGooglePoweredBy
 .olImageLoadError { 
     /* when OL encounters a 404, don't display the pink image */
     display: none !important;
+    background-color: transparent; 
 }
 
 
