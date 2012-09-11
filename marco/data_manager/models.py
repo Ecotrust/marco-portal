@@ -231,6 +231,7 @@ class LookupInfo(models.Model):
         
 class DataNeed(models.Model):
     name = models.CharField(max_length=100)
+    archived = models.BooleanField(default=False)
     description = models.TextField(blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
     status = models.TextField(blank=True, null=True)
