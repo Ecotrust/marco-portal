@@ -104,6 +104,14 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, false);
         layer.opacity(0.5);
 
+        if (layer.parent) { // if layer has a parent
+            // turn off the parent shell layer
+            layer.parent.active(false);
+            layer.parent.activeSublayer(false);
+            layer.parent.visible(false);
+            layer.parent.visibleSublayer(false);
+        }
+        
         if (layer.activeSublayer()) {
             layer.activeSublayer().deactivateLayer();
             layer.activeSublayer(false);
@@ -142,6 +150,10 @@ function layerModel(options, parent) {
 
             // save reference in parent layer
             if (layer.parent) {
+                if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
+                    // only allow one sublayer on at a time
+                    layer.parent.activeSublayer().deactivateLayer();
+                }
                 layer.parent.active(true);
                 layer.parent.activeSublayer(layer);
                 layer.parent.visible(true);
@@ -220,40 +232,10 @@ function layerModel(options, parent) {
         // save a ref to the active layer for editing,etc
         app.viewModel.activeLayer(layer);
 
-        if (layer.active()) {
-            // layer is active
+        if (layer.active()) { // if layer is active
             layer.deactivateLayer();
-            if (layer.parent) {
-                // layer has a parent
-                // turn off the parent shell layer
-                layer.parent.active(false);
-                layer.parent.activeSublayer(false);
-                layer.parent.visible(false);
-                layer.parent.visibleSublayer(false);
-            }
-        } else {
-            // layer is not currently active
-            // if layer has a parent
-            if (layer.parent) {
-                // toggle sibling layers
-                if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
-                    // only allow one sublayer on at a time
-                    layer.parent.activeSublayer().deactivateLayer();
-                }
-                // turn on the parent
-                layer.parent.active(true);
-                layer.parent.visible(true);
-            }
-            if (layer.subLayers.length) {
-                // layer has sublayer, activate first layer
-                layer.subLayers[0].activateLayer();
-                layer.active(true);
-                layer.visible(true);
-            } else {
-                // otherwise just activate the layer
-                layer.activateLayer();
-            }
-
+        } else { // otherwise layer is not currently active
+            layer.activateLayer();
         }
     };
 
