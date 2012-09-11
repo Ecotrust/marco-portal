@@ -253,13 +253,14 @@
                                   <!-- Bookmark Message -->
                                   <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
                                         <div>
-                                            Bookmark "<span data-bind="text: activeBookmark"></span>"
                                             <span class="pull-right">
                                                 <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
                                                 <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
                                                     Return to Previous View
                                                 </a>
                                             </span>
+                                            Bookmark "<span data-bind="text: activeBookmark"></span>"
+                                            <div class="clearfix"></div>
                                         </div>
                                   </div>
                                   

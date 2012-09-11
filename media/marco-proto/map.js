@@ -35,7 +35,16 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
-    
+    /*
+    bingHybrid = new OpenLayers.Layer.Bing( {
+        type: "AerialWithLabels",
+        name: "Bing Hybrid",
+        sphericalMercator: true,
+        isBaseLayer: true,
+        numZoomLevels: 13
+        //key: apiKey
+    });
+    */
     /* need api key from http://bingmapsportal.com/
     bingHybrid = new OpenLayers.Layer.Bing({
         name: "Bing Hybrid",
