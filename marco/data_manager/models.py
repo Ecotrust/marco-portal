@@ -89,6 +89,7 @@ class Layer(models.Model):
     vector_color = models.CharField(max_length=7, blank=True, null=True)
     vector_fill = models.FloatField(blank=True, null=True)
     vector_graphic = models.CharField(max_length=255, blank=True, null=True)
+    opacity = models.FloatField(default=.5, blank=True, null=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -201,7 +202,8 @@ class Layer(models.Model):
                 'lookups': self.serialize_lookups,
                 'color': self.vector_color,
                 'fill_opacity': self.vector_fill,
-                'graphic': self.vector_graphic
+                'graphic': self.vector_graphic,
+                'opacity': self.opacity
             } 
             for layer in self.sublayers.all()
         ]
@@ -222,7 +224,8 @@ class Layer(models.Model):
             'lookups': self.serialize_lookups,
             'color': self.vector_color,
             'fill_opacity': self.vector_fill,
-            'graphic': self.vector_graphic
+            'graphic': self.vector_graphic,
+            'opacity': self.opacity
         }
         return layers_dict
 
