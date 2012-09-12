@@ -1,6 +1,5 @@
 // save the initial load hash so we can use it if set
 app.hash = window.location.hash;
-
 app.onResize = function(percent) {
 
   var height = $(window).height() * (percent || 0.825);
@@ -26,7 +25,6 @@ app.state = {
 // property to store the state of the map for restoring
 app.restoreState = {};
 
-
 ko.applyBindings(app.viewModel);
 app.viewModel.loadLayersFromServer().done(function() {
   // if we have the hash state go ahead and load it now
@@ -47,29 +45,6 @@ app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
 new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);
 
 
-// fullscreen stuff
-// for security reasons, this event listener must be bound directly
-document.getElementById('btn-fullscreen').addEventListener('click', function() {
-  if (BigScreen.enabled) {
-    BigScreen.toggle(document.getElementById('map'));
-    // You could also use .toggle(element)
-  } else {
-    // fallback for browsers that don't support full screen
-  }
-}, false);
-
-BigScreen.onenter = function() {
-  // called when entering full screen
-  // make map fullscreen
-  //app.onResize(100);
-  // app.map.render('map');
-};
-
-BigScreen.onexit = function() {
-  // called when exiting full screen
-  // return to normal size
-  //app.onResize();
-};
 
 
 $(document).ready(function() {
@@ -96,6 +71,32 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
 
+
+
+  // fullscreen stuff
+  // for security reasons, this event listener must be bound directly
+  document.getElementById('btn-fullscreen').addEventListener('click', function() {
+    
+    if (BigScreen.enabled) {
+      BigScreen.toggle(document.getElementById('map'));
+      // You could also use .toggle(element)
+    } else {
+      // fallback for browsers that don't support full screen
+    }
+  }, false);
+
+  BigScreen.onenter = function() {
+    // called when entering full screen
+    // make map fullscreen
+    //app.onResize(100);
+    // app.map.render('map');
+  };
+
+  BigScreen.onexit = function() {
+    // called when exiting full screen
+    // return to normal size
+    //app.onResize();
+  };
 
 });
 

@@ -20,6 +20,7 @@ header h2 {
 hr {
 	border-top: 1px solid #ccc;
 }
+
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: 90px;
@@ -441,6 +442,12 @@ img {
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
+
+	-ms-transform: rotate(90deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+
+
+
 }
 #feedback-tab a {
 	border: 1px solid white;
@@ -485,6 +492,7 @@ img {
 		height: auto;
 		padding-bottom: 10px;
 		margin-top: 10px;
+
 	}
 	.showcase .caption p {
 		font-size: 12px;

@@ -36,6 +36,7 @@
 
 		<script src="<?php echo get_template_directory_uri(); ?>/library/js/modernizr.full.min.js"></script>
 		
+
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -59,7 +60,9 @@
 		
 		<!-- marco stylesheet -->
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/marco_style.css">
-
+		<!--[if IE]>
+				<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/marco_style.ie.css">
+		<![endif]-->		
 		
 		<?php 
 
@@ -104,7 +107,7 @@
 			  </div>
 			</div>
 		</header> <!-- end header -->
-	<div id="feedback-tab" data-toggle="modal" data-target="#feedback-modal">
+	<div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">
 	    feedback
 	</div>
 	<div id="feedback-modal" class="modal hide fade">
