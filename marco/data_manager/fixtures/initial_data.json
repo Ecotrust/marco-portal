@@ -96,7 +96,7 @@
             "feature_link": "", 
             "display_name": "Security", 
             "description": "The Mid-Atlantic is home to important naval installations and training areas, and it\u2019s a busy corridor for commercial shipping and naval and other defense and security operations. ", 
-            "overview": "<p>\r\nThe Mid-Atlantic region is a busy corridor for commercial and recreational ship traffic and is home to the world\u2019s largest naval base, as well as many other military installations and training grounds. The U.S. Coast Guard works with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe. Their security focus is on the safety of ports, vessels, and facilities, both on and away from shore and their presence is notable throughout the region, with bases in Norfolk, Baltimore, Cape May, and Staten Island.\r\n<p>\r\nThe Naval Station at Norfolk, Virginia supports 75 large ships and 130 aircraft on seven miles of piers and wharfs, and it houses the largest concentration of Navy personnel in the country. Every year, its Port Services branch oversees more than 3,000 maneuvers as ships arrive and depart their berths. Spatial planners and resource managers must account for this intensive activity and work with military leaders to ensure their missions are not compromised as planning decisions are made. \r\n<p>\r\nThe legal framework supporting maritime security in the U.S. is based on five principle laws:\r\n<ul><li>Espionage Act (1917) \u2013 enabled the Coast Guard to make regulations to prevent losses to harbors and vessels during national emergencies.\r\n</li><li>Magnusson Act (1950) \u2013 provided permanent port security regulations and allowance to control movement of foreign vessels in U.S. ports.\r\n</li><li>Ports and Waterways Safety Act (1972) \u2013 allowed additional protection for port facilities and improved efforts to avoid degrading the marine environment.\r\n</li><li>Maritime Transportation Security Act (2002) \u2013 provided broad authority to prevent acts of terrorism within U.S. waters. \r\n</li><li>International Ship and Port Facility Security Code (2002) \u2013 amendments to International Convention for the Safety of Life at Sea to enhance maritime security.\r\n</li></ul>\r\n<p>\r\nData under development for the Security theme will include areas with potential hazards or public use restrictions and other information deemed to be critical for spatial planning. To ensure that security interests are fully considered, regional ocean planning leads will include defense representatives and officials responsible for maintaining the security of our vessels, ports and Nation.\r\n", 
+            "overview": "<p>\r\nThe Mid-Atlantic region is a busy corridor for commercial and recreational ship traffic and is home to the world\u2019s largest naval base, as well as many other military installations and training grounds. The U.S. Coast Guard works with other agencies to ensure that navigation routes for both commercial and defense vessels are accessible and safe. Their security focus is on the safety of ports, vessels, and facilities, both on and away from shore and their presence is notable throughout the region, with bases in Norfolk, Baltimore, Cape May, and Staten Island.\r\n<p>\r\nThe Naval Station at Norfolk, Virginia supports 75 large ships and 130 aircraft on seven miles of piers and wharfs, and it houses the largest concentration of Navy personnel in the country. Every year, its Port Services branch oversees more than 3,000 maneuvers as ships arrive and depart their berths. Spatial planners and resource managers must account for this intensive activity and work with military leaders to ensure their missions are not compromised as planning decisions are made. \r\n<p>\r\nThe legal framework supporting maritime security in the U.S. is based on five principal laws:\r\n<ul><li>Espionage Act (1917) \u2013 enabled the Coast Guard to make regulations to prevent losses to harbors and vessels during national emergencies.\r\n</li><li>Magnusson Act (1950) \u2013 provided permanent port security regulations and allowance to control movement of foreign vessels in U.S. ports.\r\n</li><li>Ports and Waterways Safety Act (1972) \u2013 allowed additional protection for port facilities and improved efforts to avoid degrading the marine environment.\r\n</li><li>Maritime Transportation Security Act (2002) \u2013 provided broad authority to prevent acts of terrorism within U.S. waters. \r\n</li><li>International Ship and Port Facility Security Code (2002) \u2013 amendments to International Convention for the Safety of Life at Sea to enhance maritime security.\r\n</li></ul>\r\n<p>\r\nData under development for the Security theme will include areas with potential hazards or public use restrictions and other information deemed to be critical for spatial planning. To ensure that security interests are fully considered, regional ocean planning leads will include defense representatives and officials responsible for maintaining the security of our vessels, ports and Nation.\r\n", 
             "feature_image": "", 
             "header_image": "/portal/assets/img/themes/security.jpg", 
             "feature_excerpt": "", 
@@ -281,6 +281,47 @@
             "url": "", 
             "arcgis_layers": null, 
             "legend_title": null, 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                7
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Data Under Development", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
             "sublayers": []
         }
     }, 
@@ -968,6 +1009,49 @@
         }
     }, 
     {
+        "pk": 56, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Data Under Development", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                55
+            ]
+        }
+    }, 
+    {
         "pk": 39, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1098,49 +1182,6 @@
             "legend_title": "", 
             "sublayers": [
                 21
-            ]
-        }
-    }, 
-    {
-        "pk": 56, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "", 
-            "vector_graphic": null, 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Charter/Party Boats (placeholder)", 
-            "url": "", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                55
             ]
         }
     }, 
