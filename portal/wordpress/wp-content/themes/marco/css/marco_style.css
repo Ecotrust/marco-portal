@@ -104,6 +104,8 @@ hr {
   	-moz-border-bottom-left-radius: 0px;
   	-webkit-border-top-left-radius: 0px;
   	-webkit-border-bottom-left-radius: 0px;
+  	behavior: url(/portal/assets/PIE.htc);
+
 }
 
 .form-search input {
@@ -118,6 +120,8 @@ hr {
   -moz-border-bottom-right-radius: 0px;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
+  behavior: url(/portal/assets/PIE.htc);
+
 }
 input + i.icon-remove-sign {
 	margin-left: -20px;
@@ -169,6 +173,8 @@ input + i.icon-remove-sign {
 .showcase .attrib {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	behavior: url(/portal/assets/PIE.htc);
+
 	border-radius: 5px;
 	color: white;
 	position: absolute;
@@ -184,6 +190,8 @@ input + i.icon-remove-sign {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
 .showcase .attrib .text {
+	behavior: url(/portal/assets/PIE.htc);
+
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -309,6 +317,8 @@ input + i.icon-remove-sign {
 	line-height: 1;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
+	behavior: url(/portal/assets/PIE.htc);
+
 
 }
 .sidebar .active {
@@ -329,6 +339,8 @@ img + h3 {
 	 border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	behavior: url(/portal/assets/PIE.htc);
+
 }
 .carousel {
 	clear: both;
@@ -340,6 +352,8 @@ img + h3 {
 	 border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	behavior: url(/portal/assets/PIE.htc);
+
 }
 
 .carousel .item {
@@ -368,6 +382,8 @@ img {
  	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;	
+	behavior: url(/portal/assets/PIE.htc);
+
 }
  .image {
 	position: relative;
@@ -446,6 +462,7 @@ img {
 
 	-ms-transform: rotate(90deg);
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	behavior: url(/portal/assets/PIE.htc);
 
 
 
@@ -493,6 +510,8 @@ img {
 		height: auto;
 		padding-bottom: 10px;
 		margin-top: 10px;
+		behavior: url(/portal/assets/PIE.htc);
+
 
 	}
 	.showcase .caption p {
