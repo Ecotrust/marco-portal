@@ -23,6 +23,8 @@ function layerModel(options, parent) {
     self.lookupDetails = options.lookups ? options.lookups.details : [];
     self.color = options.color || "#ee9900";
     self.fillOpacity = options.fill_opacity || 0.0;
+    self.defaultOpacity = options.opacity || 0.5;
+    self.opacity = ko.observable(self.defaultOpacity);
     self.graphic = options.graphic || null;
 
     // set target blank for all links
@@ -39,7 +41,6 @@ function layerModel(options, parent) {
     }
 
     // opacity
-    self.opacity = ko.observable(0.5);
     self.opacity.subscribe(function(newOpacity) {
         if (self.layer.CLASS_NAME === "OpenLayers.Layer.Vector") {
             self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
@@ -108,7 +109,7 @@ function layerModel(options, parent) {
         layer.visible(false);
 
         app.setLayerVisibility(layer, false);
-        layer.opacity(0.5);
+        layer.opacity(layer.defaultOpacity);
 
         if (layer.parent) { // if layer has a parent
             // turn off the parent shell layer

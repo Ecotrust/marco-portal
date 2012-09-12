@@ -221,7 +221,7 @@ app.addLayerToMap = function(layer) {
                 //strokeDashStyle: "dash",
                 //strokeOpacity: 1,
                 strokeColor: layer.color,
-                strokeOpacity: 0.5,
+                strokeOpacity: layer.defaultOpacity,
                 //strokeLinecap: "square",
                 //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
                 //title: 'testing'
@@ -229,7 +229,7 @@ app.addLayerToMap = function(layer) {
                 externalGraphic: layer.graphic,
                 graphicWidth: 8,
                 graphicHeight: 8,
-                graphicOpacity: 0.5
+                graphicOpacity: layer.defaultOpacity
             });
             if (layer.lookupField) {
                 var mylookup = {};
