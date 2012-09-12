@@ -642,6 +642,7 @@ img + h3 {
 
 }
 #basemaps span {
+	width: 100%;
 	opacity: 0;
 	filter: alpha(opacity=0);
 	font-size: 12px;
