@@ -1,20 +1,5 @@
 [
     {
-        "pk": 7, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "feature_link": null, 
-            "display_name": "Recreation", 
-            "description": "The Mid-Atlantic boasts countless opportunities for entertainment and leisure activities and has flourishing travel, tourism, and outdoor recreation industries, many of which are focused on the region\u2019s natural features. ", 
-            "overview": "The Mid-Atlantic boasts countless opportunities for entertainment and leisure activities and has flourishing travel, tourism, and outdoor recreation industries, many of which are focused on the region\u2019s natural features. Visitors come from all over the country and around the world to enjoy the beaches, wetlands, and barrier islands where they surf, fish, kayak, and participate in organized or self-guided whale and bird watching tours. This information is useful to coastal and marine planners interested in accounting for current and future recreational use of natural resources.", 
-            "feature_image": null, 
-            "header_image": "", 
-            "feature_excerpt": null, 
-            "thumbnail": "", 
-            "name": "recreation"
-        }
-    }, 
-    {
         "pk": 2, 
         "model": "data_manager.theme", 
         "fields": {
@@ -27,6 +12,21 @@
             "feature_excerpt": "", 
             "thumbnail": "", 
             "name": "conservation"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "feature_link": "", 
+            "display_name": "Recreation", 
+            "description": "The Mid-Atlantic boasts countless opportunities for entertainment and leisure activities and has flourishing travel, tourism, and outdoor recreation industries, many of which are focused on the region\u2019s natural features. ", 
+            "overview": "<p>\r\nRecreation in coastal and marine areas represents a value shared by all Americans and is one as fundamental as visiting our national parks and other public trust lands. The Mid-Atlantic boasts countless opportunities for entertainment and leisure activities and has flourishing travel, tourism, and outdoor recreation industries, many of which are focused on the region\u2019s natural features. Visitors come from all over the country and around the world to enjoy the beaches, wetlands, and barrier islands where they surf, fish, kayak, and participate in organized or self-guided whale and bird watching tours. Beyond the cultural and traditional values coastal and marine waters afford, the recreational industries built thereon are a significant driver of jobs and the economy of the region and it is our common mandate to manage and protect these environments for ethical and economic reasons.\r\n<p>\r\nThe Mid-Atlantic is a prime location for underwater exploration, scuba diving to uncover the unique array of plants, animals, and historical artifacts. There are countless shipwrecks in the area, notably the Faithful Steward--a British ship headed for Philadelphia which lost most of its 250 passengers and whose copper coins can still be recovered today washed ashore on Coin Beach, Delaware--and remnants of the Civil War battle between the ironclad Monitor and Merrimac off the coast of Virginia.\r\n<p>\r\nVisitors who prefer to stay on--and not in--the water can experience the natural beauty of the region by sailing, power boating, kayaking, or canoeing. Surfing is also a popular sport with a long history in the region. Various surfing competitions are a big draw for pros and amateurs, as are the occasions when hurricanes bring unusually high waves to the relatively quiet Mid-Atlantic shores. And no summary of regional outdoor activities would be complete without mention of the innumerable beaches dotting the coastline. Often beaches are the jumping off points for active and leisurely pursuits and some of the most popular spots are Virginia Beach, Ocean City, Rehoboth, Cape May, and the beaches of Long Island.\r\n<p>\r\nThough often thought of as a Pacific coast pastime, whale watching is a well-established ecotourism activity in the Mid-Atlantic. Key attractions are the humpback and right whales that migrate through the region on their long journeys north in the spring to feed and south in the autumn to calve. This is a unique opportunity to make a connection with the largest animals on the planet and to do so in a non-intrusive way. During these cruises, it is also possible to spot other marine mammals such as dolphins and porpoises, any of three species of sea turtles including the endangered prehistoric giant that is the leatherback, and countless bird species. With such a dramatic range of habitats--from the coastal beaches to Chesapeake wetlands--the Mid-Atlantic is home to over 350 bird species, making it a destination for amateur and experienced birders alike. Few areas offer such opportunities to see that variety of native species, as well as the countless migratory species that pass through the region twice a year. Specifically, Cape May, New Jersey, and Chincoteague, Virginia are nationally renowned as premier birding destinations.\r\n<p>\r\nThe MARCO Ocean Data Portal will include recreation information relevant to the region and predicts that these data will be useful to coastal and marine planners interested in accounting for current and future recreational use of natural resources here.\r\n", 
+            "feature_image": "", 
+            "header_image": "", 
+            "feature_excerpt": "", 
+            "thumbnail": "", 
+            "name": "recreation"
         }
     }, 
     {
