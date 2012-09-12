@@ -100,8 +100,7 @@ a:focus {
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
-	-moz-border-radius: 10px;
-	behavior: url(/media/marco/css/PIE.htc);
+	-webkit-border-radius: 10px;
 
 }
 .sidebar-nav .nav-tabs li.active:first-child a, .sidebar-nav .nav-tabs li:first-child:hover a {
