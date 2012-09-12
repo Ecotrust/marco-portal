@@ -642,7 +642,7 @@ img + h3 {
 
 }
 #basemaps span {
-	display:none;
+	visibility: hidden;
 	width: 100%;
 	opacity: 0;
 	filter: alpha(opacity=0);
@@ -659,7 +659,7 @@ img + h3 {
 	
 }
 #basemaps:hover span {
-	display:block;
+	visibility: visible;
 	opacity: 1;
 	filter: alpha(opacity=100);
 }
