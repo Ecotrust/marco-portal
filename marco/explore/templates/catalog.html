@@ -64,7 +64,7 @@
                                 {% else %}
                                 <tr>
                                     <td>
-                                        <a id="{{layer.slug}}"></a>
+                                        <div id="{{layer.slug}}" style="position:relative; top:-200px;"></div>
                                         <span class="layer-name catalog-tooltip" rel="popover" 
                                             data-name="{{layer.name}}" 
                                             data-thumbnail="{{layer.thumbnail}}"
@@ -187,14 +187,13 @@
 {% block javascript %}
 <script>
     $(document).ready( function() {
+        $(window.location.hash).closest('tr').effect("pulsate", {times:2 }, 500);
         var layers = [],
             layer_index = {},
             search =  function(val) {
-                var layer = layer_index[val],
-                    theme_top = layer.layer.closest('.theme').offset().top;
-                $(window).scrollTop(theme_top);
+                var layer = layer_index[val];
                 layer.layer.closest('tr').effect("pulsate", {times:2 }, 500);
-                setTimeout(function() {$(window).scrollTop(layer.layer.closest('tr').offset().top-300)}, 200);
+                setTimeout(function() {$(window).scrollTop(layer.layer.closest('tr').offset().top-200)}, 200);
             };
 
         if (window.location.hash) {
