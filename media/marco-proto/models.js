@@ -130,7 +130,7 @@ function layerModel(options, parent) {
     self.activateLayer = function() {
         var layer = this;
 
-        if (!layer.active()) {
+        if (!layer.active() && layer.type !== 'placeholder') {
             app.addLayerToMap(layer);
 
             //changed the following so that 
@@ -237,6 +237,7 @@ function layerModel(options, parent) {
         app.viewModel.error(null);
 
         // save a ref to the active layer for editing,etc
+        // still using this?
         app.viewModel.activeLayer(layer);
 
         if (layer.active()) { // if layer is active

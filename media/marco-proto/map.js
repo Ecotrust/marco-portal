@@ -35,23 +35,22 @@ app.init = function () {
         isBaseLayer: true,
         numZoomLevels: 13
     });
-    /*
-    bingHybrid = new OpenLayers.Layer.Bing( {
-        type: "AerialWithLabels",
+    
+    /*var bingHybrid = new OpenLayers.Layer.Bing( {
         name: "Bing Hybrid",
+        key: "AvD-cuulbvBqwFDQGNB1gCXDEH4S6sEkS7Yw9r79gOyCvd2hBvQYPaRBem8cpkjv",
+        type: "AerialWithLabels",
         sphericalMercator: true,
         isBaseLayer: true,
         numZoomLevels: 13
-        //key: apiKey
-    });
-    */
-    /* need api key from http://bingmapsportal.com/
-    bingHybrid = new OpenLayers.Layer.Bing({
+    });*/
+    
+    // need api key from http://bingmapsportal.com/
+    /*var bingHybrid = new OpenLayers.Layer.Bing({
         name: "Bing Hybrid",
-        key: "",
+        key: "AvD-cuulbvBqwFDQGNB1gCXDEH4S6sEkS7Yw9r79gOyCvd2hBvQYPaRBem8cpkjv",
         type: "AerialWithLabels"
-    });
-    */
+    });*/
     
     nauticalCharts = new OpenLayers.Layer.WMS("Nautical Charts", "http://egisws02.nos.noaa.gov/ArcGIS/services/RNC/NOAA_RNC/ImageServer/WMSServer", 
         {

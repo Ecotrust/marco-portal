@@ -70,6 +70,7 @@ class Layer(models.Model):
     map_tiles = models.CharField(max_length=255, blank=True, null=True)
     kml = models.CharField(max_length=255, blank=True, null=True)
     data_download = models.CharField(max_length=255, blank=True, null=True)
+    learn_more = models.CharField(max_length=255, blank=True, null=True)
     metadata = models.CharField(max_length=255, blank=True, null=True)
     fact_sheet = models.CharField(max_length=255, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
@@ -158,8 +159,11 @@ class Layer(models.Model):
         
     @property
     def learn_link(self):
-        theme = self.themes.all()[0]
-        return "%s#%s" %(theme.learn_link, self.slug)
+        if self.learn_more:
+            return self.learn_more
+        else:
+            theme = self.themes.all()[0]  
+            return "%s#%s" %(theme.learn_link, self.slug)
         
     @property
     def description_link(self):
