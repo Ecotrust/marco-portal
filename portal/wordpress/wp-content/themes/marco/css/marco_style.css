@@ -226,6 +226,7 @@ input + i.icon-remove-sign {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
+	behavior: url(/portal/assets/PIE.htc);
 
 }
 .bugs .wrapper:hover,
