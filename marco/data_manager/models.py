@@ -131,6 +131,8 @@ class Layer(models.Model):
         
     @property
     def data_download_link(self):
+        if self.data_download and self.data_download.lower() == 'none':
+            return None
         if not self.data_download and self.is_sublayer:
             return self.parent.data_download
         else:
@@ -138,6 +140,8 @@ class Layer(models.Model):
         
     @property
     def metadata_link(self):
+        if self.metadata and self.metadata.lower() == 'none':
+            return None
         if not self.metadata and self.is_sublayer:
             return self.parent.metadata
         else:
@@ -145,6 +149,8 @@ class Layer(models.Model):
         
     @property
     def source_link(self):
+        if self.source and self.source.lower() == 'none':
+            return None
         if not self.source and self.is_sublayer:
             return self.parent.source
         else:

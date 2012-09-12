@@ -776,10 +776,10 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
+                61, 
                 37, 
                 50, 
                 29, 
-                61, 
                 42, 
                 47, 
                 39, 
@@ -1085,50 +1085,6 @@
         }
     }, 
     {
-        "pk": 61, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "# of species above avg.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=61&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Areas where sightings of sperm whale, bottlenose dolphin, or striped dolphin are common.", 
-            "attribute_fields": [], 
-            "vector_fill": null, 
-            "data_overview": "Areas where sightings per unit effort for sperm whale, bottlenose dolphin or striped dolphin were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/legend.png", 
-            "data_status": "", 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Toothed Mammals (All Seasons)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 42, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1381,6 +1337,50 @@
             "data_notes": "", 
             "name": "Humpback Whales (Winter)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "# of species above avg.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=61&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "none", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Areas where sightings of sperm whale, bottlenose dolphin, or striped dolphin are common.", 
+            "attribute_fields": [], 
+            "vector_fill": null, 
+            "data_overview": "Areas where sightings per unit effort for sperm whale, bottlenose dolphin or striped dolphin were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/legend.png", 
+            "data_status": "", 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Toothed Mammals (All Seasons)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
