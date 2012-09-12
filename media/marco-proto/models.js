@@ -13,6 +13,7 @@ function layerModel(options, parent) {
     self.learn_link = options.learn_link || null;
     self.legendVisibility = ko.observable(false);
     self.legendTitle = options.legend_title || false;
+    self.legendSubTitle = options.legend_subtitle || false;
     self.themes = ko.observableArray();
     self.attributeTitle = options.attributes ? options.attributes.title : self.name;
     self.attributes = options.attributes ? options.attributes.attributes : [];
@@ -71,7 +72,12 @@ function layerModel(options, parent) {
     if (parent) {
         self.parent = parent;
         self.fullName = self.parent.name + " (" + self.name + ")";
-
+        if ( ! self.legendTitle ) {
+            self.legendTitle = self.parent.legendTitle;
+        }
+        if ( ! self.legendSubTitle ) {
+            self.legendSubTitle = self.parent.legendSubTitle;
+        }
     } else {
         self.fullName = self.name;
     }

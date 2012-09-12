@@ -53,6 +53,7 @@ class Layer(models.Model):
     is_sublayer = models.BooleanField(default=False)
     legend = models.CharField(max_length=255, blank=True, null=True)
     legend_title = models.CharField(max_length=255, blank=True, null=True)
+    legend_subtitle = models.CharField(max_length=255, blank=True, null=True)
     utfurl = models.CharField(max_length=255, blank=True, null=True)
     
     #tooltip
@@ -193,6 +194,7 @@ class Layer(models.Model):
                 'parent': self.id,
                 'legend': layer.legend,
                 'legend_title': layer.legend_title,
+                'legend_subtitle': layer.legend_subtitle,
                 'description': layer.tooltip,
                 'learn_link': layer.learn_link,
                 'attributes': self.serialize_attributes,
@@ -213,6 +215,7 @@ class Layer(models.Model):
             'subLayers': sublayers,
             'legend': self.legend,
             'legend_title': self.legend_title,
+            'legend_subtitle': self.legend_subtitle,
             'description': self.description,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,

@@ -252,13 +252,14 @@
                                   <!-- Bookmark Message -->
                                   <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
                                         <div>
-                                            Bookmark "<span data-bind="text: activeBookmark"></span>"
                                             <span class="pull-right">
                                                 <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
                                                 <a class="btn btn-mini" data-bind="click: bookmarks.restoreState">
                                                     Return to Previous View
                                                 </a>
                                             </span>
+                                            Bookmark "<span data-bind="text: activeBookmark"></span>"
+                                            <div class="clearfix"></div>
                                         </div>
                                   </div>
                                   
@@ -268,7 +269,7 @@
                                             <span class="title" data-bind="text: activeInfoLayer().name"></span> -- 
                                             <span class="text" data-bind="text: activeInfoLayer().description"></span>
                                             <span class="text">
-                                                <a class="btn btn-info btn-mini" data-bind="attr: { href: activeInfoLayer().learn_link }" target="_blank">Learn More...</a>
+                                                <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().learn_link }" target="_blank">Learn More...</a>
                                             </span>  
                                         </div>
                                         <div class="span1">
@@ -290,6 +291,7 @@
                                         <div data-bind="foreach: activeLegendLayers">
                                                 <div style="padding-bottom: 10px;">
                                                     <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
+                                                    <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="html: legendSubTitle ? legendSubTitle : ''"></p>
                                                     <span data-bind="if: legend">
                                                         <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
                                                             <img data-bind="attr: { src: legend }" />

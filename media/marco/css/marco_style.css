@@ -124,9 +124,11 @@ a:focus {
   	-webkit-border-bottom-left-radius: 0px;
 }
 
-.form-search input {
+.form-search input, .form-search input:focus{
 	width: 60%;
 	background-color: #eee;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
