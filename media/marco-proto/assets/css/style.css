@@ -278,21 +278,21 @@ body {
   z-index: 1000;
 }
 
-#data-accordion .accordion-group {
+/*#data-accordion .accordion-group {
   overflow: visible;
-}
+}*/
 
 #data-accordion, #legend-accordion {
   height: 400px;
   overflow-y: auto;
 }
 
-#data-accordion .accordion {
+/*#data-accordion .accordion {
   overflow-x: visible;
 }
-
+*/
 .accordion-inner {
-  overflow: visible;
+  /*overflow: visible;*/
   background: white;
 }
 

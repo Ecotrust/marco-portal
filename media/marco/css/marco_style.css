@@ -444,6 +444,25 @@ img + h3 {
 	color: #333;
 
 }
+#data,
+#data .tab-content,
+#data .row-fluid,
+#data .row-fluid .span12,
+#data-accordion,
+#data-accordion .accordion,
+#data-accordion .accordion-heading
+#data-accordion .accordion-body,
+#data-accordion .accordion-inner {
+	position: relative;
+}
+#data-accordion .collapse {
+	display: none;
+}
+
+#data-accordion .collapse.in {
+	display: block;
+}
+
 #data-accordion .btn i, #active .btn i {
 	font-size: 13px;
 }
