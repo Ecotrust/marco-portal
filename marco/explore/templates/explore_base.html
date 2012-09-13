@@ -32,6 +32,10 @@
                             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
                             </script>
                         <![endif]-->
+                        <!--[if IE]>
+                                <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.ie.css">
+                        <![endif]-->        
+                        
                         <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap.css">
                         <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap-responsive.css">
 
@@ -44,7 +48,6 @@
                     
                     <body class="blog">
                         <header role="banner">
-                            {% include "feedback.html" %}  
                             <div class="navbar navbar-fixed-top">
                                 <div class="navbar-inner">
                                 <div class="container">

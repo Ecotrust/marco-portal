@@ -39,7 +39,7 @@
 
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
-			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+			<script src="<?php echo get_template_directory_uri(); ?>/assets/js/respond.min.js"></script>
 		<![endif]-->
 
 		<!-- html5.js -->
@@ -81,30 +81,37 @@
 			<div class="navbar navbar-fixed-top">
 			  <div class="navbar-inner">
 			    <div class="container">
-			        <a href="<?php echo get_bloginfo('wpurl'); ?>">
-			        	<img src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
-			        </a>
-			       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-			      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			     	 <span class="icon-bar"></span>
-			      	 <span class="icon-bar"></span>
-			      	 <span class="icon-bar"></span>
-			      </a>
-			       
-			      <div class="pull-right nav-collapse">
-			        <ul class="nav">
-			          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>
-			          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
-			          <li><a href="http://www.midatlanticocean.org/" target="_blank">Visit MARCO</a></li>
-			        </ul>
-			        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
-			          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">
-			          <i class="icon-remove-sign icon-large"></i>	
-			          <button type="submit" class="btn">Search</button>
-			        </form>
-			      </div><!--/.nav-collapse -->
-			    </div>
-			  </div>
+			    	<div class="row-fluid">
+			    		<div class="span5">
+					        <a href="<?php echo get_bloginfo('wpurl'); ?>">
+					        	<img src="<?php echo get_template_directory_uri(); ?>/img/marco-logo.gif"/>
+					        </a>
+					    </div>
+					    <div class="span7">
+					       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+					      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					     	 <span class="icon-bar"></span>
+					      	 <span class="icon-bar"></span>
+					      	 <span class="icon-bar"></span>
+					      </a>
+					      <div class="nav-collapse">
+					      	<div>
+						        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
+						          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">
+						          <i class="icon-remove-sign icon-large"></i>	
+						          <button type="submit" class="btn">Search</button>
+						        </form>
+						        <ul class="nav pull-right">
+						          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>
+						          <li class="<?php echo $pagename == 'about' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/about">About the&nbsp;Portal</a></li>
+						          <li><a href="http://www.midatlanticocean.org/" target="_blank">Visit MARCO</a></li>
+						        </ul>
+						      </div><!--/.nav-collapse -->
+						  </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
 			</div>
 		</header> <!-- end header -->
 	<div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">

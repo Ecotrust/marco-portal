@@ -82,10 +82,6 @@ hr {
 	color: #ccc;
 }
 
-.navbar .pull-right {
-    *position: absolute;
-}
-
 .form-search .btn {
 	font-size: 9px;
 	text-transform: uppercase;
@@ -108,7 +104,7 @@ hr {
 }
 
 .form-search input {
-	width: 60%;
+	width: 100px;
 	background-color: #eee;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -140,8 +136,7 @@ input + i.icon-remove-sign {
 	background-color: rgb(45, 137,152);
 	/* RGBa with 0.6 opacity */
 	background-color: rgba(45, 137, 152, 0.65);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#2d899800, endColorstr=#2d899800);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 	
