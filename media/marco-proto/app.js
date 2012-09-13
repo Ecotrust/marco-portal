@@ -82,6 +82,7 @@ $(document).ready(function() {
       // You could also use .toggle(element)
     } else {
       // fallback for browsers that don't support full screen
+      $('#fullscreen-error-overlay').show();
     }
   }, false);
 
@@ -96,7 +97,7 @@ $(document).ready(function() {
   BigScreen.onexit = function() {
     // called when exiting full screen
     // return to normal size
-    setTimeout(app.onResize, 500);
+    setTimeout(app.onResize(), 500);
   };
   
   //hide basemaps drop-down on mouseout

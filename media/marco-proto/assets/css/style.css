@@ -4,6 +4,7 @@ body {
 .sidebar-nav {
   padding: 9px 0;
 }
+
 #map {
   height: 800px;
   margin-bottom: 15px;
@@ -191,7 +192,10 @@ body {
 */
 }
 
-
+/* shifts the map left when hiding the layers panel */
+.shift-left {
+  margin-left: 0px !important;
+}
 
 #map-buttons {
   position: absolute;
@@ -235,6 +239,15 @@ body {
 #description-overlay .text {
   font-size: 16px;
 }
+#fullscreen-error-overlay {
+  position: absolute;
+  top: 0;
+  z-index: 950; 
+  width: 70%;
+  margin-left: 15%;
+  font-size: 16px;
+  color: white;
+}
 
 #error-overlay {
   position: absolute;
@@ -244,9 +257,10 @@ body {
   margin-left: 15%;
   font-size: 16px;
   color: white;
-  
 }
-#error-overlay > div {
+
+#error-overlay > div,
+#fullscreen-error-overlay > div {
   padding: 10px;
   background-color: rgb(45, 137,152);
   /* RGBa with 0.6 opacity */

@@ -199,7 +199,7 @@
                     </div>
                 </div>
                 <!--/span-->
-                <div data-bind="css: { span8: showLayers(), span12: ! showLayers() }">       
+                <div id="map-panel" data-bind="css: { span8: showLayers(), span12: ! showLayers(), 'shift-left': ! showLayers() }">       
                     <div class="row-fluid" data-bind="visible: showMapPanel">
                         <div class="span12">
                             <div class="row-fluid">
@@ -266,6 +266,17 @@
                                             </span>
                                             "<span data-bind="text: activeBookmark"></span>"
                                             <div class="clearfix"></div>
+                                        </div>
+                                  </div>
+                                  
+                                  <!-- FullScreen Fail Message -->
+                                  <div id="fullscreen-error-overlay" style="display:none">
+                                        <div>
+                                            <span class="pull-right">
+                                                <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
+                                                
+                                            </span>
+                                            <span>We're sorry, the Fullscreen option is not supported in Internet Explorer at this time...If it's important, please try Firefox or Chrome.</span>
                                         </div>
                                   </div>
                                   
