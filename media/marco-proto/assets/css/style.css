@@ -81,6 +81,15 @@ body {
     font-size: 12px;
 }
 
+#legend-header {
+  margin-bottom:10px; 
+  padding-top: 8px; 
+  border-bottom: 2px solid #2D8998; 
+  padding-bottom: 6px; 
+  line-height: 20px;
+  font-size: 16px;
+}
+
 i.check {
   position: absolute;
   right: 12px;
