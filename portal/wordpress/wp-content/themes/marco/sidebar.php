@@ -6,8 +6,11 @@
 		<h3><a href="<?php echo get_bloginfo('wpurl'); ?>/learn">Learn</a></h3>
 		<? } ?>
 		<ul class="unstyled">
+			<li><a href="/learn/administrative">Administrative</a></li>
         	<li><a href="/learn/fishing">Fishing</a></li>
+        	<li><a href="/learn/conservation">Marine Life</a></li>
         	<li><a href="/learn/maritime-industries">Maritime</a></li>
+        	<li><a href="/learn/recreation">Recreation</a></li>
         	<li><a href="/learn/energy">Renewable Energy</a></li>
         	<li><a href="/learn/security">Security</a></li>
 		</ul>
