@@ -97,6 +97,11 @@ $(document).ready(function() {
     // return to normal size
     //app.onResize();
   };
+  
+  //hide basemaps drop-down on mouseout
+  $('#SimpleLayerSwitcher_30').mouseleave( function() {
+    $('#SimpleLayerSwitcher_30').hide();
+  });
 
 });
 
