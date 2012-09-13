@@ -97,7 +97,10 @@ $(document).ready(function() {
   BigScreen.onexit = function() {
     // called when exiting full screen
     // return to normal size
+    //for firefox
     setTimeout(app.onResize(), 500);
+    //for chrome
+    setTimeout(app.onResize, 500);
   };
   
   //hide basemaps drop-down on mouseout
