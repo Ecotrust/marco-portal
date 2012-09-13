@@ -170,9 +170,6 @@ a.disabled-link:hover {
 }
 
 
-#bookmark-popover {
-  z-index: 1400;
-}
 body {
   padding-bottom: 40px;
 }
@@ -408,7 +405,7 @@ a.disabled-link:hover {
 #bookmark-popover {
   left: 650px;
   width: 300px;
-  z-index: 1250;
+  z-index: 1030;
 }
 
 #bookmark-modal {
