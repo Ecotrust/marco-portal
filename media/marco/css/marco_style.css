@@ -647,23 +647,25 @@ img + h3 {
 #basemaps span {
 	visibility: hidden;
 	width: 100%;
-	opacity: 0;
-	filter: alpha(opacity=0);
+	//opacity: 0;
+	//filter: alpha(opacity=0);
 	font-size: 12px;
 	-webkit-transition: opacity .3s ease-in-in-out;
-   -moz-transition: opacity .3s ease-in-in-out;
-   -o-transition: opacity .3s ease-in-in-out;
-   transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-in-out;
+    -o-transition: opacity .3s ease-in-in-out;
+    transition: opacity .3s ease-in-out;
    
 }
 
-#basemaps:hover a {
+#basemaps:hover a,
+#basemaps.open a {
     width: 120px;
 	
 }
-#basemaps:hover span {
+#basemaps:hover span ,
+#basemaps.open span {
 	visibility: visible;
-	opacity: 1;
+	//opacity: 1;
 	filter: alpha(opacity=100);
 }
 
@@ -675,17 +677,17 @@ img + h3 {
 
 .SimpleLayerSwitcher {
   position:absolute;
-  top:10px;
-  right:35px;
+  top:12px;
+  right:146px;
   background-color:whiteSmoke;
   border:1px solid #ccc;
   border-radius:4px;
   max-width:150px;
- text-align: left;
- background: #130085; /* fallback for IE - IE6 requires background shorthand*/
- background: rgba(0, 60, 136, 0.5);
- border-radius: 10px;
- display: none;
+  text-align: left;
+  background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+  background: rgba(0, 60, 136, 0.5);
+  border-radius: 10px;
+  display: none;
   overflow: hidden;
 }
 
@@ -696,7 +698,7 @@ img + h3 {
   color:white;
   padding:5px 5px 5px 5px;
   padding-left: 10px;
- 
+  font-size: 14px;
   background: #130085; /* fallback for IE - IE6 requires background shorthand*/
   background: rgba(0, 60, 136, 0.5);
   opacity: .8;

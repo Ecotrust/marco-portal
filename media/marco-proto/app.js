@@ -3,7 +3,7 @@ app.hash = window.location.hash;
 app.onResize = function(percent) {
 
   var height = $(window).height() * (percent || 0.825);
-  // when fullscreen be odd
+  // when fullscreen be odd?
   if (height) {
     $("#map").height(height);
     $("#map-wrapper").height(height);
@@ -78,7 +78,7 @@ $(document).ready(function() {
   document.getElementById('btn-fullscreen').addEventListener('click', function() {
     
     if (BigScreen.enabled) {
-      BigScreen.toggle(document.getElementById('map'));
+      BigScreen.toggle(document.getElementById('fullscreen'));
       // You could also use .toggle(element)
     } else {
       // fallback for browsers that don't support full screen
@@ -88,19 +88,40 @@ $(document).ready(function() {
   BigScreen.onenter = function() {
     // called when entering full screen
     // make map fullscreen
-    //app.onResize(100);
-    // app.map.render('map');
+    app.onResize(.99);
+    //app.map.updateSize();
+    //app.map.render('map');
   };
 
   BigScreen.onexit = function() {
     // called when exiting full screen
     // return to normal size
-    //app.onResize();
+    setTimeout(app.onResize, 500);
   };
+  
+  //hide basemaps drop-down on mouseout
+  $('#basemaps').mouseleave( function(e) {
+    if ( $(e.toElement).hasClass('basey') ) {
+        $('#basemaps').addClass('open');
+    } else {
+        $('#SimpleLayerSwitcher_30').hide();
+    }
+  });
   
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_30').mouseleave( function() {
     $('#SimpleLayerSwitcher_30').hide();
+    $('#basemaps').removeClass('open');
+  });
+  
+  //hide basemaps drop-down on mouseout
+  $('#SimpleLayerSwitcher_30').mousedown( function() {
+    $('#basemaps').removeClass('open');
+  });
+  
+  //hide basemaps drop-down on mouseout
+  $('#SimpleLayerSwitcher_30').mouseenter( function() {
+    $('#basemaps').addClass('open');
   });
 
 });
