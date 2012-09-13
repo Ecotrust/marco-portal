@@ -110,7 +110,7 @@
                                                                             </a>
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
-                                                                                <div>
+                                                                                <div style="font-weight: normal">
                                                                                     <span data-bind="visible: ! activeSublayer()">
                                                                                         <span data-bind="text: name"></span>
                                                                                     </span>
@@ -239,12 +239,14 @@
                                   <div id="attribute-data">
                                     <div data-bind="visible: attributeData" style="display: none">
                                       <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
-                                      <dl>
-                                        <dt><span data-bind="text: attributeTitle()"></span></dt>
-                                        <dl data-bind="foreach: attributeData()">
-                                            <dt data-bind="text: display"></dt>
-                                            <dd data-bind="text: data"></dd>
-                                        </dl>
+                                      <strong><span data-bind="text: attributeTitle()"></span></strong>
+                                      <dl data-bind="foreach: attributeData()">
+                                        <!--<dt data-bind="text: display"></dt>-->
+                                        <!--<dd data-bind="text: data"></dd>-->
+                                        <dt>
+                                            <span data-bind="text: display"></span>:
+                                            <span style="font-weight: normal" data-bind="text: data"></span>
+                                        </dt>
                                       </dl>
                                     </div>
                                   </div>
