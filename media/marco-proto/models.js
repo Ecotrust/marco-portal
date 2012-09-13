@@ -476,6 +476,20 @@ function viewModel() {
             }
         });
     });
+    
+    // boolean flag determining whether or not to show layer panel
+    self.showLayers = ko.observable(true);
+    
+    self.showLayersText = ko.computed(function() {
+        if (self.showLayers()) return "Hide Layers";
+        else return "Show Layers";
+    });
+
+    // toggle layer panel visibility
+    self.toggleLayers = function() {
+        self.showLayers(!self.showLayers());
+        app.map.render('map');
+    };
 
     // reference to open themes in accordion
     self.openThemes = ko.observableArray();
@@ -542,16 +556,11 @@ function viewModel() {
     //show/hide the list of basemaps
     self.showBasemaps = function(self, event) {
         var $layerSwitcher = $('#SimpleLayerSwitcher_30'),
-            $button = $(event.target).closest('.btn');
+            $button = $('#basemaps'); //$(event.target).closest('.btn');
         if ($layerSwitcher.is(":visible")) {
             $layerSwitcher.hide();
         } else {
-            $layerSwitcher.show().position({
-                "my": "right top",
-                "at": "left top",
-                "of": $button,
-                offset: "0px 0px"
-            });
+            $layerSwitcher.show();
         }
     };
 
@@ -605,6 +614,7 @@ function viewModel() {
     // close error-overlay
     self.closeAlert = function(self, event) {
         app.viewModel.error(null);
+        $('#fullscreen-error-overlay').hide();
     };
 
     // close layer description
