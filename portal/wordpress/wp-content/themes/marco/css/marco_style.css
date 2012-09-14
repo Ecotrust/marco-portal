@@ -20,6 +20,10 @@ header h2 {
 hr {
 	border-top: 1px solid #ccc;
 }
+.page-header {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
 
 .navbar {
 	border-bottom: 1px solid #ccc;
@@ -252,6 +256,60 @@ input + i.icon-remove-sign {
     margin-right: auto;
 }
 
+.news > .image {
+	margin-bottom: 25px;
+}
+.news .bugs .wrapper {
+	padding: 5px 10px;
+	text-align: left;
+
+}
+
+.news .bugs .wrapper:hover {
+	background: white;
+}
+.news .bugs .wrapper:hover p {
+	color: #333;
+}
+.news .bugs .wrapper:hover a {
+	text-decoration: underline;
+}
+.news .bugs .wrapper:hover h2 a{
+	opacity: 1;
+}
+.news .image h2 {
+	position: absolute;
+	bottom: -14px;
+	right: 10px;
+}
+.news .image h2 a {
+	color: white;
+	text-transform: uppercase;
+	opacity: .5;
+	font-weight: bold;
+}
+.news .bugs .image {
+	position: relative;
+
+}
+.news .bugs h4 {
+	padding-left: 0px;
+	text-align: left;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+	margin: 5px 0px;
+
+}
+.news .bugs .wrapper p {
+	width: 90%;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: left;
+}
+
+
+
 .wrapper #learn-img {
     background-image: url('../img/learn.png');
 }
@@ -406,7 +464,6 @@ img {
 }
 
 .theme.image .caption {
-	bottom: 17px;
 	font-size: 56px;
 	opacity: .8;
 	word-spacing: 1;
