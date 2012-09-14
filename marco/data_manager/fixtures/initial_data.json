@@ -901,51 +901,6 @@
         }
     }, 
     {
-        "pk": 50, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=50&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Summer.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sperm Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 24, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1092,7 +1047,7 @@
         }
     }, 
     {
-        "pk": 37, 
+        "pk": 50, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1102,10 +1057,10 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=37&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=50&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Summer.kmz", 
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
             "lookup_table": [], 
             "utfurl": "", 
@@ -1116,8 +1071,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                94
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1127,8 +1084,8 @@
             "vector_fill": null, 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Humpback Whales (Spring)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
+            "name": "Sperm Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSummer/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -1137,7 +1094,7 @@
         }
     }, 
     {
-        "pk": 29, 
+        "pk": 39, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1147,10 +1104,10 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=29&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=39&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Fall.kmz", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Winter.kmz", 
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
             "lookup_table": [], 
             "utfurl": "", 
@@ -1161,8 +1118,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                83
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1172,8 +1131,8 @@
             "vector_fill": null, 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Fin Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesFall/${z}/${x}/${y}.png", 
+            "name": "Humpback Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -1233,6 +1192,53 @@
         }
     }, 
     {
+        "pk": 29, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=29&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Fall.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                76
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Fin Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesFall/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
         "pk": 59, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1273,51 +1279,6 @@
             "arcgis_layers": "19", 
             "legend_title": "", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 39, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=39&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Winter.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Humpback Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
         }
     }, 
     {
@@ -1366,7 +1327,7 @@
         }
     }, 
     {
-        "pk": 47, 
+        "pk": 37, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1376,10 +1337,10 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=47&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=37&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Fall.kmz", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz", 
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
             "lookup_table": [], 
             "utfurl": "", 
@@ -1390,8 +1351,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                81
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1401,8 +1364,55 @@
             "vector_fill": null, 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Sei Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "name": "Humpback Whales (Spring)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=46&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Winter.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                91
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sei Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -1459,96 +1469,6 @@
         }
     }, 
     {
-        "pk": 46, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=46&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Winter.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sei Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesWinter/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 44, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=44&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sei Whales (Spring)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 23, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1589,6 +1509,212 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=47&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Fall.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                88
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sei Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=44&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                89
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sei Whales (Spring)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "Sightings per unit effort", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Endangered_Whales.zip", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/endangered_whales/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Endangered_Whales.zip", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/endangered_whales.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data set, obtained from the United States Navy, include point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.\r\n", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Sightings per unit effort aggregated to ten minute squares.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "Available", 
+            "vector_fill": null, 
+            "data_source": "The Nature Conservancy and U.S. Navy", 
+            "data_notes": "Sightings data obtained from the U.S. Navy were taken from NMFS-NEFSC Aerial Surveys, NMFS-NEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  SPUE was calculated for each species, for each season, and for each ten minute square.", 
+            "name": "Marine Mammals", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                29, 
+                27, 
+                28, 
+                35, 
+                36, 
+                37, 
+                38, 
+                39, 
+                40, 
+                41, 
+                42, 
+                43, 
+                47, 
+                44, 
+                45, 
+                46, 
+                48, 
+                49, 
+                50, 
+                51, 
+                61
+            ]
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=27&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Spring.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                77
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Fin Whales (Spring)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesSpring/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
         }
     }, 
     {
@@ -1637,71 +1763,6 @@
         }
     }, 
     {
-        "pk": 21, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "Sightings per unit effort", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Endangered_Whales.zip", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Endangered_Whales.zip", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/endangered_whales.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data set, obtained from the United States Navy, include point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.\r\n", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "Sightings per unit effort aggregated to ten minute squares.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "Available", 
-            "vector_fill": null, 
-            "data_source": "The Nature Conservancy and U.S. Navy", 
-            "data_notes": "Sightings data obtained from the U.S. Navy were taken from NMFS-NEFSC Aerial Surveys, NMFS-NEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  SPUE was calculated for each species, for each season, and for each ten minute square.", 
-            "name": "Marine Mammals", 
-            "url": "", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                37, 
-                47, 
-                50, 
-                29, 
-                40, 
-                42, 
-                36, 
-                49, 
-                45, 
-                38, 
-                39, 
-                61, 
-                43, 
-                35, 
-                46, 
-                44, 
-                28, 
-                27, 
-                48, 
-                41, 
-                51
-            ]
-        }
-    }, 
-    {
         "pk": 28, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1712,7 +1773,7 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
+            "legend_subtitle": "", 
             "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=28&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Summer.kmz", 
@@ -1726,8 +1787,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                78
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1747,7 +1810,7 @@
         }
     }, 
     {
-        "pk": 27, 
+        "pk": 40, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1757,10 +1820,10 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=27&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=40&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Spring.kmz", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Fall.kmz", 
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
             "lookup_table": [], 
             "utfurl": "", 
@@ -1770,9 +1833,11 @@
             "opacity": 0.5, 
             "vector_color": "", 
             "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                84
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -1782,8 +1847,8 @@
             "vector_fill": null, 
             "data_source": "", 
             "data_notes": "", 
-            "name": "Fin Whales (Spring)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesSpring/${z}/${x}/${y}.png", 
+            "name": "Right Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -1885,51 +1950,6 @@
         }
     }, 
     {
-        "pk": 40, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=40&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Fall.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 14, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2018,51 +2038,6 @@
         }
     }, 
     {
-        "pk": 42, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=42&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 48, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2073,7 +2048,7 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
+            "legend_subtitle": "", 
             "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=48&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Fall.kmz", 
@@ -2087,8 +2062,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                92
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -2100,51 +2077,6 @@
             "data_notes": "", 
             "name": "Sperm Whales (Fall)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesFall/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 51, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=51&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Winter.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sperm Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesWinter/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -2198,6 +2130,100 @@
         }
     }, 
     {
+        "pk": 42, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=42&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                86
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Right Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=51&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Winter.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                95
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sperm Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesWinter/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
         "pk": 36, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2208,7 +2234,7 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
+            "legend_subtitle": "", 
             "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=36&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Fall.kmz", 
@@ -2222,8 +2248,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                80
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -2338,96 +2366,6 @@
         }
     }, 
     {
-        "pk": 49, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=49&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Spring.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sperm Whales (Spring)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 45, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=45&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Sei Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesSummer/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 68, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2471,6 +2409,100 @@
             "legend_title": "", 
             "sublayers": [
                 15
+            ]
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=45&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                90
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sei Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesSummer/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=49&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Spring.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                93
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Sperm Whales (Spring)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
             ]
         }
     }, 
@@ -2802,7 +2834,7 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
+            "legend_subtitle": "", 
             "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=38&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Summer.kmz", 
@@ -2816,8 +2848,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                82
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -2890,7 +2924,7 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
+            "legend_subtitle": "", 
             "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=43&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Winter.kmz", 
@@ -2904,8 +2938,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                87
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -2917,51 +2953,6 @@
             "data_notes": "", 
             "name": "Right Whales (Winter)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 35, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": null, 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=29&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Winter.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Fin Whales (Winter)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -3060,6 +3051,53 @@
         }
     }, 
     {
+        "pk": 35, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=29&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Winter.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                79
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Fin Whales (Winter)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
         "pk": 13, 
         "model": "data_manager.layer", 
         "fields": {
@@ -3113,7 +3151,7 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": null, 
+            "legend_subtitle": "", 
             "bookmark": "/visualize/#location%5Bx%5D=-73.17659898698214&location%5By%5D=39.21474810871001&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=41&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&description%5Bvisible%5D=undefined&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Spring.kmz", 
@@ -3127,8 +3165,10 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [], 
-            "learn_more": null, 
+            "attribute_fields": [
+                85
+            ], 
+            "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
             "is_sublayer": true, 
@@ -3564,12 +3604,192 @@
         }
     }, 
     {
+        "pk": 76, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M01F", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M01SP", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M01SU", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M01W", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M02F", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M02SP", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M02SU", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M02W", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
         "pk": 62, 
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "WAVES", 
             "display_name": "Waves", 
             "order": 3
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M04F", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 85, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M04SP", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 86, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M04SU", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 87, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M04W", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 88, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05F", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 89, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05SP", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 90, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05SU", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 91, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05W", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 92, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06F", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 93, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06SP", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 94, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06SU", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 95, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06W", 
+            "display_name": "Species per Unit Effort", 
+            "order": 1
         }
     }, 
     {
