@@ -858,49 +858,6 @@
         }
     }, 
     {
-        "pk": 57, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.66024156510758&location%5By%5D=39.36779700373922&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm", 
-            "opacity": 1.0, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Depth contours at 20, 50, and 100 fathoms.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "The Nature Conservancy and NOAA", 
-            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.", 
-            "name": "Fathom Lines", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 24, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1091,6 +1048,49 @@
             "sublayers": [
                 21
             ]
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.66024156510758&location%5By%5D=39.36779700373922&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.5&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&description%5Bvisible%5D=false&description%5Blayer_name%5D=undefined&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm", 
+            "opacity": 0.8, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Depth contours at 20, 50, and 100 fathoms.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "The Nature Conservancy and NOAA", 
+            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.", 
+            "name": "Fathom Lines", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {

@@ -96,9 +96,11 @@ $(document).ready(function() {
     // called when exiting full screen
     // return to normal size
     //for firefox
-    setTimeout(app.onResize(), 500);
+    //setTimeout( app.onResize(), 500);
+    app.onResize();
     //for chrome
-    setTimeout(app.onResize, 500);
+    setTimeout( app.onResize, 500);
+    //app.onResize();
   };
   
   // Basemaps button and drop-down behavior
