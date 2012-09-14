@@ -96,7 +96,7 @@ function layerModel(options, parent) {
         app.viewModel.activeLayers.remove(layer);
 
         //remove related utfgrid layer
-        if (layer.utfgrid) {
+        if (layer.utfgrid) { //NEED TO CHECK FOR PARENT LAYER HERE TOO...
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
         }
@@ -176,8 +176,9 @@ function layerModel(options, parent) {
     };
 
     // bound to click handler for layer visibility switching in Active panel
-    self.toggleVisible = function() {
+    self.toggleVisible = function(manual) {
         var layer = this;
+        console.dir(manual);
         if (layer.visible()) { //make invisilbe
             layer.visible(false);
             if (layer.parent) {

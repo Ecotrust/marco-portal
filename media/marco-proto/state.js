@@ -44,9 +44,11 @@ app.loadState = function(state) {
             if (app.viewModel.layerIndex[layer.id]) {
                 app.viewModel.layerIndex[layer.id].activateLayer();
                 app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
-                if (layer.isVisible) {
-                    if (layer.isVisible !== "true")
+                //must not be understanding something about js, but at the least the following seems to work now...
+                if (layer.isVisible || !layer.isVisible) {
+                    if (layer.isVisible !== 'true' && layer.isVisible !== true) {
                         app.viewModel.layerIndex[layer.id].toggleVisible();
+                    }
                 }
             }
        });
