@@ -2,14 +2,22 @@
 
 			<footer>
 			  <div class="row">
-			    <div class="span5 social">
+			    <div class="span9 social">
 			      <h5>Contact Us</h5>
 			      	info@portal.midatlanticocean.org<br/>
 			      	732-263-5392
 			      </p>
 			    </div>
 			    <div class="span3 social">
-			        <h5>connect with us <img src="<?php echo get_template_directory_uri(); ?>/img/social.png"/></h5>              
+			    	<div class="pull-right">
+				        <h5>connect with us</h5>              
+				        <a href="<?php echo bloginfo('rss2_url'); ?>"><i class="icon-rss icon-large"></i></a>
+				        <a href=""><i class="icon-twitter icon-large"></i></a>
+				        <a href=""><i class="icon-linkedin icon-large"></i></a>
+				        <a href=""><i class="icon-google-plus icon-large"></i></a>
+
+				    </div>
+
 			    </div>
 			  </div>
 			</footer>

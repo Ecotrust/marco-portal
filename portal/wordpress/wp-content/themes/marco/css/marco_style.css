@@ -257,7 +257,7 @@ input + i.icon-remove-sign {
 }
 
 .news > .image {
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 }
 .news .bugs .wrapper {
 	padding: 5px 10px;
@@ -444,7 +444,7 @@ img {
 	font-weight: bold;
 	line-height: .75;
 	color: white;
-	bottom: -3px;
+	bottom: 0px;
 	left: 20px;
 	opacity: .6;
 
