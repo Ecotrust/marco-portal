@@ -7,7 +7,7 @@ app.getState = function () {
     var center = app.map.getCenter().transform(
             new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
                 layers = $.map(app.viewModel.activeLayers(), function(layer) {
-                    return {id: layer.id, opacity: layer.opacity()};
+                    return {id: layer.id, opacity: layer.opacity(), isVisible: layer.visible()};
                 });   
     return {
         location: {
@@ -44,8 +44,11 @@ app.loadState = function(state) {
             if (app.viewModel.layerIndex[layer.id]) {
                 app.viewModel.layerIndex[layer.id].activateLayer();
                 app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
+                if (layer.isVisible) {
+                    if (layer.isVisible !== "true")
+                        app.viewModel.layerIndex[layer.id].toggleVisible();
+                }
             }
-            
        });
     }
     
