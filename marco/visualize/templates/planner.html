@@ -178,10 +178,10 @@
                                             <li>
                                                 <div class="btn-group">
                                                     <button class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive()}"><i class="icon-info-sign icon-large"></i></button>
-                                                    <button class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <div data-bind="text: name"></div>
-                                                        <div ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></div>
-                                                    </button>
+                                                        <span ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></span>
+                                                    </a>
                                                     <a class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust icon-large"></i></a>
                                                     <button class="btn" data-bind="click: toggleActive">
                                                         <i class="icon-remove">

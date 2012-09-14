@@ -71,8 +71,6 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
 
-
-
   // fullscreen stuff
   // for security reasons, this event listener must be bound directly
   document.getElementById('btn-fullscreen').addEventListener('click', function() {
@@ -103,6 +101,7 @@ $(document).ready(function() {
     setTimeout(app.onResize, 500);
   };
   
+  // Basemaps button and drop-down behavior
   //hide basemaps drop-down on mouseout
   $('#basemaps').mouseleave( function(e) {
     if ( $(e.toElement).hasClass('basey') ) {
@@ -127,7 +126,25 @@ $(document).ready(function() {
   $('#SimpleLayerSwitcher_30').mouseenter( function() {
     $('#basemaps').addClass('open');
   });
-
+  
+  /* testing mouseenter mouseleave
+  $('div.sidebar-nav').mouseenter( function(e) {
+    console.log('entering sidebar button');
+  }).mouseleave( function(e) {
+    console.log('exiting sidebar button');
+  });
+  */
+  /*
+  //Opacity popover behavior
+  //hide opacity popover when mouse leaves popover or opacity button
+  $('.opacity-button.active').mouseout( function() {
+    console.log('exiting opacity button');
+  });
+  */
+  $('#opacity-popover').mouseleave( function() {
+    app.viewModel.hideOpacity();
+  });  
+  
 });
 
 $('#bookmark-form').on('submit', function(event) {
