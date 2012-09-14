@@ -208,12 +208,12 @@ class Layer(models.Model):
                 'legend_subtitle': layer.legend_subtitle,
                 'description': layer.tooltip,
                 'learn_link': layer.learn_link,
-                'attributes': self.serialize_attributes,
-                'lookups': self.serialize_lookups,
-                'color': self.vector_color,
-                'fill_opacity': self.vector_fill,
-                'graphic': self.vector_graphic,
-                'opacity': self.opacity
+                'attributes': layer.serialize_attributes,
+                'lookups': layer.serialize_lookups,
+                'color': layer.vector_color,
+                'fill_opacity': layer.vector_fill,
+                'graphic': layer.vector_graphic,
+                'opacity': layer.opacity
             } 
             for layer in self.sublayers.all()
         ]

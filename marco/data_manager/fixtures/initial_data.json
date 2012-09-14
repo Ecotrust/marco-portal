@@ -195,6 +195,53 @@
         }
     }, 
     {
+        "pk": 12, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "attribute_fields": [
+                69
+            ], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "Bottom Trawl", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 58, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2196,58 +2243,6 @@
         }
     }, 
     {
-        "pk": 15, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "avg. # trips/year (2000-2009)", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).", 
-            "attribute_fields": [], 
-            "learn_more": null, 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Commercial", 
-            "url": "", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                68, 
-                69, 
-                70, 
-                71, 
-                72, 
-                12, 
-                73, 
-                11
-            ]
-        }
-    }, 
-    {
         "pk": 16, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2288,6 +2283,58 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "avg. # trips/year (2000-2009)", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/vtr_effort/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Commercial", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                12, 
+                68, 
+                69, 
+                70, 
+                71, 
+                72, 
+                73, 
+                11
+            ]
         }
     }, 
     {
@@ -2405,7 +2452,9 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                70
+            ], 
             "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
@@ -2450,7 +2499,9 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                71
+            ], 
             "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
@@ -2538,7 +2589,9 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                72
+            ], 
             "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
@@ -2669,7 +2722,9 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                73
+            ], 
             "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
@@ -2682,6 +2737,53 @@
             "data_notes": "", 
             "name": "Other Dredges", 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                74
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Other Gear", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherGear/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -2731,96 +2833,6 @@
             "legend_title": "", 
             "sublayers": [
                 21
-            ]
-        }
-    }, 
-    {
-        "pk": 72, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Other Gear", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherGear/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "National Marine Fisheries Service", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "Bottom Trawl", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
             ]
         }
     }, 
@@ -3025,7 +3037,9 @@
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "", 
-            "attribute_fields": [], 
+            "attribute_fields": [
+                75
+            ], 
             "learn_more": "", 
             "data_overview": "", 
             "attribute_title": "", 
@@ -3089,51 +3103,6 @@
         }
     }, 
     {
-        "pk": 11, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "National Marine Fisheries Service", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "All Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
         "pk": 41, 
         "model": "data_manager.layer", 
         "fields": {
@@ -3175,6 +3144,53 @@
             "legend_title": "", 
             "sublayers": [
                 21
+            ]
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-74.01302474588066&location%5By%5D=38.98881779991917&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "attribute_fields": [
+                68
+            ], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "All Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
             ]
         }
     }, 
@@ -3467,12 +3483,84 @@
         }
     }, 
     {
+        "pk": 68, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "EffortALL", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "BTrawl", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "GillNet", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "LongLine", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "MidTrawl", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
         "pk": 61, 
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "TIDE", 
             "display_name": "Tide", 
             "order": 2
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "OthDredge", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "OthGear", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "PotTrap", 
+            "display_name": "Avg. Days Fished/Year", 
+            "order": 1
         }
     }, 
     {

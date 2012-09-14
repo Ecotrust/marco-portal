@@ -122,6 +122,7 @@ app.init = function () {
     map.addControl(map.selectFeatureControl);
     map.selectFeatureControl.activate();  
     
+    //UTF Attribution
     map.UTFControl = new OpenLayers.Control.UTFGrid({
         //attributes: layer.attributes,
         layers: [],
@@ -138,7 +139,8 @@ app.init = function () {
                                 var info = infoLookup[idx];
                                 if (info && info.data) { 
                                     var newmsg = '',
-                                        hasAllAttributes = true;
+                                        hasAllAttributes = true,
+                                        parentHasAllAttributes = false;
                                     // if info.data has all the attributes we're looking for
                                     // we'll accept this layer as the attribution layer 
                                     if ( ! potential_layer.attributes.length ) {
@@ -149,11 +151,23 @@ app.init = function () {
                                             hasAllAttributes = false;
                                         }
                                     });
+                                    if ( !hasAllAttributes && potential_layer.parent) {
+                                        parentHasAllAttributes = true;
+                                        if ( ! potential_layer.parent.attributes.length ) {
+                                            parentHasAllAttributes = false;
+                                        }
+                                        $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
+                                            if ( !(attr_obj.field in info.data) ) {
+                                                parentHasAllAttributes = false;
+                                            }
+                                        });
+                                    }
                                     if (hasAllAttributes) {
                                         attributes = potential_layer.attributes;
+                                    } else if (parentHasAllAttributes) {
+                                        attributes = potential_layer.parent.attributes;
                                     }
                                     if (attributes) { 
-                                        //debugger;
                                         var attribute_objs = [];
                                         $.each(attributes, function(index, obj) {
                                             if ( potential_layer.compress_attributes ) {
@@ -186,10 +200,10 @@ app.addLayerToMap = function(layer) {
         var opts = {
             displayInLayerSwitcher: false
         };
-        if (layer.utfurl) {
+        if (layer.utfurl || layer.parent.utfurl) {
             layer.utfgrid = new OpenLayers.Layer.UTFGrid({
                 layerModel: layer,
-                url: layer.utfurl,
+                url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
                 sphericalMercator: true,
                                  
                 utfgridResolution: 4, // default is 2
