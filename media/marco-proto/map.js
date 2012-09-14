@@ -175,10 +175,17 @@ app.init = function () {
                                                 attribute_objs.push({'display': display, 'data': ''});
                                             } else {
                                                 /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
-                                                if (info.data[obj.field] === 999999) {
+                                                var value = info.data[obj.field];
+                                                if (value === 999999) {
                                                     attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
                                                 } else {
-                                                    attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                                    try {
+                                                        value = value.toFixed(obj.precision);
+                                                    }
+                                                    catch (e) {
+                                                        //keep on keeping on
+                                                    }
+                                                    attribute_objs.push({'display': obj.display, 'data': value});
                                                 }
                                                 
                                             }

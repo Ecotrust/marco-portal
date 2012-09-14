@@ -185,7 +185,7 @@ class Layer(models.Model):
         return {'title': self.attribute_title, 
                 'compress_attributes': self.compress_display,
                 'event': self.attribute_event,
-                'attributes': [{'display': attr.display_name, 'field': attr.field_name} for attr in self.attribute_fields.all().order_by('order')]}
+                'attributes': [{'display': attr.display_name, 'field': attr.field_name, 'precision': attr.precision} for attr in self.attribute_fields.all().order_by('order')]}
     
     @property
     def serialize_lookups(self):
@@ -242,6 +242,7 @@ class Layer(models.Model):
 class AttributeInfo(models.Model):
     display_name = models.CharField(max_length=255, blank=True, null=True)
     field_name = models.CharField(max_length=255, blank=True, null=True)
+    precision = models.IntegerField(blank=True, null=True)
     order = models.IntegerField(default=1)
     
     def __unicode__(self):
