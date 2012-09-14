@@ -174,7 +174,13 @@ app.init = function () {
                                                 var display = obj.display + ': ' + info.data[obj.field];
                                                 attribute_objs.push({'display': display, 'data': ''});
                                             } else {
-                                                attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                                /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
+                                                if (info.data[obj.field] === 999999) {
+                                                    attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
+                                                } else {
+                                                    attribute_objs.push({'display': obj.display, 'data': info.data[obj.field]});
+                                                }
+                                                
                                             }
                                         });
                                         app.viewModel.attributeTitle(potential_layer.name);
