@@ -41,9 +41,9 @@ body {
   /* RGBa with 0.6 opacity */
   background-color: rgba(60, 110, 160, 0.65);
   /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##3c6ca000, endColorstr=#3c6ca000);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#703c6ea0, endColorstr=#703c6ea0);
   /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#703c6ea0, endColorstr=#703c6ea0)";
 }
 
 #bookmarks-table {
@@ -218,9 +218,9 @@ body {
   /* RGBa with 0.6 opacity */
   background-color: rgba(60, 110, 160, 0.65);
   /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##3c6ca000, endColorstr=#3c6ca000);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#703c6ea0, endColorstr=#703c6ea0);
   /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#703c6ea0, endColorstr=#703c6ea0)";
 }
 
 #description-overlay > div{
@@ -268,9 +268,9 @@ body {
   /* RGBa with 0.6 opacity */
   background-color: rgba(60, 110, 160, 0.65);
   /* For IE 5.5 - 7*/
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=##3c6ca000, endColorstr=#3c6ca000);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#703c6ea0, endColorstr=#703c6ea0);
   /* For IE 8*/
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#703c6ea0, endColorstr=#703c6ea0)";
 }
 #bookmarks-table {
   max-height: 150px;
