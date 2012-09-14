@@ -206,7 +206,7 @@ app.addLayerToMap = function(layer) {
         var opts = {
             displayInLayerSwitcher: false
         };
-        if (layer.utfurl || layer.parent.utfurl) {
+        if (layer.utfurl || (layer.parent && layer.parent.utfurl)) {
             layer.utfgrid = new OpenLayers.Layer.UTFGrid({
                 layerModel: layer,
                 url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
