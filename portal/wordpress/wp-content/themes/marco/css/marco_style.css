@@ -94,7 +94,7 @@ hr {
 	color: white;
 	margin-top: 0px;
 	margin-right: 0px;
-	margin-left: -7px;
+	margin-left: -8px;
 	border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
@@ -257,7 +257,7 @@ input + i.icon-remove-sign {
 }
 
 .news > .image {
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 }
 .news .bugs .wrapper {
 	padding: 5px 10px;
@@ -444,7 +444,7 @@ img {
 	font-weight: bold;
 	line-height: .75;
 	color: white;
-	bottom: -3px;
+	bottom: 0px;
 	left: 20px;
 	opacity: .6;
 
