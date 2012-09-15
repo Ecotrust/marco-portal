@@ -551,6 +551,12 @@ function viewModel() {
     self.clearError = function() {
         self.error(null);
     };
+    
+    self.isFullScreen = ko.observable(false);
+    
+    self.fullScreenWithLayers = function() {
+        return self.isFullScreen() && self.showLayers();
+    };
 
     // show the map?
     self.showMapPanel = ko.observable(true);
@@ -599,6 +605,9 @@ function viewModel() {
     // toggle legend panel visibility
     self.toggleLegend = function() {
         self.showLegend(!self.showLegend());
+        if (!self.showLegend()) {
+            app.map.render('map');
+        }
         //app.map.render('map');
     };
 
