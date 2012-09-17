@@ -178,7 +178,7 @@ function layerModel(options, parent) {
     // bound to click handler for layer visibility switching in Active panel
     self.toggleVisible = function(manual) {
         var layer = this;
-        console.dir(manual);
+        //console.dir(manual);
         if (layer.visible()) { //make invisilbe
             layer.visible(false);
             if (layer.parent) {

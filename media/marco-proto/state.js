@@ -40,7 +40,7 @@ app.loadState = function(state) {
     });
     // turn on the layers that should be active
     if (state.activeLayers) {
-       $.each(state.activeLayers, function(index, layer) {
+        $.each(state.activeLayers, function(index, layer) {
             if (app.viewModel.layerIndex[layer.id]) {
                 app.viewModel.layerIndex[layer.id].activateLayer();
                 app.viewModel.layerIndex[layer.id].opacity(layer.opacity);
