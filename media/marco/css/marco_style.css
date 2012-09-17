@@ -3,7 +3,7 @@ html {
     overflow-y: scroll;
 }
 body {
-	margin-top: 110px;
+	margin-top: 80px;
 }
 
 h1, h2, h3, h4 {
@@ -33,7 +33,7 @@ a:focus {
 }
 .navbar {
 	border-bottom: 1px solid #ccc;
-	height: 90px;
+	height: auto;
         background-color: white;
 }
 .navbar .navbar-inner {
@@ -53,10 +53,10 @@ a:focus {
 .navbar .nav > li a {
 	text-transform: uppercase;
 	width: 80px;
-	height: 44px;
+	height: 30px;
 	text-align: center;
 	background-color: white;
-	padding-top: 35px;
+	padding-top: 20px;
 	font-size: 12px;
 	border-left: 1px solid #ccc;
 	-webkit-font-smoothing: antialiased;
