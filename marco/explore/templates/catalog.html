@@ -74,8 +74,8 @@
                                     <td>
                                         <ul class="unstyled">
                                             <li>
-                                                {% if layer.bookmark %}
-                                                <a href="{{layer.bookmark}}" target="_blank">
+                                                {% if layer.bookmark_link %}
+                                                <a href="{{layer.bookmark_link}}" target="_blank">
                                                     <span rel="tooltip" title="{% flatblock "data_catalog_view_link_tooltip" %}">
                                                         {% flatblock "data_catalog_view_link" %}
                                                     </span>

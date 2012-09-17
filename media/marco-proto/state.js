@@ -11,8 +11,8 @@ app.getState = function () {
                 });   
     return {
         location: {
-            x: center.lon,
-            y: center.lat,
+            x: center.lon.toFixed(2),
+            y: center.lat.toFixed(2),
             zoom: app.map.getZoom()
         },
         activeLayers: layers.reverse(),
@@ -40,7 +40,7 @@ app.loadState = function(state) {
     });
     // turn on the layers that should be active
     if (state.activeLayers) {
-       $.each(state.activeLayers, function(index, layer) {
+        $.each(state.activeLayers, function(index, layer) {
             if (app.viewModel.layerIndex[layer.id]) {
                 app.viewModel.layerIndex[layer.id].activateLayer();
                 app.viewModel.layerIndex[layer.id].opacity(layer.opacity);

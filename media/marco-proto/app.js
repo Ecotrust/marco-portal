@@ -41,8 +41,8 @@ app.viewModel.loadLayersFromServer().done(function() {
 app.init();
 // Google.v3 uses EPSG:900913 as projection, so we have to
 // transform our coordinates
-app.map.setCenter(new OpenLayers.LonLat(-69.6, 38).transform(
-new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 6);
+app.map.setCenter(new OpenLayers.LonLat(-73.24, 38.93).transform(
+new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7);
 
 
 
@@ -86,6 +86,7 @@ $(document).ready(function() {
 
   BigScreen.onenter = function() {
     // called when entering full screen
+    app.viewModel.isFullScreen(true);
     // make map fullscreen
     app.onResize(.99);
     //app.map.updateSize();
@@ -94,12 +95,15 @@ $(document).ready(function() {
 
   BigScreen.onexit = function() {
     // called when exiting full screen
+    app.viewModel.isFullScreen(false);
     // return to normal size
+    // Not exactly comfortable with the following 2 calls to resize, 
+    // but ff kept having problems when other strategies were tried...
     //for firefox
-    //setTimeout( app.onResize(), 500);
-    app.onResize();
+    setTimeout( app.onResize(), 300);
+    //app.onResize();
     //for chrome
-    setTimeout( app.onResize, 500);
+    setTimeout( app.onResize, 300);
     //app.onResize();
   };
   

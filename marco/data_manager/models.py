@@ -129,7 +129,14 @@ class Layer(models.Model):
             return self.parent.data_notes
         else:
             return self.data_notes
-        
+    
+    @property
+    def bookmark_link(self):
+        if not self.bookmark and self.is_sublayer and self.parent.bookmark:
+            return self.parent.bookmark.replace('<layer_id>', str(self.id))
+        else:
+            return self.bookmark
+    
     @property
     def data_download_link(self):
         if self.data_download and self.data_download.lower() == 'none':

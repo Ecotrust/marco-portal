@@ -197,6 +197,15 @@ body {
   margin-left: 0px !important;
 }
 
+.fullscreen-legend {
+  margin-left: 0px !important;
+  width: 25.6% !important;
+}
+.fullscreen-with-layers {
+  margin-left: 0px !important;
+  width: 68.3% !important;
+}
+
 #map-buttons {
   position: absolute;
   bottom: 50px;
