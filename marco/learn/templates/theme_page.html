@@ -65,9 +65,11 @@
 	    </div>
 	</div>
 	<div class="row-fluid">
+		{% if theme.factsheet_thumb  %}
 		<div class="span12 frame">
-			<img src="/media/marco/img/themes/sheets/{{theme.name}}.png"/>
+			<a href="{{ theme.factsheet_link }}"><img src="{{ theme.factsheet_thumb }}"/></a>
 		</div>
+		{% endif %}
 	</div>
 {% endblock sidebar %}
 
