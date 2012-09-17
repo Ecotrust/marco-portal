@@ -742,9 +742,9 @@ function viewModel() {
         app.map.layers.sort(function(a, b) {
             return a.getZIndex() - b.getZIndex();
         });
-        if (!self.hasActiveLegends()) {
-            self.showLegend(false);
-        }
+        //if (!self.hasActiveLegends()) {
+        //    self.showLegend(false);
+        //}
 
         // update the url hash
         app.updateUrl();
@@ -763,11 +763,11 @@ function viewModel() {
     });
 
     // do this stuff when the visible layers change
-    self.visibleLayers.subscribe(function() {
+    /*self.visibleLayers.subscribe(function() {
         if (!self.hasActiveLegends()) {
             self.showLegend(false);
         }
-    });
+    });*/
 
     return self;
 }
