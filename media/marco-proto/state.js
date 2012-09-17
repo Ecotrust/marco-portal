@@ -11,8 +11,8 @@ app.getState = function () {
                 });   
     return {
         location: {
-            x: center.lon,
-            y: center.lat,
+            x: center.lon.toFixed(2),
+            y: center.lat.toFixed(2),
             zoom: app.map.getZoom()
         },
         activeLayers: layers.reverse(),
