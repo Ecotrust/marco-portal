@@ -73,16 +73,22 @@ $(document).ready(function() {
 
   // fullscreen stuff
   // for security reasons, this event listener must be bound directly
-  document.getElementById('btn-fullscreen').addEventListener('click', function() {
-    
-    if (BigScreen.enabled) {
-      BigScreen.toggle(document.getElementById('fullscreen'));
-      // You could also use .toggle(element)
-    } else {
-      // fallback for browsers that don't support full screen
-      $('#fullscreen-error-overlay').show();
-    }
-  }, false);
+  if ( document.getElementById('btn-fullscreen').addEventListener ) {
+      document.getElementById('btn-fullscreen').addEventListener('click', function() {
+        if ( BigScreen.enabled ) {
+          BigScreen.toggle(document.getElementById('fullscreen'));
+          // You could also use .toggle(element)
+        } else {
+          // fallback for browsers that don't support full screen
+          $('#fullscreen-error-overlay').show();
+        }
+      }, false);
+  } else {    
+      $('#btn-fullscreen').on('click', function() {
+        // fallback for browsers that don't support addEventListener
+        $('#fullscreen-error-overlay').show();
+      });
+  }
 
   BigScreen.onenter = function() {
     // called when entering full screen
