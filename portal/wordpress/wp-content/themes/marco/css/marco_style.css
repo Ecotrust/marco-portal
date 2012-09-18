@@ -274,15 +274,16 @@ input + i.icon-remove-sign {
 .news .bugs .wrapper:hover a {
 	text-decoration: underline;
 }
-.news .bugs .wrapper:hover h2 a{
+.news .bugs .wrapper:hover h2 {
 	opacity: 1;
 }
 .news .image h2 {
 	position: absolute;
 	bottom: -14px;
 	right: 10px;
+	
 }
-.news .image h2 a {
+.news .image h2 {
 	color: white;
 	text-transform: uppercase;
 	opacity: .5;
