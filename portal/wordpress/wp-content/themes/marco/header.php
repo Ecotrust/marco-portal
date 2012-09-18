@@ -60,7 +60,7 @@
 		
 		<!-- marco stylesheet -->
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/marco_style.css">
-		<!--[if IE]>
+		<!--[if lt IE 9]>
 				<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/marco_style.ie.css">
 		<![endif]-->		
 		

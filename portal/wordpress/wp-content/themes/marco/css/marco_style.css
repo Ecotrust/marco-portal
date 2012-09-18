@@ -487,6 +487,7 @@ img {
 
 #feedback-tab {
 	position: fixed;
+    z-index: 950;
 	left: -26px;
 	top: 80%;
 	padding: 2px 8px;
@@ -506,11 +507,6 @@ img {
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
-
-	-ms-transform: rotate(90deg);
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-	behavior: url(/portal/assets/PIE.htc);
-
 
 
 }
