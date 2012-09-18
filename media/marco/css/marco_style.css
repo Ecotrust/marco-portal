@@ -150,6 +150,7 @@ a:focus {
 }
 #feedback-tab {
 	position: fixed;
+    z-index: 950;
 	left: -26px;
 	top: 80%;
 	padding: 2px 8px;
