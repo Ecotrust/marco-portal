@@ -110,7 +110,9 @@ $(document).ready(function() {
   // Basemaps button and drop-down behavior
   //hide basemaps drop-down on mouseout
   $('#basemaps').mouseleave( function(e) {
-    if ( $(e.toElement).hasClass('basey') ) {
+    if ( $(e.toElement).hasClass('basey') ) { //handler for chrome and ie
+        $('#basemaps').addClass('open');
+    } else if ( $(e.relatedTarget).hasClass('basey') ) { //handler for ff
         $('#basemaps').addClass('open');
     } else {
         $('#SimpleLayerSwitcher_30').hide();
