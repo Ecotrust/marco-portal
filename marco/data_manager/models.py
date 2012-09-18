@@ -10,10 +10,16 @@ class Theme(models.Model):
     overview = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     thumbnail = models.URLField(max_length=255, blank=True, null=True)
-    
+
+    factsheet_thumb = models.CharField(max_length=255, blank=True, null=True)
+    factsheet_link = models.CharField(max_length=255, blank=True, null=True)
+
+    # not really using these atm    
     feature_image = models.CharField(max_length=255, blank=True, null=True)
     feature_excerpt = models.TextField(blank=True, null=True)
     feature_link = models.CharField(max_length=255, blank=True, null=True)
+
+
 
     def __unicode__(self):
         return unicode('%s' % (self.name))

@@ -43,7 +43,18 @@
                         <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.css">
                         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css">
                         <link rel="shortcut icon" href="{{MEDIA_URL}}marco/ico/favicon.ico">
-
+                        <style>
+                            body {
+                                margin-top: 110px;
+                            }
+                            #sidebar-nav {
+                                top: 95px;
+                            }
+                            .navbar .nav > li a {
+                                height: 45px;
+                                padding-top: 30px;
+                            }
+                        </style>
                     </head>
                     
                     <body class="blog">
@@ -87,6 +98,42 @@
                                 </div>
                             </div>
                         </header>
+                        <div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">
+                            feedback
+                        </div>
+                        <div id="feedback-modal" class="modal hide fade">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Feedback</h3>
+                            </div>
+                            <form class="form-horizontal" id="feedback-form">
+                            <div class="modal-body">        
+                                <div class="control-group">
+                                  <label class="control-label" for="name">Full Name</label>
+                                  <div class="controls">
+                                    <input class="input-xlarge" type="text" name="name" placeholder="Full Name" required>
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="email">Email Address</label>
+                                  <div class="controls">
+                                    <input class="input-xlarge" type="email" name="email" placeholder="Email Address" required>
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="comment">Comment</label>
+                                  <div class="controls">
+                                      <textarea class="input-xlarge" rows="3" name="comment" required></textarea>
+                                  </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button href="#" class="btn" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Send Feedback</button>
+                            </div>
+                          </form>
+                        </div>
                         <!-- end header -->
                         <div class="container">
                             <div id="content" class="row-fluid">
