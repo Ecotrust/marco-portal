@@ -282,6 +282,11 @@ input + i.icon-remove-sign {
 	bottom: -14px;
 	right: 10px;
 	text-shadow: 1px 1px #333;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=.5, Direction=45, Color='#333')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=.5, Direction=45, Color='#333');
+	filter:DropShadow(Color=#333, OffX=.5, OffY=.5);
+	zoom: 1;
 }
 .news .image h2 {
 	color: white;
