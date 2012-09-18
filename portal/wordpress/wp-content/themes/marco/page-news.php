@@ -23,7 +23,6 @@ Template Name: News
 						  $categories = get_categories(); 
 						  $index = 0;
 						  foreach ($categories as $category) { 
-
 						  	?>
 							  <div class="span4">
 							  <?php
@@ -31,10 +30,12 @@ Template Name: News
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
 							  	<div class="wrapper">
-							  		<div class="image">
-										<?php echo the_post_thumbnail('medium'); ?>
-							  			<h2><a href="<?php echo get_category_link( $category->cat_ID ); ?>"><?php echo $category->cat_name; ?></a></h2>
-							  		</div>
+							  		<a href="<?php echo get_category_link( $category->cat_ID ); ?>">
+								  		<div class="image">
+											<?php echo the_post_thumbnail('medium'); ?>
+								  			<h2><?php echo $category->cat_name; ?></h2>
+								  		</div>
+							  		</a>
 							  		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
 							  		<?php the_excerpt(); ?>
 							 	</div>
