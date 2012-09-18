@@ -280,7 +280,8 @@ input + i.icon-remove-sign {
 .news .image h2 {
 	position: absolute;
 	bottom: -14px;
-	left: 10px;
+	right: 10px;
+	text-shadow: 1px 1px #333;
 }
 .news .image h2 {
 	color: white;
