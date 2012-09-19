@@ -7,7 +7,7 @@ def send_feedback(request):
     feedback_address = ['eknuth@ecotrust.org']#, info@midatlanticocean.org'
     name = request.POST.get('name', '')
     from_email = "%s <%s>" % (name, request.POST.get('email', ''),)
-    url = request.POST.get('url, '')
+    url = request.POST.get('url', '')
     message = "From: %s\nURL: %s\n\n%s" % (from_email, url, request.POST.get('comment', ''),)
     
     if name and message and from_email:
