@@ -119,6 +119,63 @@
         }
     }, 
     {
+        "pk": 58, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "Vector", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-69.48876326009743&location%5By%5D=40.575938823556434&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=58&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [
+                1, 
+                2, 
+                3, 
+                4, 
+                5, 
+                6
+            ], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Cold_Water_Corals.zip", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/corals.html", 
+            "opacity": 1.0, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Areas where coldwater corals are present.", 
+            "attribute_fields": [
+                18, 
+                19, 
+                20, 
+                21, 
+                22, 
+                9
+            ], 
+            "learn_more": "", 
+            "data_overview": "Areas where coldwater corals are present.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "ORDER_", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA Deep Sea Coral Research and Technology Program", 
+            "data_notes": "These records were obtained from historical sources and are not confirmed or validated. Observations record only where surveys have been conducted. Absence of an observation should not be interpreted as absence of corals.", 
+            "name": "Coldwater Corals", 
+            "url": "/media/data_manager/geojson/Corals.json", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 67, 
         "model": "data_manager.layer", 
         "fields": {
@@ -251,63 +308,6 @@
             "sublayers": [
                 15
             ]
-        }
-    }, 
-    {
-        "pk": 58, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-69.48876326009743&location%5By%5D=40.575938823556434&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=58&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [
-                1, 
-                2, 
-                3, 
-                4, 
-                5, 
-                6
-            ], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Cold_Water_Corals.zip", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/corals.html", 
-            "opacity": 1.0, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Areas where coldwater corals are present.", 
-            "attribute_fields": [
-                18, 
-                19, 
-                20, 
-                21, 
-                22, 
-                9
-            ], 
-            "learn_more": "", 
-            "data_overview": "Areas where coldwater corals are present.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "ORDER_", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "NOAA Deep Sea Coral Research and Technology Program", 
-            "data_notes": "These records were obtained from historical sources and are not confirmed or validated. Observations record only where surveys have been conducted. Absence of an observation should not be interpreted as absence of corals.", 
-            "name": "Coldwater Corals", 
-            "url": "/media/data_manager/geojson/Corals.json", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
         }
     }, 
     {

@@ -213,6 +213,15 @@ app.addLayerToMap = function(layer) {
         var opts = {
             displayInLayerSwitcher: false
         };
+        
+        /***BEGIN TEMPORARY FIX FOR CORALS LAYER IN IE8***/
+        if ( $.browser.msie && $.browser.version < 9.0 && layer.name === "Coldwater Corals" ) {
+            
+            layer.type = 'XYZ';
+            layer.url = 'https://s3.amazonaws.com/marco-public-2d/Conservation/CoralTiles/${z}/${x}/${y}.png';
+        }
+        /***END TEMPORARY FIX FOR CORALS LAYER IN IE8***/
+        
         if (layer.utfurl || (layer.parent && layer.parent.utfurl)) {
             layer.utfgrid = new OpenLayers.Layer.UTFGrid({
                 layerModel: layer,
