@@ -8,3 +8,13 @@
 #data-accordion .btn-info-sign {
 	width: 15px;
 }
+
+.learn-page .image:hover .caption span {
+
+	color: white!important;
+}
+
+
+.theme.image .caption span {
+	color: #333 !important;
+}
