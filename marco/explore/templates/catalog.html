@@ -187,7 +187,6 @@
 {% block javascript %}
 <script>
     $(document).ready( function() {
-       // $(window.location.hash).closest('tr').effect("pulsate", {times:2 }, 500);
         var layers = [],
             layer_index = {},
             search =  function(val) {
@@ -198,6 +197,8 @@
 
         if (window.location.hash) {
             $(window).scrollTop($(window).scrollTop() - 100);
+            $(window.location.hash).closest('tr').effect("pulsate", {times:2 }, 500);
+
         }
 
         $('.theme').each( function(index, theme) {

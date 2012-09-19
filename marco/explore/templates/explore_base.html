@@ -248,6 +248,17 @@
                             <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
                             <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
                             <script>
+                            if (!Array.prototype.indexOf) {
+
+                            
+                                Array.prototype.indexOf = function(obj, start) {
+                                     for (var i = (start || 0), j = this.length; i < j; i++) {
+                                         if (this[i] === obj) { return i; }
+                                     }
+                                     return -1;
+                                }
+                             }
+
                             // handle the search clear buttons
                             $('.icon-remove-sign').on('click', function (event) {
                                 $(event.target).prev('input').val('').focus();
@@ -266,7 +277,7 @@
                               });
                               $form.closest('.modal').modal('hide')
                            });
-                    
+
                             </script>
                             {% block javascript %}
                             {% endblock %}
