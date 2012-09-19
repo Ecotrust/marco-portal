@@ -3622,6 +3622,16 @@
         }
     }, 
     {
+        "pk": 76, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M01F", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
         "pk": 71, 
         "model": "data_manager.attributeinfo", 
         "fields": {
@@ -3672,21 +3682,11 @@
         }
     }, 
     {
-        "pk": 76, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M01F", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
         "pk": 77, 
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M01SP", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3696,7 +3696,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M01SU", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3706,7 +3706,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M01W", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3716,7 +3716,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M02F", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3726,7 +3726,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M02SP", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3736,7 +3736,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M02SU", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3746,17 +3746,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M02W", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 85, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M04SP", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3766,17 +3756,17 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M04F", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
     }, 
     {
-        "pk": 87, 
+        "pk": 85, 
         "model": "data_manager.attributeinfo", 
         "fields": {
-            "field_name": "M04W", 
-            "display_name": "Species per Unit Effort", 
+            "field_name": "M04SP", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3786,77 +3776,17 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M04SU", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
     }, 
     {
-        "pk": 89, 
+        "pk": 87, 
         "model": "data_manager.attributeinfo", 
         "fields": {
-            "field_name": "M05SP", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 95, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M06W", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 94, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M06SU", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 93, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M06SP", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 92, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M06F", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 91, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M05W", 
-            "display_name": "Species per Unit Effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 90, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "M05SU", 
-            "display_name": "Species per Unit Effort", 
+            "field_name": "M04W", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
@@ -3866,7 +3796,77 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "M05F", 
-            "display_name": "Species per Unit Effort", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 89, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05SP", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 95, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06W", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 94, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06SU", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 93, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06SP", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 92, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M06F", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 91, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05W", 
+            "display_name": "Sightings per unit effort", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 90, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "M05SU", 
+            "display_name": "Sightings per unit effort", 
             "precision": 0, 
             "order": 1
         }
