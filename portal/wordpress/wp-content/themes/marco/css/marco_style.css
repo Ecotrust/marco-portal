@@ -289,6 +289,8 @@ input + i.icon-remove-sign {
 }
 .news .bugs .image {
 	position: relative;
+	max-height: 100px;
+	overflow: hidden;
 
 }
 .news .bugs h4 {
@@ -305,6 +307,7 @@ input + i.icon-remove-sign {
 	margin-left: 10px;
 	margin-right: 10px;
 	text-align: left;
+	height: 150px;
 }
 
 
