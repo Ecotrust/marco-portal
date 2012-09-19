@@ -12,7 +12,7 @@
 			    	<div class="pull-right">
 				        <h5>connect with us</h5>              
 				        <a href="<?php echo bloginfo('rss2_url'); ?>"><i class="icon-rss icon-large"></i></a>
-				        <a href=""><i class="icon-twitter icon-large"></i></a>
+				        <a href="https://twitter.com/PortalMARCO"><i class="icon-twitter icon-large"></i></a>
 				        <a href=""><i class="icon-linkedin icon-large"></i></a>
 				        <a href=""><i class="icon-google-plus icon-large"></i></a>
 
