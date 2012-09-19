@@ -1,19 +1,20 @@
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
+import settings
 
 
 def send_feedback(request):
-    subject = "MARCO Feedback"
-    feedback_address = ['eknuth@ecotrust.org']#, info@midatlanticocean.org'
+    subject = settings.FEEDBACK_SUBJECT
+    feedback_address = settings.FEEDBACK_RECIPIENT #, info@midatlanticocean.org'
     name = request.POST.get('name', '')
     from_email = "%s <%s>" % (name, request.POST.get('email', ''),)
-    url = request.POST.get('url', '')
+    reply_email = feedback_address
     ua = request.META['HTTP_USER_AGENT']
     message = "From: %s\nURL: %s\nBrowser: %s\n%s" % (from_email, url, ua, request.POST.get('comment', ''),)
     
     if name and message and from_email:
         try:
-            send_mail(subject, message, from_email, feedback_address)
+            send_mail(subject, message, reply_email, feedback_address)
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return HttpResponse('Thanks for your feedback.')
