@@ -8,7 +8,8 @@ def send_feedback(request):
     name = request.POST.get('name', '')
     from_email = "%s <%s>" % (name, request.POST.get('email', ''),)
     url = request.POST.get('url', '')
-    message = "From: %s\nURL: %s\n\n%s" % (from_email, url, request.POST.get('comment', ''),)
+    ua = request.META.HTTP_USER_AGENT
+    message = "From: %s\nURL: %s\nBrowser: %s\n%s" % (from_email, url, ua, request.POST.get('comment', ''),)
     
     if name and message and from_email:
         try:
