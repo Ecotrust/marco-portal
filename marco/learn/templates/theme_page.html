@@ -67,7 +67,13 @@
 	<div class="row-fluid">
 		{% if theme.factsheet_thumb  %}
 		<div class="span12 frame">
-			<a href="{{ theme.factsheet_link }}"><img src="{{ theme.factsheet_thumb }}"/></a>
+			{% if theme.factsheet_link  %}
+				<a href="{{ theme.factsheet_link }}"><img src="{{ theme.factsheet_thumb }}"/>
+					<p>download pdf...</p>
+				</a>
+			{% else %}
+				<img src="{{ theme.factsheet_thumb }}"/></a>
+			{% endif %}
 		</div>
 		{% endif %}
 	</div>
