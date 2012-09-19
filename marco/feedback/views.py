@@ -6,9 +6,9 @@ def send_feedback(request):
     subject = "MARCO Feedback"
     feedback_address = ['eknuth@ecotrust.org']#, info@midatlanticocean.org'
     name = request.POST.get('name', '')
-    message = request.POST.get('comment', '')
     from_email = "%s <%s>" % (name, request.POST.get('email', ''),)
-
+    message = "%s\n\n%s" % (from_email, request.POST.get('comment', ''),)
+    
     if name and message and from_email:
         try:
             send_mail(subject, message, from_email, feedback_address)
