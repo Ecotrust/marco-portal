@@ -8,10 +8,10 @@ def send_feedback(request):
     feedback_address = settings.FEEDBACK_RECIPIENT #, info@midatlanticocean.org'
     name = request.POST.get('name', '')
     from_email = "%s <%s>" % (name, request.POST.get('email', ''),)
-    reply_email = feedback_address
+    reply_email = "feedback <%s>" % feedback_address
     url = request.POST.get('url', '')
     ua = request.META['HTTP_USER_AGENT']
-    message = "From: %s\nURL: %s\nBrowser: %s\n%s" % (from_email, url, ua, request.POST.get('comment', ''),)
+    message = "From: %s\nURL: %s\nBrowser: %s\n\n\n%s" % (from_email, url, ua, request.POST.get('comment', ''),)
     
     if name and message and from_email:
         try:
