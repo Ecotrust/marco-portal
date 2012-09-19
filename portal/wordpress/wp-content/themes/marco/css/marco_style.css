@@ -167,17 +167,18 @@ input + i.icon-remove-sign {
 .showcase a {
 	color: white;
 }
-.showcase .attrib {
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+.attrib {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	behavior: url(/portal/assets/PIE.htc);
 
-	border-radius: 5px;
+	border-radius: 10px;
 	color: white;
 	position: absolute;
 	top: 20px;
 	right: 20px;
 	padding: 5px;
+	height: 20px;
 	/* RGBa with 0.6 opacity */
 	background-color: rgba(45, 137, 152, 0.65);
 	/* For IE 5.5 - 7*/
@@ -185,12 +186,12 @@ input + i.icon-remove-sign {
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
 }
-.showcase .attrib .text {
+.attrib .text {
 	behavior: url(/portal/assets/PIE.htc);
 
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	display:none;
 	position: absolute;
 	padding: 10px;
