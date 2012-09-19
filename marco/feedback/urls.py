@@ -3,5 +3,5 @@ from views import *
 
 urlpatterns = patterns('', 
     (r'^send', send_feedback),
-    (r'^bookmark', send_bookmark),
+    # (r'^bookmark', send_bookmark),
 )
