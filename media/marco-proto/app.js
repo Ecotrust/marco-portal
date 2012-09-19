@@ -174,18 +174,20 @@ $('#bookmark-form').on('submit', function(event) {
   });
 });
 
-$('#feedback-form').on('submit', function(event) {
-  var feedback = {},
-    $form = $(this);
+$('#feedback-form').on('submit', function (event) {
+  var feedback = {}, $form = $(this);
   event.preventDefault();
-  $(this).find('input, textarea').each(function(i, input) {
-    var $input = $(input);
-    feedback[$input.attr('name')] = $input.val();
-  });
-  $.post('/feedback/send', feedback, function() {
-    $form.closest('.modal').modal('hide');
-  });
+   $(this).find('input, textarea').each(function (i, input) {
+      var $input = $(input);
+      feedback[$input.attr('name')] = $input.val();
+   });
+       feedback.url = window.location.href;
+   $.post('/feedback/send', feedback, function () {
+      $form.closest('.modal').modal('hide')
+   });
+   $form.closest('.modal').modal('hide')
 });
+
 
 $(document).mousedown(function(e) {
   //removing bookmark popover from view
