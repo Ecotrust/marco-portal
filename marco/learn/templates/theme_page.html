@@ -18,7 +18,7 @@
             {% if layer.is_parent %}
             {% else %}
 			{% if layer.layer_type != "placeholder"  %}
-                <a name={{layer.slug}} style="position:relative; top:-100px;">&nbsp;</a>
+                <a class="anchor-tag" name={{layer.slug}} style="position:relative; display: block; top:-100px;">&nbsp;</a>
                 <div class="clearfix layer">
                     <h4>
                         {{ layer.name }}	
