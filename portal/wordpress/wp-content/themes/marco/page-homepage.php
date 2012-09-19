@@ -19,10 +19,7 @@ Template Name: Homepage
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
-				  	    	<div class="attrib">
-				  	    		<i class="icon-map-marker icon-white"></i>
-				  	    		<p class="text">Here is some attribution text for a picture</p>
-				  	    	</div>
+				  	    	
 				  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/dock.jpg"/>
@@ -30,10 +27,7 @@ Template Name: Homepage
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
-				  	    	<div class="attrib">
-				  	    		<i class="icon-map-marker icon-white"></i>
-				  	    		<p class="text">Here is some attribution text for a picture</p>
-				  	    	</div>
+				  	    	
 				  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/wave.jpg"/>
@@ -41,10 +35,7 @@ Template Name: Homepage
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
-				  	    	<div class="attrib">
-				  	    		<i class="icon-map-marker icon-white"></i>
-				  	    		<p class="text">Here is some attribution text for a picture</p>
-				  	    	</div>
+				  	    	
 				  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/barge.jpg"/>
@@ -52,10 +43,7 @@ Template Name: Homepage
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
-				  	    	<div class="attrib">
-				  	    		<i class="icon-map-marker icon-white"></i>
-				  	    		<p class="text">Here is some attribution text for a picture</p>
-				  	    	</div>
+				  	    	
 				  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/loaders.jpg"/>
@@ -63,10 +51,7 @@ Template Name: Homepage
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
-				  	    	<div class="attrib">
-				  	    		<i class="icon-map-marker icon-white"></i>
-				  	    		<p class="text">Here is some attribution text for a picture</p>
-				  	    	</div>
+				  	    	
 				  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/crab.jpg"/>
@@ -74,10 +59,7 @@ Template Name: Homepage
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
 				  	    	</div>
-				  	    	<div class="attrib">
-				  	    		<i class="icon-map-marker icon-white"></i>
-				  	    		<p class="text">Here is some attribution text for a picture</p>
-				  	    	</div>
+				  	    	
 				  	    </div>
 				  	  </div>
 				  	</div>
