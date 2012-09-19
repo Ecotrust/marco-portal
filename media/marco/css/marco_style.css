@@ -298,7 +298,8 @@ input + i.icon-remove-sign {
 .showcase a {
 	color: white;
 }
- .attrib {
+
+.theme .attrib {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	behavior: url(/portal/assets/PIE.htc);
@@ -316,9 +317,9 @@ input + i.icon-remove-sign {
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
 }
- .attrib .text {
+.theme .attrib .text {
 	behavior: url(/portal/assets/PIE.htc);
-
+	position: absolute;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -333,6 +334,7 @@ input + i.icon-remove-sign {
 	/* For IE 8*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";	
 }
+
 .bugs {
 	margin-top: 10px;
 	text-align: center;
