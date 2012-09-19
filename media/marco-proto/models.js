@@ -441,14 +441,14 @@ function bookmarkModel($popover) {
 
     // store the bookmarks to local storage or server
     self.storeBookmarks = function() {
-        localStorage.setItem("marco-bookmarks", JSON.stringify(self.bookmarksList()));
+        amplify.store("marco-bookmarks", self.bookmarksList());
     };
 
     // method for loading existing bookmarks
     self.getBookmarks = function() {
-        var existingBookmarks = localStorage.getItem("marco-bookmarks");
+        var existingBookmarks = amplify.store("marco-bookmarks");
         if (existingBookmarks) {
-            self.bookmarksList = ko.observableArray(JSON.parse(existingBookmarks));
+            self.bookmarksList = ko.observableArray(existingBookmarks);
         }
     };
 
