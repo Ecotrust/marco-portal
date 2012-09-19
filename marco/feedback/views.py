@@ -14,7 +14,7 @@ def send_feedback(request):
             send_mail(subject, message, from_email, feedback_address)
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('Thanks for your feedback.')
+        return HttpResponse('Thanks for your feedback.')
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
@@ -33,7 +33,7 @@ def send_bookmark(request):
             send_mail(subject, message, from_email, recipient)
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('Bookmark Sent.')
+        return HttpResponse('Bookmark Sent.')
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
