@@ -40,6 +40,21 @@
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
 			<script src="<?php echo get_template_directory_uri(); ?>/assets/js/respond.min.js"></script>
+			<style>
+			
+			#feedback-tab {
+				-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1.836909530733566e-16, M12=-1, M21=1, M22=-1.836909530733566e-16, SizingMethod='auto expand')";
+				
+				/* IE6 and 7 */ 
+				filter: progid:DXImageTransform.Microsoft.Matrix(
+				         M11=-1.836909530733566e-16,
+				         M12=-1,
+				         M21=1,
+				         M22=-1.836909530733566e-16,
+				         SizingMethod='auto expand');
+
+			  }
+			</style>
 		<![endif]-->
 
 		<!-- html5.js -->
