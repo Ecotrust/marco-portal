@@ -140,9 +140,9 @@
                                             <div class="span12">
                                                 <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis;">
                                                 <i class="icon-remove-sign icon-large"></i> 
-                                                <a type="submit" class="btn">
+                                                <button type="submit" class="btn">
                                                     Search
-                                                </a>
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
@@ -152,12 +152,10 @@
                                             <div id="data-accordion">
                                                 <div class="accordion" data-bind="foreach: themes">
                                                     <div class="accordion-group">
-                                                        <div class="accordion-heading" data-bind="event: {'mouseenter': $root.hideTooltip}, css: { 'active': isOpenTheme() }">
+                                                        <div class="accordion-heading" data-bind="css: { 'active': isOpenTheme() }">
                                                             <div>
                                                                 <a class="accordion-toggle"  data-bind="click: setOpenTheme"> <!--event: {'hover': showDescription}-->
-
                                                                     <span data-bind="text: name">Themes</span></a>
-
                                                             </div>
                                                         </div>
                                                         <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
@@ -412,14 +410,14 @@
             </div>
         </div>
         
-        <div style="display:none" id="layer-popover" class="layer-popover popover fade right in" data-bind="event: {'mouseleave': $root.hideTooltip}">
+        <!--<div style="display:none" id="layer-popover" class="layer-popover popover fade right in" data-bind="event: {'mouseleave': $root.hideTooltip}">
             <div class="arrow"></div>
             <div class="popover-inner layer-tooltip">
                 <div class="popover-content">
                     <span data-bind="html: layerToolTipText"></span>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div style="display:none" id="bookmark-popover" class="popover fade left in" data-bind="with: bookmarks">
             <div class="arrow">
             </div>
