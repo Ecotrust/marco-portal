@@ -11,6 +11,12 @@
 			<div class="caption">
 				{{ theme.display_name }}
 			</div>
+			{% if theme.header_attrib %}
+			<div class="attrib">
+				<i class="icon-map-marker icon-white"></i>
+				<p class="text">{{ theme.header_attrib }}</p>
+			</div>
+			{% endif %}
 		</div>
 		<br/>
 		<p>{{ theme.overview|safe }}</p>

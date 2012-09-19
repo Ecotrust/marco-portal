@@ -23,7 +23,7 @@
 	<div class="theme-context">
         <div class="row-fluid">
             <div class="span6">
-                <a name="{{ theme_dict.theme.name }}"></a>
+                <a id="{{ theme_dict.theme.name }}"> </a>
                 <h3>
                     {{ theme_dict.theme.display_name }}
                 </h3>
@@ -204,7 +204,7 @@
         $('.theme').each( function(index, theme) {
             var theme_name = $(theme).find('.theme-name').text();
             $(theme).find('.layer-name').each( function(index, layer) {
-                var name = $(layer).text().trim() + ' (' + theme_name.trim() + ')';
+                var name = $.trim($(layer).text()) + ' (' + $.trim(theme_name) + ')';
                 layers.push(name);
                 layer_index[name] = { 
                     layer: $(layer)
