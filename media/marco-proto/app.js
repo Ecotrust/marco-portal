@@ -43,6 +43,10 @@ app.restoreState = {};
 
 ko.applyBindings(app.viewModel);
 app.viewModel.loadLayersFromServer().done(function() {
+  $('#fullscreen').show();
+  $('#loading').hide();
+  // app.map.updateSize();
+  app.onResize();
   // if we have the hash state go ahead and load it now
   if (app.hash) {
     app.loadStateFromHash(app.hash);

@@ -31,6 +31,18 @@ p {
 a:focus {
     outline: none;
 }
+
+#fullscreen {
+	display: none;
+}
+
+#loading {
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	background:url(../img/ajax-loader.gif) no-repeat center center;
+}
+
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: auto;
