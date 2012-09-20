@@ -632,3 +632,11 @@ img {
 		width: auto;
 	}
 }
+
+@media (max-height: 740px) {
+	#sidebar-nav {
+		position: relative;
+		top: -15px !important;
+	}
+
+}
