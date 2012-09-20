@@ -14,6 +14,9 @@ app.onResize = function(percent) {
   }
 };
 
+$(window).on('resize', function() {
+    app.onResize();
+});
 
 // add indexof for typeahead
 if (!Array.prototype.indexOf) {
