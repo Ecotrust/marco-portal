@@ -43,7 +43,8 @@ app.restoreState = {};
 
 ko.applyBindings(app.viewModel);
 app.viewModel.loadLayersFromServer().done(function() {
-  $('#fullscreen').show();
+  $('#fullscreen').show
+  ();
   $('#loading').hide();
   // app.map.updateSize();
   app.onResize();

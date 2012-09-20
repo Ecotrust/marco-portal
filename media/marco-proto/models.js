@@ -572,6 +572,21 @@ function viewModel() {
         }
     };
 
+    // zoom with box
+    self.zoomBox = function  (self, event) {
+        var $button = $(event.target).closest('.btn');
+        if ($button.hasClass('active')) {
+            app.map.zoomBox.deactivate();
+            $button.removeClass('active');
+            $('#map').removeClass('zoomBox');
+        } else {
+            $button.addClass('active');
+            app.map.zoomBox.activate();            
+            $('#map').addClass('zoomBox');
+
+        }
+    }
+
 
     // is the legend panel visible?
     self.showLegend = ko.observable(false);

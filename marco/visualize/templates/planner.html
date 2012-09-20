@@ -146,7 +146,7 @@
                         <!-- tab body -->
                         <div id="myTabContent" class="tab-content">
                             <!-- data tab -->
-                            <div class="tab-pane active in" id="data">
+                            <div class="tab-pane active in fade" id="data">
                                 <div class="row-fluid">
                                     <div class="span12 ">
                                         <form class="form-search" data-bind="submit: layerSearch">
@@ -276,6 +276,15 @@
                             <div class="row-fluid">
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
+                                  <div id="right-btns" data-bind="click: zoomBox">
+                                    <div class="btn-group btn-group-vertical">
+                                        <a id="zoom-box" class="btn">
+                                            <span>Box Zoom</span>
+                                            <i class="icon-zoom-in icon-large"></i>
+                                        </a>
+                                    </div>
+                                  </div>
+
                                   <div id="basemaps"> <!-- Basemaps, Legends, Layers, Bookmarks, and FullScreen buttons -->
                                     <div class="btn-group btn-group-vertical">
                                       <!--Basemaps Button-->
