@@ -1,6 +1,6 @@
-body {
+/*body {
   padding-bottom: 40px;
-}
+}*/
 .sidebar-nav {
   padding: 9px 0;
 }
@@ -170,10 +170,10 @@ a.disabled-link:hover {
     color:#aaa !important;
 }
 
+/*body {
+  padding-bottom: 20px;
+}*/
 
-body {
-  padding-bottom: 40px;
-}
 .sidebar-nav {
   padding: 9px 0;
 }

@@ -1,23 +1,5 @@
 [
     {
-        "pk": 2, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "factsheet_link": "", 
-            "feature_link": "", 
-            "header_attrib": "Photo \u00a9 Michael Eversmier", 
-            "display_name": "Marine Life", 
-            "description": "The Mid-Atlantic region is well known for nutrient-rich and highly productive waters. Its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals.  ", 
-            "overview": "<p>\r\nThe Mid-Atlantic is well known for nutrient-rich and highly productive waters. The region is a transitional area between the rocky shores of New England and the gently sloping South Atlantic, and it is influenced by two large estuaries, Chesapeake Bay and Delaware Bay. As a result, the Mid-Atlantic region  is home to a wealth of complex ecosystems and its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals. \r\n<p>\r\nThe topography is mostly flat, but features sandy shoals and swales, sand wedges and waves, and a broad continental shelf embedded cold water coral patch habitats and incised by submarine canyons along the shelf-slope break. These areas support biologically diverse and abundant benthic (seafloor) macrofauna, demersal fish, and foraging concentrations of sea birds, sea ducks, and bottlenose dolphins. Benthic habitats contain over 2000 species of invertebrates such as marine worms, sponges, shrimp, crab, clams, scallops, snails, sea stars, and anemones. Another invertebrate--corals--establish reefs that are known to be habitat for black seabass and tautog though research on the locations and extents of these ecologically important patchy habitats is scant.\r\n<p>\r\nDemersal fish (or groundfish) are characterized by their close association with the seafloor for feeding, spawning, and juvenile nursery areas. The Mid-Atlantic region is particularly productive for demersal fish with some such as summer flounder and black seabass supporting major historic and current recreational and commercial fisheries. \r\n<p>\r\nDiadromous fish use both freshwater and marine habitats during their life cycle and these species have great cultural and ecological significance in the Mid-Atlantic region. The diadromous fish of the region\u2014striped bass, alewife, American eel, American Shad, Atlantic salmon, Atlantic sturgeon, Atlantic tomcod, blueback herring, hickory shad, rainbow smelt, sea-run brook trout, and shortnose sturgeon--provide an important energy link between freshwater, estuarine, and marine food webs and many of these species are found only in the Northwest Atlantic ocean.\r\n<p>\r\nLarge pelagic fish are migratory are typically found well above the seafloor in the water column. Pelagic species play a key ecological role as predators that regulate their prey communities and structure marine food webs. Some inhabit the region only seasonally and many of the details of their life history are not known. A selection of important species includes albacore tuna, Atlantic bluefin tuna, blue marlin, swordfish, great hammerhead shark, sand tiger shark, sandbar shark. The wide ranging distribution of these species across diverse habitat types, their roles as apex predators, and their threatened population status make them ripe for inclusion in regional spatial and conservation plans.\r\n<p>\r\nMarine mammals are large migratory species that use this region primarily in spring and summer when food is abundant. Due to their seasonal abundance and charismatic nature, marine mammals have a long-standing, complex relationship with humans in this region. Ten species, among them bottlenose dolphin, fin whale, harbor porpoise, humpback whale, North Atlantic right whale, and sperm whale are important cultural and biodiversity icons of the region.\r\n<p>\r\nSea turtles use both oceanic (inner shelf region and offshore) and terrestrial (beach) ecosystems. Their highly migratory and long life history characteristics present unique challenges to their continued protection and recovery. Sea turtles may have once comprised an important component of the region\u2019s coastal food webs, consuming prey including fish, invertebrates, and sea grasses. Three species of sea turtle (green, leatherback and loggerhead) are present in the Mid-Atlantic.\r\n<p>\r\nThe varied habitats and abundant resources of the Mid-Atlantic support a highly diverse group of coastal and marine birds that depend on both the oceanic and terrestrial ecosystems of the region throughout the year.  Millions of birds pass through the region, which is located along the globally significant migration corridor of the Atlantic Flyway, while traveling between breeding and wintering grounds that span the entire Western Hemisphere.  Species of high conservation concern, like the Red Knot and Whimbrel depend on high quality coastal habitats for critical stopover areas.  Pelagic species, like the Northern Gannet and Audubon\u2019s Shearwater, use  open water habitats during both migration and wintering seasons.  Shorebirds, waterbirds and waterfowl, such as the Piping Plover, American Oystercatcher, Least Terns, Black Duck and Brant breed or feed along shorelines in the region and can be heavily impacted by increasing human pressure to these coastal systems.  Many of the species occurring in the Mid-Atlantic rank as species of high conservation concern.\r\n<p>\r\nTidal flows, complex seasonal temperature and circulation patterns, and varied seafloor topography combine to create both persistent and shifting habitats that serve as critical resources tracked by Mid-Atlantic marine species, and give rise to upwellings that fuel plankton blooms and key forage species such as menhaden, squid and butterfish.  Millions of seabirds, invertebrates, fishes, marine mammals, and large pelagic fishes such as tunas and marlins use diverse Mid-Atlantic habitat and forage resources in specific ways.  Cross shelf (east-west) migrants like summer flounder and black seabass and north-south migrants like striped bass, menhaden, and large whales all traverse the region twice a year as they move from southern and near shore locations in winter to offshore or northern locations in summer.\r\n<p>\r\nThe MARCO Ocean Data Portal has compiled habitat data, as well as known distributions and abundances of many of the key fish, mammal, bird, and reptile species found in the Mid-Atlantic region. In the future, additional data will be added to round out the collection and to allow regional planners to make management and policy decisions that are compatible with and enhance the conservation of these animals and their ecosystem.", 
-            "feature_image": "", 
-            "thumbnail": "", 
-            "factsheet_thumb": "/media/marco/img/themes/sheets/MARCO_factsheet_marine_life-0.jpg", 
-            "feature_excerpt": "", 
-            "header_image": "/media/marco/img/learn/conservation.jpg", 
-            "name": "conservation"
-        }
-    }, 
-    {
         "pk": 7, 
         "model": "data_manager.theme", 
         "fields": {
@@ -33,6 +15,24 @@
             "feature_excerpt": "", 
             "header_image": "/portal/assets/img/themes/recreation.jpg", 
             "name": "recreation"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "factsheet_link": "", 
+            "feature_link": "", 
+            "header_attrib": "Photo \u00a9 Michael Eversmier", 
+            "display_name": "Marine Life", 
+            "description": "The Mid-Atlantic region is well known for nutrient-rich and highly productive waters. Its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals.  ", 
+            "overview": "<p>\r\nThe Mid-Atlantic is well known for nutrient-rich and highly productive waters. The region is a transitional area between the rocky shores of New England and the gently sloping South Atlantic, and it is influenced by two large estuaries, Chesapeake Bay and Delaware Bay. As a result, the Mid-Atlantic region  is home to a wealth of complex ecosystems and its estuaries, salt marshes, sea grasses, barrier islands, cold water corals, and submarine canyons provide spawning, nursery, and forage habitats that support diverse resident and migratory marine life including invertebrates, seabirds, fishes, and marine mammals. \r\n<p>\r\nThe topography is mostly flat, but features sandy shoals and swales, sand wedges and waves, and a broad continental shelf embedded cold water coral patch habitats and incised by submarine canyons along the shelf-slope break. These areas support biologically diverse and abundant benthic (seafloor) macrofauna, demersal fish, and foraging concentrations of sea birds, sea ducks, and bottlenose dolphins. Benthic habitats contain over 2000 species of invertebrates such as marine worms, sponges, shrimp, crab, clams, scallops, snails, sea stars, and anemones. Another invertebrate--corals--inhabit reefs that are known to be habitat for black seabass and tautog though research on the locations and extents of these ecologically important patchy habitats is scant.\r\n<p>\r\nDemersal fish (or groundfish) are characterized by their close association with the seafloor for feeding, spawning, and juvenile nursery areas. The Mid-Atlantic region is particularly productive for demersal fish with some such as summer flounder and black seabass supporting major historic and current recreational and commercial fisheries. \r\n<p>\r\nDiadromous fish use both freshwater and marine habitats during their life cycle and these species have great cultural and ecological significance in the Mid-Atlantic region. The diadromous fish of the region\u2014striped bass, alewife, American eel, American Shad, Atlantic salmon, Atlantic sturgeon, Atlantic tomcod, blueback herring, hickory shad, rainbow smelt, sea-run brook trout, and shortnose sturgeon--provide an important energy link between freshwater, estuarine, and marine food webs and many of these species are found only in the Northwest Atlantic ocean.\r\n<p>\r\nLarge pelagic fish are migratory are typically found well above the seafloor in the water column. Pelagic species play a key ecological role as predators that regulate their prey communities and structure marine food webs. Some inhabit the region only seasonally and many of the details of their life history are not known. A selection of important species includes albacore tuna, Atlantic bluefin tuna, blue marlin, swordfish, great hammerhead shark, sand tiger shark, sandbar shark. The wide ranging distribution of these species across diverse habitat types, their roles as apex predators, and their threatened population status make them ripe for inclusion in regional spatial and conservation plans.\r\n<p>\r\nMarine mammals are large migratory species that use this region primarily in spring and summer when food is abundant. Due to their seasonal abundance and charismatic nature, marine mammals have a long-standing, complex relationship with humans in this region. Ten species, among them bottlenose dolphin, fin whale, harbor porpoise, humpback whale, North Atlantic right whale, and sperm whale are important cultural and biodiversity icons of the region.\r\n<p>\r\nSea turtles use both oceanic (inner shelf region and offshore) and terrestrial (beach) ecosystems. Their highly migratory and long life history characteristics present unique challenges to their continued protection and recovery. Sea turtles may have once comprised an important component of the region\u2019s coastal food webs, consuming prey including fish, invertebrates, and sea grasses. Three species of sea turtle (green, leatherback and loggerhead) are present in the Mid-Atlantic.\r\n<p>\r\nThe varied habitats and abundant resources of the Mid-Atlantic support a highly diverse group of coastal and marine birds that depend on both the oceanic and terrestrial ecosystems of the region throughout the year.  Millions of birds pass through the region, which is located along the globally significant migration corridor of the Atlantic Flyway, while traveling between breeding and wintering grounds that span the entire Western Hemisphere.  Species of high conservation concern, like the Red Knot and Whimbrel depend on high quality coastal habitats for critical stopover areas.  Pelagic species, like the Northern Gannet and Audubon\u2019s Shearwater, use  open water habitats during both migration and wintering seasons.  Shorebirds, waterbirds and waterfowl, such as the Piping Plover, American Oystercatcher, Least Terns, Black Duck and Brant breed or feed along shorelines in the region and can be heavily impacted by increasing human pressure to these coastal systems.  Many of the species occurring in the Mid-Atlantic rank as species of high conservation concern.\r\n<p>\r\nTidal flows, complex seasonal temperature and circulation patterns, and varied seafloor topography combine to create both persistent and shifting habitats that serve as critical resources tracked by Mid-Atlantic marine species, and give rise to upwellings that fuel plankton blooms and key forage species such as menhaden, squid and butterfish.  Millions of seabirds, invertebrates, fishes, marine mammals, and large pelagic fishes such as tunas and marlins use diverse Mid-Atlantic habitat and forage resources in specific ways.  Cross shelf (east-west) migrants like summer flounder and black seabass and north-south migrants like striped bass, menhaden, and large whales all traverse the region twice a year as they move from southern and near shore locations in winter to offshore or northern locations in summer.\r\n<p>\r\nThe MARCO Ocean Data Portal has compiled habitat data, as well as known distributions and abundances of many of the key fish, mammal, bird, and reptile species found in the Mid-Atlantic region. In the future, additional data will be added to round out the collection and to allow regional planners to make management and policy decisions that are compatible with and enhance the conservation of these animals and their ecosystem.", 
+            "feature_image": "", 
+            "thumbnail": "", 
+            "factsheet_thumb": "/media/marco/img/themes/sheets/MARCO_factsheet_marine_life-0.jpg", 
+            "feature_excerpt": "", 
+            "header_image": "/media/marco/img/learn/conservation.jpg", 
+            "name": "conservation"
         }
     }, 
     {
@@ -214,6 +214,53 @@
         }
     }, 
     {
+        "pk": 11, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-70.53969717621676&location%5By%5D=39.964012676298715&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "attribute_fields": [
+                68
+            ], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database. This figure does not include effort information for vessels that hold only a federal lobster permit or a surf clam / ocean quahog limited entry permit.  \r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "All Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 18, 
         "model": "data_manager.layer", 
         "fields": {
@@ -314,6 +361,100 @@
         }
     }, 
     {
+        "pk": 12, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476334&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "attribute_fields": [
+                69
+            ], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using bottom trawls.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database.  The bottom trawl category includes beam otter trawls, Danish seines, Scottish seines, bottom otter trawls, and paired otter bottom trawls.\r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Bottom Trawl", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=73&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                75
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using pots or traps.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database. This dataset does not include effort information for vessels that hold only a federal lobster permit.\r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Pots Traps", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/PotsTraps/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 6, 
         "model": "data_manager.layer", 
         "fields": {
@@ -357,53 +498,6 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 73, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=73&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [
-                75
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Pots Traps", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/PotsTraps/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
@@ -490,7 +584,7 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ArtificialReefs/legend.png", 
             "data_status": "Available", 
             "vector_fill": null, 
-            "data_source": "The Nature Conservancy", 
+            "data_source": "Mid-Atlantic State agencies, compiled by The Nature Conservancy", 
             "data_notes": "These data were compiled from various state sources. In Delaware, Digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).", 
             "name": "Artificial Reefs", 
             "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
@@ -690,6 +784,49 @@
         }
     }, 
     {
+        "pk": 57, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm", 
+            "opacity": 0.8, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Depth contours at 20, 50, and 100 fathoms.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA, derived by The Nature Conservancy", 
+            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.", 
+            "name": "Fathom Lines", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 62, 
         "model": "data_manager.layer", 
         "fields": {
@@ -730,96 +867,6 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 57, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm", 
-            "opacity": 0.8, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Depth contours at 20, 50, and 100 fathoms.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "The Nature Conservancy and NOAA", 
-            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.", 
-            "name": "Fathom Lines", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 12, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476334&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "attribute_fields": [
-                69
-            ], 
-            "learn_more": "", 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "National Marine Fisheries Service", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "Bottom Trawl", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
@@ -1007,6 +1054,53 @@
         }
     }, 
     {
+        "pk": 72, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=72&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                74
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using other gear types.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database.  This gear type includes a variety of fishing gears that are not included in the other gear categories. The other gears category includes all the various kinds of hand gear, cast nets, all of the various kinds of dive gear, fyke nets, mixed gear types, purse seines, stop seines, weirs, and all of the other gear types that do not have a specific gear code. This dataset does not include fishing effort information for scallop dredges, surfclam / ocean quahog dredges, or vessels holding only a federal lobster permit.\r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Other Gear", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherGear/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 8, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1049,53 +1143,6 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 72, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=72&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [
-                74
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Other Gear", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherGear/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
@@ -1241,6 +1288,53 @@
         }
     }, 
     {
+        "pk": 70, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=70&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                72
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using midwater trawls.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database. Midwater trawl gear includes paired and unpaired midwater otter trawls.\r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Midwater Trawls", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 47, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1338,7 +1432,7 @@
         }
     }, 
     {
-        "pk": 70, 
+        "pk": 14, 
         "model": "data_manager.layer", 
         "fields": {
             "layer_type": "XYZ", 
@@ -1348,35 +1442,33 @@
             ], 
             "compress_display": false, 
             "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=70&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "legend_subtitle": "catch/year (2000-2009)", 
+            "bookmark": "/visualize/#location%5Bx%5D=-72.55&location%5By%5D=39.16&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
             "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
             "lookup_table": [], 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
-            "metadata": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
             "opacity": 0.5, 
             "vector_color": "", 
             "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [
-                72
-            ], 
+            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
+            "attribute_fields": [], 
             "learn_more": "", 
-            "data_overview": "", 
+            "data_overview": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.", 
             "attribute_title": "", 
             "is_sublayer": true, 
             "lookup_field": "", 
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
-            "data_status": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
+            "data_status": "Available", 
             "vector_fill": null, 
             "data_source": "", 
-            "data_notes": "", 
-            "name": "Midwater Trawls", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/${z}/${x}/${y}.png", 
+            "data_notes": "Commercial harvest of summer flounder for each ten minute square using any gear type.  Landings based on the average catches from reported trips between 2000 and 2009 from the Vessel Trip Report database. This layer presented as an example of additional species specific harvest data currently in development. \r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Summer Flounder Landings", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -1425,51 +1517,6 @@
             "arcgis_layers": "19", 
             "legend_title": "", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 14, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "catch/year (2000-2009)", 
-            "bookmark": "/visualize/#location%5Bx%5D=-72.55&location%5By%5D=39.16&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png", 
-            "data_status": "Available", 
-            "vector_fill": null, 
-            "data_source": "National Marine Fisheries Service", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "Summer Flounder Landings", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
@@ -1553,7 +1600,7 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
             "data_status": "Available", 
             "vector_fill": null, 
-            "data_source": "The Nature Conservancy", 
+            "data_source": "U.S. Coast Guard, NOAA, ASA; derived by Applied Science Associates and The Nature Conservancy", 
             "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.", 
             "name": "AIS Shipping Data", 
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
@@ -1696,8 +1743,8 @@
             "legend": "", 
             "data_status": "Available", 
             "vector_fill": null, 
-            "data_source": "The Nature Conservancy", 
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.", 
+            "data_source": "Species data and bathymetry, NOAA; Sediment data, USGS; modeling by The Nature Conservancy", 
+            "data_notes": "The Nature Conservancy (TNC) developed this model to predict the location of potential benthic habitats and the species that they likely contain. This layer represents the results of that model with each color indicating an individual benthic habitat. This dataset is intended for use at the regional scale and may not be adequate for site specific decisions. Benthic habitats are unique combinations of ecological marine units and groups of seafloor species that are commonly found together. Benthic habitats are modeled using Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. The species assemblages are defined using data from benthic grab samples provided by the Northeast Fisheries Science Center, NOAA-National Marine Fisheries Service. Depth is based on the 1998 Coastal Relief Model created by NOAA/NGDC that has been augmented with data from the NOS Bathymetric and Fish Maps and the USGS Gulf of Maine 15\u2019 Bathymetry. The sediment grain size data is interpolated from a point dataset from USGS\u2019s usSEABED. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions. For more information and a detailed report, please visit <a href=\"http://nature.org/namera/\" target=\"_blank\">http://nature.org/namera/</a>.", 
             "name": "Benthic Habitats (North)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
@@ -1980,6 +2027,59 @@
         }
     }, 
     {
+        "pk": 15, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "radio", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "avg. # trips/year (2000-2009)", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/vtr_effort/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA-National Marine Fisheries Service, compiled by The Nature Conservancy", 
+            "data_notes": "", 
+            "name": "Commercial", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                11, 
+                12, 
+                73, 
+                72, 
+                70, 
+                14, 
+                68, 
+                69, 
+                71
+            ]
+        }
+    }, 
+    {
         "pk": 55, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2072,59 +2172,6 @@
         }
     }, 
     {
-        "pk": 15, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "radio", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "avg. # trips/year (2000-2009)", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/vtr_effort/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Commercial", 
-            "url": "", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                73, 
-                12, 
-                72, 
-                70, 
-                14, 
-                68, 
-                69, 
-                71, 
-                11
-            ]
-        }
-    }, 
-    {
         "pk": 19, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2204,7 +2251,7 @@
             "data_status": "", 
             "vector_fill": null, 
             "data_source": "", 
-            "data_notes": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using gill nets.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database. Gill net gear includes the floating anchor, runaround, sink anchor, and sink drift gill net types.  \r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
             "name": "Gill Nets", 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
@@ -2260,53 +2307,6 @@
         }
     }, 
     {
-        "pk": 69, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=69&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [
-                71
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Long Lines", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
         "pk": 24, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2348,13 +2348,60 @@
             "legend": "", 
             "data_status": "Available", 
             "vector_fill": null, 
-            "data_source": "The Nature Conservancy", 
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.", 
+            "data_source": "Species data and bathymetry, NOAA; Sediment data, USGS; modeling by The Nature Conservancy", 
+            "data_notes": "The Nature Conservancy (TNC) developed this model to predict the location of potential benthic habitats and the species that they likely contain. This layer represents the results of that model with each color indicating an individual benthic habitat. This dataset is intended for use at the regional scale and may not be adequate for site specific decisions. Benthic habitats are unique combinations of ecological marine units and groups of seafloor species that are commonly found together. Benthic habitats are modeled using Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. The species assemblages are defined using data from benthic grab samples provided by the Northeast Fisheries Science Center, NOAA-National Marine Fisheries Service. Depth is based on the 1998 Coastal Relief Model created by NOAA/NGDC that has been augmented with data from the NOS Bathymetric and Fish Maps and the USGS Gulf of Maine 15\u2019 Bathymetry. The sediment grain size data is interpolated from a point dataset from USGS\u2019s usSEABED. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions. For more information and a detailed report, please visit <a href=\"http://nature.org/namera/\" target=\"_blank\">http://nature.org/namera/</a>.", 
             "name": "Benthic Habitats (South)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=69&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                71
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using long lines.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database. The long line gear category includes bottom, midwater, and surface long line types.  \r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Long Lines", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
         }
     }, 
     {
@@ -2444,6 +2491,53 @@
         }
     }, 
     {
+        "pk": 71, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=71&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [
+                73
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "This layer represents the amount of fishing effort that has occurred in each ten minute square using non scallop and non surfclam dredges.  Fishing effort is based on the average annual number of reported trips between 2000 and 2009 from the Vessel Trip Report database.  Mussel dredges, urchin dredges, and other unclassified dredges are included in this category. This dataset does not include values for surfclam / ocean quahog dredges or scallop dredges. Data for surfclam / ocean quahog effort is being compiled and will be added when completed.\r\n<div>\r\nColor breaks are based on log transformed and then normalized fishing effort values. The numbers in the legend are actual data values that correspond to an appropriate standard deviation threshold. Intervals are based on the following breakdowns:</div>\r\n<ul>\r\n<li>Way below average:  less than -2 standard deviations</li>\r\n<li>Below average:  between -1 and -2 standard deviations</li>\r\n<li>Average:  between -1 and 1 standard deviations</li>\r\n<li>Above average:  between 1 and 2 standard deviations</li>\r\n<li>Way above average:  greater than 2 standard deviations</li>\r\n</ul>", 
+            "name": "Other Dredges", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
         "pk": 31, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2491,53 +2585,6 @@
         }
     }, 
     {
-        "pk": 71, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=71&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [
-                73
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Other Dredges", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
-        }
-    }, 
-    {
         "pk": 9, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2580,53 +2627,6 @@
             "arcgis_layers": "", 
             "legend_title": "Sediment Grain Size (mm)", 
             "sublayers": []
-        }
-    }, 
-    {
-        "pk": 11, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                4
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-70.53969717621676&location%5By%5D=39.964012676298715&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "attribute_fields": [
-                68
-            ], 
-            "learn_more": "", 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "National Marine Fisheries Service", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "All Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                15
-            ]
         }
     }, 
     {
