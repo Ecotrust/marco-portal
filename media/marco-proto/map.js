@@ -10,7 +10,8 @@ app.init = function () {
     esriOcean = new OpenLayers.Layer.XYZ("ESRI Ocean", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/${z}/${y}/${x}", {
         sphericalMercator: true,
         isBaseLayer: true,
-        numZoomLevels: 13
+        numZoomLevels: 13,
+        attribution: "Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri"
     });
     
     openStreetMap = new OpenLayers.Layer.OSM("Open Street Map", "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png", {
@@ -73,9 +74,9 @@ app.init = function () {
     map.addControl(new OpenLayers.Control.ZoomBox( {
         //enables zooming to a given extent on the map by holding down shift key while dragging the mouse
     }));
-    map.addControl(new OpenLayers.Control.MousePosition({
-        element: document.getElementById('pos')
-    }));
+    // map.addControl(new OpenLayers.Control.MousePosition({
+    //     element: document.getElementById('pos')
+    // }));
 
     map.events.register("moveend", null, function () {
         // update the url when we move

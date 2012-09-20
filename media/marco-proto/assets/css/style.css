@@ -73,6 +73,10 @@ body {
   z-index: 1000;
 }
 
+#map .olControlAttribution {
+  bottom: 0px;
+}
+
 #data-accordion, #legend-accordion {
   height: 100%;
   overflow-y: auto;
