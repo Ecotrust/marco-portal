@@ -278,9 +278,13 @@
                                   <div id="map"></div>
                                   <div id="right-btns">
                                     <div class="btn-group btn-group-vertical">
-                                        <a id="zoom-box" class="btn"  data-bind="click: zoomBox">
-                                            <span>Box Zoom</span>
+                                        <a id="zoom-box" class="btn btn-zoom"  data-bind="click: zoomBoxIn">
+                                            <span>Box Zoom In</span>
                                             <i class="icon-zoom-in icon-large"></i>
+                                        </a>
+                                        <a id="zoom-box" class="btn btn-zoom"  data-bind="click: zoomBoxOut">
+                                            <span>Box Zoom Out</span>
+                                            <i class="icon-zoom-out icon-large"></i>
                                         </a>
                                         <!--Hide/Show Layers Button-->
                                         <a class="btn" data-bind="click: toggleLayers">

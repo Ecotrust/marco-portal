@@ -77,6 +77,14 @@ app.init = function () {
     });
 
     map.addControl(map.zoomBox);
+
+    // only allow onetime zooming with box
+    map.events.register("zoomend", null, function () {
+        if (map.zoomBox.active) {
+            app.viewModel.deactivateZoomBox();
+        }        
+    });
+
     // map.addControl(new OpenLayers.Control.MousePosition({
     //     element: document.getElementById('pos')
     // }));
@@ -86,6 +94,7 @@ app.init = function () {
         app.updateUrl();
     });
     
+
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
         var layer = e.feature.layer.layerModel;

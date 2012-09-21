@@ -573,20 +573,39 @@ function viewModel() {
     };
 
     // zoom with box
-    self.zoomBox = function  (self, event) {
+    self.zoomBoxIn = function (self, event) {
         var $button = $(event.target).closest('.btn');
+        self.zoomBox($button)
+    };
+    self.zoomBoxOut = function (self, event) {
+        var $button = $(event.target).closest('.btn');
+        self.zoomBox($button, true)
+    };
+    self.zoomBox = function  ($button, out) {
+        // out is a boolean to specify whether we are zooming in or out
+        // true: zoom out
+        // not present/false zoom in
         if ($button.hasClass('active')) {
-            app.map.zoomBox.deactivate();
-            $button.removeClass('active');
-            $('#map').removeClass('zoomBox');
+            self.deactivateZoomBox();
         } else {
             $button.addClass('active');
+            $button.siblings('.btn-zoom').removeClass('active');
+            if (out) {
+                app.map.zoomBox.out = true;
+            } else {
+                app.map.zoomBox.out = false;
+            }
             app.map.zoomBox.activate();            
             $('#map').addClass('zoomBox');
 
         }
-    }
-
+    };
+    self.deactivateZoomBox = function ($button) {
+        var $button = $button || $('.btn-zoom');
+        app.map.zoomBox.deactivate();
+        $button.removeClass('active');
+        $('#map').removeClass('zoomBox');
+    };
 
     // is the legend panel visible?
     self.showLegend = ko.observable(false);

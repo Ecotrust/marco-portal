@@ -741,8 +741,16 @@ img + h3 {
 #right-btns i.icon-zoom-in {
 	margin-left: -50px;
 }*/
-#right-btns i {
+#right-btns i.icon-zoom-in {
 	margin-left: -63px;
+}
+
+#right-btns i.icon-layers {
+	margin-left: -57px;
+}
+
+#right-btns i.icon-zoom-out {
+	margin-left: -75px;
 }
 
 #basemaps:hover a,
@@ -752,7 +760,7 @@ img + h3 {
 }
 #right-btns:hover a,
 #right-btns.open {
-    width: 100px;
+    width: 120px;
 	
 }
 #basemaps:hover span ,
@@ -774,16 +782,16 @@ img + h3 {
 	margin-left: 0px;
 }
 #basemaps a:hover,
-#right-btns a:hover {
+#right-btns a:hover,
+#right-btns a.active {
     background: #130085; /* fallback for IE */
     background: rgba(0, 60, 136, 0.7);
     filter: alpha(opacity=100);
 }
 
-#right-btns a.active {
-	border: 1px solid red;
+#map.zoomBox .olHandlerBoxZoomBox {
+	border: 2px solid #2d8998;
 }
-
 .SimpleLayerSwitcher {
   position:absolute;
   top:12px;
