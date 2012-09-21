@@ -737,9 +737,12 @@ img + h3 {
 	visibility: hidden;
 	/*width: 0px;*/
 }
-
-#right-btns i {
+/*
+#right-btns i.icon-zoom-in {
 	margin-left: -50px;
+}*/
+#right-btns i {
+	margin-left: -63px;
 }
 
 #basemaps:hover a,
@@ -749,7 +752,7 @@ img + h3 {
 }
 #right-btns:hover a,
 #right-btns.open {
-    width: 120px;
+    width: 100px;
 	
 }
 #basemaps:hover span ,
