@@ -286,11 +286,7 @@
                                             <span>Box Zoom Out</span>
                                             <i class="icon-zoom-out icon-large"></i>
                                         </a>
-                                        <!--Hide/Show Layers Button-->
-                                        <a class="btn" data-bind="click: toggleLayers">
-                                            <span data-bind="text: showLayersText()"></span>
-                                            <i class="icon-layers icon-large" data-bind="css: {'icon-indent-right': showLayers(), 'icon-indent-left': ! showLayers()}"></i> 
-                                        </a>
+                                      
                                     </div>
                                   </div>
 
@@ -307,7 +303,11 @@
                                           <span data-bind="text: legendButtonText()"></span>
                                           <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
                                       </a>
-                                      
+                                      <!--Hide/Show Layers Button-->
+                                      <a class="btn" data-bind="click: toggleLayers">
+                                          <i class="icon-layers icon-large" data-bind="css: {'icon-indent-right': showLayers(), 'icon-indent-left': ! showLayers()}"></i> 
+                                          <span data-bind="text: showLayersText()"></span>
+                                      </a>
                                       <!--Bookmarks Button-->
                                       <a id="bookmarks-button" class="btn" data-bind="click: showBookmarks">
                                           <i class="icon-map-marker icon-large"></i>
