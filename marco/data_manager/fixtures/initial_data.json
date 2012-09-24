@@ -2677,6 +2677,49 @@
         }
     }, 
     {
+        "pk": 60, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "# of species above avg.", 
+            "bookmark": "/visualize/#location%5Bx%5D=-68.65380232259686&location%5By%5D=40.199378535702834&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=60&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Areas where sightings of loggerhead, leatherback, or green sea turtles are common.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png", 
+            "data_status": "Available", 
+            "vector_fill": null, 
+            "data_source": "U.S Navy (compiled from various sources); analysis by The Nature Conservancy", 
+            "data_notes": "Sightings data obtained from the U.S. Navy were taken from NMFS-NEFSC Aerial Surveys, NMFS-NEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Sightings were spatially and temporally oriented towards marine mammals, with opportunistic recording of sea turtles. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE). SPUE was calculated for each species, for each season, and for each ten minute square.", 
+            "name": "Sea Turtles", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Sea Turtles", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 28, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2721,49 +2764,6 @@
             "sublayers": [
                 21
             ]
-        }
-    }, 
-    {
-        "pk": 60, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "# of species above avg.", 
-            "bookmark": "/visualize/#location%5Bx%5D=-68.65380232259686&location%5By%5D=40.199378535702834&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=60&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Areas where sightings of loggerhead, leatherback, or green sea turtles are common.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png", 
-            "data_status": "Available", 
-            "vector_fill": null, 
-            "data_source": "New Jersey Department of Environmental Protection", 
-            "data_notes": "This data layer was created for use in the New Jersey Ocean/Wind Power Ecological Baseline Study. The overall goal of the study is to provide spatial and temporal data on species utilizing New Jersey offshore waters to assist in determining potential areas for wind power development. ", 
-            "name": "Sea Turtles", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Sea Turtles", 
-            "sublayers": []
         }
     }, 
     {

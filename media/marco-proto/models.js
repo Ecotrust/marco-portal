@@ -212,7 +212,7 @@ function layerModel(options, parent) {
     self.showSublayers = ko.observable(false);
 
     // bound to click handler for layer switching
-    self.toggleActive = function() {
+    self.toggleActive = function(self, event) {
         var layer = this;
 
         //handle possible dropdown/sublayer behavior
@@ -291,7 +291,7 @@ function layerModel(options, parent) {
             app.viewModel.showDescription(true);
         }
     };
-
+    
     self.showTooltip = function(layer, event) {
         var layerActual;
         $('#layer-popover').hide();
@@ -485,7 +485,7 @@ function viewModel() {
         if (self.showLayers()) return "Hide Layers";
         else return "Show Layers";
     });
-
+    
     // toggle layer panel visibility
     self.toggleLayers = function() {
         self.showLayers(!self.showLayers());
