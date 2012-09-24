@@ -101,6 +101,11 @@ i.check {
   top: 8px;
 }
 
+/* the following overrides a 20px margin that was behaving intermittently in conjunction with the hovering of icon-check-empty */
+.accordion {
+  margin-bottom: 0px !important;
+}
+
 .btn-layer.not-active:hover i.icon-check-empty {
   display: block !important;
   opacity: .4;

@@ -1477,49 +1477,6 @@
         }
     }, 
     {
-        "pk": 59, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "ArcRest", 
-            "fact_sheet": "", 
-            "themes": [
-                5
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-75.64907199740345&location%5By%5D=37.86135171984251&location%5Bzoom%5D=8&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "Department of Defense, U.S. Navy", 
-            "data_notes": "Area with naval or military presence. Caution should be used if navigating near these areas.", 
-            "name": "Danger Zones & Restricted Areas", 
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export", 
-            "arcgis_layers": "19", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 43, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1564,6 +1521,49 @@
             "sublayers": [
                 21
             ]
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "ArcRest", 
+            "fact_sheet": "", 
+            "themes": [
+                5
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-75.64907199740345&location%5By%5D=37.86135171984251&location%5Bzoom%5D=8&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "Department of Defense, U.S. Navy", 
+            "data_notes": "Area with naval or military presence. Caution should be used if navigating near these areas.", 
+            "name": "Danger Zones & Restricted Areas", 
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export", 
+            "arcgis_layers": "24", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {
