@@ -54,24 +54,6 @@
         }
     }, 
     {
-        "pk": 4, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "factsheet_link": "", 
-            "feature_link": "", 
-            "header_attrib": null, 
-            "display_name": "Fishing", 
-            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. ", 
-            "overview": "<p>\r\nThe Mid-Atlantic\u2019s highly productive estuaries and diverse coastal and ocean habitats support substantial commercial and recreational fisheries that provide income, food, and enjoyment for millions of people. Fishing is an essential component of the region\u2019s rich cultural heritage and directly connects coastal community residents and tourists to the ocean, whether through fresh seafood or the thrill of a day spent fishing on the ocean. \r\n<p>\r\nIn 2010, the Mid-Atlantic\u2019s commercial harvest was more than 800 million pounds, with Atlantic menhaden making up over 60% of the catch. Other key commercial species include sea scallop, surf clam, ocean quahog clam, summer flounder, lobster, squid, and striped bass. The total 2010 ex-vessel value (initial price paid to fishermen) was well over $500 million and sea scallops were the most valuable of the species. But the value of commercial fisheries extends beyond ex-vessel price. In 2009, the region\u2019s fisheries supported an estimated 116,000 jobs in industries ranging from equipment supply to seafood processing and retail.\r\n\r\nRoughly 2.6 million recreational anglers participated in 17 million saltwater fishing trips in 2009, mainly targeting striped bass, summer flounder, black seabass, tautog, scup, bluefish, drum, weakfish, spot, and croaker. They spent an estimated $3.5 billion on the fishing-related vehicles, tackle, boats, equipment, and second homes. That same year, the recreational fishing industry in the Mid-Atlantic supported approximately 25,000 jobs.\r\n<p>\r\nThe MARCO Ocean Data Portal includes commercial fishing effort for mobile bottom-contacting gear (e.g., trawls and dredges), pelagic gear (e.g., mid-water trawls, gill nets, and hook and line), and all gear combined. The map layers were created using Fishing Vessel Trip Report data provided by the National Marine Fisheries Service. These data are presented at a coarse spatial scale (i.e., 70-100 square nautical miles) and illustrate the regional importance of commercial fishing areas, but are less than ideal for coastal and marine planning. Further, MARCO does not include specific recreational fishing information, although for-hire sector fishing effort is included in the commercial pelagic gear map layer. \r\n<p>\r\nMARCO is working to improve the commercial fishing data represented here and to add recreational fishing information. Planned improvements include creation of higher resolution commercial fishing activity maps and development of products--in conjunction with stakeholders--that best represent commercial fishing interests and values, while protecting confidential information. Efforts to create maps of recreational use areas are being developed with assistance from anglers in all Mid-Atlantic states, and a new online recreational boater survey to enhance these efforts is being designed for implementation in late 2012. \r\n<p>\r\nThe Mid-Atlantic Fisheries Management Council and the Atlantic States Marine Fisheries Commission have management authority for most recreational and commercial ocean fisheries. Some migratory species (e.g., sharks and tunas), are managed separately by the National Marine Fisheries Service. MARCO will coordinate and consult with all of these institutions as appropriate to acquire and develop fishing data suitable for public display. ", 
-            "feature_image": "", 
-            "thumbnail": "", 
-            "factsheet_thumb": "/media/marco/img/themes/sheets/fishing.jpg", 
-            "feature_excerpt": "", 
-            "header_image": "/portal/assets/fishing_boats1.jpg", 
-            "name": "fishing"
-        }
-    }, 
-    {
         "pk": 3, 
         "model": "data_manager.theme", 
         "fields": {
@@ -87,6 +69,24 @@
             "feature_excerpt": "", 
             "header_image": "/portal/assets/energy1.jpg", 
             "name": "energy"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "factsheet_link": "", 
+            "feature_link": "", 
+            "header_attrib": "", 
+            "display_name": "Fishing", 
+            "description": "The Portal will be collecting and integrating data on the productive habitats and rich species diversity that are essential for maintaining healthy fishing areas. ", 
+            "overview": "<p>\r\nThe Mid-Atlantic\u2019s highly productive estuaries and diverse coastal and ocean habitats support substantial commercial and recreational fisheries that provide income, food, and enjoyment for millions of people. Fishing is an essential component of the region\u2019s rich cultural heritage and directly connects coastal community residents and tourists to the ocean, whether through fresh seafood or the thrill of a day spent fishing on the ocean. \r\n<p>\r\nIn 2010, the Mid-Atlantic\u2019s commercial harvest was more than 800 million pounds, with Atlantic menhaden making up over 60% of the catch. Other key commercial species include sea scallop, surf clam, ocean quahog clam, summer flounder, lobster, squid, and striped bass. The total 2010 ex-vessel value (initial price paid to fishermen) was well over $500 million and sea scallops were the most valuable of the species. But the value of commercial fisheries extends beyond ex-vessel price. In 2009, the region\u2019s fisheries supported an estimated 125,000 jobs in industries ranging from equipment supply to seafood processing and retail. Roughly 2.6 million recreational anglers participated in 17 million saltwater fishing trips in 2009, mainly targeting striped bass, summer flounder, black seabass, tautog, scup, bluefish, drum, weakfish, spot, and croaker. They spent an estimated $3.5 billion on the fishing-related vehicles, tackle, boats, equipment, and second homes. That same year, the recreational fishing industry in the Mid-Atlantic supported approximately 42,000 jobs.\r\n<p>\r\nThe MARCO Ocean Data Portal includes commercial fishing effort for mobile bottom-contacting gear (e.g., trawls and dredges), pelagic gear (e.g., mid-water trawls, gill nets, and hook and line), and all gear combined. The map layers were created using Fishing Vessel Trip Report data provided by the National Marine Fisheries Service. These data are presented at a coarse spatial scale (i.e., 70-100 square nautical miles) and illustrate the regional importance of commercial fishing areas, but are less than ideal for coastal and marine planning. Further, MARCO does not include specific recreational fishing information, although for-hire sector fishing effort is included in the commercial pelagic gear map layer. \r\n<p>\r\nMARCO is working to improve the commercial fishing data represented here and to add recreational fishing information. Planned improvements include creation of higher resolution commercial fishing activity maps and development of products--in conjunction with stakeholders--that best represent commercial fishing interests and values, while protecting confidential information. Efforts to create maps of recreational use areas are being developed with assistance from anglers in all Mid-Atlantic states, and a new online recreational boater survey to enhance these efforts is being designed for implementation in late 2012. \r\n<p>\r\nThe Mid-Atlantic Fisheries Management Council and the Atlantic States Marine Fisheries Commission have management authority for most recreational and commercial ocean fisheries. Some migratory species (e.g., sharks and tunas), are managed separately by the National Marine Fisheries Service. MARCO will coordinate and consult with all of these institutions as appropriate to acquire and develop fishing data suitable for public display. ", 
+            "feature_image": "", 
+            "thumbnail": "", 
+            "factsheet_thumb": "/media/marco/img/themes/sheets/fishing.jpg", 
+            "feature_excerpt": "", 
+            "header_image": "/portal/assets/fishing_boats1.jpg", 
+            "name": "fishing"
         }
     }, 
     {
