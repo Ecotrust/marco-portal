@@ -54,24 +54,6 @@
         }
     }, 
     {
-        "pk": 3, 
-        "model": "data_manager.theme", 
-        "fields": {
-            "factsheet_link": "", 
-            "feature_link": "", 
-            "header_attrib": null, 
-            "display_name": "Renewable Energy", 
-            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n", 
-            "overview": "<p>\r\nOffshore wind has the potential to be a key domestic renewable energy source, especially for the major cities and large population centers along the East coast of the U.S. The Mid-Atlantic\u2019s offshore wind resources have the potential to produce close to 200 gigawatts of energy every year, enough to power 40 million U.S. homes. Someday, the region\u2019s ocean wave energy could generate an additional 50,000 gigawatts of power and contribute even more significantly to the U.S. energy supply. These renewable energy sources could help meet growing electricity demands in the region and help to reduce carbon emissions. \r\n<p>\r\nProduction of electricity from renewable sources, such as wind and ocean waves, may be less damaging to the environment than production through burning of fossil fuels, like oil, natural gas, and coal because renewable energy facilities produce much lower emissions of greenhouse gasses and other harmful pollutants such as arsenic, lead and mercury.  Additionally, renewable energy production may be more cost effective and efficient than traditional methods because once infrastructure is built, the amount of energy produced is quite stable for the remainder of that system\u2019s lifespan. While the inputs (wind and waves) may fluctuate daily or seasonally they should remain consistent over longer time scales, allowing producers and consumers to rely on steady energy levels.  \r\n<p>\r\nThe Department of the Interior has identified Wind Planning Areas (WPA)--locations that may be suitable for wind development--along the Atlantic Ocean\u2019s outer shelf. Data are being collected inside and outside these high priority areas so regulators and stakeholders can make informed and responsible judgments when issuing permits and making siting and investment decisions. Annual average wind speeds are an indication of the potential available energy at a location. Here, wind speeds modeled from limited observations by the National Renewable Energy Laboratory (NREL) and AWS Truepower are expressed at a height of 90 meters above the ocean surface where wind turbine hubs are likely to be located. \r\n<p>\r\nNot all the wind and waves that exist offshore are available for harvest however, and all potential energy estimates should be constrained to account for various environmental and socioeconomic factors that may exist in an area. Some of these constraints include potential overlapping use conflicts with shipping lanes, marine mammal, bird, and bat migration pathways, and traditional areas for fishing and recreational use. Infrastructure may need to be built far enough from shore to address concerns over impacts to scenic views, but close enough that the cost of bringing the electricity to shore is not prohibitive. All of these issues should be accounted for in regional ocean planning and the MARCO Ocean Data Portal provides key information that will help to raise awareness of the potential for renewable energy and support decision maker\u2019s efforts to manage resources effectively and minimize conflicts.\r\n", 
-            "feature_image": "", 
-            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
-            "factsheet_thumb": "/media/marco/img/themes/sheets/MARCO_factsheet_renewable_energy-0.jpg", 
-            "feature_excerpt": "", 
-            "header_image": "/portal/assets/energy1.jpg", 
-            "name": "energy"
-        }
-    }, 
-    {
         "pk": 4, 
         "model": "data_manager.theme", 
         "fields": {
@@ -87,6 +69,24 @@
             "feature_excerpt": "", 
             "header_image": "/portal/assets/fishing_boats1.jpg", 
             "name": "fishing"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "data_manager.theme", 
+        "fields": {
+            "factsheet_link": "", 
+            "feature_link": "", 
+            "header_attrib": "", 
+            "display_name": "Renewable Energy", 
+            "description": "Offshore wind in the Mid-Atlantic holds more than 60,000 Megawatts of potential energy \u2014 that\u2019s 10% of total U.S. offshore potential. This huge resource could help meet the growing electricity demand in the region, while reducing carbon emissions. \r\n", 
+            "overview": "<p>\r\nOffshore wind has the potential to be a key domestic renewable energy source, especially for the major cities and large population centers along the East coast of the U.S. The Mid-Atlantic\u2019s offshore wind resources have the potential to produce close to 200 gigawatts of energy every year, enough to power 40 million U.S. homes. Someday, the region\u2019s ocean wave energy could generate an additional 8  gigawatts of power and contribute even more significantly to the U.S. energy supply. These renewable energy sources could help meet growing electricity demands in the region and help to reduce carbon emissions.\r\n<p>\r\nProduction of electricity from renewable sources, such as wind and ocean waves, may be less damaging to the environment than production through burning of fossil fuels, like oil, natural gas, and coal because renewable energy facilities produce much lower emissions of greenhouse gasses and other harmful pollutants such as arsenic, lead and mercury.  Additionally, renewable energy production may be more cost effective and efficient than traditional methods because once infrastructure is built, the amount of energy produced is quite stable for the remainder of that system\u2019s lifespan. While the inputs (wind and waves) may fluctuate daily or seasonally they should remain consistent over longer time scales, allowing producers and consumers to rely on steady energy levels.  \r\n<p>\r\nThe Department of the Interior has identified Wind Planning Areas (WPA)--locations that may be suitable for wind development--along the Atlantic Ocean\u2019s outer shelf. Data are being collected inside and outside these high priority areas so regulators and stakeholders can make informed and responsible judgments when issuing permits and making siting and investment decisions. Annual average wind speeds are an indication of the potential available energy at a location. Here, wind speeds modeled from limited observations by the National Renewable Energy Laboratory (NREL) and AWS Truepower are expressed at a height of 90 meters above the ocean surface where wind turbine hubs are likely to be located. \r\n<p>\r\nNot all the wind and waves that exist offshore are available for harvest however, and all potential energy estimates should be constrained to account for various environmental and socioeconomic factors that may exist in an area. Some of these constraints include potential overlapping use conflicts with shipping lanes, marine mammal, bird, and bat migration pathways, and traditional areas for fishing and recreational use. Infrastructure may need to be built far enough from shore to address concerns over impacts to scenic views, but close enough that the cost of bringing the electricity to shore is not prohibitive. All of these issues should be accounted for in regional ocean planning and the MARCO Ocean Data Portal provides key information that will help to raise awareness of the potential for renewable energy and support decision maker\u2019s efforts to manage resources effectively and minimize conflicts.", 
+            "feature_image": "", 
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg", 
+            "factsheet_thumb": "/media/marco/img/themes/sheets/MARCO_factsheet_renewable_energy-0.jpg", 
+            "feature_excerpt": "", 
+            "header_image": "/portal/assets/energy1.jpg", 
+            "name": "energy"
         }
     }, 
     {
