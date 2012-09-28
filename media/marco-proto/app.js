@@ -204,9 +204,10 @@ $('#feedback-form').on('submit', function (event) {
    });
        feedback.url = window.location.href;
    $.post('/feedback/send', feedback, function () {
-      $form.closest('.modal').modal('hide')
+      $form.closest('.modal').modal('hide');
+      //$('#thankyou-modal').modal('show');
    });
-   $form.closest('.modal').modal('hide')
+   $form.closest('.modal').modal('hide');
 });
 
 
