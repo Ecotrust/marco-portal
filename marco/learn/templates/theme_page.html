@@ -72,13 +72,14 @@
 	</div>
 	<div class="row-fluid">
 		{% if theme.factsheet_thumb  %}
-		<div class="span12 frame">
+		<div class="span12 factsheet" >
 			{% if theme.factsheet_link  %}
 				<a href="{{ theme.factsheet_link }}"><img src="{{ theme.factsheet_thumb }}"/>
-					<p>download pdf...</p>
-				</a>
+				<p class="pull-right">
+					<a href="{{ theme.factsheet_link }}">download pdf...</a>
+				</p>
 			{% else %}
-				<img src="{{ theme.factsheet_thumb }}"/></a>
+				<img src="{{ theme.factsheet_thumb }}"/>
 			{% endif %}
 		</div>
 		{% endif %}
