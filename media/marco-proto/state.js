@@ -110,4 +110,5 @@ app.updateUrl = function () {
         app.restoreState = state;
     }
     window.location.hash = $.param(state);
+    app.viewModel.currentURL(window.location.pathname + window.location.hash);
 };

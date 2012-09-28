@@ -10,5 +10,5 @@ def get_domain(port=8010):
         domain = 'http://' + domain
     except:
         domain = '..'   
-    print domain
+    #print domain
     return domain
