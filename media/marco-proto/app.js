@@ -196,13 +196,13 @@ $('#bookmark-form').on('submit', function(event) {
 });
 
 $('#feedback-form').on('submit', function (event) {
-  var feedback = {}, $form = $(this);
-  event.preventDefault();
+   var feedback = {}, $form = $(this);
+   event.preventDefault();
    $(this).find('input, textarea').each(function (i, input) {
       var $input = $(input);
       feedback[$input.attr('name')] = $input.val();
    });
-       feedback.url = window.location.href;
+   feedback.url = window.location.href;
    $.post('/feedback/send', feedback, function () {
       $form.closest('.modal').modal('hide')
    });

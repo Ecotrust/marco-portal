@@ -5,7 +5,7 @@ import settings
 
 def send_feedback(request):
     subject = settings.FEEDBACK_SUBJECT
-    feedback_address = settings.FEEDBACK_RECIPIENT #, info@midatlanticocean.org'
+    feedback_address = settings.FEEDBACK_RECIPIENT #, info@portal.midatlanticocean.org'
     name = request.POST.get('name', '')
     from_email = "%s <%s>" % (name, request.POST.get('email', ''),)
     reply_email = "feedback <%s>" % settings.FEEDBACK_RECIPIENT[0]
