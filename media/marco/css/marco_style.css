@@ -262,6 +262,16 @@ input + i.icon-remove-sign {
 	margin-bottom: 0px;
 }
 
+.sidebar .factsheet img {
+	border: 1px solid #ccc;
+}
+
+.sidebar .factsheet a {
+	margin-top: 5px;
+	margin-right: 5px;
+	color: #2d8998;
+}
+
 #fullscreen {
 	background-color: white;
 }
