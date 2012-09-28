@@ -100,6 +100,19 @@ i.check {
   right: 12px;
   top: 8px;
 }
+
+/* the following overrides a 20px margin that was behaving intermittently in conjunction with the hovering of icon-check-empty */
+.accordion {
+  margin-bottom: 0px !important;
+}
+
+.btn-layer.not-active:hover i.icon-check-empty {
+  display: block !important;
+  opacity: .4;
+  /* for IE */
+  filter: alpha(opacity=40);
+}
+
 #data-accordion .dropdown-menu {
   right: 26px;
   max-height: 100px;
@@ -236,7 +249,7 @@ a.disabled-link:hover {
 }
 
 #description-overlay > div{
-  padding: 10px;
+  padding: 10px 10px 20px 10px;
   color: white;
 }
 

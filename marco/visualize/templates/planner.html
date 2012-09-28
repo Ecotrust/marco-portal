@@ -110,7 +110,7 @@
                           <div class="pull-right">
                             <ul class="nav">
                               <li class=""><a a href="/portal">Return to Portal</a></li>
-                              <li class=""><a href="">Help</a></li>
+                              <!--<li class=""><a href="">Help</a></li>-->
                             </ul>
                           </div><!--/.nav-collapse -->
                       </div>
@@ -180,7 +180,7 @@
                                                                                 <i class="icon-info-sign icon-large"></i>
                                                                             </a>
 
-                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active() }, click: toggleActive">
+                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                                 <div style="font-weight: normal">
                                                                                     <span data-bind="visible: ! activeSublayer()">
                                                                                         <span data-bind="text: name"></span>
@@ -189,9 +189,8 @@
                                                                                         <span data-bind="text: activeSublayer().name"></span>
                                                                                     </span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
-                                                                                    <i class="check icon-large icon-check" data-bind="css: { 'icon-check': active() && visible(), 
-                                                                                                                                     'icon-check-empty': active() && ! visible()}">
-                                                                                    </i>
+                                                                                    <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                                                    <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
                                                                                 </div>
                                                                             </a>
 
@@ -276,6 +275,7 @@
                             <div class="row-fluid">
                                 <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
                                   <div id="map"></div>
+                                  <!--
                                   <div id="right-btns">
                                     <div class="btn-group btn-group-vertical">
                                         <a id="zoom-box" class="btn btn-zoom"  data-bind="click: zoomBoxIn">
@@ -289,6 +289,7 @@
                                       
                                     </div>
                                   </div>
+                                  -->
 
                                   <div id="basemaps"> <!-- Basemaps, Legends, Layers, Bookmarks, and FullScreen buttons -->
                                     <div class="btn-group btn-group-vertical">
