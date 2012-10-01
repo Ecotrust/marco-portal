@@ -210,7 +210,6 @@ $('#feedback-form').on('submit', function (event) {
    $form.closest('.modal').modal('hide');
 });
 
-
 $(document).mousedown(function(e) {
   //removing bookmark popover from view
   if (e.target.id === "bookmarks-button") {} else if (!$(e.target).closest("#bookmark-popover").length) {

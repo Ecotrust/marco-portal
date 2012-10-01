@@ -5,7 +5,7 @@ from django.views.generic.simple import redirect_to
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^accounts/update_profile/', include('user_profile_mod.urls')),
+    (r'^marco_profile/', include('user_profile_mod.urls')),
     (r'^sdc/', include('scenarios.urls')),
     (r'^drawing/', include('drawing.urls')),
     (r'^data_manager/', include('data_manager.urls')),

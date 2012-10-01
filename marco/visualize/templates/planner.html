@@ -127,7 +127,10 @@
                         <p><a href="#registration-modal" data-dismiss="modal" data-toggle="modal">Not yet Registered?</a></p>
                     </div>
                     <div>
-                        <p><a href="">Forgot your username or password?</a></p>
+                        <p><a href="#forgot-username-modal" data-dismiss="modal" data-toggle="modal">Forgot your username?</a></p>
+                    </div>
+                    <div>
+                        <p><a href="#forgot-password-modal" data-dismiss="modal" data-toggle="modal">Forgot your password?</a></p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -137,14 +140,51 @@
           </form>
         </div>
         
+        <!-- forgot username -->
+        <div id="forgot-username-modal" class="modal hide fade">
+            <form class="form-horizontal" id="forgot-username-form" action="/marco_profile/forgot_username/" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Forgotten Username</h3>
+                </div>
+                <div class="modal-body"> 
+                    <div> 
+                        <p>Enter your email address below and we will send you an email containing your username.</p>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="email">Email</label>
+                      <div class="controls">
+                        <input class="input-xlarge" type="text" name="email" placeholder="Email" required>
+                      </div>
+                    </div>
+                    <div>
+                        <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+          </form>
+        </div>        
+        
         <!-- password reset modal -->
-        <div id="password-modal" class="modal hide fade">
-            <form class="form-horizontal" id="password-form" action="/accounts/update_profile/change_password/" method="post">{% csrf_token %}
+        <div id="forgot-password-modal" class="modal hide fade">
+            <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
+            <form class="form-horizontal" id="forgot-password-form" action="/marco_profile/password/reset/" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3>Password Change</h3>
                 </div>
                 <div class="modal-body"> 
+                    <div class="control-group">
+                      <label class="control-label" for="email">Email</label>
+                      <div class="controls">
+                        <input class="input-xlarge" type="text" name="email" placeholder="Email" required>
+                      </div>
+                    </div>
+                    
+                    <!--
                     <div class="control-group">
                       <label class="control-label" for="password1">Old Password</label>
                       <div class="controls">
@@ -166,6 +206,7 @@
                     <div>
                         <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
                     </div>
+                    -->
                 </div>
                 <div class="modal-footer">
                     <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
@@ -230,7 +271,7 @@
                 
         <!-- profile modal -->
         <div id="profile-modal" class="modal hide fade">
-            <form class="form-horizontal" id="profile-form" action="/accounts/update_profile/{{user.username}}/" method="post">{% csrf_token %}
+            <form class="form-horizontal" id="profile-form" action="/marco_profile/update_profile/{{user.username}}/" method="post">{% csrf_token %}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3>{{user.username}}</h3>
