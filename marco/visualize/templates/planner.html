@@ -816,6 +816,7 @@
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};
+            {% if user.is_authenticated %} app.is_authenticated = true; {% endif %}
         </script>
         <script src="{{media}}/marco-proto/fixtures.js"></script>
         <script src="{{media}}/marco-proto/map.js"></script>
