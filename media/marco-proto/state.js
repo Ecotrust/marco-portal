@@ -89,7 +89,8 @@ app.loadState = function(state) {
     } else {
         app.viewModel.showLegend(false);
     }
-
+    console.log('and the state is...');
+    console.dir(state);
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
     app.map.setCenter(new OpenLayers.LonLat(state.location.x, state.location.y).transform(

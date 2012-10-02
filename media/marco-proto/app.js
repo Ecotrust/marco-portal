@@ -1,5 +1,8 @@
 // save the initial load hash so we can use it if set
 app.hash = window.location.hash;
+app.loginHash = app.hash === '#login';
+if (app.loginHash) console.log('document ready with #login hash');
+
 app.onResize = function(percent) {
 
   var height = $(window).height() * (percent || 0.825);
@@ -49,7 +52,8 @@ app.viewModel.loadLayersFromServer().done(function() {
   // app.map.updateSize();
   app.onResize();
   // if we have the hash state go ahead and load it now
-  if (app.hash) {
+  if (app.hash && !app.loginHash) {
+    console.log('app.viewModel.locaLayersFromServer without #login hash');
     app.loadStateFromHash(app.hash);
   }
   // autocomplete for filter
@@ -72,11 +76,11 @@ $(document).ready(function() {
   app.onResize();
   $(window).resize(app.onResize);
 
-
   // if we have the hash state go ahead and load it now
-  if (app.hash) {
+  if (app.hash && !app.loginHash) {
+    console.log('document ready without #login hash');
     app.loadStateFromHash(app.hash);
-  }
+  } 
   // handle coordinate indicator on pointer
   $('#map').bind('mouseleave mouseenter', function(e) {
     $('#pos').toggle();
@@ -179,6 +183,12 @@ $(document).ready(function() {
   $('#opacity-popover').mouseleave( function() {
     app.viewModel.hideOpacity();
   });  
+  
+  if (app.loginHash) {
+    $('#sign-in-button').click();
+    app.loginHash = false;
+    console.log('activating sign in button');
+  }
   
 });
 

@@ -183,6 +183,9 @@
                         <input class="input-xlarge" type="text" name="email" placeholder="Email" required>
                       </div>
                     </div>
+                    <div>
+                        <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+                    </div>
                     
                     <!--
                     <div class="control-group">
@@ -338,7 +341,7 @@
                               </div>
                               {% else %}
                               <div class="btn-group user-btn">
-                                <a  class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a></li>
+                                <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a></li>
                               </div>
                               {% endif %}
                           </div><!--/.nav-collapse -->

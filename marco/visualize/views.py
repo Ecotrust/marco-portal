@@ -5,5 +5,5 @@ import settings
 from data_manager.models import *
 
 def show_planner(request, template='planner.html'):
-    context = {'media': settings.MEDIA_URL}
+    context = {'media': settings.MEDIA_URL, 'login': 'true'}
     return render_to_response(template, RequestContext(request, context)) 

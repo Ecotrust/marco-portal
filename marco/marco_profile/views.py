@@ -95,6 +95,7 @@ def update_profile(request, username, use_openid=False, redirect_field_name=REDI
     else:
         return HttpResponse("Received unexpected " + request.method + " request.", status=400)
 
+'''
 @login_required
 def password_change(request, username,
         set_password_form=SetPasswordForm, 
@@ -160,4 +161,4 @@ def password_change(request, username,
             pass
     else:
         return HttpResponse("Received unexpected " + request.method + " request.", status=400)
-    
+'''
