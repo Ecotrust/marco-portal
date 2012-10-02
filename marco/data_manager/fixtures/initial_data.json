@@ -271,6 +271,49 @@
         }
     }, 
     {
+        "pk": 74, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_SLA(3).aspx", 
+            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-SLA.aspx", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands.  In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "The Submerged Lands Act (SLA) boundary line (also known as State Seaward Boundary or Fed State Boundary) defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "of Ocean Energy Management, Mapping and Boundary Branch", 
+            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM. Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.", 
+            "name": "Submerged Lands Act Boundary", 
+            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/8", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 12, 
         "model": "data_manager.layer", 
         "fields": {
@@ -365,6 +408,49 @@
         }
     }, 
     {
+        "pk": 75, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_8G(3).aspx", 
+            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-8G.aspx", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "The revenue sharing boundary provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "The revenue sharing boundary was established under Section 8(g) of the Outer Continental Shelf Lands Act.  It provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch", 
+            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM. Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.", 
+            "name": "Limit of OCSLA '8(g)' zone", 
+            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/7", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 22, 
         "model": "data_manager.layer", 
         "fields": {
@@ -413,50 +499,89 @@
         }
     }, 
     {
-        "pk": 11, 
+        "pk": 76, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "placeholder", 
             "fact_sheet": "", 
             "themes": [
-                4
+                1
             ], 
             "compress_display": false, 
             "map_tiles": "", 
             "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-70.53969717621676&location%5By%5D=39.964012676298715&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "bookmark": "", 
             "vector_graphic": "", 
-            "kml": "", 
-            "source": "http://www.nefsc.noaa.gov/ ", 
+            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
+            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
             "lookup_table": [], 
             "utfurl": "", 
             "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
+            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
             "opacity": 0.5, 
             "vector_color": "", 
             "attribute_event": "click", 
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
-            "attribute_fields": [
-                68
-            ], 
+            "description": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines.", 
+            "attribute_fields": [], 
             "learn_more": "", 
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "data_overview": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines. The coastal State exercises sovereignty over its territorial sea, the air space above it, and the seabed and subsoil beneath it.", 
             "attribute_title": "", 
-            "is_sublayer": true, 
+            "is_sublayer": false, 
             "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png", 
+            "legend": "", 
             "data_status": "", 
             "vector_fill": null, 
-            "data_source": "National Marine Fisheries Service", 
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
-            "name": "All Gear Types", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png", 
+            "data_source": "NOAA Office of Coast Survey", 
+            "data_notes": "This layer is being consumed directly as a web mapping service from NOAA Office of Coast Survey.  These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts. ", 
+            "name": "12NM Territorial Sea", 
+            "url": "http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer/1", 
             "arcgis_layers": "", 
             "legend_title": "", 
-            "sublayers": [
-                15
-            ]
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
+            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
+            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Each coastal State may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Each coastal State may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines. In its contiguous zone, a coastal State may exercise the control necessary to prevent the infringement of its customs, fiscal, immigration or sanitary laws and regulations within its territory or territorial sea, and punish infringement of those laws and regulations committed within its territory or territorial sea.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA Office of Coast Survey", 
+            "data_notes": "This layer is being consumed directly as a web mapping service from NOAA Office of Coast Survey. These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.", 
+            "name": "24NM Territorial Sea", 
+            "url": "http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer/2", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
         }
     }, 
     {
@@ -550,159 +675,6 @@
             "data_notes": "These data were created to be used for planning purposes only. They are designed to give a broad overview of vulnerability to sea level rise at a National scale.", 
             "name": "Sea Level Rise Vulnerability", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 30, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "# of overlapping EFH", 
-            "bookmark": "/visualize/#location%5Bx%5D=-69.15917341634723&location%5By%5D=40.3251325310323&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=30&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
-            "source": "http://www.habitat.noaa.gov/protection/efh/habitatmapper.html ", 
-            "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/efh_overlay/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/EFH_Overlays.zip", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/efh_overlay.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Areas necessary for spawning, breeding, feeding, or growth to maturity of key fish species, including: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
-            "attribute_fields": [
-                38, 
-                40, 
-                41, 
-                42, 
-                43, 
-                44, 
-                45, 
-                46, 
-                47, 
-                48, 
-                49, 
-                50, 
-                51, 
-                52, 
-                53, 
-                54, 
-                55, 
-                56, 
-                39
-            ], 
-            "learn_more": "", 
-            "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
-            "data_status": "Available", 
-            "vector_fill": null, 
-            "data_source": "The Nature Conservancy, NOAA", 
-            "data_notes": "This layer was developed for general visualization and informational purposes only and does not necessarily represent the most important habitats. Additionally, only certain species were included in this analysis; included species are those under Federal management for which spatial data exists. There are numerous managed species for which spatial data does not yet exist. See below for a list of the species considered.", 
-            "name": "Essential Fish Habitat", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Essential Fish Habitats", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 42, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [
-                86
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "Vector", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-71.92910156249857&location%5By%5D=38.0173126452813&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocs_admin_boundaries.htm", 
-            "opacity": 0.5, 
-            "vector_color": "#333333", 
-            "attribute_event": "click", 
-            "description": "Administrative boundaries extending from the Submerged Lands Act boundary seaward to the US Outer Continental Shelf.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS.  They are not meant to depict areas offshore as pertaining to or controlled by any particular state.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "Bureau of Ocean Energy Management", 
-            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM.", 
-            "name": "Federal OCS Administrative Boundaries", 
-            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
@@ -846,6 +818,49 @@
         }
     }, 
     {
+        "pk": 78, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
+            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
+            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA Office of Coast Survey", 
+            "data_notes": "This layer is being consumed directly as a web mapping service from NOAA Office of Coast Survey. These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.", 
+            "name": "200NM EEZ and Maritime Boundaries", 
+            "url": "http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer/3", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 57, 
         "model": "data_manager.layer", 
         "fields": {
@@ -889,97 +904,46 @@
         }
     }, 
     {
-        "pk": 36, 
+        "pk": 18, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "Vector", 
             "fact_sheet": "", 
             "themes": [
-                2
+                1
             ], 
             "compress_display": false, 
             "map_tiles": "", 
             "legend_subtitle": "", 
-            "bookmark": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-71.92910156249857&location%5By%5D=38.0173126452813&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
             "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Fall.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ", 
             "lookup_table": [], 
             "utfurl": "", 
             "thumbnail": "", 
             "data_download": "", 
-            "metadata": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocs_admin_boundaries.htm", 
             "opacity": 0.5, 
-            "vector_color": "", 
+            "vector_color": "#333333", 
             "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [
-                80
-            ], 
+            "description": "Administrative boundaries extending from the Submerged Lands Act boundary seaward to the US Outer Continental Shelf.", 
+            "attribute_fields": [], 
             "learn_more": "", 
-            "data_overview": "", 
+            "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS.  They are not meant to depict areas offshore as pertaining to or controlled by any particular state.", 
             "attribute_title": "", 
-            "is_sublayer": true, 
+            "is_sublayer": false, 
             "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "legend": "", 
             "data_status": "", 
             "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Humpback Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesFall/${z}/${x}/${y}.png", 
+            "data_source": "Bureau of Ocean Energy Management", 
+            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM.", 
+            "name": "Federal OCS Administrative Boundaries", 
+            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json", 
             "arcgis_layers": "", 
             "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 38, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Summer.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [
-                82
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Humpback Whales (Summer)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSummer/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
+            "sublayers": []
         }
     }, 
     {
@@ -1262,6 +1226,49 @@
         }
     }, 
     {
+        "pk": 79, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Oil_and_Gas_Energy_Program/Mapping_and_Data/Administrative_Boundaries/Atl_admn.zip", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Federal OCS Administrative Boundaries", 
+            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/export", 
+            "arcgis_layers": "14", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 43, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1397,6 +1404,257 @@
         }
     }, 
     {
+        "pk": 11, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                4
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-70.53969717621676&location%5By%5D=39.964012676298715&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=11&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "http://www.nefsc.noaa.gov/ ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.", 
+            "attribute_fields": [
+                68
+            ], 
+            "learn_more": "", 
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "National Marine Fisheries Service", 
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
+            "name": "All Gear Types", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                15
+            ]
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "# of overlapping EFH", 
+            "bookmark": "/visualize/#location%5Bx%5D=-69.15917341634723&location%5By%5D=40.3251325310323&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=30&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz", 
+            "source": "http://www.habitat.noaa.gov/protection/efh/habitatmapper.html ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/efh_overlay/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/EFH_Overlays.zip", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/efh_overlay.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Areas necessary for spawning, breeding, feeding, or growth to maturity of key fish species, including: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
+            "attribute_fields": [
+                38, 
+                40, 
+                41, 
+                42, 
+                43, 
+                44, 
+                45, 
+                46, 
+                47, 
+                48, 
+                49, 
+                50, 
+                51, 
+                52, 
+                53, 
+                54, 
+                55, 
+                56, 
+                39
+            ], 
+            "learn_more": "", 
+            "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png", 
+            "data_status": "Available", 
+            "vector_fill": null, 
+            "data_source": "The Nature Conservancy, NOAA", 
+            "data_notes": "This layer was developed for general visualization and informational purposes only and does not necessarily represent the most important habitats. Additionally, only certain species were included in this analysis; included species are those under Federal management for which spatial data exists. There are numerous managed species for which spatial data does not yet exist. See below for a list of the species considered.", 
+            "name": "Essential Fish Habitat", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Essential Fish Habitats", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                86
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Right Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Fall.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                80
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Humpback Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesFall/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Summer.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                82
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Humpback Whales (Summer)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSummer/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
         "pk": 8, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1489,49 +1747,6 @@
         }
     }, 
     {
-        "pk": 10, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                8
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.07195411101019&location%5By%5D=39.3847817828661&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
-            "source": "http://www.marinecadastre.gov/AIS/default.aspx ", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS_Trackline_Density.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
-            "data_status": "Available", 
-            "vector_fill": null, 
-            "data_source": "The Nature Conservancy", 
-            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.", 
-            "name": "AIS Shipping Data", 
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "Commercial Shipping Density", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 64, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1579,6 +1794,143 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                8
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.07195411101019&location%5By%5D=39.3847817828661&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml", 
+            "source": "http://www.marinecadastre.gov/AIS/default.aspx ", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS_Trackline_Density.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png", 
+            "data_status": "Available", 
+            "vector_fill": null, 
+            "data_source": "The Nature Conservancy", 
+            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.", 
+            "name": "AIS Shipping Data", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "Commercial Shipping Density", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                81
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Humpback Whales (Spring)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                2
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Fall.kmz", 
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
+            "attribute_fields": [
+                84
+            ], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Right Whales (Fall)", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                21
+            ]
         }
     }, 
     {
@@ -1725,53 +2077,6 @@
         }
     }, 
     {
-        "pk": 37, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [
-                81
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Humpback Whales (Spring)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
         "pk": 61, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1809,53 +2114,6 @@
             "data_notes": "", 
             "name": "Toothed Mammals (All Seasons)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": [
-                21
-            ]
-        }
-    }, 
-    {
-        "pk": 40, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                2
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Fall.kmz", 
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.", 
-            "attribute_fields": [
-                84
-            ], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": true, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Right Whales (Fall)", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesFall/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": [
@@ -1909,6 +2167,52 @@
         }
     }, 
     {
+        "pk": 6, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-73.18319085091335&location%5By%5D=38.706459372319244&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
+            "vector_graphic": "", 
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
+            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ", 
+            "lookup_table": [], 
+            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MMC_OCSBlocks.html", 
+            "opacity": 0.8, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Outer Continental Shelf lease blocks.", 
+            "attribute_fields": [
+                58, 
+                59
+            ], 
+            "learn_more": "", 
+            "data_overview": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the OPDs or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.", 
+            "attribute_title": "ID: ", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "Bureau of Ocean Energy Management", 
+            "data_notes": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the Official Protraction Diagrams or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.", 
+            "name": "OCS Lease Blocks", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 47, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1956,52 +2260,6 @@
         }
     }, 
     {
-        "pk": 6, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-73.18319085091335&location%5By%5D=38.706459372319244&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false", 
-            "vector_graphic": "", 
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz", 
-            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ", 
-            "lookup_table": [], 
-            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json", 
-            "thumbnail": "", 
-            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MMC_OCSBlocks.html", 
-            "opacity": 0.8, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Outer Continental Shelf lease blocks.", 
-            "attribute_fields": [
-                58, 
-                59
-            ], 
-            "learn_more": "", 
-            "data_overview": "Outer Continental Shelf (OCS) lease blocks and administrative boundaries are generated to define small geographic areas that identify federal land ownership and support offshore resource management.", 
-            "attribute_title": "ID: ", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "Bureau of Ocean Energy Management via Multipurpose Marine Cadastre", 
-            "data_notes": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the Official Protraction Diagrams or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.", 
-            "name": "OCS Lease Blocks", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 13, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2039,6 +2297,49 @@
             "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.", 
             "name": "Pelagic Gear Types", 
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "/visualize/#location%5Bx%5D=-69.3363281249999&location%5By%5D=38.44879838898276&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=19&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocean_councils.html", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA Coastal Services Center via MarineCadastre.gov", 
+            "data_notes": "Unofficial boundary for Regional Ocean Councils which are state and federal partnerships with the goal of engaging in regional protection and balanced use of ocean and coastal resources.", 
+            "name": "Regional Ocean Partnerships", 
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
@@ -2084,49 +2385,6 @@
             "data_notes": "These data were compiled from various state sources. In Delaware, Digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).", 
             "name": "Artificial Reefs", 
             "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
-        "pk": 19, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "XYZ", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "/visualize/#location%5Bx%5D=-69.3363281249999&location%5By%5D=38.44879838898276&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=19&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "", 
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocean_councils.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "NOAA Coastal Services Center via MarineCadastre.gov", 
-            "data_notes": "Unofficial boundary for Regional Ocean Councils which are state and federal partnerships with the goal of engaging in regional protection and balanced use of ocean and coastal resources.", 
-            "name": "Regional Ocean Partnerships", 
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
@@ -2267,10 +2525,10 @@
             "sublayers": [
                 12, 
                 73, 
-                11, 
                 72, 
                 70, 
                 14, 
+                11, 
                 68, 
                 69, 
                 71
@@ -3057,24 +3315,24 @@
                 39, 
                 27, 
                 48, 
-                49, 
+                46, 
                 51, 
                 44, 
                 45, 
                 37, 
+                43, 
                 35, 
                 50, 
                 61, 
-                41, 
-                40, 
-                28, 
-                46, 
-                42, 
                 36, 
+                40, 
+                47, 
                 38, 
                 29, 
-                43, 
-                47
+                42, 
+                28, 
+                49, 
+                41
             ]
         }
     }, 
@@ -4449,24 +4707,6 @@
         }
     }, 
     {
-        "pk": 16, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal", 
-            "archived": false, 
-            "name": "Coldwater coral predictive distribution model", 
-            "expected_date": "Early 2013", 
-            "notes": "NCCOS and NEFSC working on a predictive model for the Mid-Atlantic.", 
-            "themes": [
-                2
-            ], 
-            "source": "Multiple sources ", 
-            "contact": "NOAA Biogeography Branch  ", 
-            "contact_email": "", 
-            "description": "A high resolution, predictive model of coral habitat and distribution."
-        }
-    }, 
-    {
         "pk": 6, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -4518,6 +4758,24 @@
             "contact": "Rutgers CRSSA ", 
             "contact_email": "", 
             "description": "Examples include nuclear power plant locations and their discharge pipe locations, potential/existing hydrokinetic sites, etc."
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal", 
+            "archived": false, 
+            "name": "Coldwater coral predictive distribution model", 
+            "expected_date": "Early 2013", 
+            "notes": "NCCOS and NEFSC working on a predictive model for the Mid-Atlantic.", 
+            "themes": [
+                2
+            ], 
+            "source": "Multiple sources ", 
+            "contact": "NOAA Biogeography Branch  ", 
+            "contact_email": "", 
+            "description": "A high resolution, predictive model of coral habitat and distribution."
         }
     }, 
     {
@@ -4719,24 +4977,6 @@
         }
     }, 
     {
-        "pk": 7, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal", 
-            "archived": false, 
-            "name": "Vessel Trip Report (VTR) data", 
-            "expected_date": "June 2012", 
-            "notes": "VTR data are available upon request and can be posted on the portal at appropriate scale and with appropriate attribution. Data will need to be depicted in consideration of confidentiality requirements.", 
-            "themes": [
-                4
-            ], 
-            "source": "NOAA/NMFS", 
-            "contact": "The Nature Conservancy ", 
-            "contact_email": "", 
-            "description": "Data on catch and value for many commercially important species aggregated to ten minute squares."
-        }
-    }, 
-    {
         "pk": 3, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -4752,6 +4992,24 @@
             "contact": "The Nature Conservancy ", 
             "contact_email": "", 
             "description": "Important areas for marine mammals were determined from point sightings data. Data were assessed, combined and converted from seasonal species sightings into ten minute squares and effort-corrected. The resulting sightings per unit effort (SPUE) grids were used to identify important areas within the region for each species.\r\n"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal", 
+            "archived": false, 
+            "name": "Vessel Trip Report (VTR) data", 
+            "expected_date": "June 2012", 
+            "notes": "VTR data are available upon request and can be posted on the portal at appropriate scale and with appropriate attribution. Data will need to be depicted in consideration of confidentiality requirements.", 
+            "themes": [
+                4
+            ], 
+            "source": "NOAA/NMFS", 
+            "contact": "The Nature Conservancy ", 
+            "contact_email": "", 
+            "description": "Data on catch and value for many commercially important species aggregated to ten minute squares."
         }
     }
 ]
