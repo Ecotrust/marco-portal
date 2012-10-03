@@ -321,7 +321,10 @@ app.addLayerToMap = function(layer) {
                     layers: "show:"+layer.arcgislayers,
                     srs: 'EPSG:3857',
                     transparent: true
-                }
+                }//,
+                //{
+                //    isBaseLayer: false
+                //}
             );
             app.map.addLayer(layer.layer);  
         } else if (layer.type === 'WMS') {
