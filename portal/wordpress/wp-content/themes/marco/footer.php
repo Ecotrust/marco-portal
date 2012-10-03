@@ -4,7 +4,7 @@
 			  <div class="row">
 			    <div class="span9 social">
 			      <h5>Contact Us</h5>
-			      	info@portal.midatlanticocean.org<br/>
+			      	info@midatlanticocean.org<br/>
 			      	732-263-5392
 			      </p>
 			    </div>
