@@ -14,7 +14,14 @@ img {
 	margin: 20px;
 }
 </style>
-<img src="{{ BASE_PATH }}/assets/img/screenshots/landing-page.jpg"/> <img src="{{ BASE_PATH }}/assets/img/screenshots/data-viewer.jpg"/>
+<div class="row">
+	<div class="span6">
+		<img src="{{ BASE_PATH }}/assets/img/screenshots/landing-page.jpg"/>
+	</div>
+	<div class="span6">
+		<img src="{{ BASE_PATH }}/assets/img/screenshots/data-viewer.jpg"/>
+	</div>
+</div>
 The MARCO Portal
 ----------------
 The landing page and accompanying website detail the priority objectives for the ocean planning process that is taking place in the Mid-Atlantic region.  The website and the data viewer are integrally linked with a consistent look and feel as well as various links that allow the user to navigate back and forth between the static pages of the website and the interactive planning tool. 
