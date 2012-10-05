@@ -1,6 +1,9 @@
 #feedback-tab {
 	left: 0px;
 }
+#help-tab {
+	right: 0px;
+}
 
 #data-accordion i.icon-info-sign {
 	margin-left: 0px;

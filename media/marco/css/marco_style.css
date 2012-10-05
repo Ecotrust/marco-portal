@@ -190,6 +190,39 @@ a:focus {
 #feedback-tab a:hover {
 	border: 1px solid #ccc;
 }
+#pageGuideToggle {
+    top: -999px !important;
+}
+#help-tab {
+	position: fixed;
+    z-index: 950;
+	right: -10px;
+	top: 80%;
+	padding: 2px 8px;
+	border: 2px solid #ccc;
+	background: #2d8998; /* fallback for IE - IE6 requires background shorthand*/
+	background: rgba(45,137,152, 1);
+
+	color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-top-left-radius: 10px;
+	-moz-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-transform: rotate(-90deg);	
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+#help-tab a {
+	border: 1px solid white;
+
+}
+#help-tab a:hover {
+	border: 1px solid #ccc;
+}
 
 input + i.icon-remove-sign {
 	margin-left: -25px;
