@@ -118,6 +118,7 @@ var SimpleLayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
     },
 
     onInputClick: function(e) {
+        console.log("inside onInputClick");
         if (this.layer.isBaseLayer) {
             this.layer.map.setBaseLayer(this.layer);
         } else {
