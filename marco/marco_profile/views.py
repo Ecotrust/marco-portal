@@ -97,6 +97,16 @@ def update_profile(request, username, use_openid=False, redirect_field_name=REDI
 
 '''
 @login_required
+def password_change(request):
+    # call openid.views password_change?
+    #password_change(request, 
+    #    template_name='authopenid/password_change_form.html', 
+    #    set_password_form=SetPasswordForm, 
+    #    change_password_form=PasswordChangeForm, post_change_redirect=None, 
+    #    extra_context=None):
+'''        
+'''
+@login_required
 def password_change(request, username,
         set_password_form=SetPasswordForm, 
         change_password_form=PasswordChangeForm, 

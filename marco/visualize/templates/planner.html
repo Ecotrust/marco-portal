@@ -168,7 +168,7 @@
           </form>
         </div>        
         
-        <!-- password reset modal -->
+        <!-- forgotten password modal -->
         <div id="forgot-password-modal" class="modal hide fade">
             <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
             <form class="form-horizontal" id="forgot-password-form" action="/marco_profile/password/reset/" method="post">
@@ -185,31 +185,7 @@
                     </div>
                     <div>
                         <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
-                    </div>
-                    
-                    <!--
-                    <div class="control-group">
-                      <label class="control-label" for="password1">Old Password</label>
-                      <div class="controls">
-                          <input class="input-xlarge" type="password" name="old_password" required>
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" for="password1">New Password</label>
-                      <div class="controls">
-                          <input class="input-xlarge" type="password" name="new_password1" required>
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" for="password2">New Password (re-enter)</label>
-                      <div class="controls">
-                          <input class="input-xlarge" type="password" name="new_password2" required>
-                      </div>
-                    </div>
-                    <div>
-                        <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
-                    </div>
-                    -->
+                    </div>                    
                 </div>
                 <div class="modal-footer">
                     <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
@@ -268,6 +244,44 @@
                         <input type="button" class="btn" data-dismiss="modal" value="Close">
                         <input type="submit" class="btn btn-primary" value="Register">
                     </div>
+                </div>
+          </form>
+        </div>
+        
+        <!-- reset password modal -->
+        <div id="reset-password-modal" class="modal hide fade">
+            <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
+            <form class="form-horizontal" id="forgot-password-form" action="/marco_profile/password/" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Password Change</h3>
+                </div>
+                <div class="modal-body"> 
+                    <div class="control-group">
+                      <label class="control-label" for="password1">Old Password</label>
+                      <div class="controls">
+                          <input class="input-xlarge" type="password" name="id_old_password" required>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="password1">New Password</label>
+                      <div class="controls">
+                          <input class="input-xlarge" type="password" name="id_new_password1" required>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="password2">Confirm Password</label>
+                      <div class="controls">
+                          <input class="input-xlarge" type="password" name="id_new_password2" required>
+                      </div>
+                    </div>
+                    <div>
+                        <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
+                    <input type="submit" class="btn btn-primary" value="Update Password">
                 </div>
           </form>
         </div>
@@ -334,7 +348,7 @@
                                 </a>
                                 <ul id="username" class="dropdown-menu">
                                     <li><a href="#profile-modal" data-toggle="modal"><i class="icon-pencil"></i> Profile</a></li>
-                                    <li><a href="#password-modal" data-toggle="modal"><i class="icon-lock"></i> Password</a></li>
+                                    <li><a href="#reset-password-modal" data-toggle="modal"><i class="icon-lock"></i> Password</a></li>
                                     <li class="divider"></li>
                                     <li><a href="{% url 'user_signout' %}"><i class="i"></i>Log Out</a></li>
                                 </ul>

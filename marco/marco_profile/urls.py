@@ -19,7 +19,7 @@ urlpatterns = patterns('',
         auth_views.password_reset_complete, { 'template_name': 'registration/marco_password_reset_complete.html' }),
     url(r'^password/reset/done/$',
         auth_views.password_reset_done, {'template_name': 'registration/marco_password_reset_done.html'}),
-    #url(r'^password/$', password_change, name='auth_password_change'),
+    #url(r'^password/$', password_change),
 
     url(r'^forgot_username/$', send_username),
     url(r'^update_profile/(?P<username>\w+)/$', update_profile, {'use_openid': use_openid}),
