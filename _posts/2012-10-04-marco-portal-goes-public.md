@@ -14,7 +14,7 @@ img {
 	margin: 20px;
 }
 </style>
-<div class="row">
+<div class="row-fluid">
 	<div class="span6">
 		<img src="{{ BASE_PATH }}/assets/img/screenshots/landing-page.jpg"/>
 	</div>
