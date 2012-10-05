@@ -3,7 +3,7 @@ layout: post
 title: "MARCO Portal Goes Public"
 description: ""
 category: 
-tags: []
+tags: ['portal', 'planner']
 author: Scott Fletcher
 ---
 {% include JB/setup %}
