@@ -2,7 +2,7 @@
 layout: post
 title: "MARCO Portal Goes Public"
 description: ""
-category: 
+category: Announcements
 tags: ['portal', 'planner']
 author: Scott Fletcher
 ---
