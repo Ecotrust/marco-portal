@@ -91,7 +91,7 @@ app.loadState = function(state) {
     if (state.z) {
         return app.loadCompressedState(state);
     }
-    console.log('loading from loadState');
+    
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
     var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
