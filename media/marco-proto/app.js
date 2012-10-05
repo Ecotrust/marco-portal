@@ -215,6 +215,9 @@ $(document).mousedown(function(e) {
   if (e.target.id === "bookmarks-button") {} else if (!$(e.target).closest("#bookmark-popover").length) {
     $('#bookmark-popover').hide();
   }
+  
+  //ensure layer switcher is removed
+  $('#SimpleLayerSwitcher_30').hide();
 
   //removing layer tooltip popover from view
   var layer_pvr_event = $(e.target).closest(".layer-popover").length;
