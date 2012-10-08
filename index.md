@@ -11,7 +11,7 @@ tagline:
 	</div>
 	<div class="span12">
 		<p class='big-text'>Providing insight into the development of the Mid-Atlantic Ocean Data Portal</p>
-    <p><a class='btn' href="http://portal.midatlanticocean.org">Visit the Real MARCO Portal</a></p>
+    <p><a class='btn' href="http://portal.midatlanticocean.org">Go to the MARCO Portal</a></p>
 	</div>
 </div>
 
