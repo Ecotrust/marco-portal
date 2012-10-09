@@ -7,7 +7,7 @@ tags: ['portal', 'planner']
 author: Scott Fletcher
 ---
 {% include JB/setup %}
-We have recently made public a [new website](http://portal.midatlanticocean.org) and [data viewer](http://portal.midatlanticocean.org/visualize) for the Mid-Atlantic Regional Council for the Ocean (MARCO) Portal.  
+Version 2 of the [Mid-Atlantic Ocean Data Portal](http://portal.midatlanticocean.org) recently went public providing new information and tools for comprehensive regional ocean planning by the Mid-Atlantic Regional Council for the Ocean (MARCO).  
 <style>
 img {
 	border: 1px solid #ccc;

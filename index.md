@@ -46,8 +46,9 @@ tagline:
     <h2>Portal Project Timeline</h2>
   </div>
   <div class="span3">
-  	<h3>Release 2 - August 2012</h3>
-  	<p>Launch of the revamped portal website. Preliminary data catalog and mapping tool with sector-specific parameters and spatial filters.  Additional datasets with stakeholder vetting.</p>
+  	<h3>Release 2 - September 2012</h3>
+  	<p><i>Complete!</i></p>
+    <p>Launch of the revamped portal website. Preliminary data catalog and mapping tool with sector-specific parameters and spatial filters.  Additional datasets with stakeholder vetting.</p>
   </div>	
   <div class="span3">
   	<h3>Release 3 - Late Fall 2012</h3>
