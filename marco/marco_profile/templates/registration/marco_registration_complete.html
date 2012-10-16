@@ -1,0 +1,13 @@
+{% extends "explore_base.html" %}
+{% block main %}
+{% load appname %}
+
+<h4>Thanks for registering with {% appname %}</h4>
+
+<div style="min-height: 400px">
+    <p>You will receive an email shortly with instructions on how to activate your account.</p>
+    <p>If you don't receive an email, please contact us at {% help_email %}.
+    <p><a type="button" href="/visualize/" class="btn">Return to Planner</a>
+</div>
+
+{% endblock %}

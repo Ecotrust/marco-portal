@@ -1,0 +1,55 @@
+{% extends "explore_base.html" %}
+{% block main %}
+
+<h3>The username you requested is already in use.</h3>
+
+<form class="form-horizontal" id="registration-form" action="/marco_profile/signup/" method="post">{% csrf_token %}
+    
+    <div class="modal-body">        
+        <div class="control-group">
+          <label class="control-label" for="first-name">First Name</label>
+          <div class="controls">
+            <input class="input-xlarge" type="text" name="first_name" placeholder="First Name" required>
+          </div>
+        </div>       
+        <div class="control-group">
+          <label class="control-label" for="last-name">Last Name</label>
+          <div class="controls">
+            <input class="input-xlarge" type="text" name="last_name" placeholder="Last Name" required>
+          </div>
+        </div>       
+        <div class="control-group">
+          <p style="background:#D5CECE">Please try a different username.</p>
+          <label class="control-label" for="username">Username</label>
+          <div class="controls">
+            <input class="input-xlarge" type="text" name="username" placeholder="username" required>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="email">Email Address</label>
+          <div class="controls">
+            <input class="input-xlarge" type="email" name="email" placeholder="Email Address" required>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="password1">Password</label>
+          <div class="controls">
+              <input class="input-xlarge" type="password" name="password1" required>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="password2">Password (re-enter)</label>
+          <div class="controls">
+              <input class="input-xlarge" type="password" name="password2" required>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="pull-right">
+            <input type="button" class="btn" data-dismiss="modal" value="Close">
+            <input type="submit" class="btn btn-primary" value="Register">
+        </div>
+    </div>
+</form>
+
+{% endblock %}

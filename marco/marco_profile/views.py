@@ -15,21 +15,20 @@ def send_username(request, use_openid=False, redirect_field_name=REDIRECT_FIELD_
         #check for user account
         user_email = [request.POST.get('email', '')]
         try:
-            user = User.objects.get(email=user_email[0])
+            user = User.objects.filter(email=user_email[0])[0]
             username = user.username
         except:
             username = None
         if username:
             message = "Hello,"
-            message += "\nYour username for the MARCO Planner is:  %s" %username
-            message += "\nIf you have forgotten your password too, click <a href='www.google.com'>here</a>."
-            message += "\n\n-MARCO Portal technical staff"
+            message += "\n\nYour username for the MARCO Planner is:  %s" %username
+            message += "\n\n-MARCO Portal Technical Team"
         else:
             message = "Hello,"
-            message += "\nWe did not find a username associated with this email address." 
+            message += "\n\nWe did not find a username associated with this email address." 
             message += "\nYou may want to try another email address, or register for an account with this email address."
             message += "\n\Feel free to reply to this email if this does not resolve your problem and you would like further assistance."
-            message += "\n\n-MARCO Portal technical staff"
+            message += "\n\n-MARCO Portal Technical Team"
 
         #send notification of profile change to user
         if user_email and reply_email:
@@ -105,7 +104,7 @@ def password_change(request):
     #    change_password_form=PasswordChangeForm, post_change_redirect=None, 
     #    extra_context=None):
 '''        
-'''
+
 @login_required
 def password_change(request, username,
         set_password_form=SetPasswordForm, 
@@ -125,10 +124,7 @@ def password_change(request, username,
     :post_change_redirect: url used to redirect user after password change.
     It take the register_form as param.
     """
-    
-    import pdb
-    pdb.set_trace()
-    
+        
     if request.user.username != username:
         return HttpResponse("You cannot access another user's profile.", status=401)
     else:
@@ -152,7 +148,7 @@ def password_change(request, username,
         user_email = user.email
         reply_email = "MARCO Portal Team<%s>" % settings.FEEDBACK_RECIPIENT[0]
         message = "Your MARCO Portal password was just changed."
-        message += "\nIf this was in error, please contact us immediately so that we can rectify the situation."
+        message += "\nIf you did not make this change, please contact us immediately."
         message += "\n\nThank you."
         message += "\n\n-MARCO Portal technical staff"
         
@@ -171,4 +167,3 @@ def password_change(request, username,
             pass
     else:
         return HttpResponse("Received unexpected " + request.method + " request.", status=400)
-'''
