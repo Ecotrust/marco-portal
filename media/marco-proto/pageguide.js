@@ -4,12 +4,6 @@ var guide = {
   title: 'Take a quick tour of all the possibilities',
   steps: [
     {
-      target: '.navbar img',
-      content: $('#help-text-navbar-img').html(),
-      direction: 'right',
-      arrow: {offsetX: -70, offsetY: 0}
-    },
-    {
       target: '#dataTab',
       content: $('#help-text-dataTab').html(),
       direction: 'top',
@@ -26,12 +20,45 @@ var guide = {
       content: $('#help-text-form-search').html(),
       direction: 'right',
       arrow: {offsetX: -50, offsetY: 0}
+    },
+    {
+      target: '.olControlZoom',
+      content: $('#help-text-olControlZoom').html(),
+      direction: 'right',
+      arrow: {offsetX: 0, offsetY: 0}
+    },
+    {
+      target: '#basemaps',
+      content: $('#help-text-basemaps').html(),
+      direction: 'left',
+      arrow: {offsetX: -80, offsetY: 30}
     }
   ]
 }
+var guideOverrides = {
+  events: {
+    open: function () {
+      //alert("The guide has begun!");
+      
+    },
+    close: function () {
+      //alert("The guide has ended!");
+      
+    }
+  },
+  step: {
+    events: {
+      select: function() {
+        
+        //alert("Step " + ($(this).data('idx') + 1) + " has been selected.");
+      }
+    }
+  }
+}
+
 $(function() {
   // Load the default guide!  
-  $.pageguide(guide);
+  $.pageguide(guide, guideOverrides);
   
   $('#help-tab').on('click', function() {
     if ( $.pageguide('isOpen') ) {

@@ -221,7 +221,7 @@ a:focus {
 
 }
 #help-tab a:hover {
-	border: 1px solid #ccc;
+	/*border: 1px solid #ccc;*/
 }
 
 input + i.icon-remove-sign {

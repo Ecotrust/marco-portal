@@ -368,8 +368,8 @@
   top: 0;
 }
 #pageGuideWrapper .pageguide-guide li:hover {
-  /*background-color: rgba(241, 2, 130, 0.95);*/
-  background-color: rgba(60, 110, 160, 0.65);
+  background-color: rgba(241, 2, 130, 0.95);
+  /*background-color: rgba(60, 110, 160, 0.65);*/
 }
 #pageGuideWrapper .pageguide-guide li:hover.pageguide-bottom:after {
   border-bottom: 6px solid rgba(241, 2, 130, 0.95);
@@ -381,8 +381,8 @@
 }
 #pageGuideWrapper .pageguide-guide li.pageguide-active {
   opacity: 1;
-  /*background-color: rgba(241, 2, 130, 0.95);*/
-  background-color: rgba(60, 110, 160, 0.65);
+  background-color: rgba(241, 2, 130, 0.95);
+  /*background-color: rgba(60, 110, 160, 0.65);*/
   -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15) 0 5px 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15) 0 5px 0 rgba(0, 0, 0, 0.5);
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15) 0 5px 0 rgba(0, 0, 0, 0.5);
@@ -441,8 +441,8 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  /*background-color: rgba(241, 2, 130, 0.95);*/
-  background-color: rgba(60, 110, 160, 0.65);
+  background-color: rgba(241, 2, 130, 0.95);
+  /*background-color: rgba(60, 110, 160, 0.65);*/
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
@@ -481,8 +481,8 @@
   color: #fff;
 }
 #pageGuideWrapper #pageGuideMessage .pageguide-close {
-  /*background-color: #f10282;*/
-  background-color: rgba(60, 110, 160, 0.65);
+  background-color: #f10282;
+  /*background-color: rgba(60, 110, 160, 0.65);*/
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
   -o-border-radius: 0 0 3px 3px;
@@ -616,8 +616,8 @@
   height: inherit;
   width: inherit;
   padding: inherit;
-  /*background-color: rgba(241, 2, 130, 0.05);*/
-  background-color: rgba(60, 110, 160, 0.65);
+  background-color: rgba(241, 2, 130, 0.05);
+  /*background-color: rgba(60, 110, 160, 0.65);*/
   z-index: 500;
   pointer-events: none;
   -webkit-box-shadow: 0 0 5px 1px #f10282;
