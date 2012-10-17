@@ -223,12 +223,13 @@
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                                 <div style="font-weight: normal">
-                                                                                    <span data-bind="visible: ! activeSublayer()">
+                                                                                    <!--<span data-bind="visible: ! activeSublayer() || isCheckBoxLayer()">
                                                                                         <span data-bind="text: name"></span>
                                                                                     </span>
-                                                                                    <span data-bind="visible: activeSublayer">
+                                                                                    <span data-bind="visible: activeSublayer && ! isCheckBoxLayer()">
                                                                                         <span data-bind="text: activeSublayer().name"></span>
-                                                                                    </span>
+                                                                                    </span>-->
+                                                                                    <span data-bind="text: name"></span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                                     <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
                                                                                     <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
@@ -236,14 +237,32 @@
                                                                             </a>
 
                                                                             <!-- ko if: subLayers.length > 0 -->
+                                                                            <!-- ko if: !isCheckBoxLayer() -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
                                                                                 <li data-bind="foreach: subLayers">
                                                                                     <a data-bind="click: toggleActive">
                                                                                         <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                        <!--<span style="margin-left: -10px" data-bind="style: {visibility: active() ? 'visible': 'hidden' }">
+                                                                                            <i class="icon-ok-circle"></i>
+                                                                                        </span>-->
                                                                                         <span data-bind="text: name"></span>
                                                                                     </a>
                                                                                 </li>
                                                                             </ul>
+                                                                            <!-- /ko -->
+                                                                            <!-- ko if: isCheckBoxLayer() -->
+                                                                            <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                <li data-bind="foreach: subLayers">
+                                                                                    <a data-bind="click: toggleActive">
+                                                                                        <span style="margin-left: -10px">
+                                                                                            <i class="icon-check" data-bind="style: {display: active() ? 'inline': 'none' }"></i>
+                                                                                            <i style="opacity: .4" class="icon-check-empty" data-bind="style: {display: ! active() ? 'inline': 'none' }"></i>
+                                                                                        </span>
+                                                                                        <span data-bind="text: name"></span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                            <!-- /ko -->
                                                                             <!-- /ko -->
                                                                         </div>
                                                                     </li>  

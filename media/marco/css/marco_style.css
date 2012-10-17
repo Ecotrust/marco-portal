@@ -566,12 +566,13 @@ img + h3 {
   width: 80%;
   text-align: left;
   overflow: hidden;
+  border-left: 0px;
 }
 #data-accordion .btn-group-layer .btn-layer div {
 	width: 96%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	margin-left: -5px;
+	margin-left: -10px;
 }
 
 #active ul {

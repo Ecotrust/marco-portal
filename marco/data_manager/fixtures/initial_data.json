@@ -271,49 +271,6 @@
         }
     }, 
     {
-        "pk": 74, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz", 
-            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_SLA(3).aspx", 
-            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-SLA.aspx", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands.  In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "The Submerged Lands Act (SLA) boundary line (also known as State Seaward Boundary or Fed State Boundary) defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "of Ocean Energy Management, Mapping and Boundary Branch", 
-            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM. Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.", 
-            "name": "Submerged Lands Act Boundary", 
-            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/8", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 12, 
         "model": "data_manager.layer", 
         "fields": {
@@ -357,6 +314,51 @@
             "legend_title": "", 
             "sublayers": [
                 15
+            ]
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_8G(3).aspx", 
+            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-8G.aspx", 
+            "opacity": 0.7, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "The revenue sharing boundary provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "The revenue sharing boundary was established under Section 8(g) of the Outer Continental Shelf Lands Act.  It provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_2_RevenueSharingBoundary/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch", 
+            "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.", 
+            "name": "Limit of OCSLA '8(g)' zone", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_2_RevenueSharingBoundary/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                80
             ]
         }
     }, 
@@ -408,49 +410,6 @@
         }
     }, 
     {
-        "pk": 75, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz", 
-            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_8G(3).aspx", 
-            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-8G.aspx", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "The revenue sharing boundary provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "The revenue sharing boundary was established under Section 8(g) of the Outer Continental Shelf Lands Act.  It provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch", 
-            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM. Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.", 
-            "name": "Limit of OCSLA '8(g)' zone", 
-            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/7", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 22, 
         "model": "data_manager.layer", 
         "fields": {
@@ -499,53 +458,10 @@
         }
     }, 
     {
-        "pk": 76, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
-            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
-            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines.", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines. The coastal State exercises sovereignty over its territorial sea, the air space above it, and the seabed and subsoil beneath it.", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "NOAA Office of Coast Survey", 
-            "data_notes": "This layer is being consumed directly as a web mapping service from NOAA Office of Coast Survey.  These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts. ", 
-            "name": "12NM Territorial Sea", 
-            "url": "http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer/1", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 77, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "placeholder", 
+            "layer_type": "XYZ", 
             "fact_sheet": "", 
             "themes": [
                 1
@@ -562,7 +478,7 @@
             "thumbnail": "", 
             "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
             "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
-            "opacity": 0.5, 
+            "opacity": 0.7, 
             "vector_color": "", 
             "attribute_event": "click", 
             "description": "Each coastal State may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines.", 
@@ -570,18 +486,20 @@
             "learn_more": "", 
             "data_overview": "Each coastal State may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines. In its contiguous zone, a coastal State may exercise the control necessary to prevent the infringement of its customs, fiscal, immigration or sanitary laws and regulations within its territory or territorial sea, and punish infringement of those laws and regulations committed within its territory or territorial sea.", 
             "attribute_title": "", 
-            "is_sublayer": false, 
+            "is_sublayer": true, 
             "lookup_field": "", 
-            "legend": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_4_ContiguousZone/legend.png", 
             "data_status": "", 
             "vector_fill": null, 
             "data_source": "NOAA Office of Coast Survey", 
-            "data_notes": "This layer is being consumed directly as a web mapping service from NOAA Office of Coast Survey. These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.", 
+            "data_notes": "These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.", 
             "name": "24NM Territorial Sea", 
-            "url": "http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer/2", 
-            "arcgis_layers": "", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_4_ContiguousZone/${z}/${x}/${y}.png", 
+            "arcgis_layers": "2", 
             "legend_title": "", 
-            "sublayers": []
+            "sublayers": [
+                80
+            ]
         }
     }, 
     {
@@ -818,49 +736,6 @@
         }
     }, 
     {
-        "pk": 78, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
-            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
-            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "NOAA Office of Coast Survey", 
-            "data_notes": "This layer is being consumed directly as a web mapping service from NOAA Office of Coast Survey. These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.", 
-            "name": "200NM EEZ and Maritime Boundaries", 
-            "url": "http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer/3", 
-            "arcgis_layers": "", 
-            "legend_title": "", 
-            "sublayers": []
-        }
-    }, 
-    {
         "pk": 57, 
         "model": "data_manager.layer", 
         "fields": {
@@ -901,6 +776,51 @@
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
+            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
+            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
+            "opacity": 0.7, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_5_ExclusiveEconomicZone/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA Office of Coast Survey", 
+            "data_notes": "These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.", 
+            "name": "200NM EEZ and Maritime Boundaries", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_5_ExclusiveEconomicZone/${z}/${x}/${y}.png", 
+            "arcgis_layers": "3", 
+            "legend_title": "", 
+            "sublayers": [
+                80
+            ]
         }
     }, 
     {
@@ -1134,6 +1054,49 @@
         }
     }, 
     {
+        "pk": 79, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "placeholder", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Oil_and_Gas_Energy_Program/Mapping_and_Data/Administrative_Boundaries/Atl_admn.zip", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Federal ArceRest OCS Administrative Boundaries", 
+            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/export", 
+            "arcgis_layers": "5", 
+            "legend_title": "", 
+            "sublayers": []
+        }
+    }, 
+    {
         "pk": 17, 
         "model": "data_manager.layer", 
         "fields": {
@@ -1223,49 +1186,6 @@
             "sublayers": [
                 15
             ]
-        }
-    }, 
-    {
-        "pk": 79, 
-        "model": "data_manager.layer", 
-        "fields": {
-            "layer_type": "placeholder", 
-            "fact_sheet": "", 
-            "themes": [
-                1
-            ], 
-            "compress_display": false, 
-            "map_tiles": "", 
-            "legend_subtitle": "", 
-            "bookmark": "", 
-            "vector_graphic": "", 
-            "kml": "", 
-            "source": "", 
-            "lookup_table": [], 
-            "utfurl": "", 
-            "thumbnail": "", 
-            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Oil_and_Gas_Energy_Program/Mapping_and_Data/Administrative_Boundaries/Atl_admn.zip", 
-            "metadata": "", 
-            "opacity": 0.5, 
-            "vector_color": "", 
-            "attribute_event": "click", 
-            "description": "", 
-            "attribute_fields": [], 
-            "learn_more": "", 
-            "data_overview": "", 
-            "attribute_title": "", 
-            "is_sublayer": false, 
-            "lookup_field": "", 
-            "legend": "", 
-            "data_status": "", 
-            "vector_fill": null, 
-            "data_source": "", 
-            "data_notes": "", 
-            "name": "Federal OCS Administrative Boundaries", 
-            "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/export", 
-            "arcgis_layers": "14", 
-            "legend_title": "", 
-            "sublayers": []
         }
     }, 
     {
@@ -2726,6 +2646,51 @@
         }
     }, 
     {
+        "pk": 74, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz", 
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_SLA(3).aspx", 
+            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-SLA.aspx", 
+            "opacity": 0.7, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands.  In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "The Submerged Lands Act (SLA) boundary line (also known as State Seaward Boundary or Fed State Boundary) defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "of Ocean Energy Management, Mapping and Boundary Branch", 
+            "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.", 
+            "name": "Submerged Lands Act Boundary", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/${z}/${x}/${y}.png", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                80
+            ]
+        }
+    }, 
+    {
         "pk": 26, 
         "model": "data_manager.layer", 
         "fields": {
@@ -2772,7 +2737,7 @@
         "pk": 16, 
         "model": "data_manager.layer", 
         "fields": {
-            "layer_type": "XYZ", 
+            "layer_type": "placeholder", 
             "fact_sheet": "", 
             "themes": [
                 1
@@ -2804,11 +2769,60 @@
             "vector_fill": null, 
             "data_source": "Bureau of Ocean Energy Management and NOAA Office of Coast Survey via Multipurpose Marine Cadastre", 
             "data_notes": "This is a composite dataset that includes the state seaward boundary, revenue sharing boundary, territorial sea, contiguous zone and exclusive economic zone. The boundaries shown here should not be construed as legally binding.", 
-            "name": "Marine Jurisdictions", 
+            "name": "Marine Jurisdictions (orig)", 
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png", 
             "arcgis_layers": "", 
             "legend_title": "", 
             "sublayers": []
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "checkbox", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "", 
+            "source": "", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "", 
+            "metadata": "", 
+            "opacity": 0.5, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "", 
+            "attribute_title": "", 
+            "is_sublayer": false, 
+            "lookup_field": "", 
+            "legend": "", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "", 
+            "data_notes": "", 
+            "name": "Marine Jurisdictions", 
+            "url": "", 
+            "arcgis_layers": "", 
+            "legend_title": "", 
+            "sublayers": [
+                75, 
+                77, 
+                78, 
+                74, 
+                76
+            ]
         }
     }, 
     {
@@ -2902,6 +2916,51 @@
             "legend_title": "", 
             "sublayers": [
                 15
+            ]
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "data_manager.layer", 
+        "fields": {
+            "layer_type": "XYZ", 
+            "fact_sheet": "", 
+            "themes": [
+                1
+            ], 
+            "compress_display": false, 
+            "map_tiles": "", 
+            "legend_subtitle": "", 
+            "bookmark": "", 
+            "vector_graphic": "", 
+            "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz", 
+            "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm", 
+            "lookup_table": [], 
+            "utfurl": "", 
+            "thumbnail": "", 
+            "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip", 
+            "metadata": "http://www.ncddc.noaa.gov/approved_recs/nos_de/ocs/ocs/ocs/MB_ParentDataset.html", 
+            "opacity": 0.7, 
+            "vector_color": "", 
+            "attribute_event": "click", 
+            "description": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines.", 
+            "attribute_fields": [], 
+            "learn_more": "", 
+            "data_overview": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines. The coastal State exercises sovereignty over its territorial sea, the air space above it, and the seabed and subsoil beneath it.", 
+            "attribute_title": "", 
+            "is_sublayer": true, 
+            "lookup_field": "", 
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_3_TerritorialSea/legend.png", 
+            "data_status": "", 
+            "vector_fill": null, 
+            "data_source": "NOAA Office of Coast Survey", 
+            "data_notes": "These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts. ", 
+            "name": "12NM Territorial Sea", 
+            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_3_TerritorialSea/${z}/${x}/${y}.png", 
+            "arcgis_layers": "1", 
+            "legend_title": "", 
+            "sublayers": [
+                80
             ]
         }
     }, 
