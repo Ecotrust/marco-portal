@@ -24,7 +24,7 @@ app.getState = function () {
 };
 
 // load compressed state (the url was getting too long so we're compressing it
-app.loadCompressedState = function(state) {    
+app.loadCompressedState = function(state) { 
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
     var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
@@ -55,23 +55,26 @@ app.loadCompressedState = function(state) {
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
     }
-    
-    if (state.tab && state.tab === 'active') {
-        $('#activeTab').tab('show');
-    } else {
-        if (state.tab || state.themes) {
-            $('#dataTab').tab('show');
-            if (state.themes) {
-                $.each(app.viewModel.themes(), function (i, theme) {
-                    if ( $.inArray(theme.id, state.themes.ids) !== -1 || $.inArray(theme.id.toString(), state.themes.ids) !== -1 ) {
-                        theme.setOpenTheme();
-                    } else {
-                        app.viewModel.openThemes.remove(theme);
-                    }
-                });
-            } 
-        }
+       
+    // data tab and open themes
+    if (state.themes) {
+        //console.log('starting with data tab');
+        $('#dataTab').tab('show');
+        if (state.themes) {
+            $.each(app.viewModel.themes(), function (i, theme) {
+                if ( $.inArray(theme.id, state.themes.ids) !== -1 || $.inArray(theme.id.toString(), state.themes.ids) !== -1 ) {
+                    theme.setOpenTheme();
+                } else {
+                    app.viewModel.openThemes.remove(theme);
+                }
+            });
+        } 
     }
+    // active tab -- the following prevents theme and data layers from loading in either tab (not sure why...disbling for now)
+    if (state.tab && state.tab === "active") {
+        //console.log('showing active tab');
+        //$('#activeTab').tab('show');
+    } 
     
     if ( state.legends && state.legends === "true" ) {
         app.viewModel.showLegend(true);
