@@ -3900,7 +3900,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "EffortALL", 
-            "display_name": "Avg. Days Fished/Year", 
+            "display_name": "Avg. # Trips/Year", 
             "precision": 0, 
             "order": 1
         }
@@ -3910,7 +3910,7 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "BTrawl", 
-            "display_name": "Avg. Days Fished/Year", 
+            "display_name": "Avg. # Trips/Year", 
             "precision": 0, 
             "order": 1
         }
@@ -3920,7 +3920,57 @@
         "model": "data_manager.attributeinfo", 
         "fields": {
             "field_name": "GillNet", 
-            "display_name": "Avg. Days Fished/Year", 
+            "display_name": "Avg. # Trips/Year", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "LongLine", 
+            "display_name": "Avg. # Trips/Year", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "MidTrawl", 
+            "display_name": "Avg. # Trips/Year", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "OthDredge", 
+            "display_name": "Avg. # Trips/Year", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "OthGear", 
+            "display_name": "Avg. # Trips/Year", 
+            "precision": 0, 
+            "order": 1
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "data_manager.attributeinfo", 
+        "fields": {
+            "field_name": "PotTrap", 
+            "display_name": "Avg. # Trips/Year", 
             "precision": 0, 
             "order": 1
         }
@@ -3971,56 +4021,6 @@
         "fields": {
             "field_name": "M01F", 
             "display_name": "Sightings per unit effort", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 71, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "LongLine", 
-            "display_name": "Avg. Days Fished/Year", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 72, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "MidTrawl", 
-            "display_name": "Avg. Days Fished/Year", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 73, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "OthDredge", 
-            "display_name": "Avg. Days Fished/Year", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 74, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "OthGear", 
-            "display_name": "Avg. Days Fished/Year", 
-            "precision": 0, 
-            "order": 1
-        }
-    }, 
-    {
-        "pk": 75, 
-        "model": "data_manager.attributeinfo", 
-        "fields": {
-            "field_name": "PotTrap", 
-            "display_name": "Avg. Days Fished/Year", 
             "precision": 0, 
             "order": 1
         }

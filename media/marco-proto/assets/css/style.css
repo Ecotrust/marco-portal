@@ -26,7 +26,8 @@
 
 #attribute-data {
   position: absolute;
-  top: 24%;
+  /*top: 25%;*/
+  top: 150px;
   right: 0;
   z-index: 950; 
   width: 250px;
