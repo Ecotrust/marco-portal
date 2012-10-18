@@ -117,7 +117,7 @@ var dataGuideOverrides = {
       app.viewModel.closeAllThemes();
       app.viewModel.deactivateAllLayers();
       app.viewModel.themes()[0].setOpenTheme();
-
+      app.setMapPosition(-73, 38.5, 7);
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
       //alert("The guide has ended!");
@@ -126,6 +126,7 @@ var dataGuideOverrides = {
       app.viewModel.closeAllThemes();
       app.loadState(app.pageguide.state);
       app.saveStateMode = true;
+      $.pageguide(defaultGuide, defaultGuideOverrides);
     }
   },
   step: {
@@ -221,6 +222,7 @@ var activeGuideOverrides = {
       app.viewModel.closeAllThemes();
       app.loadState(app.pageguide.state);
       app.saveStateMode = true;
+      $.pageguide(defaultGuide, defaultGuideOverrides);
     }
   },
   step: {

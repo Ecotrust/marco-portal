@@ -883,6 +883,77 @@ function viewModel() {
     /*self.changeGuide = function() {
         debugger;
     };*/
+    
+    self.startDefaultTour = function() {
+        console.log('starting default tour');
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            $.pageguide('close');
+        }
+        $.pageguide(defaultGuide, defaultGuideOverrides);
+        setTimeout( function() { $.pageguide('open'); }, 500 );
+        //$('#help-tab').click();
+    };
+    
+    self.startDataTour = function() {
+        console.log('starting data tour');
+        //ensure the pageguide is closed 
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            $.pageguide('close');
+        }
+        //switch pageguide from default guide to data guide
+        $.pageguide(dataGuide, dataGuideOverrides);
+        
+        //save state
+        app.pageguide.state = app.getState();
+        app.saveStateMode = false;
+        
+        //show the data tab, close all themes and deactivate all layers, and open the Admin theme
+        $('#dataTab').tab('show');
+        app.viewModel.closeAllThemes();
+        app.viewModel.deactivateAllLayers();
+        app.viewModel.themes()[0].setOpenTheme();
+        app.setMapPosition(-73, 38.5, 7);
+         
+        //start the tour
+        setTimeout( function() { $.pageguide('open'); }, 500 );
+    };
+    
+    self.startActiveTour = function() {
+        console.log('starting data tour');
+        //ensure the pageguide is closed 
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            $.pageguide('close');
+        }
+        //switch pageguide from default guide to data guide
+        $.pageguide(activeGuide, activeGuideOverrides);
+        
+        //save state
+        app.pageguide.state = app.getState();
+        app.saveStateMode = false;
+        
+        //show the active tab, close all themes and deactivate all layers, activate a couple layers
+        $('#activeTab').tab('show');
+        app.viewModel.closeAllThemes();
+        app.viewModel.deactivateAllLayers();
+        //activate desired layers
+        for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
+            if ( app.viewModel.themes()[0].layers()[i].name === 'OCS Lease Blocks' ) { //might be more robust if indexOf were used
+                app.viewModel.themes()[0].layers()[i].activateLayer();
+            }
+        }
+        for (var i=0; i < app.viewModel.themes()[2].layers().length; i++) {
+            if ( app.viewModel.themes()[2].layers()[i].name === 'Benthic Habitats (South)' ) {
+                app.viewModel.themes()[2].layers()[i].activateLayer();
+            }
+        }
+        app.setMapPosition(-75, 37.6, 8);
+         
+        //start the tour
+        setTimeout( function() { $.pageguide('open'); }, 500 );
+    };
 
     return self;
 }
