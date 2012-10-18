@@ -570,7 +570,7 @@
                 }
 
                 this.$message.not(':visible').show().animate({
-                    'height': '100px'
+                    'height': '150px'
                 }, 500);
 
                 this._rollNumber($('span', this.$message), $(newItem).children('ins').html(), left);

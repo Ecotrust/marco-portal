@@ -101,26 +101,86 @@
         <div id="help-tab" class="rounded">
             tour
         </div>
+        <!-- Default Tour -->
         <div id="help-text-dataTab" class="hide">
-            <p>The DATA tab is where you'll find the data layers available for viewing.</p>
+            <p>The Data tab is where you'll find the data layers available for viewing.</p>
+            <ol>
+                <li>Click any of the Themes below to expose their Data Layers
+                <li>Click the Data Layers to view the data on the map
+            </ol>
+            <!--<p>Clicking on the Themes in the Data tab will expose the Layers.  And clicking on the Layers will display the data on the Map.</p>-->
+            <p><a href="">Take a tour of the Data tab</a></p>
         </div>
         <div id="help-text-activeTab" class="hide">
-            <p>Switching to the ACTIVE tab allows you to further manipulate the data activated from the DATA tab.</p>
+            <p>Switching to the Active tab allows you to further manipulate the data activated from the Data tab.</p>
+            <p>From the Active tab you can adjust the ordering of the layers on the map, as well as their transparency and visibility.</p>
+            <p><a id="active-tour">Take a tour of the Active tab</a></p>
         </div>
         <div id="help-text-form-search" class="hide">
             <p>The auto-complete search field helps you locate and view data.</p>
+            <ol> 
+                <li>Enter your search term into the search box
+                <li>Select from the list of auto-complete options
+                <li>And the theme containing your layer will be expanded to show its location and your layer will be shown on the map
+            </ol>
         </div>
         <div id="help-text-olControlZoom" class="hide">
-            <p>Use the + and - to zoom in and zoom out. Alternatively, to zoom in to a particular area on the map:  </p>
+            <p>Use the + and - to zoom in and zoom out. Go ahead, Try it! </p>
+            <p>Alternatively, to zoom in to a particular area on the map: </p>
             <ol>
-                <li>Hold down the shift key.
-                <li>Then with the mouse button pressed, drag the mouse across the map (the zoom area will be shown on the map).
-                <li>Release the mouse button when the zoom area is complete.
+                <li>Hold down the shift key
+                <li>Then with the mouse button pressed, drag the mouse across the map (the zoom area will be shown on the map)
+                <li>Release the mouse button when the zoom area is complete
             </ol>
         </div>
         <div id="help-text-basemaps" class="hide">
-            <p>Hovering over this button list on the right will give you an idea as to what each of these buttons offer.</p>
+            <p>The map includes the following specialized features allowing you to: </p>
+            <ol>
+                <li>Change the underlying Basemaps
+                <li>Show/Hide Legends associated with visible layers
+                <li>Show/Hide the Layer Panel 
+                <li>Create, Store, and Share your personalized Map Views
+                <li>View the map in Full Screen
+            </ol>
         </div>
+        
+        <!-- Data Tab Tour -->
+        <div id="help-text-form-search" class="hide">
+            <p>The auto-complete search field helps you locate and view data.</p>
+            <ol> 
+                <li>Enter your search term into the search box
+                <li>Select from the list of auto-complete options
+                <li>And the theme containing your layer will be expanded to show its location and your layer will be shown on the map
+            </ol>
+        </div>
+        <div id="help-text-theme" class="hide">
+            <p>&nbsp;</p>
+            <p>Clicking on the Themes will expand/contract the Data Layer lists</p>
+        </div>
+        <div id="help-text-layer" class="hide">
+            <p>&nbsp;</p>
+            <p>Clicking on the Layer names will display the data on the map</p>
+        </div>
+        
+        <!-- Active Tab Tour -->
+        <div id="help-text-active-tour-activeTab" class="hide">
+            <p>Switching to the Active tab allows you to further manipulate the data activated from the Data tab.</p>
+            <p>From the Active tab you can adjust the ordering of the layers on the map, as well as their transparency and visibility.</p>            
+        </div>
+        <div id="help-text-active-tour-opacity-button" class="hide">
+            <p>&nbsp;</p>
+            <p>Clicking on the transparency button gives you control over the layer's transparency on the map.</p>
+        </div>
+        <div id="help-text-active-tour-ui-sortable" class="hide">
+            <p>The ordering of the layers on the map mirrors the ordering in the Active panel.</p>
+            <p>To manipulate the order of the layers simply drag the layer to the desired position in the list of layers.</p>
+            <ol> 
+                <li>Click on a layer name
+                <li>While holding down the mouse button, drag the chosen layer to a different position in the layer ordering
+                <li>Release the mouse button, and the map layers have been re-ordered, both in the Active panel and on the map
+            </ol>
+        </div>
+        
         <!--
         <div id="thankyou-modal" class="modal hide fade">
             <form class="form-horizontal" id="thankyou-form">
@@ -215,8 +275,8 @@
                                                         <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
                                                             <div class="accordion-inner">
                                                                 <ul  class="unstyled" data-bind="foreach: layers ">
-                                                                    <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 } ">
-                                                                        <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }">
+                                                                    <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 }">
+                                                                        <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }, attr: {name: name}">
                                                                             <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
                                                                                 <i class="icon-info-sign icon-large"></i>
                                                                             </a>

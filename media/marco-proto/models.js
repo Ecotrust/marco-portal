@@ -45,6 +45,7 @@ function layerModel(options, parent) {
         if (self.layer.CLASS_NAME === "OpenLayers.Layer.Vector") {
             self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
             self.layer.styleMap.styles['default'].defaultStyle.graphicOpacity = newOpacity;
+            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
             self.layer.redraw();
         } else {
             self.layer.setOpacity(newOpacity);
@@ -301,6 +302,7 @@ function layerModel(options, parent) {
             layer.activateLayer();
         }
     };
+    
 
     self.raiseLayer = function(layer, event) {
         var current = app.viewModel.activeLayers.indexOf(layer);
@@ -849,6 +851,21 @@ function viewModel() {
         app.map.selectFeatureControl.setLayer(app.map.vectorList);
 
     });
+    
+    self.deactivateAllLayers = function() {
+        //$.each(self.activeLayers(), function (index, layer) {
+        var numActiveLayers = self.activeLayers().length;
+        for (var i=0; i < numActiveLayers; i++) {
+            self.activeLayers()[0].deactivateLayer();
+        }
+    };
+    
+    self.closeAllThemes = function() {
+        var numOpenThemes = self.openThemes().length;
+        for (var i=0; i< numOpenThemes; i++) {
+            self.openThemes.remove(self.openThemes()[0]);
+        }
+    };
 
     // do this stuff when the visible layers change
     /*self.visibleLayers.subscribe(function() {
@@ -856,6 +873,11 @@ function viewModel() {
             self.showLegend(false);
         }
     });*/
+    
+    // switching between pageguides
+    /*self.changeGuide = function() {
+        debugger;
+    };*/
 
     return self;
 }

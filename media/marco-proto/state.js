@@ -84,9 +84,16 @@ app.loadCompressedState = function(state) {
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
+    app.setMapPosition(state.x, state.y, state.z);
+    //app.map.setCenter(
+    //    new OpenLayers.LonLat(state.x, state.y).transform(
+    //        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), state.z);
+};
+
+app.setMapPosition = function(x, y, z) {
     app.map.setCenter(
-        new OpenLayers.LonLat(state.x, state.y).transform(
-            new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), state.z);
+        new OpenLayers.LonLat(x, y).transform(
+            new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), z);
 };
 
 // load state from fixture or server
@@ -101,10 +108,9 @@ app.loadState = function(state) {
         return layer;
     });
     //var activeLayers = $.extend({}, app.viewModel.activeLayers());
-    $.each(activeLayers, function (index, layer) {
-        layer.deactivateLayer();
-    });
+    
     // turn on the layers that should be active
+    app.viewModel.deactivateAllLayers();
     if (state.activeLayers) {
         $.each(state.activeLayers, function(index, layer) {
             if (app.viewModel.layerIndex[layer.id]) {

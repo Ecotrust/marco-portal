@@ -71,7 +71,6 @@ $(document).ready(function() {
   app.onResize();
   $(window).resize(app.onResize);
 
-
   // if we have the hash state go ahead and load it now
   if (app.hash) {
     app.loadStateFromHash(app.hash);
@@ -178,6 +177,12 @@ $(document).ready(function() {
   $('#opacity-popover').mouseleave( function() {
     app.viewModel.hideOpacity();
   });  
+  
+  /*$('#active-tour').on('click', function() {
+    debugger;
+    //$.pageguide('load', guide2);
+    //$.pageguide('unload');
+  });*/
   
 });
 
