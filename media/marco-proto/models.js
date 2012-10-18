@@ -795,6 +795,11 @@ function viewModel() {
             self.searchTerm($('.typeahead .active').text());
             self.layerSearch();
         }
+        $('ul.typeahead').on('click', 'li', function () {
+            self.searchTerm($('.typeahead .active').text());
+            self.layerSearch();
+            //search($(this).text());
+        });
     };
 
     // self.goFullScreen = function () {

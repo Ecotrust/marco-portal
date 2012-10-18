@@ -70,6 +70,12 @@ new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")
 $(document).ready(function() {
   app.onResize();
   $(window).resize(app.onResize);
+  
+  //Do not display any warning for missing tiles
+  OpenLayers.Util.onImageLoadError = function(){
+    this.src='http://www.openlayers.org/api/img/blank.gif';
+  };
+  OpenLayers.Tile.Image.useBlankTile=false;
 
   // if we have the hash state go ahead and load it now
   if (app.hash) {
