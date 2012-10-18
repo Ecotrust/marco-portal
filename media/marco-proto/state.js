@@ -7,29 +7,93 @@ app.getState = function () {
     var center = app.map.getCenter().transform(
             new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326")),
                 layers = $.map(app.viewModel.activeLayers(), function(layer) {
-                    return {id: layer.id, opacity: layer.opacity(), isVisible: layer.visible()};
+                    //return {id: layer.id, opacity: layer.opacity(), isVisible: layer.visible()};
+                    return [ layer.id, layer.opacity(), layer.visible() ];
                 });   
     return {
-        location: {
-            x: center.lon.toFixed(2),
-            y: center.lat.toFixed(2),
-            zoom: app.map.getZoom()
-        },
-        activeLayers: layers.reverse(),
-        basemap: {name: app.map.baseLayer.name},
-        openThemes: {ids: app.viewModel.getOpenThemeIDs()},
-        activeTab: {tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active'},
-        //description: {  visible: app.viewModel.showDescription(), 
-        //                layer_name: app.viewModel.activeInfoLayer().name },
-        legends: { visible: app.viewModel.showLegend() ? 'true': 'false' }
+        x: center.lon.toFixed(2),
+        y: center.lat.toFixed(2), 
+        z: app.map.getZoom(),
+        dls: layers.reverse(),
+        basemap: app.map.baseLayer.name,
+        themes: {ids: app.viewModel.getOpenThemeIDs()},
+        tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active',
+        legends: app.viewModel.showLegend() ? 'true': 'false'
         //and active tab
     };
 };
 
+// load compressed state (the url was getting too long so we're compressing it
+app.loadCompressedState = function(state) { 
+    // turn off active laters
+    // create a copy of the activeLayers list and use that copy to iteratively deactivate
+    var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
+        return layer;
+    });
+    $.each(activeLayers, function (index, layer) {
+        layer.deactivateLayer();
+    });
+    // turn on the layers that should be active
+    if (state.dls) {
+        for (x=0; x < state.dls.length; x=x+3) {
+            var id = state.dls[x+2],
+                opacity = state.dls[x+1],
+                isVisible = state.dls[x];
+            if (app.viewModel.layerIndex[id]) {
+                app.viewModel.layerIndex[id].activateLayer();
+                app.viewModel.layerIndex[id].opacity(opacity);
+                //must not be understanding something about js, but at the least the following seems to work now...
+                if (isVisible || !isVisible) {
+                    if (isVisible !== 'true' && isVisible !== true) {
+                        app.viewModel.layerIndex[id].toggleVisible();
+                    }
+                }
+            }
+       }
+    }
+    
+    if (state.basemap) {
+        app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
+    }
+       
+    // data tab and open themes
+    if (state.themes) {
+        //console.log('starting with data tab');
+        $('#dataTab').tab('show');
+        if (state.themes) {
+            $.each(app.viewModel.themes(), function (i, theme) {
+                if ( $.inArray(theme.id, state.themes.ids) !== -1 || $.inArray(theme.id.toString(), state.themes.ids) !== -1 ) {
+                    theme.setOpenTheme();
+                } else {
+                    app.viewModel.openThemes.remove(theme);
+                }
+            });
+        } 
+    }
+    // active tab -- the following prevents theme and data layers from loading in either tab (not sure why...disbling for now)
+    if (state.tab && state.tab === "active") {
+        //console.log('showing active tab');
+        //$('#activeTab').tab('show');
+    } 
+    
+    if ( state.legends && state.legends === "true" ) {
+        app.viewModel.showLegend(true);
+    } else {
+        app.viewModel.showLegend(false);
+    }
+
+    // Google.v3 uses EPSG:900913 as projection, so we have to
+    // transform our coordinates
+    app.map.setCenter(
+        new OpenLayers.LonLat(state.x, state.y).transform(
+            new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), state.z);
+};
 
 // load state from fixture or server
 app.loadState = function(state) {
-
+    if (state.z) {
+        return app.loadCompressedState(state);
+    }
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
     var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
@@ -75,15 +139,6 @@ app.loadState = function(state) {
             } 
         }
     }
-    
-    /*if ( state.description && state.description.visible === "true" ) {
-        //debugger;
-        //app.viewModel.activeInfoLayer(state.description.name);
-        //app.viewModel.showDescription(true);
-        app.viewModel.showDescription(false);
-    } else {
-        app.viewModel.showDescription(false);
-    }*/
     
     if ( state.legends && state.legends.visible === "true" ) {
         app.viewModel.showLegend(true);

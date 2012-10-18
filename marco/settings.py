@@ -43,8 +43,8 @@ INSTALLED_APPS += ( 'clipping',
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
 
-APP_NAME = "MARCO Marine Planner"
-HELP_EMAIL = "info@portal.midatlanticocean.org"
+APP_NAME = "MARCO Planning Portal"
+FEEDBACK_RECIPIENT = "info@midatlanticocean.org"
 
 TEMPLATE_DIRS = ( os.path.realpath(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')), )
 

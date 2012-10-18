@@ -59,10 +59,16 @@ function layerModel(options, parent) {
         }
     });
     
+    // is the layer a checkbox layer
+    self.isCheckBoxLayer = ko.observable(false);
+    if (self.type === 'checkbox') {
+        self.isCheckBoxLayer(true);
+    }
+    
     // is the layer in the active panel?
     self.active = ko.observable(false);
     // is the layer visible?
-    self.visible = ko.observable(false);
+    self.visible = ko.observable(false);       
 
     self.activeSublayer = ko.observable(false);
     self.visibleSublayer = ko.observable(false);
@@ -89,6 +95,19 @@ function layerModel(options, parent) {
         layer.legendVisibility(!layer.legendVisibility());
 
     };
+    
+    self.hasVisibleSublayers = function() {
+        if ( !self.subLayers ) {
+            return false;
+        }
+        var visibleSubLayers = false;
+        $.each(self.subLayers, function(i, sublayer) {
+            if (sublayer.visible()) {
+                visibleSubLayers = true;
+            }
+        });
+        return visibleSubLayers;
+    };
 
     self.deactivateLayer = function() {
         var layer = this;
@@ -111,7 +130,26 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, false);
         layer.opacity(layer.defaultOpacity);
 
-        if (layer.parent) { // if layer has a parent
+        if (layer.parent && layer.parent.isCheckBoxLayer()) { // if layer has a parent and that layer is a checkbox layer
+            // see if there are any remaining active sublayers in this checkbox layer
+            var stillActive = false;
+            $.each(layer.parent.subLayers, function(i, sublayer) {
+                if ( sublayer.active() ) {
+                    stillActive = true;
+                }
+            });
+            // if there are no remaining active sublayers, then deactivate parent layer
+            if (!stillActive) {
+                layer.parent.active(false);
+                layer.parent.activeSublayer(false);
+                layer.parent.visible(false);
+                layer.parent.visibleSublayer(false);
+            }
+            //check to see if any sublayers are still visible 
+            if (!layer.parent.hasVisibleSublayers()) {
+                layer.parent.visible(false);
+            }
+        } else if (layer.parent) { // if layer has a parent
             // turn off the parent shell layer
             layer.parent.active(false);
             layer.parent.activeSublayer(false);
@@ -178,11 +216,19 @@ function layerModel(options, parent) {
     // bound to click handler for layer visibility switching in Active panel
     self.toggleVisible = function(manual) {
         var layer = this;
-        //console.dir(manual);
+        
         if (layer.visible()) { //make invisilbe
             layer.visible(false);
             if (layer.parent) {
-                layer.parent.visible(false);
+                // if layer.parent is not a checkbox, set parent to invisible
+                if (layer.parent.type !== 'checkbox') {
+                    layer.parent.visible(false);
+                } else { //otherwise layer.parent is checkbox 
+                    //check to see if any sublayers are still visible 
+                    if (!layer.parent.hasVisibleSublayers()) {
+                        layer.parent.visible(false);
+                    }
+                }
             }
             app.setLayerVisibility(layer, false);
 
@@ -217,7 +263,15 @@ function layerModel(options, parent) {
 
         //handle possible dropdown/sublayer behavior
         if (layer.subLayers.length) {
-            if (!layer.activeSublayer()) {
+            if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
+                if (!layer.showSublayers()) {
+                    //show drop-down menu
+                    layer.showSublayers(true);
+                } else {
+                    //hide drop-down menu
+                    layer.showSublayers(false);
+                }
+            } else if ( layer.type === 'checkbox' ) { //else if layer does have an active sublayer and it's checkbox (not radio) 
                 if (!layer.showSublayers()) {
                     //show drop-down menu
                     layer.showSublayers(true);
@@ -742,6 +796,11 @@ function viewModel() {
             self.searchTerm($('.typeahead .active').text());
             self.layerSearch();
         }
+        $('ul.typeahead').on('click', 'li', function () {
+            self.searchTerm($('.typeahead .active').text());
+            self.layerSearch();
+            //search($(this).text());
+        });
     };
 
     // self.goFullScreen = function () {

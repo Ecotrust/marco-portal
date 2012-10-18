@@ -48,6 +48,7 @@ class Layer(models.Model):
         ('WMS', 'WMS'),
         ('ArcRest', 'ArcRest'),
         ('radio', 'radio'),
+        ('checkbox', 'checkbox'),
         ('Vector', 'Vector'),
         ('placeholder', 'placeholder'),
     )

@@ -71,6 +71,12 @@ new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")
 $(document).ready(function() {
   app.onResize();
   $(window).resize(app.onResize);
+  
+  //Do not display any warning for missing tiles
+  OpenLayers.Util.onImageLoadError = function(){
+    this.src='http://www.openlayers.org/api/img/blank.gif';
+  };
+  OpenLayers.Tile.Image.useBlankTile=false;
 
   // if we have the hash state go ahead and load it now
   /*if (app.hash && !app.loginHash) {
@@ -215,6 +221,9 @@ $(document).mousedown(function(e) {
   if (e.target.id === "bookmarks-button") {} else if (!$(e.target).closest("#bookmark-popover").length) {
     $('#bookmark-popover').hide();
   }
+  
+  //ensure layer switcher is removed
+  $('#SimpleLayerSwitcher_30').hide();
 
   //removing layer tooltip popover from view
   var layer_pvr_event = $(e.target).closest(".layer-popover").length;

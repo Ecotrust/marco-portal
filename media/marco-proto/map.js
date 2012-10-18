@@ -319,6 +319,7 @@ app.addLayerToMap = function(layer) {
                 layer.url,
                 {
                     layers: "show:"+layer.arcgislayers,
+                    srs: 'EPSG:3857',
                     transparent: true
                 },
                 {
@@ -331,10 +332,7 @@ app.addLayerToMap = function(layer) {
                 layer.name, 
                 layer.url,
                 {
-                    //'layers': 'topp:tasmania_cities', transparent: true, format: 'image/gif'
-                },
-                {
-                    isBaseLayer: false
+                    'layers': 'basic'
                 }
             );
             app.map.addLayer(layer.layer);  

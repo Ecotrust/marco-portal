@@ -12,9 +12,10 @@ def send_feedback(request):
     url = request.POST.get('url', '')
     ua = request.META['HTTP_USER_AGENT']
     feedback_message = "From: %s\nURL: %s\nBrowser: %s\n\n\n%s" % (from_email, url, ua, request.POST.get('comment', ''),)
-    thankyou_message = "Thank You.  \nWe appreciate your feedback on the MARCO website."
-    thankyou_message += "\nYour comments have been sent to the appropriate staff members for review."
-    thankyou_message += "\n\n-MARCO Portal technical staff"
+    thankyou_message = "Thank You.  \nWe appreciate and value your feedback on the MARCO Portal."
+    thankyou_message += "\nYour comments have been sent to the appropriate staff for review and they will be in touch at their earliest convenience."
+    thankyou_message += "\n\nRegards,"
+    thankyou_message += "\n\nMARCO Portal Project Team"
     thankyou_message_recipient = [request.POST.get('email', '')]
     
     if name and feedback_message and from_email:

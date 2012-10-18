@@ -109,6 +109,11 @@ var SimpleLayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
                         this.onInputClick,
                         context)
                 );
+                OpenLayers.Event.observe(layerElem, 'touchstart',
+                    OpenLayers.Function.bindAsEventListener(
+                        this.onInputClick,
+                        context)
+                );
 
                 this.div.appendChild(layerElem);
             }
