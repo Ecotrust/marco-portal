@@ -218,7 +218,9 @@ $('#feedback-form').on('submit', function (event) {
 
 $(document).mousedown(function(e) {
   //removing bookmark popover from view
-  if (e.target.id === "bookmarks-button") {} else if (!$(e.target).closest("#bookmark-popover").length) {
+  if ($(e.target).closest('a')[0].id === "bookmarks-button") {
+    //do nothing as show/hide behavior is handled in viewModel
+  } else if (!$(e.target).closest("#bookmark-popover").length) {
     $('#bookmark-popover').hide();
   }
   
