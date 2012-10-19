@@ -4,8 +4,8 @@ app.pageguide = {};
 /* THE DEFAULT PAGE GUIDE */
 
 var defaultGuide = {
-  id: 'jQuery.DefaultGuide',
-  title: 'Take a quick tour of all the possibilities',
+  id: 'default-guide',
+  title: 'Default Guide',
   steps: [
     {
       target: '#dataTab',
@@ -38,22 +38,34 @@ var defaultGuideOverrides = {
   events: {
     open: function () {
       //alert("The guide has begun!");
+      //open the basemaps buttons and keep them open
       $('#basemaps').addClass('open');
+      app.pageguide.preventBasemapsClose = true;
+      //increase the z-value of SimpleLayerSwitcher so it falls on top of the pageguide icon
+      $('#SimpleLayerSwitcher_30').css('z-index', 1100);
+      //adjust the pageguide icon so it is left of the open basemaps buttons 
       for (var i=0; i < defaultGuide.steps.length; i++) {
         if ( defaultGuide.steps[i].target === '#basemaps' ) {
             defaultGuide.steps[i].arrow.offsetX = 0;
         }
-      }
+      }      
       $('#dataTab').tab('show');
     },
     close: function () {
       //alert("The guide has ended!");
+      //return the zindex of the SimpleLayerSwitcher to its original value
+      $('#SimpleLayerSwitcher_30').css('z-index', 1005);
+      //deactivate the prevention of the basemaps buttons closing
+      app.pageguide.preventBasemapsClose = true;
+      //close the basemaps buttons
       $('#basemaps').removeClass('open');
+      //return the offset of the pageguide icon so it doesn't move out of place as the guide closes
       for (var i=0; i < defaultGuide.steps.length; i++) {
         if ( defaultGuide.steps[i].target === '#basemaps' ) {
             defaultGuide.steps[i].arrow.offsetX = -95;
         }
       }
+      //return the map state to what it was before the pageguide began
       app.loadState(app.pageguide.state);
       app.saveStateMode = true;
     }
@@ -67,6 +79,7 @@ var defaultGuideOverrides = {
             $('#activeTab').tab('show');
         } else {
             $('#dataTab').tab('show');
+            //$('#basemaps').addClass('open');
         }
         //alert("Step " + ($(this).data('idx') + 1) + " has been selected.");
       }
@@ -77,8 +90,8 @@ var defaultGuideOverrides = {
 /* THE DATA PANEL PAGE GUIDE */
 
 var dataGuide = {
-  id: 'jQuery.DataGuide',
-  title: 'Take a quick tour of all the possibilities',
+  id: 'data-guide',
+  title: 'Data Guide',
   steps: [
     {
       target: '#dataTab',
@@ -167,8 +180,8 @@ var dataGuideOverrides = {
 /* THE ACTIVE PANEL PAGE GUIDE */
 
 var activeGuide = {
-  id: 'jQuery.ActiveGuide',
-  title: '',
+  id: 'active-guide',
+  title: 'Active Guide',
   steps: [
     {
       target: '#activeTab',
@@ -262,6 +275,9 @@ $(function() {
         app.saveStateMode = true;
     } else {
         // start the pageguide 
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
       
         //save state
         app.pageguide.state = app.getState();

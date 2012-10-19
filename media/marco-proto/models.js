@@ -45,7 +45,9 @@ function layerModel(options, parent) {
         if (self.layer.CLASS_NAME === "OpenLayers.Layer.Vector") {
             self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
             self.layer.styleMap.styles['default'].defaultStyle.graphicOpacity = newOpacity;
-            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
+            //fill is currently turned off for many of the vector layers
+            //the following line has the effect of overriding the zeroed out fill opacity (which we don't want)
+            //self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
             self.layer.redraw();
         } else {
             self.layer.setOpacity(newOpacity);
@@ -94,7 +96,6 @@ function layerModel(options, parent) {
     self.toggleLegendVisibility = function() {
         var layer = this;
         layer.legendVisibility(!layer.legendVisibility());
-
     };
     
     self.hasVisibleSublayers = function() {
@@ -547,6 +548,10 @@ function viewModel() {
         self.showLayers(!self.showLayers());
         app.map.render('map');
         if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
+        
+        //if toggling layers during default pageguide, then correct step 4 position
+        //self.correctTourPosition();
+        //throws client-side error in pageguide.js for some reason...
     };
 
     // reference to open themes in accordion
@@ -699,6 +704,8 @@ function viewModel() {
             app.map.render('map');
         }
         //app.map.render('map');
+        //if toggling legend during default pageguide, then correct step 4 position
+        self.correctTourPosition();
     };
 
     // determine whether app is offering legends 
@@ -729,8 +736,10 @@ function viewModel() {
             $popover = $('#bookmark-popover');
 
         if ($popover.is(":visible")) {
+            console.log('hiding bookmarks');
             $popover.hide();
         } else {
+            console.log('showing bookmarks');
             self.bookmarks.bookmarkName(null);
             //TODO: move all this into bookmarks model
             // hide the popover if already visible
@@ -740,7 +749,6 @@ function viewModel() {
                 "of": $button,
                 offset: "-10px 0px"
             });
-
         }
     };
     self.selectedLayer = ko.observable();
@@ -885,23 +893,33 @@ function viewModel() {
     };*/
     
     self.startDefaultTour = function() {
-        console.log('starting default tour');
+        //console.log('starting default tour');
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
             $.pageguide('close');
         }
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
+        
+        //ensure pageguide is managing the default guide
         $.pageguide(defaultGuide, defaultGuideOverrides);
+        //adding delay to ensure the message will load 
         setTimeout( function() { $.pageguide('open'); }, 500 );
         //$('#help-tab').click();
     };
     
     self.startDataTour = function() {
-        console.log('starting data tour');
+        //console.log('starting data tour');
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
             $.pageguide('close');
         }
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
+        
         //switch pageguide from default guide to data guide
         $.pageguide(dataGuide, dataGuideOverrides);
         
@@ -921,12 +939,16 @@ function viewModel() {
     };
     
     self.startActiveTour = function() {
-        console.log('starting data tour');
+        //console.log('starting data tour');
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
             $.pageguide('close');
         }
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
+        
         //switch pageguide from default guide to data guide
         $.pageguide(activeGuide, activeGuideOverrides);
         
@@ -954,7 +976,17 @@ function viewModel() {
         //start the tour
         setTimeout( function() { $.pageguide('open'); }, 500 );
     };
-
+    
+    //if toggling legend or layers panel during default pageguide, then correct step 4 position
+    self.correctTourPosition = function() {
+        console.log('toggling pageguide');
+        if ( $.pageguide('isOpen') ) {
+            if ($.pageguide().guide().id === 'default-guide') {
+                $.pageguide('showStep', 3);
+            }
+        }
+    }
+    
     return self;
 }
 

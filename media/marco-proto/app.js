@@ -153,12 +153,16 @@ $(document).ready(function() {
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_30').mouseleave( function() {
     $('#SimpleLayerSwitcher_30').hide();
-    $('#basemaps').removeClass('open');
+    if (!app.pageguide.preventBasemapsClose) {
+        $('#basemaps').removeClass('open');
+    }
   });
   
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_30').mousedown( function() {
-    $('#basemaps').removeClass('open');
+    if (!app.pageguide.preventBasemapsClose) {
+        $('#basemaps').removeClass('open');
+    }
   });
   
   //hide basemaps drop-down on mouseout
