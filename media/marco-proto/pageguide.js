@@ -74,10 +74,13 @@ var defaultGuideOverrides = {
     events: {
       select: function() {
         if ($(this).data('idx') === 0) {
+            app.viewModel.showLayers(true);
             $('#dataTab').tab('show');
         } else if ($(this).data('idx') === 1) {
+            app.viewModel.showLayers(true);
             $('#activeTab').tab('show');
         } else {
+            app.viewModel.showLayers(true);
             $('#dataTab').tab('show');
             //$('#basemaps').addClass('open');
         }
