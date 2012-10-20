@@ -982,7 +982,7 @@ function viewModel() {
         console.log('toggling pageguide');
         if ( $.pageguide('isOpen') ) {
             if ($.pageguide().guide().id === 'default-guide') {
-                $.pageguide('showStep', 3);
+                $.pageguide('showStep', $.pageguide().guide().steps.length-1);
             }
         }
     }

@@ -80,8 +80,8 @@ var defaultGuideOverrides = {
             app.viewModel.showLayers(true);
             $('#activeTab').tab('show');
         } else {
-            app.viewModel.showLayers(true);
-            $('#dataTab').tab('show');
+            //app.viewModel.showLayers(true);
+            //$('#dataTab').tab('show');
             //$('#basemaps').addClass('open');
         }
         //alert("Step " + ($(this).data('idx') + 1) + " has been selected.");

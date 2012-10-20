@@ -215,13 +215,30 @@ a.disabled-link:hover {
   margin-left: 0px !important;
 }
 
-.fullscreen-legend {
+.fullscreen-map {
   margin-left: 0px !important;
-  width: 25.6% !important;
+  width: 100% !important;
 }
 .fullscreen-with-layers {
   margin-left: 0px !important;
-  width: 68.3% !important;
+  /*width: 68.3% !important;*/
+  width: 75% !important;
+}
+.fullscreen-with-legend {
+  margin-left: 0px !important;
+  width: 80% !important;
+}
+.fullscreen-with-legend-and-layers {
+  margin-left: 0px !important;
+  width: 55% !important;
+}
+.fullscreen-data {
+  margin-left: 0px !important;
+  width: 25% !important;
+}
+.fullscreen-legend {
+  margin-left: 0px !important;
+  width: 20% !important;
 }
 
 #map-buttons {

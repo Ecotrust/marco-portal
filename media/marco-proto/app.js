@@ -96,6 +96,7 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
 
+  app.fullscreen = {};
   // fullscreen stuff
   // for security reasons, this event listener must be bound directly
   if ( document.getElementById('btn-fullscreen').addEventListener ) {
@@ -115,13 +116,28 @@ $(document).ready(function() {
       });
   }
 
+  // called when entering full screen
   BigScreen.onenter = function() {
-    // called when entering full screen
-    app.viewModel.isFullScreen(true);
-    // make map fullscreen
-    app.onResize(.99);
     //app.map.updateSize();
     //app.map.render('map');
+    //close page guide, hide legend, hide layers
+    if ( $.pageguide('isOpen') ) {
+        app.fullscreen.pageguide = true;
+        //closing the guide here makes it difficult to return to the correct guide...
+        //things might be working fine without closing the guide...
+        //$.pageguide('close');
+    }
+    if ( app.viewModel.showLegend() ) {
+        app.fullscreen.showLegend = true;
+        app.viewModel.showLegend(false);
+    }
+    if ( app.viewModel.showLayers() ) {
+        app.fullscreen.showLayers = true;
+        app.viewModel.showLayers(false);
+    }
+    app.viewModel.isFullScreen(true);
+    // make map fullscreen
+    setTimeout( app.onResize(.99), 500);
   };
 
   BigScreen.onexit = function() {
@@ -133,9 +149,30 @@ $(document).ready(function() {
     //for firefox
     setTimeout( app.onResize(), 300);
     //app.onResize();
+    //app.onResize();
+    //if applicable, open page guide, show legend, show layers
+    if ( app.fullscreen.showLayers ) {
+        app.viewModel.showLayers(true);
+        app.fullscreen.showLayers = false;
+    }
+    if ( app.fullscreen.showLegend ) {
+        app.viewModel.showLegend(true);
+        app.fullscreen.showLegend = false;
+    }
+    if ( app.fullscreen.pageguide ) {
+        app.viewModel.showLayers(true);
+        setTimeout( function() { 
+            $.pageguide('open'); 
+            if ($.pageguide().guide().id === 'default-guide') {
+                setTimeout( function() { 
+                    $.pageguide('showStep', $.pageguide().guide().steps.length-1);
+                }, 300 );
+            }            
+        }, 500 );
+        app.fullscreen.pageguide = false;
+    }
     //for chrome
     setTimeout( app.onResize, 300);
-    //app.onResize();
   };
   
   // Basemaps button and drop-down behavior

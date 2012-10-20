@@ -252,8 +252,10 @@
             <div id="loading">
                 <h2>Loading...</h2>
             </div>
-            <div class="row-fluid"   id="fullscreen">
-                <div class="span4 frame tabs" data-bind="visible: showLayers()">
+            <div class="row-fluid" id="fullscreen">
+                
+                <!-- Data Panel (left panel) -->
+                <div class="span4 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data': isFullScreen()}">
                     <div class="sidebar-nav">
                         <!-- tab controls -->
                         <ul id="myTab" class="nav nav-tabs">
@@ -368,6 +370,7 @@
                                 <!-- /row -->
                             </div>
                             <!-- /data-tab -->
+                            
                             <!-- design tab -->
                             <div class="tab-pane fade" id="designs">
                                 <p>
@@ -375,6 +378,7 @@
                                 </p>
                             </div>
                             <!-- /design-tab -->
+                            
                             <!-- active layer tab -->
                             <div class="tab-pane fade" id="active">
                                 <div class="row-fluid">
@@ -413,89 +417,76 @@
                             </div>
                             <!-- /active-tab -->
                         </div>
-
                     </div>
                 </div>
-                <!--/span-->
-                <div id="map-panel" data-bind="css: { span8: showLayers(), 'fullscreen-with-layers': fullScreenWithLayers(), span12: ! showLayers(), 'shift-left': ! showLayers() }">       
+                <!-- /Data Panel -->
+                
+                <!-- Map Panel (center panel) -->
+                <div id="map-panel" data-bind="css: { 'fullscreen-map': isFullScreen() && !showLayers() && !showLegend(), 'fullscreen-with-layers': isFullScreen() && showLayers() && !showLegend(), 'fullscreen-with-legend': isFullScreen() && !showLayers() && showLegend(), 'fullscreen-with-legend-and-layers': isFullScreen() && showLayers() && showLegend(), 'shift-left': ! showLayers(), span12: !showLayers() && !showLegend(), span9: !showLayers() && showLegend(), span8: showLayers() && !showLegend(), span5: showLayers() && showLegend() }">       
                     <div class="row-fluid" data-bind="visible: showMapPanel">
                         <div class="span12">
                             <div class="row-fluid">
-                                <div id="map-wrapper" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
-                                  <div id="map"></div>
-                                  <!--
-                                  <div id="right-btns">
-                                    <div class="btn-group btn-group-vertical">
-                                        <a id="zoom-box" class="btn btn-zoom"  data-bind="click: zoomBoxIn">
-                                            <span>Box Zoom In</span>
-                                            <i class="icon-zoom-in icon-large"></i>
-                                        </a>
-                                        <a id="zoom-box" class="btn btn-zoom"  data-bind="click: zoomBoxOut">
-                                            <span>Box Zoom Out</span>
-                                            <i class="icon-zoom-out icon-large"></i>
-                                        </a>
-                                      
+                                <div id="map-wrapper">
+                                    <div id="map"></div>
+                                    <div id="basemaps"> <!-- Basemaps, Legends, Layers, Bookmarks, and FullScreen buttons -->
+                                        <div class="btn-group btn-group-vertical">
+                                          <!--Basemaps Button-->
+                                          <a id="basemap-button" class="btn" data-bind="click: showBasemaps">
+                                              <i class="icon-globe icon-large"></i>
+                                              <span>Basemaps</span>
+                                          </a>
+                                          <!--Hide/Show Legends Button-->
+                                          <a class="btn" data-bind="click: toggleLegend">
+                                              <i class="icon-list-ul icon-large"></i> 
+                                              <span data-bind="text: legendButtonText()"></span>
+                                              <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
+                                          </a>
+                                          <!--Hide/Show Layers Button-->
+                                          <a class="btn" data-bind="click: toggleLayers">
+                                              <i class="icon-layers icon-large" data-bind="css: {'icon-indent-right': showLayers(), 'icon-indent-left': ! showLayers()}"></i> 
+                                              <span data-bind="text: showLayersText()"></span>
+                                          </a>
+                                          <!--Bookmarks Button-->
+                                          <a id="bookmarks-button" class="btn" data-bind="click: showBookmarks">
+                                              <i class="icon-map-marker icon-large"></i>
+                                              <span>Bookmarks</span>
+                                              <span data-bind="visible: bookmarks.bookmarksList().length > 0">
+                                                  (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
+                                              </span>
+                                          </a>
+                                          <!--Fullscreen Button-->
+                                          <a class="btn" id="btn-fullscreen">
+                                              <i class="icon-fullscreen icon-large"></i>
+                                              <span>Fullscreen</span>
+                                          </a>
+                                        </div>
                                     </div>
-                                  </div>
-                                  -->
-
-                                  <div id="basemaps"> <!-- Basemaps, Legends, Layers, Bookmarks, and FullScreen buttons -->
-                                    <div class="btn-group btn-group-vertical">
-                                      <!--Basemaps Button-->
-                                      <a id="basemap-button" class="btn" data-bind="click: showBasemaps">
-                                          <i class="icon-globe icon-large"></i>
-                                          <span>Basemaps</span>
-                                      </a>
-                                      <!--Hide/Show Legends Button-->
-                                      <a class="btn" data-bind="click: toggleLegend">
-                                          <i class="icon-list-ul icon-large"></i> 
-                                          <span data-bind="text: legendButtonText()"></span>
-                                          <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
-                                      </a>
-                                      <!--Hide/Show Layers Button-->
-                                      <a class="btn" data-bind="click: toggleLayers">
-                                          <i class="icon-layers icon-large" data-bind="css: {'icon-indent-right': showLayers(), 'icon-indent-left': ! showLayers()}"></i> 
-                                          <span data-bind="text: showLayersText()"></span>
-                                      </a>
-                                      <!--Bookmarks Button-->
-                                      <a id="bookmarks-button" class="btn" data-bind="click: showBookmarks">
-                                          <i class="icon-map-marker icon-large"></i>
-                                          <span>Bookmarks</span>
-                                          <span data-bind="visible: bookmarks.bookmarksList().length > 0">
-                                              (<span data-bind="text: bookmarks.bookmarksList().length"></span>)
-                                          </span>
-                                      </a>
-                                      <!--Fullscreen Button-->
-                                      <a class="btn" id="btn-fullscreen">
-                                          <i class="icon-fullscreen icon-large"></i>
-                                          <span>Fullscreen</span>
-                                    </a>
-                                  </div>
-                                  </div>
-                                  <div id="map-buttons">
-                                    <!--   <p><a class="btn pull-right">
+                                    <div id="map-buttons">
+                                        <!--  
+                                        <p><a class="btn pull-right">
                                           Coordinates &amp; Depth
-                                      </a></p> -->
-                                  </div>
-                                  
-                                  <!-- Attribution Overlay -->
-                                  <div id="attribute-data">
-                                    <div data-bind="visible: attributeData" style="display: none">
-                                      <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
-                                      <strong><span data-bind="text: attributeTitle()"></span></strong>
-                                      <dl data-bind="foreach: attributeData()">
-                                        <!--<dt data-bind="text: display"></dt>-->
-                                        <!--<dd data-bind="text: data"></dd>-->
-                                        <dt>
-                                            <span data-bind="text: display"></span><span data-bind="visible: display">:</span>
-                                            <span style="font-weight: normal" data-bind="text: data"></span>
-                                        </dt>
-                                      </dl>
+                                        </a></p> 
+                                        -->
                                     </div>
-                                  </div>
                                   
-                                  <!-- Bookmark Message -->
-                                  <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
+                                    <!-- Attribution Overlay -->
+                                    <div id="attribute-data">
+                                        <div data-bind="visible: attributeData" style="display: none">
+                                          <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
+                                          <strong><span data-bind="text: attributeTitle()"></span></strong>
+                                          <dl data-bind="foreach: attributeData()">
+                                            <!--<dt data-bind="text: display"></dt>-->
+                                            <!--<dd data-bind="text: data"></dd>-->
+                                            <dt>
+                                                <span data-bind="text: display"></span><span data-bind="visible: display">:</span>
+                                                <span style="font-weight: normal" data-bind="text: data"></span>
+                                            </dt>
+                                          </dl>
+                                        </div>
+                                    </div>
+                                  
+                                    <!-- Bookmark Message -->
+                                    <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">
                                         <div>
                                             <span class="pull-right">
                                                 <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
@@ -506,10 +497,10 @@
                                             "<span data-bind="text: activeBookmark"></span>"
                                             <div class="clearfix"></div>
                                         </div>
-                                  </div>
+                                    </div>
                                   
-                                  <!-- FullScreen Fail Message -->
-                                  <div id="fullscreen-error-overlay" style="display:none">
+                                    <!-- FullScreen Fail Message -->
+                                    <div id="fullscreen-error-overlay" style="display:none">
                                         <div>
                                             <span class="pull-right">
                                                 <a href="#" style="margin-left: 10px; opacity: .6;" class="close btn btn-mini" data-bind="click: closeAlert"> x </a>
@@ -517,9 +508,9 @@
                                             </span>
                                             <span>We're sorry, the Fullscreen option is not supported in all browsers at this time...If it's important, you might try Firefox or Chrome.</span>
                                         </div>
-                                  </div>
+                                    </div>
                                   
-                                  <!-- Description Overlay  style="display:none"-->
+                                    <!-- Description Overlay  style="display:none"-->
                                     <div id ="description-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription()" >
                                         <div class="span11">
                                             <span class="title" data-bind="text: activeInfoLayer().name"></span> -- 
@@ -535,40 +526,37 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Legends panel -->
-                                <div data-bind="visible: showLegend(), css: {'fullscreen-legend': isFullScreen }" class="span3">
-                                    <div id="legend-wrapper">
-                                        <div id="legend-header">
-                                            <span class="pull-right">
-                                                <a href="#" style="margin-left: 10px; margin-top: -2px; opacity: .6;" class="btn btn-mini close" data-bind="click: toggleLegend"> x </a> 
-                                            </span>
-                                            <span style="text-transform: uppercase;">
-                                                Legends (<span data-bind="text: activeLegendLayers().length"></span>)
-                                            </span>
-                                        </div>
-                                        <div data-bind="foreach: activeLegendLayers">
-                                                <div style="padding-bottom: 10px;">
-                                                    <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
-                                                    <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="visible: legendSubTitle, html: legendSubTitle"></p>
-                                                    <span data-bind="if: legend">
-                                                        <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
-                                                            <img data-bind="attr: { src: legend }" />
-                                                        </div>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                          </div>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                
+                <!-- Legends Panel (right panel) -->
+                <div data-bind="visible: showLegend(), css: {'fullscreen-legend': isFullScreen() }" class="span3">
+                    <div id="legend-wrapper">
+                        <div id="legend-header">
+                            <span class="pull-right">
+                                <a href="#" style="margin-left: 10px; margin-top: -2px; opacity: .6;" class="btn btn-mini close" data-bind="click: toggleLegend"> x </a> 
+                            </span>
+                            <span style="text-transform: uppercase;">
+                                Legends (<span data-bind="text: activeLegendLayers().length"></span>)
+                            </span>
+                        </div>
+                        <div data-bind="foreach: activeLegendLayers">
+                            <div style="padding-bottom: 10px;">
+                                <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
+                                <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="visible: legendSubTitle, html: legendSubTitle"></p>
+                                <span data-bind="if: legend">
+                                    <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
+                                        <img data-bind="attr: { src: legend }" />
                                     </div>
-                                </div>
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--/row-->
+                <!-- /Legends Panel -->
             </div>
-            <!--/span-->
         </div>
         <!--/row-->
         <hr>
@@ -672,32 +660,32 @@
         
         <!-- Email Bookmark Form -->
         <div id="bookmark-modal" class="modal hide fade">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Bookmark Email</h3>
-        </div>
-        <form class="form-horizontal" id="bookmark-form">
-        <div class="modal-body">        
-            <div class="control-group">
-              <label class="control-label" for="recipient">To</label>
-              <div class="controls">
-                <input class="input-xlarge" type="email" name="recipient" placeholder="Email Address" required>
-              </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Bookmark Email</h3>
             </div>
-            <div class="control-group">
-              <label class="control-label" for="body">Email Message</label>
-              <div class="controls">
-                  <textarea class="input-xlarge" rows="3" name="comment" placeholder="A link to your bookmark will be included in the email.  Include any additional text you would like to send here."></textarea>
-              </div>
-            </div>
-            <input type="hidden" name="link" data-bind="attr: {value: bookmarkEmail}">
+            <form class="form-horizontal" id="bookmark-form">
+                <div class="modal-body">        
+                    <div class="control-group">
+                      <label class="control-label" for="recipient">To</label>
+                      <div class="controls">
+                        <input class="input-xlarge" type="email" name="recipient" placeholder="Email Address" required>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="body">Email Message</label>
+                      <div class="controls">
+                          <textarea class="input-xlarge" rows="3" name="comment" placeholder="A link to your bookmark will be included in the email.  Include any additional text you would like to send here."></textarea>
+                      </div>
+                    </div>
+                    <input type="hidden" name="link" data-bind="attr: {value: bookmarkEmail}">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    <button type="submit" class="btn btn-primary">Send</a>
+                </div>
+            </form>
         </div>
-        <div class="modal-footer">
-            <a href="#" class="btn" data-dismiss="modal">Close</a>
-            <button type="submit" class="btn btn-primary">Send</a>
-        </div>
-      </form>
-    </div>
 
 
         
@@ -741,15 +729,15 @@
         <script src="{{media}}/marco-proto/pageguide.js"></script>
         <script>
         !
-function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (!d.getElementById(id)) {
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }
-}(document, "script", "twitter-wjs");
+        function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, "script", "twitter-wjs");
         </script>
     </body>
 
