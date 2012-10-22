@@ -41,7 +41,18 @@ function layerModel(options, parent) {
     }
     
     // set overview text for Learn More option
-    self.overview = options.overview || null;
+    if (options.overview) {
+        self.overview = options.overview;
+    } else if (parent && parent.overview) {
+        self.overview = parent.overview;
+    } else if (self.description) {
+        self.overview = self.description;
+    } else if (parent && parent.description) {
+        self.overview = parent.description;
+    } else {
+        self.overview = null;
+    }
+    // set download links 
     self.kml = options.kml || null;
     self.data_download = options.data_download || null;
     self.metadata = options.metadata || null;

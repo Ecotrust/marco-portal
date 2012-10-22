@@ -533,6 +533,9 @@
                                             <div style="margin-top: 10px">
                                                 <div><span class="title">Download Links</span></div>
                                                 <div class="text" style="margin-top: 5px">
+                                                    <span style="margin-left: 10px" data-bind="visible: !activeInfoLayer().kml && !activeInfoLayer().data_download && !activeInfoLayer().metadata && !activeInfoLayer().source">
+                                                        <i>No download links available.</i>
+                                                    </span>
                                                     <span data-bind="visible: activeInfoLayer().kml">
                                                         <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().kml }" target="_blank">
                                                             <span rel="tooltip" title="{% flatblock 'data_catalog_kml_link_tooltip' %}">
