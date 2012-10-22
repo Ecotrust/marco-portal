@@ -76,6 +76,7 @@
 
 #map .olControlAttribution {
   bottom: 0px;
+  left: 3px;
 }
 
 #data-accordion, #legend-accordion {
