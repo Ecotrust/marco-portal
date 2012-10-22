@@ -39,6 +39,13 @@ function layerModel(options, parent) {
     } else {
         self.description = null;
     }
+    
+    // set overview text for Learn More option
+    self.overview = options.overview || null;
+    self.kml = options.kml || null;
+    self.data_download = options.data_download || null;
+    self.metadata = options.metadata || null;
+    self.source = options.source || null;
 
     // opacity
     self.opacity.subscribe(function(newOpacity) {
@@ -341,8 +348,10 @@ function layerModel(options, parent) {
     self.toggleDescription = function(layer) {
         if ( layer.infoActive() ) {
             app.viewModel.showDescription(false);
+            app.viewModel.showOverview(false);
         } else {
             app.viewModel.showDescription(false);
+            app.viewModel.showOverview(false);
             app.viewModel.activeInfoLayer(layer);
             self.infoActive(true);
             app.viewModel.showDescription(true);
@@ -575,6 +584,8 @@ function viewModel() {
 
     // determines visibility of description overlay
     self.showDescription = ko.observable();
+    // determines visibility of expanded description overlay
+    self.showOverview = ko.observable();
     
     // theme text currently on display
     self.themeText = ko.observable();
@@ -725,9 +736,19 @@ function viewModel() {
         $('#fullscreen-error-overlay').hide();
     };
 
+    // expand data description overlay
+    self.expandDescription = function(self, event) {
+        if ( ! self.showOverview() ) {
+            self.showOverview(true);
+        } else {
+            self.showOverview(false);
+        }
+    };
+    
     // close layer description
     self.closeDescription = function(self, event) {
         self.showDescription(false);
+        self.showOverview(false);
     };
 
     // show bookmark stuff

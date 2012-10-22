@@ -283,6 +283,40 @@ a.disabled-link:hover {
 #description-overlay .text {
   font-size: 16px;
 }
+
+#overview-overlay {
+  position: absolute;
+  /*border-radius: 4px; can't tell if I want this or not...*/
+  bottom: 0;
+  z-index: 950; 
+  width: 100%;
+  font-size: 12px;
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(60, 110, 160, 0.65);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
+}
+
+#overview-overlay > div{
+  padding: 10px 10px 20px 10px;
+  color: white;
+}
+
+#overview-overlay a{
+  margin-left: 10px;
+}
+
+#overview-overlay .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#overview-overlay .text {
+  font-size: 16px;
+}
+
 #fullscreen-error-overlay {
   position: absolute;
   top: 0;
