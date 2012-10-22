@@ -272,7 +272,7 @@ a.disabled-link:hover {
 }
 
 #description-overlay a{
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 
 #description-overlay .title {
@@ -305,7 +305,7 @@ a.disabled-link:hover {
 }
 
 #overview-overlay a{
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 
 #overview-overlay .title {

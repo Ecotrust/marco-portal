@@ -748,7 +748,7 @@
                                         <div class="span11">
                                             <span class="title" data-bind="text: activeInfoLayer().name"></span> -- 
                                             <span class="text" data-bind="text: activeInfoLayer().description"></span>
-                                            <span><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show More'"></a>
+                                            <div><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show More...'"></a></div>
                                         </div>
                                         <div class="span1">
                                             <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
@@ -757,13 +757,13 @@
                                     <div id="overview-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription() && showOverview()" >
                                         <div class="span11">
                                             <div><span class="title" data-bind="text: activeInfoLayer().name"></span> </div>
-                                            <div style="margin-left: 10px; margin-top: 5px;"> 
+                                            <div style="margin-top: 5px"> 
                                                 <span class="text" data-bind="text: activeInfoLayer().overview"></span>
-                                                <span class="text pull-right"><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show Less'"></a></span>
+                                                <div><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show Less...'"></a></div>
                                             </div>
                                             
                                             {% load flatblock_tags %}
-                                            <div style="margin-top: 10px">
+                                            <div style="margin-top: 15px">
                                                 <div><span class="title">Download Links</span></div>
                                                 <div class="text" style="margin-top: 5px">
                                                     <span style="margin-left: 10px" data-bind="visible: !activeInfoLayer().kml && !activeInfoLayer().data_download && !activeInfoLayer().metadata && !activeInfoLayer().source">
