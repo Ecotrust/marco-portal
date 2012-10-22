@@ -450,29 +450,27 @@
                           <div class="pull-right">
                               <!--<li class=""><a href="/portal">Return to Portal</a></li>-->
                               <!--<li class=""><a href="">Help</a></li>-->
-                              <span class="btn-group user-btn">
-                                <a id="#help-button" class="btn" href="#help-modal" data-toggle="modal" style="margin-top: 15px;">Help</a>
-                              </span>
+                              <span class="user-btn">
+                                <a id="#help-button" class="btn" href="#help-modal" data-toggle="modal">Help</a>
                               
-                              {% if user.is_authenticated %}
-                              <div class="btn-group user-btn">
-                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                {% if user.is_authenticated %}
+                                <span class="btn-group">
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="icon-user"></i> 
                                     {{user.username}}
                                     <span class="caret"></span>
-                                </a>
-                                <ul id="username" class="dropdown-menu">
+                                  </a>
+                                  <ul id="username" class="dropdown-menu">
                                     <li><a href="#profile-modal" data-toggle="modal"><i class="icon-pencil"></i> Profile</a></li>
                                     <li><a href="#reset-password-modal" data-toggle="modal"><i class="icon-lock"></i> Password</a></li>
                                     <li class="divider"></li>
                                     <li><a href="{% url 'user_signout' %}"><i class="i"></i>Log Out</a></li>
-                                </ul>
-                              </div>
-                              {% else %}
-                              <div class="btn-group user-btn">
-                                <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a></li>
-                              </div>
-                              {% endif %}
+                                  </ul>
+                                </span>
+                                {% else %}
+                                  <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a></li>                              
+                                {% endif %}
+                              </span>
                           </div><!--/.nav-collapse -->
                       </div>
                   </div>

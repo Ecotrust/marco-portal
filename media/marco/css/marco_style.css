@@ -68,6 +68,7 @@ a:focus {
 }
 .navbar .dropdown-menu {
     min-width: 50px;
+    margin-top: 15px;
 }
 
 .navbar .nav > li > a {
