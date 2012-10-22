@@ -746,18 +746,64 @@
                                     </div>
                                   
                                     <!-- Description Overlay  style="display:none"-->
-                                    <div id ="description-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription()" >
+                                    <div id="description-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription() && !showOverview()" >
                                         <div class="span11">
                                             <span class="title" data-bind="text: activeInfoLayer().name"></span> -- 
                                             <span class="text" data-bind="text: activeInfoLayer().description"></span>
-                                            <span class="text">
-                                                <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().learn_link }" target="_blank">Learn More...</a>
-                                            </span>  
+                                            <span><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show More'"></a>
                                         </div>
                                         <div class="span1">
                                             <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
-                                            <!--<a class="btn pull-right" href="/explore/catalog#all-gear-types" rel="tooltip" data-placement="top" data-original-title="Download the data"><img src="http://localhost:8000/media/marco/ico/explore.png"></a>-->
-                                            <!--<a class="btn pull-right" data-bind="attr: { href: activeInfoLayer().learn_link }" rel="tooltip" data-placement="top" data-original-title="Learn more"><img src="http://localhost:8000/media/marco/ico/visualize.png"></a>-->
+                                        </div>
+                                    </div>      
+                                    <div id="overview-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription() && showOverview()" >
+                                        <div class="span11">
+                                            <div><span class="title" data-bind="text: activeInfoLayer().name"></span> </div>
+                                            <div style="margin-left: 10px; margin-top: 5px;"> 
+                                                <span class="text" data-bind="text: activeInfoLayer().overview"></span>
+                                                <span class="text pull-right"><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show Less'"></a></span>
+                                            </div>
+                                            
+                                            {% load flatblock_tags %}
+                                            <div style="margin-top: 10px">
+                                                <div><span class="title">Download Links</span></div>
+                                                <div class="text" style="margin-top: 5px">
+                                                    <span style="margin-left: 10px" data-bind="visible: !activeInfoLayer().kml && !activeInfoLayer().data_download && !activeInfoLayer().metadata && !activeInfoLayer().source">
+                                                        <i>No download links available.</i>
+                                                    </span>
+                                                    <span data-bind="visible: activeInfoLayer().kml">
+                                                        <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().kml }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_kml_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_kml_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span data-bind="visible: activeInfoLayer().data_download">
+                                                        <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().data_download }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_data_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_data_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span data-bind="visible: activeInfoLayer().metadata">
+                                                        <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().metadata }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_metadata_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_metadata_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span data-bind="visible: activeInfoLayer().source">
+                                                        <a class="btn btn-mini" data-bind="attr: { href: activeInfoLayer().source }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_source_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_source_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span1">
+                                            <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
                                         </div>
                                     </div>
                                 </div>
