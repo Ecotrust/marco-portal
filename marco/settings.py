@@ -4,6 +4,7 @@ from madrona.common.default_settings import *
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TIME_ZONE = 'America/Vancouver'
 ROOT_URLCONF = 'urls' # 'marco.urls'
+LOGIN_REDIRECT_URL = '/visualize'
 
 DATABASES = {
     'default': {
@@ -36,7 +37,8 @@ INSTALLED_APPS += ( 'clipping',
                     'visualize',
                     'feedback',
                     'django.contrib.humanize',
-                    'flatblocks' )
+                    'flatblocks',
+                    'marco_profile' )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon

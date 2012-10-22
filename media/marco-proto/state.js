@@ -101,7 +101,6 @@ app.loadState = function(state) {
     if (state.z) {
         return app.loadCompressedState(state);
     }
-    
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
     var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
@@ -152,15 +151,23 @@ app.loadState = function(state) {
     } else {
         app.viewModel.showLegend(false);
     }
-
+    
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
-    app.map.setCenter(new OpenLayers.LonLat(state.location.x, state.location.y).transform(
-    new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), state.location.zoom);
+    if (state.location) {
+        app.map.setCenter(new OpenLayers.LonLat(state.location.x, state.location.y).transform(
+        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), state.location.zoom);
+    }
+    
+    // is url is indicating a login request then show the login modal
+    if (!app.is_authenticated && state.login) {
+        $('#sign-in-modal').modal('show');
+    }
 };
 
 // load the state from the url hash
 app.loadStateFromHash = function (hash) {    
+    
     app.loadState($.deparam(hash.slice(1)));
 };
 
@@ -173,4 +180,5 @@ app.updateUrl = function () {
         app.restoreState = state;
     }
     window.location.hash = $.param(state);
+    app.viewModel.currentURL(window.location.pathname + window.location.hash);
 };
