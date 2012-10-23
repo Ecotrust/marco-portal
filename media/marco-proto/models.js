@@ -720,6 +720,9 @@ function viewModel() {
     self.closeDescription = function(self, event) {
         self.showDescription(false);
     };
+    
+    //assigned in app.updateUrl (in state.js)
+    self.currentURL = ko.observable();
 
     // show bookmark stuff
     self.showBookmarks = function(self, event) {

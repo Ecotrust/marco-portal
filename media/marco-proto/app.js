@@ -1,5 +1,6 @@
 // save the initial load hash so we can use it if set
 app.hash = window.location.hash;
+
 app.onResize = function(percent) {
 
   var height = $(window).height() * (percent || 0.825);
@@ -77,11 +78,11 @@ $(document).ready(function() {
   };
   OpenLayers.Tile.Image.useBlankTile=false;
 
-
   // if we have the hash state go ahead and load it now
-  if (app.hash) {
+  /*if (app.hash && !app.loginHash) {
+    console.log('document ready without #login hash');
     app.loadStateFromHash(app.hash);
-  }
+  } */
   // handle coordinate indicator on pointer
   $('#map').bind('mouseleave mouseenter', function(e) {
     $('#pos').toggle();
@@ -201,20 +202,19 @@ $('#bookmark-form').on('submit', function(event) {
 });
 
 $('#feedback-form').on('submit', function (event) {
-  var feedback = {}, $form = $(this);
-  event.preventDefault();
+   var feedback = {}, $form = $(this);
+   event.preventDefault();
    $(this).find('input, textarea').each(function (i, input) {
       var $input = $(input);
       feedback[$input.attr('name')] = $input.val();
    });
-       feedback.url = window.location.href;
+   feedback.url = window.location.href;
    $.post('/feedback/send', feedback, function () {
       $form.closest('.modal').modal('hide');
       //$('#thankyou-modal').modal('show');
    });
    $form.closest('.modal').modal('hide');
 });
-
 
 $(document).mousedown(function(e) {
   //removing bookmark popover from view
