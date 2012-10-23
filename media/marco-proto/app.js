@@ -97,6 +97,13 @@ $(document).ready(function() {
   $('.icon-remove-sign').on('click', function(event) {
     $(event.target).prev('input').val('').focus();
   });
+  
+  //jquery scroll bar
+  /*$(function() {
+    $('.scroll-pane').jScrollPane( {
+      scrollbarOnLeft: true
+    });
+  });*/
 
   app.fullscreen = {};
   // fullscreen stuff
