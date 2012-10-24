@@ -864,9 +864,61 @@ function viewModel() {
             self.showLegend(false);
         }
     });*/
-
+    
+    /* DESIGNS */
+    
+    self.showCreateButton = ko.observable(true);
+    
+    /* Wind Design */
+    self.showWindDesignWizard = ko.observable(false);
+    self.windDesignStep1 = ko.observable(false);
+    self.windDesignStep2 = ko.observable(false);
+    self.windDesignStep3 = ko.observable(false);
+    
+    self.startWindDesignWizard = function() {
+        console.log('starting wind design wizard');
+        self.showCreateButton(false);
+        self.showWindDesignWizard(true);
+        self.showWindDesignStep1();
+    };
+    
+    self.showWindDesignStep1 = function() {
+        self.windDesignStep1(true);
+        $('#wind-design-step-1').addClass('active');
+        self.windDesignStep2(false);
+        $('#wind-design-step-2').removeClass('active');
+        self.windDesignStep3(false);
+        $('#wind-design-step-3').removeClass('active');
+    };
+    
+    self.showWindDesignStep2 = function() {
+        self.windDesignStep1(false);
+        $('#wind-design-step-1').removeClass('active');
+        self.windDesignStep2(true);
+        $('#wind-design-step-2').addClass('active');
+        self.windDesignStep3(false);
+        $('#wind-design-step-3').removeClass('active');
+    };
+    
+    self.showWindDesignStep3 = function() {
+        self.windDesignStep1(false);
+        $('#wind-design-step-1').removeClass('active');
+        self.windDesignStep2(false);
+        $('#wind-design-step-2').removeClass('active');
+        self.windDesignStep3(true);
+        $('#wind-design-step-3').addClass('active');
+    };
+    
+    
     return self;
 }
 
-
 app.viewModel = new viewModel();
+/*
+app.viewModel.designs = function() {
+    
+    self.createDesign = function() {
+        debugger;
+    };
+
+}*/

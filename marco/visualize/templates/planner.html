@@ -487,13 +487,55 @@
                                 <!-- /row -->
                             </div>
                             <!-- /data-tab -->
+                            
                             <!-- design tab -->
                             <div class="tab-pane fade" id="designs">
-                                <p>
-                                    designs
-                                </p>
+                                <!-- Create New Design dropdown menu -->
+                                <div style="margin-left: 20px" data-bind="visible: showCreateButton">
+                                    <div class="btn-group user-btn">
+                                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                            Create New Design
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-bind="click: startWindDesignWizard">Wind Energy</a></li>
+                                            <li><a href="#">Conservation</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Selection-Based</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Wind Energy Design -->
+                                <div data-bind="visible: showWindDesignWizard()">
+                                    <div>  
+                                      <ul class="breadcrumb">  
+                                        <li>  
+                                          <a href="#" data-bind="click: showWindDesignStep1">Step 1</a> <span class="divider">></span>  
+                                        </li>  
+                                        <li>  
+                                          <a href="#" data-bind="click: showWindDesignStep2">Step 2</a> <span class="divider">></span>  
+                                        </li>  
+                                        <li>
+                                          <a href="#" data-bind="click: showWindDesignStep3">Step 3</a> 
+                                        </li>  
+                                      </ul>  
+                                    </div>  
+                                    <div id="wind-design-step-1" data-bind="visible: windDesignStep1()">
+                                        <span>This is step 1</span>
+                                    </div>
+                                    <div id="wind-design-step-2" data-bind="visible: windDesignStep2()">
+                                        <span>This is step 2</span>
+                                    </div>
+                                    <div id="wind-design-step-3" data-bind="visible: windDesignStep3()">
+                                        <span>This is step 3</span>
+                                    </div>
+                                </div>
+                                
+                                
                             </div>
                             <!-- /design-tab -->
+                            
                             <!-- active layer tab -->
                             <div class="tab-pane fade" id="active">
                                 <div class="row-fluid">
