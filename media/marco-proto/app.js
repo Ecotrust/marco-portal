@@ -104,6 +104,17 @@ $(document).ready(function() {
       scrollbarOnLeft: true
     });
   });*/
+  
+  //resizable behavior for overview-overlay
+  //might not use the following after all... 
+  //(having problems setting minHeight, losing resizing ability 
+  /*
+  $("#overview-overlay").resizable({
+    handles: 'n',
+    containment: 'parent'
+    }
+  })
+  */
 
   app.fullscreen = {};
   // fullscreen stuff

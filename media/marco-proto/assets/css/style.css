@@ -290,9 +290,11 @@ a.disabled-link:hover {
   /*border-radius: 4px; can't tell if I want this or not...*/
   bottom: 0;
   z-index: 950; 
-  width: 100%;
-  max-height: 60%;
-  overflow: auto;
+  min-width: 100%;
+  height: 60%;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-size: 12px;
   /* RGBa with 0.6 opacity */
   background-color: rgba(60, 110, 160, 0.65);
@@ -302,10 +304,11 @@ a.disabled-link:hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
 }
 
-#overview-overlay > div{
+#overview-overlay-text, #overview-overlay-close {
   padding: 10px 10px 20px 10px;
   color: white;
 }
+
 
 #overview-overlay a{
   /*margin-left: 10px;*/

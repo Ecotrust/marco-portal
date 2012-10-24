@@ -61,6 +61,22 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-57-precomposed.png">
+        
+        <!-- Google Analytics -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35841423-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        
     </head>
     
     <body>
@@ -756,8 +772,8 @@
                                             <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
                                         </div>
                                     </div>      
-                                    <div id="overview-overlay" class="row-fluid" style="display: none" data-bind="visible: showDescription() && showOverview()" >
-                                        <div class="span11">
+                                    <div id="overview-overlay" class="row-fluid ui-widget-content" style="display: none" data-bind="visible: showDescription() && showOverview()" >
+                                        <div id="overview-overlay-text" class="span11">
                                             <div><span class="title" data-bind="text: activeInfoLayer().name"></span> </div>
                                             <div style="margin-top: 5px"> 
                                                 <span class="text" data-bind="text: activeInfoLayer().overview"></span>
@@ -802,7 +818,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="span1">
+                                        <div id="overview-overlay-close" class="span1">
                                             <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
                                         </div>
                                     </div>
