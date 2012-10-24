@@ -232,6 +232,7 @@ app.addLayerToMap = function(layer) {
             
             layer.type = 'XYZ';
             layer.url = 'https://s3.amazonaws.com/marco-public-2d/Conservation/CoralTiles/${z}/${x}/${y}.png';
+            layer.utfurl = '/media/data_manager/utfgrid/coldwater_corals/${z}/${x}/${y}.json';
         }
         /***END TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         
