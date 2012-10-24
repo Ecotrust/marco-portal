@@ -510,24 +510,24 @@
                                 <div data-bind="visible: showWindDesignWizard()">
                                     <div>  
                                       <ul class="breadcrumb">  
-                                        <li>  
+                                        <li id="wind-design-breadcrumb-step-1">  
                                           <a href="#" data-bind="click: showWindDesignStep1">Step 1</a> <span class="divider">></span>  
                                         </li>  
-                                        <li>  
+                                        <li id="wind-design-breadcrumb-step-2">  
                                           <a href="#" data-bind="click: showWindDesignStep2">Step 2</a> <span class="divider">></span>  
                                         </li>  
-                                        <li>
+                                        <li id="wind-design-breadcrumb-step-3">
                                           <a href="#" data-bind="click: showWindDesignStep3">Step 3</a> 
                                         </li>  
                                       </ul>  
                                     </div>  
-                                    <div id="wind-design-step-1" data-bind="visible: windDesignStep1()">
+                                    <div data-bind="visible: windDesignStep1()">
                                         <span>This is step 1</span>
                                     </div>
-                                    <div id="wind-design-step-2" data-bind="visible: windDesignStep2()">
+                                    <div data-bind="visible: windDesignStep2()">
                                         <span>This is step 2</span>
                                     </div>
-                                    <div id="wind-design-step-3" data-bind="visible: windDesignStep3()">
+                                    <div data-bind="visible: windDesignStep3()">
                                         <span>This is step 3</span>
                                     </div>
                                 </div>
