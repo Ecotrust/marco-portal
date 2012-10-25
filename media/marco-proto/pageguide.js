@@ -98,25 +98,25 @@ var dataGuide = {
   steps: [
     {
       target: '#dataTab',
-      content: $('#help-text-dataTab').html(),
+      content: $('#help-text-data-tour-dataTab').html(),
       direction: 'top',
       arrow: {offsetX: 10, offsetY: 20}
     },
     {
       target: '.form-search',
-      content: $('#help-text-form-search').html(),
+      content: $('#help-text-data-tour-form-search').html(),
       direction: 'top',
       arrow: {offsetX: 180, offsetY: 0}
     },
     {
       target: '.accordion-heading',
-      content: $('#help-text-theme').html(),
+      content: $('#help-text-data-tour-theme').html(),
       direction: 'right',
       arrow: {offsetX: -10, offsetY: 10}
     },
     {
       target: 'div[name*="Regional Ocean Partnerships"]',
-      content: $('#help-text-layer').html(),
+      content: $('#help-text-data-tour-layer').html(),
       direction: 'right',
       arrow: {offsetX: -10, offsetY: 10}
     }
