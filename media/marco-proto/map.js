@@ -239,9 +239,10 @@ app.addLayerToMap = function(layer) {
         
         /***BEGIN TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         if ( $.browser.msie && $.browser.version < 9.0 && layer.name === "Coldwater Corals" ) {
-            
+        //if ( layer.name === "Coldwater Corals" ) {    
             layer.type = 'XYZ';
             layer.url = 'https://s3.amazonaws.com/marco-public-2d/Conservation/CoralTiles/${z}/${x}/${y}.png';
+            layer.utfurl = '/media/data_manager/utfgrid/coldwater_corals/${z}/${x}/${y}.json';
         }
         /***END TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         
