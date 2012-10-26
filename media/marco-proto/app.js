@@ -99,7 +99,8 @@ $(document).ready(function() {
   });
   
   $('#data-accordion').mCustomScrollbar({
-    scrollInertia:250
+    scrollInertia:250,
+    mouseWheel: 18
   });
   
   //resizable behavior for overview-overlay

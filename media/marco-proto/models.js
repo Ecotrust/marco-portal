@@ -775,7 +775,8 @@ function viewModel() {
         if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
             app.viewModel.scrollBarElements.push(elem);
             $(elem).mCustomScrollbar({
-              scrollInertia:250
+                scrollInertia:250,
+                mouseWheel: 6
             });
         }
         $(elem).mCustomScrollbar("update");
