@@ -360,12 +360,14 @@ function layerModel(options, parent) {
         if ( layer.infoActive() ) {
             app.viewModel.showDescription(false);
             app.viewModel.showOverview(false);
+            app.viewModel.showAttribution();
         } else {
             app.viewModel.showDescription(false);
             app.viewModel.showOverview(false);
             app.viewModel.activeInfoLayer(layer);
             self.infoActive(true);
             app.viewModel.showDescription(true);
+            app.viewModel.hideAttribution();
         }
     };
     
@@ -416,10 +418,17 @@ function themeModel(options) {
         if (self.isOpenTheme(theme)) {
             //app.viewModel.activeTheme(null);
             app.viewModel.openThemes.remove(theme);
+            self.updateScrollBar();
         } else {
             app.viewModel.openThemes.push(theme);
+            self.updateScrollBar();
         }
     };
+    
+    self.updateScrollBar = function() {
+        $('#data-accordion').mCustomScrollbar("update");
+    };
+    
 
     //is in openThemes
     self.isOpenTheme = function() {
@@ -751,15 +760,29 @@ function viewModel() {
     self.expandDescription = function(self, event) {
         if ( ! self.showOverview() ) {
             self.showOverview(true);
+            self.updateCustomScrollbar('#overview-overlay-text');
         } else {
             self.showOverview(false);
         }
+    };
+    
+    self.scrollBarElements = [];
+    
+    self.updateCustomScrollbar = function(elem) {
+        if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
+            app.viewModel.scrollBarElements.push(elem);
+            $(elem).mCustomScrollbar({
+              scrollInertia:250
+            });
+        }
+        $(elem).mCustomScrollbar("update");
     };
     
     // close layer description
     self.closeDescription = function(self, event) {
         self.showDescription(false);
         self.showOverview(false);
+        self.showAttribution();
     };
     
     //assigned in app.updateUrl (in state.js)
@@ -1020,6 +1043,15 @@ function viewModel() {
                 $.pageguide('showStep', $.pageguide().guide().steps.length-1);
             }
         }
+    }
+    
+    self.showAttribution = function() {
+        $('.olControlScaleBar').show();
+        $('.olControlAttribution').show();
+    }
+    self.hideAttribution = function() {
+        $('.olControlScaleBar').hide();
+        $('.olControlAttribution').hide();
     }
     
     return self;

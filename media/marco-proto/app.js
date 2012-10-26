@@ -98,12 +98,7 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
   
-  //jquery scroll bar
-  /*$(function() {
-    $('.scroll-pane').jScrollPane( {
-      scrollbarOnLeft: true
-    });
-  });*/
+  //$('#data-accordion').mCustomScrollbar();
   
   //resizable behavior for overview-overlay
   //might not use the following after all... 

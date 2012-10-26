@@ -268,7 +268,7 @@ a.disabled-link:hover {
 }
 
 #description-overlay > div{
-  padding: 10px 10px 20px 10px;
+  padding: 10px;
   color: white;
 }
 
@@ -292,8 +292,9 @@ a.disabled-link:hover {
   z-index: 950; 
   min-width: 100%;
   max-height: 60%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  /*overflow-x: hidden;
+  overflow-y: auto;*/
+  overflow: auto;
   font-size: 12px;
   /* RGBa with 0.6 opacity */
   background-color: rgba(60, 110, 160, 0.65);
@@ -303,8 +304,18 @@ a.disabled-link:hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
 }
 
-#overview-overlay-text, #overview-overlay-close {
-  padding: 10px 10px 20px 10px;
+#overview-overlay-header {
+  margin-bottom: 10px;
+}
+
+#overview-overlay-text {
+  height: 100px;
+  width: 100%
+  overflow: hidden;
+}
+
+#overview-overlay-content, #overview-overlay-close {
+  padding: 10px;
   color: white;
 }
 
