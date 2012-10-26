@@ -98,7 +98,9 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
   
-  $('#data-accordion').mCustomScrollbar();
+  $('#data-accordion').mCustomScrollbar({
+    scrollInertia:250
+  });
   
   //resizable behavior for overview-overlay
   //might not use the following after all... 
