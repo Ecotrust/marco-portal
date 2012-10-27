@@ -972,7 +972,6 @@ function viewModel() {
     };
     
     self.startDataTour = function() {
-        //console.log('starting data tour');
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
@@ -1011,7 +1010,7 @@ function viewModel() {
         //show the data layers panel
         app.viewModel.showLayers(true);
         
-        //switch pageguide from default guide to data guide
+        //switch pageguide from default guide to active guide
         $.pageguide(activeGuide, activeGuideOverrides);
         
         //save state
@@ -1041,7 +1040,7 @@ function viewModel() {
     
     //if toggling legend or layers panel during default pageguide, then correct step 4 position
     self.correctTourPosition = function() {
-        console.log('toggling pageguide');
+        //console.log('toggling pageguide');
         if ( $.pageguide('isOpen') ) {
             if ($.pageguide().guide().id === 'default-guide') {
                 $.pageguide('showStep', $.pageguide().guide().steps.length-1);
@@ -1057,6 +1056,48 @@ function viewModel() {
         $('.olControlScaleBar').hide();
         $('.olControlAttribution').hide();
     }
+    
+    /* REGISTRATION */
+    self.username = ko.observable();
+    self.usernameError = ko.observable(false);
+    self.password1 = ko.observable("");
+    self.password2 = ko.observable("");
+    self.passwordWarning = ko.observable(false);
+    self.passwordSuccess = ko.observable(false);
+    
+    self.checkPassword = function() {
+        if (self.password1() && self.password2() && self.password1() !== self.password2()) {
+            self.passwordWarning(true);
+            self.passwordSuccess(false);
+        } else if (self.password1() && self.password2() && self.password1() === self.password2()) {
+            self.passwordWarning(false);
+            self.passwordSuccess(true);
+        } else {
+            self.passwordWarning(false);
+            self.passwordSuccess(false);
+        }
+        return true;
+    }
+    
+    self.checkUsername = function() {
+        if (self.username()) {
+            $.ajax({ 
+                url: '/marco_profile/duplicate_username', 
+                data: { username: self.username() }, 
+                method: 'GET',
+                dataType: 'json',
+                success: function(result) { 
+                    if (result.duplicate === true) {
+                        self.usernameError(true);
+                    } else {
+                        self.usernameError(false);
+                    }
+                },
+                error: function(result) { debugger; }
+            });
+        }
+    }
+    
     
     return self;
 }

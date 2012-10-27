@@ -7,6 +7,20 @@ from madrona.user_profile.models import UserProfile
 from madrona.user_profile.forms import UserForm, UserProfileForm
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
+import simplejson
+
+def duplicate_username(request):
+    username = request.GET.get('username', None)
+    if username:
+        try:
+            User.objects.get(username=username)
+            found = True
+        except:
+            found = False
+    else:
+        return HttpResponse('username not found', status=400)
+        
+    return HttpResponse(simplejson.dumps({'duplicate': found}), mimetype="application/json", status=200) 
 
 def send_username(request, use_openid=False, redirect_field_name=REDIRECT_FIELD_NAME):
     if request.method == 'POST':

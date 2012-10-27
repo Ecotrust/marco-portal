@@ -39,4 +39,6 @@ urlpatterns = patterns('',
     
     url(r'^forgot_username/$', send_username),
     url(r'^update_profile/(?P<username>\w+)/$', update_profile, {'use_openid': use_openid}),
+    
+    url(r'^duplicate_username$', duplicate_username),
 )

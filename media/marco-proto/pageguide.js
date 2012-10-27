@@ -214,6 +214,7 @@ var activeGuideOverrides = {
       
         //show the active tab, close any open themes, deactivate all layers, and activate the desired layers
         //NOTE:  the following will need to be executed BEFORE the open event handler (before 'open' is called)
+        //app.viewModel.showLayers(true);
         $('#activeTab').tab('show');
         app.viewModel.closeAllThemes();
         app.viewModel.deactivateAllLayers();

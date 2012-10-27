@@ -243,6 +243,18 @@ $(document).ready(function() {
     app.viewModel.hideOpacity();
   });  
   
+  $('#registration-modal').on('show', function() {
+    $('.empty-input').val("");
+  });
+  
+  $(document).on('click', '#start-data-tour', function() {
+    app.viewModel.startDataTour();
+  });
+  
+  $(document).on('click', '#start-active-tour', function() {
+    app.viewModel.startActiveTour();
+  });
+  
   /*$('#active-tour').on('click', function() {
     debugger;
     //$.pageguide('load', guide2);
