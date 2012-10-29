@@ -1,0 +1,1 @@
+alias git='echo "are you sture?"'
