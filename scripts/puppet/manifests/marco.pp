@@ -88,11 +88,6 @@ service { 'apache2':
 }
 
 
-package { "nodejs":
-    ensure => "installed",
-    subscribe => Exec['add-apt']
-}
-
 package { "libmapnik":
     ensure => "installed",
     subscribe => Exec['add-apt']

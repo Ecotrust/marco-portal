@@ -902,6 +902,10 @@ img + h3 {
 	width: 94%;
 }
 
+#printing-popover input {
+	width: 20%;
+}
+
 @media (max-width: 767px) {
 	.navbar .nav > li > a {
 		width: 70px;

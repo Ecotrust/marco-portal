@@ -731,6 +731,12 @@
                                               <i class="icon-fullscreen icon-large"></i>
                                               <span>Fullscreen</span>
                                           </a>
+                                          <!-- Print Button -->
+
+                                            <a class="btn" id="btn-print" data-bind="click: printing.showPrintDialog">
+                                                <i class="icon-print icon-large"></i>
+                                                <span>Print/Export</span>
+                                            </a>
                                         </div>
                                     </div>
                                     <div id="map-buttons">
@@ -887,7 +893,9 @@
         <hr>
           
         <!--/.fluid-container-->
+
         
+
         <!-- transparency tool -->
         <div style="display:none" id="opacity-popover" class="popover fade bottom in">
             <div class="arrow">
@@ -982,7 +990,63 @@
                 </div>
             </div>
         </div>
+
+        <!-- printing popover -->
+        <div style="display:none" id="printing-popover" class="popover fade left in">
+            <div class="arrow">
+            </div>
+            <div class="popover-inner" data-bind="with: printing">
+                <h3 class="popover-title">
+                    Printing <span data-bint="text: test"></span>
+                </h3>
+                <div class="popover-content">
+                    <form>
+                        Format
+                        <div class="control-group">
+                            <label class="radio control-label">
+                                <input type="radio" name="format" checked>PNG
+                            </label>
+                            <label class="radio control-label">
+                                <input type="radio" name="format">PDF
+                            </label>
+                        </div>
+                    </form>
+                    <hr/>
+                    <p class="pull-right">
+                        <button class="btn" data-bind="click: cancel">cancel</button>
+                        <button class="btn" data-bind="click: print">print</button>
+                        <div class="clearfix"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
         
+        <!-- Print Dialog -->
+        <div id="print-modal" class="modal hide fade" data-bind="with: printing">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Print/Export Status</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <strong><span data-bind="text: jobStatus"></span></strong>
+                        <p data-bind="visible: thumbnail">
+                            Click <a data-bind="attr: {href: thumbnail }">here</a> for export.
+                        </p>
+                    </div>
+                    <div class="span6">
+                        <img src="{{media}}marco/img/ajax-loader.gif" data-bind="visible: showSpinner"/>
+                        <div class="thumbnail" data-bind="visible: thumbnail">
+                            <a data-bind="attr: {href: thumbnail }" target="_blank"><img height="300" data-bind="attr: {src: thumbnail}"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">ok</a>
+            </div>
+        </div>
         <!-- Email Bookmark Form -->
         <div id="bookmark-modal" class="modal hide fade">
             <div class="modal-header">
@@ -1042,6 +1106,8 @@
         <script src="{{media}}/marco-proto/assets/js/scalebar.js"></script>
         <script src="{{media}}/marco/js/bigscreen.js"></script>
         <script src="{{media}}/marco/js/jquery.ui.touch-punch.min.js"></script>
+
+        <script src="http://localhost:8989/socket.io/socket.io.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};
@@ -1052,6 +1118,7 @@
         <script src="{{media}}/marco-proto/state.js"></script>
         <script src="{{media}}/marco-proto/models.js"></script>
         <script src="{{media}}/marco-proto/server.js"></script>
+        <script src="{{media}}/marco-proto/printing.js"></script>
         <script src="{{media}}/marco-proto/app.js"></script>
         <script src="{{media}}/marco-proto/pageguide.js"></script>
         <script src="{{media}}/marco-proto/assets/js/jquery.mousewheel.min.js"></script>

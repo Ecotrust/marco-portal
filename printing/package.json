@@ -1,0 +1,26 @@
+
+{
+  "author": "Edwin Knuth <eknuth@ecotrust.org>",
+  "name": "print",
+  "description": "server for generating printable/exportable documents from maps",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Ecotrust/marco-portal.git"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "webshot": "0.1.4",
+    "socket.io": "0.9.6",
+    "express": "3.0.0",
+    "moment": "1.7.2"
+
+
+    },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
+

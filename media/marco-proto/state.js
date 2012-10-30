@@ -23,6 +23,22 @@ app.getState = function () {
     };
 };
 
+app.layersAreLoaded = false;
+app.establishLayerLoadState = function () {
+    var loadTimer = setInterval(function () {
+        var status = true;
+        $.each(app.map.layers, function (i, layer) {
+            if (layer.loading === true) {
+                status = false;
+            }
+        });
+        if (status === true) {
+            app.layersAreLoaded = true;
+            clearInterval(loadTimer);
+        }
+    }, 100);
+};
+
 // load compressed state (the url was getting too long so we're compressing it
 app.loadCompressedState = function(state) { 
     // turn off active laters
@@ -81,7 +97,7 @@ app.loadCompressedState = function(state) {
     } else {
         app.viewModel.showLegend(false);
     }
-
+    app.establishLayerLoadState();
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
     app.setMapPosition(state.x, state.y, state.z);
@@ -98,6 +114,7 @@ app.setMapPosition = function(x, y, z) {
 
 // load state from fixture or server
 app.loadState = function(state) {
+    var loadTimer;
     if (state.z) {
         return app.loadCompressedState(state);
     }
@@ -128,7 +145,11 @@ app.loadState = function(state) {
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap.name)[0]);
     }
-    
+    // now that we have our layers
+    // to allow for establishing the layer load state
+   app.establishLayerLoadState();
+
+
     if (state.activeTab && state.activeTab.tab === 'active') {
         $('#activeTab').tab('show');
     } else {

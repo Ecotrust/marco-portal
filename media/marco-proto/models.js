@@ -792,6 +792,7 @@ function viewModel() {
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();
 
+
     // show bookmark stuff
     self.showBookmarks = function(self, event) {
         var $button = $(event.target).closest('.btn'),
