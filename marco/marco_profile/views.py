@@ -9,6 +9,21 @@ from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
 import simplejson
 
+def verify_password(request):
+    username = request.GET.get('username', None)
+    password = request.GET.get('password', None)
+    if username and password:
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                return HttpResponse(simplejson.dumps({'verified': True}), mimetype="application/json", status=200)
+            else:
+                return HttpResponse(simplejson.dumps({'verified': False}), mimetype="application/json", status=200)
+        except:
+            return HttpResponse(simplejson.dumps({'verified': False}), mimetype="application/json", status=200)
+    else:
+        return HttpResponse("Received unexpected " + request.method + " request.", status=400)
+
 def duplicate_username(request):
     username = request.GET.get('username', None)
     if username:
@@ -138,7 +153,7 @@ def password_change(request, username,
     :post_change_redirect: url used to redirect user after password change.
     It take the register_form as param.
     """
-        
+    
     if request.user.username != username:
         return HttpResponse("You cannot access another user's profile.", status=401)
     else:

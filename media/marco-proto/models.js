@@ -1064,6 +1064,36 @@ function viewModel() {
     self.password2 = ko.observable("");
     self.passwordWarning = ko.observable(false);
     self.passwordSuccess = ko.observable(false);
+    self.passwordError = ko.observable(false);
+    
+    self.verifyPassword = function(username, password) {
+        var username = $(username).val();
+        var password = $(password).val();
+        /*if (username && password) {
+            $.ajax({ 
+                url: '/marco_profile/verify_password', 
+                data: { username: username, password: password }, 
+                method: 'GET',
+                dataType: 'json',
+                success: function(result) { 
+                    if (result.verified === true) {
+                        self.passwordError(false);
+                    } else {
+                        self.passwordError(true);
+                    }
+                },
+                error: function(result) { } //debugger; }
+            });
+        }*/
+        self.passwordError(false);
+    };
+    self.turnOffPasswordError = function() {
+        self.passwordError(false);
+    };
+    
+    self.turnOffUsernameError = function() {
+        self.usernameError(false);
+    };
     
     self.checkPassword = function() {
         if (self.password1() && self.password2() && self.password1() !== self.password2()) {
@@ -1093,7 +1123,7 @@ function viewModel() {
                         self.usernameError(false);
                     }
                 },
-                error: function(result) { debugger; }
+                error: function(result) { } //debugger; }
             });
         }
     }

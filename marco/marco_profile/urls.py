@@ -29,11 +29,12 @@ urlpatterns = patterns('',
         reg_views.register,
         {'backend': 'registration.backends.default.DefaultBackend', 
          #'disallowed_url': '',
-         'success_url': 'registration/marco_registration_complete.html',
+         'success_url': 'registration/complete/',
          'template_name': 'registration/marco_registration_username_retry.html'},
+         #'extra_context': {'username': 'Sam'}},
         name='marco_registration_register'
     ),
-    url(r'^signup/complete/$',
+    url(r'^signup/registration/complete/$',
         TemplateView.as_view(template_name='registration/marco_registration_complete.html'),
         name='marco_registration_complete'),
     
@@ -41,4 +42,5 @@ urlpatterns = patterns('',
     url(r'^update_profile/(?P<username>\w+)/$', update_profile, {'use_openid': use_openid}),
     
     url(r'^duplicate_username$', duplicate_username),
+    url(r'^verify_password$', verify_password),
 )

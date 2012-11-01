@@ -258,13 +258,14 @@
                     <div class="control-group">
                       <label class="control-label" for="username">Username</label>
                       <div class="controls">
-                        <input class="input-xlarge" type="text" name="username" placeholder="username" required>
+                        <input id="login-username" class="input-xlarge" type="text" name="username" placeholder="username" required>
                       </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="password1">Password</label>
                       <div class="controls">
-                          <input class="input-xlarge" type="password" name="password" required>
+                          <input id="login-password" class="input-xlarge" type="password" name="password" data-bind="event: { blur: verifyPassword.bind($data, $('#login-username'), $('#login-password')), focus: turnOffPasswordError }" required>
+                          <span class="help-inline" data-bind="visible: passwordError">The password you entered is incorrect.  Please try again.</span>
                       </div>
                     </div>
                     <div>
@@ -364,7 +365,7 @@
                     <div class="control-group" data-bind="css: { error: usernameError }">
                       <label class="control-label" for="username">Username</label>
                       <div class="controls">
-                        <input class="input-xlarge" type="text" data-bind="value: username, event: { blur: checkUsername }" name="username" placeholder="username" required>
+                        <input class="input-xlarge" type="text" data-bind="value: username, event: { blur: checkUsername, focus: turnOffUsernameError }" name="username" placeholder="username" required>
                         <span class="help-inline" data-bind="visible: usernameError">That username is already in use.  Please try another username.</span>
                       </div>
                     </div>
