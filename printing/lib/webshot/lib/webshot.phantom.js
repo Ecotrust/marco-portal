@@ -11,6 +11,7 @@ var args = {};
 , 'shotHeight'
 , 'userAgent'
 , 'script'
+
 ].forEach(function(name, i) {
   args[name] = system.args[i + 1];
 });
@@ -20,6 +21,10 @@ page.viewportSize = {
   width: args.screenWidth
 , height: args.screenHeight
 };
+
+// if (args.paperSize) {
+//   page.paperSize = args.paperSize;
+// }
 
 // Set the user agent string
 if (args.userAgent) {

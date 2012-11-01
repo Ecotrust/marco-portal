@@ -18,27 +18,32 @@ app.getState = function () {
         basemap: app.map.baseLayer.name,
         themes: {ids: app.viewModel.getOpenThemeIDs()},
         tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active',
-        legends: app.viewModel.showLegend() ? 'true': 'false'
+        legends: app.viewModel.showLegend() ? 'true': 'false',
+        layers: app.viewModel.showLayers() ? 'true': 'false'
         //and active tab
     };
 };
 
 app.layersAreLoaded = false;
 app.establishLayerLoadState = function () {
-    var loadTimer = setInterval(function () {
-        var status = true;
-        $.each(app.map.layers, function (i, layer) {
-            if (layer.loading === true) {
-                status = false;
+    var loadTimer, status = true;
+    if (app.map.layers.length === 0) {
+        app.layersAreLoaded = true;
+    } else {
+        loadTimer = setInterval(function () {
+            $.each(app.map.layers, function (i, layer) {
+                if (layer.loading === true) {
+                    status = false;
+                }
+            });
+            if (status === true) {
+                app.layersAreLoaded = true;
+                clearInterval(loadTimer);
             }
-        });
-        if (status === true) {
-            app.layersAreLoaded = true;
-            clearInterval(loadTimer);
-        }
-    }, 100);
+        }, 100);
+    }
+        
 };
-
 // load compressed state (the url was getting too long so we're compressing it
 app.loadCompressedState = function(state) { 
     // turn off active laters
@@ -68,10 +73,14 @@ app.loadCompressedState = function(state) {
        }
     }
     
+    if (state.print === 'true') {
+        app.printMode();
+    }
+
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
     }
-       
+    app.establishLayerLoadState();
     // data tab and open themes
     if (state.themes) {
         //console.log('starting with data tab');
@@ -97,7 +106,19 @@ app.loadCompressedState = function(state) {
     } else {
         app.viewModel.showLegend(false);
     }
-    app.establishLayerLoadState();
+
+    if (state.layers && state.layers === 'true') {
+        app.viewModel.showLayers(true);
+    } else {
+        app.viewModel.showLayers(false);
+        app.map.render('map');
+    }
+
+    // map title for print view
+    if (state.title) {
+        app.viewModel.mapTitle(state.title);
+    }
+
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
     app.setMapPosition(state.x, state.y, state.z);
@@ -112,11 +133,19 @@ app.setMapPosition = function(x, y, z) {
             new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), z);
 };
 
+app.printMode = function () {
+    $('body').addClass('print');
+};
+
 // load state from fixture or server
 app.loadState = function(state) {
     var loadTimer;
     if (state.z) {
         return app.loadCompressedState(state);
+    }
+
+    if (state.print === 'true') {
+        app.printMode();
     }
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
@@ -147,8 +176,7 @@ app.loadState = function(state) {
     }
     // now that we have our layers
     // to allow for establishing the layer load state
-   app.establishLayerLoadState();
-
+    app.establishLayerLoadState();
 
     if (state.activeTab && state.activeTab.tab === 'active') {
         $('#activeTab').tab('show');
@@ -172,6 +200,19 @@ app.loadState = function(state) {
     } else {
         app.viewModel.showLegend(false);
     }
+
+    if (state.layers && state.layers === 'true') {
+        app.viewModel.showLayers(true);
+    } else {
+        app.viewModel.showLayers(false);
+        app.map.render('map');
+    }
+
+    // map title for print view
+    if (state.title) {
+        app.viewModel.mapTitle(state.title);
+    }
+
     
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
@@ -187,8 +228,7 @@ app.loadState = function(state) {
 };
 
 // load the state from the url hash
-app.loadStateFromHash = function (hash) {    
-    
+app.loadStateFromHash = function (hash) { 
     app.loadState($.deparam(hash.slice(1)));
 };
 

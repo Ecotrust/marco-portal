@@ -71,7 +71,6 @@ module.exports = function() {
  * @param (Function) cb
  */
 function spawnPhantom(site, path, options, cb) {
-
   var phantomArgs = [
     phantomScript
   , site
