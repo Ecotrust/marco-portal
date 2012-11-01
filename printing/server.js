@@ -2,6 +2,8 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
+  im = require('imagemagick'),
+  fs = require('fs'),
   app = express(),
   server = http.createServer(app),
   io = require('socket.io').listen(server),
@@ -15,6 +17,20 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
 app.use(express.static(__dirname + '/shots'));
 server.listen(port);
 
+app.get('/download/:file', function (req, res) {
+   var file = req.params.file;
+   fs.readFile(staticDir + req.params.file, function(err, data) {
+      if(err) {
+        res.send("Oops! Couldn't find that file.");
+      } else {
+        // set the content type based on the file
+        res.contentType(req.params.file);
+        res.setHeader('Content-disposition', 'attachment; filename=' + file);
+        res.send(data);
+      }   
+      res.end();
+    }); 
+});
 
 io.sockets.on('connection', function(socket) {
   socket.on('ping', function () {
@@ -43,7 +59,8 @@ io.sockets.on('connection', function(socket) {
     }
     webshot(targetUrl + hash, staticDir + filename, options, function(err) {
       cb({
-        path: socketUrl + '/' + filename
+        path: socketUrl + '/' + filename,
+        download: socketUrl + '/download/' + filename
       });
     });
 

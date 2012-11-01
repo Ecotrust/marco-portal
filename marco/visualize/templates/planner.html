@@ -1000,7 +1000,7 @@
             </div>
             <div class="popover-inner" data-bind="with: printing">
                 <h3 class="popover-title">
-                    Printing <span data-bint="text: test"></span>
+                    Print/Export
                 </h3>
                 <div class="popover-content">
                     <div class="row-fluid">
@@ -1015,6 +1015,9 @@
                                 </label>
                                 <label class="radio control-label">
                                     <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
+                                </label>
+                                <label class="radio control-label">
+                                    <input type="radio" value="geotiff" name="format" data-bind="checked: format">Georeferenced TIFF
                                 </label>
                             </div>
                         </div>
@@ -1067,9 +1070,9 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">close</a>
-                <a href="#" class="btn" data-dismiss="modal">email</a>
-                <a href="#" class="btn" data-dismiss="modal" data-bind="click: print">print</a>
-                <a href="#" class="btn" data-dismiss="modal">save</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="enable: thumbnail">email</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="click: print, enable: thumbnail">print</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="enable: thumbnail, attr: { href: download }">save</a>
             </div>
         </div>
         <!-- Email Bookmark Form -->

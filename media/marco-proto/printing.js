@@ -12,7 +12,7 @@
 
 		    self.shotHeight($(document).height());
 		    self.shotWidth($(document).width());
-
+		    self.thumbnail(false);
 		    if (self.$popover.is(":visible")) {
 		        self.$popover.hide();
 		    } else {
@@ -28,7 +28,7 @@
 		        });
 		    }
 		};
-
+		self.download = ko.observable();
 		self.thumbnail = ko.observable(false);
 		self.jobStatus = ko.observable();
 		self.showSpinner = ko.observable();
@@ -67,6 +67,7 @@
 				self.jobStatus("Job is Complete");
 				self.showSpinner(false);
 				self.thumbnail(data.path);
+				self.download(data.download);
 			});
 		};
 
