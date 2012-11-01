@@ -26,11 +26,12 @@ app.getState = function () {
 
 app.layersAreLoaded = false;
 app.establishLayerLoadState = function () {
-    var loadTimer, status = true;
+    var loadTimer, status;
     if (app.map.layers.length === 0) {
         app.layersAreLoaded = true;
     } else {
         loadTimer = setInterval(function () {
+            status = true;
             $.each(app.map.layers, function (i, layer) {
                 if (layer.loading === true) {
                     status = false;
@@ -38,6 +39,7 @@ app.establishLayerLoadState = function () {
             });
             if (status === true) {
                 app.layersAreLoaded = true;
+                console.log('layers are loaded');
                 clearInterval(loadTimer);
             }
         }, 100);

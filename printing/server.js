@@ -10,7 +10,8 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   port = 8989,
   targetUrl = "http://localhost:8000/planner/",
   socketUrl = "http://localhost:" + port,
-  staticDir = "shots/";
+  staticDir = "shots/",
+  clients = {};
 
 
 // sockets and static file server all listen on port 8989
@@ -33,9 +34,12 @@ app.get('/download/:file', function (req, res) {
 });
 
 io.sockets.on('connection', function(socket) {
+  //clients[socket.id] = socket;
+  
   socket.on('ping', function () {
     console.log('ping!!!!!');
   });
+  
   socket.on('shot', function(data, cb) {
     var ts = moment().format('YYYYDDmmHHss'),
       filename = ts + '-' + socket.id + data.format,
@@ -49,9 +53,7 @@ io.sockets.on('connection', function(socket) {
           width: data.shotWidth,
           height: data.shotHeight
         },
-        script: function() {
-          
-        }
+      
       },
       hash = data.hash + "&print=true";
     if (data.title) {
@@ -63,7 +65,6 @@ io.sockets.on('connection', function(socket) {
         download: socketUrl + '/download/' + filename
       });
     });
-
 
   });
 

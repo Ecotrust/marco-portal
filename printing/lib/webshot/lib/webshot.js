@@ -88,6 +88,7 @@ function spawnPhantom(site, path, options, cb) {
   childProcess
     .spawn(options.phantomPath, phantomArgs)
     .on('exit', function(code) {
+      console.log('phantom exited');
       cb(code
         ? new Error('PhantomJS exited with return value ' + code)
         : null);

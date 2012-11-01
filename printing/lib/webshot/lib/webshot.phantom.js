@@ -88,7 +88,11 @@ page.open(args.site, function(status) {
   page.evaluate(eval('('+args.script+')'));
 
   // Render, clean up, and exit
-  page.render(args.path);
-  page.close();
-  phantom.exit(0);
+
+  setTimeout(function () {
+    page.render(args.path);
+    page.close();
+    phantom.exit(0);    
+  }, 5000);
+  
 });
