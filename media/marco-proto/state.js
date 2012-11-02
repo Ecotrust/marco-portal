@@ -88,6 +88,13 @@ app.loadCompressedState = function(state) {
     //app.map.setCenter(
     //    new OpenLayers.LonLat(state.x, state.y).transform(
     //        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), state.z);
+    
+    // is url is indicating a login request then show the login modal
+    // /visualize/#login=true
+    if (!app.is_authenticated && state.login) { // not sure 
+        $('#sign-in-modal').modal('show');
+    }
+    
 };
 
 app.setMapPosition = function(x, y, z) {
@@ -98,7 +105,7 @@ app.setMapPosition = function(x, y, z) {
 
 // load state from fixture or server
 app.loadState = function(state) {
-    if (state.z) {
+    if (state.z || state.login) {
         return app.loadCompressedState(state);
     }
     // turn off active laters
@@ -166,8 +173,7 @@ app.loadState = function(state) {
 };
 
 // load the state from the url hash
-app.loadStateFromHash = function (hash) {    
-    
+app.loadStateFromHash = function (hash) {  
     app.loadState($.deparam(hash.slice(1)));
 };
 

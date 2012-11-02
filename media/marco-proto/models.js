@@ -951,7 +951,6 @@ function viewModel() {
     
     // switching between pageguides
     /*self.changeGuide = function() {
-        debugger;
     };*/
     
     self.startDefaultTour = function() {
@@ -1063,17 +1062,18 @@ function viewModel() {
     self.password1 = ko.observable("");
     self.password2 = ko.observable("");
     self.passwordWarning = ko.observable(false);
-    self.passwordSuccess = ko.observable(false);
     self.passwordError = ko.observable(false);
+    self.passwordSuccess = ko.observable(false);
     
-    self.verifyPassword = function(username, password) {
-        var username = $(username).val();
-        var password = $(password).val();
-        /*if (username && password) {
+    self.verifyLogin = function(form) {
+        var username = $(form.username).val(),
+            password = $(form.password).val();
+        if (username && password) {
             $.ajax({ 
+                async: false,
                 url: '/marco_profile/verify_password', 
                 data: { username: username, password: password }, 
-                method: 'GET',
+                type: 'POST',
                 dataType: 'json',
                 success: function(result) { 
                     if (result.verified === true) {
@@ -1082,18 +1082,56 @@ function viewModel() {
                         self.passwordError(true);
                     }
                 },
-                error: function(result) { } //debugger; }
+                error: function(result) { } 
             });
-        }*/
-        self.passwordError(false);
+            if (self.passwordError()) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
     };
     self.turnOffPasswordError = function() {
         self.passwordError(false);
     };
     
-    self.turnOffUsernameError = function() {
-        self.usernameError(false);
+    self.verifyPassword = function(form) {
+        var username = $(form.username).val(),
+            old_password = $(form.old_password).val();
+        self.password1($(form.new_password1).val());
+        self.password2($(form.new_password2).val());
+        self.checkPassword();
+        if ( ! self.passwordWarning() ) {
+            if (username && old_password) {
+                $.ajax({ 
+                    async: false,
+                    url: '/marco_profile/verify_password', 
+                    data: { username: username, password: old_password }, 
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(result) { 
+                        if (result.verified === true) {
+                            self.passwordError(false);
+                        } else {
+                            self.passwordError(true);
+                        }
+                    },
+                    error: function(result) { } 
+                });
+                if (self.passwordError()) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
     };
+    self.turnOffPasswordError = function() {
+        self.passwordError(false);
+    };
+    
     
     self.checkPassword = function() {
         if (self.password1() && self.password2() && self.password1() !== self.password2()) {
@@ -1107,7 +1145,7 @@ function viewModel() {
             self.passwordSuccess(false);
         }
         return true;
-    }
+    };
     
     self.checkUsername = function() {
         if (self.username()) {
@@ -1123,10 +1161,13 @@ function viewModel() {
                         self.usernameError(false);
                     }
                 },
-                error: function(result) { } //debugger; }
+                error: function(result) { } 
             });
         }
-    }
+    };
+    self.turnOffUsernameError = function() {
+        self.usernameError(false);
+    };
     
     
     return self;

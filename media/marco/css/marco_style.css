@@ -194,11 +194,10 @@ a:focus {
 	transform: rotate(90deg);
 }
 #feedback-tab a {
-	border: 1px solid white;
-
+	color: white;
 }
 #feedback-tab a:hover {
-	border: 1px solid #ccc;
+    text-decoration: none;
 }
 #pageGuideToggle {
     top: -999px !important;
@@ -227,11 +226,10 @@ a:focus {
 	transform: rotate(-90deg);
 }
 #help-tab a {
-	border: 1px solid white;
-
+	color: white;
 }
 #help-tab a:hover {
-	/*border: 1px solid #ccc;*/
+    text-decoration: none;
 }
 
 input + i.icon-remove-sign {

@@ -10,8 +10,8 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 import simplejson
 
 def verify_password(request):
-    username = request.GET.get('username', None)
-    password = request.GET.get('password', None)
+    username = request.POST.get('username', None)
+    password = request.POST.get('password', None)
     if username and password:
         try:
             user = User.objects.get(username=username)

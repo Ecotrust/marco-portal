@@ -85,7 +85,7 @@
     
         <!-- FEEDBACK MODAL -->
         <div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">
-            feedback
+            <a href="#">feedback</a>
         </div>
         <div id="feedback-modal" class="modal hide fade">
             <form class="form-horizontal" id="feedback-form">
@@ -157,7 +157,7 @@
         
         <!-- TOUR -->
         <div id="help-tab" class="rounded">
-            tour
+            <a href="#">tour</a>
         </div>
         <!-- Default Tour -->
         <div id="help-text-dataTab" class="hide">
@@ -242,14 +242,17 @@
                 <li>Release the mouse button, and the map layers have been re-ordered, both in the Active panel and on the map
             </ol>
         </div>
+        <!-- END TOURS -->
         
+        <!-- REGISTRATION MODALS -->
         <!--
         <div id="thankyou-modal" class="modal hide fade">
             <form class="form-horizontal" id="thankyou-form">
         -->
-        <!-- sign in modal -->
+        <!-- SIGN IN MODAL -->
         <div id="sign-in-modal" class="modal hide fade">
-            <form class="form-horizontal" id="sign-in-form" action="/accounts/signin/" method="post">{% csrf_token %}
+            <!--<form class="form-horizontal" id="sign-in-form" action="/accounts/signin/" method="post">{% csrf_token %}-->
+            <form id="sign-in-form" class="form-horizontal" action="/accounts/signin/" method="post" data-bind="submit: verifyLogin">{% csrf_token %}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3>Sign In</h3>
@@ -264,8 +267,8 @@
                     <div class="control-group">
                       <label class="control-label" for="password1">Password</label>
                       <div class="controls">
-                          <input id="login-password" class="input-xlarge" type="password" name="password" data-bind="event: { blur: verifyPassword.bind($data, $('#login-username'), $('#login-password')), focus: turnOffPasswordError }" required>
-                          <span class="help-inline" data-bind="visible: passwordError">The password you entered is incorrect.  Please try again.</span>
+                          <input id="login-password" class="input-xlarge" type="password" name="password" required>
+                          <span class="help-inline" data-bind="visible: passwordError"><div>The login information you entered is incorrect.</div>  <div>Please try again.</div></span>
                       </div>
                     </div>
                     <div>
@@ -288,7 +291,7 @@
           </form>
         </div>
         
-        <!-- forgot username -->
+        <!-- FORGOT USERNAME -->
         <div id="forgot-username-modal" class="modal hide fade">
             <form class="form-horizontal" id="forgot-username-form" action="/marco_profile/forgot_username/" method="post">
                 <div class="modal-header">
@@ -316,7 +319,7 @@
           </form>
         </div>        
         
-        <!-- forgotten password modal -->
+        <!-- FORGOT PASSWORD -->
         <div id="forgot-password-modal" class="modal hide fade">
             <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
             <form class="form-horizontal" id="forgot-password-form" action="/marco_profile/password/reset/" method="post">
@@ -342,7 +345,7 @@
           </form>
         </div>
         
-        <!-- registration modal -->
+        <!-- REGISTRATION MODAL -->
         <div id="registration-modal" class="modal hide fade">
             <form class="form-horizontal" id="registration-form" action="{% url 'marco_registration_register' %}" method="post">{% csrf_token %}
                 <div class="modal-header">
@@ -399,31 +402,37 @@
           </form>
         </div>
         
-        <!-- reset password modal -->
+        <!-- RESET PASSWORD -->
         <div id="reset-password-modal" class="modal hide fade">
             <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
-            <form class="form-horizontal" id="forgot-password-form" action="/marco_profile/password_change/{{user.username}}/" method="post">
+            <form class="form-horizontal" id="reset-password-form" action="/marco_profile/password_change/{{user.username}}/" method="post" data-bind="submit: verifyPassword">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3>Password Change</h3>
                 </div>
                 <div class="modal-body"> 
+                    <div>
+                        <input type="hidden" name="username" value="{{user.username}}">
+                    </div>
                     <div class="control-group">
                       <label class="control-label" for="password1">Old Password</label>
                       <div class="controls">
                           <input class="input-xlarge" type="password" name="old_password" required>
+                          <span class="help-inline" data-bind="visible: passwordError"><div>The password you entered is incorrect.</div>  <div>Please enter your original password again.</div></span>
                       </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="password1">New Password</label>
                       <div class="controls">
-                          <input class="input-xlarge" type="password" name="new_password1" required>
+                          <input class="input-xlarge" type="password" name="new_password1" data-bind="value: password1" required>
                       </div>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group" data-bind="css: { warning: passwordWarning, success: passwordSuccess }">
                       <label class="control-label" for="password2">Confirm Password</label>
                       <div class="controls">
-                          <input class="input-xlarge" type="password" name="new_password2" required>
+                          <input class="input-xlarge empty-input" type="password" data-bind="value: password2, valueUpdate: 'afterkeydown', event: { keyup: checkPassword }" name="new_password2" required>
+                          <span class="help-inline" data-bind="visible: passwordWarning()">Passwords do not match</span>
+                          <span class="help-inline" data-bind="visible: passwordSuccess()">Success!</span>
                       </div>
                     </div>
                     <div>
@@ -437,7 +446,7 @@
           </form>
         </div>
                 
-        <!-- profile modal -->
+        <!-- PROFILE MODAL -->
         <div id="profile-modal" class="modal hide fade">
             <form class="form-horizontal" id="profile-form" action="/marco_profile/update_profile/{{user.username}}/" method="post">{% csrf_token %}
                 <div class="modal-header">
@@ -475,6 +484,8 @@
                 </div>
           </form>
         </div>
+        
+        <!-- END REGISTRATION MODALS -->
         
         <header role="banner">
             <div class="navbar navbar-fixed-top">
