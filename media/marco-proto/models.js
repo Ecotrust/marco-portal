@@ -396,7 +396,7 @@ function layerModel(options, parent) {
     };
     
     self.toggleDescriptionMenu = function(layer) {
-        console.dir(layer);
+        //console.dir(layer);
     }
     
     
@@ -831,10 +831,8 @@ function viewModel() {
             $popover = $('#bookmark-popover');
 
         if ($popover.is(":visible")) {
-            console.log('hiding bookmarks');
             $popover.hide();
         } else {
-            console.log('showing bookmarks');
             self.bookmarks.bookmarkName(null);
             //TODO: move all this into bookmarks model
             // hide the popover if already visible
@@ -987,7 +985,6 @@ function viewModel() {
     };*/
     
     self.startDefaultTour = function() {
-        //console.log('starting default tour');
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
             $.pageguide('close');
@@ -1037,7 +1034,6 @@ function viewModel() {
     };
     
     self.startActiveTour = function() {
-        //console.log('starting data tour');
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
@@ -1077,7 +1073,6 @@ function viewModel() {
     
     //if toggling legend or layers panel during default pageguide, then correct step 4 position
     self.correctTourPosition = function() {
-        //console.log('toggling pageguide');
         if ( $.pageguide('isOpen') ) {
             if ($.pageguide().guide().id === 'default-guide') {
                 $.pageguide('showStep', $.pageguide().guide().steps.length-1);
