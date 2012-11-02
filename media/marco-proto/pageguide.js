@@ -37,6 +37,7 @@ var defaultGuide = {
 var defaultGuideOverrides = {
   events: {
     open: function () {
+      app.viewModel.hideAttribution();
       //alert("The guide has begun!");
       //open the basemaps buttons and keep them open
       $('#basemaps').addClass('open');
@@ -52,6 +53,7 @@ var defaultGuideOverrides = {
       $('#dataTab').tab('show');
     },
     close: function () {
+      app.viewModel.showAttribution();
       //alert("The guide has ended!");
       //return the zindex of the SimpleLayerSwitcher to its original value
       $('#SimpleLayerSwitcher_30').css('z-index', 1005);
@@ -126,6 +128,7 @@ var dataGuide = {
 var dataGuideOverrides = {
   events: {
     open: function () {
+      app.viewModel.hideAttribution();
       //alert("The guide has begun!");    
       //show the data tab, close any open themes, deactivate all layers, and open the first theme
       //NOTE:  the following will need to be executed BEFORE this event handler (before 'open' is called)
@@ -136,6 +139,7 @@ var dataGuideOverrides = {
       app.setMapPosition(-73, 38.5, 7);
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
+      app.viewModel.showAttribution();
       //alert("The guide has ended!");
       //NOTE: for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
       app.viewModel.deactivateAllLayers();
@@ -210,7 +214,8 @@ var activeGuide = {
 var activeGuideOverrides = {
   events: {
     open: function () {
-      //alert("The guide has begun!"); 
+        app.viewModel.hideAttribution();
+        //alert("The guide has begun!"); 
       
         //show the active tab, close any open themes, deactivate all layers, and activate the desired layers
         //NOTE:  the following will need to be executed BEFORE the open event handler (before 'open' is called)
@@ -233,6 +238,7 @@ var activeGuideOverrides = {
 
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
+      app.viewModel.showAttribution();
       //alert("The guide has ended!");
       //for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
       app.viewModel.deactivateAllLayers();
