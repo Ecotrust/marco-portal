@@ -815,7 +815,7 @@
                                                 <!--<span class="caret" style="display:none" data-bind="visible: activeInfoLayer().subLayers"></span>-->
                                                 <span><a href="#" style="margin-left: 10px; opacity: .8;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> </span>
                                             </div>
-                                            <div id="overview-overlay-text" style="margin-top: 5px"> 
+                                            <div id="overview-overlay-text" style="margin-top: 5px" data-bind="visible: activeInfoLayer().overview"> 
                                                 <span class="text" data-bind="text: activeInfoLayer().overview"></span>
                                                 <div class="notes">
                                                     <div data-bind="visible: activeInfoLayer().data_source">Source: <span data-bind="text: activeInfoLayer().data_source"></span></div>
