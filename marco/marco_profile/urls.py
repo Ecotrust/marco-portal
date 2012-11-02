@@ -13,7 +13,7 @@ except:
 urlpatterns = patterns('',
     url(r'^password/reset/$', 
         auth_views.password_reset, {'email_template_name': 'registration/marco_password_reset_email.html', 
-                                    'from_email': settings.FEEDBACK_RECIPIENT[0],
+                                    'from_email': settings.DEFAULT_FROM_EMAIL,
                                     'post_reset_redirect': '/marco_profile/password/reset/done/' }),
     url(r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
         auth_views.password_reset_confirm, { 'template_name': 'registration/marco_password_reset_confirm.html',

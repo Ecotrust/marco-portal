@@ -40,7 +40,7 @@ def duplicate_username(request):
 def send_username(request, use_openid=False, redirect_field_name=REDIRECT_FIELD_NAME):
     if request.method == 'POST':
         subject = 'MARCO login'
-        reply_email = "MARCO Portal Team <%s>" % settings.FEEDBACK_RECIPIENT[0]
+        reply_email = "MARCO Portal Team <%s>" % settings.DEFAULT_FROM_EMAIL
         #check for user account
         user_email = [request.POST.get('email', '')]
         try:
@@ -93,7 +93,7 @@ def update_profile(request, username, use_openid=False, redirect_field_name=REDI
         #prepare email fields
         subject = 'MARCO profile change'
         user_email = user.email
-        reply_email = "MARCO Portal Team<%s>" % settings.FEEDBACK_RECIPIENT[0]
+        reply_email = "MARCO Portal Team<%s>" % settings.DEFAULT_FROM_EMAIL
         message = "Your MARCO Portal profile was just updated."
         message += "\nIf this was in error, please contact us immediately so that we can rectify the situation."
         message += "\n\nThank you."
@@ -175,7 +175,7 @@ def password_change(request, username,
         #prepare email fields
         subject = 'MARCO profile change'
         user_email = user.email
-        reply_email = "MARCO Portal Team<%s>" % settings.FEEDBACK_RECIPIENT[0]
+        reply_email = "MARCO Portal Team<%s>" % settings.DEFAULT_FROM_EMAIL
         message = "Your MARCO Portal password was just changed."
         message += "\nIf you did not make this change, please contact us immediately."
         message += "\n\nThank you."
