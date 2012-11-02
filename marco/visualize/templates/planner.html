@@ -267,7 +267,7 @@
                     <div class="control-group">
                       <label class="control-label" for="password1">Password</label>
                       <div class="controls">
-                          <input id="login-password" class="input-xlarge" type="password" name="password" required>
+                          <input id="login-password" class="input-xlarge empty-input" placeholder="Password" type="password" name="password" required>
                           <span class="help-inline" data-bind="visible: passwordError"><div>The login information you entered is incorrect.</div>  <div>Please try again.</div></span>
                       </div>
                     </div>
@@ -415,22 +415,22 @@
                         <input type="hidden" name="username" value="{{user.username}}">
                     </div>
                     <div class="control-group">
-                      <label class="control-label" for="password1">Old Password</label>
+                      <label class="control-label" for="old_password">Old Password</label>
                       <div class="controls">
-                          <input class="input-xlarge" type="password" name="old_password" required>
+                          <input class="input-xlarge empty-input" placeholder="Current Password" type="password" name="old_password" required>
                           <span class="help-inline" data-bind="visible: passwordError"><div>The password you entered is incorrect.</div>  <div>Please enter your original password again.</div></span>
                       </div>
                     </div>
                     <div class="control-group">
                       <label class="control-label" for="password1">New Password</label>
                       <div class="controls">
-                          <input class="input-xlarge" type="password" name="new_password1" data-bind="value: password1" required>
+                          <input class="input-xlarge" type="password" placeholder="New Password" name="new_password1" data-bind="value: password1" required>
                       </div>
                     </div>
                     <div class="control-group" data-bind="css: { warning: passwordWarning, success: passwordSuccess }">
                       <label class="control-label" for="password2">Confirm Password</label>
                       <div class="controls">
-                          <input class="input-xlarge empty-input" type="password" data-bind="value: password2, valueUpdate: 'afterkeydown', event: { keyup: checkPassword }" name="new_password2" required>
+                          <input class="input-xlarge empty-input" type="password" placeholder="New Password" data-bind="value: password2, valueUpdate: 'afterkeydown', event: { keyup: checkPassword }" name="new_password2" required>
                           <span class="help-inline" data-bind="visible: passwordWarning()">Passwords do not match</span>
                           <span class="help-inline" data-bind="visible: passwordSuccess()">Success!</span>
                       </div>

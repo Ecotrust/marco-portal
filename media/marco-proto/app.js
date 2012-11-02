@@ -247,6 +247,14 @@ $(document).ready(function() {
     $('.empty-input').val("");
   });
   
+  $('#sign-in-modal').on('show', function() {
+    $('.empty-input').val("");
+  });
+  
+  $('#reset-password-modal').on('show', function() {
+    $('.empty-input').val("");
+  });
+  
   $(document).on('click', '#start-data-tour', function() {
     app.viewModel.startDataTour();
   });
