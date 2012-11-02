@@ -44,9 +44,9 @@ GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
 
 APP_NAME = "MARCO Mid-Atlantic Ocean Data Portal"
-FEEDBACK_RECIPIENT = "info@midatlanticocean.org"
+FEEDBACK_RECIPIENT = "MARCO Portal Team <info@midatlanticocean.org>"
 HELP_EMAIL = "info@midatlanticocean.org"
-DEFAULT_FROM_EMAIL = "info@midatlanticocean.org"
+DEFAULT_FROM_EMAIL = "MARCO Portal Team <info@midatlanticocean.org>"
 
 TEMPLATE_DIRS = ( os.path.realpath(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')), )
 
