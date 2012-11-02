@@ -25,7 +25,6 @@ app.getState = function () {
 
 // load compressed state (the url was getting too long so we're compressing it
 app.loadCompressedState = function(state) { 
-    console.dir(state);
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
     var activeLayers = $.map(app.viewModel.activeLayers(), function(layer) {
@@ -59,7 +58,6 @@ app.loadCompressedState = function(state) {
     
     // data tab and open themes
     if (state.themes) {
-        //console.log('starting with data tab');
         //$('#dataTab').tab('show');
         if (state.themes) {
             $.each(app.viewModel.themes(), function (i, theme) {
@@ -80,7 +78,6 @@ app.loadCompressedState = function(state) {
     // timeout worked, but then realized that removing datatab show from above worked as well...
     // now reinstating the timeout which seems to fix the toggling between tours issue (toggling to ActiveTour while already in ActiveTab)
     if (state.tab && state.tab === "active") {
-        //console.log('showing active tab');
         //$('#activeTab').tab('show');
         setTimeout( function() { $('#activeTab').tab('show'); }, 200 );
     } else if (state.tab && state.tab === "designs") {
