@@ -308,6 +308,19 @@ a.disabled-link:hover {
   margin-bottom: 10px;
 }
 
+#overview-overlay-header .caret {
+  border-top: 4px solid white;
+  margin-left: 5px;
+  margin-top: 8px;
+}
+#overview-overlay-header a {
+  /*color: white;
+  text-decoration: none;*/ /*these two lines caused problems with the close 'x' button*/
+}
+#overview-overlay-header a:hover {
+  text-decoration: none;
+}
+
 #overview-overlay-text {
   height: 100px;
   width: 100%
@@ -316,9 +329,24 @@ a.disabled-link:hover {
 
 #overview-overlay-content, #overview-overlay-close {
   padding: 10px;
+  padding-bottom: 5px;
   color: white;
 }
 
+#overview-overlay-content .mCustomScrollBox {
+  /*padding-bottom: 5px;  
+  height: 105% !important;*/
+}
+
+#overview-overlay-content .mCSB_container {
+  padding: 5px 10px 15px;  
+  background-color: rgba(60, 110, 160, 0.25098);
+  margin-right: 25px;
+}
+
+#overview-overlay-content .mCSB_scrollTools {
+  height: 95%;
+}
 
 #overview-overlay a{
   /*margin-left: 10px;*/
@@ -331,6 +359,16 @@ a.disabled-link:hover {
 
 #overview-overlay .text {
   font-size: 16px;
+}
+
+#overview-overlay .notes {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#overview-overlay-links {
+  margin-top: 10px;
 }
 
 #fullscreen-error-overlay {

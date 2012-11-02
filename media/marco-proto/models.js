@@ -52,6 +52,17 @@ function layerModel(options, parent) {
     } else {
         self.overview = null;
     }
+    
+    // set data source and data notes text 
+    self.data_source = options.data_source || null;
+    if (! self.data_source && parent && parent.data_source) {
+        self.data_source = parent.data_source;
+    } 
+    self.data_notes = options.data_notes || null;
+    if (! self.data_notes && parent && parent.data_notes) {
+        self.data_notes = parent.data_notes;
+    } 
+    
     // set download links 
     self.kml = options.kml || null;
     self.data_download = options.data_download || null;
@@ -74,8 +85,8 @@ function layerModel(options, parent) {
 
     // is description active
     self.infoActive = ko.observable(false);
-    app.viewModel.showDescription.subscribe( function() {
-        if ( app.viewModel.showDescription() === false ) {
+    app.viewModel.showOverview.subscribe( function() {
+        if ( app.viewModel.showOverview() === false ) {
             self.infoActive(false);
         }
     });
@@ -357,19 +368,37 @@ function layerModel(options, parent) {
 
     // display descriptive text below the map
     self.toggleDescription = function(layer) {
-        if ( layer.infoActive() ) {
-            app.viewModel.showDescription(false);
+        /*if ( layer.infoActive() ) {
+            //app.viewModel.showDescription(false);
             app.viewModel.showOverview(false);
             app.viewModel.showAttribution();
         } else {
-            app.viewModel.showDescription(false);
+            //app.viewModel.showDescription(false);
             app.viewModel.showOverview(false);
             app.viewModel.activeInfoLayer(layer);
             self.infoActive(true);
-            app.viewModel.showDescription(true);
+            //app.viewModel.showDescription(true);
+            app.viewModel.showOverview(true);
             app.viewModel.hideAttribution();
+        }*/
+        
+        if ( ! layer.infoActive() ) {
+            app.viewModel.showOverview(false);
+            app.viewModel.activeInfoLayer(layer);
+            self.infoActive(true);
+            app.viewModel.showOverview(true);
+            app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+            app.viewModel.hideAttribution();
+        } else {
+            app.viewModel.showOverview(false);
+            app.viewModel.showAttribution();
         }
     };
+    
+    self.toggleDescriptionMenu = function(layer) {
+        console.dir(layer);
+    }
+    
     
     self.showTooltip = function(layer, event) {
         var layerActual;
@@ -784,7 +813,7 @@ function viewModel() {
     
     // close layer description
     self.closeDescription = function(self, event) {
-        self.showDescription(false);
+        //self.showDescription(false);
         self.showOverview(false);
         self.showAttribution();
     };
