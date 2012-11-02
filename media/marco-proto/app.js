@@ -255,6 +255,10 @@ $(document).ready(function() {
     $('.empty-input').val("");
   });
   
+  $(document).on('click', 'a[name="start-default-tour"]', function() {
+    app.viewModel.startDefaultTour();
+  });
+  
   $(document).on('click', '#start-data-tour', function() {
     app.viewModel.startDataTour();
   });
@@ -268,7 +272,11 @@ $(document).ready(function() {
     //$.pageguide('load', guide2);
     //$.pageguide('unload');
   });*/
-  
+  $('a[data-toggle="tab"]').on('shown', function (e) {
+    //e.target // activated tab
+    //e.relatedTarget // previous tab
+    app.updateUrl();
+  });
   
 });
 

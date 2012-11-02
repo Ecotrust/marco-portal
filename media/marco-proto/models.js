@@ -617,13 +617,17 @@ function viewModel() {
 
     // reference to open themes in accordion
     self.openThemes = ko.observableArray();
+    
+    self.openThemes.subscribe( function() {
+        app.updateUrl();
+    });
 
     self.getOpenThemeIDs = function() {
         return $.map(self.openThemes(), function(theme) {
             return theme.id;
         });
     };
-
+    
     // reference to active theme model/name for display text
     self.activeTheme = ko.observable();
     self.activeThemeName = ko.observable();
@@ -994,6 +998,11 @@ function viewModel() {
         
         //ensure pageguide is managing the default guide
         $.pageguide(defaultGuide, defaultGuideOverrides);
+        
+        //save state
+        app.pageguide.state = app.getState();
+        app.saveStateMode = false;          
+        
         //adding delay to ensure the message will load 
         setTimeout( function() { $.pageguide('open'); }, 500 );
         //$('#help-tab').click();
