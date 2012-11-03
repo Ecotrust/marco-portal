@@ -1097,6 +1097,7 @@ function viewModel() {
     self.passwordWarning = ko.observable(false);
     self.passwordError = ko.observable(false);
     self.passwordSuccess = ko.observable(false);
+    self.inactiveError = ko.observable(false);
     
     self.verifyLogin = function(form) {
         var username = $(form.username).val(),
@@ -1109,7 +1110,9 @@ function viewModel() {
                 type: 'POST',
                 dataType: 'json',
                 success: function(result) { 
-                    if (result.verified === true) {
+                    if (result.verified === 'inactive') {
+                        self.inactiveError(true);
+                    } else if (result.verified === true) {
                         self.passwordError(false);
                     } else {
                         self.passwordError(true);
@@ -1117,7 +1120,7 @@ function viewModel() {
                 },
                 error: function(result) { } 
             });
-            if (self.passwordError()) {
+            if (self.passwordError() || self.inactiveError()) {
                 return false;
             } else {
                 return true;
@@ -1125,8 +1128,8 @@ function viewModel() {
         }
         return false;
     };
-    self.turnOffPasswordError = function() {
-        self.passwordError(false);
+    self.turnOffInactiveError = function() {
+        self.inactiveError(false);
     };
     
     self.verifyPassword = function(form) {

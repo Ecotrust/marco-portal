@@ -263,7 +263,12 @@
                     <div class="control-group">
                       <label class="control-label" for="username">Username</label>
                       <div class="controls">
-                        <input id="login-username" class="input-xlarge" type="text" name="username" placeholder="username" required>
+                        <input id="login-username" class="input-xlarge" type="text" name="username" placeholder="username" data-bind="event: { blur: verifyLogin, focus: turnOffInactiveError }" required>
+                        <span class="help-inline" data-bind="visible: inactiveError" style="margin-left: -160px;">
+                            <div>The username you entered belongs to an account that has not yet been activated.</div>  
+                            <div>If you requested this username, you should have received an email with a link that activates this account.</div>
+                            <div>If you are having trouble activating your account, <a href="" data-dismiss="modal" data-toggle="modal" data-target="#feedback-modal">please let us know</a>.</div>
+                        </span>
                       </div>
                     </div>
                     <div class="control-group">

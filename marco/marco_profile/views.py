@@ -12,9 +12,12 @@ import simplejson
 def verify_password(request):
     username = request.POST.get('username', None)
     password = request.POST.get('password', None)
+    
     if username and password:
         try:
             user = User.objects.get(username=username)
+            if not user.is_active:
+                return HttpResponse(simplejson.dumps({'verified': 'inactive'}), mimetype="application/json", status=200)
             if user.check_password(password):
                 return HttpResponse(simplejson.dumps({'verified': True}), mimetype="application/json", status=200)
             else:
