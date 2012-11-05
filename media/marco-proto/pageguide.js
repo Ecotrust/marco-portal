@@ -8,6 +8,12 @@ var defaultGuide = {
   title: 'Default Guide',
   steps: [
     {
+      target: '#help-button',
+      content: $('#help-text-help-button').html(),
+      direction: 'left',
+      arrow: {offsetX: 0, offsetY: 0}
+    },
+    {
       target: '#dataTab',
       content: $('#help-text-dataTab').html(),
       direction: 'top',
@@ -86,7 +92,21 @@ var defaultGuideOverrides = {
         if ($(this).data('idx') === 0) {
             app.viewModel.showLayers(true);
             $('#dataTab').tab('show');
+            app.viewModel.deactivateAllLayers();
+            app.viewModel.closeAllThemes();
         } else if ($(this).data('idx') === 1) {
+            app.viewModel.showLayers(true);
+            $('#dataTab').tab('show');
+            app.viewModel.closeAllThemes();
+            app.viewModel.themes()[0].setOpenTheme();
+            for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
+                if ( app.viewModel.themes()[0].layers()[i].name === 'Marine Jurisdictions' ) {
+                    $.each(app.viewModel.themes()[0].layers()[i].subLayers, function(index, sublayer) {
+                        sublayer.activateLayer();
+                    });
+                }
+            }
+        } else if ($(this).data('idx') === 2) {
             app.viewModel.showLayers(true);
             $('#activeTab').tab('show');
         } else {
@@ -208,19 +228,19 @@ var activeGuide = {
       target: '#activeTab',
       content: $('#help-text-active-tour-activeTab').html(),
       direction: 'top',
-      arrow: {offsetX: 80, offsetY: 0}
+      arrow: {offsetX: 90, offsetY: 0}
     },
     {
       target: '.opacity-button',
       content: $('#help-text-active-tour-opacity-button').html(),
       direction: 'top',
-      arrow: {offsetX: 15, offsetY: 5}
+      arrow: {offsetX: 15, offsetY: -5}
     },
     {
       target: '.ui-sortable',
       content: $('#help-text-active-tour-ui-sortable').html(),
-      direction: 'right',
-      arrow: {offsetX: -20, offsetY: 70}
+      direction: 'bottom',
+      arrow: {offsetX: 120, offsetY: 0}
     }
   ]
 }
