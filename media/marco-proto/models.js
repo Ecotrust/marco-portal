@@ -987,7 +987,12 @@ function viewModel() {
     self.startDefaultTour = function() {
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
+            app.pageguide.togglingTours = true;
             $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
         }
         
         //show the data layers panel
@@ -996,20 +1001,23 @@ function viewModel() {
         //ensure pageguide is managing the default guide
         $.pageguide(defaultGuide, defaultGuideOverrides);
         
-        //save state
-        app.pageguide.state = app.getState();
-        app.saveStateMode = false;          
-        
         //adding delay to ensure the message will load 
-        setTimeout( function() { $.pageguide('open'); }, 500 );
+        setTimeout( function() { $.pageguide('open'); }, 700 );
         //$('#help-tab').click();
+        
+        app.pageguide.togglingTours = false;
     };
     
     self.startDataTour = function() {
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
+            app.pageguide.togglingTours = true;
             $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
         }
         
         //show the data layers panel
@@ -1018,26 +1026,29 @@ function viewModel() {
         //switch pageguide from default guide to data guide
         $.pageguide(dataGuide, dataGuideOverrides);
         
-        //save state
-        app.pageguide.state = app.getState();
-        app.saveStateMode = false;
-        
         //show the data tab, close all themes and deactivate all layers, and open the Admin theme
-        $('#dataTab').tab('show');
         app.viewModel.closeAllThemes();
         app.viewModel.deactivateAllLayers();
         app.viewModel.themes()[0].setOpenTheme();
         app.setMapPosition(-73, 38.5, 7);
+        $('#dataTab').tab('show');
          
         //start the tour
-        setTimeout( function() { $.pageguide('open'); }, 500 );
+        setTimeout( function() { $.pageguide('open'); }, 700 );
+        
+        app.pageguide.togglingTours = false;
     };
     
     self.startActiveTour = function() {
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
             // close the pageguide
+            app.pageguide.togglingTours = true;
             $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
         }
         
         //show the data layers panel
@@ -1046,13 +1057,8 @@ function viewModel() {
         //switch pageguide from default guide to active guide
         $.pageguide(activeGuide, activeGuideOverrides);
         
-        //save state
-        app.pageguide.state = app.getState();
-        app.saveStateMode = false;
-        
         //show the active tab, close all themes and deactivate all layers, activate a couple layers
-        $('#activeTab').tab('show');
-        app.viewModel.closeAllThemes();
+        //app.viewModel.closeAllThemes();
         app.viewModel.deactivateAllLayers();
         //activate desired layers
         for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
@@ -1066,9 +1072,12 @@ function viewModel() {
             }
         }
         app.setMapPosition(-75, 37.6, 8);
-         
+        $('#activeTab').tab('show');
+        
         //start the tour
-        setTimeout( function() { $.pageguide('open'); }, 500 );
+        setTimeout( function() { $.pageguide('open'); }, 700 );
+        
+        app.pageguide.togglingTours = false;
     };
     
     //if toggling legend or layers panel during default pageguide, then correct step 4 position

@@ -358,11 +358,11 @@ a.disabled-link:hover {
 }
 
 #overview-overlay .text {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #overview-overlay .notes {
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
