@@ -4658,24 +4658,6 @@
         }
     }, 
     {
-        "pk": 8, 
-        "model": "data_manager.dataneed", 
-        "fields": {
-            "status": "Data under development", 
-            "archived": false, 
-            "name": "Vessel Monitoring System (VMS) fishing data", 
-            "expected_date": "December 2012", 
-            "notes": "Data has been transferred from NMFS and will need to be processed to provide maximum utility in consideration of confidentiality requirements.", 
-            "themes": [
-                4
-            ], 
-            "source": "NOAA/ NMFS", 
-            "contact": "The Nature Conservancy", 
-            "contact_email": "", 
-            "description": "VMS are required for many commercial fisheries to monitor the position, time at a position, course and speed of fishing vessels."
-        }
-    }, 
-    {
         "pk": 18, 
         "model": "data_manager.dataneed", 
         "fields": {
@@ -4745,6 +4727,24 @@
             "contact": "Rutgers CRSSA ", 
             "contact_email": "", 
             "description": "Areas where non-commercial fishing (recreational/sport fishing) occurs."
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "data_manager.dataneed", 
+        "fields": {
+            "status": "Data under development", 
+            "archived": true, 
+            "name": "Vessel Monitoring System (VMS) fishing data", 
+            "expected_date": "December 2012", 
+            "notes": "Data has been transferred from NMFS and will need to be processed to provide maximum utility in consideration of confidentiality requirements.", 
+            "themes": [
+                4
+            ], 
+            "source": "NOAA/ NMFS", 
+            "contact": "The Nature Conservancy", 
+            "contact_email": "", 
+            "description": "VMS are required for many commercial fisheries to monitor the position, time at a position, course and speed of fishing vessels."
         }
     }, 
     {
