@@ -734,7 +734,7 @@
                                           </a>
                                           <!-- Print Button -->
 
-                                            <a class="btn" id="btn-print" data-bind="click: printing.showPrintDialog">
+                                            <a class="btn" id="btn-print" data-bind="click: printing.showPrintDialog, visible: printing.enabled">
                                                 <i class="icon-print icon-large"></i>
                                                 <span>Print/Export</span>
                                             </a>
@@ -1005,7 +1005,7 @@
                 <div class="popover-content">
                     <div class="row-fluid">
                         <div class="span6">
-                            Format
+                            <strong>Format</strong>
                             <div class="control-group">
                                 <label class="radio control-label">
                                     <input type="radio" name="format" value=".png" checked data-bind="checked: format">PNG
@@ -1020,21 +1020,25 @@
                                     <input type="radio" value="geotiff" name="format" data-bind="checked: format">Georeferenced TIFF
                                 </label>
                             </div>
+                            <strong>Options</strong>
+                            <label class="checkbox">
+                                <input type="checkbox" data-bind="checked: showLegend">Show Legend
+                            </label>
                         </div>
                         <div class="span6">
                             <div class="well">
                                 <fieldset>
                                     <label>Height (pixels)</label>
-                                    <input type="text" data-bind="spinner: shotHeight">
+                                    <input type="text" class="spinner" data-bind="spinner: shotHeight">
                                     <label>Width (pixels)</label>
-                                    <input type="text" data-bind="spinner: shotWidth">
+                                    <input type="text" class="spinner" data-bind="spinner: shotWidth">
                                 </fieldset>
                             </div>
                         </div>
                     </div>
                     <fieldset>
                         <label>Title</label>
-                        <input class="span12" type="text" data-bind="value: title" placeholder="Optional title for map...">
+                        <input class="span4" type="text" data-bind="value: title" placeholder="Optional title for map...">
                     </fieldset>
                     <hr/>
                     <p class="pull-right">

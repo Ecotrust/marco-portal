@@ -1,7 +1,7 @@
-
+var io = io || false;
 
 (function () {
-	var socket = io.connect('http://localhost:8989');
+	var socket;
 
 	function printModel (map, viewModel) {
 		var self = this;
@@ -28,6 +28,7 @@
 		        });
 		    }
 		};
+		self.enabled = ko.observable(false);
 		self.download = ko.observable();
 		self.thumbnail = ko.observable(false);
 		self.jobStatus = ko.observable();
@@ -35,12 +36,16 @@
 		self.format = ko.observable(".png");
 		self.shotHeight = ko.observable();
 		self.shotWidth = ko.observable();
+		self.showLegend = ko.observable(false);
 		self.title = ko.observable();
 
 		self.print = function () {
 			var w = window.open(self.thumbnail());
-			w.print();
-			w.close();
+			setTimeout(function () {
+				w.print();
+				w.close();
+			}, 500);
+				
 		};
 
 		self.sendJob = function (self, event) {
@@ -74,7 +79,14 @@
 		self.cancel = function () {
 			self.$popover.hide();
 		};
-		self.text = ko.observable('try');
+
+		if (io !== false) {
+			socket = io.connect('http://localhost:8989');	
+			self.enabled(true);
+		} else {
+			self.enabled(false);				
+		}
+
 	}
 	var shots = {
 		$popover: $("#printing-popover")	
