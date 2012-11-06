@@ -10,7 +10,7 @@ app.onResize = function(percent) {
     $("#map-wrapper").height(height);
     $(".tabs").height(height);
     $("#legend-wrapper").height(height - 20);
-    $("#data-accordion").height(height - 92);
+    $("#data-accordion").height(height - 96);
     app.map.render('map');
   }
 };
