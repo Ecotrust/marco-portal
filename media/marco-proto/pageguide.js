@@ -88,6 +88,11 @@ var defaultGuideOverrides = {
             app.viewModel.closeAllThemes();
             app.viewModel.themes()[0].setOpenTheme();
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
+                if ( app.viewModel.themes()[0].layers()[i].name === 'Regional Ocean Partnerships' ) {
+                    app.viewModel.themes()[0].layers()[i].activateLayer();
+                }
+            }
+            for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
                 if ( app.viewModel.themes()[0].layers()[i].name === 'Marine Jurisdictions' ) {
                     $.each(app.viewModel.themes()[0].layers()[i].subLayers, function(index, sublayer) {
                         sublayer.activateLayer();
