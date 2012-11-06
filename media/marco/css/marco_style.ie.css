@@ -25,6 +25,6 @@ filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.00000000, M12=1.00000000,
 	color: #333 !important;
 }
 
-.tabs {
+.tabs, #map-panel {
 	margin-left: 0% !important;
 }
