@@ -63,7 +63,8 @@ app.loadCompressedState = function(state) {
             $.each(app.viewModel.themes(), function (i, theme) {
                 if ( $.inArray(theme.id, state.themes.ids) !== -1 || $.inArray(theme.id.toString(), state.themes.ids) !== -1 ) {
                     if ( app.viewModel.openThemes.indexOf(theme) === -1 ) {
-                        app.viewModel.openThemes.push(theme);
+                        //app.viewModel.openThemes.push(theme);
+                        theme.setOpenTheme();
                     }
                 } else {
                     if ( app.viewModel.openThemes.indexOf(theme) !== -1 ) {
