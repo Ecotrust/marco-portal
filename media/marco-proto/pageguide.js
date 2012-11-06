@@ -233,7 +233,7 @@ var dataGuideOverrides = {
         } else if ($(this).data('idx') === 4) {
             $('#pageGuideMessage').height(75);
             app.viewModel.themes()[0].layers()[3].showDescription(app.viewModel.themes()[0].layers()[3]);
-            $('#overview-overlay').height($('#overview-overlay').height()+50);
+            $('#overview-overlay').height(236);
         }
       }
     }
