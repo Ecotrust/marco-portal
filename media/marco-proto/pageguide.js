@@ -88,13 +88,15 @@ var defaultGuideOverrides = {
             app.viewModel.closeAllThemes();
             app.viewModel.themes()[0].setOpenTheme();
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
-                if ( app.viewModel.themes()[0].layers()[i].name === 'Regional Ocean Partnerships' ) {
-                    app.viewModel.themes()[0].layers()[i].activateLayer();
+                var layer = app.viewModel.themes()[0].layers()[i];
+                if ( layer.name === 'Regional Ocean Partnerships' ) {
+                    layer.activateLayer();
                 }
             }
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
-                if ( app.viewModel.themes()[0].layers()[i].name === 'Marine Jurisdictions' ) {
-                    $.each(app.viewModel.themes()[0].layers()[i].subLayers, function(index, sublayer) {
+                var layer = app.viewModel.themes()[0].layers()[i];
+                if ( layer.name === 'Marine Jurisdictions' ) {
+                    $.each(layer.subLayers, function(index, sublayer) {
                         sublayer.activateLayer();
                     });
                 }
@@ -185,13 +187,15 @@ var dataGuideOverrides = {
             app.viewModel.closeAllThemes();
             app.viewModel.themes()[0].setOpenTheme();
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
-                if ( app.viewModel.themes()[0].layers()[i].name === 'Regional Ocean Partnerships' ) {
-                    app.viewModel.themes()[0].layers()[i].activateLayer();
+                var layer = app.viewModel.themes()[0].layers()[i];
+                if ( layer.name === 'Regional Ocean Partnerships' ) {
+                    layer.activateLayer();
                 }
             }
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
-                if ( app.viewModel.themes()[0].layers()[i].name === 'Marine Jurisdictions' ) {
-                    $.each(app.viewModel.themes()[0].layers()[i].subLayers, function(index, sublayer) {
+                var layer = app.viewModel.themes()[0].layers()[i];
+                if ( layer.name === 'Marine Jurisdictions' ) {
+                    $.each(layer.subLayers, function(index, sublayer) {
                         sublayer.activateLayer();
                     });
                 }
@@ -199,7 +203,13 @@ var dataGuideOverrides = {
             $('#pageGuideMessage').height(150);
         } else if ($(this).data('idx') === 4) {
             $('#pageGuideMessage').height(75);
-            app.viewModel.themes()[0].layers()[3].showDescription(app.viewModel.themes()[0].layers()[3]);
+            for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
+                var layer = app.viewModel.themes()[0].layers()[i];
+                if ( layer.name === 'Regional Ocean Partnerships' ) {
+                    layer.showDescription(layer);
+                }
+            }
+            //app.viewModel.themes()[0].layers()[3].showDescription(app.viewModel.themes()[0].layers()[3]);
             $('#overview-overlay').height(236);
         }
       }
