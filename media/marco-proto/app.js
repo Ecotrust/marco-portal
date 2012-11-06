@@ -98,10 +98,12 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
   
-  $('#data-accordion').mCustomScrollbar({
-    scrollInertia:250,
-    mouseWheel: 18
-  });
+  if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
+    $('#data-accordion').mCustomScrollbar({
+        scrollInertia: 250,
+        mouseWheel: 18
+    });
+  }
   
   //resizable behavior for overview-overlay
   //might not use the following after all... 

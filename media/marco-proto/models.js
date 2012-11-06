@@ -466,7 +466,9 @@ function themeModel(options) {
         //see app.js line 101 ***need to uncomment initialization
         //then work on styling the scrollbars differently based on id (mCSB_1 and mCSB_2)
         //unless by chance we can get 1 styling to work well for both (would be nice...)
-        $('#data-accordion').mCustomScrollbar("update");
+        if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
+            $('#data-accordion').mCustomScrollbar("update");
+        }
     };
     
 

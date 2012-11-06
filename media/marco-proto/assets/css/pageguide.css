@@ -433,6 +433,10 @@
   position: fixed;
   width: 90%;
   z-index: 1001;
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb000000, endColorstr=#bb000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb000000, endColorstr=#bb000000)";
 }
 #pageGuideWrapper #pageGuideMessage span {
   -webkit-touch-callout: none;

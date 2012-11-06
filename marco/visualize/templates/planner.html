@@ -509,44 +509,44 @@
         
         <header role="banner">
             <div class="navbar navbar-fixed-top">
-              <div class="navbar-inner">
-                <div class="container-fluid">
-                    <div class="row-fluid">
-                        <div class="span5">
-                            <a href="/portal">
-                                <img src="{{media}}marco/img/marco-logo_planner.jpg"/>
-                            </a>
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="span5">
+                                <a href="/portal">
+                                    <img src="{{media}}marco/img/marco-logo_planner.jpg"/>
+                                </a>
+                            </div>
+                            <div class="span7">
+                                <div class="pull-right">
+                                    <!--<li class=""><a href="/portal">Return to Portal</a></li>-->
+                                    <!--<li class=""><a href="">Help</a></li>-->
+                                    <span class="user-btn">
+                                        <a id="help-button" class="btn" href="#help-modal" data-toggle="modal">Help</a>
+                                      
+                                        {% if user.is_authenticated %}
+                                        <span class="btn-group">
+                                          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <i class="icon-user"></i> 
+                                            {{user.username}}
+                                            <span class="caret"></span>
+                                          </a>
+                                          <ul id="username" class="dropdown-menu">
+                                            <li><a href="#profile-modal" data-toggle="modal"><i class="icon-pencil"></i> Profile</a></li>
+                                            <li><a href="#reset-password-modal" data-toggle="modal"><i class="icon-lock"></i> Password</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="{% url 'user_signout' %}"><i class="i"></i>Log Out</a></li>
+                                          </ul>
+                                        </span>
+                                        {% else %}
+                                        <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a>                            
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div><!--/.nav-collapse -->
                         </div>
-                        <div class="span7">
-                          <div class="pull-right">
-                              <!--<li class=""><a href="/portal">Return to Portal</a></li>-->
-                              <!--<li class=""><a href="">Help</a></li>-->
-                              <span class="user-btn">
-                                <a id="help-button" class="btn" href="#help-modal" data-toggle="modal">Help</a>
-                              
-                                {% if user.is_authenticated %}
-                                <span class="btn-group">
-                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="icon-user"></i> 
-                                    {{user.username}}
-                                    <span class="caret"></span>
-                                  </a>
-                                  <ul id="username" class="dropdown-menu">
-                                    <li><a href="#profile-modal" data-toggle="modal"><i class="icon-pencil"></i> Profile</a></li>
-                                    <li><a href="#reset-password-modal" data-toggle="modal"><i class="icon-lock"></i> Password</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="{% url 'user_signout' %}"><i class="i"></i>Log Out</a></li>
-                                  </ul>
-                                </span>
-                                {% else %}
-                                  <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a></li>                              
-                                {% endif %}
-                              </span>
-                          </div><!--/.nav-collapse -->
-                      </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
             </div>
         </header> <!-- end header -->
         
