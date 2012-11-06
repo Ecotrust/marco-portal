@@ -47,10 +47,7 @@ var defaultGuideOverrides = {
       
       //open the basemaps buttons and keep them open
       $('#basemaps').addClass('open');
-      app.pageguide.preventBasemapsClose = true;
-      
-      //increase the z-value of SimpleLayerSwitcher so it falls on top of the pageguide icon
-      $('#SimpleLayerSwitcher_30').css('z-index', 1100);
+      app.pageguide.preventBasemapsClose = true;      
       
       //adjust the pageguide icon so it is left of the open basemaps buttons 
       for (var i=0; i < defaultGuide.steps.length; i++) {
@@ -63,8 +60,6 @@ var defaultGuideOverrides = {
     close: function () {
       app.pageguide.defaultCloseStuff();    
       
-      //return the zindex of the SimpleLayerSwitcher to its original value
-      $('#SimpleLayerSwitcher_30').css('z-index', 1005);
       //deactivate the prevention of the basemaps buttons closing
       app.pageguide.preventBasemapsClose = true;
       //close the basemaps buttons
@@ -77,14 +72,6 @@ var defaultGuideOverrides = {
         }
       }
       
-      //return the map state to what it was before the pageguide began
-      //however, only save state if tour is activated from a normal (non-tour) state)
-      //if tour is closing to start another tour, then don't resave/reload original state (wait till tours are closing rather than toggling)
-      if ( ! app.pageguide.togglingTours ) {
-        app.loadState(app.pageguide.state);
-        app.saveStateMode = true;
-      }
-      app.pageguide.tourIsActive = false;
     }
   },
   step: {
@@ -115,7 +102,6 @@ var defaultGuideOverrides = {
             //$('#dataTab').tab('show');
             //$('#basemaps').addClass('open');
         }
-        //alert("Step " + ($(this).data('idx') + 1) + " has been selected.");
       }
     }
   }
@@ -164,33 +150,9 @@ var dataGuideOverrides = {
   events: {
     open: function () {
       app.pageguide.defaultOpenStuff();
-      //alert("The guide has begun!");    
-      //show the data tab, close any open themes, deactivate all layers, and open the first theme
-      //NOTE:  the following will need to be executed BEFORE this event handler (before 'open' is called)
-      /*$('#dataTab').tab('show');
-      app.viewModel.closeAllThemes();
-      app.viewModel.deactivateAllLayers();
-      app.viewModel.themes()[0].setOpenTheme();
-      app.setMapPosition(-73, 38.5, 7);
-      */
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
       app.pageguide.defaultCloseStuff();
-      $('#overview-overlay').height(186);
-      
-      //NOTE: for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
-      app.viewModel.deactivateAllLayers();
-      app.viewModel.closeAllThemes();
-      
-      //only save state if tour is activated from a normal (non-tour) state)
-      //if tour is closing to start another tour, then don't resave/reload original state (wait till tours are closing rather than toggling)
-      if ( ! app.pageguide.togglingTours ) {
-        app.loadState(app.pageguide.state);
-        app.saveStateMode = true;
-      }
-      
-      $.pageguide(defaultGuide, defaultGuideOverrides);
-      app.pageguide.tourIsActive = false;
     }
   },
   step: {
@@ -250,13 +212,13 @@ var activeGuide = {
       target: '#activeTab',
       content: $('#help-text-active-tour-activeTab').html(),
       direction: 'top',
-      arrow: {offsetX: 90, offsetY: 0}
+      arrow: {offsetX: 50, offsetY: 0}
     },
     {
       target: '.opacity-button',
       content: $('#help-text-active-tour-opacity-button').html(),
       direction: 'top',
-      arrow: {offsetX: 15, offsetY: -5}
+      arrow: {offsetX: 25, offsetY: 0}
     },
     {
       target: '.ui-sortable',
@@ -271,44 +233,9 @@ var activeGuideOverrides = {
   events: {
     open: function () {
         app.pageguide.defaultOpenStuff();
-        //alert("The guide has begun!"); 
-        /*
-        //show the active tab, close any open themes, deactivate all layers, and activate the desired layers
-        //NOTE:  the following will need to be executed BEFORE the open event handler (before 'open' is called)
-        //app.viewModel.showLayers(true);
-        $('#activeTab').tab('show');
-        app.viewModel.closeAllThemes();
-        app.viewModel.deactivateAllLayers();
-        //activate desired layers
-        for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
-            if ( app.viewModel.themes()[0].layers()[i].name === 'OCS Lease Blocks' ) { //might be more robust if indexOf were used
-                app.viewModel.themes()[0].layers()[i].activateLayer();
-            }
-        }
-        for (var i=0; i < app.viewModel.themes()[2].layers().length; i++) {
-            if ( app.viewModel.themes()[2].layers()[i].name === 'Benthic Habitats (South)' ) {
-                app.viewModel.themes()[2].layers()[i].activateLayer();
-            }
-        }
-        app.setMapPosition(-75, 37.6, 8);
-        */
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
       app.pageguide.defaultCloseStuff();
-      
-      //for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
-      app.viewModel.deactivateAllLayers();
-      app.viewModel.closeAllThemes();
-      
-      //only save state if tour is activated from a normal (non-tour) state)
-      //if tour is closing to start another tour, then don't resave/reload original state (wait till tours are closing rather than toggling)
-      if ( ! app.pageguide.togglingTours ) {
-        app.loadState(app.pageguide.state);
-        app.saveStateMode = true;
-      }
-      
-      $.pageguide(defaultGuide, defaultGuideOverrides);
-      app.pageguide.tourIsActive = false;
     }
   },
   step: {
@@ -330,12 +257,35 @@ var activeGuideOverrides = {
 app.pageguide.defaultOpenStuff = function() {
     app.pageguide.tourIsActive = true;  
     app.viewModel.hideMapAttribution();
+    
+    //increase the z-value of SimpleLayerSwitcher so it falls on top of the pageguide icon
+    $('#SimpleLayerSwitcher_30').css('z-index', 1100);
 }
 app.pageguide.defaultCloseStuff = function() {
     app.viewModel.closeDescription();
     //if ( ! app.viewModel.showOverview() ) {
-      app.viewModel.showMapAttribution();
+    app.viewModel.showMapAttribution();
     //}
+    
+    //for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
+    app.viewModel.deactivateAllLayers();
+    app.viewModel.closeAllThemes();
+    
+    //return the zindex of the SimpleLayerSwitcher to its original value
+    $('#SimpleLayerSwitcher_30').css('z-index', 1005);
+    
+    //only save state if tour is activated from a normal (non-tour) state)
+    //if tour is closing to start another tour, then don't resave/reload original state (wait till tours are closing rather than toggling)
+    if ( ! app.pageguide.togglingTours ) {
+      app.loadState(app.pageguide.state);
+      app.saveStateMode = true;
+    }
+      
+    $('#overview-overlay').height(186);
+      
+    app.pageguide.tourIsActive = false;
+      
+    $.pageguide(defaultGuide, defaultGuideOverrides);
 }
 
 $(function() {
