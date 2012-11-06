@@ -383,21 +383,29 @@ function layerModel(options, parent) {
         }*/
         
         if ( ! layer.infoActive() ) {
-            app.viewModel.showOverview(false);
-            app.viewModel.activeInfoLayer(layer);
-            self.infoActive(true);
-            app.viewModel.showOverview(true);
-            app.viewModel.updateCustomScrollbar('#overview-overlay-text');
-            app.viewModel.hideAttribution();
+            self.showDescription(layer);
         } else {
-            app.viewModel.showOverview(false);
-            app.viewModel.showAttribution();
+            self.hideDescription(layer);
         }
+    };
+    
+    self.showDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoLayer(layer);
+        self.infoActive(true);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    self.hideDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.showMapAttribution();
     };
     
     self.toggleDescriptionMenu = function(layer) {
         //console.dir(layer);
-    }
+    };
     
     
     self.showTooltip = function(layer, event) {
@@ -816,10 +824,12 @@ function viewModel() {
     };
     
     // close layer description
-    self.closeDescription = function(self, event) {
+    self.closeDescription = function() {
         //self.showDescription(false);
-        self.showOverview(false);
-        self.showAttribution();
+        app.viewModel.showOverview(false);
+        if ( ! app.pageguide.tourIsActive ) {
+            app.viewModel.showMapAttribution();
+        }
     };
     
     //assigned in app.updateUrl (in state.js)
@@ -1089,11 +1099,11 @@ function viewModel() {
         }
     }
     
-    self.showAttribution = function() {
+    self.showMapAttribution = function() {
         $('.olControlScaleBar').show();
         $('.olControlAttribution').show();
     }
-    self.hideAttribution = function() {
+    self.hideMapAttribution = function() {
         $('.olControlScaleBar').hide();
         $('.olControlAttribution').hide();
     }

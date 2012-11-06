@@ -43,7 +43,7 @@ var defaultGuide = {
 var defaultGuideOverrides = {
   events: {
     open: function () {
-      app.viewModel.hideAttribution();
+      app.pageguide.defaultOpenStuff();
       
       //open the basemaps buttons and keep them open
       $('#basemaps').addClass('open');
@@ -61,7 +61,7 @@ var defaultGuideOverrides = {
       $('#dataTab').tab('show');
     },
     close: function () {
-      app.viewModel.showAttribution();      
+      app.pageguide.defaultCloseStuff();    
       
       //return the zindex of the SimpleLayerSwitcher to its original value
       $('#SimpleLayerSwitcher_30').css('z-index', 1005);
@@ -84,6 +84,7 @@ var defaultGuideOverrides = {
         app.loadState(app.pageguide.state);
         app.saveStateMode = true;
       }
+      app.pageguide.tourIsActive = false;
     }
   },
   step: {
@@ -149,6 +150,12 @@ var dataGuide = {
       content: $('#help-text-data-tour-layer').html(),
       direction: 'right',
       arrow: {offsetX: -10, offsetY: 10}
+    },
+    {
+      target: 'div[name*="Regional Ocean Partnerships"] a.btn-info-sign',
+      content: $('#help-text-data-tour-info-sign').html(),
+      direction: 'bottom',
+      arrow: {offsetX: 10, offsetY: 0}
     }
   ]
 }
@@ -156,7 +163,7 @@ var dataGuide = {
 var dataGuideOverrides = {
   events: {
     open: function () {
-      app.viewModel.hideAttribution();
+      app.pageguide.defaultOpenStuff();
       //alert("The guide has begun!");    
       //show the data tab, close any open themes, deactivate all layers, and open the first theme
       //NOTE:  the following will need to be executed BEFORE this event handler (before 'open' is called)
@@ -168,7 +175,8 @@ var dataGuideOverrides = {
       */
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
-      app.viewModel.showAttribution();
+      app.pageguide.defaultCloseStuff();
+      $('#overview-overlay').height(186);
       
       //NOTE: for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
       app.viewModel.deactivateAllLayers();
@@ -182,22 +190,31 @@ var dataGuideOverrides = {
       }
       
       $.pageguide(defaultGuide, defaultGuideOverrides);
+      app.pageguide.tourIsActive = false;
     }
   },
   step: {
     events: {
       select: function() {
         if ($(this).data('idx') === 0) {
+            app.viewModel.closeDescription();
             app.viewModel.deactivateAllLayers();
+            $('#pageGuideMessage').height(150);
         } else if ($(this).data('idx') === 1) {
+            app.viewModel.closeDescription();
             app.viewModel.deactivateAllLayers();
+            $('#pageGuideMessage').height(150);
         } else if ($(this).data('idx') === 2) {
             //alert("Step 2");
+            app.viewModel.closeDescription();
             app.viewModel.deactivateAllLayers();
             app.viewModel.closeAllThemes();
             app.viewModel.themes()[0].setOpenTheme();
+            //$('#pageGuideMessage').css //can we adjust the height of the tour background as well as that of the description overlay?
+            $('#pageGuideMessage').height(150);
         } else if ($(this).data('idx') === 3) {
             //alert("Step 3");
+            app.viewModel.closeDescription();
             app.viewModel.closeAllThemes();
             app.viewModel.themes()[0].setOpenTheme();
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
@@ -212,7 +229,12 @@ var dataGuideOverrides = {
                     });
                 }
             }
-        }        
+            $('#pageGuideMessage').height(150);
+        } else if ($(this).data('idx') === 4) {
+            $('#pageGuideMessage').height(75);
+            app.viewModel.themes()[0].layers()[3].showDescription(app.viewModel.themes()[0].layers()[3]);
+            $('#overview-overlay').height($('#overview-overlay').height()+50);
+        }
       }
     }
   }
@@ -248,7 +270,7 @@ var activeGuide = {
 var activeGuideOverrides = {
   events: {
     open: function () {
-        app.viewModel.hideAttribution();
+        app.pageguide.defaultOpenStuff();
         //alert("The guide has begun!"); 
         /*
         //show the active tab, close any open themes, deactivate all layers, and activate the desired layers
@@ -272,7 +294,7 @@ var activeGuideOverrides = {
         */
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
-      app.viewModel.showAttribution();
+      app.pageguide.defaultCloseStuff();
       
       //for some reason it seems that the following 4 lines are needed both here and in the 'tour' click event handler
       app.viewModel.deactivateAllLayers();
@@ -286,6 +308,7 @@ var activeGuideOverrides = {
       }
       
       $.pageguide(defaultGuide, defaultGuideOverrides);
+      app.pageguide.tourIsActive = false;
     }
   },
   step: {
@@ -304,6 +327,16 @@ var activeGuideOverrides = {
   }
 }
 
+app.pageguide.defaultOpenStuff = function() {
+    app.pageguide.tourIsActive = true;  
+    app.viewModel.hideMapAttribution();
+}
+app.pageguide.defaultCloseStuff = function() {
+    app.viewModel.closeDescription();
+    //if ( ! app.viewModel.showOverview() ) {
+      app.viewModel.showMapAttribution();
+    //}
+}
 
 $(function() {
   // Load the default guide!  
