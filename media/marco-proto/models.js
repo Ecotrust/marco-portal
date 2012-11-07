@@ -365,7 +365,29 @@ function layerModel(options, parent) {
     self.isBottomLayer = function(layer) {
         return app.viewModel.activeLayers.indexOf(layer) === app.viewModel.activeLayers().length - 1;
     };
+    
+    self.toggleSublayerDescription = function(layer) {
+        if ( ! layer.infoActive() ) {
+            self.showSublayerDescription(layer);
+        } else {
+            self.hideSublayerDescription(layer);
+        }
+    };
+    
+    self.showSublayerDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(layer);
+        layer.infoActive(true);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        app.viewModel.hideMapAttribution();
+    };
 
+    self.hideSublayerDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.showMapAttribution();
+    };
+    
     // display descriptive text below the map
     self.toggleDescription = function(layer) {
         /*if ( layer.infoActive() ) {
@@ -673,6 +695,7 @@ function viewModel() {
 
     // descriptive text below the map 
     self.activeInfoLayer = ko.observable(false);
+    self.activeInfoSublayer = ko.observable(false);
 
     // attribute data
     self.attributeTitle = ko.observable(false);
@@ -833,6 +856,14 @@ function viewModel() {
             app.viewModel.showMapAttribution();
         }
     };
+    
+    self.activateOverviewDropdown = function() {
+        if (app.viewModel.scrollBarElements.indexOf('#overview-overlay-dropdown') == -1) {
+            app.viewModel.scrollBarElements.push('#overview-overlay-dropdown');
+            $('#overview-overlay-dropdown').mCustomScrollbar();
+        }
+        $('#overview-overlay-dropdown').mCustomScrollbar("update");
+    };  
     
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();

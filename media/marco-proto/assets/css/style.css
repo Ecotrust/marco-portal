@@ -308,17 +308,31 @@ a.disabled-link:hover {
   margin-bottom: 10px;
 }
 
+#overview-overlay-header .dropdown-menu {
+  margin-top: 15px;
+  background-color: rgba(60, 110, 160, 0.65);
+}
+
+#overview-overlay-header .dropdown-menu > li {
+}
+
 #overview-overlay-header .caret {
-  border-top: 4px solid white;
+  /*border-top: 4px solid white;*/
   margin-left: 5px;
   margin-top: 8px;
 }
 #overview-overlay-header a {
+  background-color: rgba(60, 110, 160, 0.65);
   /*color: white;
   text-decoration: none;*/ /*these two lines caused problems with the close 'x' button*/
 }
 #overview-overlay-header a:hover {
   text-decoration: none;
+}
+
+#overview-overlay-dropdown {
+  max-height: 100px;
+  /*overflow: auto;*/
 }
 
 #overview-overlay-text {
@@ -327,7 +341,7 @@ a.disabled-link:hover {
   overflow: hidden;
 }
 
-#overview-overlay-content, #overview-overlay-close {
+#overview-overlay-content {
   padding: 10px;
   padding-bottom: 5px;
   color: white;
@@ -338,13 +352,13 @@ a.disabled-link:hover {
   height: 105% !important;*/
 }
 
-#overview-overlay-content .mCSB_container {
+#overview-overlay-text .mCSB_container {
   padding: 5px 10px 15px;  
   background-color: rgba(60, 110, 160, 0.25098);
   margin-right: 25px;
 }
 
-#overview-overlay-content .mCSB_scrollTools {
+#overview-overlay-text .mCSB_scrollTools {
   height: 95%;
 }
 
@@ -461,6 +475,7 @@ a.disabled-link:hover {
 
 #data-accordion .dropdown-menu {
   right: 0px;
+  margin-top: 0px;
 }
 
 .attribution {
