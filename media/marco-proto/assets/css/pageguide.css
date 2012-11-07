@@ -448,6 +448,10 @@
   -ms-user-select: none;
   user-select: none;
   background-color: rgba(241, 2, 130, 0.95);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ddF10282, endColorstr=#ddF10282);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ddF10282, endColorstr=#ddF10282)";
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
