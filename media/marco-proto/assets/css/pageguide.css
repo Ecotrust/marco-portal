@@ -562,6 +562,10 @@
   -o-box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
   background-color: rgba(241, 2, 130, 0.9);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ddF10282, endColorstr=#ddF10282);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ddF10282, endColorstr=#ddF10282)";
   color: #fff;
   text-shadow: 0 1px rgba(0, 0, 0, 0.25);
   right: 0 !important;
