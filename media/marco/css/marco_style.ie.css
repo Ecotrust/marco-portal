@@ -29,7 +29,19 @@ filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.00000000, M12=1.00000000,
 	margin-left: 0% !important;
 }
 
-@media (max-width: 1050px) {
+.sidebar-nav {
+	padding-top: 0px;
+}
+
+.sidebar-nav .nav-tabs li {
+	padding-top: 10px;
+	margin-top: -10px;
+}
+.sidebar-nav .nav-tabs li {
+	margin-top: 0px;
+}
+
+@media (max-width: 1049px) {
 	#map-panel {
 		margin-left: 0% !important;
 	}
