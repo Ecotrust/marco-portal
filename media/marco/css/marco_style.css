@@ -127,7 +127,7 @@ a:focus {
 }
 .sidebar-nav .nav-tabs li.active:first-child > a, .sidebar-nav .nav-tabs li:first-child:hover > a {
 	border-top-left-radius: 10px;
-	background-color: white;
+	/*background-color: white;*/
 }
 
 
