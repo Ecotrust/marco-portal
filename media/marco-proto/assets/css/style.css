@@ -354,12 +354,6 @@ a.disabled-link:hover {
   margin-right: 0px;
 }
 
-#overview-overlay-text {
-  height: 100px;
-  width: 100%
-  overflow: hidden;
-}
-
 #overview-overlay-content {
   padding: 10px;
   padding-bottom: 5px;
@@ -371,10 +365,16 @@ a.disabled-link:hover {
   height: 105% !important;*/
 }
 
+#overview-overlay-text {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
 #overview-overlay-text .mCSB_container {
   padding: 5px 10px 15px;  
-  background-color: rgba(60, 110, 160, 0.25098);
   margin-right: 25px;
+  background-color: rgba(60, 110, 160, 0.25098);
 }
 
 #overview-overlay-text .mCSB_scrollTools {
