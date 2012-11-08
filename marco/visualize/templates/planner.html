@@ -830,11 +830,16 @@
                                         <div id="overview-overlay-content" class="span12">
                                             <div id="overview-overlay-header" >
                                                 <span class="btn-group" data-bind="visible: activeInfoLayer() && activeInfoLayer().subLayers.length !== 0">
-                                                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" data-bind="click: activateOverviewDropdown">
+                                                    <a id="overview-dropdown-button" class="btn dropdown-toggle" href="#" name="description-dropdown" data-bind="click: activateOverviewDropdown">
                                                         <span data-bind="text: activeInfoSublayer().name ? activeInfoSublayer().name : activeInfoLayer().name"></span>
                                                         <span class="caret"></span>
                                                     </a>
                                                     <ul id="overview-overlay-dropdown" class="dropdown-menu">
+                                                        <li>
+                                                            <a data-bind="click: activeInfoLayer().toggleSublayerDescription">
+                                                                <span data-bind="text: activeInfoLayer().name"></span>
+                                                            </a>
+                                                        </li>
                                                         <li data-bind="foreach: activeInfoLayer().subLayers">
                                                             <a data-bind="click: toggleSublayerDescription">
                                                                 <span data-bind="text: name"></span>
@@ -847,10 +852,16 @@
                                                 <span><a href="#" style="margin-left: 10px; opacity: .8;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> </span>
                                             </div>
                                             <div id="overview-overlay-text" style="margin-top: 5px" data-bind="visible: activeInfoLayer().overview"> 
-                                                <span class="text" data-bind="text: activeInfoLayer().overview"></span>
+                                                <span class="text" data-bind="text: activeInfoSublayer() ? activeInfoSublayer().overview : activeInfoLayer().overview"></span>
                                                 <div class="notes">
-                                                    <div data-bind="visible: activeInfoLayer().data_source">Source: <span data-bind="text: activeInfoLayer().data_source"></span></div>
-                                                    <div style="margin-top: 5px" data-bind="visible: activeInfoLayer().data_notes">Notes: <span data-bind="text: activeInfoLayer().data_notes"></span></div>
+                                                    <div data-bind="visible: activeInfoSublayer() ? activeInfoSublayer().data_source : activeInfoLayer().data_source">
+                                                        Source: 
+                                                        <span data-bind="text: activeInfoSublayer() ? activeInfoSublayer().data_source : activeInfoLayer().data_source"></span>
+                                                    </div>
+                                                    <div style="margin-top: 5px" data-bind="visible: activeInfoSublayer() ? activeInfoSublayer().data_notes : activeInfoLayer().data_notes">
+                                                        Notes: 
+                                                        <span data-bind="text: activeInfoSublayer() ? activeInfoSublayer().data_notes : activeInfoLayer().data_notes"></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             

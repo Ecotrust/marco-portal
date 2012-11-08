@@ -321,18 +321,37 @@ a.disabled-link:hover {
   margin-left: 5px;
   margin-top: 8px;
 }
-#overview-overlay-header a {
+#overview-overlay-header a .dropdown-toggle {
   background-color: rgba(60, 110, 160, 0.65);
   /*color: white;
   text-decoration: none;*/ /*these two lines caused problems with the close 'x' button*/
 }
+
 #overview-overlay-header a:hover {
   text-decoration: none;
 }
 
+#overview-overlay-header .dropdown-toggle {
+  color: white;
+  background-color: rgb(60, 110, 160);
+  background-image: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 #overview-overlay-dropdown {
-  max-height: 100px;
-  /*overflow: auto;*/
+  background-color: rgb(60, 110, 160) !important;
+  height: 100px;
+  overflow: auto;
+}
+
+#overview-overlay-dropdown a{
+  color: white;
+  width: 75%;
+}
+
+#overview-overlay-dropdown .mCSB_container {
+  margin-right: 0px;
 }
 
 #overview-overlay-text {
@@ -362,10 +381,6 @@ a.disabled-link:hover {
   height: 95%;
 }
 
-#overview-overlay a{
-  /*margin-left: 10px;*/
-}
-
 #overview-overlay .title {
   font-size: 16px;
   font-weight: bold;
@@ -383,6 +398,10 @@ a.disabled-link:hover {
 
 #overview-overlay-links {
   margin-top: 10px;
+}
+
+#overview-dropdown-button .caret {
+  border-top: 4px solid white; 
 }
 
 #fullscreen-error-overlay {

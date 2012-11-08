@@ -105,6 +105,8 @@ $(document).ready(function() {
     });
   }
   
+  $('#overview-dropdown-button').dropdown(); 
+  
   //resizable behavior for overview-overlay
   //might not use the following after all... 
   //(having problems setting minHeight, losing resizing ability 
@@ -268,7 +270,37 @@ $(document).ready(function() {
   $(document).on('click', '#start-active-tour', function() {
     app.viewModel.startActiveTour();
   });
+  /*
+  $(document).on('click', 'a[name="description-dropdown"]', function() {
+    debugger;
+    $('#overview-overlay-dropdown').mCustomScrollbar("update");
+  });
   
+  $(document).on('click', '#overview-overlay-header .dropdown-toggle', function() {
+    debugger;
+    $('#overview-overlay-dropdown').mCustomScrollbar("update");
+  });
+  
+  $('#overview-overlay-dropdown').on('shown', function (e) {
+    debugger;
+    $('#overview-overlay-dropdown').mCustomScrollbar("update");
+  });
+  
+  $(document).on('show', '#overview-overlay-dropdown', function() {
+    debugger;
+    $('#overview-overlay-dropdown').mCustomScrollbar("update");
+  });
+  
+  $('#overview-overlay-dropdown').on('show', function() {
+    debugger;
+    $('#overview-overlay-dropdown').mCustomScrollbar("update");
+  });
+  
+  $('#mCSB_3').on('show', function() {
+    debugger;
+    $('#overview-overlay-dropdown').mCustomScrollbar("update");
+  });
+  */
   /*$('#active-tour').on('click', function() {
     debugger;
     //$.pageguide('load', guide2);

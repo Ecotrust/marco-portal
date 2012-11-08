@@ -367,10 +367,14 @@ function layerModel(options, parent) {
     };
     
     self.toggleSublayerDescription = function(layer) {
-        if ( ! layer.infoActive() ) {
-            self.showSublayerDescription(layer);
+        if ( ! self.infoActive() ) {
+            //console.log('calling showSublayerDescription');
+            self.showSublayerDescription(self);
+        } else if (layer === app.viewModel.activeInfoSublayer()) {
+            //console.log('requesting same sublayer');
         } else {
-            self.hideSublayerDescription(layer);
+            //console.log('requesting parent layer description');
+            self.showDescription(self);
         }
     };
     
@@ -378,16 +382,20 @@ function layerModel(options, parent) {
         app.viewModel.showOverview(false);
         app.viewModel.activeInfoSublayer(layer);
         layer.infoActive(true);
+        layer.parent.infoActive(true);
         app.viewModel.showOverview(true);
         app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        //app.viewModel.updateDropdownScrollbar('#overview-overlay-dropdown');
         app.viewModel.hideMapAttribution();
     };
-
+    
+    /*
     self.hideSublayerDescription = function(layer) {
         app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
         app.viewModel.showMapAttribution();
     };
-    
+    */
     // display descriptive text below the map
     self.toggleDescription = function(layer) {
         /*if ( layer.infoActive() ) {
@@ -413,15 +421,23 @@ function layerModel(options, parent) {
     
     self.showDescription = function(layer) {
         app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
         app.viewModel.activeInfoLayer(layer);
         self.infoActive(true);
+        if (layer.subLayers.length > 0) {
+            $('#overview-overlay').height(195);
+        } else {
+            $('#overview-overlay').height(186);
+        }
         app.viewModel.showOverview(true);
         app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        //app.viewModel.updateDropdownScrollbar('#overview-overlay-dropdown');
         app.viewModel.hideMapAttribution();
     };
     
     self.hideDescription = function(layer) {
         app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
         app.viewModel.showMapAttribution();
     };
     
@@ -857,13 +873,38 @@ function viewModel() {
         }
     };
     
-    self.activateOverviewDropdown = function() {
-        if (app.viewModel.scrollBarElements.indexOf('#overview-overlay-dropdown') == -1) {
-            app.viewModel.scrollBarElements.push('#overview-overlay-dropdown');
-            $('#overview-overlay-dropdown').mCustomScrollbar();
+    self.activateOverviewDropdown = function(model, event) {
+        var $btnGroup = $(event.target).closest('.btn-group');
+        if ( $btnGroup.hasClass('open') ) {
+            $btnGroup.removeClass('open');
+        } else {
+            //$('#overview-dropdown-button').dropdown('toggle');  
+            $btnGroup.addClass('open');
+            if (app.viewModel.scrollBarElements.indexOf('#overview-overlay-dropdown') == -1) {
+                app.viewModel.scrollBarElements.push('#overview-overlay-dropdown');
+                $('#overview-overlay-dropdown').mCustomScrollbar({
+                    scrollInertia:250,
+                    mouseWheel: 6
+                });
+            }
+            //debugger;
+            //setTimeout( $('#overview-overlay-dropdown').mCustomScrollbar("update"), 1000);
+            $('#overview-overlay-dropdown').mCustomScrollbar("update");
         }
-        $('#overview-overlay-dropdown').mCustomScrollbar("update");
-    };  
+    }; 
+
+    /*
+    self.updateDropdownScrollbar = function(elem) {
+        if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
+            app.viewModel.scrollBarElements.push(elem);
+            $(elem).mCustomScrollbar({
+                scrollInertia:250,
+                mouseWheel: 6
+            });
+        }
+        $(elem).mCustomScrollbar("update");
+    };
+    */    
     
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();
