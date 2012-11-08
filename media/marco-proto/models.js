@@ -892,7 +892,69 @@ function viewModel() {
             $('#overview-overlay-dropdown').mCustomScrollbar("update");
         }
     }; 
+    
+    self.getOverviewText = function(test1, test2) {
+        //activeInfoSublayer() ? activeInfoSublayer().overview : activeInfoLayer().overview
+        if ( self.activeInfoSublayer() ) {
+            if ( self.activeInfoSublayer().overview === null ) {
+                return 'no description available';
+            } else {
+                return self.activeInfoSublayer().overview;
+            }   
+        } else if (self.activeInfoLayer() ) {
+            if ( self.activeInfoLayer().overview === null ) {
+                return 'no description available';
+            } else {
+                return self.activeInfoLayer().overview;
+            }  
+        } else {
+            return 'no description available';
+        }
+    };
+    
+    self.activeKmlLink = function() {
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().kml;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().kml;
+        } else {
+            return false;
+        }
+    };
 
+    self.activeDataLink = function() {
+        //activeInfoLayer().data_download
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().data_download;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().data_download;
+        } else {
+            return false;
+        }
+    };
+    
+    self.activeMetadataLink = function() {
+        //activeInfoLayer().metadata
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().metadata;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().metadata;
+        } else {
+            return false;
+        }
+    };
+    
+    self.activeSourceLink = function() {
+        //activeInfoLayer().source
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().source;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().source;
+        } else {
+            return false;
+        }
+    };
+    
     /*
     self.updateDropdownScrollbar = function(elem) {
         if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
