@@ -337,6 +337,7 @@ a.disabled-link:hover {
   background-image: none;
   font-size: 16px;
   font-weight: bold;
+  text-shadow: none;
 }
 
 #overview-overlay-dropdown {
