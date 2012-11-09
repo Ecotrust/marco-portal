@@ -104,6 +104,10 @@ app.init = function () {
         app.updateUrl();
     });
     
+    
+
+
+
 
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
@@ -382,3 +386,22 @@ app.setLayerVisibility = function(layer, visibility) {
 app.setLayerZIndex = function(layer, index) {
     layer.layer.setZIndex(index);
 };
+
+
+// block mousehweel when over overlay
+$("#overview-overlay").hover(
+    // mouseenter
+    function () {
+        var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
+        for(var i = 0; i < controls.length; ++i) {
+            controls[i].disableZoomWheel();
+        }
+            
+    }, 
+    function () {
+        var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
+        for(var i = 0; i < controls.length; ++i) {
+            controls[i].enableZoomWheel();
+        }
+    }
+)
