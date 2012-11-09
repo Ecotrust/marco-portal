@@ -308,26 +308,55 @@ a.disabled-link:hover {
   margin-bottom: 10px;
 }
 
+#overview-overlay-header .dropdown-menu {
+  margin-top: 15px;
+  background-color: rgba(60, 110, 160, 0.65);
+}
+
+#overview-overlay-header .dropdown-menu > li {
+}
+
 #overview-overlay-header .caret {
-  border-top: 4px solid white;
+  /*border-top: 4px solid white;*/
   margin-left: 5px;
   margin-top: 8px;
 }
-#overview-overlay-header a {
+#overview-overlay-header a .dropdown-toggle {
+  background-color: rgba(60, 110, 160, 0.65);
   /*color: white;
   text-decoration: none;*/ /*these two lines caused problems with the close 'x' button*/
 }
+
 #overview-overlay-header a:hover {
   text-decoration: none;
 }
 
-#overview-overlay-text {
-  height: 100px;
-  width: 100%;
-  overflow: hidden;
+#overview-overlay-header .dropdown-toggle {
+  color: white;
+  background-color: rgb(60, 110, 160);
+  background-image: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: none;
 }
 
-#overview-overlay-content, #overview-overlay-close {
+#overview-overlay-dropdown {
+  background-color: rgb(60, 110, 160) !important;
+  height: 100px;
+  width: 100%;
+  overflow: auto;
+}
+
+#overview-overlay-dropdown a{
+  color: white;
+  width: 75%;
+}
+
+#overview-overlay-dropdown .mCSB_container {
+  margin-right: 0px;
+}
+
+#overview-overlay-content {
   padding: 10px;
   padding-bottom: 5px;
   color: white;
@@ -338,18 +367,20 @@ a.disabled-link:hover {
   height: 105% !important;*/
 }
 
-#overview-overlay-content .mCSB_container {
+#overview-overlay-text {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#overview-overlay-text .mCSB_container {
   padding: 5px 10px 15px;  
-  background-color: rgba(60, 110, 160, 0.25098);
   margin-right: 25px;
+  background-color: rgba(60, 110, 160, 0.25098);
 }
 
-#overview-overlay-content .mCSB_scrollTools {
+#overview-overlay-text .mCSB_scrollTools {
   height: 95%;
-}
-
-#overview-overlay a{
-  /*margin-left: 10px;*/
 }
 
 #overview-overlay .title {
@@ -369,6 +400,10 @@ a.disabled-link:hover {
 
 #overview-overlay-links {
   margin-top: 10px;
+}
+
+#overview-dropdown-button .caret {
+  border-top: 4px solid white; 
 }
 
 #fullscreen-error-overlay {
@@ -461,6 +496,7 @@ a.disabled-link:hover {
 
 #data-accordion .dropdown-menu {
   right: 0px;
+  margin-top: 0px;
 }
 
 .attribution {
