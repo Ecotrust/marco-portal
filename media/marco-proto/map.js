@@ -103,10 +103,6 @@ app.init = function () {
         // update the url when we move
         app.updateUrl();
     });
-    
-    
-
-
 
 
     // callback functions for vector attribution (SelectFeature Control)
@@ -374,7 +370,6 @@ app.addLayerToMap = function(layer) {
     layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
 };
-
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it

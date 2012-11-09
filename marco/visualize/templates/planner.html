@@ -16,7 +16,8 @@
         <link href="{{media}}/marco-proto/assets/css/scalebar-thin.css" rel="stylesheet">
         <link href="{{media}}/marco-proto/assets/css/style.css" rel="stylesheet">
         <link href="{{media}}/marco-proto/assets/css/pageguide.css" rel="stylesheet">
-        <link href="{{media}}/marco-proto/assets/css/jquery-ui.css" rel="stylesheet">
+
+        <link href="{{media}}/marco/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
         <link href="{{media}}/marco-proto/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet">
         <!--<link href="{{media}}/marco-proto/assets/css/jScrollPane.css" rel="stylesheet">-->
         <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css"
@@ -764,6 +765,12 @@
                                               <i class="icon-fullscreen icon-large"></i>
                                               <span>Fullscreen</span>
                                           </a>
+                                          <!-- Print Button -->
+
+                                            <a class="btn" id="btn-print" data-bind="click: printing.showPrintDialog, visible: printing.enabled">
+                                                <i class="icon-print icon-large"></i>
+                                                <span>Print/Export</span>
+                                            </a>
                                         </div>
                                     </div>
                                     <div id="map-buttons">
@@ -912,7 +919,7 @@
                 </div>    
                 
                 <!-- Legends Panel (right panel) -->
-                <div data-bind="visible: showLegend(), css: {'fullscreen-legend': isFullScreen() }" class="span3">
+                <div data-bind="visible: showLegend(), css: {'fullscreen-legend': isFullScreen() }" class="span3" id="legend">
                     <div id="legend-wrapper">
                         <div id="legend-header">
                             <span class="pull-right">
@@ -937,12 +944,16 @@
                 </div>
                 <!-- /Legends Panel -->
             </div>
+            <span data-bind="visible: mapTitle"><span data-bind="text: new Date()"></span></span>
         </div>
+
         <!--/row-->
         <hr>
           
         <!--/.fluid-container-->
+
         
+
         <!-- transparency tool -->
         <div style="display:none" id="opacity-popover" class="popover fade bottom in">
             <div class="arrow">
@@ -1037,7 +1048,92 @@
                 </div>
             </div>
         </div>
+
+        <!-- printing popover -->
+        <div style="display:none" id="printing-popover" class="popover fade left in">
+            <div class="arrow">
+            </div>
+            <div class="popover-inner" data-bind="with: printing">
+                <h3 class="popover-title">
+                    Print/Export
+                </h3>
+                <div class="popover-content">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <strong>Format</strong>
+                            <div class="control-group">
+                                <label class="radio control-label">
+                                    <input type="radio" name="format" value=".png" checked data-bind="checked: format">PNG
+                                </label>
+                                <label class="radio control-label">
+                                    <input type="radio" name="format" value=".jpg" data-bind="checked: format">JPG
+                                </label>
+                                <label class="radio control-label">
+                                    <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
+                                </label>
+                                <label class="radio control-label">
+                                    <input type="radio" value="geotiff" name="format" data-bind="checked: format">Georeferenced TIFF
+                                </label>
+                            </div>
+                            <strong>Options</strong>
+                            <label class="checkbox">
+                                <input type="checkbox" data-bind="checked: showLegend">Show Legend
+                            </label>
+                        </div>
+                        <div class="span6">
+                            <div class="well">
+                                <fieldset>
+                                    <label>Height (pixels)</label>
+                                    <input type="text" class="spinner" data-bind="spinner: shotHeight">
+                                    <label>Width (pixels)</label>
+                                    <input type="text" class="spinner" data-bind="spinner: shotWidth">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <fieldset>
+                        <label>Title</label>
+                        <input class="span4" type="text" data-bind="value: title" placeholder="Optional title for map...">
+                    </fieldset>
+                    <hr/>
+                    <p class="pull-right">
+                        <button class="btn" data-bind="click: cancel">cancel</button>
+                        <button class="btn" data-bind="click: sendJob">export</button>
+                        <div class="clearfix"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
         
+        <!-- Print Dialog -->
+        <div id="print-modal" class="modal hide fade" data-bind="with: printing">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Print/Export Status</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row-fluid" data-bind="visible: thumbnail">
+                    <div class="span12">
+                        <a data-bind="attr: {href: thumbnail }" target="_blank"><img data-bind="attr: {src: thumbnail}"/></a>
+                    </div>
+                </div>
+                <div class="row-fluid" data-bind="visible: showSpinner">
+                    <div class="span6">
+                        <strong><span data-bind="text: jobStatus"></span></strong>
+                    </div>
+                    <div class="span6">
+                        <img src="{{media}}marco/img/ajax-loader.gif"/>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">close</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="enable: thumbnail"><i class="icon-envelope"></i> email</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="click: print, enable: thumbnail"><i class="icon-print"></i> print</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="enable: thumbnail, attr: { href: download }"><i class="icon-download-alt"></i> save</a>
+            </div>
+        </div>
         <!-- Email Bookmark Form -->
         <div id="bookmark-modal" class="modal hide fade">
             <div class="modal-header">
@@ -1085,7 +1181,7 @@
         <script src="{{media}}/marco/js/bootstrap.min.js"></script>
         <script src="{{media}}/marco/js/amplify.min.js"></script>
         <script src="{{media}}/marco-proto/assets/js/jquery.ba-bbq.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/jquery-ui.js"></script>
+        <script src="{{media}}/marco/js/jquery-ui-1.9.1.custom.js"></script>
         <script src="{{media}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
         <script src="{{media}}/marco-proto/assets/js/knockout-bindings.js"></script>
         <script src="{{media}}/marco-proto/assets/js/knockout.mapping-latest.js"></script>
@@ -1097,6 +1193,8 @@
         <script src="{{media}}/marco-proto/assets/js/scalebar.js"></script>
         <script src="{{media}}/marco/js/bigscreen.js"></script>
         <script src="{{media}}/marco/js/jquery.ui.touch-punch.min.js"></script>
+
+        <script src="http://localhost:8989/socket.io/socket.io.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {};
@@ -1107,6 +1205,7 @@
         <script src="{{media}}/marco-proto/state.js"></script>
         <script src="{{media}}/marco-proto/models.js"></script>
         <script src="{{media}}/marco-proto/server.js"></script>
+        <script src="{{media}}/marco-proto/printing.js"></script>
         <script src="{{media}}/marco-proto/app.js"></script>
         <script src="{{media}}/marco-proto/pageguide.js"></script>
         <script src="{{media}}/marco-proto/assets/js/jquery.mousewheel.min.js"></script>

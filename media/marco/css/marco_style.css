@@ -897,8 +897,44 @@ img + h3 {
   display:block;
 }
 
-.popover input {
+.popover .radio input {
 	width: 94%;
+}
+#printing-popover .radio input {
+	width: 20%;
+}
+#printing-popover .ui-spinner {
+	width: 55%;
+}
+
+#printing-popover {
+	width: 400px;
+}
+
+
+body.print .tabs,
+body.print .user-btn,
+body.print #feedback-tab,
+body.print #help-tab,
+body.print #basemaps,
+body.print .olControlZoom
+ {
+	display: none;
+}
+
+body.print #legend-wrapper {
+	max-width: 250px;
+}
+
+body.print #map-wrapper, body.print #map {
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+
+}
+
+body.print #map-panel {
+	margin-left: 0px;
 }
 
 @media (max-width: 767px) {

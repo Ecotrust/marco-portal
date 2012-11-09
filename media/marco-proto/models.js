@@ -657,7 +657,7 @@ function viewModel() {
         self.showLayers(!self.showLayers());
         app.map.render('map');
         if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
-        
+        app.updateUrl();
         //if toggling layers during default pageguide, then correct step 4 position
         //self.correctTourPosition();
         //throws client-side error in pageguide.js for some reason...
@@ -716,6 +716,9 @@ function viewModel() {
     // attribute data
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
+
+    // title for print view
+    self.mapTitle = ko.observable();
 
     self.closeAttribution = function() {
         self.attributeData(false);
@@ -970,6 +973,7 @@ function viewModel() {
     
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();
+
 
     // show bookmark stuff
     self.showBookmarks = function(self, event) {
