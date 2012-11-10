@@ -288,6 +288,12 @@ function layerModel(options, parent) {
 
     self.showSublayers = ko.observable(false);
 
+    self.showSublayers.subscribe(function () {
+        setTimeout(function () {
+            $('.layer').find('.open .layer-menu').jScrollPane();
+        });
+    });
+
     // bound to click handler for layer switching
     self.toggleActive = function(self, event) {
         var layer = this;

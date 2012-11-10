@@ -56,6 +56,9 @@ app.viewModel.loadLayersFromServer().done(function() {
   $('.search-box').typeahead({
     source: app.typeAheadSource
   });
+
+  $("#data-accordion").jScrollPane();
+
 });
 
 // initialize the map
@@ -98,19 +101,14 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
   
-  if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
-    $('#data-accordion').mCustomScrollbar({
-        scrollInertia: 250,
-        mouseWheel: 18
-    });
-  }
+  // if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
+  //   $('#data-accordion').mCustomScrollbar({
+  //       scrollInertia: 250,
+  //       mouseWheel: 18
+  //   });
+  // }
   
-  $('#data-accordion').on('scroll', '.dropdown-menu', function (event) {
-    event.stopImmediatePropagation();
-    console.dir('scroll');
-  });
 
-  $('#overview-dropdown-button').dropdown(); 
   
   //resizable behavior for overview-overlay
   //might not use the following after all... 

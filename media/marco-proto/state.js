@@ -82,11 +82,8 @@ app.loadCompressedState = function(state) {
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
     }
-<<<<<<< HEAD
-    
-=======
+
     app.establishLayerLoadState();
->>>>>>> webkit-print
     // data tab and open themes
     if (state.themes) {
         //$('#dataTab').tab('show');
@@ -162,14 +159,10 @@ app.printMode = function () {
 };
 
 // load state from fixture or server
-<<<<<<< HEAD
-app.loadState = function(state) {
-    if (state.z || state.login) {
-=======
+
 app.loadState = function(state) {
     var loadTimer;
-    if (state.z) {
->>>>>>> webkit-print
+    if (state.z || state.login) {
         return app.loadCompressedState(state);
     }
 
@@ -257,11 +250,8 @@ app.loadState = function(state) {
 };
 
 // load the state from the url hash
-<<<<<<< HEAD
-app.loadStateFromHash = function (hash) {  
-=======
+
 app.loadStateFromHash = function (hash) { 
->>>>>>> webkit-print
     app.loadState($.deparam(hash.slice(1)));
 };
 

@@ -43,6 +43,21 @@ a:focus {
 	background:url(../img/ajax-loader.gif) no-repeat center center;
 }
 
+.jspVerticalBar {
+	width: 10px !important;
+}
+.jspTrack {
+	background: none repeat scroll 0 0 #DDDDDD!important;
+	width: 10px !important;
+}
+.jspDrag {
+	border-radius: 20px;
+	background: none repeat scroll 0 0 #BBB !important;
+	width: 10px !important;
+	top: 2px;
+
+}
+
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: auto;
