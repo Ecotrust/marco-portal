@@ -1,5 +1,6 @@
-var system = require('system')
-  , page = require('webpage').create();
+var system = require('system'), 
+    page = require('webpage').create();
+
 
 // Read in arguments
 var args = {};

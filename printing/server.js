@@ -35,14 +35,10 @@ app.get('/download/:file', function (req, res) {
 
 io.sockets.on('connection', function(socket) {
   //clients[socket.id] = socket;
-  
-  socket.on('ping', function () {
-    console.log('ping!!!!!');
-  });
-  
+
   socket.on('shot', function(data, cb) {
     var ts = moment().format('YYYYDDmmHHss'),
-      filename = ts + '-' + socket.id + data.format,
+      filename = ts + '-' + socket.id;
       options = {
         userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
         screenSize: {
@@ -59,11 +55,23 @@ io.sockets.on('connection', function(socket) {
     if (data.title) {
       hash = hash + "&title=" + data.title;
     }
-    webshot(targetUrl + hash, staticDir + filename, options, function(err) {
-      cb({
-        path: socketUrl + '/' + filename,
-        download: socketUrl + '/download/' + filename
-      });
+    webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
+      var original = staticDir + filename + '.png',
+          target = staticDir + filename + data.format,
+          done = function () {
+            cb({
+              path: socketUrl + '/' + filename + data.format,
+              download: socketUrl + '/download/' + filename + data.format
+            });
+          };
+      if (! err) {
+        if (data.format !== '.png') {
+          im.convert([original, target], done);
+        } else {
+          done();
+        }
+      }
+      
     });
 
   });
