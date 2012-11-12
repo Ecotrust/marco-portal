@@ -10,9 +10,10 @@ app.onResize = function(percent) {
     $("#map-wrapper").height(height);
     $(".tabs").height(height);
     $("#legend-wrapper").height(height - 20);
-    $("#data-accordion").height(height - 96);
+    $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
     app.map.render('map');
   }
+
 };
 
 $(window).on('resize', function() {
@@ -57,8 +58,9 @@ app.viewModel.loadLayersFromServer().done(function() {
     source: app.typeAheadSource
   });
 
-  $("#data-accordion").jScrollPane();
-
+  // if (! ($.browser.msie && $.browser.version < 9)) {
+    $("#data-accordion").jScrollPane();
+  // }
 });
 
 // initialize the map
@@ -101,13 +103,7 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
   
-  // if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
-  //   $('#data-accordion').mCustomScrollbar({
-  //       scrollInertia: 250,
-  //       mouseWheel: 18
-  //   });
-  // }
-  
+
 
   
   //resizable behavior for overview-overlay

@@ -57,6 +57,9 @@ a:focus {
 	top: 2px;
 
 }
+.jspContainer, .jspPane, .jspScrollable {
+	background: white!important;
+}
 
 .navbar {
 	border-bottom: 1px solid #ccc;

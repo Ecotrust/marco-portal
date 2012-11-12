@@ -19,7 +19,7 @@
 
         <link href="{{media}}/marco/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
         <link href="{{media}}/marco-proto/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet">
-        <link href="http://jscrollpane.kelvinluck.com/style/jquery.jscrollpane.css" rel="stylesheet">
+        <link href="{{media}}marco/css/jquery.jscrollpane.css" rel="stylesheet">
         <!--<link href="{{media}}/marco-proto/assets/css/jScrollPane.css" rel="stylesheet">-->
         <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css"
         type="text/css" media="all" />-->
@@ -603,9 +603,9 @@
                                             <div id="data-accordion">
                                                 <div class="accordion" data-bind="foreach: themes">
                                                     <div class="accordion-group">
-                                                        <div class="accordion-heading" data-bind="css: { 'active': isOpenTheme() }">
+                                                        <div class="accordion-heading" data-bind="click: setOpenTheme, css: { 'active': isOpenTheme() }">
                                                             <div>
-                                                                <a class="accordion-toggle"  data-bind="click: setOpenTheme"> <!--event: {'hover': showDescription}-->
+                                                                <a class="accordion-toggle"> <!--event: {'hover': showDescription}-->
                                                                     <span data-bind="text: name">Themes</span></a>
                                                             </div>
                                                         </div>

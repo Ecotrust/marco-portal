@@ -384,10 +384,11 @@ app.setLayerZIndex = function(layer, index) {
 
 
 // block mousehweel when over overlay
-$("#overview-overlay").hover(
+$("#overview-overlay-text").hover(
     // mouseenter
     function () {
         var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
+        console.log('disable');
         for(var i = 0; i < controls.length; ++i) {
             controls[i].disableZoomWheel();
         }
@@ -395,6 +396,7 @@ $("#overview-overlay").hover(
     }, 
     function () {
         var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
+        console.log('enable');
         for(var i = 0; i < controls.length; ++i) {
             controls[i].enableZoomWheel();
         }
