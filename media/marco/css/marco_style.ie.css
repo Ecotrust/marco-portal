@@ -41,6 +41,9 @@ filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.00000000, M12=1.00000000,
 	margin-top: 0px;
 }
 
+#overview-overlay {
+	padding: 0px 10px 10px;
+}
 #overview-overlay .mCSB_dragger_bar {
 	margin-left: -2px;
 }
