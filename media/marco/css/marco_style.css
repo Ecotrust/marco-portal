@@ -202,6 +202,9 @@ a:focus {
 #pageGuideToggle {
     top: -999px !important;
 }
+.pageguide-step {
+    z-index: 1035 !important;
+}
 #help-tab {
 	position: fixed;
     z-index: 950;
