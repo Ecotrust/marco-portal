@@ -939,7 +939,6 @@ body.print #feedback-tab,
 body.print #help-tab,
 body.print #basemaps,
 body.print .olControlZoom
-/*body.print hr*/
  {
 	display: none;
 }
@@ -952,7 +951,7 @@ body.print .olControlZoom
 	max-width: 250px;
 }
 */
-body.print #map-wrapper, body.print #map {
+body.print #legend-wrapper, body.print #map-wrapper, body.print #map {
 	border-radius: 0px;
 	-moz-border-radius: 0px;
 	-webkit-border-radius: 0px;
@@ -961,6 +960,15 @@ body.print #map-wrapper, body.print #map {
 
 body.print #map-panel {
 	margin-left: 0px;
+}
+body.print #legend {
+    margin-left: 1%;
+}
+
+body.borderless hr,
+body.borderless .navbar,
+body.borderless .timestamp  {
+	display: none;
 }
 
 @media (max-width: 767px) {

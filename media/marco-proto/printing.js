@@ -1,7 +1,8 @@
 var io = io || false;
 
 (function () {
-	var socket;
+	var socket,
+		socketUrl = 'http://localhost:8989';
 
 	function printModel (map, viewModel) {
 		var self = this;
@@ -12,12 +13,14 @@ var io = io || false;
 
 		    self.$button = $(event.target).closest('.btn');
 
+		    // adjust the width depending on legend visibility
 		    if ($("#legend").is(":visible")) {
-		    	width = width + 90;
+		    	width = width + 70;
 		    } else {
 		    	width = width + 40;
 		    }
 
+		    // set some default options
 		    self.shotHeight($(document).height());
 		    self.mapHeight($(document).height());
 		    self.shotWidth(width);
@@ -41,20 +44,36 @@ var io = io || false;
 		        });
 		    }
 		};
+
+		// print server is enabled, don't show button without it
 		self.enabled = ko.observable(false);
-		self.download = ko.observable();
-		self.thumbnail = ko.observable(false);
+
 		self.jobStatus = ko.observable();
 		self.showSpinner = ko.observable();
+
+		// job options
 		self.format = ko.observable(".png");
+		self.paperSize = ko.observable("letter");
+
+		// final dimensions of image
 		self.shotHeight = ko.observable();
 		self.shotWidth = ko.observable();
+
+		// working dimensions of map for rendering purposes
 		self.mapHeight = ko.observable();
 		self.mapWidth = ko.observable();
+
+		// output options
 		self.showLegend = ko.observable();
+		self.borderLess = ko.observable(false);
 		self.title = ko.observable();
 
+		// job results
+		self.download = ko.observable();
+		self.thumbnail = ko.observable(false);
 
+		// legend checkbox shows/hides real legend
+		// update positon of popover
 		self.showLegend.subscribe(function (newValue) {
 			app.viewModel.showLegend(newValue);
 			self.$popover.position({
@@ -66,15 +85,35 @@ var io = io || false;
 		});
 
 
-		// self.shotWidth.subscribe(function (newVal) {
-		// 	self.shotHeight(newVal * self.ratio);
-		// });
+		
+		// lock aspect ratio with these subscriptions
 		self.shotHeight.subscribe(function (newVal) {
-			var width = Math.floor(newVal / self.ratio);
+			var width = Math.round(newVal / self.ratio);
 			if ($.isNumeric(width) && width !== self.shotWidth()) {
 				self.shotWidth(width);		
 			}
 		});
+		self.shotWidth.subscribe(function (newVal) {
+			var height = Math.round(newVal * self.ratio);
+			if ($.isNumeric(height) && height !== self.shotHeight()) {
+				self.shotHeight(height);		
+			}
+		});
+		
+		// borderless turned on will disable title and legend
+		self.borderLess.subscribe(function (newVal) {
+			if (newVal === true) {
+				self.showLegend(false);
+				self.oldTitle = self.title();
+				self.title(null);
+			} else {
+				if (self.oldTitle) {
+					self.title(self.oldTitle);
+				}
+			}
+		})
+
+		// print button in result dialog
 		self.print = function () {
 			var w = window.open(self.thumbnail());
 			setTimeout(function () {
@@ -84,8 +123,8 @@ var io = io || false;
 				
 		};
 
+		// handle export button in print popover
 		self.sendJob = function (self, event) {
-		
 			event.preventDefault();
 			self.$popover.hide();
 			$("#print-modal").modal('show');
@@ -98,7 +137,9 @@ var io = io || false;
 				mapHeight: self.mapHeight(),
 				mapWidth: self.mapWidth(),
 				title: self.title(),
-				format: self.format()
+				format: self.format(),
+				borderless: self.borderLess(),
+				userAgent: navigator.userAgent
 			}, function (data) {
 				self.jobStatus("Job is Complete");
 				self.showSpinner(false);
@@ -107,12 +148,14 @@ var io = io || false;
 			});
 		};
 
+		// handle cancel is popover
 		self.cancel = function () {
 			self.$popover.hide();
 		};
 
+		// make sure we have a socket
 		if (io !== false) {
-			socket = io.connect('http://localhost:8989');	
+			socket = io.connect(socketUrl);	
 			self.enabled(true);
 		} else {
 			self.enabled(false);				

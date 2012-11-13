@@ -78,6 +78,9 @@ app.loadCompressedState = function(state) {
     if (state.print === 'true') {
         app.printMode();
     }
+    if (state.borderless === 'true') {
+        app.borderLess();
+    }
 
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
@@ -154,9 +157,15 @@ app.setMapPosition = function(x, y, z) {
             new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), z);
 };
 
+// hide buttons and other features for printing
 app.printMode = function () {
     $('body').addClass('print');
 };
+
+// also hide logo and rules
+app.borderLess = function () {
+    $('body').addClass('borderless');
+}
 
 // load state from fixture or server
 
@@ -168,6 +177,9 @@ app.loadState = function(state) {
 
     if (state.print === 'true') {
         app.printMode();
+    }
+    if (state.borderless === 'true') {
+        app.borderLess();
     }
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate

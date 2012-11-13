@@ -40,7 +40,7 @@ io.sockets.on('connection', function(socket) {
     var ts = moment().format('YYYYDDmmHHss'),
       filename = ts + '-' + socket.id;
       options = {
-        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
+        userAgent: data.userAgent,
         screenSize: {
           width: data.screenWidth,
           height: data.screenHeight
@@ -51,12 +51,19 @@ io.sockets.on('connection', function(socket) {
         }
       },
       hash = data.hash + "&print=true";
+    console.dir(options);
     if (data.title) {
       hash = hash + "&title=" + data.title;
     }
+    if (data.borderless === true) {
+      hash = hash + "&borderless=true";
+    }
+    console.dir(data);
+    console.log(hash);
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
           target =  staticDir + filename + data.format,
+          img = gm(original),
           done = function () {
             cb({
               path: socketUrl + '/' + filename + data.format,
@@ -64,10 +71,13 @@ io.sockets.on('connection', function(socket) {
             });
           };
       if (! err) {
-        gm(original)
-          .resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10))
+          if (data.borderless === true) {
+            img.shave(22,90);
+          }
+
+          img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10))
           .quality(100)
-          .write(target, done);;
+          .write(target, done);
       }
       
     });
