@@ -21,7 +21,5 @@ def in_group(user, groups):
         {% endif %}
 
     """
-    import pdb
-    pdb.set_trace()
     group_list = force_unicode(groups).split(',')
     return bool(user.groups.filter(name__in=group_list).values('name'))
