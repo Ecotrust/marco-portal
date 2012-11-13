@@ -1088,6 +1088,7 @@
                         <div class="span6">
                             <div class="well">
                                 <fieldset data-bind="visible: format() !== '.pdf'">
+                                    <strong>Image Size</strong>
                                     <label>Height (pixels)</label>
                                     <input type="text" class="spinner" data-bind="spinner: shotHeight">
                                     <label>Width (pixels)</label>
@@ -1113,7 +1114,7 @@
                         </div>
                     </div>
                     <fieldset>
-                        <label>Title</label>
+                        <strong><label>Title</label></strong>
                         <input class="span4" type="text" data-bind="value: title, disable: borderLess" placeholder="Optional title for map...">
                     </fieldset>
                     <hr/>

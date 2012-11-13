@@ -926,10 +926,13 @@ img + h3 {
 }
 
 #printing-popover {
-	width: 400px;
+	width: 460px;
 }
 #printing-popover .popover.left .arrow {
 	top: 5%;
+}
+#printing-popover .well {
+	padding-top: 5px;
 }
 
 
@@ -965,10 +968,21 @@ body.print #legend {
     margin-left: 1%;
 }
 
+body.borderless {
+	margin-top: 0px;
+}
+body.borderless #primary-content {
+	padding-left: 0px;
+}
+
 body.borderless hr,
 body.borderless .navbar,
 body.borderless .timestamp  {
 	display: none;
+}
+
+body.borderless #map-wrapper {
+	border: 0px;
 }
 
 @media (max-width: 767px) {

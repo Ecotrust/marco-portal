@@ -11,7 +11,26 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   targetUrl = "http://localhost:8000/planner/",
   socketUrl = "http://localhost:" + port,
   staticDir = "shots/",
-  clients = {};
+  clients = {},
+
+  contraints = {
+    'letter': {
+      width: 612,
+      height: 792
+    },
+    'ledger': {
+      width: 1224,
+      height: 792
+    },
+    'A4': {
+      width: 595,
+      height: 842
+    },
+    'A3': {
+      width: 842,
+      height: 1191
+    }
+  }
 
 
 // sockets and static file server all listen on port 8989
@@ -70,10 +89,13 @@ io.sockets.on('connection', function(socket) {
               download: socketUrl + '/download/' + filename + data.format
             });
           };
+
+
       if (! err) {
-          if (data.borderless === true) {
-            img.shave(22,90);
-          }
+
+          // if (data.borderless === true) {
+          //   img.shave(data.shotWidth * .025, data.shotWidth * .09);
+          // }
 
           img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10))
           .quality(100)

@@ -15,18 +15,19 @@ var io = io || false;
 
 		    // adjust the width depending on legend visibility
 		    if ($("#legend").is(":visible")) {
-		    	width = width + 70;
+		    	width = width + 60;
 		    } else {
 		    	width = width + 40;
 		    }
 
 		    // set some default options
 		    self.shotHeight($(document).height());
-		    self.mapHeight($(document).height());
 		    self.shotWidth(width);
+		    self.mapHeight($(document).height());
+
 		    self.mapWidth(width);
 		    self.thumbnail(false);
-		    self.showLegend(app.viewModel.showLegend());
+		    self.showLegend(app.viewModel.showLegend() || false);
 		    self.ratio = self.shotHeight() / self.shotWidth();
 
 		    if (self.$popover.is(":visible")) {
@@ -125,21 +126,32 @@ var io = io || false;
 
 		// handle export button in print popover
 		self.sendJob = function (self, event) {
+			var mapHeight, mapWidth;
 			event.preventDefault();
 			self.$popover.hide();
 			$("#print-modal").modal('show');
+
+			if (self.borderLess()) {
+				mapHeight = $('#map-panel').height() - 4;
+				mapWidth = $("#map-panel").width() + 10;
+			} else {
+				mapHeight = self.mapHeight();
+				mapWidth = self.mapWidth();
+			}
+
 			socket.emit('shot', {
 				hash: window.location.hash,
 				screenHeight: $(document).height(),
 				screenWidth: $(document).width(),
 				shotHeight: self.shotHeight(),
 				shotWidth: self.shotWidth(),
-				mapHeight: self.mapHeight(),
-				mapWidth: self.mapWidth(),
+				mapHeight: mapHeight,
+				mapWidth: mapWidth,
 				title: self.title(),
 				format: self.format(),
 				borderless: self.borderLess(),
-				userAgent: navigator.userAgent
+				userAgent: navigator.userAgent,
+				paperSize: self.paperSize()
 			}, function (data) {
 				self.jobStatus("Job is Complete");
 				self.showSpinner(false);
