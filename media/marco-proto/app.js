@@ -252,6 +252,10 @@ $(document).ready(function() {
     app.viewModel.startDefaultTour();
   });
   
+  $(document).on('click', '#continue-basic-tour', function() {
+    app.viewModel.stepTwoOfBasicTour();
+  });
+  
   $(document).on('click', '#start-data-tour', function() {
     app.viewModel.startDataTour();
   });
