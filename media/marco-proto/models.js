@@ -288,6 +288,12 @@ function layerModel(options, parent) {
 
     self.showSublayers = ko.observable(false);
 
+    self.showSublayers.subscribe(function () {
+        setTimeout(function () {
+            $('.layer').find('.open .layer-menu').jScrollPane();
+        });
+    });
+
     // bound to click handler for layer switching
     self.toggleActive = function(self, event) {
         var layer = this;
@@ -504,8 +510,15 @@ function themeModel(options) {
         //see app.js line 101 ***need to uncomment initialization
         //then work on styling the scrollbars differently based on id (mCSB_1 and mCSB_2)
         //unless by chance we can get 1 styling to work well for both (would be nice...)
-        if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
-            $('#data-accordion').mCustomScrollbar("update");
+        // if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
+        //     $('#data-accordion').mCustomScrollbar("update");
+        // }
+        var scrollpane = $('#data-accordion').data('jsp');
+        if (scrollpane === undefined) {
+            $('#data-accordion').jScrollPane();
+
+        } else {
+            scrollpane.reinitialise();
         }
     };
     
@@ -657,7 +670,7 @@ function viewModel() {
         self.showLayers(!self.showLayers());
         app.map.render('map');
         if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
-        
+        app.updateUrl();
         //if toggling layers during default pageguide, then correct step 4 position
         //self.correctTourPosition();
         //throws client-side error in pageguide.js for some reason...
@@ -716,6 +729,9 @@ function viewModel() {
     // attribute data
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
+
+    // title for print view
+    self.mapTitle = ko.observable();
 
     self.closeAttribution = function() {
         self.attributeData(false);
@@ -970,6 +986,7 @@ function viewModel() {
     
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();
+
 
     // show bookmark stuff
     self.showBookmarks = function(self, event) {
