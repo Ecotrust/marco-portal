@@ -124,7 +124,7 @@ var dataGuide = {
       target: '#dataTab',
       content: $('#help-text-data-tour-dataTab').html(),
       direction: 'top',
-      arrow: {offsetX: 10, offsetY: 20}
+      arrow: {offsetX: 45, offsetY: 10}
     },
     {
       target: '.form-search',
