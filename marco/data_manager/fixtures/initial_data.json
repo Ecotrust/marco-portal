@@ -2734,6 +2734,55 @@
         }
     },
     {
+        "pk": 80,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "checkbox",
+            "fact_sheet": "",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Federally - and internationally - recognized political, legal, and resource management boundaries. \r\n\r\nSubmerged Lands Act Boundary \u2013 also known as the state seaward boundary, this line serves to distinguish state and federal jurisdictions (3 nautical miles seaward from mean low low water [MLLW]).\r\n\r\n8g Revenue Sharing Line (Limit of OCSLA '8(g)' zone) \u2013 area where revenues from energy resources are shared by federal and coastal state governments (extends seaward 3 nautical miles from Submerged Lands Act Boundary).\r\n\r\nTerritorial Sea Boundary (12NM Territorial Sea) \u2013 region of U.S. sovereignty (extends from MLLW to 12 nautical miles from shore).\r\n\r\nContiguous Zone Boundary (24NM Territorial Sea) \u2013 area of limited control in preventing or punishing infringement of customs or laws (extends from MLLW to 24 nautical miles from shore; alternately extends seaward 12 nautical miles from Territorial Sea Boundary).\r\n\r\nExclusive Economic Zone (200NM EEZ and Maritime Boundaries) \u2013 area of sole rights for resource use, research, and protection (extends from Territorial Sea Boundary to 200 nautical miles from shore).",
+            "attribute_title": "",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Marine Jurisdictions",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                75,
+                77,
+                78,
+                74,
+                76
+            ]
+        }
+    },
+    {
         "pk": 16,
         "model": "data_manager.layer",
         "fields": {
@@ -2774,55 +2823,6 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
-        }
-    },
-    {
-        "pk": 80,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "checkbox",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "attribute_title": "",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Marine Jurisdictions",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                75,
-                77,
-                78,
-                74,
-                76
-            ]
         }
     },
     {
