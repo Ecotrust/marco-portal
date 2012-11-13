@@ -567,7 +567,8 @@
                             <li class="active">
                                 <a href="#data" data-toggle="tab" id="dataTab">Data</a>
                             </li>
-                            {% if user.is_authenticated %}
+                            {% load in_group %}
+                            {% if user.is_authenticated and user|in_group:"Designers" %}
                             <li>
                                 <a href="#designs" data-toggle="tab" id="designsTab">Designs</a>
                             </li>
