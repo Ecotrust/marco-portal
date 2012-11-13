@@ -253,7 +253,11 @@ ko.bindingHandlers.spinner = {
         $(element).spinner(options);
 
         //handle the field changing
-        ko.utils.registerEventHandler(element, "spinchange", function () {
+        ko.utils.registerEventHandler(element, "spin", function () {
+            var observable = valueAccessor();
+            observable($(element).spinner("value"));
+        });
+        ko.utils.registerEventHandler(element, "keyup", function () {
             var observable = valueAccessor();
             observable($(element).spinner("value"));
         });

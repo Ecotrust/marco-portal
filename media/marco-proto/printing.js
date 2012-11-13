@@ -8,11 +8,24 @@ var io = io || false;
 		self.$popover = $('#printing-popover');
 		// show print dialog
 		self.showPrintDialog = function (vm, event) {
-		    var $button = $(event.target).closest('.btn');
+		    var width = $("#map-panel").width() + $("#legend:visible").width();
+
+		    self.$button = $(event.target).closest('.btn');
+
+		    if ($("#legend").is(":visible")) {
+		    	width = width + 90;
+		    } else {
+		    	width = width + 40;
+		    }
 
 		    self.shotHeight($(document).height());
-		    self.shotWidth($(document).width());
+		    self.mapHeight($(document).height());
+		    self.shotWidth(width);
+		    self.mapWidth(width);
 		    self.thumbnail(false);
+		    self.showLegend(app.viewModel.showLegend());
+		    self.ratio = self.shotHeight() / self.shotWidth();
+
 		    if (self.$popover.is(":visible")) {
 		        self.$popover.hide();
 		    } else {
@@ -23,8 +36,8 @@ var io = io || false;
 		        self.$popover.show().position({
 		            "my": "right top",
 		            "at": "left middle",
-		            "of": $button,
-		            offset: "0px -10px"
+		            "of": self.$button,
+		            offset: "0px -30px"
 		        });
 		    }
 		};
@@ -36,9 +49,32 @@ var io = io || false;
 		self.format = ko.observable(".png");
 		self.shotHeight = ko.observable();
 		self.shotWidth = ko.observable();
-		self.showLegend = ko.observable(false);
+		self.mapHeight = ko.observable();
+		self.mapWidth = ko.observable();
+		self.showLegend = ko.observable();
 		self.title = ko.observable();
 
+
+		self.showLegend.subscribe(function (newValue) {
+			app.viewModel.showLegend(newValue);
+			self.$popover.position({
+			    "my": "right top",
+			    "at": "left middle",
+			    "of": self.$button,
+			    offset: "0px -30px"
+			});
+		});
+
+
+		// self.shotWidth.subscribe(function (newVal) {
+		// 	self.shotHeight(newVal * self.ratio);
+		// });
+		self.shotHeight.subscribe(function (newVal) {
+			var width = Math.floor(newVal / self.ratio);
+			if ($.isNumeric(width) && width !== self.shotWidth()) {
+				self.shotWidth(width);		
+			}
+		});
 		self.print = function () {
 			var w = window.open(self.thumbnail());
 			setTimeout(function () {
@@ -49,14 +85,7 @@ var io = io || false;
 		};
 
 		self.sendJob = function (self, event) {
-			var width = $("#map-panel").width() + $("#legend:visible").width();
-
-			if ($("#legand").is(":visible")) {
-				width = width + 40;
-			} else {
-				width = width + 40;
-			}
-
+		
 			event.preventDefault();
 			self.$popover.hide();
 			$("#print-modal").modal('show');
@@ -65,7 +94,9 @@ var io = io || false;
 				screenHeight: $(document).height(),
 				screenWidth: $(document).width(),
 				shotHeight: self.shotHeight(),
-				shotWidth: width,
+				shotWidth: self.shotWidth(),
+				mapHeight: self.mapHeight(),
+				mapWidth: self.mapWidth(),
 				title: self.title(),
 				format: self.format()
 			}, function (data) {

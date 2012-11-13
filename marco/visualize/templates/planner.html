@@ -1085,7 +1085,7 @@
                             <div class="well">
                                 <fieldset>
                                     <label>Height (pixels)</label>
-                                    <input type="text" class="spinner" data-bind="spinner: shotHeight">
+                                    <input type="text" class="spinner" data-bind="spinner: shotHeight, valueUpdate: 'afterkeypress'">
                                     <label>Width (pixels)</label>
                                     <input type="text" class="spinner" data-bind="spinner: shotWidth">
                                 </fieldset>
@@ -1193,7 +1193,7 @@
         <script src="{{media}}/marco-proto/assets/js/scalebar.js"></script>
         <script src="{{media}}/marco/js/bigscreen.js"></script>
         <script src="{{media}}/marco/js/jquery.ui.touch-punch.min.js"></script>
-        <script src="http://jscrollpane.kelvinluck.com/script/jquery.jscrollpane.min.js"></script>
+        <script src="{{media}}/marco/js/jquery.jscrollpane.min.js"></script>
         <script src="http://localhost:8989/socket.io/socket.io.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>

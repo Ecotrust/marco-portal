@@ -928,6 +928,9 @@ img + h3 {
 #printing-popover {
 	width: 400px;
 }
+#printing-popover .popover.left .arrow {
+	top: 5%;
+}
 
 
 body.print .tabs,
@@ -936,14 +939,19 @@ body.print #feedback-tab,
 body.print #help-tab,
 body.print #basemaps,
 body.print .olControlZoom
+/*body.print hr*/
  {
 	display: none;
 }
 
-body.print #legend-wrapper {
+/*body.print .navbar {
+	border-bottom: 0px;
+}
+*/
+/*body.print #legend-wrapper {
 	max-width: 250px;
 }
-
+*/
 body.print #map-wrapper, body.print #map {
 	border-radius: 0px;
 	-moz-border-radius: 0px;

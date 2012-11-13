@@ -2,7 +2,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
-  im = require('imagemagick'),
+  gm = require('gm'),
   fs = require('fs'),
   app = express(),
   server = http.createServer(app),
@@ -46,10 +46,9 @@ io.sockets.on('connection', function(socket) {
           height: data.screenHeight
         },
         shotSize: {
-          width: data.shotWidth,
-          height: data.shotHeight
-        },
-      
+          width: data.mapWidth,
+          height: data.mapHeight
+        }
       },
       hash = data.hash + "&print=true";
     if (data.title) {
@@ -57,7 +56,7 @@ io.sockets.on('connection', function(socket) {
     }
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
-          target = staticDir + filename + data.format,
+          target =  staticDir + filename + data.format,
           done = function () {
             cb({
               path: socketUrl + '/' + filename + data.format,
@@ -65,11 +64,10 @@ io.sockets.on('connection', function(socket) {
             });
           };
       if (! err) {
-        if (data.format !== '.png') {
-          im.convert([original, target], done);
-        } else {
-          done();
-        }
+        gm(original)
+          .resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10))
+          .quality(100)
+          .write(target, done);;
       }
       
     });
