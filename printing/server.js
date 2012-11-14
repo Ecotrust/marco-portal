@@ -2,7 +2,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
-  im = require('imagemagick'),
+  gm = require('gm'),
   fs = require('fs'),
   app = express(),
   server = http.createServer(app),
@@ -11,7 +11,25 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   targetUrl = "http://localhost:8000/planner/",
   socketUrl = "http://localhost:" + port,
   staticDir = "shots/",
-  clients = {};
+  clients = {},
+  constraints = {
+    'letter': {
+      width: 612,
+      height: 792
+    },
+    'ledger': {
+      width: 1224,
+      height: 792
+    },
+    'A4': {
+      width: 595,
+      height: 842
+    },
+    'A3': {
+      width: 842,
+      height: 1191
+    }
+  }
 
 
 // sockets and static file server all listen on port 8989
@@ -40,36 +58,56 @@ io.sockets.on('connection', function(socket) {
     var ts = moment().format('YYYYDDmmHHss'),
       filename = ts + '-' + socket.id;
       options = {
-        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17",
+        userAgent: data.userAgent,
         screenSize: {
           width: data.screenWidth,
           height: data.screenHeight
         },
         shotSize: {
-          width: data.shotWidth,
-          height: data.shotHeight
-        },
-      
+          width: data.mapWidth,
+          height: data.mapHeight
+        }
       },
       hash = data.hash + "&print=true";
+    console.dir(options);
     if (data.title) {
       hash = hash + "&title=" + data.title;
     }
+    if (data.borderless === true) {
+      hash = hash + "&borderless=true";
+    }
+    console.dir(data);
+    console.log(hash);
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
-          target = staticDir + filename + data.format,
-          done = function () {
-            cb({
-              path: socketUrl + '/' + filename + data.format,
-              download: socketUrl + '/download/' + filename + data.format
-            });
-          };
+          target =  staticDir + filename + data.format,
+          img = gm(original);
+          
+
+
       if (! err) {
-        if (data.format !== '.png') {
-          im.convert([original, target], done);
+        img.quality(100);
+
+        if (data.format === '.pdf') {
+          img.resize(constraints[data.paperSize].width);
+          img.extent(constraints[data.paperSize].width, constraints[data.paperSize].width);
         } else {
-          done();
+          img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));          
         }
+        img.write(target, function () {
+          var path = socketUrl + '/' + filename + data.format,
+              thumb = socketUrl + '/thumb-' + filename + '.png';
+          
+          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png',
+            function () {
+              cb({
+                thumb: thumb,
+                path: path,
+                download: socketUrl + '/download/' + filename + data.format
+              });  
+          });
+          
+        });
       }
       
     });

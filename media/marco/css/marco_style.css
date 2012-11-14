@@ -929,7 +929,13 @@ img + h3 {
 }
 
 #printing-popover {
-	width: 400px;
+	width: 460px;
+}
+#printing-popover .popover.left .arrow {
+	top: 5%;
+}
+#printing-popover .well {
+	padding-top: 5px;
 }
 
 
@@ -943,11 +949,15 @@ body.print .olControlZoom
 	display: none;
 }
 
-body.print #legend-wrapper {
+/*body.print .navbar {
+	border-bottom: 0px;
+}
+*/
+/*body.print #legend-wrapper {
 	max-width: 250px;
 }
-
-body.print #map-wrapper, body.print #map {
+*/
+body.print #legend-wrapper, body.print #map-wrapper, body.print #map {
 	border-radius: 0px;
 	-moz-border-radius: 0px;
 	-webkit-border-radius: 0px;
@@ -956,6 +966,26 @@ body.print #map-wrapper, body.print #map {
 
 body.print #map-panel {
 	margin-left: 0px;
+}
+body.print #legend {
+    margin-left: 1%;
+}
+
+body.borderless {
+	margin-top: 0px;
+}
+body.borderless #primary-content {
+	padding-left: 0px;
+}
+
+body.borderless hr,
+body.borderless .navbar,
+body.borderless .timestamp  {
+	display: none;
+}
+
+body.borderless #map-wrapper {
+	border: 0px;
 }
 
 @media (max-width: 767px) {

@@ -519,6 +519,7 @@
                                 <a href="/portal">
                                     <img src="{{media}}marco/img/marco-logo_planner.jpg"/>
                                 </a>
+                                <h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3>
                             </div>
                             <div class="span7">
                                 <div class="pull-right">
@@ -946,11 +947,10 @@
                 </div>
                 <!-- /Legends Panel -->
             </div>
-            <span data-bind="visible: mapTitle"><span data-bind="text: new Date()"></span></span>
+            <span class="timestamp" data-bind="visible: mapTitle"><span data-bind="text: new Date()"></span></span>
         </div>
 
         <!--/row-->
-        <hr>
           
         <!--/.fluid-container-->
 
@@ -1074,28 +1074,48 @@
                                     <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
                                 </label>
                                 <label class="radio control-label">
-                                    <input type="radio" value="geotiff" name="format" data-bind="checked: format">Georeferenced TIFF
+                                    <input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
                                 </label>
                             </div>
                             <strong>Options</strong>
                             <label class="checkbox">
-                                <input type="checkbox" data-bind="checked: showLegend">Show Legend
+                                <input type="checkbox" data-bind="checked: borderLess">Borderless Map
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" data-bind="checked: showLegend, disable: borderLess">Show Legend
                             </label>
                         </div>
                         <div class="span6">
                             <div class="well">
-                                <fieldset>
+                                <fieldset data-bind="visible: format() !== '.pdf'">
+                                    <strong>Image Size</strong>
                                     <label>Height (pixels)</label>
                                     <input type="text" class="spinner" data-bind="spinner: shotHeight">
                                     <label>Width (pixels)</label>
                                     <input type="text" class="spinner" data-bind="spinner: shotWidth">
                                 </fieldset>
+                                <fieldset data-bind="visible: format() === '.pdf'">
+                                    <strong>Paper Size</strong>
+                                        <label class="radio control-label">
+                                            <input type="radio" name="paperSize" value='letter' data-bind="checked: paperSize">Letter (8.5" x 11")
+                                        </label>
+                                        <label class="radio control-label">
+                                            <input type="radio"  name="paperSize" value='ledger' data-bind="checked: paperSize">Ledger (11" x 17")
+                                        </label>
+                                        <label class="radio control-label">
+                                            <input type="radio" name="paperSize"  value='A4' data-bind="checked: paperSize">A4 (297mm x 210mm)
+                                        </label>
+                                        <label class="radio control-label">
+                                            <input type="radio" name="paperSize"  value='A3' data-bind="checked: paperSize">A3 (420mm x 297mm)
+                                        </label>
+                                    </select>
+                                </fieldset>
                             </div>
                         </div>
                     </div>
                     <fieldset>
-                        <label>Title</label>
-                        <input class="span4" type="text" data-bind="value: title" placeholder="Optional title for map...">
+                        <strong><label>Title</label></strong>
+                        <input class="span4" type="text" data-bind="value: title, disable: borderLess" placeholder="Optional title for map...">
                     </fieldset>
                     <hr/>
                     <p class="pull-right">
@@ -1194,7 +1214,7 @@
         <script src="{{media}}/marco-proto/assets/js/scalebar.js"></script>
         <script src="{{media}}/marco/js/bigscreen.js"></script>
         <script src="{{media}}/marco/js/jquery.ui.touch-punch.min.js"></script>
-        <script src="http://jscrollpane.kelvinluck.com/script/jquery.jscrollpane.min.js"></script>
+        <script src="{{media}}/marco/js/jquery.jscrollpane.min.js"></script>
         <script src="http://localhost:8989/socket.io/socket.io.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
