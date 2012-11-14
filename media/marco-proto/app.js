@@ -103,7 +103,12 @@ $(document).ready(function() {
     $(event.target).prev('input').val('').focus();
   });
   
-
+  //fixes a problem in which the data accordion scrollbar was reinitialized before the app switched back to the data tab
+  //causing the data tab to appear empty
+  //the following appears to fix that problem
+  $('#dataTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateScrollBar();
+  });
 
   
   //resizable behavior for overview-overlay

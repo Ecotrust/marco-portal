@@ -492,37 +492,21 @@ function themeModel(options) {
     //add to open themes
     self.setOpenTheme = function() {
         var theme = this;
-
+        
         // ensure data tab is activated
         $('#dataTab').tab('show');
 
         if (self.isOpenTheme(theme)) {
             //app.viewModel.activeTheme(null);
             app.viewModel.openThemes.remove(theme);
-            self.updateScrollBar();
+            app.viewModel.updateScrollBar();
         } else {
             app.viewModel.openThemes.push(theme);
-            self.updateScrollBar();
+            //setTimeout( app.viewModel.updateScrollBar(), 1000);
+            app.viewModel.updateScrollBar();
         }
     };
     
-    self.updateScrollBar = function() {
-        //see app.js line 101 ***need to uncomment initialization
-        //then work on styling the scrollbars differently based on id (mCSB_1 and mCSB_2)
-        //unless by chance we can get 1 styling to work well for both (would be nice...)
-        // if ($('#data-accordion').mCustomScrollbar) { //adding the following to prevent IE 7/8 errors
-        //     $('#data-accordion').mCustomScrollbar("update");
-        // }
-        var scrollpane = $('#data-accordion').data('jsp');
-        if (scrollpane === undefined) {
-            $('#data-accordion').jScrollPane();
-
-        } else {
-            scrollpane.reinitialise();
-        }
-    };
-    
-
     //is in openThemes
     self.isOpenTheme = function() {
         var theme = this;
@@ -856,6 +840,16 @@ function viewModel() {
         app.viewModel.error(null);
         $('#fullscreen-error-overlay').hide();
     };
+    
+    //update jScrollPane scrollbar
+    self.updateScrollBar = function() {
+        var scrollpane = $('#data-accordion').data('jsp');
+        if (scrollpane === undefined) {
+            $('#data-accordion').jScrollPane();
+        } else {
+            scrollpane.reinitialise();
+        }
+    };
 
     // expand data description overlay
     self.expandDescription = function(self, event) {
@@ -1134,6 +1128,7 @@ function viewModel() {
         for (var i=0; i< numOpenThemes; i++) {
             self.openThemes.remove(self.openThemes()[0]);
         }
+        self.updateScrollBar();
     };
 
     // do this stuff when the visible layers change
