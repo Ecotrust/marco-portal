@@ -12,6 +12,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   targetUrl = "http://localhost:8000/planner/",
   socketUrl = "http://www.labs.ecotrust.org:" + port,
   staticDir = "shots/",
+  phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-i686/bin/phantomjs";
   
   constraints = {
     'letter': {
@@ -67,7 +68,8 @@ io.sockets.on('connection', function(socket) {
         shotSize: {
           width: data.mapWidth,
           height: data.mapHeight
-        }
+        }, 
+        phantomPath: phantomPath
       },
       hash = data.hash + "&print=true";
     console.dir(options);
