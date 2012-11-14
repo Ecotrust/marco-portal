@@ -12,8 +12,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   socketUrl = "http://localhost:" + port,
   staticDir = "shots/",
   clients = {},
-
-  contraints = {
+  constraints = {
     'letter': {
       width: 612,
       height: 792
@@ -92,14 +91,15 @@ io.sockets.on('connection', function(socket) {
 
 
       if (! err) {
+        img.quality(100);
 
-          // if (data.borderless === true) {
-          //   img.shave(data.shotWidth * .025, data.shotWidth * .09);
-          // }
-
-          img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10))
-          .quality(100)
-          .write(target, done);
+        if (data.format === '.pdf') {
+          img.resize(constraints[data.paperSize].width);
+          img.extent(constraints[data.paperSize].width, constraints[data.paperSize].width);
+        } else {
+          img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));          
+        }
+        img.write(target, done);
       }
       
     });

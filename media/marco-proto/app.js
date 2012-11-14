@@ -3,7 +3,7 @@ app.hash = window.location.hash;
 
 app.onResize = function(percent) {
 
-  var height = $(window).height() * (percent || 0.825);
+  var height = $(window).height() * (percent || 0.875);
   // when fullscreen be odd?
   if (height) {
     $("#map").height(height);
@@ -22,7 +22,6 @@ $(window).on('resize', function() {
 
 // add indexof for typeahead
 if (!Array.prototype.indexOf) {
-
 
     Array.prototype.indexOf = function(obj, start) {
          for (var i = (start || 0), j = this.length; i < j; i++) {
