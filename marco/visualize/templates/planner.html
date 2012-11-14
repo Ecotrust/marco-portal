@@ -1071,10 +1071,10 @@
                                     <input type="radio" name="format" value=".jpg" data-bind="checked: format">JPG
                                 </label>
                                 <label class="radio control-label">
-                                    <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
+                                    <input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
                                 </label>
                                 <label class="radio control-label">
-                                    <input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
+                                    <input type="radio" value=".pdf" name="format" data-bind="checked: format, disable: borderLess">PDF
                                 </label>
                             </div>
                             <strong>Options</strong>
@@ -1150,9 +1150,9 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">close</a>
-                <a href="#" class="btn" data-dismiss="modal" data-bind="enable: thumbnail"><i class="icon-envelope"></i> email</a>
-                <a href="#" class="btn" data-dismiss="modal" data-bind="click: print, enable: thumbnail"><i class="icon-print"></i> print</a>
-                <a href="#" class="btn" data-dismiss="modal" data-bind="enable: thumbnail, attr: { href: download }"><i class="icon-download-alt"></i> save</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="disable: showSpinner"><i class="icon-envelope"></i> email</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="click: print, disable: showSpinner"><i class="icon-print"></i> print</a>
+                <a href="#" class="btn" data-dismiss="modal" data-bind="disable: showSpinner, attr: { href: download }"><i class="icon-download-alt"></i> save</a>
             </div>
         </div>
         <!-- Email Bookmark Form -->

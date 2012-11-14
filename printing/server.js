@@ -2,6 +2,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
+  zip = require("node-native-zip"),
   gm = require('gm'),
   fs = require('fs'),
   app = express(),
@@ -11,7 +12,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   targetUrl = "http://localhost:8000/planner/",
   socketUrl = "http://localhost:" + port,
   staticDir = "shots/",
-  clients = {},
+  
   constraints = {
     'letter': {
       width: 612,
@@ -80,12 +81,39 @@ io.sockets.on('connection', function(socket) {
     console.log(hash);
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
-          target =  staticDir + filename + data.format,
-          img = gm(original);
+          target =  staticDir + filename,
+          img = gm(original),
+          done = function (format) {
+            var format = format || data.format
+                path = socketUrl + '/' + filename + format,
+                thumb = socketUrl + '/thumb-' + filename + '.png';
+            cb({
+              thumb: thumb,
+              path: path,
+              download: socketUrl + '/download/' + filename + format
+            });
+          },
+          zipTiff = function (cb) {
+            var archive = new zip(),
+                worldString = data.pixelSize + "\n0\n0\n" + 
+                data.pixelSize * -1 + '\n' + data.extent[0] + '\n'
+                data.extent[3] + '\n';
+
+            archive.add(filename + '.tfw', new Buffer(worldString, "utf8"));
+            console.dir(worldString);
+            archive.addFiles([{ name: filename + data.format, path: target + data.format }],
+              function (err) {
+                console.dir(err);
+                fs.writeFile(staticDir + filename+ '.zip', archive.toBuffer(), function () {
+                  cb('.zip')
+                });
+              });
+          };
           
 
 
       if (! err) {
+
         img.quality(100);
 
         if (data.format === '.pdf') {
@@ -94,24 +122,17 @@ io.sockets.on('connection', function(socket) {
         } else {
           img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));          
         }
-        img.write(target, function () {
-          var path = socketUrl + '/' + filename + data.format,
-              thumb = socketUrl + '/thumb-' + filename + '.png';
-          
-          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png',
-            function () {
-              cb({
-                thumb: thumb,
-                path: path,
-                download: socketUrl + '/download/' + filename + data.format
-              });  
+
+        img.write(target + data.format, function () {
+          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png', function () {
+            if (data.format === '.tiff') {
+              zipTiff(done); 
+            } else {
+              done();              
+            }
           });
-          
         });
       }
-      
     });
-
   });
-
 });
