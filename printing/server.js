@@ -81,13 +81,8 @@ io.sockets.on('connection', function(socket) {
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
           target =  staticDir + filename + data.format,
-          img = gm(original),
-          done = function () {
-            cb({
-              path: socketUrl + '/' + filename + data.format,
-              download: socketUrl + '/download/' + filename + data.format
-            });
-          };
+          img = gm(original);
+          
 
 
       if (! err) {
@@ -99,7 +94,20 @@ io.sockets.on('connection', function(socket) {
         } else {
           img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));          
         }
-        img.write(target, done);
+        img.write(target, function () {
+          var path = socketUrl + '/' + filename + data.format,
+              thumb = socketUrl + '/thumb-' + filename + '.png';
+          
+          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png',
+            function () {
+              cb({
+                thumb: thumb,
+                path: path,
+                download: socketUrl + '/download/' + filename + data.format
+              });  
+          });
+          
+        });
       }
       
     });

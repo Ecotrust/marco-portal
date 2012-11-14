@@ -116,7 +116,7 @@ var io = io || false;
 
 		// print button in result dialog
 		self.print = function () {
-			var w = window.open(self.thumbnail());
+			var w = window.open(self.download());
 			setTimeout(function () {
 				w.print();
 				w.close();
@@ -155,7 +155,7 @@ var io = io || false;
 			}, function (data) {
 				self.jobStatus("Job is Complete");
 				self.showSpinner(false);
-				self.thumbnail(data.path);
+				self.thumbnail(data.thumb);
 				self.download(data.download);
 			});
 		};
