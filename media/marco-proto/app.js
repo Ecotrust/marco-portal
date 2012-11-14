@@ -227,20 +227,10 @@ $(document).ready(function() {
     $('#basemaps').addClass('open');
   });
   
-  /* testing mouseenter mouseleave
-  $('div.sidebar-nav').mouseenter( function(e) {
-    console.log('entering sidebar button');
-  }).mouseleave( function(e) {
-    console.log('exiting sidebar button');
+  $('#overview-overlay-dropdown').mouseleave( function() {
+    $('#overview-overlay-dropdown').closest('.btn-group').removeClass('open');
   });
-  */
-  /*
-  //Opacity popover behavior
-  //hide opacity popover when mouse leaves popover or opacity button
-  $('.opacity-button.active').mouseout( function() {
-    console.log('exiting opacity button');
-  });
-  */
+  
   $('#opacity-popover').mouseleave( function() {
     app.viewModel.hideOpacity();
   });  
@@ -261,6 +251,10 @@ $(document).ready(function() {
     app.viewModel.startDefaultTour();
   });
   
+  $(document).on('click', '#continue-basic-tour', function() {
+    app.viewModel.stepTwoOfBasicTour();
+  });
+  
   $(document).on('click', '#start-data-tour', function() {
     app.viewModel.startDataTour();
   });
@@ -268,45 +262,8 @@ $(document).ready(function() {
   $(document).on('click', '#start-active-tour', function() {
     app.viewModel.startActiveTour();
   });
-  /*
-  $(document).on('click', 'a[name="description-dropdown"]', function() {
-    debugger;
-    $('#overview-overlay-dropdown').mCustomScrollbar("update");
-  });
-  
-  $(document).on('click', '#overview-overlay-header .dropdown-toggle', function() {
-    debugger;
-    $('#overview-overlay-dropdown').mCustomScrollbar("update");
-  });
-  
-  $('#overview-overlay-dropdown').on('shown', function (e) {
-    debugger;
-    $('#overview-overlay-dropdown').mCustomScrollbar("update");
-  });
-  
-  $(document).on('show', '#overview-overlay-dropdown', function() {
-    debugger;
-    $('#overview-overlay-dropdown').mCustomScrollbar("update");
-  });
-  
-  $('#overview-overlay-dropdown').on('show', function() {
-    debugger;
-    $('#overview-overlay-dropdown').mCustomScrollbar("update");
-  });
-  
-  $('#mCSB_3').on('show', function() {
-    debugger;
-    $('#overview-overlay-dropdown').mCustomScrollbar("update");
-  });
-  */
-  /*$('#active-tour').on('click', function() {
-    debugger;
-    //$.pageguide('load', guide2);
-    //$.pageguide('unload');
-  });*/
+
   $('a[data-toggle="tab"]').on('shown', function (e) {
-    //e.target // activated tab
-    //e.relatedTarget // previous tab
     app.updateUrl();
   });
   

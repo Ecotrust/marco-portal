@@ -90,6 +90,24 @@
         }
     },
     {
+        "pk": 1,
+        "model": "data_manager.theme",
+        "fields": {
+            "factsheet_link": "",
+            "feature_link": "",
+            "header_attrib": "",
+            "display_name": "Administrative",
+            "description": "Numerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide a regulatory context to help facilitate well-informed ocean planning decisions.",
+            "overview": "<p>\r\nNumerous management boundaries in the Mid-Atlantic are compiled here to provide administrative and regulatory contexts to help facilitate well-informed ocean planning decisions.\r\n<p>\r\nBoundaries are provided courtesy of the responsible agencies and these parties should be consulted to ensure that map layers represented here are current and correctly interpreted. The boundaries presented here should not be considered to be legally binding.",
+            "feature_image": "",
+            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg",
+            "factsheet_thumb": "",
+            "feature_excerpt": "",
+            "header_image": "/portal/assets/img/themes/admin.jpg",
+            "name": "administrative"
+        }
+    },
+    {
         "pk": 5,
         "model": "data_manager.theme",
         "fields": {
@@ -105,24 +123,6 @@
             "feature_excerpt": "",
             "header_image": "/portal/assets/img/themes/security.jpg",
             "name": "security"
-        }
-    },
-    {
-        "pk": 1,
-        "model": "data_manager.theme",
-        "fields": {
-            "factsheet_link": "",
-            "feature_link": "",
-            "header_attrib": "",
-            "display_name": "Administrative",
-            "description": "Numerous federal, regional, and state political and management boundaries of the Mid-Atlantic are compiled here to provide a regulatory context to help facilitate well-informed ocean planning decisions.",
-            "overview": "<p>\r\nNumerous management boundaries in the Mid-Atlantic are compiled here to provide administrative and regulatory contexts to help facilitate well-informed ocean planning decisions.\r\n<p>\r\nKey boundaries include: \r\n<ul><li>Submerged Lands Act Boundary \u2013 Also known as the state seaward boundary, this line serves to distinguish state and federal jurisdictions (3 nautical miles seaward from mean low low water [MLLW]).\r\n</li><li>8g Revenue Sharing Line \u2013 area where revenues from energy resources are shared by federal and coastal state governments (extends seaward 3 nautical miles from Submerged Lands Act Boundary).\r\n</li><li>Territorial Sea Boundary \u2013 region of U.S. sovereignty (extends from MLLW to 12 nautical miles from shore).\r\n</li><li>Contiguous Zone - Each coastal state may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines.\r\n</li><li>Exclusive Economic Zone \u2013 area of sole rights for resource use, research, and protection (extends from Territorial Sea Boundary to 200 nautical miles from shore)\r\n</li></ul>\r\n<p>\r\nNumerous management boundaries in the Mid-Atlantic are compiled here to provide administrative and regulatory contexts to help facilitate well-informed ocean planning decisions.\r\n<p>\r\nBoundaries are provided courtesy of the responsible agencies and these parties should be consulted to ensure that map layers represented here are current and correctly interpreted. The boundaries presented here should not be considered to be legally binding.",
-            "feature_image": "",
-            "thumbnail": "https://s3.amazonaws.com/marco-public-2d/Energy/energy_thumbnail.jpg",
-            "factsheet_thumb": "",
-            "feature_excerpt": "",
-            "header_image": "/portal/assets/img/themes/admin.jpg",
-            "name": "administrative"
         }
     },
     {
@@ -818,49 +818,6 @@
             "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
             "name": "Fathom Lines",
             "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
-        "pk": 18,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-71.92910156249857&location%5By%5D=38.0173126452813&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
-            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocs_admin_boundaries.htm",
-            "opacity": 0.5,
-            "vector_color": "#333333",
-            "attribute_event": "click",
-            "description": "Administrative boundaries extending from the Submerged Lands Act boundary seaward to the US Outer Continental Shelf.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS.  They are not meant to depict areas offshore as pertaining to or controlled by any particular state.",
-            "attribute_title": "",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Bureau of Ocean Energy Management",
-            "data_notes": "This layer is being consumed directly as a web mapping service from BOEM.",
-            "name": "Federal OCS Administrative Boundaries",
-            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
@@ -1610,7 +1567,7 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA/legend.png",
             "data_status": "Available",
             "vector_fill": null,
-            "data_source": "BOEM",
+            "data_source": "Bureau of Ocean Energy Management",
             "data_notes": "The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.",
             "name": "Wind Planning Areas",
             "url": "/media/data_manager/geojson/WindPlanningAreas.json",
@@ -2084,52 +2041,6 @@
             "sublayers": [
                 67
             ]
-        }
-    },
-    {
-        "pk": 6,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-73.18319085091335&location%5By%5D=38.706459372319244&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
-            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ",
-            "lookup_table": [],
-            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MMC_OCSBlocks.html",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Outer Continental Shelf lease blocks.",
-            "attribute_fields": [
-                58,
-                59
-            ],
-            "learn_more": "",
-            "data_overview": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the OPDs or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.",
-            "attribute_title": "ID: ",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Bureau of Ocean Energy Management",
-            "data_notes": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the Official Protraction Diagrams or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.",
-            "name": "OCS Lease Blocks",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
         }
     },
     {
@@ -2679,7 +2590,7 @@
             "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "of Ocean Energy Management, Mapping and Boundary Branch",
+            "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch",
             "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.",
             "name": "Submerged Lands Act Boundary",
             "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/${z}/${x}/${y}.png",
@@ -2688,6 +2599,52 @@
             "sublayers": [
                 80
             ]
+        }
+    },
+    {
+        "pk": 6,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-73.18319085091335&location%5By%5D=38.706459372319244&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
+            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ",
+            "lookup_table": [],
+            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MMC_OCSBlocks.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Outer Continental Shelf lease blocks.",
+            "attribute_fields": [
+                58,
+                59
+            ],
+            "learn_more": "",
+            "data_overview": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the OPDs or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.",
+            "attribute_title": "ID: ",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Bureau of Ocean Energy Management",
+            "data_notes": "",
+            "name": "OCS Lease Blocks",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
         }
     },
     {
@@ -2734,6 +2691,98 @@
         }
     },
     {
+        "pk": 80,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "checkbox",
+            "fact_sheet": "",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Federally - and internationally - recognized political, legal, and resource management boundaries. \r\n\r\nSubmerged Lands Act Boundary \u2013 also known as the state seaward boundary, this line serves to distinguish state and federal jurisdictions (3 nautical miles seaward from mean low low water [MLLW]).\r\n\r\n8g Revenue Sharing Line (Limit of OCSLA '8(g)' zone) \u2013 area where revenues from energy resources are shared by federal and coastal state governments (extends seaward 3 nautical miles from Submerged Lands Act Boundary).\r\n\r\nTerritorial Sea Boundary (12NM Territorial Sea) \u2013 region of U.S. sovereignty (extends from MLLW to 12 nautical miles from shore).\r\n\r\nContiguous Zone Boundary (24NM Territorial Sea) \u2013 area of limited control in preventing or punishing infringement of customs or laws (extends from MLLW to 24 nautical miles from shore; alternately extends seaward 12 nautical miles from Territorial Sea Boundary).\r\n\r\nExclusive Economic Zone (200NM EEZ and Maritime Boundaries) \u2013 area of sole rights for resource use, research, and protection (extends from Territorial Sea Boundary to 200 nautical miles from shore).",
+            "attribute_title": "",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Marine Jurisdictions",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                75,
+                77,
+                78,
+                74,
+                76
+            ]
+        }
+    },
+    {
+        "pk": 18,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "fact_sheet": "",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-71.92910156249857&location%5By%5D=38.0173126452813&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=18&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocs_admin_boundaries.htm",
+            "opacity": 0.5,
+            "vector_color": "#333333",
+            "attribute_event": "click",
+            "description": "Administrative boundaries extending from the Submerged Lands Act boundary seaward to the US Outer Continental Shelf.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS.  They are not meant to depict areas offshore as pertaining to or controlled by any particular state.",
+            "attribute_title": "",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Bureau of Ocean Energy Management",
+            "data_notes": "",
+            "name": "Federal OCS Administrative Boundaries",
+            "url": "/media/data_manager/geojson/OCSAdminBoundaries.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 16,
         "model": "data_manager.layer",
         "fields": {
@@ -2774,55 +2823,6 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
-        }
-    },
-    {
-        "pk": 80,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "checkbox",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "attribute_title": "",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Marine Jurisdictions",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                75,
-                77,
-                78,
-                74,
-                76
-            ]
         }
     },
     {

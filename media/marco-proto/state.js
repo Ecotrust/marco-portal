@@ -39,7 +39,7 @@ app.establishLayerLoadState = function () {
             });
             if (status === true) {
                 app.layersAreLoaded = true;
-                console.log('layers are loaded');
+                //console.log('layers are loaded');
                 clearInterval(loadTimer);
             }
         }, 100);

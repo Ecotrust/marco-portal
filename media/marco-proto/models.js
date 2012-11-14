@@ -1171,6 +1171,10 @@ function viewModel() {
         app.pageguide.togglingTours = false;
     };
     
+    self.stepTwoOfBasicTour = function() {
+        $('.pageguide-fwd')[0].click();
+    }
+    
     self.startDataTour = function() {
         //ensure the pageguide is closed 
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked

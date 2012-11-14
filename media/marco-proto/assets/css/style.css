@@ -402,6 +402,11 @@ a.disabled-link:hover {
   margin-top: 10px;
 }
 
+#overview-dropdown-button {
+    min-width: 250px;
+    text-align: left;
+}
+
 #overview-dropdown-button .caret {
   border-top: 4px solid white; 
 }

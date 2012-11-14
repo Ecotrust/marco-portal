@@ -166,17 +166,17 @@
         <!-- Default Tour -->
         <div id="help-text-help-button" class="hide">
             <p>The MARCO contact email and phone number are available through the Help button, as well as links to each of the tours that we have available.</p>
-            <ol>
-                <li><a id="start-default-tour" href="#" data-bind="click: startDefaultTour">Tour the Basics</a>
+            <ul style="list-style-type: none; margin-left: 5px">
+                <li><a id="continue-basic-tour" href="#">Continue Touring the Basics</a>
                 <li><a id="start-data-tour" href="#">Tour the Data tab</a>
                 <li><a id="start-active-tour" href="#">Tour the Active tab</a>
-            </ol>
+            </ul>
         </div>
         <div id="help-text-dataTab" class="hide">
             <p>The Data tab is where you'll find the data layers available for viewing.</p>
             <ol>
-                <li>Click on the Themes to expose their Data Layers
-                <li>Click the Data Layers to display the data on the map
+                <li>Click on a Theme (Administrative, Fishing, etc) to expose its Data Layers
+                <li>Click a Data Layer to display it on the map
             </ol>
             <!--<p>Clicking on the Themes in the Data tab will expose the Layers.  And clicking on the Layers will display the data on the Map.</p>-->
             <p><a id="start-data-tour" href="#">Tour the Data tab</a></p>
@@ -209,7 +209,7 @@
                 <li>Change the underlying Basemaps
                 <li>Show/Hide Legends associated with visible layers
                 <li>Show/Hide the Layer Panel 
-                <li>Create, Store, and Share your personalized Map Views
+                <li>Use Bookmarks to create, store, and share your personalized map views
                 <li>View the map in Full Screen
             </ol>
         </div>
@@ -218,8 +218,8 @@
         <div id="help-text-data-tour-dataTab" class="hide">
             <p>The Data tab is where you'll find the data layers available for viewing.</p>
             <ol>
-                <li>Click on the Themes to expose their Data Layers
-                <li>Click the Data Layers to display the data on the map
+                <li>Click on a Theme (Administrative, Fishing, etc) to expose its Data Layers
+                <li>Click a Data Layer to display it on the map
             </ol>
             <p><a name="start-default-tour" href="#">Return to the Basic Tour</a></p>
         </div>
@@ -568,7 +568,8 @@
                             <li class="active">
                                 <a href="#data" data-toggle="tab" id="dataTab">Data</a>
                             </li>
-                            {% if user.is_authenticated %}
+                            {% load in_group %}
+                            {% if user.is_authenticated and user|in_group:"Designers" %}
                             <li>
                                 <a href="#designs" data-toggle="tab" id="designsTab">Designs</a>
                             </li>
