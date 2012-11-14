@@ -96,10 +96,13 @@ io.sockets.on('connection', function(socket) {
           zipTiff = function (cb) {
             var archive = new zip(),
                 worldString = data.pixelSize + "\n0\n0\n" + 
-                data.pixelSize * -1 + '\n' + data.extent[0] + '\n'
-                data.extent[3] + '\n';
+                  data.pixelSize * -1 + '\n' + data.extent[0] + '\n'
+                  data.extent[3] + '\n',
+                prjFileString = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]';
 
             archive.add(filename + '.tfw', new Buffer(worldString, "utf8"));
+            archive.add(filename + '.prj', new Buffer(prjFileString, "utf8"));
+
             console.dir(worldString);
             archive.addFiles([{ name: filename + data.format, path: target + data.format }],
               function (err) {
