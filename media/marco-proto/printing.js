@@ -2,7 +2,7 @@ var io = io || false;
 
 (function () {
 	var socket,
-		socketUrl = 'http://localhost:8989';
+		socketUrl = 'http://www.labs.ecotrust.org:8989';
 
 	function printModel (map, viewModel) {
 		var self = this;

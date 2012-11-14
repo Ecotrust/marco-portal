@@ -10,7 +10,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   io = require('socket.io').listen(server),
   port = 8989,
   targetUrl = "http://localhost:8000/planner/",
-  socketUrl = "http://localhost:" + port,
+  socketUrl = "http://www.labs.ecotrust.org:" + port,
   staticDir = "shots/",
   
   constraints = {
