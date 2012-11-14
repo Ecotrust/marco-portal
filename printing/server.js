@@ -10,7 +10,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   io = require('socket.io').listen(server),
   port = 8989,
   targetUrl = "http://dev.marco.marineplanning.org/visualize/",
-  socketUrl = "http://www.labs.ecotrust.org:" + port,
+  socketUrl = "http://dev.marco.marineplanning.org:" + port,
   staticDir = "shots/",
   phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-i686/bin/phantomjs";
   
