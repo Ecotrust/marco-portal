@@ -12,7 +12,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   targetUrl = "http://dev.marco.marineplanning.org/visualize/",
   socketUrl = "http://dev.marco.marineplanning.org:" + port,
   staticDir = "shots/",
-  phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-i686/bin/phantomjs";
+  phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-x86_64/bin/phantomjs";
   
   constraints = {
     'letter': {
