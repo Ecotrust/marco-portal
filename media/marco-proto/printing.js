@@ -1,5 +1,3 @@
-var io = io || false;
-
 (function () {
 	var socket,
 		socketUrl = app.socketUrl || 'http://localhost:8989';
@@ -125,6 +123,12 @@ var io = io || false;
 				
 		};
 
+		self.downloadFile = function (self,event) {
+			var $modal = $(event.target).closest('.modal');
+			window.open(self.download());
+			$modal.modal('hide');
+		};
+
 		// handle export button in print popover
 		self.sendJob = function (self, event) {
 			var mapHeight, mapWidth;
@@ -181,7 +185,7 @@ var io = io || false;
 		};
 
 		// make sure we have a socket
-		if (io !== false) {
+		if (typeof io !== 'undefined') {
 			socket = io.connect(socketUrl);	
 			self.enabled(true);
 		} else {
