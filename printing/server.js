@@ -73,7 +73,6 @@ io.sockets.on('connection', function(socket) {
         phantomPath: phantomPath
       },
       hash = data.hash + "&print=true";
-    console.dir(options);
     if (data.title) {
       hash = hash + "&title=" + data.title;
     }
@@ -81,7 +80,7 @@ io.sockets.on('connection', function(socket) {
       hash = hash + "&borderless=true";
     }
     console.dir(data);
-    console.log(hash);
+    console.log(targetUrl + hash);
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
           target =  staticDir + filename,
