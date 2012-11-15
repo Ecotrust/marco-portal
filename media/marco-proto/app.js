@@ -3,7 +3,7 @@ app.hash = window.location.hash;
 
 app.onResize = function(percent) {
 
-  var height = $(window).height() * (percent || 0.875);
+  var height = $(window).height() * (percent || 0.855);
   // when fullscreen be odd?
   if (height) {
     $("#map").height(height);

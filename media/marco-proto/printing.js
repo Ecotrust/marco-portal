@@ -2,7 +2,7 @@ var io = io || false;
 
 (function () {
 	var socket,
-		socketUrl = 'http://localhost:8989';
+		socketUrl = 'http://dev.marco.marineplanning.org:8000';
 
 	function printModel (map, viewModel) {
 		var self = this;
@@ -141,17 +141,31 @@ var io = io || false;
 
 			socket.emit('shot', {
 				hash: window.location.hash,
+
+				// size of the screen to start rendering
 				screenHeight: $(document).height(),
 				screenWidth: $(document).width(),
+
+				// finished image size
 				shotHeight: self.shotHeight(),
 				shotWidth: self.shotWidth(),
+
+				// actual dimensions of the map at this screenHeight/screenWidth
 				mapHeight: mapHeight,
 				mapWidth: mapWidth,
+
+				// other options
 				title: self.title(),
 				format: self.format(),
 				borderless: self.borderLess(),
+				// pass on the useragent
 				userAgent: navigator.userAgent,
-				paperSize: self.paperSize()
+				// papersize for pdf
+				paperSize: self.paperSize(),
+				// extent pixel size in meters for world file
+				extent:  app.map.getExtent().toArray(),
+				pixelSize: app.map.getGeodesicPixelSize().w * 1000
+
 			}, function (data) {
 				self.jobStatus("Job is Complete");
 				self.showSpinner(false);

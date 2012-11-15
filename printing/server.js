@@ -2,16 +2,18 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
+  zip = require("node-native-zip"),
   gm = require('gm'),
   fs = require('fs'),
   app = express(),
   server = http.createServer(app),
   io = require('socket.io').listen(server),
-  port = 8989,
-  targetUrl = "http://localhost:8000/planner/",
-  socketUrl = "http://localhost:" + port,
+  port = 8000,
+  targetUrl = "http://dev.marco.marineplanning.org/visualize/",
+  socketUrl = "http://dev.marco.marineplanning.org:" + port,
   staticDir = "shots/",
-  clients = {},
+  phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-x86_64/bin/phantomjs";
+  
   constraints = {
     'letter': {
       width: 612,
@@ -66,7 +68,8 @@ io.sockets.on('connection', function(socket) {
         shotSize: {
           width: data.mapWidth,
           height: data.mapHeight
-        }
+        }, 
+        phantomPath: phantomPath
       },
       hash = data.hash + "&print=true";
     console.dir(options);
@@ -80,12 +83,42 @@ io.sockets.on('connection', function(socket) {
     console.log(hash);
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
-          target =  staticDir + filename + data.format,
-          img = gm(original);
+          target =  staticDir + filename,
+          img = gm(original),
+          done = function (format) {
+            var format = format || data.format
+                path = socketUrl + '/' + filename + format,
+                thumb = socketUrl + '/thumb-' + filename + '.png';
+            cb({
+              thumb: thumb,
+              path: path,
+              download: socketUrl + '/download/' + filename + format
+            });
+          },
+          zipTiff = function (cb) {
+            var archive = new zip(),
+                worldString = data.pixelSize + "\n0\n0\n" + 
+                  data.pixelSize * -1 + '\n' + data.extent[0] + '\n'
+                  data.extent[3] + '\n',
+                prjFileString = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]';
+
+            archive.add(filename + '.tfw', new Buffer(worldString, "utf8"));
+            archive.add(filename + '.prj', new Buffer(prjFileString, "utf8"));
+
+            console.dir(worldString);
+            archive.addFiles([{ name: filename + data.format, path: target + data.format }],
+              function (err) {
+                console.dir(err);
+                fs.writeFile(staticDir + filename+ '.zip', archive.toBuffer(), function () {
+                  cb('.zip')
+                });
+              });
+          };
           
 
 
       if (! err) {
+
         img.quality(100);
 
         if (data.format === '.pdf') {
@@ -94,24 +127,17 @@ io.sockets.on('connection', function(socket) {
         } else {
           img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));          
         }
-        img.write(target, function () {
-          var path = socketUrl + '/' + filename + data.format,
-              thumb = socketUrl + '/thumb-' + filename + '.png';
-          
-          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png',
-            function () {
-              cb({
-                thumb: thumb,
-                path: path,
-                download: socketUrl + '/download/' + filename + data.format
-              });  
+
+        img.write(target + data.format, function () {
+          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png', function () {
+            if (data.format === '.tiff') {
+              zipTiff(done); 
+            } else {
+              done();              
+            }
           });
-          
         });
       }
-      
     });
-
   });
-
 });
