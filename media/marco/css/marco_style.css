@@ -949,6 +949,14 @@ img + h3 {
 #print-modal .loading span {
 	margin-left: 10px;
 }
+#print-modal .modal-body {
+	overflow: hidden;
+}
+#print-modal img.thumb {
+	display: block;
+	margin: auto;
+	width: 100%;
+}
 
 body.print .tabs,
 body.print .user-btn,

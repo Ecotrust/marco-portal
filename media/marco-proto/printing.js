@@ -2,8 +2,8 @@ var io = io || false;
 
 (function () {
 	var socket,
-		// socketUrl = 'http://localhost:8989';
-		socketUrl = 'http://dev.marco.marineplanning.org:8080';
+		socketUrl = app.socketUrl || 'http://localhost:8989';
+		// socketUrl = marco_settings !== 'undefined' ? marco_settings.socketUrl : 'http://localhost:8989';
 
 	function printModel (map, viewModel) {
 		var self = this;

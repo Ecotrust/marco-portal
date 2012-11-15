@@ -1,4 +1,5 @@
 var webshot = require('./lib/webshot/lib/webshot.js'),
+  argv = require('optimist').argv,
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
@@ -8,14 +9,11 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   app = express(),
   server = http.createServer(app),
   io = require('socket.io').listen(server),
-  port = 8080,
-  targetUrl = "http://dev.marco.marineplanning.org/visualize/",
-  socketUrl = "http://dev.marco.marineplanning.org:" + port,
-  // targetUrl = "http://localhost/visualize/",
-  // socketUrl = "http://localhost:" + port,
+  port = argv.port || 8989,
+  targetUrl = argv.appurl || "http://localhost/visualize/",
+  socketUrl = argv.socketurl + port || "http://localhost:" + port,
   staticDir = "shots/",
-  // phantomPath = "/usr/bin/phantomjs";
-  phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-x86_64/bin/phantomjs";
+  phantomPath = argv.phantomjs || "/usr/bin/phantomjs";
 
   constraints = {
     'letter': {
@@ -132,7 +130,8 @@ io.sockets.on('connection', function(socket) {
         }
 
         img.write(target + data.format, function () {
-          gm(original).thumb(300, 300, staticDir +'thumb-' + filename + '.png', function (err) {
+          gm(original).resize(350, 350)
+            .write(staticDir +'thumb-' + filename + '.png', function (err) {
             if (err) {
               console.log(err);
             }

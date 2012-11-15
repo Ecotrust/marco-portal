@@ -1134,10 +1134,10 @@
             <div class="modal-body">
                 <div class="row-fluid" data-bind="visible: thumbnail">
                     <div class="span12">
-                        <a data-bind="attr: {href: thumbnail }" target="_blank"><img data-bind="attr: {src: thumbnail}"/></a>
+                        <a data-bind="attr: {href: thumbnail }" target="_blank"><img class="thumb" data-bind="attr: {src: thumbnail}"/></a>
                     </div>
                 </div>
-                <div class="row-fluid" data-bind="visible: showSpinner">
+                <div class="row-fluid" class="results" data-bind="visible: showSpinner">
                     
                     <div class="span12 loading">
                         <strong><img src="{{media}}marco/img/ajax-loader.gif"/> <span data-bind="text: jobStatus"></span></strong>
@@ -1214,10 +1214,12 @@
         <script src="{{media}}/marco/js/jquery.jscrollpane.min.js"></script>
         <script src="{{media}}/marco/js/date.js"></script>
 
-        <script src="http://dev.marco.marineplanning.org:8080/socket.io/socket.io.js"></script>
+        <script src="{{SETTINGS.SOCKET_URL}}/socket.io/socket.io.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
-            var app = {};
+            var app = {
+                socketUrl: "{{ SETTINGS.SOCKET_URL }}"
+            };
             {% if user.is_authenticated %} app.is_authenticated = true; {% endif %}
         </script>
         <script src="{{media}}/marco-proto/fixtures.js"></script>
