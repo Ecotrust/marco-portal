@@ -1,0 +1,18 @@
+{% extends "explore_base.html" %}
+
+{% load url from future %}
+{% load appname %}
+
+{% block main %}
+
+<div style="min-height: 350px">
+<p>Thank you for registering,</p>
+<p>Your MARCO Mid-Atlantic Ocean Data Portal account is now activated.</p>
+<p><a type="button" href="/visualize/#login=true" class="btn">Proceed to the Planner</a></p>
+</div>
+
+{% if group_request_email %}
+<!--<p>You may also request to be added to a group. Group membership allows sharing and collaboration between group members through {% appname %} but requires an approval process. Please send an email to <a href="mailto:{{group_request_email}}">{{group_request_email}}</a> with your username and group requests.-->
+{% endif %}
+
+{% endblock %}

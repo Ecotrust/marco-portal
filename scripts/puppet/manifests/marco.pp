@@ -56,6 +56,11 @@ class mysql-server {
 
 include mysql-server
 
+file {'/home/vagrant/.bash_aliases':
+  ensure => file,
+  content => template("bash_aliases.sh")
+}
+
 
 file {'/etc/apache2/sites-available/default':
   ensure => file,
@@ -79,11 +84,8 @@ exec { "/usr/sbin/a2enmod rewrite" :
 
 service { 'apache2':
     ensure => running,
-    subscribe => File["/etc/apache2/sites-available/default"],
+    subscribe => File["/etc/apache2/sites-available/default"]
 }
-
-
-
 
 
 package { "libmapnik":

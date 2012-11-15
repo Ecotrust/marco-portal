@@ -71,6 +71,16 @@ app.init = function () {
 
     map.addControl(new SimpleLayerSwitcher());
     
+    //Scale Bar
+    var scalebar = new OpenLayers.Control.ScaleBar( {
+        displaySystem: "english",
+        minWidth: 100, //default
+        maxWidth: 150, //default
+        divisions: 2, //default
+        subdivisions: 2, //default
+        showMinorMeasures: false //default
+    });
+    map.addControl(scalebar);    
 
     map.zoomBox = new OpenLayers.Control.ZoomBox( {
         //enables zooming to a given extent on the map by holding down shift key while dragging the mouse
@@ -93,7 +103,7 @@ app.init = function () {
         // update the url when we move
         app.updateUrl();
     });
-    
+
 
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
@@ -229,9 +239,10 @@ app.addLayerToMap = function(layer) {
         
         /***BEGIN TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         if ( $.browser.msie && $.browser.version < 9.0 && layer.name === "Coldwater Corals" ) {
-            
+        //if ( layer.name === "Coldwater Corals" ) {    
             layer.type = 'XYZ';
             layer.url = 'https://s3.amazonaws.com/marco-public-2d/Conservation/CoralTiles/${z}/${x}/${y}.png';
+            layer.utfurl = '/media/data_manager/utfgrid/coldwater_corals/${z}/${x}/${y}.json';
         }
         /***END TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         
@@ -360,7 +371,6 @@ app.addLayerToMap = function(layer) {
     layer.layer.setVisibility(true);
 };
 
-
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it
     if (layer.layer) {
@@ -371,3 +381,24 @@ app.setLayerVisibility = function(layer, visibility) {
 app.setLayerZIndex = function(layer, index) {
     layer.layer.setZIndex(index);
 };
+
+
+// block mousehweel when over overlay
+$("#overview-overlay-text").hover(
+    // mouseenter
+    function () {
+        var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
+        console.log('disable');
+        for(var i = 0; i < controls.length; ++i) {
+            controls[i].disableZoomWheel();
+        }
+            
+    }, 
+    function () {
+        var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
+        console.log('enable');
+        for(var i = 0; i < controls.length; ++i) {
+            controls[i].enableZoomWheel();
+        }
+    }
+)

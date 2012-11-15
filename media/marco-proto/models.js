@@ -39,12 +39,44 @@ function layerModel(options, parent) {
     } else {
         self.description = null;
     }
+    
+    // set overview text for Learn More option
+    if (options.overview) {
+        self.overview = options.overview;
+    } else if (parent && parent.overview) {
+        self.overview = parent.overview;
+    } else if (self.description) {
+        self.overview = self.description;
+    } else if (parent && parent.description) {
+        self.overview = parent.description;
+    } else {
+        self.overview = null;
+    }
+    
+    // set data source and data notes text 
+    self.data_source = options.data_source || null;
+    if (! self.data_source && parent && parent.data_source) {
+        self.data_source = parent.data_source;
+    } 
+    self.data_notes = options.data_notes || null;
+    if (! self.data_notes && parent && parent.data_notes) {
+        self.data_notes = parent.data_notes;
+    } 
+    
+    // set download links 
+    self.kml = options.kml || null;
+    self.data_download = options.data_download || null;
+    self.metadata = options.metadata || null;
+    self.source = options.source || null;
 
     // opacity
     self.opacity.subscribe(function(newOpacity) {
         if (self.layer.CLASS_NAME === "OpenLayers.Layer.Vector") {
             self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
             self.layer.styleMap.styles['default'].defaultStyle.graphicOpacity = newOpacity;
+            //fill is currently turned off for many of the vector layers
+            //the following line has the effect of overriding the zeroed out fill opacity (which we don't want)
+            //self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
             self.layer.redraw();
         } else {
             self.layer.setOpacity(newOpacity);
@@ -53,8 +85,8 @@ function layerModel(options, parent) {
 
     // is description active
     self.infoActive = ko.observable(false);
-    app.viewModel.showDescription.subscribe( function() {
-        if ( app.viewModel.showDescription() === false ) {
+    app.viewModel.showOverview.subscribe( function() {
+        if ( app.viewModel.showOverview() === false ) {
             self.infoActive(false);
         }
     });
@@ -93,7 +125,6 @@ function layerModel(options, parent) {
     self.toggleLegendVisibility = function() {
         var layer = this;
         layer.legendVisibility(!layer.legendVisibility());
-
     };
     
     self.hasVisibleSublayers = function() {
@@ -257,6 +288,12 @@ function layerModel(options, parent) {
 
     self.showSublayers = ko.observable(false);
 
+    self.showSublayers.subscribe(function () {
+        setTimeout(function () {
+            $('.layer').find('.open .layer-menu').jScrollPane();
+        });
+    });
+
     // bound to click handler for layer switching
     self.toggleActive = function(self, event) {
         var layer = this;
@@ -301,6 +338,7 @@ function layerModel(options, parent) {
             layer.activateLayer();
         }
     };
+    
 
     self.raiseLayer = function(layer, event) {
         var current = app.viewModel.activeLayers.indexOf(layer);
@@ -333,18 +371,86 @@ function layerModel(options, parent) {
     self.isBottomLayer = function(layer) {
         return app.viewModel.activeLayers.indexOf(layer) === app.viewModel.activeLayers().length - 1;
     };
-
-    // display descriptive text below the map
-    self.toggleDescription = function(layer) {
-        if ( layer.infoActive() ) {
-            app.viewModel.showDescription(false);
+    
+    self.toggleSublayerDescription = function(layer) {
+        if ( ! self.infoActive() ) {
+            //console.log('calling showSublayerDescription');
+            self.showSublayerDescription(self);
+        } else if (layer === app.viewModel.activeInfoSublayer()) {
+            //console.log('requesting same sublayer');
         } else {
-            app.viewModel.showDescription(false);
-            app.viewModel.activeInfoLayer(layer);
-            self.infoActive(true);
-            app.viewModel.showDescription(true);
+            //console.log('requesting parent layer description');
+            self.showDescription(self);
         }
     };
+    
+    self.showSublayerDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(layer);
+        layer.infoActive(true);
+        layer.parent.infoActive(true);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        //app.viewModel.updateDropdownScrollbar('#overview-overlay-dropdown');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    /*
+    self.hideSublayerDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.showMapAttribution();
+    };
+    */
+    // display descriptive text below the map
+    self.toggleDescription = function(layer) {
+        /*if ( layer.infoActive() ) {
+            //app.viewModel.showDescription(false);
+            app.viewModel.showOverview(false);
+            app.viewModel.showAttribution();
+        } else {
+            //app.viewModel.showDescription(false);
+            app.viewModel.showOverview(false);
+            app.viewModel.activeInfoLayer(layer);
+            self.infoActive(true);
+            //app.viewModel.showDescription(true);
+            app.viewModel.showOverview(true);
+            app.viewModel.hideAttribution();
+        }*/
+        
+        if ( ! layer.infoActive() ) {
+            self.showDescription(layer);
+        } else {
+            self.hideDescription(layer);
+        }
+    };
+    
+    self.showDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.activeInfoLayer(layer);
+        self.infoActive(true);
+        if (layer.subLayers.length > 0) {
+            $('#overview-overlay').height(195);
+        } else {
+            $('#overview-overlay').height(186);
+        }
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        //app.viewModel.updateDropdownScrollbar('#overview-overlay-dropdown');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    self.hideDescription = function(layer) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.showMapAttribution();
+    };
+    
+    self.toggleDescriptionMenu = function(layer) {
+        //console.dir(layer);
+    };
+    
     
     self.showTooltip = function(layer, event) {
         var layerActual;
@@ -386,18 +492,21 @@ function themeModel(options) {
     //add to open themes
     self.setOpenTheme = function() {
         var theme = this;
-
+        
         // ensure data tab is activated
         $('#dataTab').tab('show');
 
         if (self.isOpenTheme(theme)) {
             //app.viewModel.activeTheme(null);
             app.viewModel.openThemes.remove(theme);
+            app.viewModel.updateScrollBar();
         } else {
             app.viewModel.openThemes.push(theme);
+            //setTimeout( app.viewModel.updateScrollBar(), 1000);
+            app.viewModel.updateScrollBar();
         }
     };
-
+    
     //is in openThemes
     self.isOpenTheme = function() {
         var theme = this;
@@ -545,17 +654,25 @@ function viewModel() {
         self.showLayers(!self.showLayers());
         app.map.render('map');
         if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
+        app.updateUrl();
+        //if toggling layers during default pageguide, then correct step 4 position
+        //self.correctTourPosition();
+        //throws client-side error in pageguide.js for some reason...
     };
 
     // reference to open themes in accordion
     self.openThemes = ko.observableArray();
+    
+    self.openThemes.subscribe( function() {
+        app.updateUrl();
+    });
 
     self.getOpenThemeIDs = function() {
         return $.map(self.openThemes(), function(theme) {
             return theme.id;
         });
     };
-
+    
     // reference to active theme model/name for display text
     self.activeTheme = ko.observable();
     self.activeThemeName = ko.observable();
@@ -568,6 +685,8 @@ function viewModel() {
 
     // determines visibility of description overlay
     self.showDescription = ko.observable();
+    // determines visibility of expanded description overlay
+    self.showOverview = ko.observable();
     
     // theme text currently on display
     self.themeText = ko.observable();
@@ -589,14 +708,21 @@ function viewModel() {
 
     // descriptive text below the map 
     self.activeInfoLayer = ko.observable(false);
+    self.activeInfoSublayer = ko.observable(false);
 
     // attribute data
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
 
+    // title for print view
+    self.mapTitle = ko.observable();
+
     self.closeAttribution = function() {
         self.attributeData(false);
     };
+    
+    // hide tours for smaller screens
+    self.hideTours = ko.observable(false);
 
     // set the error type
     // can be one of:
@@ -697,6 +823,8 @@ function viewModel() {
             app.map.render('map');
         }
         //app.map.render('map');
+        //if toggling legend during default pageguide, then correct step 4 position
+        self.correctTourPosition();
     };
 
     // determine whether app is offering legends 
@@ -715,14 +843,147 @@ function viewModel() {
         app.viewModel.error(null);
         $('#fullscreen-error-overlay').hide();
     };
-
-    // close layer description
-    self.closeDescription = function(self, event) {
-        self.showDescription(false);
+    
+    //update jScrollPane scrollbar
+    self.updateScrollBar = function() {
+        var scrollpane = $('#data-accordion').data('jsp');
+        if (scrollpane === undefined) {
+            $('#data-accordion').jScrollPane();
+        } else {
+            scrollpane.reinitialise();
+        }
     };
+
+    // expand data description overlay
+    self.expandDescription = function(self, event) {
+        if ( ! self.showOverview() ) {
+            self.showOverview(true);
+            self.updateCustomScrollbar('#overview-overlay-text');
+        } else {
+            self.showOverview(false);
+        }
+    };
+    
+    self.scrollBarElements = [];
+    
+    self.updateCustomScrollbar = function(elem) {
+        if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
+            app.viewModel.scrollBarElements.push(elem);
+            $(elem).mCustomScrollbar({
+                scrollInertia:250,
+                mouseWheel: 6
+            });
+        }
+        $(elem).mCustomScrollbar("update");
+    };
+    
+    // close layer description
+    self.closeDescription = function() {
+        //self.showDescription(false);
+        app.viewModel.showOverview(false);
+        if ( ! app.pageguide.tourIsActive ) {
+            app.viewModel.showMapAttribution();
+        }
+    };
+    
+    self.activateOverviewDropdown = function(model, event) {
+        var $btnGroup = $(event.target).closest('.btn-group');
+        if ( $btnGroup.hasClass('open') ) {
+            $btnGroup.removeClass('open');
+        } else {
+            //$('#overview-dropdown-button').dropdown('toggle');  
+            $btnGroup.addClass('open');
+            if (app.viewModel.scrollBarElements.indexOf('#overview-overlay-dropdown') == -1) {
+                app.viewModel.scrollBarElements.push('#overview-overlay-dropdown');
+                $('#overview-overlay-dropdown').mCustomScrollbar({
+                    scrollInertia:250,
+                    mouseWheel: 6
+                });
+            }
+            //debugger;
+            //setTimeout( $('#overview-overlay-dropdown').mCustomScrollbar("update"), 1000);
+            $('#overview-overlay-dropdown').mCustomScrollbar("update");
+        }
+    }; 
+    
+    self.getOverviewText = function(test1, test2) {
+        //activeInfoSublayer() ? activeInfoSublayer().overview : activeInfoLayer().overview
+        if ( self.activeInfoSublayer() ) {
+            if ( self.activeInfoSublayer().overview === null ) {
+                return 'no description available';
+            } else {
+                return self.activeInfoSublayer().overview;
+            }   
+        } else if (self.activeInfoLayer() ) {
+            if ( self.activeInfoLayer().overview === null ) {
+                return 'no description available';
+            } else {
+                return self.activeInfoLayer().overview;
+            }  
+        } else {
+            return 'no description available';
+        }
+    };
+    
+    self.activeKmlLink = function() {
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().kml;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().kml;
+        } else {
+            return false;
+        }
+    };
+
+    self.activeDataLink = function() {
+        //activeInfoLayer().data_download
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().data_download;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().data_download;
+        } else {
+            return false;
+        }
+    };
+    
+    self.activeMetadataLink = function() {
+        //activeInfoLayer().metadata
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().metadata;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().metadata;
+        } else {
+            return false;
+        }
+    };
+    
+    self.activeSourceLink = function() {
+        //activeInfoLayer().source
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().source;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().source;
+        } else {
+            return false;
+        }
+    };
+    
+    /*
+    self.updateDropdownScrollbar = function(elem) {
+        if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
+            app.viewModel.scrollBarElements.push(elem);
+            $(elem).mCustomScrollbar({
+                scrollInertia:250,
+                mouseWheel: 6
+            });
+        }
+        $(elem).mCustomScrollbar("update");
+    };
+    */    
     
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();
+
 
     // show bookmark stuff
     self.showBookmarks = function(self, event) {
@@ -741,7 +1002,6 @@ function viewModel() {
                 "of": $button,
                 offset: "-10px 0px"
             });
-
         }
     };
     self.selectedLayer = ko.observable();
@@ -857,6 +1117,22 @@ function viewModel() {
         app.map.selectFeatureControl.setLayer(app.map.vectorList);
 
     });
+    
+    self.deactivateAllLayers = function() {
+        //$.each(self.activeLayers(), function (index, layer) {
+        var numActiveLayers = self.activeLayers().length;
+        for (var i=0; i < numActiveLayers; i++) {
+            self.activeLayers()[0].deactivateLayer();
+        }
+    };
+    
+    self.closeAllThemes = function() {
+        var numOpenThemes = self.openThemes().length;
+        for (var i=0; i< numOpenThemes; i++) {
+            self.openThemes.remove(self.openThemes()[0]);
+        }
+        self.updateScrollBar();
+    };
 
     // do this stuff when the visible layers change
     /*self.visibleLayers.subscribe(function() {
@@ -906,6 +1182,240 @@ function viewModel() {
         $('#wind-design-breadcrumb-step-2').removeClass('active');
         self.windDesignStep3(true);
         $('#wind-design-breadcrumb-step-3').addClass('active');
+    };
+    
+    self.startDefaultTour = function() {
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            app.pageguide.togglingTours = true;
+            $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
+        }
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
+        
+        //ensure pageguide is managing the default guide
+        $.pageguide(defaultGuide, defaultGuideOverrides);
+        
+        //adding delay to ensure the message will load 
+        setTimeout( function() { $.pageguide('open'); }, 700 );
+        //$('#help-tab').click();
+        
+        app.pageguide.togglingTours = false;
+    };
+    
+    self.stepTwoOfBasicTour = function() {
+        $('.pageguide-fwd')[0].click();
+    }
+    
+    self.startDataTour = function() {
+        //ensure the pageguide is closed 
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            app.pageguide.togglingTours = true;
+            $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
+        }
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
+        
+        //switch pageguide from default guide to data guide
+        $.pageguide(dataGuide, dataGuideOverrides);
+        
+        //show the data tab, close all themes and deactivate all layers, and open the Admin theme
+        app.viewModel.closeAllThemes();
+        app.viewModel.deactivateAllLayers();
+        app.viewModel.themes()[0].setOpenTheme();
+        app.setMapPosition(-73, 38.5, 7);
+        $('#dataTab').tab('show');
+         
+        //start the tour
+        setTimeout( function() { $.pageguide('open'); }, 700 );
+        
+        app.pageguide.togglingTours = false;
+    };
+    
+    self.startActiveTour = function() {
+        //ensure the pageguide is closed 
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            app.pageguide.togglingTours = true;
+            $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
+        }
+        
+        //show the data layers panel
+        app.viewModel.showLayers(true);
+        
+        //switch pageguide from default guide to active guide
+        $.pageguide(activeGuide, activeGuideOverrides);
+        
+        //show the active tab, close all themes and deactivate all layers, activate a couple layers
+        //app.viewModel.closeAllThemes();
+        app.viewModel.deactivateAllLayers();
+        //activate desired layers
+        for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
+            if ( app.viewModel.themes()[0].layers()[i].name === 'OCS Lease Blocks' ) { //might be more robust if indexOf were used
+                app.viewModel.themes()[0].layers()[i].activateLayer();
+            }
+        }
+        for (var i=0; i < app.viewModel.themes()[2].layers().length; i++) {
+            if ( app.viewModel.themes()[2].layers()[i].name === 'Benthic Habitats (South)' ) {
+                app.viewModel.themes()[2].layers()[i].activateLayer();
+            }
+        }
+        app.setMapPosition(-75, 37.6, 8);
+        $('#activeTab').tab('show');
+        
+        //start the tour
+        setTimeout( function() { $.pageguide('open'); }, 700 );
+        
+        app.pageguide.togglingTours = false;
+    };
+    
+    //if toggling legend or layers panel during default pageguide, then correct step 4 position
+    self.correctTourPosition = function() {
+        if ( $.pageguide('isOpen') ) {
+            if ($.pageguide().guide().id === 'default-guide') {
+                $.pageguide('showStep', $.pageguide().guide().steps.length-1);
+            }
+        }
+    }
+    
+    self.showMapAttribution = function() {
+        $('.olControlScaleBar').show();
+        $('.olControlAttribution').show();
+    }
+    self.hideMapAttribution = function() {
+        $('.olControlScaleBar').hide();
+        $('.olControlAttribution').hide();
+    }
+    
+    /* REGISTRATION */
+    self.username = ko.observable();
+    self.usernameError = ko.observable(false);
+    self.password1 = ko.observable("");
+    self.password2 = ko.observable("");
+    self.passwordWarning = ko.observable(false);
+    self.passwordError = ko.observable(false);
+    self.passwordSuccess = ko.observable(false);
+    self.inactiveError = ko.observable(false);
+    
+    self.verifyLogin = function(form) {
+        var username = $(form.username).val(),
+            password = $(form.password).val();
+        if (username && password) {
+            $.ajax({ 
+                async: false,
+                url: '/marco_profile/verify_password', 
+                data: { username: username, password: password }, 
+                type: 'POST',
+                dataType: 'json',
+                success: function(result) { 
+                    if (result.verified === 'inactive') {
+                        self.inactiveError(true);
+                    } else if (result.verified === true) {
+                        self.passwordError(false);
+                    } else {
+                        self.passwordError(true);
+                    }
+                },
+                error: function(result) { } 
+            });
+            if (self.passwordError() || self.inactiveError()) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    };
+    self.turnOffInactiveError = function() {
+        self.inactiveError(false);
+    };
+    
+    self.verifyPassword = function(form) {
+        var username = $(form.username).val(),
+            old_password = $(form.old_password).val();
+        self.password1($(form.new_password1).val());
+        self.password2($(form.new_password2).val());
+        self.checkPassword();
+        if ( ! self.passwordWarning() ) {
+            if (username && old_password) {
+                $.ajax({ 
+                    async: false,
+                    url: '/marco_profile/verify_password', 
+                    data: { username: username, password: old_password }, 
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(result) { 
+                        if (result.verified === true) {
+                            self.passwordError(false);
+                        } else {
+                            self.passwordError(true);
+                        }
+                    },
+                    error: function(result) { } 
+                });
+                if (self.passwordError()) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+    self.turnOffPasswordError = function() {
+        self.passwordError(false);
+    };
+    
+    
+    self.checkPassword = function() {
+        if (self.password1() && self.password2() && self.password1() !== self.password2()) {
+            self.passwordWarning(true);
+            self.passwordSuccess(false);
+        } else if (self.password1() && self.password2() && self.password1() === self.password2()) {
+            self.passwordWarning(false);
+            self.passwordSuccess(true);
+        } else {
+            self.passwordWarning(false);
+            self.passwordSuccess(false);
+        }
+        return true;
+    };
+    
+    self.checkUsername = function() {
+        if (self.username()) {
+            $.ajax({ 
+                url: '/marco_profile/duplicate_username', 
+                data: { username: self.username() }, 
+                method: 'GET',
+                dataType: 'json',
+                success: function(result) { 
+                    if (result.duplicate === true) {
+                        self.usernameError(true);
+                    } else {
+                        self.usernameError(false);
+                    }
+                },
+                error: function(result) { } 
+            });
+        }
+    };
+    self.turnOffUsernameError = function() {
+        self.usernameError(false);
     };
     
     

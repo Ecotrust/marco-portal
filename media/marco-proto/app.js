@@ -3,16 +3,26 @@ app.hash = window.location.hash;
 
 app.onResize = function(percent) {
 
-  var height = $(window).height() * (percent || 0.825);
+  var height = $(window).height() * (percent || 0.855);
   // when fullscreen be odd?
   if (height) {
     $("#map").height(height);
     $("#map-wrapper").height(height);
     $(".tabs").height(height);
     $("#legend-wrapper").height(height - 20);
-    $("#data-accordion").height(height - 92);
+    $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
     app.map.render('map');
   }
+  
+  app.viewModel.updateScrollBar();
+  
+  var width = $(window).width();
+  if (width < 946) {
+    app.viewModel.hideTours(true);
+  } else {
+    app.viewModel.hideTours(false);
+  }
+
 };
 
 $(window).on('resize', function() {
@@ -21,7 +31,6 @@ $(window).on('resize', function() {
 
 // add indexof for typeahead
 if (!Array.prototype.indexOf) {
-
 
     Array.prototype.indexOf = function(obj, start) {
          for (var i = (start || 0), j = this.length; i < j; i++) {
@@ -56,6 +65,10 @@ app.viewModel.loadLayersFromServer().done(function() {
   $('.search-box').typeahead({
     source: app.typeAheadSource
   });
+
+  // if (! ($.browser.msie && $.browser.version < 9)) {
+    $("#data-accordion").jScrollPane();
+  // }
 });
 
 // initialize the map
@@ -74,7 +87,7 @@ $(document).ready(function() {
   
   //Do not display any warning for missing tiles
   OpenLayers.Util.onImageLoadError = function(){
-    this.src='http://www.openlayers.org/api/img/blank.gif';
+    this.src = 'http://www.openlayers.org/api/img/blank.gif';
   };
   OpenLayers.Tile.Image.useBlankTile=false;
 
@@ -97,7 +110,27 @@ $(document).ready(function() {
   $('.icon-remove-sign').on('click', function(event) {
     $(event.target).prev('input').val('').focus();
   });
+  
+  //fixes a problem in which the data accordion scrollbar was reinitialized before the app switched back to the data tab
+  //causing the data tab to appear empty
+  //the following appears to fix that problem
+  $('#dataTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateScrollBar();
+  });
 
+  
+  //resizable behavior for overview-overlay
+  //might not use the following after all... 
+  //(having problems setting minHeight, losing resizing ability 
+  /*
+  $("#overview-overlay").resizable({
+    handles: 'n',
+    containment: 'parent'
+    }
+  })
+  */
+
+  app.fullscreen = {};
   // fullscreen stuff
   // for security reasons, this event listener must be bound directly
   if ( document.getElementById('btn-fullscreen').addEventListener ) {
@@ -117,13 +150,28 @@ $(document).ready(function() {
       });
   }
 
+  // called when entering full screen
   BigScreen.onenter = function() {
-    // called when entering full screen
-    app.viewModel.isFullScreen(true);
-    // make map fullscreen
-    app.onResize(.99);
     //app.map.updateSize();
     //app.map.render('map');
+    //close page guide, hide legend, hide layers
+    if ( $.pageguide('isOpen') ) {
+        app.fullscreen.pageguide = true;
+        //closing the guide here makes it difficult to return to the correct guide...
+        //things might be working fine without closing the guide...
+        //$.pageguide('close');
+    }
+    if ( app.viewModel.showLegend() ) {
+        app.fullscreen.showLegend = true;
+        app.viewModel.showLegend(false);
+    }
+    if ( app.viewModel.showLayers() ) {
+        app.fullscreen.showLayers = true;
+        app.viewModel.showLayers(false);
+    }
+    app.viewModel.isFullScreen(true);
+    // make map fullscreen
+    setTimeout( app.onResize(.99), 500);
   };
 
   BigScreen.onexit = function() {
@@ -135,9 +183,30 @@ $(document).ready(function() {
     //for firefox
     setTimeout( app.onResize(), 300);
     //app.onResize();
+    //app.onResize();
+    //if applicable, open page guide, show legend, show layers
+    if ( app.fullscreen.showLayers ) {
+        app.viewModel.showLayers(true);
+        app.fullscreen.showLayers = false;
+    }
+    if ( app.fullscreen.showLegend ) {
+        app.viewModel.showLegend(true);
+        app.fullscreen.showLegend = false;
+    }
+    if ( app.fullscreen.pageguide ) {
+        app.viewModel.showLayers(true);
+        setTimeout( function() { 
+            $.pageguide('open'); 
+            if ($.pageguide().guide().id === 'default-guide') {
+                setTimeout( function() { 
+                    $.pageguide('showStep', $.pageguide().guide().steps.length-1);
+                }, 300 );
+            }            
+        }, 500 );
+        app.fullscreen.pageguide = false;
+    }
     //for chrome
     setTimeout( app.onResize, 300);
-    //app.onResize();
   };
   
   // Basemaps button and drop-down behavior
@@ -155,12 +224,16 @@ $(document).ready(function() {
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_30').mouseleave( function() {
     $('#SimpleLayerSwitcher_30').hide();
-    $('#basemaps').removeClass('open');
+    if (!app.pageguide.preventBasemapsClose) {
+        $('#basemaps').removeClass('open');
+    }
   });
   
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_30').mousedown( function() {
-    $('#basemaps').removeClass('open');
+    if (!app.pageguide.preventBasemapsClose) {
+        $('#basemaps').removeClass('open');
+    }
   });
   
   //hide basemaps drop-down on mouseout
@@ -168,23 +241,45 @@ $(document).ready(function() {
     $('#basemaps').addClass('open');
   });
   
-  /* testing mouseenter mouseleave
-  $('div.sidebar-nav').mouseenter( function(e) {
-    console.log('entering sidebar button');
-  }).mouseleave( function(e) {
-    console.log('exiting sidebar button');
+  $('#overview-overlay-dropdown').mouseleave( function() {
+    $('#overview-overlay-dropdown').closest('.btn-group').removeClass('open');
   });
-  */
-  /*
-  //Opacity popover behavior
-  //hide opacity popover when mouse leaves popover or opacity button
-  $('.opacity-button.active').mouseout( function() {
-    console.log('exiting opacity button');
-  });
-  */
+  
   $('#opacity-popover').mouseleave( function() {
     app.viewModel.hideOpacity();
   });  
+  
+  $('#registration-modal').on('show', function() {
+    $('.empty-input').val("");
+  });
+  
+  $('#sign-in-modal').on('show', function() {
+    $('.empty-input').val("");
+  });
+  
+  $('#reset-password-modal').on('show', function() {
+    $('.empty-input').val("");
+  });
+  
+  $(document).on('click', 'a[name="start-default-tour"]', function() {
+    app.viewModel.startDefaultTour();
+  });
+  
+  $(document).on('click', '#continue-basic-tour', function() {
+    app.viewModel.stepTwoOfBasicTour();
+  });
+  
+  $(document).on('click', '#start-data-tour', function() {
+    app.viewModel.startDataTour();
+  });
+  
+  $(document).on('click', '#start-active-tour', function() {
+    app.viewModel.startActiveTour();
+  });
+
+  $('a[data-toggle="tab"]').on('shown', function (e) {
+    app.updateUrl();
+  });
   
 });
 

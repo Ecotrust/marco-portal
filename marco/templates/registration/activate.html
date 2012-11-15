@@ -1,0 +1,11 @@
+{% extends "explore_base.html" %}
+{% load absurl %}
+{% load appname %}
+{% block main %}
+<div style="min-height: 350px">
+<p>Sorry, we don't recognize that account registration code ({{activation_key}}). </p>
+<p>Please check you registration email and confirm that your URL contains the proper activation key. </p>
+<p>If you have already activated your account you can <a href="/visualize/#login=true">continue to the login page</a>.  </p>
+<p>If you believe this message is in error, please contact us at the address below.  </p>
+</div>
+{% endblock %}

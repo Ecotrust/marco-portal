@@ -18,11 +18,34 @@ app.getState = function () {
         basemap: app.map.baseLayer.name,
         themes: {ids: app.viewModel.getOpenThemeIDs()},
         tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active',
-        legends: app.viewModel.showLegend() ? 'true': 'false'
+        legends: app.viewModel.showLegend() ? 'true': 'false',
+        layers: app.viewModel.showLayers() ? 'true': 'false'
         //and active tab
     };
 };
 
+app.layersAreLoaded = false;
+app.establishLayerLoadState = function () {
+    var loadTimer, status;
+    if (app.map.layers.length === 0) {
+        app.layersAreLoaded = true;
+    } else {
+        loadTimer = setInterval(function () {
+            status = true;
+            $.each(app.map.layers, function (i, layer) {
+                if (layer.loading === true) {
+                    status = false;
+                }
+            });
+            if (status === true) {
+                app.layersAreLoaded = true;
+                //console.log('layers are loaded');
+                clearInterval(loadTimer);
+            }
+        }, 100);
+    }
+        
+};
 // load compressed state (the url was getting too long so we're compressing it
 app.loadCompressedState = function(state) { 
     // turn off active laters
@@ -52,29 +75,48 @@ app.loadCompressedState = function(state) {
        }
     }
     
+    if (state.print === 'true') {
+        app.printMode();
+    }
+    if (state.borderless === 'true') {
+        app.borderLess();
+    }
+
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
     }
-       
+
+    app.establishLayerLoadState();
     // data tab and open themes
     if (state.themes) {
-        //console.log('starting with data tab');
-        $('#dataTab').tab('show');
+        //$('#dataTab').tab('show');
         if (state.themes) {
             $.each(app.viewModel.themes(), function (i, theme) {
                 if ( $.inArray(theme.id, state.themes.ids) !== -1 || $.inArray(theme.id.toString(), state.themes.ids) !== -1 ) {
-                    theme.setOpenTheme();
+                    if ( app.viewModel.openThemes.indexOf(theme) === -1 ) {
+                        //app.viewModel.openThemes.push(theme);
+                        theme.setOpenTheme();
+                    }
                 } else {
-                    app.viewModel.openThemes.remove(theme);
+                    if ( app.viewModel.openThemes.indexOf(theme) !== -1 ) {
+                        app.viewModel.openThemes.remove(theme);
+                    }
                 }
             });
         } 
     }
     // active tab -- the following prevents theme and data layers from loading in either tab (not sure why...disbling for now)
+    // it appears the dataTab show in state.themes above was causing the problem...?
+    // timeout worked, but then realized that removing datatab show from above worked as well...
+    // now reinstating the timeout which seems to fix the toggling between tours issue (toggling to ActiveTour while already in ActiveTab)
     if (state.tab && state.tab === "active") {
-        //console.log('showing active tab');
         //$('#activeTab').tab('show');
-    } 
+        setTimeout( function() { $('#activeTab').tab('show'); }, 200 );
+    } else if (state.tab && state.tab === "designs") {
+        setTimeout( function() { $('#designsTab').tab('show'); }, 200 );
+    } else {
+        setTimeout( function() { $('#dataTab').tab('show'); }, 200 );
+    }
     
     if ( state.legends && state.legends === "true" ) {
         app.viewModel.showLegend(true);
@@ -82,17 +124,62 @@ app.loadCompressedState = function(state) {
         app.viewModel.showLegend(false);
     }
 
+    if (state.layers && state.layers === 'true') {
+        app.viewModel.showLayers(true);
+    } else {
+        app.viewModel.showLayers(false);
+        app.map.render('map');
+    }
+
+    // map title for print view
+    if (state.title) {
+        app.viewModel.mapTitle(state.title);
+    }
+
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
-    app.map.setCenter(
-        new OpenLayers.LonLat(state.x, state.y).transform(
-            new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), state.z);
+    app.setMapPosition(state.x, state.y, state.z);
+    //app.map.setCenter(
+    //    new OpenLayers.LonLat(state.x, state.y).transform(
+    //        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), state.z);
+    
+    // is url is indicating a login request then show the login modal
+    // /visualize/#login=true
+    if (!app.is_authenticated && state.login) { // not sure 
+        $('#sign-in-modal').modal('show');
+    }
+    
 };
 
+app.setMapPosition = function(x, y, z) {
+    app.map.setCenter(
+        new OpenLayers.LonLat(x, y).transform(
+            new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913") ), z);
+};
+
+// hide buttons and other features for printing
+app.printMode = function () {
+    $('body').addClass('print');
+};
+
+// also hide logo and rules
+app.borderLess = function () {
+    $('body').addClass('borderless');
+}
+
 // load state from fixture or server
+
 app.loadState = function(state) {
-    if (state.z) {
+    var loadTimer;
+    if (state.z || state.login) {
         return app.loadCompressedState(state);
+    }
+
+    if (state.print === 'true') {
+        app.printMode();
+    }
+    if (state.borderless === 'true') {
+        app.borderLess();
     }
     // turn off active laters
     // create a copy of the activeLayers list and use that copy to iteratively deactivate
@@ -100,10 +187,9 @@ app.loadState = function(state) {
         return layer;
     });
     //var activeLayers = $.extend({}, app.viewModel.activeLayers());
-    $.each(activeLayers, function (index, layer) {
-        layer.deactivateLayer();
-    });
+    
     // turn on the layers that should be active
+    app.viewModel.deactivateAllLayers();
     if (state.activeLayers) {
         $.each(state.activeLayers, function(index, layer) {
             if (app.viewModel.layerIndex[layer.id]) {
@@ -122,7 +208,10 @@ app.loadState = function(state) {
     if (state.basemap) {
         app.map.setBaseLayer(app.map.getLayersByName(state.basemap.name)[0]);
     }
-    
+    // now that we have our layers
+    // to allow for establishing the layer load state
+    app.establishLayerLoadState();
+
     if (state.activeTab && state.activeTab.tab === 'active') {
         $('#activeTab').tab('show');
     } else {
@@ -145,6 +234,19 @@ app.loadState = function(state) {
     } else {
         app.viewModel.showLegend(false);
     }
+
+    if (state.layers && state.layers === 'true') {
+        app.viewModel.showLayers(true);
+    } else {
+        app.viewModel.showLayers(false);
+        app.map.render('map');
+    }
+
+    // map title for print view
+    if (state.title) {
+        app.viewModel.mapTitle(state.title);
+    }
+
     
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
@@ -160,8 +262,8 @@ app.loadState = function(state) {
 };
 
 // load the state from the url hash
-app.loadStateFromHash = function (hash) {    
-    
+
+app.loadStateFromHash = function (hash) { 
     app.loadState($.deparam(hash.slice(1)));
 };
 

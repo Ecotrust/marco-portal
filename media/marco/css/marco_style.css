@@ -43,6 +43,24 @@ a:focus {
 	background:url(../img/ajax-loader.gif) no-repeat center center;
 }
 
+.jspVerticalBar {
+	width: 10px !important;
+}
+.jspTrack {
+	background: none repeat scroll 0 0 #DDDDDD!important;
+	width: 10px !important;
+}
+.jspDrag {
+	border-radius: 20px;
+	background: none repeat scroll 0 0 #BBB !important;
+	width: 10px !important;
+	top: 2px;
+
+}
+.jspContainer, .jspPane, .jspScrollable {
+	background: white!important;
+}
+
 .navbar {
 	border-bottom: 1px solid #ccc;
 	height: auto;
@@ -68,6 +86,7 @@ a:focus {
 }
 .navbar .dropdown-menu {
     min-width: 50px;
+    margin-top: 15px;
 }
 
 .navbar .nav > li > a {
@@ -126,7 +145,7 @@ a:focus {
 }
 .sidebar-nav .nav-tabs li.active:first-child > a, .sidebar-nav .nav-tabs li:first-child:hover > a {
 	border-top-left-radius: 10px;
-	background-color: white;
+	/*background-color: white;*/
 }
 
 
@@ -193,11 +212,46 @@ a:focus {
 	transform: rotate(90deg);
 }
 #feedback-tab a {
-	border: 1px solid white;
-
+	color: white;
 }
 #feedback-tab a:hover {
-	border: 1px solid #ccc;
+    text-decoration: none;
+}
+#pageGuideToggle {
+    top: -999px !important;
+}
+.pageguide-step {
+    z-index: 1035 !important;
+}
+#help-tab {
+	position: fixed;
+    z-index: 950;
+	right: -10px;
+	top: 80%;
+	padding: 2px 8px;
+	border: 2px solid #ccc;
+	background: #2d8998; /* fallback for IE - IE6 requires background shorthand*/
+	background: rgba(45,137,152, 1);
+
+	color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-top-left-radius: 10px;
+	-moz-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-transform: rotate(-90deg);	
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+
+}
+#help-tab a {
+	color: white;
+}
+#help-tab a:hover {
+    text-decoration: none;
 }
 
 input + i.icon-remove-sign {
@@ -864,8 +918,74 @@ img + h3 {
   display:block;
 }
 
-.popover input {
+.popover .radio input {
 	width: 94%;
+}
+#printing-popover .radio input {
+	width: 20%;
+}
+#printing-popover .ui-spinner {
+	width: 55%;
+}
+
+#printing-popover {
+	width: 460px;
+}
+#printing-popover .popover.left .arrow {
+	top: 5%;
+}
+#printing-popover .well {
+	padding-top: 5px;
+}
+
+
+body.print .tabs,
+body.print .user-btn,
+body.print #feedback-tab,
+body.print #help-tab,
+body.print #basemaps,
+body.print .olControlZoom
+ {
+	display: none;
+}
+
+/*body.print .navbar {
+	border-bottom: 0px;
+}
+*/
+/*body.print #legend-wrapper {
+	max-width: 250px;
+}
+*/
+body.print #legend-wrapper, body.print #map-wrapper, body.print #map {
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+
+}
+
+body.print #map-panel {
+	margin-left: 0px;
+}
+body.print #legend {
+    margin-left: 1%;
+}
+
+body.borderless {
+	margin-top: 0px;
+}
+body.borderless #primary-content {
+	padding-left: 0px;
+}
+
+body.borderless hr,
+body.borderless .navbar,
+body.borderless .timestamp  {
+	display: none;
+}
+
+body.borderless #map-wrapper {
+	border: 0px;
 }
 
 @media (max-width: 767px) {

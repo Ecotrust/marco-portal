@@ -1,0 +1,12 @@
+{% load absurl %}
+{% load appname %}
+Welcome to the {% appname %}. 
+
+To begin, please go to the following web address to activate your account:
+{% absurl 'registration_activate' activation_key %} 
+
+If you have any questions, please feel free to contact us: 
+{% help_email %}
+
+Regards,
+MARCO Portal Project Team

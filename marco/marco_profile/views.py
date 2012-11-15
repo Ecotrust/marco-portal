@@ -7,11 +7,43 @@ from madrona.user_profile.models import UserProfile
 from madrona.user_profile.forms import UserForm, UserProfileForm
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
+import simplejson
+
+def verify_password(request):
+    username = request.POST.get('username', None)
+    password = request.POST.get('password', None)
+    
+    if username and password:
+        try:
+            user = User.objects.get(username=username)
+            if not user.is_active:
+                return HttpResponse(simplejson.dumps({'verified': 'inactive'}), mimetype="application/json", status=200)
+            if user.check_password(password):
+                return HttpResponse(simplejson.dumps({'verified': True}), mimetype="application/json", status=200)
+            else:
+                return HttpResponse(simplejson.dumps({'verified': False}), mimetype="application/json", status=200)
+        except:
+            return HttpResponse(simplejson.dumps({'verified': False}), mimetype="application/json", status=200)
+    else:
+        return HttpResponse("Received unexpected " + request.method + " request.", status=400)
+
+def duplicate_username(request):
+    username = request.GET.get('username', None)
+    if username:
+        try:
+            User.objects.get(username=username)
+            found = True
+        except:
+            found = False
+    else:
+        return HttpResponse('username not found', status=400)
+        
+    return HttpResponse(simplejson.dumps({'duplicate': found}), mimetype="application/json", status=200) 
 
 def send_username(request, use_openid=False, redirect_field_name=REDIRECT_FIELD_NAME):
     if request.method == 'POST':
         subject = 'MARCO login'
-        reply_email = "MARCO Portal Team <%s>" % settings.FEEDBACK_RECIPIENT[0]
+        reply_email = "MARCO Portal Team <%s>" % settings.DEFAULT_FROM_EMAIL
         #check for user account
         user_email = [request.POST.get('email', '')]
         try:
@@ -64,7 +96,7 @@ def update_profile(request, username, use_openid=False, redirect_field_name=REDI
         #prepare email fields
         subject = 'MARCO profile change'
         user_email = user.email
-        reply_email = "MARCO Portal Team<%s>" % settings.FEEDBACK_RECIPIENT[0]
+        reply_email = "MARCO Portal Team<%s>" % settings.DEFAULT_FROM_EMAIL
         message = "Your MARCO Portal profile was just updated."
         message += "\nIf this was in error, please contact us immediately so that we can rectify the situation."
         message += "\n\nThank you."
@@ -124,7 +156,7 @@ def password_change(request, username,
     :post_change_redirect: url used to redirect user after password change.
     It take the register_form as param.
     """
-        
+    
     if request.user.username != username:
         return HttpResponse("You cannot access another user's profile.", status=401)
     else:
@@ -146,7 +178,7 @@ def password_change(request, username,
         #prepare email fields
         subject = 'MARCO profile change'
         user_email = user.email
-        reply_email = "MARCO Portal Team<%s>" % settings.FEEDBACK_RECIPIENT[0]
+        reply_email = "MARCO Portal Team<%s>" % settings.DEFAULT_FROM_EMAIL
         message = "Your MARCO Portal password was just changed."
         message += "\nIf you did not make this change, please contact us immediately."
         message += "\n\nThank you."

@@ -27,7 +27,7 @@
 #attribute-data {
   position: absolute;
   /*top: 25%;*/
-  top: 150px;
+  top: 180px;
   right: 0;
   z-index: 950; 
   width: 250px;
@@ -76,6 +76,7 @@
 
 #map .olControlAttribution {
   bottom: 0px;
+  left: 3px;
 }
 
 #data-accordion, #legend-accordion {
@@ -215,13 +216,30 @@ a.disabled-link:hover {
   margin-left: 0px !important;
 }
 
-.fullscreen-legend {
+.fullscreen-map {
   margin-left: 0px !important;
-  width: 25.6% !important;
+  width: 100% !important;
 }
 .fullscreen-with-layers {
   margin-left: 0px !important;
-  width: 68.3% !important;
+  /*width: 68.3% !important;*/
+  width: 75% !important;
+}
+.fullscreen-with-legend {
+  margin-left: 0px !important;
+  width: 80% !important;
+}
+.fullscreen-with-legend-and-layers {
+  margin-left: 0px !important;
+  width: 55% !important;
+}
+.fullscreen-data {
+  margin-left: 0px !important;
+  width: 25% !important;
+}
+.fullscreen-legend {
+  margin-left: 0px !important;
+  width: 20% !important;
 }
 
 #map-buttons {
@@ -250,12 +268,12 @@ a.disabled-link:hover {
 }
 
 #description-overlay > div{
-  padding: 10px 10px 20px 10px;
+  padding: 10px;
   color: white;
 }
 
 #description-overlay a{
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 
 #description-overlay .title {
@@ -266,6 +284,133 @@ a.disabled-link:hover {
 #description-overlay .text {
   font-size: 16px;
 }
+
+#overview-overlay {
+  position: absolute;
+  /*border-radius: 4px; can't tell if I want this or not...*/
+  bottom: 0;
+  z-index: 950; 
+  min-width: 100%;
+  max-height: 60%;
+  /*overflow-x: hidden;
+  overflow-y: auto;*/
+  /*overflow: auto;*/
+  font-size: 12px;
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(60, 110, 160, 0.65);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
+}
+
+#overview-overlay-header {
+  margin-bottom: 10px;
+}
+
+#overview-overlay-header .dropdown-menu {
+  margin-top: 15px;
+  background-color: rgba(60, 110, 160, 0.65);
+}
+
+#overview-overlay-header .dropdown-menu > li {
+}
+
+#overview-overlay-header .caret {
+  /*border-top: 4px solid white;*/
+  margin-left: 5px;
+  margin-top: 8px;
+}
+#overview-overlay-header a .dropdown-toggle {
+  background-color: rgba(60, 110, 160, 0.65);
+  /*color: white;
+  text-decoration: none;*/ /*these two lines caused problems with the close 'x' button*/
+}
+
+#overview-overlay-header a:hover {
+  text-decoration: none;
+}
+
+#overview-overlay-header .dropdown-toggle {
+  color: white;
+  background-color: rgb(60, 110, 160);
+  background-image: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: none;
+}
+
+#overview-overlay-dropdown {
+  background-color: rgb(60, 110, 160) !important;
+  height: 100px;
+  width: 100%;
+  overflow: auto;
+}
+
+#overview-overlay-dropdown a{
+  color: white;
+  width: 75%;
+}
+
+#overview-overlay-dropdown .mCSB_container {
+  margin-right: 0px;
+}
+
+#overview-overlay-content {
+  padding: 10px;
+  padding-bottom: 5px;
+  color: white;
+}
+
+#overview-overlay-content .mCustomScrollBox {
+  /*padding-bottom: 5px;  
+  height: 105% !important;*/
+}
+
+#overview-overlay-text {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#overview-overlay-text .mCSB_container {
+  padding: 5px 10px 15px;  
+  margin-right: 25px;
+  background-color: rgba(60, 110, 160, 0.25098);
+}
+
+#overview-overlay-text .mCSB_scrollTools {
+  height: 95%;
+}
+
+#overview-overlay .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#overview-overlay .text {
+  font-size: 15px;
+}
+
+#overview-overlay .notes {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#overview-overlay-links {
+  margin-top: 10px;
+}
+
+#overview-dropdown-button {
+    min-width: 250px;
+    text-align: left;
+}
+
+#overview-dropdown-button .caret {
+  border-top: 4px solid white; 
+}
+
 #fullscreen-error-overlay {
   position: absolute;
   top: 0;
@@ -356,6 +501,7 @@ a.disabled-link:hover {
 
 #data-accordion .dropdown-menu {
   right: 0px;
+  margin-top: 0px;
 }
 
 .attribution {
@@ -451,4 +597,8 @@ a.disabled-link:hover {
 
 #bookmark-modal {
   z-index: 1500;
+}
+
+.modal-backdrop {
+  z-index: 1050;
 }

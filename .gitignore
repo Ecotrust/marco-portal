@@ -5,6 +5,7 @@ mediaroot/*
 deploy/*
 data/*
 env/*
+printing/shots/*
 .vagrant
 portal/*.sql
 /marco-media
