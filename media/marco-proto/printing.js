@@ -125,8 +125,8 @@
 
 		self.downloadFile = function (self,event) {
 			var $modal = $(event.target).closest('.modal');
-			window.open(self.download());
 			$modal.modal('hide');
+			window.open(self.download());
 		};
 
 		// handle export button in print popover
