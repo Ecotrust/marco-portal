@@ -11,7 +11,7 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   io = require('socket.io').listen(server),
   port = argv.port || 8989,
   targetUrl = argv.appurl || "http://localhost/visualize/",
-  socketUrl = argv.socketurl + port || "http://localhost:" + port,
+  socketUrl = argv.socketurl + ':' + port || "http://localhost:" + port,
   staticDir = "shots/",
   phantomPath = argv.phantomjs || "/usr/bin/phantomjs";
 
