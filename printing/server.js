@@ -35,6 +35,11 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   }
 
 
+// fix urls without trailing slash
+if (targetUrl.slice(-1) !== '/') {
+  targetUrl = targetUrl + '/';
+}
+
 // sockets and static file server all listen on port 8989
 app.use(express.static(__dirname + '/shots'));
 server.listen(port);
