@@ -720,6 +720,9 @@ function viewModel() {
     self.closeAttribution = function() {
         self.attributeData(false);
     };
+    
+    // hide tours for smaller screens
+    self.hideTours = ko.observable(false);
 
     // set the error type
     // can be one of:

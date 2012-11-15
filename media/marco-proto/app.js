@@ -13,6 +13,15 @@ app.onResize = function(percent) {
     $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
     app.map.render('map');
   }
+  
+  app.viewModel.updateScrollBar();
+  
+  var width = $(window).width();
+  if (width < 946) {
+    app.viewModel.hideTours(true);
+  } else {
+    app.viewModel.hideTours(false);
+  }
 
 };
 
@@ -78,7 +87,7 @@ $(document).ready(function() {
   
   //Do not display any warning for missing tiles
   OpenLayers.Util.onImageLoadError = function(){
-    this.src='http://www.openlayers.org/api/img/blank.gif';
+    this.src = 'http://www.openlayers.org/api/img/blank.gif';
   };
   OpenLayers.Tile.Image.useBlankTile=false;
 
