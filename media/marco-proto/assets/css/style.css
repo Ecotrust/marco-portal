@@ -47,6 +47,29 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
 }
 
+#aggregated-attribute-data {
+  position: absolute;
+  /*top: 25%;*/
+  top: 180px;
+  left: 0;
+  z-index: 950; 
+  width: 250px;
+  font-size: 16px;
+  color: white;
+  
+}
+#aggregated-attribute-data > div {
+  padding: 10px;
+  border-radius: 4px;
+/*  background-color: rgb(60, 110, 160);
+*/  /* RGBa with 0.6 opacity */
+  background-color: rgba(60, 110, 160, 0.65);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
+}
+
 #bookmarks-table {
   max-height: 150px;
   overflow-y: auto;

@@ -7,6 +7,7 @@ app.init = function () {
         displayProjection: new OpenLayers.Projection("EPSG:4326"),
         projection: "EPSG:3857"
     });
+    
     esriOcean = new OpenLayers.Layer.XYZ("ESRI Ocean", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/${z}/${y}/${x}", {
         sphericalMercator: true,
         isBaseLayer: true,
@@ -142,8 +143,8 @@ app.init = function () {
             featureunhighlighted: clearout
         }
     });
-    map.addControl(map.selectFeatureControl);
-    map.selectFeatureControl.activate();  
+    //map.addControl(map.selectFeatureControl);
+    //map.selectFeatureControl.activate();  
     
     //UTF Attribution
     map.UTFControl = new OpenLayers.Control.UTFGrid({
@@ -229,6 +230,28 @@ app.init = function () {
     map.addControl(map.UTFControl);    
 
     app.map = map;
+    
+    app.map.attributes = [];
+    
+    app.map.events.register("featureclick", null, function(e) {
+        var layer = e.feature.layer.layerModel;
+        if ( layer.attributes.length ) {
+            var attrs = layer.attributes,
+                title = layer.name,
+                text = [];
+            //app.viewModel.attributeTitle(title); 
+            for (var i=0; i<attrs.length; i++) {
+                if ( e.feature.data[attrs[i].field] ) {
+                    text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                }
+            }
+            app.map.attributes.push( {'title': title, 'attrs': text} );
+            app.viewModel.aggregatedAttributes(app.map.attributes);
+        }
+        debugger;
+    });
+    
+    
 };
 
 app.addLayerToMap = function(layer) {
@@ -322,7 +345,7 @@ app.addLayerToMap = function(layer) {
             //selectFeatureControl = app.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0];
             if (layer.attributes.length) {
                 app.map.vectorList.unshift(layer.layer);
-                app.map.selectFeatureControl.setLayer(app.map.vectorList);
+                //app.map.selectFeatureControl.setLayer(app.map.vectorList);
             }
         } else if (layer.type === 'ArcRest') {
             layer.layer = new OpenLayers.Layer.ArcGIS93Rest(

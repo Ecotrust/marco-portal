@@ -799,6 +799,23 @@
                                           </dl>
                                         </div>
                                     </div>
+                                    <!-- Aggregated Attribution Overlay -->
+                                    <div id="aggregated-attribute-data">
+                                        <div data-bind="visible: aggregatedAttributes" style="display: none">
+                                          <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
+                                          <div data-bind="foreach: aggregatedAttributes()">
+                                              <strong><span data-bind="text: title"></span></strong>
+                                              <dl data-bind="foreach: attrs">
+                                                <!--<dt data-bind="text: display"></dt>-->
+                                                <!--<dd data-bind="text: data"></dd>-->
+                                                <dt>
+                                                    <span data-bind="text: display"></span><span data-bind="visible: display">:</span>
+                                                    <span style="font-weight: normal" data-bind="text: data"></span>
+                                                </dt>
+                                              </dl>
+                                          </div>
+                                        </div>
+                                    </div>
                                   
                                     <!-- Bookmark Message -->
                                     <div id="error-overlay" data-bind="visible: error() === 'restoreState'" style="display:none">

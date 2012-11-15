@@ -82160,10 +82160,12 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
     },
     
     start: function(evt) {
+        //debugger;
         this.startEvt = evt;
     },
     
     cancel: function(evt) {
+        //debugger;
         delete this.startEvt;
     },
     

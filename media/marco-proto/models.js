@@ -153,6 +153,7 @@ function layerModel(options, parent) {
         if (app.viewModel.attributeTitle() === layer.name) {
             app.viewModel.attributeTitle(false);
             app.viewModel.attributeData(false);
+            app.viewModel.aggregatedAttributes(false);
         }
 
         layer.active(false);
@@ -271,6 +272,7 @@ function layerModel(options, parent) {
             if (app.viewModel.attributeTitle() === layer.name) {
                 app.viewModel.attributeTitle(false);
                 app.viewModel.attributeData(false);
+                app.viewModel.aggregatedAttributes(false);
             }
         } else { //make visible
             layer.visible(true);
@@ -713,12 +715,14 @@ function viewModel() {
     // attribute data
     self.attributeTitle = ko.observable(false);
     self.attributeData = ko.observable(false);
+    self.aggregatedAttributes = ko.observable(false);
 
     // title for print view
     self.mapTitle = ko.observable();
 
     self.closeAttribution = function() {
         self.attributeData(false);
+        self.aggregatedAttributes(false);
     };
     
     // hide tours for smaller screens
