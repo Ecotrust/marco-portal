@@ -232,23 +232,37 @@ app.init = function () {
     app.map = map;
     
     app.map.attributes = [];
+    app.map.clickOutput = { time: 0, attributes: [] };
     
     app.map.events.register("featureclick", null, function(e) {
         var layer = e.feature.layer.layerModel;
+        var date = new Date();
+        var newTime = date.getTime();
+        var attrs = layer.attributes,
+            title = layer.name,
+            text = [];
+        
         if ( layer.attributes.length ) {
-            var attrs = layer.attributes,
-                title = layer.name,
-                text = [];
             //app.viewModel.attributeTitle(title); 
             for (var i=0; i<attrs.length; i++) {
                 if ( e.feature.data[attrs[i].field] ) {
                     text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
                 }
             }
-            app.map.attributes.push( {'title': title, 'attrs': text} );
-            app.viewModel.aggregatedAttributes(app.map.attributes);
         }
-        debugger;
+        
+        if (newTime - app.map.clickOutput.time > 100) {
+            //app.map.clickOutput.attributes = [e.feature.layer.name];
+            app.map.clickOutput.attributes = [{'title': title, 'attrs': text}];
+            app.map.clickOutput.time = newTime;
+        } else {
+            //app.map.clickOutput.attributes.push(e.feature.layer.name);
+            app.map.clickOutput.attributes.push( {'title': title, 'attrs': text} );
+        }
+        
+        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+        
+        //debugger;
     });
     
     
