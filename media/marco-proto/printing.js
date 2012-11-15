@@ -2,7 +2,8 @@ var io = io || false;
 
 (function () {
 	var socket,
-		socketUrl = 'http://dev.marco.marineplanning.org:8000';
+		// socketUrl = 'http://localhost:8989';
+		socketUrl = 'http://dev.marco.marineplanning.org:8080';
 
 	function printModel (map, viewModel) {
 		var self = this;
@@ -37,7 +38,7 @@ var io = io || false;
 		        self.jobStatus("Waiting for print/export to complete");
 		        self.showSpinner(true);
 		        self.thumbnail(false);
-		        self.$popover.show().position({
+		        self.$popover.show().draggable().position({
 		            "my": "right top",
 		            "at": "left middle",
 		            "of": self.$button,
@@ -132,7 +133,7 @@ var io = io || false;
 			$("#print-modal").modal('show');
 
 			if (self.borderLess()) {
-				mapHeight = $('#map-panel').height() - 4;
+				mapHeight = $('#map-panel').height() - 2;
 				mapWidth = $("#map-panel").width() + 10;
 			} else {
 				mapHeight = self.mapHeight();

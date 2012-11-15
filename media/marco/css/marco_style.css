@@ -921,6 +921,11 @@ img + h3 {
 .popover .radio input {
 	width: 94%;
 }
+
+.disabled {
+	color: #777 !important;
+}
+
 #printing-popover .radio input {
 	width: 20%;
 }
@@ -931,13 +936,19 @@ img + h3 {
 #printing-popover {
 	width: 460px;
 }
-#printing-popover .popover.left .arrow {
-	top: 5%;
+#printing-popover .arrow {
+	display: none;
 }
 #printing-popover .well {
 	padding-top: 5px;
+	height: 160px;
 }
-
+#print-modal .modal-header {
+	border-bottom: 0px;
+}
+#print-modal .loading span {
+	margin-left: 10px;
+}
 
 body.print .tabs,
 body.print .user-btn,

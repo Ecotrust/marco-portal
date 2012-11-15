@@ -8,12 +8,15 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   app = express(),
   server = http.createServer(app),
   io = require('socket.io').listen(server),
-  port = 8000,
+  port = 8080,
   targetUrl = "http://dev.marco.marineplanning.org/visualize/",
   socketUrl = "http://dev.marco.marineplanning.org:" + port,
+  // targetUrl = "http://localhost/visualize/",
+  // socketUrl = "http://localhost:" + port,
   staticDir = "shots/",
+  // phantomPath = "/usr/bin/phantomjs";
   phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-x86_64/bin/phantomjs";
-  
+
   constraints = {
     'letter': {
       width: 612,
@@ -129,7 +132,10 @@ io.sockets.on('connection', function(socket) {
         }
 
         img.write(target + data.format, function () {
-          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png', function () {
+          gm(original).thumb(300, 300, staticDir +'thumb-' + filename + '.png', function (err) {
+            if (err) {
+              console.log(err);
+            }
             if (data.format === '.tiff') {
               zipTiff(done); 
             } else {
