@@ -11,16 +11,16 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Le styles -->
-        <link href="{{media}}/marco/css/bootstrap.css" rel="stylesheet">
-        <link href="{{media}}/marco/css/marco_style.css" rel="stylesheet">
-        <link href="{{media}}/marco-proto/assets/css/scalebar-thin.css" rel="stylesheet">
-        <link href="{{media}}/marco-proto/assets/css/style.css" rel="stylesheet">
-        <link href="{{media}}/marco-proto/assets/css/pageguide.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco/css/bootstrap.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco/css/marco_style.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/scalebar-thin.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/style.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/pageguide.css" rel="stylesheet">
 
-        <link href="{{media}}/marco/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
-        <link href="{{media}}/marco-proto/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet">
-        <link href="{{media}}marco/css/jquery.jscrollpane.css" rel="stylesheet">
-        <!--<link href="{{media}}/marco-proto/assets/css/jScrollPane.css" rel="stylesheet">-->
+        <link href="{{MEDIA_URL}}/marco/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}marco/css/jquery.jscrollpane.css" rel="stylesheet">
+        <!--<link href="{{MEDIA_URL}}/marco-proto/assets/css/jScrollPane.css" rel="stylesheet">-->
         <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css"
         type="text/css" media="all" />-->
         <link rel="shortcut icon" href="{{MEDIA_URL}}marco/ico/favicon.ico">
@@ -28,7 +28,7 @@
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-            <link href="{{media}}/marco/css/marco_style.ie.css" rel="stylesheet">
+            <link href="{{MEDIA_URL}}/marco/css/marco_style.ie.css" rel="stylesheet">
             <style>
                     #feedback-tab {
                         -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1.836909530733566e-16, M12=-1, M21=1, M22=-1.836909530733566e-16, SizingMethod='auto expand')";
@@ -44,7 +44,7 @@
 
                       }
             </style>
-            <script src="{{media}}marco/js/respond.min.js"></script>
+            <script src="{{MEDIA_URL}}marco/js/respond.min.js"></script>
         <![endif]-->
         <!-- Le fav and touch icons -->
         <!--[if IE 7]>
@@ -61,10 +61,10 @@
         }
 
         </style>
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="{{media}}/marco-proto/assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-57-precomposed.png">
         
         <!-- Google Analytics -->
         <script type="text/javascript">
@@ -415,6 +415,9 @@
                           <span class="help-inline" data-bind="visible: passwordSuccess()">Success!</span>
                       </div>
                     </div>
+                    <div>
+                        <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="pull-right">
@@ -517,7 +520,7 @@
                         <div class="row-fluid">
                             <div class="span5">
                                 <a href="/portal">
-                                    <img src="{{media}}marco/img/marco-logo_planner.jpg"/>
+                                    <img src="{{MEDIA_URL}}marco/img/marco-logo_planner.jpg"/>
                                 </a>
                                 <h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3>
                             </div>
@@ -1140,7 +1143,7 @@
                 <div class="row-fluid" class="results" data-bind="visible: showSpinner">
                     
                     <div class="span12 loading">
-                        <strong><img src="{{media}}marco/img/ajax-loader.gif"/> <span data-bind="text: jobStatus"></span></strong>
+                        <strong><img src="{{MEDIA_URL}}marco/img/ajax-loader.gif"/> <span data-bind="text: jobStatus"></span></strong>
                     </div>
                  
                 </div>
@@ -1194,44 +1197,44 @@
     <script src="assets/js/bootstrap-collapse.js"></script>
      -->
         <!--<link rel="stylesheet" type="text/css" href="http://www.transportparadise.co.uk/layerswitcher/layerswitcher.css" />
-        <link rel="stylesheet" type="text/css" src="{{media}}/marco-proto/assets/css/simplelayerswitcher.css" />-->
-        <script src="{{media}}/marco/js/jquery.js"></script>
-        <script src="{{media}}/marco/js/bootstrap.min.js"></script>
-        <script src="{{media}}/marco/js/amplify.min.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/jquery.ba-bbq.js"></script>
-        <script src="{{media}}/marco/js/jquery-ui-1.9.1.custom.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/knockout-bindings.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/knockout.mapping-latest.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/jquery.pageguide.js"></script>
+        <link rel="stylesheet" type="text/css" src="{{MEDIA_URL}}/marco-proto/assets/css/simplelayerswitcher.css" />-->
+        <script src="{{MEDIA_URL}}/marco/js/jquery.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/bootstrap.min.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/amplify.min.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.ba-bbq.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/jquery-ui-1.9.1.custom.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/knockout-bindings.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/knockout.mapping-latest.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.pageguide.js"></script>
      <!-- <script src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>-->
         <script src="http://maps.google.com/maps/api/js?v=3.6&amp;sensor=false"></script>
-        <script src="{{media}}/marco-proto/assets/openlayers/OpenLayers.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/simplelayerswitcher.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/scalebar.js"></script>
-        <script src="{{media}}/marco/js/bigscreen.js"></script>
-        <script src="{{media}}/marco/js/jquery.ui.touch-punch.min.js"></script>
-        <script src="{{media}}/marco/js/jquery.jscrollpane.min.js"></script>
-        <script src="{{media}}/marco/js/date.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/openlayers/OpenLayers.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/simplelayerswitcher.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/scalebar.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/bigscreen.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/jquery.jscrollpane.min.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/date.js"></script>
 
-        <script src="{{SETTINGS.SOCKET_URL}}/socket.io/socket.io.js"></script>
+        <script src="{{SOCKET_URL}}/socket.io/socket.io.js"></script>
         <!--<script src="http://www.transportparadise.co.uk/layerswitcher/simplelayerswitcher.js"></script>-->
         <script>
             var app = {
-                socketUrl: "{{ SETTINGS.SOCKET_URL }}"
+                socketUrl: "{{ SOCKET_URL }}"
             };
             {% if user.is_authenticated %} app.is_authenticated = true; {% endif %}
         </script>
-        <script src="{{media}}/marco-proto/fixtures.js"></script>
-        <script src="{{media}}/marco-proto/map.js"></script>
-        <script src="{{media}}/marco-proto/state.js"></script>
-        <script src="{{media}}/marco-proto/models.js"></script>
-        <script src="{{media}}/marco-proto/server.js"></script>
-        <script src="{{media}}/marco-proto/printing.js"></script>
-        <script src="{{media}}/marco-proto/app.js"></script>
-        <script src="{{media}}/marco-proto/pageguide.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/jquery.mousewheel.min.js"></script>
-        <script src="{{media}}/marco-proto/assets/js/jquery.mCustomScrollbar.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/fixtures.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/map.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/state.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/models.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/server.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/printing.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/app.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/pageguide.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.mousewheel.min.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.mCustomScrollbar.js"></script>
 
         <script>
         !
