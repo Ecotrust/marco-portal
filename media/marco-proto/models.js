@@ -1183,6 +1183,7 @@ function viewModel() {
         self.windDesignStep3(true);
         $('#wind-design-breadcrumb-step-3').addClass('active');
     };
+    /* END Wind Design */
     
     self.startDefaultTour = function() {
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
@@ -1423,11 +1424,3 @@ function viewModel() {
 }
 
 app.viewModel = new viewModel();
-/*
-app.viewModel.designs = function() {
-    
-    self.createDesign = function() {
-        debugger;
-    };
-
-}*/
