@@ -1,11 +1,13 @@
 import os
 import time
+import json
 from picklefield import PickledObjectField
 from django.db import models
 from django.conf import settings
 from django.contrib.gis.db import models
 from django.utils.html import escape
 from madrona.common.utils import asKml
+from madrona.common.jsonutils import get_properties_json, get_feature_json
 from madrona.features import register
 from madrona.analysistools.models import Analysis
 from general.utils import miles_to_meters, feet_to_meters, meters_to_feet, mph_to_mps, mps_to_mph, format
@@ -73,11 +75,18 @@ class Scenario(Analysis):
     #I'm finding myself wishing lease_blocks was spelled without the underscore...            
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     geometry_final_area = models.FloatField(verbose_name='Total Area', null=True, blank=True)
+    geometry_dissolved = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Scenario result dissolved")
+    
+    def geojson(self, srid):
+        props = get_properties_json(self)
+        props['absolute_url'] = self.get_absolute_url()
+        json_geom = self.geometry_dissolved.transform(srid, clone=True).json
+        return get_feature_json(json_geom, json.dumps(props))
     
     def run(self):
     
         result = LeaseBlock.objects.all()
-        
+        '''
         #GeoPhysical
         if self.input_parameter_distance_to_shore:
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
@@ -91,10 +100,12 @@ class Scenario(Analysis):
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
+        '''
         #Wind Energy
         if self.input_parameter_wind_speed:
             input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
             result = result.filter(min_wind_speed__gte=input_wind_speed)
+        '''
         if self.input_parameter_wea:
             input_wea = [wea.wea_id for wea in self.input_wea.all()]
             result = result.filter(wea_number__in=input_wea)
@@ -105,10 +116,17 @@ class Scenario(Analysis):
             result = result.filter(ais_mean_density__lte=1)
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
-            
+        ''' 
+        
+        dissolved_geom = result[0].geometry
+        for r in result:
+            dissolved_geom = dissolved_geom.union(r.geometry)
+        self.geometry_dissolved = dissolved_geom
+        
         self.geometry_final_area = sum([r.geometry.area for r in result.all()])
         leaseblock_ids = [r.id for r in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
+        
         
         if self.lease_blocks == '':
             self.satisfied = False

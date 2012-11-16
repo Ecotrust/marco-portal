@@ -42,6 +42,7 @@ INSTALLED_APPS += ( 'clipping',
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
+GEOJSON_SRID = 3857
 
 APP_NAME = "MARCO Mid-Atlantic Ocean Data Portal"
 FEEDBACK_RECIPIENT = "MARCO Portal Team <info@midatlanticocean.org>"
