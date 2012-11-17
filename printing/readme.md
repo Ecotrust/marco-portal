@@ -18,7 +18,7 @@ uncompress to /usr/local/apps/nod/node-*
 sudo apt-get install nodejs
 
 ##install process monitor
-sudo npm install -g forever
+/usr/local/apps/node/node-v0.8.14-linux-x86/bin/npm install -g forever
 
 ##install graphicsmagick library
 sudo apt-get install graphicsmagick
@@ -26,10 +26,15 @@ sudo apt-get install graphicsmagick
 ##add upstart script owned by root
 cp marco-portal/printing/marco_printing.conf /etc/init/
 verify that paths to executables are correct
+    sudo vi /etc/init/marco_printing.conf
 verify that username is correct
 
 ##file permissions
+sudo mkdir shots
 make sure shots dir is writable by marco user
 
 ## django settings
 SOCKET_URL = 'http://HOSTNAME:PORT'
+
+## start server
+sudo start marco_printing
