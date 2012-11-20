@@ -20,8 +20,8 @@
 		    }
 
 		    // set some default options
-		    self.shotHeight($(document).height());
-		    self.shotWidth(width);
+		    self.shotHeight($(document).height() / self.dpiHeight);
+		    self.shotWidth(width / self.dpiWidth);
 		    self.mapHeight($(document).height());
 
 		    self.mapWidth(width);
@@ -59,6 +59,10 @@
 		self.shotHeight = ko.observable();
 		self.shotWidth = ko.observable();
 
+		// dpi settings for phantomjs
+		self.dpiWidth = 101.981;
+    	self.dpiHeight = 110.007;
+
 		// working dimensions of map for rendering purposes
 		self.mapHeight = ko.observable();
 		self.mapWidth = ko.observable();
@@ -88,13 +92,13 @@
 		
 		// lock aspect ratio with these subscriptions
 		self.shotHeight.subscribe(function (newVal) {
-			var width = Math.round(newVal / self.ratio);
+			var width = newVal / self.ratio;
 			if ($.isNumeric(width) && width !== self.shotWidth()) {
 				self.shotWidth(width);		
 			}
 		});
 		self.shotWidth.subscribe(function (newVal) {
-			var height = Math.round(newVal * self.ratio);
+			var height = newVal * self.ratio;
 			if ($.isNumeric(height) && height !== self.shotHeight()) {
 				self.shotHeight(height);		
 			}
@@ -152,8 +156,8 @@
 				screenWidth: $(document).width(),
 
 				// finished image size
-				shotHeight: self.shotHeight(),
-				shotWidth: self.shotWidth(),
+				shotHeight: self.shotHeight() * self.dpiHeight,
+				shotWidth: self.shotWidth() * self.dpiWidth,
 
 				// actual dimensions of the map at this screenHeight/screenWidth
 				mapHeight: mapHeight,

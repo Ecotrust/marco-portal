@@ -1089,10 +1089,10 @@
                             <div class="well">
                                 <fieldset data-bind="visible: format() !== '.pdf'">
                                     <strong>Image Size</strong>
-                                    <label>Height (pixels)</label>
-                                    <input type="text" class="spinner" data-bind="spinner: shotHeight">
-                                    <label>Width (pixels)</label>
-                                    <input type="text" class="spinner" data-bind="spinner: shotWidth">
+                                    <label>Width (inches)</label>
+                                    <input type="text" class="spinner" data-bind="spinner: shotWidth, spinnerOptions: { step: .1 }">
+                                    <label>Height (inches)</label>
+                                    <input type="text" class="spinner" data-bind="spinner: shotHeight, spinnerOptions: { step: .1 }">
                                 </fieldset>
                                 <fieldset data-bind="visible: format() === '.pdf'">
                                     <strong>Paper Size</strong>
