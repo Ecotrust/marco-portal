@@ -19,6 +19,8 @@
 		    	width = width + 40;
 		    }
 
+		    self.isGoogle(/Google/.test(app.map.baseLayer.name));
+
 		    // set some default options
 		    self.shotHeight($(document).height() / self.dpiHeight);
 		    self.shotWidth(width / self.dpiWidth);
@@ -76,16 +78,15 @@
 		self.download = ko.observable();
 		self.thumbnail = ko.observable(false);
 
+		// warn if baselayer is google
+
+		self.isGoogle = ko.observable(false);
+
+
 		// legend checkbox shows/hides real legend
 		// update positon of popover
 		self.showLegend.subscribe(function (newValue) {
 			app.viewModel.showLegend(newValue);
-			self.$popover.position({
-			    "my": "right top",
-			    "at": "left middle",
-			    "of": self.$button,
-			    offset: "0px -30px"
-			});
 		});
 
 
@@ -202,4 +203,12 @@
 	};
 	app.viewModel.printing = new printModel(app.map, app.viewModel);
 	
+	$(document).on('map-ready', function () {
+		alert('map-ready');
+		app.map.events.register('changebaselayer', null, function (event) {
+			console.log('base layer changed');
+			app.viewModel.printing.isGoogle(/Google/.test(event.layer.name));
+		});
+
+	});
 })();

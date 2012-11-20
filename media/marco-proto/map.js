@@ -229,6 +229,8 @@ app.init = function () {
     map.addControl(map.UTFControl);    
 
     app.map = map;
+    // trigger events that depend on the map
+    $(document).trigger('map-ready');
 };
 
 app.addLayerToMap = function(layer) {

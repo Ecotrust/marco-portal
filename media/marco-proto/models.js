@@ -789,6 +789,11 @@ function viewModel() {
 
     // is the legend panel visible?
     self.showLegend = ko.observable(false);
+    self.showLegend.subscribe(function (newVal) {
+        if (self.printing.enabled()) {
+            self.printing.showLegend(newVal);
+        }
+    });
 
     self.activeLegendLayers = ko.computed(function() {
         var layers = $.map(self.visibleLayers(), function(layer) {

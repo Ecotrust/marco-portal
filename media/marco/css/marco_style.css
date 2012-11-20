@@ -933,12 +933,18 @@ img + h3 {
 	width: 55%;
 }
 
+
 #printing-popover {
 	width: 460px;
 }
 #printing-popover .arrow {
 	display: none;
 }
+
+#printing-popover .alert {
+	margin-bottom: 10px;
+}
+
 #printing-popover .well {
 	padding-top: 5px;
 	height: 160px;

@@ -1060,66 +1060,75 @@
                     Print/Export
                 </h3>
                 <div class="popover-content">
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <strong>Format</strong>
-                            <div class="control-group">
-                                <label class="radio control-label">
-                                    <input type="radio" name="format" value=".png" checked data-bind="checked: format">PNG
+                    <div data-bind="visible: isGoogle() === false">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <strong>Format</strong>
+                                <div class="control-group">
+                                    <label class="radio control-label">
+                                        <input type="radio" name="format" value=".png" checked data-bind="checked: format">PNG
+                                    </label>
+                                    <label class="radio control-label">
+                                        <input type="radio" name="format" value=".jpg" data-bind="checked: format">JPG
+                                    </label>
+                                   <!-- <label class="radio control-label">
+                                        <input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
+                                    </label> -->
+                                    <label class="radio control-label">
+                                        <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
+                                    </label>
+                                </div>
+                                <strong>Options</strong>
+                                <label class="checkbox">
+                                    <input type="checkbox" data-bind="checked: borderLess">Borderless Map
                                 </label>
-                                <label class="radio control-label">
-                                    <input type="radio" name="format" value=".jpg" data-bind="checked: format">JPG
-                                </label>
-                               <!-- <label class="radio control-label">
-                                    <input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
-                                </label> -->
-                                <label class="radio control-label">
-                                    <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
+                                <label class="checkbox">
+                                    <input type="checkbox" data-bind="checked: showLegend, disable: borderLess">Show Legend
                                 </label>
                             </div>
-                            <strong>Options</strong>
-                            <label class="checkbox">
-                                <input type="checkbox" data-bind="checked: borderLess">Borderless Map
-                            </label>
-                            <label class="checkbox">
-                                <input type="checkbox" data-bind="checked: showLegend, disable: borderLess">Show Legend
-                            </label>
+                            <div class="span6">
+                                <div class="well">
+                                    <fieldset data-bind="visible: format() !== '.pdf'">
+                                        <strong>Image Size</strong>
+                                        <label>Width (inches)</label>
+                                        <input type="text" class="spinner" data-bind="spinner: shotWidth, spinnerOptions: { step: .1 }">
+                                        <label>Height (inches)</label>
+                                        <input type="text" class="spinner" data-bind="spinner: shotHeight, spinnerOptions: { step: .1 }">
+                                    </fieldset>
+                                    <fieldset data-bind="visible: format() === '.pdf'">
+                                        <strong>Paper Size</strong>
+                                            <label class="radio control-label">
+                                                <input type="radio" name="paperSize" value='letter' data-bind="checked: paperSize">Letter (8.5" x 11")
+                                            </label>
+                                            <label class="radio control-label">
+                                                <input type="radio"  name="paperSize" value='ledger' data-bind="checked: paperSize">Ledger (11" x 17")
+                                            </label>
+                                            <label class="radio control-label">
+                                                <input type="radio" name="paperSize"  value='A4' data-bind="checked: paperSize">A4 (297mm x 210mm)
+                                            </label>
+                                            <label class="radio control-label">
+                                                <input type="radio" name="paperSize"  value='A3' data-bind="checked: paperSize">A3 (420mm x 297mm)
+                                            </label>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
                         </div>
-                        <div class="span6">
-                            <div class="well">
-                                <fieldset data-bind="visible: format() !== '.pdf'">
-                                    <strong>Image Size</strong>
-                                    <label>Width (inches)</label>
-                                    <input type="text" class="spinner" data-bind="spinner: shotWidth, spinnerOptions: { step: .1 }">
-                                    <label>Height (inches)</label>
-                                    <input type="text" class="spinner" data-bind="spinner: shotHeight, spinnerOptions: { step: .1 }">
-                                </fieldset>
-                                <fieldset data-bind="visible: format() === '.pdf'">
-                                    <strong>Paper Size</strong>
-                                        <label class="radio control-label">
-                                            <input type="radio" name="paperSize" value='letter' data-bind="checked: paperSize">Letter (8.5" x 11")
-                                        </label>
-                                        <label class="radio control-label">
-                                            <input type="radio"  name="paperSize" value='ledger' data-bind="checked: paperSize">Ledger (11" x 17")
-                                        </label>
-                                        <label class="radio control-label">
-                                            <input type="radio" name="paperSize"  value='A4' data-bind="checked: paperSize">A4 (297mm x 210mm)
-                                        </label>
-                                        <label class="radio control-label">
-                                            <input type="radio" name="paperSize"  value='A3' data-bind="checked: paperSize">A3 (420mm x 297mm)
-                                        </label>
-                                    </select>
-                                </fieldset>
-                            </div>
+                        <fieldset>
+                            <label><strong data-bind="css: { disabled: borderLess }">Title</strong></label>
+                            <input class="span4" type="text" data-bind="value: title, valueUpdate: 'afterkeydown', disable: borderLess" placeholder="Optional title for map...">
+                        </fieldset>
+                    </div>
+
+                    <div data-bind="visible: isGoogle">
+                        <div class="alert alert-error">
+                          Map printing is not available with Google Base Layers.
                         </div>
                     </div>
-                    <fieldset>
-                        <label><strong data-bind="css: { disabled: borderLess }">Title</strong></label>
-                        <input class="span4" type="text" data-bind="value: title, valueUpdate: 'afterkeydown', disable: borderLess" placeholder="Optional title for map...">
-                    </fieldset>
+
                     <p class="pull-right">
                         <a class="btn" data-bind="click: cancel">cancel</a>
-                        <a class="btn" data-bind="click: sendJob">export</a>
+                        <button class="btn" data-bind="click: sendJob, disable: isGoogle">export</button>
                         <div class="clearfix"></div>
                     </p>
                 </div>
