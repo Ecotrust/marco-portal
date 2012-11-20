@@ -280,10 +280,10 @@
 </script>
 
 {% if form.media %} {{ form.media }} {% endif %}
-<h1>
-    <img src="/media/marco/img/multi.png"/>
-    <small>Spatial Design for Wind Energy </small> 
-</h1>
+<h4>
+    <!--<img src="/media/marco/img/multi.png"/>-->
+    Wind Energy Design
+</h4>
 <form id="featureform" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
     <div style="display:none;">
@@ -585,30 +585,28 @@ form ul {
     margin-bottom: 0px;
     padding-left: 20px;
 }
-form ul li {
-    padding-left: 15px !important;
-}
 li label {   
     font-weight: normal !important;
     margin-bottom: 0px !important;
 }
 form ul.parameters {
+    list-style-type: none;
     margin-top: 5px;
     margin-bottom: 0px;
-    padding-left: 40px;
+    padding-left: 0px;
 }
 label.step1-header {
     font-weight: bold;
-    padding-left: 15px !important;
+    padding-left: 5px !important;
 }
 label.step2-header {
     font-weight: bold;
-    padding-left: 15px !important;
+    padding-left: 5px !important;
     padding-bottom: 10px !important;
 }
 label.step3-header {
     font-weight: bold;
-    padding-left: 15px !important;
+    padding-left: 5px !important;
     padding-bottom: 10px !important;
 }
 div.step4-header {
