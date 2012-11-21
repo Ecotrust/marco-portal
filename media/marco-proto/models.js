@@ -793,6 +793,9 @@ function viewModel() {
         if (self.printing.enabled()) {
             self.printing.showLegend(newVal);
         }
+
+        //app.reCenterMap();
+
     });
 
     self.activeLegendLayers = ko.computed(function() {

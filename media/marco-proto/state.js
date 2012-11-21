@@ -24,6 +24,10 @@ app.getState = function () {
     };
 };
 
+$(document).on('map-ready', function () {
+    app.state = app.getState();
+});
+
 app.layersAreLoaded = false;
 app.establishLayerLoadState = function () {
     var loadTimer, status;
@@ -278,3 +282,5 @@ app.updateUrl = function () {
     window.location.hash = $.param(state);
     app.viewModel.currentURL(window.location.pathname + window.location.hash);
 };
+
+

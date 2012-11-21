@@ -22,8 +22,8 @@
 		    self.isGoogle(/Google/.test(app.map.baseLayer.name));
 
 		    // set some default options
-		    self.shotHeight($(document).height() / self.dpiHeight);
-		    self.shotWidth(width / self.dpiWidth);
+		    self.shotHeight($(document).height());
+		    self.shotWidth(width);
 		    self.mapHeight($(document).height());
 
 		    self.mapWidth(width);
@@ -57,9 +57,12 @@
 		self.format = ko.observable(".png");
 		self.paperSize = ko.observable("letter");
 
-		// final dimensions of image
+		// final dimensions of image in pixels
 		self.shotHeight = ko.observable();
 		self.shotWidth = ko.observable();
+
+		// read or write shot height/width in pixels or inches
+	
 
 		// dpi settings for phantomjs
 		self.dpiWidth = 101.981;
@@ -79,9 +82,46 @@
 		self.thumbnail = ko.observable(false);
 
 		// warn if baselayer is google
-
 		self.isGoogle = ko.observable(false);
+		self.units = ko.observable("inches");
 
+
+		self.shotHeightDisplay = ko.computed({
+			read: function () {
+				var value = self.shotHeight();
+
+				if (self.units() === 'inches') {
+					value = value / self.dpiHeight;
+				} else {
+					value = parseInt(value, 10);
+				}
+				return value;
+			},
+			write: function (value) {
+				if (self.units() === 'inches') {
+					value = value * self.dpiHeight;
+				}
+				self.shotHeight(value);
+			}
+		});
+		self.shotWidthDisplay = ko.computed({
+			read: function () {		
+				var value = self.shotWidth();
+
+				if (self.units() === 'inches') {
+					value = value / self.dpiWidth;
+				} else {
+					value = parseInt(value, 10);
+				}
+				return value;
+			},
+			write: function (value) {
+				if (self.units() === 'inches') {
+					value = value * self.dpiWidth;
+				}
+				self.shotWidth(value);
+			}
+		});
 
 		// legend checkbox shows/hides real legend
 		// update positon of popover
@@ -89,7 +129,16 @@
 			app.viewModel.showLegend(newValue);
 		});
 
-
+		self.units.subscribe(function (units) {
+			var steps = units === 'inches' ? .1 : 1;
+			// save the old value and adjust the steps
+			$('.ui-spinner-input').each(function (i, input) {
+				var $input = $(input), val = $input.val();
+				console.log(val);
+				$input.spinner('option', { 'step': steps})
+				$input.val(val);
+			});
+		});
 		
 		// lock aspect ratio with these subscriptions
 		self.shotHeight.subscribe(function (newVal) {
@@ -157,8 +206,8 @@
 				screenWidth: $(document).width(),
 
 				// finished image size
-				shotHeight: self.shotHeight() * self.dpiHeight,
-				shotWidth: self.shotWidth() * self.dpiWidth,
+				shotHeight: self.shotHeight(),
+				shotWidth: self.shotWidth(),
 
 				// actual dimensions of the map at this screenHeight/screenWidth
 				mapHeight: mapHeight,
@@ -204,7 +253,6 @@
 	app.viewModel.printing = new printModel(app.map, app.viewModel);
 	
 	$(document).on('map-ready', function () {
-		alert('map-ready');
 		app.map.events.register('changebaselayer', null, function (event) {
 			console.log('base layer changed');
 			app.viewModel.printing.isGoogle(/Google/.test(event.layer.name));
