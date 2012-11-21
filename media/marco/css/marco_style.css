@@ -933,15 +933,28 @@ img + h3 {
 	width: 55%;
 }
 
+
 #printing-popover {
-	width: 460px;
+	width: 395px;
 }
 #printing-popover .arrow {
 	display: none;
 }
+
+#printing-popover .alert {
+	margin-bottom: 10px;
+}
+
 #printing-popover .well {
 	padding-top: 5px;
-	height: 160px;
+	height: 210px;
+}
+#printing-popover .well strong {
+	margin-left: -8px;
+}
+
+#printing-popover .checkbox {
+	margin-left: 9px;
 }
 #print-modal .modal-header {
 	border-bottom: 0px;
