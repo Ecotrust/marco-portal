@@ -921,6 +921,11 @@ img + h3 {
 .popover .radio input {
 	width: 94%;
 }
+
+.disabled {
+	color: #777 !important;
+}
+
 #printing-popover .radio input {
 	width: 20%;
 }
@@ -928,16 +933,43 @@ img + h3 {
 	width: 55%;
 }
 
+
 #printing-popover {
-	width: 460px;
+	width: 395px;
 }
-#printing-popover .popover.left .arrow {
-	top: 5%;
-}
-#printing-popover .well {
-	padding-top: 5px;
+#printing-popover .arrow {
+	display: none;
 }
 
+#printing-popover .alert {
+	margin-bottom: 10px;
+}
+
+#printing-popover .well {
+	padding-top: 5px;
+	height: 210px;
+}
+#printing-popover .well strong {
+	margin-left: -8px;
+}
+
+#printing-popover .checkbox {
+	margin-left: 9px;
+}
+#print-modal .modal-header {
+	border-bottom: 0px;
+}
+#print-modal .loading span {
+	margin-left: 10px;
+}
+#print-modal .modal-body {
+	overflow: hidden;
+}
+#print-modal img.thumb {
+	display: block;
+	margin: auto;
+	width: 100%;
+}
 
 body.print .tabs,
 body.print .user-btn,

@@ -24,6 +24,10 @@ app.getState = function () {
     };
 };
 
+$(document).on('map-ready', function () {
+    app.state = app.getState();
+});
+
 app.layersAreLoaded = false;
 app.establishLayerLoadState = function () {
     var loadTimer, status;
@@ -118,17 +122,17 @@ app.loadCompressedState = function(state) {
         setTimeout( function() { $('#dataTab').tab('show'); }, 200 );
     }
     
-    if ( state.legends && state.legends === "true" ) {
+    if ( state.legends && state.legends === 'true' ) {
         app.viewModel.showLegend(true);
     } else {
         app.viewModel.showLegend(false);
     }
 
-    if (state.layers && state.layers === 'true') {
-        app.viewModel.showLayers(true);
-    } else {
+    if (state.layers && state.layers === 'false') {
         app.viewModel.showLayers(false);
         app.map.render('map');
+    } else {
+        app.viewModel.showLayers(true);
     }
 
     // map title for print view
@@ -278,3 +282,5 @@ app.updateUrl = function () {
     window.location.hash = $.param(state);
     app.viewModel.currentURL(window.location.pathname + window.location.hash);
 };
+
+

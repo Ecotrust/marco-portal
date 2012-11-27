@@ -1,8 +1,7 @@
-var io = io || false;
-
 (function () {
 	var socket,
-		socketUrl = 'http://dev.marco.marineplanning.org:8000';
+		socketUrl = app.socketUrl || 'http://localhost:8989';
+		// socketUrl = marco_settings !== 'undefined' ? marco_settings.socketUrl : 'http://localhost:8989';
 
 	function printModel (map, viewModel) {
 		var self = this;
@@ -19,6 +18,8 @@ var io = io || false;
 		    } else {
 		    	width = width + 40;
 		    }
+
+		    self.isGoogle(/Google/.test(app.map.baseLayer.name));
 
 		    // set some default options
 		    self.shotHeight($(document).height());
@@ -37,7 +38,7 @@ var io = io || false;
 		        self.jobStatus("Waiting for print/export to complete");
 		        self.showSpinner(true);
 		        self.thumbnail(false);
-		        self.$popover.show().position({
+		        self.$popover.show().draggable().position({
 		            "my": "right top",
 		            "at": "left middle",
 		            "of": self.$button,
@@ -56,9 +57,16 @@ var io = io || false;
 		self.format = ko.observable(".png");
 		self.paperSize = ko.observable("letter");
 
-		// final dimensions of image
+		// final dimensions of image in pixels
 		self.shotHeight = ko.observable();
 		self.shotWidth = ko.observable();
+
+		// read or write shot height/width in pixels or inches
+	
+
+		// dpi settings for phantomjs
+		self.dpiWidth = 101.981;
+    	self.dpiHeight = 110.007;
 
 		// working dimensions of map for rendering purposes
 		self.mapHeight = ko.observable();
@@ -73,29 +81,74 @@ var io = io || false;
 		self.download = ko.observable();
 		self.thumbnail = ko.observable(false);
 
+		// warn if baselayer is google
+		self.isGoogle = ko.observable(false);
+		self.units = ko.observable("inches");
+
+
+		self.shotHeightDisplay = ko.computed({
+			read: function () {
+				var value = self.shotHeight();
+
+				if (self.units() === 'inches') {
+					value = value / self.dpiHeight;
+				} else {
+					value = parseInt(value, 10);
+				}
+				return value;
+			},
+			write: function (value) {
+				if (self.units() === 'inches') {
+					value = value * self.dpiHeight;
+				}
+				self.shotHeight(value);
+			}
+		});
+		self.shotWidthDisplay = ko.computed({
+			read: function () {		
+				var value = self.shotWidth();
+
+				if (self.units() === 'inches') {
+					value = value / self.dpiWidth;
+				} else {
+					value = parseInt(value, 10);
+				}
+				return value;
+			},
+			write: function (value) {
+				if (self.units() === 'inches') {
+					value = value * self.dpiWidth;
+				}
+				self.shotWidth(value);
+			}
+		});
+
 		// legend checkbox shows/hides real legend
 		// update positon of popover
 		self.showLegend.subscribe(function (newValue) {
 			app.viewModel.showLegend(newValue);
-			self.$popover.position({
-			    "my": "right top",
-			    "at": "left middle",
-			    "of": self.$button,
-			    offset: "0px -30px"
-			});
 		});
 
-
+		self.units.subscribe(function (units) {
+			var steps = units === 'inches' ? .1 : 1;
+			// save the old value and adjust the steps
+			$('.ui-spinner-input').each(function (i, input) {
+				var $input = $(input), val = $input.val();
+				console.log(val);
+				$input.spinner('option', { 'step': steps})
+				$input.val(val);
+			});
+		});
 		
 		// lock aspect ratio with these subscriptions
 		self.shotHeight.subscribe(function (newVal) {
-			var width = Math.round(newVal / self.ratio);
+			var width = newVal / self.ratio;
 			if ($.isNumeric(width) && width !== self.shotWidth()) {
 				self.shotWidth(width);		
 			}
 		});
 		self.shotWidth.subscribe(function (newVal) {
-			var height = Math.round(newVal * self.ratio);
+			var height = newVal * self.ratio;
 			if ($.isNumeric(height) && height !== self.shotHeight()) {
 				self.shotHeight(height);		
 			}
@@ -124,6 +177,12 @@ var io = io || false;
 				
 		};
 
+		self.downloadFile = function (self,event) {
+			var $modal = $(event.target).closest('.modal');
+			$modal.modal('hide');
+			window.open(self.download());
+		};
+
 		// handle export button in print popover
 		self.sendJob = function (self, event) {
 			var mapHeight, mapWidth;
@@ -132,7 +191,7 @@ var io = io || false;
 			$("#print-modal").modal('show');
 
 			if (self.borderLess()) {
-				mapHeight = $('#map-panel').height() - 4;
+				mapHeight = $('#map-panel').height() - 2;
 				mapWidth = $("#map-panel").width() + 10;
 			} else {
 				mapHeight = self.mapHeight();
@@ -180,7 +239,7 @@ var io = io || false;
 		};
 
 		// make sure we have a socket
-		if (io !== false) {
+		if (typeof io !== 'undefined') {
 			socket = io.connect(socketUrl);	
 			self.enabled(true);
 		} else {
@@ -193,4 +252,11 @@ var io = io || false;
 	};
 	app.viewModel.printing = new printModel(app.map, app.viewModel);
 	
+	$(document).on('map-ready', function () {
+		app.map.events.register('changebaselayer', null, function (event) {
+			console.log('base layer changed');
+			app.viewModel.printing.isGoogle(/Google/.test(event.layer.name));
+		});
+
+	});
 })();

@@ -57,6 +57,10 @@ app.viewModel.loadLayersFromServer().done(function() {
   $('#loading').hide();
   // app.map.updateSize();
   app.onResize();
+  
+  // trigger events that depend on the map
+  $(document).trigger('map-ready');
+  
   // if we have the hash state go ahead and load it now
   if (app.hash) {
     app.loadStateFromHash(app.hash);
@@ -77,9 +81,6 @@ app.init();
 // transform our coordinates
 app.map.setCenter(new OpenLayers.LonLat(-73.24, 38.93).transform(
 new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7);
-
-
-
 
 $(document).ready(function() {
   app.onResize();

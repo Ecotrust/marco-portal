@@ -229,6 +229,7 @@ app.init = function () {
     map.addControl(map.UTFControl);    
 
     app.map = map;
+
 };
 
 app.addLayerToMap = function(layer) {
@@ -382,6 +383,11 @@ app.setLayerZIndex = function(layer, index) {
     layer.layer.setZIndex(index);
 };
 
+
+app.reCenterMap = function () {
+    app.map.setCenter(new OpenLayers.LonLat(app.state.x, app.state.y).transform(
+        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7)
+}
 
 // block mousehweel when over overlay
 $("#overview-overlay-text").hover(

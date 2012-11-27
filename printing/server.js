@@ -1,4 +1,5 @@
 var webshot = require('./lib/webshot/lib/webshot.js'),
+  argv = require('optimist').argv,
   express = require('express'),
   http = require('http'),
   moment = require('moment'),
@@ -8,12 +9,12 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   app = express(),
   server = http.createServer(app),
   io = require('socket.io').listen(server),
-  port = 8000,
-  targetUrl = "http://dev.marco.marineplanning.org/visualize/",
-  socketUrl = "http://dev.marco.marineplanning.org:" + port,
+  port = argv.port || 8989,
+  targetUrl = argv.appurl || "http://localhost/visualize",
+  socketUrl = argv.socketurl + ':' + port || "http://localhost:" + port,
   staticDir = "shots/",
-  phantomPath = "/usr/local/apps/node/phantomjs-1.7.0-linux-x86_64/bin/phantomjs";
-  
+  phantomPath = argv.phantomjs || "/usr/bin/phantomjs";
+
   constraints = {
     'letter': {
       width: 612,
@@ -33,6 +34,11 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
     }
   }
 
+
+// fix urls without trailing slash
+if (targetUrl.slice(-1) !== '/') {
+  targetUrl = targetUrl + '/';
+}
 
 // sockets and static file server all listen on port 8989
 app.use(express.static(__dirname + '/shots'));
@@ -72,7 +78,6 @@ io.sockets.on('connection', function(socket) {
         phantomPath: phantomPath
       },
       hash = data.hash + "&print=true";
-    console.dir(options);
     if (data.title) {
       hash = hash + "&title=" + data.title;
     }
@@ -80,7 +85,7 @@ io.sockets.on('connection', function(socket) {
       hash = hash + "&borderless=true";
     }
     console.dir(data);
-    console.log(hash);
+    console.log(targetUrl + hash);
     webshot(targetUrl + hash, staticDir + filename + '.png', options, function(err) {
       var original = staticDir + filename + '.png',
           target =  staticDir + filename,
@@ -129,7 +134,11 @@ io.sockets.on('connection', function(socket) {
         }
 
         img.write(target + data.format, function () {
-          gm(original).thumb(500, 300, staticDir +'thumb-' + filename + '.png', function () {
+          gm(original).resize(350, 350)
+            .write(staticDir +'thumb-' + filename + '.png', function (err) {
+            if (err) {
+              console.log(err);
+            }
             if (data.format === '.tiff') {
               zipTiff(done); 
             } else {
