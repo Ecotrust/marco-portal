@@ -1,0 +1,76 @@
+
+
+<div class="tab-pane fade" id="designs" data-bind="with: scenarios">
+    <!-- Create New Design dropdown menu -->
+    <div style="margin-left: 20px" data-bind="visible: ! scenarioForm() ">
+        <div class="btn-group user-btn">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                Create New Design
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a data-bind="click: createWindScenario">Wind Energy</a></li>
+                <li><a href="#">Conservation</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Selection-Based</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div data-bind="visible: scenarioForm, html: scenarioForm"></div>
+    
+    
+    <div>
+        <ul  class="unstyled" data-bind="foreach: scenarioList ">
+            <li class="layer">
+                <div class="btn-group btn-group-layer">
+                    <a class="btn btn-info-sign">
+                        <i class="icon-info-sign icon-large"></i>
+                    </a>
+
+                    <a class="btn btn-layer">
+                        <div style="font-weight: normal">
+                            <span data-bind="text: name"></span>
+                        </div>
+                    </a>
+
+                </div>
+            </li>  
+        </ul>
+    </div>
+
+    
+    
+    
+    
+    
+    <!-- Wind Energy Design -->
+    <!--<div data-bind="visible: showWindDesignWizard()">-->
+    <!--
+    <div data-bind="visible: false">
+        <div>  
+          <ul class="breadcrumb">  
+            <li id="wind-design-breadcrumb-step-1">  
+              <a href="#" data-bind="click: showWindDesignStep1">Step 1</a> <span class="divider">></span>  
+            </li>  
+            <li id="wind-design-breadcrumb-step-2">  
+              <a href="#" data-bind="click: showWindDesignStep2">Step 2</a> <span class="divider">></span>  
+            </li>  
+            <li id="wind-design-breadcrumb-step-3">
+              <a href="#" data-bind="click: showWindDesignStep3">Step 3</a> 
+            </li>  
+          </ul>  
+        </div>  
+        <div data-bind="visible: windDesignStep1()">
+            <span>This is step 1</span>
+        </div>
+        <div data-bind="visible: windDesignStep2()">
+            <span>This is step 2</span>
+        </div>
+        <div data-bind="visible: windDesignStep3()">
+            <span>This is step 3</span>
+        </div>
+    </div>   
+    -->    
+</div>
