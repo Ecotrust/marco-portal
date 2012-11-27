@@ -1110,15 +1110,16 @@ function viewModel() {
         app.updateUrl();
 
         // re-ordering vectorList
+        /*
         app.map.vectorList = [];
         $.each(self.activeLayers(), function(i, layer) {
             if (layer.type === 'Vector' && layer.attributes.length) {
                 app.map.vectorList.push(layer.layer);
             }
         });
-
+        */
         //update attribute selection for vector layers 
-        app.map.selectFeatureControl.setLayer(app.map.vectorList);
+        //app.map.selectFeatureControl.setLayer(app.map.vectorList);
 
     });
     
