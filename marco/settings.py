@@ -45,10 +45,15 @@ GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 4326 #for latlon
 GEOJSON_SRID = 3857
 
+
 APP_NAME = "MARCO Mid-Atlantic Ocean Data Portal"
 FEEDBACK_RECIPIENT = "MARCO Portal Team <info@midatlanticocean.org>"
 HELP_EMAIL = "info@midatlanticocean.org"
 DEFAULT_FROM_EMAIL = "MARCO Portal Team <info@midatlanticocean.org>"
+
+# url for socket.io printing
+SOCKET_URL = 'http://dev.marco.marineplanning.org:8080'
+
 
 TEMPLATE_DIRS = ( os.path.realpath(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')), )
 

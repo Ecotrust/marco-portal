@@ -27,7 +27,6 @@ portal/*.sql
 /marco/reports/fixtures/waterbirdsurveys.json
 /marco/reports/fixtures/windenergyareas.json
 /marco/reports/fixtures/windspeed.json
-
 portal/wordpress/.htaccess
 portal/wordpress/wp-config.php
-
+printing/shots/*

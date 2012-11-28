@@ -31,7 +31,9 @@ var madrona = {
 function scenarioModel(options) {
     var self = this;
     
+    self.id = options.id;
     self.name = options.name;
+
     self.features = options.features;
     self.layer = options.layer;
     
@@ -48,7 +50,6 @@ function scenariosModel(options) {
     
     self.createWindScenario = function() {
         return $.get('/features/scenario/form/', function(data) {
-            console.log('form returned');
             self.scenarioForm(data);
         });
     }; 
@@ -92,10 +93,7 @@ function scenariosModel(options) {
             }
         });
         
-        
-        
-        
-        
+     
     }
             
     

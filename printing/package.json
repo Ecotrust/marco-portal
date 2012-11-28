@@ -15,7 +15,8 @@
     "express": "3.0.0",
     "moment": "1.7.2",
     "gm": "1.6.1",
-    "node-native-zip": "1.1.0"
+    "node-native-zip": "1.1.0",
+    "optimist": "0.3.5"
     },
   "devDependencies": {},
   "optionalDependencies": {},

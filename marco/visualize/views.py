@@ -5,5 +5,9 @@ import settings
 from data_manager.models import *
 
 def show_planner(request, template='planner.html'):
-    context = {'media': settings.MEDIA_URL, 'login': 'true'}
+    try:
+        socket_url = settings.SOCKET_URL
+    except AttributeError:
+        socket_url = ''
+    context = {'MEDIA_URL': settings.MEDIA_URL, 'SOCKET_URL': socket_url, 'login': 'true'}
     return render_to_response(template, RequestContext(request, context)) 
