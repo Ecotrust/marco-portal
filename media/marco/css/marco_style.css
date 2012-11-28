@@ -341,6 +341,9 @@ input + i.icon-remove-sign {
     padding: 0 10px;
 }
 
+#designs .icon-info-sign {
+  margin-left: -15px;
+}
 
 /*.search-row {
 	margin: 20px 0px;
@@ -575,39 +578,39 @@ img + h3 {
 #data .tab-content,
 #data .row-fluid,
 #data .row-fluid .span12,
-#data-accordion,
-#data-accordion .accordion,
-#data-accordion .accordion-heading
-#data-accordion .accordion-body,
-#data-accordion .accordion-inner {
+.sidebar-nav,
+.sidebar-nav .accordion,
+.sidebar-nav .accordion-heading
+.sidebar-nav .accordion-body,
+.sidebar-nav .accordion-inner {
 	position: relative;
 }
-#data-accordion .collapse {
+.sidebar-nav .collapse {
 	display: none;
 }
 
-#data-accordion .collapse.in {
+.sidebar-nav .collapse.in {
 	display: block;
 }
 
-#data-accordion .btn i, #active .btn i {
+.sidebar-nav .btn i, #active .btn i {
 	font-size: 13px;
 }
-#data-accordion .btn-group-layer .btn-layer  {
+.sidebar-nav .btn-group-layer .btn-layer  {
   width: 80%;
   text-align: left;
   overflow: hidden;
   border-left: 0px;
 }
-#data-accordion .btn-group-layer .btn-layer div {
+.sidebar-nav .btn-group-layer .btn-layer div {
 	width: 96%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-left: -10px;
 }
 
-#active ul {
-	padding: 10px;
+.sidebar-nav ul.list {
+	padding: 10px 0px 10px 5px;
 }
 
 #active ul li {
@@ -1020,6 +1023,13 @@ body.borderless .timestamp  {
 body.borderless #map-wrapper {
 	border: 0px;
 }
+
+
+/* design stuff */
+.panel-container {
+ 	height: 100%;
+}
+
 
 @media (max-width: 767px) {
 	.navbar .nav > li > a {

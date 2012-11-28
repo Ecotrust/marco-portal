@@ -1,16 +1,22 @@
 
 var madrona = { 
     onShow: function(callback) { callback(); },
-    setupForm: function($form) { 
-        $form.on('submit', function(e) {
+    setupForm: function($form) {
+        $form.find('.btn-submit').hide();
+
+        $form.closest('.panel').on('click', '.submit_button', function(e) {
             e.preventDefault();
-            var $form = $(this),
+            var $form = $(this).closest('.panel').find('form'),
                 url = $form.attr('action'),
                 data = {};
+            
             $form.find('input,select,textarea').each( function(index, input) {
                 var $input = $(input);
                 data[$input.attr('name')] = $input.val();
             });
+
+            app.viewModel.scenarios.scenarioForm(false);
+            app.viewModel.scenarios.loadingMessage("Creating Scenario");
             $.ajax( {
                 url: url,
                 data: data,
@@ -18,9 +24,10 @@ var madrona = {
                 dataType: 'json',
                 success: function(result) {
                     app.viewModel.scenarios.addScenarioToMap(result['X-Madrona-Show']);                    
+                    app.viewModel.scenarios.loadingMessage(false);
                 },
                 error: function() {
-                    debugger;
+                    app.viewModel.scenarios.loadingMessage("Error Creating Scenario");
                 }
             });
         }); 
@@ -30,7 +37,7 @@ var madrona = {
 
 function scenarioModel(options) {
     var self = this;
-    
+
     self.id = options.id;
     self.name = options.name;
 
@@ -48,6 +55,10 @@ function scenariosModel(options) {
     
     self.scenarioForm = ko.observable(false);
     
+    // loading message for showing spinner
+    // false for normal operation
+    self.loadingMessage = ko.observable(false);
+
     self.createWindScenario = function() {
         return $.get('/features/scenario/form/', function(data) {
             self.scenarioForm(data);

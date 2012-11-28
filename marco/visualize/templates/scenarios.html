@@ -2,41 +2,46 @@
 
 <div class="tab-pane fade" id="designs" data-tab="designs" data-bind="with: scenarios">
     <!-- Create New Design dropdown menu -->
-    <div class="row-fluid"  data-bind="visible: ! scenarioForm()">
-        <div class="span12">
-            <div class="btn-group pull-right">
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-plus-sign"></i> Create New Design
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a data-bind="click: createWindScenario">Wind Energy</a></li>
-                    <li><a href="#">Conservation</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Selection-Based</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>    
-            
-    <div data-bind="visible: scenarioForm, html: scenarioForm"></div>     
-    <div>
-        <ul  class="unstyled" data-bind="foreach: scenarioList ">
-            <li class="layer">
-                <div class="btn-group btn-group-layer">
-                    <a class="btn btn-info-sign">
-                        <i class="icon-info-sign icon-large"></i>
+    <div class="row-fluid" data-bind="visible: loadingMessage">
+        <span data-bind="text: loadingMessage"></span>
+    </div>
+    <div data-bind="visible: ! loadingMessage()">
+        <div class="row-fluid"  data-bind="visible: ! scenarioForm()">
+            <div class="span12">
+                <div class="btn-group pull-right">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-plus-sign"></i> Create New Design
+                        <span class="caret"></span>
                     </a>
-                    <a class="btn btn-layer">
-                        <div style="font-weight: normal">
-                            <span data-bind="text: name"></span>
-                        </div>
-                    </a>
-
+                    <ul class="dropdown-menu">
+                        <li><a data-bind="click: createWindScenario">Wind Energy</a></li>
+                        <li><a href="#">Conservation</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Selection-Based</a></li>
+                    </ul>
                 </div>
-            </li>  
-        </ul>
-    </div>    
+            </div>
+        </div>    
+                
+        <div class="panel-container" data-bind="visible: scenarioForm, html: scenarioForm"></div>     
+        <div data-bind="visible: ! scenarioForm()">
+            <ul class="unstyled list" data-bind="foreach: scenarioList ">
+                <li class="layer">
+                    <div class="btn-group btn-group-layer">
+                        <a class="btn btn-info-sign">
+                            <i class="icon-info-sign icon-large"></i>
+                        </a>
+                        <a class="btn btn-layer">
+                            <div style="font-weight: normal">
+                                <span data-bind="text: name"></span>
+                            </div>
+                        </a>
+
+                    </div>
+                </li>  
+            </ul>
+        </div>    
+    </div>
             <!-- Wind Energy Design -->
             <!--<div data-bind="visible: showWindDesignWizard()">-->
             <!--
