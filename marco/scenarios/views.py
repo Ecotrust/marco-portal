@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from models import *
+from simplejson import dumps
+
 
 '''
 '''
@@ -23,3 +25,15 @@ def sdc_delete(request, sdc_id):
         return response
     sdc_obj.delete()
     return HttpResponse("", status=200)
+
+
+def get_scenarios(request):
+    json = []
+    scenarios = Scenario.objects.filter(user=request.user)
+    for scenario in scenarios:
+        json.append({
+            'id': scenario.id,
+            'name': scenario.name\
+            })
+
+    return HttpResponse(dumps(json))

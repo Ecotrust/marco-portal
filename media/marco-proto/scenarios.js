@@ -99,10 +99,30 @@ function scenariosModel(options) {
     }
             
     
+    self.loadScenarios = function (scenarios) {
+        $.each(scenarios, function (i, scenario) {
+            self.scenarioList.push(new scenarioModel({
+                id: scenario.id,
+                name: scenario.name
+            }));
+        });
+    }
+
     return self;
 }
 
 
-
-
 app.viewModel.scenarios = new scenariosModel();
+
+// load the scenarios
+$.ajax({
+    url: '/scenario/get_scenarios',
+    type: 'GET',
+    dataType: 'json',
+    success: function (scenarios) {
+        app.viewModel.scenarios.loadScenarios(scenarios);
+    },
+    error: function (result) {
+        debugger;
+    }
+})

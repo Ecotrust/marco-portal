@@ -17,7 +17,7 @@ app.getState = function () {
         dls: layers.reverse(),
         basemap: app.map.baseLayer.name,
         themes: {ids: app.viewModel.getOpenThemeIDs()},
-        tab: $('#dataTab').closest('li').hasClass('active') ? 'data' : 'active',
+        tab: $('#myTab').find('li.active').data('tab'),
         legends: app.viewModel.showLegend() ? 'true': 'false',
         layers: app.viewModel.showLayers() ? 'true': 'false'
         //and active tab

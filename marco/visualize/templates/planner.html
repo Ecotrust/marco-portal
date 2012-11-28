@@ -565,16 +565,16 @@
                     <div class="sidebar-nav">
                         <!-- tab controls -->
                         <ul id="myTab" class="nav nav-tabs">
-                            <li class="active">
+                            <li class="active" data-tab="data">
                                 <a href="#data" data-toggle="tab" id="dataTab">Data</a>
                             </li>
                             {% load in_group %}
                             {% if user.is_authenticated and user|in_group:"Designers" %}
-                            <li>
+                            <li  data-tab="designs" >
                                 <a href="#designs" data-toggle="tab" id="designsTab">Designs</a>
                             </li>
                             {% endif %}
-                            <li>
+                            <li  data-tab="active" >
                                 <a href="#active" data-toggle="tab" id="activeTab">Active  
                                     <span data-bind="visible: activeLayers().length > 0">
                                         (<span  data-bind="text: activeLayers().length">0</span>)

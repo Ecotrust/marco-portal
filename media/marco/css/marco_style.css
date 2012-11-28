@@ -80,10 +80,6 @@ a:focus {
 	-moz-box-shadow: none;
 }
 
-.user-btn {
-    top: 6px;
-    right: 15px;
-}
 .navbar .dropdown-menu {
     min-width: 50px;
     margin-top: 15px;
@@ -340,6 +336,11 @@ input + i.icon-remove-sign {
 	margin-left: -8px;
 	margin-top: 0px;
 }
+
+#designs {
+    padding: 0 10px;
+}
+
 
 /*.search-row {
 	margin: 20px 0px;
