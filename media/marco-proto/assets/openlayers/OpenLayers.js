@@ -82182,6 +82182,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             return;
         }
         var features = this.getFeatures(this.startEvt);
+        console.dir(features);
         delete this.startEvt;
         // fire featureclick events
         var feature, layer, more, clicked = {};
@@ -82199,7 +82200,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             layer = this.map.layers[i];
             if (layer instanceof OpenLayers.Layer.Vector && !clicked[layer.id]) {
                 this.triggerEvent("nofeatureclick", {layer: layer});
-            }
+            } 
         }
     },
     
@@ -82293,7 +82294,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                 if (layer.div.style.display !== "none") {
                     if (layer instanceof OpenLayers.Layer.Vector) {
                         target = document.elementFromPoint(x, y);
-                        while (target && target._featureId) {
+                        while (target) { // && target._featureId) {
                             feature = layer.getFeatureById(target._featureId);
                             if (feature) {
                                 features.push(feature);
@@ -82302,7 +82303,14 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                                 target = document.elementFromPoint(x, y);
                             } else {
                                 // sketch, all bets off
-                                target = false;
+                                // ADDING THE FOLLOWING SO THAT THE EVENT FALLS THROUGH ANY MAP TILES THAT LIE ON TOP OF THE FEATURES
+                                if (target.className === 'olTileImage') {
+                                    target.style.display = "none";
+                                    targets.push(target);
+                                    target = document.elementFromPoint(x, y);
+                                } else {
+                                    target = false;
+                                }
                             }
                         }
                     }
@@ -82315,6 +82323,8 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                     features.push(feature);
                     layers.push(layer);
                 }
+            } else {
+                //debugger;
             }
         }
         // restore feature visibility

@@ -105,7 +105,7 @@ app.init = function () {
         app.updateUrl();
     });
 
-
+    /*
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
         var layer = e.feature.layer.layerModel;
@@ -123,51 +123,30 @@ app.init = function () {
             app.viewModel.attributeData(text);
         }
     };
-      
+    */
+    /*  
     var clearout = function(e) {
         //document.getElementById("output").innerHTML = ""; 
         app.viewModel.attributeTitle(false);
         app.viewModel.attributeData(false);
     };  
-    
-    /*
-    map.vectorList = [];
-    map.selectFeatureControl = new OpenLayers.Control.SelectFeature(map.vectorList, {
-        //hover: true,
-        highlightOnly: false,
-        renderIntent: "temporary",
-        cancelBubble: false,
-        eventListeners: {
-            //beforefeaturehighlighted: report,
-            featurehighlighted: report,
-            //boxselectionend: report,
-            featureunhighlighted: clearout
-        }
-    });
     */
-    //map.addControl(map.selectFeatureControl);
-    //map.selectFeatureControl.activate();  
     
     app.map = map;
     
     app.map.attributes = [];
-    app.map.clickOutput = { time: 0, attributes: [] };
-    
+    //app.map.clickOutput = { time: 0, attributes: [] };
+    app.map.clickOutput = { time: 0, attributes: {} };
     
     //UTF Attribution
     map.UTFControl = new OpenLayers.Control.UTFGrid({
         //attributes: layer.attributes,
         layers: [],
+        //events: {fallThrough: true},
         handlerMode: 'click',
         callback: function(infoLookup) {
-            //app.viewModel.attributeTitle(false);
-            //app.viewModel.attributeData(false);
             if (infoLookup) {
-                console.dir(app.viewModel.visibleLayers());
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-                    console.log(potential_layer.name);
-                    console.dir(potential_layer);
-                    console.dir(infoLookup);
                     for (var idx in infoLookup) {
                         var attributes;
                         var info = infoLookup[idx];
@@ -230,37 +209,27 @@ app.init = function () {
                                 var date = new Date();
                                 var newTime = date.getTime();
                                 if (newTime - app.map.clickOutput.time > 500) {
-                                    console.log('new click');
-                                    //app.map.clickOutput.attributes = [e.feature.layer.name];
-                                    app.map.clickOutput.attributes = [{'title': title, 'attrs': text}];
+                                    app.map.clickOutput.attributes = {};
+                                    app.map.clickOutput.attributes[title] = text;
                                     app.map.clickOutput.time = newTime;
                                 } else {
-                                    console.log('same click');
-                                    //console.dir(text);
-                                    //app.map.clickOutput.attributes.push(e.feature.layer.name);
                                     if (text[0].data) {
-                                        console.log('same click, new data');
-                                        app.map.clickOutput.attributes.push( {'title': title, 'attrs': text} );
+                                        app.map.clickOutput.attributes[title] = text;
                                     }
                                 }
                     
                                 app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                                
-                                //app.viewModel.attributeTitle(potential_layer.name);
-                                //app.viewModel.attributeData(attribute_objs);
                             } 
                         } 
                     }
                 });
             } 
-            //document.getElementById("info").innerHTML = msg;
         }
     });
     map.addControl(map.UTFControl);    
 
     
     app.map.events.register("featureclick", null, function(e) {
-        console.log('FEATURECLICK');
         var layer = e.feature.layer.layerModel;
         var date = new Date();
         var newTime = date.getTime();
@@ -269,7 +238,6 @@ app.init = function () {
             text = [];
         
         if ( layer.attributes.length ) {
-            //app.viewModel.attributeTitle(title); 
             for (var i=0; i<attrs.length; i++) {
                 if ( e.feature.data[attrs[i].field] ) {
                     text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
@@ -278,17 +246,16 @@ app.init = function () {
         }
         
         if (newTime - app.map.clickOutput.time > 100) {
-            //app.map.clickOutput.attributes = [e.feature.layer.name];
-            app.map.clickOutput.attributes = [{'title': title, 'attrs': text}];
+            app.map.clickOutput.attributes = {};
             app.map.clickOutput.time = newTime;
-        } else {
-            //app.map.clickOutput.attributes.push(e.feature.layer.name);
-            app.map.clickOutput.attributes.push( {'title': title, 'attrs': text} );
-        }
+        } 
+        app.map.clickOutput.attributes[title] = text;
         
         app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-        
-        //debugger;
+    });
+    
+    app.map.events.register("nofeatureclick", null, function(e) {
+        app.viewModel.aggregatedAttributes(false);
     });
     
     
@@ -314,16 +281,13 @@ app.addLayerToMap = function(layer) {
                 layerModel: layer,
                 url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
                 sphericalMercator: true,
-                                 
+                //events: {fallThrough: true},
                 utfgridResolution: 4, // default is 2
                 displayInLayerSwitcher: false,
                 useJSONP: false
             });
-            //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
+             
             app.map.addLayer(layer.utfgrid);           
-            //app.map.UTFControl.layers = [layer.utfgrid];
-            //layer.utfcontrol = app.addUTFControl(layer);
-            //app.map.addControl(layer.utfcontrol); 
             layer.layer = new OpenLayers.Layer.XYZ(
                 layer.name, 
                 layer.url,
@@ -335,7 +299,6 @@ app.addLayerToMap = function(layer) {
                 )
             );  
             app.map.addLayer(layer.layer);  
-            //app.addUTFAttribution(layer);
         } else if (layer.type === 'Vector') {
             var styleMap = new OpenLayers.StyleMap( {
                 fillColor: layer.color,
@@ -380,13 +343,7 @@ app.addLayerToMap = function(layer) {
                     layerModel: layer
                 }
             );
-            //app.addVectorAttribution(layer);
-            app.map.addLayer(layer.layer);  
-            //selectFeatureControl = app.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0];
-            //if (layer.attributes.length) {
-                //app.map.vectorList.unshift(layer.layer);
-                //app.map.selectFeatureControl.setLayer(app.map.vectorList);
-            //}
+            app.map.addLayer(layer.layer); 
         } else if (layer.type === 'ArcRest') {
             layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
                 layer.name, 
@@ -424,8 +381,6 @@ app.addLayerToMap = function(layer) {
             );
             app.map.addLayer(layer.layer);  
         }
-        //app.map.addLayer(layer.layer);  
-        //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
     } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
         //layer.utfcontrol = app.addUTFControl(layer);
         //app.map.addControl(layer.utfcontrol); 
@@ -451,7 +406,6 @@ $("#overview-overlay-text").hover(
     // mouseenter
     function () {
         var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
-        console.log('disable');
         for(var i = 0; i < controls.length; ++i) {
             controls[i].disableZoomWheel();
         }
@@ -459,7 +413,6 @@ $("#overview-overlay-text").hover(
     }, 
     function () {
         var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
-        console.log('enable');
         for(var i = 0; i < controls.length; ++i) {
             controls[i].enableZoomWheel();
         }

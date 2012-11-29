@@ -784,28 +784,14 @@
                                         -->
                                     </div>
                                   
-                                    <!-- Attribution Overlay -->
-                                    <div id="attribute-data">
-                                        <div data-bind="visible: attributeData" style="display: none">
-                                          <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
-                                          <strong><span data-bind="text: attributeTitle()"></span></strong>
-                                          <dl data-bind="foreach: attributeData()">
-                                            <!--<dt data-bind="text: display"></dt>-->
-                                            <!--<dd data-bind="text: data"></dd>-->
-                                            <dt>
-                                                <span data-bind="text: display"></span><span data-bind="visible: display">:</span>
-                                                <span style="font-weight: normal" data-bind="text: data"></span>
-                                            </dt>
-                                          </dl>
-                                        </div>
-                                    </div>
                                     <!-- Aggregated Attribution Overlay -->
                                     <div id="aggregated-attribute-data">
                                         <div data-bind="visible: aggregatedAttributes" style="display: none">
                                           <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
-                                          <div data-bind="foreach: aggregatedAttributes()">
-                                              <strong><span data-bind="text: title"></span></strong>
-                                              <dl data-bind="foreach: attrs">
+                                          <div data-bind="foreach: activeLayers()">
+                                            <div data-bind="visible: $root.aggregatedAttributes()[name]">
+                                              <h4 data-bind="text: name"></h4>
+                                              <dl data-bind="foreach: $root.aggregatedAttributes()[name]">
                                                 <!--<dt data-bind="text: display"></dt>-->
                                                 <!--<dd data-bind="text: data"></dd>-->
                                                 <dt>
@@ -813,6 +799,7 @@
                                                     <span style="font-weight: normal" data-bind="text: data"></span>
                                                 </dt>
                                               </dl>
+                                            </div>
                                           </div>
                                         </div>
                                     </div>

@@ -15,7 +15,7 @@ function layerModel(options, parent) {
     self.legendTitle = options.legend_title || false;
     self.legendSubTitle = options.legend_subtitle || false;
     self.themes = ko.observableArray();
-    self.attributeTitle = options.attributes ? options.attributes.title : self.name;
+    //self.attributeTitle = options.attributes ? options.attributes.title : self.name;
     self.attributes = options.attributes ? options.attributes.attributes : [];
     self.compress_attributes = options.attributes ? options.attributes.compress_attributes : false;
     self.attributeEvent = options.attributes ? options.attributes.event : [];
@@ -150,9 +150,10 @@ function layerModel(options, parent) {
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
         }
-        if (app.viewModel.attributeTitle() === layer.name) {
-            app.viewModel.attributeTitle(false);
-            app.viewModel.attributeData(false);
+        //remove the key/value pair from aggregatedAttributes
+        delete app.viewModel.aggregatedAttributes()[layer.name];
+        //if there are no more attributes left to display, then remove the overlay altogether
+        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
             app.viewModel.aggregatedAttributes(false);
         }
 
@@ -269,11 +270,6 @@ function layerModel(options, parent) {
                 //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
                 app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
             }
-            if (app.viewModel.attributeTitle() === layer.name) {
-                app.viewModel.attributeTitle(false);
-                app.viewModel.attributeData(false);
-                app.viewModel.aggregatedAttributes(false);
-            }
         } else { //make visible
             layer.visible(true);
             if (layer.parent) {
@@ -376,12 +372,9 @@ function layerModel(options, parent) {
     
     self.toggleSublayerDescription = function(layer) {
         if ( ! self.infoActive() ) {
-            //console.log('calling showSublayerDescription');
             self.showSublayerDescription(self);
         } else if (layer === app.viewModel.activeInfoSublayer()) {
-            //console.log('requesting same sublayer');
         } else {
-            //console.log('requesting parent layer description');
             self.showDescription(self);
         }
     };
@@ -397,29 +390,8 @@ function layerModel(options, parent) {
         app.viewModel.hideMapAttribution();
     };
     
-    /*
-    self.hideSublayerDescription = function(layer) {
-        app.viewModel.showOverview(false);
-        app.viewModel.activeInfoSublayer(false);
-        app.viewModel.showMapAttribution();
-    };
-    */
     // display descriptive text below the map
     self.toggleDescription = function(layer) {
-        /*if ( layer.infoActive() ) {
-            //app.viewModel.showDescription(false);
-            app.viewModel.showOverview(false);
-            app.viewModel.showAttribution();
-        } else {
-            //app.viewModel.showDescription(false);
-            app.viewModel.showOverview(false);
-            app.viewModel.activeInfoLayer(layer);
-            self.infoActive(true);
-            //app.viewModel.showDescription(true);
-            app.viewModel.showOverview(true);
-            app.viewModel.hideAttribution();
-        }*/
-        
         if ( ! layer.infoActive() ) {
             self.showDescription(layer);
         } else {
@@ -713,15 +685,12 @@ function viewModel() {
     self.activeInfoSublayer = ko.observable(false);
 
     // attribute data
-    self.attributeTitle = ko.observable(false);
-    self.attributeData = ko.observable(false);
     self.aggregatedAttributes = ko.observable(false);
 
     // title for print view
     self.mapTitle = ko.observable();
 
     self.closeAttribution = function() {
-        self.attributeData(false);
         self.aggregatedAttributes(false);
     };
     
@@ -971,20 +940,7 @@ function viewModel() {
             return false;
         }
     };
-    
-    /*
-    self.updateDropdownScrollbar = function(elem) {
-        if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
-            app.viewModel.scrollBarElements.push(elem);
-            $(elem).mCustomScrollbar({
-                scrollInertia:250,
-                mouseWheel: 6
-            });
-        }
-        $(elem).mCustomScrollbar("update");
-    };
-    */    
-    
+        
     //assigned in app.updateUrl (in state.js)
     self.currentURL = ko.observable();
 
@@ -1067,16 +1023,6 @@ function viewModel() {
         });
     };
 
-    // self.goFullScreen = function () {
-    //     if (BigScreen.enabled) {
-    //            BigScreen.request($("#fullscreen"));
-    //            // You could also use .toggle(element)
-    //        }
-    //        else {
-    //            // fallback for browsers that don't support full screen
-    //        }
-    // }
-
     // do this stuff when the active layers change
     self.activeLayers.subscribe(function() {
         // initial index
@@ -1091,35 +1037,15 @@ function viewModel() {
             // also save the layer state
             app.setLayerZIndex(layer, index);
             index--;
-            /*
-            if (layer.utfurl) { //remove utfcontrol for all layers (utfcontrol for top layer will be re-established below)
-                layer.utfcontrol.destroy();
-            }
-            */
         });
 
         // re-ordering map layers by z value
         app.map.layers.sort(function(a, b) {
             return a.getZIndex() - b.getZIndex();
         });
-        //if (!self.hasActiveLegends()) {
-        //    self.showLegend(false);
-        //}
 
         // update the url hash
         app.updateUrl();
-
-        // re-ordering vectorList
-        /*
-        app.map.vectorList = [];
-        $.each(self.activeLayers(), function(i, layer) {
-            if (layer.type === 'Vector' && layer.attributes.length) {
-                app.map.vectorList.push(layer.layer);
-            }
-        });
-        */
-        //update attribute selection for vector layers 
-        //app.map.selectFeatureControl.setLayer(app.map.vectorList);
 
     });
     
@@ -1138,17 +1064,6 @@ function viewModel() {
         }
         self.updateScrollBar();
     };
-
-    // do this stuff when the visible layers change
-    /*self.visibleLayers.subscribe(function() {
-        if (!self.hasActiveLegends()) {
-            self.showLegend(false);
-        }
-    });*/
-    
-    // switching between pageguides
-    /*self.changeGuide = function() {
-    };*/
     
     self.startDefaultTour = function() {
         if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
