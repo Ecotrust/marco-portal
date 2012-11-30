@@ -146,15 +146,15 @@ a:focus {
 
 
 .form-search .btn {
-	font-size: 9px;
-	text-transform: uppercase;
-	background-color: #2d8998;
+	padding: 4px 0px;
+	background-color: #ddd;
 	background-image: none;
-	color: white;
+	color: #777;
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-left: -7px;
 	radius: 30px;
+	width: 30px;
 	 border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
@@ -181,9 +181,11 @@ a:focus {
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
 }
-.form-search i {
-	margin-left: -5px;
+
+.form-search .btn i {
+	margin-left: -3px;
 }
+
 #feedback-tab {
 	position: fixed;
     z-index: 950;

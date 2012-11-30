@@ -108,9 +108,11 @@
 					      <div class="nav-collapse">
 					      	<div>
 						        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
-						          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>">
-						          <i class="icon-remove-sign icon-large"></i>	
-						          <button type="submit" class="btn">Search</button>
+						          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="search portal">
+						          <a class="btn">
+						              <i class="icon-remove icon-large"></i> 
+						          </a>
+						          
 						        </form>
 						        <ul class="nav pull-right">
 						          <li class="<?php echo $pagename == 'news' ? 'active' : null ?>"><a href="<?php echo get_bloginfo('wpurl'); ?>/news">News</a></li>

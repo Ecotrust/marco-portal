@@ -57,11 +57,9 @@
 					$(event.target).find('.text').hide();
 				}
 			);
-
-			$('.icon-remove-sign').on('click', function (event) {
-				$(event.target).prev('input').val('').focus();
+			$('.form-search').find('.btn').on('click', function(event) {
+			   $(event.target).closest('form').find('input').val(null).focus();
 			});
-
 			$('#feedback-form').on('submit', function (event) {
 			  var feedback = {}, $form = $(this);
 			  event.preventDefault();

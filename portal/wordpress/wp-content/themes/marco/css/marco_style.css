@@ -90,16 +90,18 @@ hr {
 	color: #ccc;
 }
 
+
 .form-search .btn {
-	font-size: 9px;
-	text-transform: uppercase;
-	background-color: #2d8998;
+	padding: 4px 0px;
+	background-color: #ddd;
 	background-image: none;
-	color: white;
+	color: #777;
 	margin-top: 0px;
 	margin-right: 0px;
-	margin-left: -8px;
-	border-radius: 30px;
+	margin-left: -7px;
+	radius: 30px;
+	width: 30px;
+	 border-radius: 30px;
 	 -moz-border-radius: 30px;
   	-webkit-border-radius: 30px;
   	border-top-left-radius: 0px;
@@ -108,12 +110,13 @@ hr {
   	-moz-border-bottom-left-radius: 0px;
   	-webkit-border-top-left-radius: 0px;
   	-webkit-border-bottom-left-radius: 0px;
-
 }
 
-.form-search input {
-	width: 100px;
+.form-search input, .form-search input:focus{
+	width: 75%;
 	background-color: #eee;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
@@ -123,15 +126,12 @@ hr {
   -moz-border-bottom-right-radius: 0px;
   -webkit-border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
+}
 
+.form-search .btn i {
+	margin-left: -3px;
 }
-input + i.icon-remove-sign {
-	margin-left: -20px;
-	padding-right: 5px;
-	margin-top: 4px;
-	opacity: .5;
-	filter: alpha(opacity=50);
-}
+
 .showcase {
 	position: relative;
 	height: auto;

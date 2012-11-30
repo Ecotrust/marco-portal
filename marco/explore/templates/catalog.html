@@ -8,12 +8,11 @@
 <div class="row-fluid search-row">
     <div class="span12" style="margin: 15px 0;">
         <h3>Data Layer Search</h3>
-        <form class="form-search">
+        <form class="form-search layer-search">
             <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }">
-            <i class="icon-remove-sign icon-large"></i> 
-            <button type="submit" class="btn">
-                find
-            </button>
+            <a class="btn">
+                <i class="icon-remove icon-large"></i> 
+            </a>
         </form>
     </div>
 </div>
@@ -211,20 +210,25 @@
                 };
             });
         });
-        $('.search-box').typeahead( {
+        $('.layer-search').find('input').typeahead( {
             source: layers.sort()
         });
-        $('.form-search').submit(function (event) {
+        $('.layer-search').submit(function (event) {
             event.preventDefault();
             search($(this).find('input').val());
         });
         
-        $('input').on('keyup', function (event) {
+        
+        
+
+        $('.layer-search').on('keyup', 'input', function (event) {
             event.preventDefault();    
             if (event.which === 13) {
                 search($(this).val());
             }
         });
+
+
 
         $('ul.typeahead').on('click', 'li', function () {
             search($(this).text());

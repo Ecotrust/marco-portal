@@ -105,14 +105,11 @@
                                                         <a href="http://www.midatlanticocean.org/">Visit MARCO</a>
                                                     </li>
                                                 </ul>
-                                                <form class="form-search pull-right" action="/portal/"
-                                                method="get">
-                                                    <input type="text" class="search-box" name="s" id="search"
-                                                    value="">
-                                                    <i class="icon-remove-sign icon-large"></i> 
-                                                    <button type="submit" class="btn">
-                                                        Search
-                                                    </button>
+                                                <form class="form-search pull-right" action="/portal/" method="get">
+                                                    <input type="text" class="search-box" name="s" id="search" placeholder="search portal">
+                                                    <a class="btn">
+                                                        <i class="icon-remove"></i> 
+                                                    </a>
                                                 </form>
                                             </div>
                                         </div>
@@ -272,10 +269,9 @@
                              }
 
                             // handle the search clear buttons
-                            $('.icon-remove-sign').on('click', function (event) {
-                                $(event.target).prev('input').val('').focus();
+                            $('.form-search').find('.btn').on('click', function(event) {
+                               $(event.target).closest('form').find('input').val(null).focus();
                             });
-
                            $('#feedback-form').on('submit', function (event) {
                              var feedback = {}, $form = $(this);
                              event.preventDefault();
