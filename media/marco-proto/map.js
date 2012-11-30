@@ -255,7 +255,11 @@ app.init = function () {
     });
     
     app.map.events.register("nofeatureclick", null, function(e) {
-        app.viewModel.aggregatedAttributes(false);
+        var date = new Date();
+        var newTime = date.getTime();
+        if (newTime - app.map.clickOutput.time > 100) {
+            app.viewModel.aggregatedAttributes(false);
+        }
     });
     
     

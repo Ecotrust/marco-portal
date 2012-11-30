@@ -82182,7 +82182,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             return;
         }
         var features = this.getFeatures(this.startEvt);
-        console.dir(features);
+        //console.dir(features);
         delete this.startEvt;
         // fire featureclick events
         var feature, layer, more, clicked = {};
