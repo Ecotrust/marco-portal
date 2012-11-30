@@ -722,6 +722,10 @@ img + h3 {
   padding: 0px 10px 20px;
 }
 
+.legend-title {
+	font-weight: bold;
+}
+
 #legend-wrapper hr {
 	margin: 0px !important;
 	/*margin-bottom: 5px;*/
