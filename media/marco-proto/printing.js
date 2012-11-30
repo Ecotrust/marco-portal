@@ -54,7 +54,7 @@
 		self.showSpinner = ko.observable();
 
 		// job options
-		self.format = ko.observable(".png");
+		self.format = ko.observable(".pdf");
 		self.paperSize = ko.observable("letter");
 
 		// final dimensions of image in pixels

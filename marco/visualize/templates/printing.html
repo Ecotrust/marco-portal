@@ -14,6 +14,9 @@
                         <strong>Format</strong>
                         <div class="control-group">
                             <label class="radio control-label">
+                                <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
+                            </label>
+                            <label class="radio control-label">
                                 <input type="radio" name="format" value=".png" checked data-bind="checked: format">PNG
                             </label>
                             <label class="radio control-label">
@@ -22,9 +25,7 @@
                            <!-- <label class="radio control-label">
                                 <input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
                             </label> -->
-                            <label class="radio control-label">
-                                <input type="radio" value=".pdf" name="format" data-bind="checked: format">PDF
-                            </label>
+                            
                         </div>
                         <strong>Options</strong>
                         <label class="checkbox">
@@ -70,7 +71,7 @@
                 </div>
                 <fieldset>
                     <label><strong data-bind="css: { disabled: borderLess }">Title</strong></label>
-                    <input class="span4" type="text" data-bind="value: title, valueUpdate: 'afterkeydown', disable: borderLess" placeholder="Optional title for map...">
+                    <input class="print-title" type="text" data-bind="value: title, valueUpdate: 'afterkeydown', disable: borderLess" placeholder="Optional title for map...">
                 </fieldset>
             </div>
 
