@@ -108,7 +108,7 @@
 					      <div class="nav-collapse">
 					      	<div>
 						        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
-						          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="search portal">
+						          <input type="text" class="input-medium search-box" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="search">
 						          <a class="btn">
 						              <i class="icon-remove icon-large"></i> 
 						          </a>
