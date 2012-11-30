@@ -4,6 +4,15 @@ var madrona = {
     setupForm: function($form) {
         $form.find('.btn-submit').hide();
 
+
+        $form.find('label').each(function (i, label) {
+            if ($(label).find('input[type="checkbox"]').length) {
+                $(label).addClass('checkbox');
+
+            }
+        });
+
+
         $form.closest('.panel').on('click', '.submit_button', function(e) {
             e.preventDefault();
             var $form = $(this).closest('.panel').find('form'),

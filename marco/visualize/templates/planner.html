@@ -518,7 +518,9 @@
                             <!-- END DATA TAB -->
                             
                             <!-- DESIGNS TAB -->
+                            {% if user.is_authenticated and user|in_group:"Designers" %}
                             {% include "scenarios.html" %}
+                            {% endif %}
                             <!-- END DESIGNS TAB -->
                             
                             <!-- ACTIVE TAB -->
@@ -931,7 +933,9 @@
         <script src="{{MEDIA_URL}}/marco-proto/map.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/state.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/models.js"></script>
-        <script src="{{MEDIA_URL}}/marco-proto/scenarios.js"></script>
+        {% if user.is_authenticated and user|in_group:"Designers" %}
+            <script src="{{MEDIA_URL}}/marco-proto/scenarios.js"></script>
+        {% endif %}
         <script src="{{MEDIA_URL}}/marco-proto/server.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/printing.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/app.js"></script>

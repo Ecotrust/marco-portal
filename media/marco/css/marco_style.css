@@ -343,14 +343,11 @@ input + i.icon-remove-sign {
     padding: 0 10px;
 }
 
-#designs .icon-info-sign {
+#designs .btn-layer .icon-info-sign {
   margin-left: -15px;
 }
 
-/*.search-row {
-	margin: 20px 0px;
-}
-*/
+
 .showcase {
 	position: relative;
 }
@@ -569,12 +566,15 @@ img + h3 {
 
 }
 .accordion-heading.active, .active .accordion-body {
-	border-left: 3px solid #2d8998;
+
 	margin-left: -1px;
 	font-weight: bold;
 	background-color: #eee;
 	color: #333;
 
+}
+.active .accordion-body {
+	border-left: 3px solid #2d8998;
 }
 #data,
 #data .tab-content,
@@ -612,7 +612,7 @@ img + h3 {
 }
 
 .sidebar-nav ul.list {
-	padding: 10px 0px 10px 5px;
+	padding: 10px 0px 10px 0px;
 }
 
 #active ul li {
@@ -1026,11 +1026,6 @@ body.borderless #map-wrapper {
 	border: 0px;
 }
 
-
-/* design stuff */
-.panel-container {
- 	height: 100%;
-}
 
 
 @media (max-width: 767px) {

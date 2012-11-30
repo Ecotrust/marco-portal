@@ -240,26 +240,36 @@
             change_wind_message($left_side, ui);
         });
         function change_wind_message($left_side, ui) {
+            var $text = $('#wind_speed_text'),
+                $label = $text.closest('.label');
             if (ui.value < 12.5) {
-                $('#wind_speed_text').html('Poor');
+                $text.html('Poor');
+                $label.attr('class', "label label-important");
                 //$left_side.css('background', '#aaaa00');
             } else if (ui.value < 14.3) {
-                $('#wind_speed_text').html('Marginal');
+                $text.html('Marginal');
+                $label.attr('class', "label label-warning");
                 //$left_side.css('background', '#aa5500');
             } else if (ui.value < 15.7) {
-                $('#wind_speed_text').html('Fair');
+                $text.html('Fair');
+                $label.attr('class', "label label-warning");
                 //$left_side.css('background', '#aa0000');
             } else if (ui.value < 16.8) {
-                $('#wind_speed_text').html('Good');
+                $text.html('Good');
+                $label.attr('class', "label label-success");
+
                 //$left_side.css('background', '#880066');
             } else if (ui.value < 17.9) {
-                $('#wind_speed_text').html('Excellent');
+                $text.html('Excellent');
+                $label.attr('class', "label label-success");
                 //$left_side.css('background', '#8800aa');
             } else if (ui.value < 15.7) {
-                $('#wind_speed_text').html('Outstanding');
+                $text.html('Outstanding');
+                $label.attr('class', "label label-success");
                 //$left_side.css('background', '#4400aa');
             } else {
-                $('#wind_speed_text').html('Superb');
+                $text.html('Superb');
+                $label.attr('class', "label label-success");
                 //$left_side.css('background', '#000088');
             }
             //Poor      < 12.5      (< 5.6)     ffff00
@@ -302,16 +312,20 @@
         <li>
             <label>
                 {{ form.input_parameter_wind_speed }} Wind Speed 
-                <img src="/media/marco/img/info.png" id="info_wind_speed" class="info" />
+                <i class="icon-info-sign"></i>
                 <span id="info_wind_speed_content" style="display: none;">{% flatblock "info_wind_speed" %}</span>
             </label>
             <div id="wind_speed_widget" class="inputfield">
-                <div class="label">Potential:  <span id="wind_speed_text" class="potential">Good</span></div>
-                <span class="label"> 
+                <div>Potential:  
+                    <span class="label">
+                        <span id="wind_speed_text" class="potential">Good</span>
+                    </span>
+                </div>
+                <div> 
                     Minimum Average Speed (mph) 
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
-                </span> 
+                </div> 
             </div>
         </li>
         <li>
@@ -320,7 +334,7 @@
                 <img src="/media/marco/img/info.png" id="info_shore" class="info" />
             </label>
             <div id="distance_to_shore_widget" class="inputfield">
-                <span class="label">
+                <span >
                     Desired Distance (in miles)
                     {{ form.input_min_distance_to_shore }}            
                     to
@@ -336,7 +350,7 @@
                 <img src="/media/marco/img/info.png" id="info_awc" class="info" />
             </label>
             <div id="distance_to_awc_widget" class="inputfield">
-                <span class="label"> 
+                <span > 
                     Maximum Distance (in miles) 
                     {{ form.input_distance_to_awc }} 
                     {{ form.input_distance_to_awc.errors }}   
@@ -349,7 +363,7 @@
                 <img src="/media/marco/img/info.png" id="info_depth" class="info" />
             </label>
             <div id="depth_widget" class="inputfield">
-                <span class="label">
+                <span >
                     Desired Range (in feet)
                     {{ form.input_min_depth }}            
                     to
@@ -385,7 +399,7 @@
                 <img src="/media/marco/img/info.png" id="info_wea" class="info" />
             </label>
             <div id="wea_widget" class="inputfield">
-                <span class="label"> 
+                <span > 
                     {{ form.input_wea }}  
                     {{ form.input_wea.errors }}
                 </span>
@@ -489,13 +503,18 @@
 </form>
 
 <div class="wizard_nav" style="width:100%">
-    <a href="#" class="button btn" style="float:left;" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
-    <a href="#" class="button btn" style="float:right;" onclick="this.blur(); return false;" id="button_next"><span>Next &gt;</span></a>
+    <div class="btn-group pull-right">
+        <a href="#" class="button btn" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
+        <a href="#" class="button btn"  onclick="this.blur(); return false;" id="button_next"><span>Next &gt;</span></a>
+        <a href="#" class="submit_button button btn" onclick="this.blur(); return false;"><span>Submit</span></a>
+    </div>
 </div>
 
 <div>
-    <a href="#" class="cancel_button button red btn" onclick="this.blur(); return false;"><span>Cancel</span></a>
-    <a href="#" class="submit_button button btn" onclick="this.blur(); return false;"><span>Submit</span></a>
+    <div class="btn-group pull-left">
+        <a href="#" class="cancel_button button red btn" onclick="this.blur(); return false;"><span>Cancel</span></a>
+        
+    </div>
 </div>
 
 
@@ -542,12 +561,6 @@ span.form-image > img {
     width:46px; 
     height:46px; 
 }
-.label {
-    font-weight:normal;
- 	font-size: 12px;
- 	font-family: verdana;
- 	color: #344E63;
-}
 
 .traffic {
     margin-top: 5px;
@@ -556,16 +569,7 @@ span.form-image > img {
     margin-top: 15px;
 }
 
-label {
-    clear: both;
-    color: #344E63;
-    display: block;
-    font-size: 12px;
-    font-weight: normal;
-    margin: 0 0 5px;
-    padding: 0;
-    text-shadow: 0 1px 0 #FCFAFF;
-}
+
 p.step-text {
     margin: 0px;
     text-align:left;
@@ -594,6 +598,7 @@ form ul.parameters {
     margin-top: 5px;
     margin-bottom: 0px;
     padding-left: 0px;
+    width: 90%;
 }
 label.step1-header {
     font-weight: bold;
@@ -619,14 +624,37 @@ label.param {
 img.info {
     display: inline !important;
 }
-<!-- might remove the following and keep jquery-widgets.css...had some trouble getting this code to catch on its own -->
+
+/* design stuff */
+.panel > form {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: 1px solid #BBBBBB;
+    border-radius: 10px 10px 10px 10px;
+    height: 450px;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.panel > form textarea {
+    width: 90%;
+}
+
+.panel > form .slidervalue {
+    width: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    height: 16px;
+}
+.panel >form .inputfield > div,
+.panel >form .inputfield > span {
+    margin-left: 20px;
+}
+
+/*might remove the following and keep jquery-widgets.css...had some trouble getting this code to catch on its own*/
 .slidervalue { 
     width: 40px !important;
-}
-.ui-slider { 
-    position:relative; 
-    text-align:left; 
-    left:15px; 
 }
 
 </style>
