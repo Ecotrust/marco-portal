@@ -626,18 +626,20 @@ img.info {
 }
 
 /* design stuff */
+
 .panel > form {
     background: none repeat scroll 0 0 #DDDDDD;
     border: 1px solid #BBBBBB;
     border-radius: 10px 10px 10px 10px;
-    height: 450px;
+    height: 60%;
     padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 
-.panel > form textarea {
+.panel > form textarea,
+.panel > form input[name="name"] {
     width: 90%;
 }
 
@@ -655,6 +657,10 @@ img.info {
 /*might remove the following and keep jquery-widgets.css...had some trouble getting this code to catch on its own*/
 .slidervalue { 
     width: 40px !important;
+}
+
+.errorlist {
+    color: red;
 }
 
 </style>

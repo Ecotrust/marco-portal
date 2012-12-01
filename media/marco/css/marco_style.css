@@ -587,6 +587,15 @@ img + h3 {
 .sidebar-nav .accordion-inner {
 	position: relative;
 }
+
+.tab-content,
+.tab-pane,
+.panel-container,
+.form-container,
+.panel {
+	height: 100%;
+}
+
 .sidebar-nav .collapse {
 	display: none;
 }

@@ -17,15 +17,35 @@ var madrona = {
             e.preventDefault();
             var $form = $(this).closest('.panel').find('form'),
                 url = $form.attr('action'),
-                data = {};
+                $bar = $form.closest('.tab-pane').find('.bar'),
+                
+                data = {},
+                barTimer;
+
+            barTimer = setInterval(function () {
+                var width = parseInt($bar.css('width').replace('px', ''), 10) + 5,
+                    barWidth = parseInt($bar.parent().css('width').replace('px',''), 10);
+                
+                if (width < barWidth) {
+                    $bar.css('width', width + "px");    
+                } else {
+                    clearInterval(barTimer);
+                }
+            }, 500);
             
+
             $form.find('input,select,textarea').each( function(index, input) {
                 var $input = $(input);
                 data[$input.attr('name')] = $input.val();
             });
 
+
+
             app.viewModel.scenarios.scenarioForm(false);
             app.viewModel.scenarios.loadingMessage("Creating Scenario");
+            
+
+
             $.ajax( {
                 url: url,
                 data: data,
@@ -34,9 +54,16 @@ var madrona = {
                 success: function(result) {
                     app.viewModel.scenarios.addScenarioToMap(result['X-Madrona-Show']);                    
                     app.viewModel.scenarios.loadingMessage(false);
+                    clearInterval(barTimer);
                 },
-                error: function() {
-                    app.viewModel.scenarios.loadingMessage("Error Creating Scenario");
+                error: function(result) {
+                    app.viewModel.scenarios.loadingMessage(null);
+                    clearInterval(barTimer);
+                    if (result.status === 400) {
+                        app.viewModel.scenarios.scenarioForm(result.responseText);
+                    } else {
+                        app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
+                    }
                 }
             });
         }); 
@@ -67,10 +94,21 @@ function scenariosModel(options) {
     // loading message for showing spinner
     // false for normal operation
     self.loadingMessage = ko.observable(false);
+    self.errorMessage = ko.observable(false);
+
+    self.reset = function () {
+        self.loadingMessage(false);
+        self.errorMessage(false);
+        self.scenarioForm(false);
+    };
 
     self.createWindScenario = function() {
-        return $.get('/features/scenario/form/', function(data) {
-            self.scenarioForm(data);
+        return $.ajax({
+            url: '/features/scenario/form/',
+            success: function(data) {
+                self.scenarioForm(data);
+            },
+            error: function (result) { debugger }
         });
     }; 
     

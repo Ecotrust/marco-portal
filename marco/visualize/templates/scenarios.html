@@ -2,10 +2,23 @@
 
 <div class="tab-pane fade" id="designs" data-tab="designs" data-bind="with: scenarios">
     <!-- Create New Design dropdown menu -->
-    <div class="row-fluid" data-bind="visible: loadingMessage">
-        <span data-bind="text: loadingMessage"></span>
+    <div class="row-fluid">
+        <div class="alert alert-success" data-bind="visible: loadingMessage">
+          <strong>Creating!</strong> <span data-bind="text: loadingMessage"></span>
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="alert alert-error" data-bind="visible: errorMessage">
+          <strong>Error!</strong> <span data-bind="text: errorMessage"></span>
+          <div>
+            <button class="btn pull-right" data-bind="click: reset">Try Again</button>
+            <div class="clearfix"></div>
+          </div>
+        </div>
     </div>
-    <div data-bind="visible: ! loadingMessage()">
+    
+    <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
         <div class="row-fluid"  data-bind="visible: ! scenarioForm()">
             <div class="span12">
                 <div class="btn-group">
