@@ -686,6 +686,10 @@ function viewModel() {
 
     // attribute data
     self.aggregatedAttributes = ko.observable(false);
+    self.aggregatedAttributes.subscribe(function() {
+        //setTimeout( self.updateCustomScrollbar('#aggregated-attribute-content'), 1000);
+        self.updateCustomScrollbar('#aggregated-attribute-content');
+    });
 
     // title for print view
     self.mapTitle = ko.observable();
@@ -693,7 +697,23 @@ function viewModel() {
     self.closeAttribution = function() {
         self.aggregatedAttributes(false);
     };
-    
+    /*
+    self.getAttributeHTML = function() {
+        var html = "";
+        $.each(self.activeLayers(), function(i, layer) {
+            if (self.aggregatedAttributes()[layer.name]) {
+                html += "<h4>"+layer.name+".<h4>";
+                html += "<dl>";
+                $.each(self.aggregatedAttributes()[layer.name], function(j, attrs) {
+                    html += "<dt><span>"+attrs.display+"</span>:";
+                    html += "<span>"+attrs.data+"</span></dt>";
+                });
+                html += "</dl>";
+            }
+        });
+        return html;
+    };
+    */
     // hide tours for smaller screens
     self.hideTours = ko.observable(false);
 
@@ -847,7 +867,8 @@ function viewModel() {
                 mouseWheel: 6
             });
         }
-        $(elem).mCustomScrollbar("update");
+        //$(elem).mCustomScrollbar("update");
+        setTimeout( function() { $(elem).mCustomScrollbar("update"); }, 500);
     };
     
     // close layer description

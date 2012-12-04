@@ -47,32 +47,62 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#bb2d8998, endColorstr=#bb2d8998)";
 }
 
-#aggregated-attribute-data {
+#aggregated-attribute-overlay {
   position: absolute;
   /*top: 25%;*/
   top: 180px;
   left: 0;
   z-index: 950; 
-  width: 250px;
+  width: 260px;
+  max-height: 250px;
   font-size: 14px;
   color: white;  
 }
+#aggregated-attribute-content {
+  max-height: 250px;
+  padding-bottom: 0px;
+}
 
-#aggregated-attribute-data h4 {
+#aggregated-attribute-content .mCSB_container {
+  padding-left: 10px; 
+  margin-right: 5px;
+  overflow: hidden;
+}
+
+#aggregated-attribute-content .mCSB_scrollTools {
+  padding-top: 20px;
+  height: 85%;
+  right: -4px;
+}
+
+#aggregated-attribute-content .mCustomScrollBox {
+  max-height: 250px;
+  margin-right: -20px;
+  top: -15px;
+  left: -5px;
+}
+
+#aggregated-attribute-overlay > span {
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+#aggregated-attribute-overlay h4 {
   color: white !important;
   margin-bottom: 2px !important;
 }
 
-#aggregated-attribute-data dl {
+#aggregated-attribute-overlay dl {
   margin-top: 0px !important;
   margin-left: 5px;
+  margin-bottom: 0px;
 }
 
-#aggregated-attribute-data dt {
+#aggregated-attribute-overlay dt {
   font-weight: normal;
 }
 
-#aggregated-attribute-data > div {
+#aggregated-attribute-overlay > div {
   padding: 10px;
   border-radius: 4px;
 /*  background-color: rgb(60, 110, 160);

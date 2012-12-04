@@ -785,9 +785,9 @@
                                     </div>
                                   
                                     <!-- Aggregated Attribution Overlay -->
-                                    <div id="aggregated-attribute-data">
-                                        <div data-bind="visible: aggregatedAttributes" style="display: none">
-                                          <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
+                                    <div id="aggregated-attribute-overlay" data-bind="visible: aggregatedAttributes" style="display: none">
+                                        <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
+                                        <div id="aggregated-attribute-content">
                                           <div data-bind="foreach: activeLayers()">
                                             <div data-bind="visible: $root.aggregatedAttributes()[name]">
                                               <h4 data-bind="text: name"></h4>

@@ -245,7 +245,7 @@ app.init = function () {
             }
         }
         
-        if (newTime - app.map.clickOutput.time > 100) {
+        if (newTime - app.map.clickOutput.time > 300) {
             app.map.clickOutput.attributes = {};
             app.map.clickOutput.time = newTime;
         } 
@@ -257,7 +257,7 @@ app.init = function () {
     app.map.events.register("nofeatureclick", null, function(e) {
         var date = new Date();
         var newTime = date.getTime();
-        if (newTime - app.map.clickOutput.time > 100) {
+        if (newTime - app.map.clickOutput.time > 300) {
             app.viewModel.aggregatedAttributes(false);
         }
     });
