@@ -227,9 +227,6 @@ app.init = function () {
         }
     });
     map.addControl(map.UTFControl);    
-
-    app.map = map;
-
     
     app.map.events.register("featureclick", null, function(e) {
         var layer = e.feature.layer.layerModel;
