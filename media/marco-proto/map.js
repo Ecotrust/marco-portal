@@ -7,6 +7,7 @@ app.init = function () {
         displayProjection: new OpenLayers.Projection("EPSG:4326"),
         projection: "EPSG:3857"
     });
+    
     esriOcean = new OpenLayers.Layer.XYZ("ESRI Ocean", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/${z}/${y}/${x}", {
         sphericalMercator: true,
         isBaseLayer: true,
@@ -104,7 +105,7 @@ app.init = function () {
         app.updateUrl();
     });
 
-
+    /*
     // callback functions for vector attribution (SelectFeature Control)
     var report = function(e) {
         var layer = e.feature.layer.layerModel;
@@ -122,114 +123,144 @@ app.init = function () {
             app.viewModel.attributeData(text);
         }
     };
-      
+    */
+    /*  
     var clearout = function(e) {
         //document.getElementById("output").innerHTML = ""; 
         app.viewModel.attributeTitle(false);
         app.viewModel.attributeData(false);
     };  
+    */
     
-    map.vectorList = [];
-    map.selectFeatureControl = new OpenLayers.Control.SelectFeature(map.vectorList, {
-        //hover: true,
-        highlightOnly: false,
-        renderIntent: "temporary",
-        cancelBubble: false,
-        eventListeners: {
-            //beforefeaturehighlighted: report,
-            featurehighlighted: report,
-            //boxselectionend: report,
-            featureunhighlighted: clearout
-        }
-    });
-    map.addControl(map.selectFeatureControl);
-    map.selectFeatureControl.activate();  
+    app.map = map;
+    
+    app.map.attributes = [];
+    //app.map.clickOutput = { time: 0, attributes: [] };
+    app.map.clickOutput = { time: 0, attributes: {} };
     
     //UTF Attribution
     map.UTFControl = new OpenLayers.Control.UTFGrid({
         //attributes: layer.attributes,
         layers: [],
+        //events: {fallThrough: true},
         handlerMode: 'click',
         callback: function(infoLookup) {
-            app.viewModel.attributeTitle(false);
-            app.viewModel.attributeData(false);
             if (infoLookup) {
-                var attributes;
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-                    if (!attributes) { //only loop if attributes has not yet been populated
-                        for (var idx in infoLookup) {
-                            if (!attributes) { //only loop if attributes has not yet been populated
-                                var info = infoLookup[idx];
-                                if (info && info.data) { 
-                                    var newmsg = '',
-                                        hasAllAttributes = true,
-                                        parentHasAllAttributes = false;
-                                    // if info.data has all the attributes we're looking for
-                                    // we'll accept this layer as the attribution layer 
-                                    if ( ! potential_layer.attributes.length ) {
-                                        hasAllAttributes = false;
-                                    }
-                                    $.each(potential_layer.attributes, function (attr_index, attr_obj) {
-                                        if ( !(attr_obj.field in info.data) ) {
-                                            hasAllAttributes = false;
-                                        }
-                                    });
-                                    if ( !hasAllAttributes && potential_layer.parent) {
-                                        parentHasAllAttributes = true;
-                                        if ( ! potential_layer.parent.attributes.length ) {
-                                            parentHasAllAttributes = false;
-                                        }
-                                        $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
-                                            if ( !(attr_obj.field in info.data) ) {
-                                                parentHasAllAttributes = false;
-                                            }
-                                        });
-                                    }
-                                    if (hasAllAttributes) {
-                                        attributes = potential_layer.attributes;
-                                    } else if (parentHasAllAttributes) {
-                                        attributes = potential_layer.parent.attributes;
-                                    }
-                                    if (attributes) { 
-                                        var attribute_objs = [];
-                                        $.each(attributes, function(index, obj) {
-                                            if ( potential_layer.compress_attributes ) {
-                                                var display = obj.display + ': ' + info.data[obj.field];
-                                                attribute_objs.push({'display': display, 'data': ''});
-                                            } else {
-                                                /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
-                                                var value = info.data[obj.field];
-                                                if (value === 999999) {
-                                                    attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
-                                                } else {
-                                                    try {
-                                                        value = value.toFixed(obj.precision);
-                                                    }
-                                                    catch (e) {
-                                                        //keep on keeping on
-                                                    }
-                                                    attribute_objs.push({'display': obj.display, 'data': value});
-                                                }
-                                                
-                                            }
-                                        });
-                                        app.viewModel.attributeTitle(potential_layer.name);
-                                        //app.viewModel.attributeData([{'display': potential_layer.attributeTitle, 'data': newmsg}]);
-                                        app.viewModel.attributeData(attribute_objs);
-                                    } 
-                                } 
+                    for (var idx in infoLookup) {
+                        var attributes;
+                        var info = infoLookup[idx];
+                        if (info && info.data) { 
+                            var newmsg = '',
+                                hasAllAttributes = true,
+                                parentHasAllAttributes = false;
+                            // if info.data has all the attributes we're looking for
+                            // we'll accept this layer as the attribution layer 
+                            if ( ! potential_layer.attributes.length ) {
+                                hasAllAttributes = false;
                             }
-                        }
+                            $.each(potential_layer.attributes, function (attr_index, attr_obj) {
+                                if ( !(attr_obj.field in info.data) ) {
+                                    hasAllAttributes = false;
+                                }
+                            });
+                            if ( !hasAllAttributes && potential_layer.parent) {
+                                parentHasAllAttributes = true;
+                                if ( ! potential_layer.parent.attributes.length ) {
+                                    parentHasAllAttributes = false;
+                                }
+                                $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
+                                    if ( !(attr_obj.field in info.data) ) {
+                                        parentHasAllAttributes = false;
+                                    }
+                                });
+                            }
+                            if (hasAllAttributes) {
+                                attributes = potential_layer.attributes;
+                            } else if (parentHasAllAttributes) {
+                                attributes = potential_layer.parent.attributes;
+                            }
+                            if (attributes) { 
+                                var attribute_objs = [];
+                                $.each(attributes, function(index, obj) {
+                                    if ( potential_layer.compress_attributes ) {
+                                        var display = obj.display + ': ' + info.data[obj.field];
+                                        attribute_objs.push({'display': display, 'data': ''});
+                                    } else {
+                                        /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
+                                        var value = info.data[obj.field];
+                                        if (value === 999999) {
+                                            attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
+                                        } else {
+                                            try {
+                                                value = value.toFixed(obj.precision);
+                                            }
+                                            catch (e) {
+                                                //keep on keeping on
+                                            }
+                                            attribute_objs.push({'display': obj.display, 'data': value});
+                                        }
+                                        
+                                    }
+                                });
+                                
+                                var title = potential_layer.name;
+                                var text = attribute_objs;
+                                var date = new Date();
+                                var newTime = date.getTime();
+                                if (newTime - app.map.clickOutput.time > 500) {
+                                    app.map.clickOutput.attributes = {};
+                                    app.map.clickOutput.attributes[title] = text;
+                                    app.map.clickOutput.time = newTime;
+                                } else {
+                                    if (text[0].data) {
+                                        app.map.clickOutput.attributes[title] = text;
+                                    }
+                                }
+                    
+                                app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                            } 
+                        } 
                     }
                 });
             } 
-            //document.getElementById("info").innerHTML = msg;
         }
     });
     map.addControl(map.UTFControl);    
-
-    app.map = map;
-
+    
+    app.map.events.register("featureclick", null, function(e) {
+        var layer = e.feature.layer.layerModel;
+        var date = new Date();
+        var newTime = date.getTime();
+        var attrs = layer.attributes,
+            title = layer.name,
+            text = [];
+        
+        if ( layer.attributes.length ) {
+            for (var i=0; i<attrs.length; i++) {
+                if ( e.feature.data[attrs[i].field] ) {
+                    text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                }
+            }
+        }
+        
+        if (newTime - app.map.clickOutput.time > 300) {
+            app.map.clickOutput.attributes = {};
+            app.map.clickOutput.time = newTime;
+        } 
+        app.map.clickOutput.attributes[title] = text;
+        
+        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+    });
+    
+    app.map.events.register("nofeatureclick", null, function(e) {
+        var date = new Date();
+        var newTime = date.getTime();
+        if (newTime - app.map.clickOutput.time > 300) {
+            app.viewModel.aggregatedAttributes(false);
+        }
+    });
+        
 };
 
 app.addLayerToMap = function(layer) {
@@ -252,16 +283,13 @@ app.addLayerToMap = function(layer) {
                 layerModel: layer,
                 url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
                 sphericalMercator: true,
-                                 
+                //events: {fallThrough: true},
                 utfgridResolution: 4, // default is 2
                 displayInLayerSwitcher: false,
                 useJSONP: false
             });
-            //layer.utfgrid.projection = new OpenLayers.Projection("EPSG:4326");  
+             
             app.map.addLayer(layer.utfgrid);           
-            //app.map.UTFControl.layers = [layer.utfgrid];
-            //layer.utfcontrol = app.addUTFControl(layer);
-            //app.map.addControl(layer.utfcontrol); 
             layer.layer = new OpenLayers.Layer.XYZ(
                 layer.name, 
                 layer.url,
@@ -273,7 +301,6 @@ app.addLayerToMap = function(layer) {
                 )
             );  
             app.map.addLayer(layer.layer);  
-            //app.addUTFAttribution(layer);
         } else if (layer.type === 'Vector') {
             var styleMap = new OpenLayers.StyleMap( {
                 fillColor: layer.color,
@@ -318,13 +345,7 @@ app.addLayerToMap = function(layer) {
                     layerModel: layer
                 }
             );
-            //app.addVectorAttribution(layer);
-            app.map.addLayer(layer.layer);  
-            //selectFeatureControl = app.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0];
-            if (layer.attributes.length) {
-                app.map.vectorList.unshift(layer.layer);
-                app.map.selectFeatureControl.setLayer(app.map.vectorList);
-            }
+            app.map.addLayer(layer.layer); 
         } else if (layer.type === 'ArcRest') {
             layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
                 layer.name, 
@@ -362,8 +383,6 @@ app.addLayerToMap = function(layer) {
             );
             app.map.addLayer(layer.layer);  
         }
-        //app.map.addLayer(layer.layer);  
-        //layer.layer.projection = new OpenLayers.Projection("EPSG:3857");
     } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
         //layer.utfcontrol = app.addUTFControl(layer);
         //app.map.addControl(layer.utfcontrol); 
@@ -394,7 +413,6 @@ $("#overview-overlay-text").hover(
     // mouseenter
     function () {
         var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
-        console.log('disable');
         for(var i = 0; i < controls.length; ++i) {
             controls[i].disableZoomWheel();
         }
@@ -402,7 +420,6 @@ $("#overview-overlay-text").hover(
     }, 
     function () {
         var controls = app.map.getControlsByClass('OpenLayers.Control.Navigation');
-        console.log('enable');
         for(var i = 0; i < controls.length; ++i) {
             controls[i].enableZoomWheel();
         }
