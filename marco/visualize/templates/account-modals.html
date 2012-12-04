@@ -1,0 +1,247 @@
+<!--
+<div id="thankyou-modal" class="modal hide fade">
+    <form class="form-horizontal" id="thankyou-form">
+-->
+<!-- SIGN IN MODAL -->
+<div id="sign-in-modal" class="modal hide fade">
+    <!--<form class="form-horizontal" id="sign-in-form" action="/accounts/signin/" method="post">{% csrf_token %}-->
+    <form id="sign-in-form" class="form-horizontal" action="/accounts/signin/" method="post" data-bind="submit: verifyLogin">{% csrf_token %}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Sign In</h3>
+        </div>
+        <div class="modal-body"> 
+            <div class="control-group">
+              <label class="control-label" for="username">Username</label>
+              <div class="controls">
+                <input id="login-username" class="input-xlarge" type="text" name="username" placeholder="username" data-bind="event: { blur: verifyLogin, focus: turnOffInactiveError }" required>
+                <span class="help-inline" data-bind="visible: inactiveError" style="margin-left: -160px;">
+                    <div>The username you entered belongs to an account that has not yet been activated.</div>  
+                    <div>If you requested this username, you should have received an email with a link that activates this account.</div>
+                    <div>If you are having trouble activating your account, <a href="" data-dismiss="modal" data-toggle="modal" data-target="#feedback-modal">please let us know</a>.</div>
+                </span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="password1">Password</label>
+              <div class="controls">
+                  <input id="login-password" class="input-xlarge empty-input" placeholder="Password" type="password" name="password" required>
+                  <span class="help-inline" data-bind="visible: passwordError"><div>The login information you entered is incorrect.</div>  <div>Please try again.</div></span>
+              </div>
+            </div>
+            <div>
+                <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+            </div>
+            <div> 
+                <p><a href="#registration-modal" data-dismiss="modal" data-toggle="modal">Not yet Registered?</a></p>
+            </div>
+            <div>
+                <p><a href="#forgot-username-modal" data-dismiss="modal" data-toggle="modal">Forgot your username?</a></p>
+            </div>
+            <div>
+                <p><a href="#forgot-password-modal" data-dismiss="modal" data-toggle="modal">Forgot your password?</a></p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
+            <input type="submit" class="btn btn-primary" value="Sign In">
+        </div>
+  </form>
+</div>
+
+<!-- FORGOT USERNAME -->
+<div id="forgot-username-modal" class="modal hide fade">
+    <form class="form-horizontal" id="forgot-username-form" action="/marco_profile/forgot_username/" method="post">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Forgotten Username</h3>
+        </div>
+        <div class="modal-body"> 
+            <div> 
+                <p>Enter your email address below and we will send you an email containing your username.</p>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="email">Email</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" name="email" placeholder="Email" required>
+              </div>
+            </div>
+            <div>
+                <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+  </form>
+</div>        
+
+<!-- FORGOT PASSWORD -->
+<div id="forgot-password-modal" class="modal hide fade">
+    <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
+    <form class="form-horizontal" id="forgot-password-form" action="/marco_profile/password/reset/" method="post">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Password Change</h3>
+        </div>
+        <div class="modal-body"> 
+            <div class="control-group">
+              <label class="control-label" for="email">Email</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" name="email" placeholder="Email" required>
+              </div>
+            </div>
+            <div>
+                <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+            </div>                    
+        </div>
+        <div class="modal-footer">
+            <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+  </form>
+</div>
+
+<!-- REGISTRATION MODAL -->
+<div id="registration-modal" class="modal hide fade">
+    <form class="form-horizontal" id="registration-form" action="{% url marco_registration_register %}" method="post">{% csrf_token %}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Register</h3>
+        </div>
+        <div class="modal-body">        
+            <div class="control-group">
+              <label class="control-label" for="first-name">First Name</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" name="first_name" placeholder="First Name" required>
+              </div>
+            </div>       
+            <div class="control-group">
+              <label class="control-label" for="last-name">Last Name</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" name="last_name" placeholder="Last Name" required>
+              </div>
+            </div>       
+            <div class="control-group" data-bind="css: { error: usernameError }">
+              <label class="control-label" for="username">Username</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" data-bind="value: username, event: { blur: checkUsername, focus: turnOffUsernameError }" name="username" placeholder="username" required>
+                <span class="help-inline" data-bind="visible: usernameError">That username is already in use.  Please try another username.</span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="email">Email Address</label>
+              <div class="controls">
+                <input class="input-xlarge empty-input" type="email" name="email" placeholder="Email Address" required>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="password1">Password</label>
+              <div class="controls">
+                  <input class="input-xlarge empty-input" type="password" placeholder="Password" data-bind="value: password1, valueUpdate: 'afterkeydown', event: { keyup: checkPassword }" name="password1" required>
+              </div>
+            </div>
+            <div class="control-group" data-bind="css: { warning: passwordWarning, success: passwordSuccess }">
+              <label class="control-label" for="password2">Password (re-enter)</label>
+              <div class="controls">
+                  <input class="input-xlarge empty-input" type="password" placeholder="Password" data-bind="value: password2, valueUpdate: 'afterkeydown', event: { keyup: checkPassword }" name="password2" required>
+                  <span class="help-inline" data-bind="visible: passwordWarning()">Passwords do not match</span>
+                  <span class="help-inline" data-bind="visible: passwordSuccess()">Success!</span>
+              </div>
+            </div>
+            <div>
+                <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-right">
+                <input type="button" class="btn" data-dismiss="modal" value="Close">
+                <input type="submit" class="btn btn-primary" value="Register">
+            </div>
+        </div>
+  </form>
+</div>
+
+<!-- RESET PASSWORD -->
+<div id="reset-password-modal" class="modal hide fade">
+    <!--<form class="form-horizontal" id="forgot-password-form" action="/marco_profile/change_password/{{user.username}}/" method="post">{% csrf_token %}-->
+    <form class="form-horizontal" id="reset-password-form" action="/marco_profile/password_change/{{user.username}}/" method="post" data-bind="submit: verifyPassword">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Password Change</h3>
+        </div>
+        <div class="modal-body"> 
+            <div>
+                <input type="hidden" name="username" value="{{user.username}}">
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="old_password">Old Password</label>
+              <div class="controls">
+                  <input class="input-xlarge empty-input" placeholder="Current Password" type="password" name="old_password" required>
+                  <span class="help-inline" data-bind="visible: passwordError"><div>The password you entered is incorrect.</div>  <div>Please enter your original password again.</div></span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="password1">New Password</label>
+              <div class="controls">
+                  <input class="input-xlarge" type="password" placeholder="New Password" name="new_password1" data-bind="value: password1" required>
+              </div>
+            </div>
+            <div class="control-group" data-bind="css: { warning: passwordWarning, success: passwordSuccess }">
+              <label class="control-label" for="password2">Confirm Password</label>
+              <div class="controls">
+                  <input class="input-xlarge empty-input" type="password" placeholder="New Password" data-bind="value: password2, valueUpdate: 'afterkeydown', event: { keyup: checkPassword }" name="new_password2" required>
+                  <span class="help-inline" data-bind="visible: passwordWarning()">Passwords do not match</span>
+                  <span class="help-inline" data-bind="visible: passwordSuccess()">Success!</span>
+              </div>
+            </div>
+            <div>
+                <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="button" href="#" class="btn" data-dismiss="modal" value="Close">
+            <input type="submit" class="btn btn-primary" value="Update Password">
+        </div>
+  </form>
+</div>
+        
+<!-- PROFILE MODAL -->
+<div id="profile-modal" class="modal hide fade">
+    <form class="form-horizontal" id="profile-form" action="/marco_profile/update_profile/{{user.username}}/" method="post">{% csrf_token %}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>{{user.username}}</h3>
+        </div>
+        <div class="modal-body">        
+            <div class="control-group">
+              <label class="control-label" for="first-name">First Name</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" name="first_name" value="{{user.first_name}}">
+              </div>
+            </div>       
+            <div class="control-group">
+              <label class="control-label" for="last-name">Last Name</label>
+              <div class="controls">
+                <input class="input-xlarge" type="text" name="last_name" value="{{user.last_name}}">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="email">Email Address</label>
+              <div class="controls">
+                <input class="input-xlarge" type="email" name="email" value="{{user.email}}" required>
+              </div>
+            </div>
+            <div>
+                <input type="hidden" name="next" data-bind="attr: { value: currentURL() }">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="pull-right">
+                <input type="button" class="btn" data-dismiss="modal" value="Close">
+                <input type="submit" class="btn btn-primary" value="Update Profile">
+            </div>
+        </div>
+  </form>
+</div>
