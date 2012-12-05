@@ -71,6 +71,7 @@ class Scenario(Analysis):
     description = models.TextField(null=True, blank=True)
     satisfied = models.BooleanField(default=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
+    active = models.BooleanField(default=True)
             
     #I'm finding myself wishing lease_blocks was spelled without the underscore...            
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  

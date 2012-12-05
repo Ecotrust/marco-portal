@@ -86,6 +86,7 @@ var madrona = {
 function scenarioModel(options) {
     var self = this;
 
+    self.id = options.id;
     self.uid = options.uid;
     self.name = options.name;
 
@@ -117,9 +118,22 @@ function scenarioModel(options) {
     
     self.deleteDesign = function() {
         var design = this;
-        //debugger;
-        //remove from scenarioList
+        
         //remove from app.map
+        if (design.layer) {
+            app.map.removeLayer(design.layer);
+        }
+        //remove from scenarioList
+        app.viewModel.scenarios.scenarioList.remove(design);
+        
+        //remove from server-side db (this should provide error message to the user on fail)
+        $.ajax({
+            url: '/scenario/delete_scenario/' + design.id + '/',
+            type: 'POST',
+            error: function (result) {
+                debugger;
+            }
+        })
     };
     
     return self;
@@ -219,6 +233,7 @@ function scenariosModel(options) {
     self.loadScenarios = function (scenarios) {
         $.each(scenarios, function (i, scenario) {
             self.scenarioList.push(new scenarioModel({
+                id: scenario.id,
                 uid: scenario.uid,
                 name: scenario.name
             }));

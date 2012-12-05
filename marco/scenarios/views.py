@@ -17,21 +17,26 @@ def sdc_analysis(request, sdc_id):
     
 '''
 '''
-def sdc_delete(request, sdc_id):
-    sdc_obj = get_object_or_404(Scenario, pk=sdc_id)
+def delete_scenario(request, scenario_id):
+    scenario_obj = get_object_or_404(Scenario, id=scenario_id)
+    
     #check permissions
-    viewable, response = sdc_obj.is_viewable(request.user)
+    viewable, response = scenario_obj.is_viewable(request.user)
     if not viewable:
         return response
-    sdc_obj.delete()
+        
+    scenario_obj.active = False
+    scenario_obj.save(rerun=False)
+    
     return HttpResponse("", status=200)
 
 
 def get_scenarios(request):
     json = []
-    scenarios = Scenario.objects.filter(user=request.user)
+    scenarios = Scenario.objects.filter(user=request.user, active=True)
     for scenario in scenarios:
         json.append({
+            'id': scenario.id,
             'uid': scenario.uid,
             'name': scenario.name
         })
