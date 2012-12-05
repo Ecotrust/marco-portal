@@ -125,6 +125,7 @@ class Scenario(Analysis):
             try:
                 dissolved_geom = dissolved_geom.union(lb.geometry)
             except:
+                pass
                 #pdb.set_trace()
         
         #pdb.set_trace()

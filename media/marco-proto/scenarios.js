@@ -115,6 +115,13 @@ function scenarioModel(options) {
         }
     };
     
+    self.deleteDesign = function() {
+        var design = this;
+        //debugger;
+        //remove from scenarioList
+        //remove from app.map
+    };
+    
     return self;
 }
 
