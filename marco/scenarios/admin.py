@@ -6,7 +6,7 @@ admin.site.register(Permission)
 from models import *
 
 class ScenarioAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'user', 'date_created', 'date_modified')
+    list_display = ('pk', 'name', 'user', 'active', 'date_created', 'date_modified')
     list_filter = ['date_modified', 'date_created']
     search_fields = ('name', 'user__username', 'id')
     fields = ['name', 'description', 'user']#, 'input_objectives', 'support_file'] 
