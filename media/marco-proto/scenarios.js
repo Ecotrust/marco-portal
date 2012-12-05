@@ -99,14 +99,13 @@ function scenarioModel(options) {
         var scenario = this;
         
         //app.viewModel.activeLayer(layer);
-
-        if (scenario.active()) { // if layer is active
+        if (scenario.active()) { // if layer is active, then deactivate
             scenario.active(false);
             scenario.visible(false);
             app.setLayerVisibility(scenario, false);
             console.log('toggle off');
             console.dir(scenario);
-        } else { // otherwise layer is not currently active
+        } else { // otherwise layer is not currently active, so activate
             //scenario.activateLayer();
             scenario.active(true);
             scenario.visible(true);
@@ -170,22 +169,22 @@ function scenariosModel(options) {
     }; 
     
     //
-    self.addScenarioToMap = function(scenarioModel, options) {
+    self.addScenarioToMap = function(scenario, options) {
         var scenarioId,
             createNew;
-        if ( !scenarioModel ) {
+        if ( !scenario ) {
             createNew = true;
             scenarioId = options.uid;
         } else {
             createNew = false;
-            scenarioId = scenarioModel.uid;
+            scenarioId = scenario.uid;
         }
         
         $.ajax( {
             url: '/features/generic-links/links/geojson/' + scenarioId + '/', 
             type: 'GET',
             dataType: 'json',
-            success: function(scenario) {
+            success: function(feature) {
                 var layer = new OpenLayers.Layer.Vector(
                     scenarioId,
                     {
@@ -198,23 +197,24 @@ function scenariosModel(options) {
                             strokeOpacity: 1
                         }),     
                         //style: OpenLayers.Feature.Vector.style['default'],
-                        scenarioModel: scenarioModel
+                        scenarioModel: scenario
                     }
                 );
                 
-                layer.addFeatures(new OpenLayers.Format.GeoJSON().read(scenario));
-                if ( scenarioModel ) {
-                    scenarioModel.layer = layer;
+                layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
+                if ( scenario ) {
+                    scenario.layer = layer;
                 }
                 
                 if (createNew) {
                     //only do the following if creating a scenario
-                    //debugger;
-                    self.scenarioList().push(new scenarioModel({
-                        'uid': scenarioId,
-                        'name': layer.name, 
-                        'features': layer.features, 
-                        'layer': layer
+                    var properties = feature.features[0].properties;
+                    self.scenarioList.push(new scenarioModel({
+                        id: properties.id,
+                        uid: properties.uid,
+                        name: properties.name, 
+                        features: layer.features, 
+                        layer: layer
                     }));
                     self.scenarioForm(false);
                 }
@@ -223,8 +223,9 @@ function scenariosModel(options) {
                 app.map.addLayer(layer); 
                 
             },
-            error: function() {
+            error: function(result) {
                 debugger;
+                app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
             }
         });
     }

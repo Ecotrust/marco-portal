@@ -117,7 +117,7 @@ class Scenario(Analysis):
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
          
-        #import pdb
+        import pdb
         #pdb.set_trace()
         
         
@@ -130,8 +130,10 @@ class Scenario(Analysis):
                 #pdb.set_trace()
         
         #pdb.set_trace()
-        self.geometry_dissolved = dissolved_geom
-
+        from django.contrib.gis.geos import MultiPolygon
+        self.geometry_dissolved = MultiPolygon(dissolved_geom, srid=dissolved_geom.srid)
+        self.active = True
+        
         #pdb.set_trace()
         
         self.geometry_final_area = sum([lb.geometry.area for lb in result.all()])
