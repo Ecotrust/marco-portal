@@ -97,7 +97,6 @@ function scenarioModel(options) {
     
     self.toggleActive = function(self, event) {
         var scenario = this;
-        
         //app.viewModel.activeLayer(layer);
         if (scenario.active()) { // if layer is active, then deactivate
             scenario.active(false);
@@ -170,8 +169,7 @@ function scenariosModel(options) {
     
     //
     self.addScenarioToMap = function(scenario, options) {
-        var scenarioId,
-            createNew;
+        var scenarioId;
         if ( !scenario ) {
             createNew = true;
             scenarioId = options.uid;
@@ -202,20 +200,23 @@ function scenariosModel(options) {
                 );
                 
                 layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
+                
                 if ( scenario ) {
                     scenario.layer = layer;
-                }
-                
-                if (createNew) {
+                } 
+                if ( createNew ) { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    self.scenarioList.push(new scenarioModel({
+                    var newScenario = new scenarioModel({
                         id: properties.id,
                         uid: properties.uid,
                         name: properties.name, 
                         features: layer.features, 
                         layer: layer
-                    }));
+                    });
+                    newScenario.active(true);
+                    newScenario.visible(true);
+                    self.scenarioList.push(newScenario);
                     self.scenarioForm(false);
                 }
                 
