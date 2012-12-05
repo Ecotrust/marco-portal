@@ -21,7 +21,7 @@
     <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
         <div class="row-fluid"  data-bind="visible: ! scenarioForm()">
             <div class="span12">
-                <div class="btn-group">
+                <div id="create-new-design" class="btn-group">
                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="icon-plus-sign"></i> Create New Design
                         <span class="caret"></span>
@@ -37,18 +37,29 @@
         </div>    
                 
         <div class="panel-container" data-bind="visible: scenarioForm, html: scenarioForm"></div>     
-        <div data-bind="visible: ! scenarioForm()">
+        <div id="design-list" data-bind="visible: ! scenarioForm()">
             <ul class="unstyled list" data-bind="foreach: scenarioList ">
                 <li class="layer">
                     <div class="btn-group btn-group-layer">
                         <a class="btn btn-info-sign">
                             <i class="icon-info-sign icon-large"></i>
                         </a>
-                        <a class="btn btn-layer">
+                        <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                             <div style="font-weight: normal">
                                 <span data-bind="text: name"></span>
+                                <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
                             </div>
                         </a>
+                        <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Share</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
 
                     </div>
                 </li>  

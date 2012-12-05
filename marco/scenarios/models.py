@@ -86,7 +86,7 @@ class Scenario(Analysis):
     def run(self):
     
         result = LeaseBlock.objects.all()
-        '''
+        
         #GeoPhysical
         if self.input_parameter_distance_to_shore:
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
@@ -100,12 +100,11 @@ class Scenario(Analysis):
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
-        '''
+        
         #Wind Energy
         if self.input_parameter_wind_speed:
             input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
             result = result.filter(min_wind_speed__gte=input_wind_speed)
-        '''
         if self.input_parameter_wea:
             input_wea = [wea.wea_id for wea in self.input_wea.all()]
             result = result.filter(wea_number__in=input_wea)
@@ -116,16 +115,28 @@ class Scenario(Analysis):
             result = result.filter(ais_mean_density__lte=1)
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
-        ''' 
+         
+        #import pdb
+        #pdb.set_trace()
+        
         
         dissolved_geom = result[0].geometry
-        for r in result:
-            dissolved_geom = dissolved_geom.union(r.geometry)
-        self.geometry_dissolved = dissolved_geom
+        for lb in result:
+            try:
+                dissolved_geom = dissolved_geom.union(lb.geometry)
+            except:
+                #pdb.set_trace()
         
-        self.geometry_final_area = sum([r.geometry.area for r in result.all()])
-        leaseblock_ids = [r.id for r in result.all()]
+        #pdb.set_trace()
+        self.geometry_dissolved = dissolved_geom
+
+        #pdb.set_trace()
+        
+        self.geometry_final_area = sum([lb.geometry.area for lb in result.all()])
+        leaseblock_ids = [lb.id for lb in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
+        
+        #pdb.set_trace()
         
         
         if self.lease_blocks == '':

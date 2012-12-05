@@ -344,6 +344,7 @@
                 {{ form.input_distance_to_shore.errors }} 
             </div>
         </li>
+        <!--
         <li>
             <label>
                 {{ form.input_parameter_distance_to_awc }} Distance to AWC Station 
@@ -357,6 +358,7 @@
                 </span> 
             </div>
         </li>
+        -->
         <li>
             <label>
                 {{ form.input_parameter_depth }} Depth Range 
@@ -373,26 +375,7 @@
                 {{ form.input_depth.errors }}
             </div>
         </li>
-        <li>
-            <label>
-                {{ form.input_parameter_substrate }} Seabed Types 
-                <img src="/media/marco/img/info.png" id="info_seabed" class="info" />
-            </label>
-            <div id="substrate_widget" class="inputfield">
-                {{ form.input_substrate }}  
-                {{ form.input_substrate.errors }} 
-            </div>
-        </li>
-        <li>
-            <label>
-                {{ form.input_parameter_sediment }} Sediment Types 
-                <img src="/media/marco/img/info.png" id="info_sediment" class="info" />
-            </label>
-            <div id="sediment_widget" class="inputfield">
-                {{ form.input_sediment }}  
-                {{ form.input_sediment.errors }}
-            </div>
-        </li>
+        <!--
         <li>
             <label>
                 {{ form.input_parameter_wea }} Wind Energy Areas 
@@ -405,6 +388,7 @@
                 </span>
             </div>
         </li>
+        -->
         </ul>
     </div>
   </div>
@@ -512,7 +496,7 @@
 
 <div>
     <div class="btn-group pull-left">
-        <a href="#" class="cancel_button button red btn" onclick="this.blur(); return false;"><span>Cancel</span></a>
+        <a href="#" class="cancel_button button red btn"><span>Cancel</span></a>
         
     </div>
 </div>

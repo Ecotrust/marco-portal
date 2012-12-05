@@ -32,8 +32,8 @@ def get_scenarios(request):
     scenarios = Scenario.objects.filter(user=request.user)
     for scenario in scenarios:
         json.append({
-            'id': scenario.id,
-            'name': scenario.name\
-            })
+            'uid': scenario.uid,
+            'name': scenario.name
+        })
 
     return HttpResponse(dumps(json))

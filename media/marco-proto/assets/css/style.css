@@ -560,14 +560,45 @@ a.disabled-link:hover {
     font-size: 12px;
 }
 
-
-
+#data-accordion .icon-info-sign {
+  margin-left: -15px;
+}
 
 #data-accordion .dropdown-menu {
   right: 0px;
   margin-top: 0px;
 }
 
+#designs .icon-info-sign {
+  margin-left: -15px;
+}
+
+#designs li.layer {
+  margin-bottom: 10px;
+}
+
+#create-new-design .dropdown-toggle {
+  background: rgba(45, 137, 152, 1);
+}
+
+#create-new-design .dropdown-menu {
+  margin-top: 0px;
+}
+
+#design-list .btn-layer {
+  text-align: left;
+  width: 70%;
+}
+
+#design-list .dropdown-toggle {
+  border-left: 0px;
+}
+
+#design-list .dropdown-menu {
+  min-width: 75px;
+  left: 70%;
+  top: 90%;
+}
 .attribution {
   font-size: 10px;
 }
