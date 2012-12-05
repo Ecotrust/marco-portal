@@ -127,20 +127,20 @@ class Scenario(Analysis):
                 dissolved_geom = dissolved_geom.union(lb.geometry)
             except:
                 pass
-                pdb.set_trace()
+                #pdb.set_trace()
         
-        pdb.set_trace()
+        #pdb.set_trace()
         from django.contrib.gis.geos import MultiPolygon
         self.geometry_dissolved = MultiPolygon(dissolved_geom, srid=dissolved_geom.srid)
         self.active = True
         
-        pdb.set_trace()
+        #pdb.set_trace()
         
         self.geometry_final_area = sum([lb.geometry.area for lb in result.all()])
         leaseblock_ids = [lb.id for lb in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
         
-        pdb.set_trace()
+        #pdb.set_trace()
         
         
         if self.lease_blocks == '':
