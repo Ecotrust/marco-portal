@@ -9,7 +9,7 @@ class ScenarioAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'user', 'active', 'date_created', 'date_modified')
     list_filter = ['date_modified', 'date_created']
     search_fields = ('name', 'user__username', 'id')
-    fields = ['name', 'description', 'user']#, 'input_objectives', 'support_file'] 
+    fields = ['name', 'active', 'description', 'user']#, 'input_objectives', 'support_file'] 
     #NOTE:  can't do 'input_parameters' because it manually specifies a 'through' model ('ScenarioParameters')
 admin.site.register(Scenario, ScenarioAdmin)
 
