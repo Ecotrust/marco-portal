@@ -106,8 +106,6 @@ function scenarioModel(options) {
             console.dir(scenario);
         } else { // otherwise layer is not currently active, so activate
             //scenario.activateLayer();
-            scenario.active(true);
-            scenario.visible(true);
             app.viewModel.scenarios.addScenarioToMap(scenario);
             console.log('toggle on');
             console.dir(scenario);
@@ -171,10 +169,8 @@ function scenariosModel(options) {
     self.addScenarioToMap = function(scenario, options) {
         var scenarioId;
         if ( !scenario ) {
-            createNew = true;
             scenarioId = options.uid;
         } else {
-            createNew = false;
             scenarioId = scenario.uid;
         }
         
@@ -203,25 +199,26 @@ function scenariosModel(options) {
                 
                 if ( scenario ) {
                     scenario.layer = layer;
-                } 
-                if ( createNew ) { //create new scenario
+                    scenario.active(true);
+                    scenario.visible(true);
+                } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    var newScenario = new scenarioModel({
+                    scenario = new scenarioModel({
                         id: properties.id,
                         uid: properties.uid,
                         name: properties.name, 
-                        features: layer.features, 
-                        layer: layer
+                        features: layer.features
                     });
-                    newScenario.active(true);
-                    newScenario.visible(true);
-                    self.scenarioList.push(newScenario);
+                    scenario.layer = layer;
+                    scenario.active(true);
+                    scenario.visible(true);
+                    self.scenarioList.push(scenario);
                     self.scenarioForm(false);
                 }
                 
                 //app.addVectorAttribution(layer);
-                app.map.addLayer(layer); 
+                app.map.addLayer(scenario.layer); 
                 
             },
             error: function(result) {
