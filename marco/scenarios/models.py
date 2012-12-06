@@ -77,6 +77,14 @@ class Scenario(Analysis):
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     geometry_final_area = models.FloatField(verbose_name='Total Area', null=True, blank=True)
     geometry_dissolved = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Scenario result dissolved")
+                
+    @property
+    def serialize_attributes(self):
+        return {'event': 'click',
+                'attributes': [
+                    {'display': 'Min Distance to Shore', 'field': 'input_min_distance_to_shore', 'precision': 0},
+                    {'display': 'Max Distance to Shore', 'field': 'input_max_distance_to_shore', 'precision': 0}]}
+    
     
     def geojson(self, srid):
         props = get_properties_json(self)

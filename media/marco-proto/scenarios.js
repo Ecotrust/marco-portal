@@ -89,11 +89,15 @@ function scenarioModel(options) {
     self.id = options.id;
     self.uid = options.uid;
     self.name = options.name;
+    
+    self.attributes = options.attributes ? options.attributes.attributes : [];
 
     self.features = options.features;
     
     self.active = ko.observable(false);
     self.visible = ko.observable(false);
+    self.defaultOpacity = options.opacity || 0.8;
+    self.opacity = ko.observable(self.defaultOpacity);
     
     self.toggleActive = function(self, event) {
         var scenario = this;
@@ -102,6 +106,7 @@ function scenarioModel(options) {
             scenario.active(false);
             scenario.visible(false);
             app.setLayerVisibility(scenario, false);
+            app.viewModel.activeLayers.remove(scenario);
             console.log('toggle off');
             console.dir(scenario);
         } else { // otherwise layer is not currently active, so activate
@@ -130,6 +135,55 @@ function scenarioModel(options) {
                 debugger;
             }
         })
+    };
+    
+    self.visible = ko.observable(false);  
+    
+    // bound to click handler for layer visibility switching in Active panel
+    self.toggleVisible = function(manual) {
+        var scenario = this;
+        
+        if (scenario.visible()) { //make invisilbe
+            scenario.visible(false);
+            app.setLayerVisibility(scenario, false);
+        } else { //make visible
+            scenario.visible(true);
+            app.setLayerVisibility(scenario, true);
+        }
+    };
+
+    // is description active
+    self.infoActive = ko.observable(false);
+    app.viewModel.showOverview.subscribe( function() {
+        if ( app.viewModel.showOverview() === false ) {
+            self.infoActive(false);
+        }
+    });
+    
+    // display descriptive text below the map
+    self.toggleDescription = function(scenario) {
+        if ( ! scenario.infoActive() ) {
+            self.showDescription(scenario);
+        } else {
+            self.hideDescription(scenario);
+        }
+    };
+    
+    self.showDescription = function(scenario) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.activeInfoLayer(scenario);
+        self.infoActive(true);
+        $('#overview-overlay').height(186);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    self.hideDescription = function(scenario) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.showMapAttribution();
     };
     
     return self;
@@ -167,11 +221,14 @@ function scenariosModel(options) {
     
     //
     self.addScenarioToMap = function(scenario, options) {
-        var scenarioId;
-        if ( !scenario ) {
-            scenarioId = options.uid;
-        } else {
+        var scenarioId,
+            opacity;
+        if ( scenario ) {
             scenarioId = scenario.uid;
+            opacity = scenario.opacity();
+        } else {
+            scenarioId = options.uid;
+            opacity = .8;
         }
         
         $.ajax( {
@@ -186,7 +243,7 @@ function scenariosModel(options) {
                         displayInLayerSwitcher: false,
                         styleMap: new OpenLayers.StyleMap({
                             fillColor: "#2F6A6C",
-                            fillOpacity: .8,
+                            fillOpacity: opacity,
                             strokeColor: "#1F4A4C",
                             strokeOpacity: 1
                         }),     
@@ -219,6 +276,8 @@ function scenariosModel(options) {
                 
                 //app.addVectorAttribution(layer);
                 app.map.addLayer(scenario.layer); 
+                //add scenario to Active tab    
+                app.viewModel.activeLayers.unshift(scenario);
                 
             },
             error: function(result) {
@@ -234,7 +293,8 @@ function scenariosModel(options) {
             self.scenarioList.push(new scenarioModel({
                 id: scenario.id,
                 uid: scenario.uid,
-                name: scenario.name
+                name: scenario.name,
+                attributes: scenario.attributes
             }));
         });
     }

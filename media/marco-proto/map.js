@@ -229,7 +229,7 @@ app.init = function () {
     map.addControl(map.UTFControl);    
     
     app.map.events.register("featureclick", null, function(e) {
-        var layer = e.feature.layer.layerModel;
+        var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         var date = new Date();
         var newTime = date.getTime();
         var attrs = layer.attributes,

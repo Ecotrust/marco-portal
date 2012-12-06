@@ -38,7 +38,8 @@ def get_scenarios(request):
         json.append({
             'id': scenario.id,
             'uid': scenario.uid,
-            'name': scenario.name
+            'name': scenario.name,
+            'attributes': scenario.serialize_attributes
         })
 
     return HttpResponse(dumps(json))
