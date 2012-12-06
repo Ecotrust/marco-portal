@@ -167,7 +167,7 @@ a:focus {
 }
 
 .form-search input, .form-search input:focus{
-	width: 60%;
+	width: 70%;
 	background-color: #eee;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
