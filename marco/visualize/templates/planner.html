@@ -376,7 +376,6 @@
                                   
                                     <!-- Aggregated Attribution Overlay -->
                                     <div id="aggregated-attribute-overlay" data-bind="visible: aggregatedAttributes" style="display: none">
-                                        <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                         <div id="aggregated-attribute-content">
                                           <div data-bind="foreach: activeLayers()">
                                             <div data-bind="visible: $root.aggregatedAttributes()[name]">
@@ -390,6 +389,7 @@
                                             </div>
                                           </div>
                                         </div>
+                                        <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                     </div>
                                   
                                     <!-- Bookmark Message -->

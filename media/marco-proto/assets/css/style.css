@@ -78,13 +78,12 @@
 #aggregated-attribute-content .mCustomScrollBox {
   max-height: 250px;
   margin-right: -20px;
-  top: -22px;
   left: -5px;
 }
 
 #aggregated-attribute-overlay > span {
-  padding-right: 10px;
-  padding-top: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 #aggregated-attribute-overlay h4 {
