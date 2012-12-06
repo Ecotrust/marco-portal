@@ -76,7 +76,7 @@ class Scenario(Analysis):
     #I'm finding myself wishing lease_blocks was spelled without the underscore...            
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     geometry_final_area = models.FloatField(verbose_name='Total Area', null=True, blank=True)
-    geometry_dissolved = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Scenario result dissolved")
+    geometry_dissolved = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Scenario result dissolved")
     
     def geojson(self, srid):
         props = get_properties_json(self)
