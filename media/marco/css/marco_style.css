@@ -57,7 +57,7 @@ a:focus {
 	top: 2px;
 
 }
-.jspContainer, .jspPane, .jspScrollable {
+#data-accordion .jspContainer, .jspPane, .jspScrollable {
 	background: white!important;
 }
 

@@ -117,19 +117,32 @@ function scenarioModel(options) {
         }
     };
     
-    self.deleteDesign = function() {
-        var design = this;
+    self.editScenario = function() {
+        var scenario = this;
+        return $.ajax({
+            url: '/features/scenario/' + scenario.uid + '/form/', 
+            success: function(data) {
+                app.viewModel.scenarios.scenarioForm(data);
+            },
+            error: function (result) { 
+                debugger; 
+            }
+        });
+    }; 
+        
+    self.deleteScenario = function() {
+        var scenario = this;
         
         //remove from app.map
-        if (design.layer) {
-            app.map.removeLayer(design.layer);
+        if (scenario.layer) {
+            app.map.removeLayer(scenario.layer);
         }
         //remove from scenarioList
-        app.viewModel.scenarios.scenarioList.remove(design);
+        app.viewModel.scenarios.scenarioList.remove(scenario);
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
-            url: '/scenario/delete_scenario/' + design.id + '/',
+            url: '/scenario/delete_scenario/' + scenario.id + '/',
             type: 'POST',
             error: function (result) {
                 debugger;

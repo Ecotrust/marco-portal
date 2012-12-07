@@ -133,15 +133,23 @@
         function showhide_widget(element) {
             element.fadeToggle(100); //slideToggle
         }
+        function updateScrollBar() {
+            var scrollpane = $('#featureform').data('jsp');
+            if (scrollpane === undefined) {
+                $('#featureform').jScrollPane();
+            } else {
+                scrollpane.reinitialise();
+            }
+        };
         
-        $('#id_input_parameter_depth').click( function() { showhide_widget($('#depth_widget')); });
-        $('#id_input_parameter_substrate').click( function() { showhide_widget($('#substrate_widget')); });
-        $('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
+        $('#id_input_parameter_depth').click( function() { showhide_widget($('#depth_widget')); /*updateScrollBar();*/});
+        //$('#id_input_parameter_substrate').click( function() { showhide_widget($('#substrate_widget')); });
+        //$('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
         $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
         $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
         $('#id_input_parameter_distance_to_awc').click( function() { showhide_widget($('#distance_to_awc_widget')); });
         $('#id_input_filter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
-        //$('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
+        $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
         $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
                 
         $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
@@ -242,43 +250,37 @@
         function change_wind_message($left_side, ui) {
             var $text = $('#wind_speed_text'),
                 $label = $text.closest('.label');
-            if (ui.value < 12.5) {
+            if (ui.value < 6.4) {
                 $text.html('Poor');
                 $label.attr('class', "label label-important");
                 //$left_side.css('background', '#aaaa00');
-            } else if (ui.value < 14.3) {
-                $text.html('Marginal');
-                $label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa5500');
-            } else if (ui.value < 15.7) {
+            } else if (ui.value < 7.0) {
                 $text.html('Fair');
                 $label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
-            } else if (ui.value < 16.8) {
+                //$left_side.css('background', '#aa5500');
+            } else if (ui.value < 7.5) {
                 $text.html('Good');
-                $label.attr('class', "label label-success");
-
-                //$left_side.css('background', '#880066');
-            } else if (ui.value < 17.9) {
+                $label.attr('class', "label label-warning");
+                //$left_side.css('background', '#aa0000');
+            } else if (ui.value < 8.0) {
                 $text.html('Excellent');
                 $label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else if (ui.value < 15.7) {
+                //$left_side.css('background', '#880066');
+            } else if (ui.value < 8.8) {
                 $text.html('Outstanding');
                 $label.attr('class', "label label-success");
-                //$left_side.css('background', '#4400aa');
+                //$left_side.css('background', '#8800aa');
             } else {
                 $text.html('Superb');
                 $label.attr('class', "label label-success");
                 //$left_side.css('background', '#000088');
             }
-            //Poor      < 12.5      (< 5.6)     ffff00
-            //Marginal  12.5-14.3   (5.6-6.4)   ff7700
-            //Fair      14.3-15.7   (6.4-7.0)   ff0000
-            //Good      15.7-16.8   (7.0-7.5)   ff0077
-            //Excellent 16.8-17.9   (7.5-8.0)   ff00ff
-            //Oustanding    17.9-19.7   (8.0-8.8)   7700ff
-            //Superb    > 19.7      (> 8.8)     0000ff
+            //Poor       < 12.5      (< 5.6)     ffff00
+            //Fair       14.3-15.7   (6.4-7.0)   ff0000
+            //Good       15.7-16.8   (7.0-7.5)   ff0077
+            //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
+            //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
+            //Superb     > 19.7      (> 8.8)     0000ff
         }
         
          
@@ -322,7 +324,7 @@
                     </span>
                 </div>
                 <div> 
-                    Min Avg Speed (mph)
+                    Min Avg Speed (m/s)
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
                 </div> 
@@ -343,21 +345,6 @@
                 {{ form.input_distance_to_shore.errors }} 
             </div>
         </li>
-        <!--
-        <li>
-            <label>
-                {{ form.input_parameter_distance_to_awc }} Distance to AWC Station 
-                <img src="/media/marco/img/info.png" id="info_awc" class="info" />
-            </label>
-            <div id="distance_to_awc_widget" class="inputfield">
-                <span > 
-                    Maximum Distance (in miles) 
-                    {{ form.input_distance_to_awc }} 
-                    {{ form.input_distance_to_awc.errors }}   
-                </span> 
-            </div>
-        </li>
-        -->
         <li>
             <label>
                 {{ form.input_parameter_depth }} Depth Range 
@@ -373,7 +360,20 @@
                 {{ form.input_depth.errors }}
             </div>
         </li>
-        <!--
+        <li>
+            <label>
+                {{ form.input_parameter_distance_to_awc }} Distance to AWC Station 
+                <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
+            </label>
+            <div id="distance_to_awc_widget" class="inputfield">
+                <span > 
+                    Maximum Distance (in miles) 
+                    {{ form.input_distance_to_awc }} 
+                    {{ form.input_distance_to_awc.errors }}   
+                </span> 
+            </div>
+        </li>
+        <!-- The following produces a '"False" is not a valid value for a primary key' Error (400 response)
         <li>
             <label>
                 {{ form.input_parameter_wea }} Wind Energy Areas 
@@ -381,12 +381,21 @@
             </label>
             <div id="wea_widget" class="inputfield">
                 <span > 
+                    Constrain results to the following Wind Planning Areas
                     {{ form.input_wea }}  
                     {{ form.input_wea.errors }}
                 </span>
             </div>
+        </li>-->
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Additional Parameters...</label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            Terrestrial Substations?
         </li>
-        -->
         </ul>
     </div>
   </div>
@@ -427,25 +436,52 @@
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Military (still in development)</label>
+    <label class="step2-header">Military (under development)</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
             <label>
-                {{ form.input_assessment_areas }} Exclude DoD Assessment Areas 
+                <!--{{ form.input_assessment_areas }} -->
+                Exclude DoD Assessment Areas 
                 <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
             </label>
         </li>
         <li>
             <label>
-                {{ form.input_warn_areas }} Exclude Military Op Warn Areas 
+                <!--{{ form.input_warn_areas }} -->
+                Exclude Military Op Warn Areas 
                 <!--<img src="/media/marco/img/info.png" id="info_warn" class="info" />-->
             </label>
         </li>
         <li>
             <label>
-                {{ form.input_ordinance_areas }} Exclude Unexploded Ordinance Areas 
+                <!--{{ form.input_ordinance_areas }} -->
+                Exclude Unexploded Ordinance Areas 
                 <!--<img src="/media/marco/img/info.png" id="info_ordinance" class="info" />-->
+            </label>
+        </li>
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Conservation </label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            <label>
+                Coming Soon...
+                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
+            </label>
+        </li>
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Fishing </label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            <label>
+                Coming Soon...
+                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
             </label>
         </li>
         </ul>
@@ -620,13 +656,6 @@ img.info {
 .panel > form textarea,
 .panel > form input[name="name"] {
     width: 90%;
-}
-
-.panel > form .slidervalue {
-    width: 20px;
-    font-weight: bold;
-    font-size: 16px;
-    height: 16px;
 }
 
 .errorlist {

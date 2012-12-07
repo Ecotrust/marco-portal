@@ -577,7 +577,7 @@ a.disabled-link:hover {
 }
 
 #create-new-design .dropdown-toggle {
-  background: rgba(45, 137, 152, 1);
+  background: rgba(45, 137, 152, .9);
 }
 
 #create-new-design .dropdown-menu {
@@ -605,12 +605,28 @@ a.disabled-link:hover {
 
 #designs #step1 .slidervalue {
   width: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  height: 16px;
+}
+
+#designs #step2 .slidervalue {
+  width: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  height: 16px;
 }
 
 #designs .inputfield {
   margin-top: 7px;
   margin-bottom: 10px;
   margin-left: 20px;
+}
+
+#designs #wea_widget ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-left: 0px;
 }
 
 .attribution {

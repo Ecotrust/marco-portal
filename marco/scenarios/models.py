@@ -96,6 +96,8 @@ class Scenario(Analysis):
     
         result = LeaseBlock.objects.all()
         
+        import pdb
+        #pdb.set_trace()
         #GeoPhysical
         if self.input_parameter_distance_to_shore:
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
@@ -103,17 +105,18 @@ class Scenario(Analysis):
             input_min_depth = feet_to_meters(-self.input_min_depth)
             input_max_depth = feet_to_meters(-self.input_max_depth)
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
+        '''
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
-        
+        '''
         #Wind Energy
         if self.input_parameter_wind_speed:
-            input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
-            result = result.filter(min_wind_speed__gte=input_wind_speed)
+            #input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
+            result = result.filter(min_wind_speed__gte=self.input_avg_wind_speed)
         if self.input_parameter_wea:
             input_wea = [wea.wea_id for wea in self.input_wea.all()]
             result = result.filter(wea_number__in=input_wea)
@@ -132,8 +135,6 @@ class Scenario(Analysis):
             except:
                 pass
         
-        import pdb
-        #pdb.set_trace()
         from django.contrib.gis.geos import MultiPolygon
         if type(dissolved_geom) == MultiPolygon:
             self.geometry_dissolved = dissolved_geom
