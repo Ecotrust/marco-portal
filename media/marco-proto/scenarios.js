@@ -226,6 +226,8 @@ function scenariosModel(options) {
         if ( scenario ) {
             scenarioId = scenario.uid;
             opacity = scenario.opacity();
+            scenario.active(true);
+            scenario.visible(true);
         } else {
             scenarioId = options.uid;
             opacity = .8;
@@ -256,11 +258,11 @@ function scenariosModel(options) {
                 
                 if ( scenario ) {
                     scenario.layer = layer;
-                    scenario.active(true);
-                    scenario.visible(true);
                 } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
+                    //HOW TO GET ATTRIBUTES? 
+                    //ANOTHER CALL TO SERVER?
                     scenario = new scenarioModel({
                         id: properties.id,
                         uid: properties.uid,

@@ -125,24 +125,22 @@ class Scenario(Analysis):
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
          
-        import pdb
-        #pdb.set_trace()
-        
-        
         dissolved_geom = result[0].geometry
         for lb in result:
             try:
                 dissolved_geom = dissolved_geom.union(lb.geometry)
             except:
                 pass
-                #pdb.set_trace()
         
+        import pdb
         #pdb.set_trace()
         from django.contrib.gis.geos import MultiPolygon
-        self.geometry_dissolved = MultiPolygon(dissolved_geom, srid=dissolved_geom.srid)
+        if type(dissolved_geom) == MultiPolygon:
+            self.geometry_dissolved = dissolved_geom
+        else:
+            self.geometry_dissolved = MultiPolygon(dissolved_geom, srid=dissolved_geom.srid)
         self.active = True
         
-        #pdb.set_trace()
         
         self.geometry_final_area = sum([lb.geometry.area for lb in result.all()])
         leaseblock_ids = [lb.id for lb in result.all()]

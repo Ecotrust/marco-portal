@@ -303,7 +303,7 @@
   {% endfor %}
   <div id="error_bar"></div>
   
-  <div class="step" id="step1">
+  <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 3 </i></p>
     <p class="instructions">Select 1 or more criteria for this sector </p>
     <label class="step1-header">Wind Energy</label>
@@ -312,17 +312,17 @@
         <li>
             <label>
                 {{ form.input_parameter_wind_speed }} Wind Speed 
-                <i class="icon-info-sign"></i>
+                <!--<i class="icon-info-sign"></i>-->
                 <span id="info_wind_speed_content" style="display: none;">{% flatblock "info_wind_speed" %}</span>
             </label>
             <div id="wind_speed_widget" class="inputfield">
-                <div>Potential:  
+                <div style="margin-top: 7px">Potential:  
                     <span class="label">
                         <span id="wind_speed_text" class="potential">Good</span>
                     </span>
                 </div>
                 <div> 
-                    Minimum Average Speed (mph) 
+                    Min Avg Speed (mph)
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
                 </div> 
@@ -331,14 +331,13 @@
         <li>
             <label>
                 {{ form.input_parameter_distance_to_shore }} Distance to Shore 
-                <img src="/media/marco/img/info.png" id="info_shore" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_shore" class="info" />-->
             </label>
             <div id="distance_to_shore_widget" class="inputfield">
-                <span >
-                    Desired Distance (in miles)
+                <span> 
                     {{ form.input_min_distance_to_shore }}            
                     to
-                    {{ form.input_max_distance_to_shore }}            
+                    {{ form.input_max_distance_to_shore }} miles
                 </span>
                 {{ form.input_distance_to_shore }} 
                 {{ form.input_distance_to_shore.errors }} 
@@ -362,14 +361,13 @@
         <li>
             <label>
                 {{ form.input_parameter_depth }} Depth Range 
-                <img src="/media/marco/img/info.png" id="info_depth" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_depth" class="info" />-->
             </label>
             <div id="depth_widget" class="inputfield">
-                <span >
-                    Desired Range (in feet)
+                <span>
                     {{ form.input_min_depth }}            
                     to
-                    {{ form.input_max_depth }}            
+                    {{ form.input_max_depth }} feet
                 </span>
                 {{ form.input_depth }}  
                 {{ form.input_depth.errors }}
@@ -393,7 +391,7 @@
     </div>
   </div>
 
-  <div class="step" id="step2">
+  <div id="step2" class="step">
     <p class="step-text"><i>Step 2 of 3 </i></p>
     <p class="instructions">Choose any filtering criteria from other sectors </p>
     <label class="step2-header">Shipping</label>
@@ -402,7 +400,7 @@
         <li>
             <label>
                 {{ form.input_filter_distance_to_shipping }} Distance to Shipping Lanes 
-                <img src="/media/marco/img/info.png" id="info_lanes" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
             </label>
             <div id="distance_to_shipping_widget" class="inputfield">
                 <label class="param"> Minimum Distance (miles)
@@ -414,7 +412,7 @@
         <li>
             <label>
                 {{ form.input_filter_ais_density }} Exclude Areas with High Ship Traffic 
-                <img src="/media/marco/img/info.png" id="info_ais" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_ais" class="info" />-->
             </label>
             <!--<div id="traffic_density_widget" class="inputfield">
                 <div class="span traffic"> Limit traffic to the following density level: 
@@ -435,19 +433,19 @@
         <li>
             <label>
                 {{ form.input_assessment_areas }} Exclude DoD Assessment Areas 
-                <img src="/media/marco/img/info.png" id="info_assessment" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
             </label>
         </li>
         <li>
             <label>
                 {{ form.input_warn_areas }} Exclude Military Op Warn Areas 
-                <img src="/media/marco/img/info.png" id="info_warn" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_warn" class="info" />-->
             </label>
         </li>
         <li>
             <label>
                 {{ form.input_ordinance_areas }} Exclude Unexploded Ordinance Areas 
-                <img src="/media/marco/img/info.png" id="info_ordinance" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_ordinance" class="info" />-->
             </label>
         </li>
         </ul>
@@ -527,9 +525,6 @@ div .field > label {
 }*/
 div.param-checkboxes {
     padding-left: 10px !important;
-}
-div.inputfield {
-    padding-bottom: 10px !important;
 }
 span.potential {
     font-weight:bold; !important;
@@ -630,17 +625,8 @@ img.info {
 .panel > form .slidervalue {
     width: 20px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     height: 16px;
-}
-.panel >form .inputfield > div,
-.panel >form .inputfield > span {
-    margin-left: 20px;
-}
-
-/*might remove the following and keep jquery-widgets.css...had some trouble getting this code to catch on its own*/
-.slidervalue { 
-    width: 40px !important;
 }
 
 .errorlist {
