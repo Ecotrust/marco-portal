@@ -286,8 +286,17 @@ function scenariosModel(options) {
                     scenario.active(true);
                     scenario.visible(true);
                     //in case of edit, removes previously stored scenario
-                    self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
-                    self.scenarioList.push(scenario);
+                    //self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
+                    
+                    var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
+                        return oldScenario.uid === scenario.uid;
+                    });
+                    if ( previousScenario ) {
+                        self.scenarioList.replace( previousScenario, scenario );
+                    } else {
+                        self.scenarioList.push(scenario);
+                    }
+                    
                     self.scenarioForm(false);
                 }
                 
