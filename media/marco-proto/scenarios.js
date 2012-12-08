@@ -285,13 +285,23 @@ function scenariosModel(options) {
                     scenario.layer = layer;
                     scenario.active(true);
                     scenario.visible(true);
+                    //in case of edit, removes previously stored scenario
+                    self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
                     self.scenarioList.push(scenario);
                     self.scenarioForm(false);
                 }
                 
                 //app.addVectorAttribution(layer);
+                //in case of edit, removes previously displayed scenario
+                for (var i=0; i<app.map.layers.length; i++) {
+                    if (app.map.layers[i].name === scenario.uid) {
+                        app.map.removeLayer(app.map.layers[i]);
+                        i--;
+                    }
+                }
                 app.map.addLayer(scenario.layer); 
                 //add scenario to Active tab    
+                app.viewModel.activeLayers.remove(function(item) { return item.uid === scenario.uid } );
                 app.viewModel.activeLayers.unshift(scenario);
                 
             },
