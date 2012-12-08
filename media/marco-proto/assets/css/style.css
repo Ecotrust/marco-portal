@@ -617,6 +617,10 @@ a.disabled-link:hover {
   height: 16px;
 }
 
+#designs #step3 .step3-param {
+  margin-left: 5px;
+}
+
 #designs .inputfield {
   margin-top: 7px;
   margin-bottom: 10px;

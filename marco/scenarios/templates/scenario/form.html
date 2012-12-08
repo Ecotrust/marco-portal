@@ -488,22 +488,22 @@
     </div>
   </div>
 
-<div class="step" id="step3">
+<div id="step3" class="step">
     <p class="step-text"><i>Step 3 of 3 </i>
     <p class="instructions">Provide a name to identify your Spatial Design </p>
     <div class="step3-inputs">
-        <div class="step4-header">
+        <div class="step3-param">
             {{ form.name.label_tag }}
             {{ form.name.errors }}
             {{ form.name }}            
         </div>
         <p class="instructions">Optionally, you may add a description and/or attach a file </p>
-        <div class="step4-header">
+        <div class="step3-param">
             {{ form.description.label_tag }}
             {{ form.description.errors }}
             {{ form.description }}            
         </div>
-        <div class="step4-header">
+        <div class="step3-param">
             {{ form.support_file.label_tag }}
             {{ form.support_file.errors }} 
             {% if form.support_file.help_text %}
@@ -628,9 +628,6 @@ label.step3-header {
     font-weight: bold;
     padding-left: 5px !important;
     padding-bottom: 10px !important;
-}
-div.step4-header {
-    font-weight: bold;
 }
 label.param {
     font-weight: normal !important;
