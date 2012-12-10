@@ -98,6 +98,7 @@ function scenarioModel(options) {
     self.visible = ko.observable(false);
     self.defaultOpacity = options.opacity || 0.8;
     self.opacity = ko.observable(self.defaultOpacity);
+    self.type = 'Vector';
     
     self.toggleActive = function(self, event) {
         var scenario = this;

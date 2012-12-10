@@ -147,6 +147,7 @@ app.init = function () {
         callback: function(infoLookup) {
             if (infoLookup) {
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
+                  if (potential_layer.type !== 'Vector') {
                     for (var idx in infoLookup) {
                         var attributes;
                         var info = infoLookup[idx];
@@ -222,6 +223,7 @@ app.init = function () {
                             } 
                         } 
                     }
+                  }
                 });
             } 
         }
