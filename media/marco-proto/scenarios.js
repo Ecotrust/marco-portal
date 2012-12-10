@@ -90,7 +90,7 @@ function scenarioModel(options) {
     self.uid = options.uid;
     self.name = options.name;
     
-    self.attributes = options.attributes ? options.attributes.attributes : [];
+    self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
 
     self.features = options.features;
     
@@ -107,6 +107,14 @@ function scenarioModel(options) {
             scenario.visible(false);
             app.setLayerVisibility(scenario, false);
             app.viewModel.activeLayers.remove(scenario);
+            
+            //remove the key/value pair from aggregatedAttributes
+            delete app.viewModel.aggregatedAttributes()[scenario.name];
+            //if there are no more attributes left to display, then remove the overlay altogether
+            if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
+                app.viewModel.aggregatedAttributes(false);
+            }
+        
             console.log('toggle off');
             console.dir(scenario);
         } else { // otherwise layer is not currently active, so activate

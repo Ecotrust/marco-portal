@@ -33,7 +33,7 @@ def delete_scenario(request, scenario_id):
 
 def get_scenarios(request):
     json = []
-    scenarios = Scenario.objects.filter(user=request.user, active=True)
+    scenarios = Scenario.objects.filter(user=request.user, active=True).order_by('date_created')
     for scenario in scenarios:
         json.append({
             'id': scenario.id,

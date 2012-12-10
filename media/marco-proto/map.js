@@ -232,11 +232,17 @@ app.init = function () {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         var date = new Date();
         var newTime = date.getTime();
-        var attrs = layer.attributes,
-            title = layer.name,
-            text = [];
+        var text = [],
+            title = layer.name;
         
-        if ( layer.attributes.length ) {
+        if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
+            var attrs = layer.scenarioAttributes;
+            for (var i=0; i<attrs.length; i++) {
+                text.push({'display': attrs[i].title, 'data': attrs[i].data});
+            }
+        } else if ( layer.attributes.length ) {
+            var attrs = layer.attributes;
+            
             for (var i=0; i<attrs.length; i++) {
                 if ( e.feature.data[attrs[i].field] ) {
                     text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});

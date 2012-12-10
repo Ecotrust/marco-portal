@@ -51,9 +51,9 @@
   position: absolute;
   /*top: 25%;*/
   top: 180px;
-  left: 0;
+  left: 10px;
   z-index: 950; 
-  width: 260px;
+  width: 280px;
   max-height: 250px;
   font-size: 14px;
   color: white;  
@@ -569,7 +569,7 @@ a.disabled-link:hover {
 }
 
 #designs .icon-info-sign {
-  /*margin-left: -15px;*/
+  margin-left: -15px;
 }
 
 #designs li.layer {

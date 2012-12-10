@@ -80,10 +80,31 @@ class Scenario(Analysis):
                 
     @property
     def serialize_attributes(self):
-        return {'event': 'click',
-                'attributes': [
-                    {'display': 'Min Distance to Shore', 'field': 'input_min_distance_to_shore', 'precision': 0},
-                    {'display': 'Max Distance to Shore', 'field': 'input_max_distance_to_shore', 'precision': 0}]}
+        from general.utils import format
+        attributes = []
+        if self.input_parameter_wind_speed:
+            wind_speed = '%s m/s' %format(self.input_avg_wind_speed, 1)
+            attributes.append({'title': 'Minimum Wind Speed', 'data': wind_speed})
+        if self.input_parameter_distance_to_shore:
+            distance_to_shore = '%s - %s miles' %(format(self.input_min_distance_to_shore, 0), format(self.input_max_distance_to_shore, 0))
+            attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
+        if self.input_parameter_depth:
+            depth_range = '%s - %s feet' %(format(self.input_min_depth, 0), format(self.input_max_depth, 0))
+            attributes.append({'title': 'Depth Range', 'data': depth_range})
+        if self.input_parameter_distance_to_awc:
+            distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
+            attributes.append({'title': 'Distance to AWC Station', 'data': distance_to_awc})
+        if self.input_filter_distance_to_shipping:
+            miles_to_shipping = format(self.input_distance_to_shipping, 0)
+            if miles_to_shipping == 1:
+                distance_to_shipping = '%s mile' %miles_to_shipping
+            else:
+                distance_to_shipping = '%s miles' %miles_to_shipping
+            attributes.append({'title': 'Distance to Shipping Lanes', 'data': distance_to_shipping})
+        if self.input_filter_ais_density:
+            attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
+        
+        return { 'event': 'click', 'attributes': attributes }
     
     
     def geojson(self, srid):
