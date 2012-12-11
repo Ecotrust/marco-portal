@@ -39,7 +39,14 @@ Explore
 -------
 The [Explore](http://portal.midatlanticocean.org/portal/explore) section offers users a Data Catalog from which they can download the data in various formats, find the metadata and locate the source provider.  The Explore section also details the data needs of the Portal, those datasets that the Portal team is in the process of acquiring, developing, or seeking.  
 
-<img src="{{ BASE_PATH }}/assets/img/screenshots/data-catalog.jpg"/><img src="{{ BASE_PATH }}/assets/img/screenshots/data-needs.jpg"/>
+<div class="row-fluid">
+	<div class="span6">
+		<a href="{{ BASE_PATH }}/assets/img/screenshots/data-catalog.jpg"><img src="{{ BASE_PATH }}/assets/img/screenshots/data-catalog.jpg"/></a>
+	</div>
+	<div class="span6">
+		<a href="{{ BASE_PATH }}/assets/img/screenshots/data-needs.jpg"><img src="{{ BASE_PATH }}/assets/img/screenshots/data-needs.jpg"/></a>
+	</div>
+</div>
 Visualize
 ----------
 The [Visualize](http://portal.midatlanticocean.org/portal/visualize) section serves as a launching pad for the Marine Planner detailing many of the planner’s aspects and features.  
@@ -49,12 +56,26 @@ Marine Planner Data Viewer
 --------------------------
 The [Marine Planner](http://portal.midatlanticocean.org/visualize) is currently serving the MARCO stakeholders as a clean and easy-to-use data viewer.  The data layers are grouped into 7 themes presented through an accordion view in the Data Tab (left panel) that includes an autocomplete search feature so the user can easily identify and activate any layer they are wishing to visualize on the map.  
 
-<img src="{{ BASE_PATH }}/assets/img/screenshots/data-viewer-search.jpg"/> or <img src="{{ BASE_PATH }}/assets/img/screenshots/data-viewer-search-alt.jpg"/>
+<div class="row-fluid">
+	<div class="span6">
+		<a href="{{ BASE_PATH }}/assets/img/screenshots/data-viewer-search.jpg"><img src="{{ BASE_PATH }}/assets/img/screenshots/data-viewer-search.jpg"/></a>
+	</div>
+	<div class="span6">
+		<a href="{{ BASE_PATH }}/assets/img/screenshots/data-viewer-search-alt.jpg"><img src="{{ BASE_PATH }}/assets/img/screenshots/data-viewer-search-alt.jpg"/></a>
+	</div>
+</div>
 Active Layers
 -------------
 Once the user has activated layers of interest, switching to the Active Tab permits the user to adjust the layer ordering on the map through a drag and drop interface, toggle the visibility, and adjust the opacity of the activated layers.
 
-<img src="{{ BASE_PATH }}/assets/img/screenshots/active-panel-opacity-with-legend.jpg"/> or <img src="{{ BASE_PATH }}/assets/img/screenshots/active-panel-opacity.jpg"/>
+<div class="row-fluid">
+	<div class="span6">
+		<a href="{{ BASE_PATH }}/assets/img/screenshots/active-panel-opacity-with-legend.jpg"><img src="{{ BASE_PATH }}/assets/img/screenshots/active-panel-opacity-with-legend.jpg"/></a>
+	</div>
+	<div class="span6">
+		<a href="{{ BASE_PATH }}/assets/img/screenshots/active-panel-opacity.jpg"><img src="{{ BASE_PATH }}/assets/img/screenshots/active-panel-opacity.jpg"/></a>
+	</div>
+</div>
 Map Features
 ------------
 From the Map panel the user can toggle between basemaps, expand/contract the map view by hiding/showing the data panel on the left or the legend panel on the right.  
