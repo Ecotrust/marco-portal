@@ -365,8 +365,7 @@ function scenariosModel(options) {
                 } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    //HOW TO GET ATTRIBUTES? 
-                    //ANOTHER CALL TO SERVER?
+                    
                     scenario = new scenarioModel({
                         id: properties.id,
                         uid: properties.uid,
@@ -377,6 +376,21 @@ function scenariosModel(options) {
                     scenario.layer.scenarioModel = scenario;
                     scenario.active(true);
                     scenario.visible(true);
+                    
+                    //get attributes
+                    $.ajax( {
+                        url: '/scenario/get_attributes/' + scenarioId + '/', 
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(result) {
+                            scenario.scenarioAttributes = result.attributes;
+                        },
+                        error: function (result) {
+                            debugger;
+                        }
+                    
+                    });
+                    
                     //in case of edit, removes previously stored scenario
                     //self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
                     

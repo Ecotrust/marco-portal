@@ -47,6 +47,18 @@ def get_scenarios(request):
 
     return HttpResponse(dumps(json))
 
+def get_attributes(request, uid):
+    try:
+        scenario_obj = get_feature_by_uid(uid)
+    except Scenario.DoesNotExist:
+        raise Http404
+    
+    #check permissions
+    viewable, response = scenario_obj.is_viewable(request.user)
+    if not viewable:
+        return response
+    
+    return HttpResponse(dumps(scenario_obj.serialize_attributes))
     
 def get_leaseblocks(request):
     json = []
