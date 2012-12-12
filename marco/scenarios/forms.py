@@ -43,17 +43,15 @@ class ScenarioForm(FeatureForm):
     input_parameter_depth = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_depth = forms.FloatField(initial=500, widget=forms.TextInput(attrs={'class':'slidervalue'}))
-    input_depth = forms.FloatField( min_value=0, max_value=1000, initial=0,
-                                    widget=DualSliderWidget('input_min_depth','input_max_depth',
+    input_depth = forms.FloatField( widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=0,max=1000,step=10),
                                     )
                                
     input_parameter_distance_to_shore = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     input_min_distance_to_shore = forms.FloatField(initial=12, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_max_distance_to_shore = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
-    input_distance_to_shore = forms.FloatField( min_value=0, max_value=100, initial=0,
-                                                widget=DualSliderWidget('input_min_distance_to_shore','input_max_distance_to_shore',
-                                                                        min=0,max=100,step=1),
+    input_distance_to_shore = forms.FloatField( widget=DualSliderWidget('input_min_distance_to_shore','input_max_distance_to_shore',
+                                                                        min=3,max=100,step=1),
                                                 required=False)
                                          
     input_parameter_substrate = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )

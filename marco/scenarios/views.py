@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404
+from madrona.features import get_feature_by_uid
 from models import *
 from simplejson import dumps
 
@@ -17,8 +18,11 @@ def sdc_analysis(request, sdc_id):
     
 '''
 '''
-def delete_scenario(request, scenario_id):
-    scenario_obj = get_object_or_404(Scenario, id=scenario_id)
+def delete_scenario(request, uid):
+    try:
+        scenario_obj = get_feature_by_uid(uid)
+    except Scenario.DoesNotExist:
+        raise Http404
     
     #check permissions
     viewable, response = scenario_obj.is_viewable(request.user)
@@ -29,7 +33,6 @@ def delete_scenario(request, scenario_id):
     scenario_obj.save(rerun=False)
     
     return HttpResponse("", status=200)
-
 
 def get_scenarios(request):
     json = []

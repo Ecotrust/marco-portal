@@ -140,9 +140,35 @@
             } else {
                 scrollpane.reinitialise();
             }
-        };
+        };        
+              
+              
+        // DISTANCE TO SHORE
+        //Expand/Collapse Distance to Shore
+        $('#id_input_parameter_distance_to_shore').click( function() { 
+            if ($('#distance_to_shore_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('min_distance');
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('max_distance');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#distance_to_shore_widget')); 
+        });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_shore').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': ui.values[0]});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': ui.values[1]});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });  
         
-        //Expand Collapse Depth
+        
+        // DEPTH RANGE
+        //Expand/Collapse Depth Range Widget
         $('#id_input_parameter_depth').click( function() { 
             if ($('#depth_widget').css('display') === "none") {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
@@ -156,30 +182,17 @@
             showhide_widget($('#depth_widget')); 
             /*updateScrollBar();*/
         });
-        //Expand Collapse Wind Speed
-        $('#id_input_parameter_wind_speed').click( function() { 
-            if ($('#wind_speed_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('wind');
+        //Update Remaining Leaseblocks 
+        $('#slider-input_depth').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': ui.values[0]});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': ui.values[1]});
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
-            showhide_widget($('#wind_speed_widget')); 
         });
-        //Expand Collapse Distance to Shore
-        $('#id_input_parameter_distance_to_shore').click( function() { 
-            if ($('#distance_to_shore_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('min_distance');
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('max_distance');
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-            }
-            showhide_widget($('#distance_to_shore_widget')); 
-        });
+            
+         
+        // DISTANCE TO AWC  
         //Expand Collapse Distance to AWC Hubs
         $('#id_input_parameter_distance_to_awc').click( function() { 
             if ($('#distance_to_awc_widget').css('display') === "none") {
@@ -191,40 +204,26 @@
             }
             showhide_widget($('#distance_to_awc_widget')); 
         });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        }); 
+
+        // DISTANCE TO SHIPPING LANES
         //Expand Collapse Distance to Shipping Lanes
         $('#id_input_filter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
+           
+        // TRAFFIC DENSITY   
         //Expand Collapse Traffic Density
         $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
-        //Expand Collapse Wind Planning Areas
-        $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
-                
-        //Update Remaining Leaseblocks 
-        $('#slider-input_depth').bind( "slide", function(event, ui) {
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': ui.values[0]});
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': ui.values[1]});
-            app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-        });
-             
-        //Update Remaining Leaseblocks 
-        $('#slider-input_distance_to_shore').bind( "slide", function(event, ui) {
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': ui.values[0]});
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': ui.values[1]});
-            app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-        });  
-         
-        //Update Remaining Leaseblocks 
-        $('#slider-input_distance_to_awc').bind( "slide", function(event, ui) {
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
-            app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-        });  
-           
+        //Handle change events
         $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
             $('#traffic_density_text').html('Medium');
         });
-        $('#slider-input_traffic_density').bind( "slidechange", function(event, ui) {
-            change_traffic_message(ui);
-        });
-        $('#slider-input_traffic_density').bind( "slide", function(event, ui) {
+        $('#slider-input_traffic_density').bind( "slide slidechange", function(event, ui) {
             change_traffic_message(ui);
         });
         function change_traffic_message(ui) {
@@ -236,6 +235,71 @@
                 $('#traffic_density_text').html('Low');
             } 
         }
+        
+        // WIND PLANNING AREAS 
+        //Expand Collapse Wind Planning Areas
+        $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
+        
+        // WIND SPEED
+        //Expand Collapse Wind Speed
+        $('#id_input_parameter_wind_speed').click( function() { 
+            if ($('#wind_speed_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('wind');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#wind_speed_widget')); 
+        });
+        //Update Leaseblocks
+        //slide ensures that leaseblocks are updated when the slider is adjusted
+        //slidechange ensures that leaseblocks are updated when the text area is modified
+        $('#slider-input_avg_wind_speed').bind( "slide slidechange", function(event, ui) {
+            var $left_side = $(event.target).find('.ui-slider-range');
+            change_wind_message($left_side, ui);
+            //Update Remaining Leaseblocks 
+            if (app.viewModel.scenarios.scenarioFormModel) {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });
+        function change_wind_message($left_side, ui) {
+            var $text = $('#wind_speed_text'),
+                $label = $text.closest('.label');
+            if (ui.value < 6.4) {
+                $text.html('Poor');
+                $label.attr('class', "label label-important");
+                //$left_side.css('background', '#aaaa00');
+            } else if (ui.value < 7.0) {
+                $text.html('Fair');
+                $label.attr('class', "label label-warning");
+                //$left_side.css('background', '#aa5500');
+            } else if (ui.value < 7.5) {
+                $text.html('Good');
+                $label.attr('class', "label label-warning");
+                //$left_side.css('background', '#aa0000');
+            } else if (ui.value < 8.0) {
+                $text.html('Excellent');
+                $label.attr('class', "label label-success");
+                //$left_side.css('background', '#880066');
+            } else if (ui.value < 8.8) {
+                $text.html('Outstanding');
+                $label.attr('class', "label label-success");
+                //$left_side.css('background', '#8800aa');
+            } else {
+                $text.html('Superb');
+                $label.attr('class', "label label-success");
+                //$left_side.css('background', '#000088');
+            }
+            //Poor       < 12.5      (< 5.6)     ffff00
+            //Fair       14.3-15.7   (6.4-7.0)   ff0000
+            //Good       15.7-16.8   (7.0-7.5)   ff0077
+            //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
+            //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
+            //Superb     > 19.7      (> 8.8)     0000ff
+        }
+        
         
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
@@ -300,58 +364,6 @@
             }
         }); 
 
-        $('#slider-input_avg_wind_speed').bind( "slidecreate", function(event, ui) {
-            //debugger;
-            //$(event.target).find('.ui-slider-range').css('background', '#880066');
-        });
-        $('#slider-input_avg_wind_speed').bind( "slidechange", function(event, ui) {
-            //debugger;
-            var $left_side = $(event.target).find('.ui-slider-range');
-            change_wind_message($left_side, ui);
-        });
-        $('#slider-input_avg_wind_speed').bind( "slide", function(event, ui) {
-            var $left_side = $(event.target).find('.ui-slider-range');
-            change_wind_message($left_side, ui);
-            //Update Remaining Leaseblocks 
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
-            app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-        });
-        function change_wind_message($left_side, ui) {
-            var $text = $('#wind_speed_text'),
-                $label = $text.closest('.label');
-            if (ui.value < 6.4) {
-                $text.html('Poor');
-                $label.attr('class', "label label-important");
-                //$left_side.css('background', '#aaaa00');
-            } else if (ui.value < 7.0) {
-                $text.html('Fair');
-                $label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa5500');
-            } else if (ui.value < 7.5) {
-                $text.html('Good');
-                $label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
-            } else if (ui.value < 8.0) {
-                $text.html('Excellent');
-                $label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
-            } else if (ui.value < 8.8) {
-                $text.html('Outstanding');
-                $label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else {
-                $text.html('Superb');
-                $label.attr('class', "label label-success");
-                //$left_side.css('background', '#000088');
-            }
-            //Poor       < 12.5      (< 5.6)     ffff00
-            //Fair       14.3-15.7   (6.4-7.0)   ff0000
-            //Good       15.7-16.8   (7.0-7.5)   ff0077
-            //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
-            //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
-            //Superb     > 19.7      (> 8.8)     0000ff
-        }
-        
          
         if ($("input[type='color']").length) {
             $.getScript("media/marco/js/mColorPicker.js");

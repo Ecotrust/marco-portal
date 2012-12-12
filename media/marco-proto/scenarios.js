@@ -99,26 +99,26 @@ function scenarioFormModel(options) {
     
     self.updateFiltersAndLeaseBlocks = function() {
         if ($('#depth_widget').css('display') !== "none") {
-            self.updateFilters({'key': 'min_depth', 'value': $('#slider-input_min_depth').slider("values", 0)});
-            self.updateFilters({'key': 'max_depth', 'value': $('#slider-input_max_depth').slider("values", 1)});
+            self.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_distance_to_shore')[0].value});
+            self.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_distance_to_shore')[0].value});
         } else {
             self.removeFilter('min_depth');
             self.removeFilter('max_depth');
         }
         if ($('#wind_speed_widget').css('display') !== "none") {
-            self.updateFilters({'key': 'wind', 'value': $('#slider-input_avg_wind_speed').slider("values", 0)});
+            self.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
         } else {
             self.removeFilter('wind');
         }
         if ($('#distance_to_shore_widget').css('display') !== "none") {
-            self.updateFilters({'key': 'min_distance', 'value': $('#slider-input_min_distance_to_shore').slider("values", 0)});
-            self.updateFilters({'key': 'max_distance', 'value': $('#slider-input_max_distance_to_shore').slider("values", 1)});
+            self.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
+            self.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
         } else {
             self.removeFilter('min_distance');
             self.removeFilter('max_distance');
         }
         if ($('#distance_to_awc_widget').css('display') !== "none") {
-            self.updateFilters({'key': 'awc', 'value': $('#slider-input_distance_to_awc').slider("values", 0)});
+            self.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
         } else {
             self.removeFilter('awc');
         }
@@ -225,7 +225,7 @@ function scenarioModel(options) {
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
-            url: '/scenario/delete_scenario/' + scenario.id + '/',
+            url: '/scenario/delete_scenario/' + scenario.uid + '/',
             type: 'POST',
             error: function (result) {
                 debugger;
@@ -373,6 +373,7 @@ function scenariosModel(options) {
                         features: layer.features
                     });
                     scenario.layer = layer;
+                    scenario.layer.scenarioModel = scenario;
                     scenario.active(true);
                     scenario.visible(true);
                     //in case of edit, removes previously stored scenario
