@@ -103,7 +103,7 @@ class Scenario(Analysis):
             attributes.append({'title': 'Distance to Shipping Lanes', 'data': distance_to_shipping})
         if self.input_filter_ais_density:
             attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
-        
+        attributes.append({'title': 'Number of Leaseblocks', 'data': self.lease_blocks.count(',')+1})
         return { 'event': 'click', 'attributes': attributes }
     
     
