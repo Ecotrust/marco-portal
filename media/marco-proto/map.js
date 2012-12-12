@@ -148,6 +148,7 @@ app.init = function () {
             if (infoLookup) {
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
                   if (potential_layer.type !== 'Vector') {
+                    
                     for (var idx in infoLookup) {
                         var attributes;
                         var info = infoLookup[idx];

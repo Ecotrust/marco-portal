@@ -121,6 +121,7 @@ class Scenario(Analysis):
         #pdb.set_trace()
         #GeoPhysical
         if self.input_parameter_distance_to_shore:
+            #why isn't this max_distance >= input.min_distance && min_distance <= input.max_distance ???
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_depth:
             input_min_depth = feet_to_meters(-self.input_min_depth)

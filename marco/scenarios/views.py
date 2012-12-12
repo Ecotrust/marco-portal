@@ -43,3 +43,35 @@ def get_scenarios(request):
         })
 
     return HttpResponse(dumps(json))
+
+    
+def get_leaseblocks(request):
+    json = []
+    leaseblocks = LeaseBlock.objects.filter(avg_depth__lt=0.0)
+    for ocs_block in leaseblocks:
+        json.append({
+            'id': ocs_block.id,
+            'ais_density': ocs_block.ais_density,
+            'ais_min_density': ocs_block.ais_min_density,
+            'ais_max_density': ocs_block.ais_max_density,
+            'ais_mean_density': ocs_block.ais_mean_density,
+            'min_distance': ocs_block.min_distance,
+            'max_distance': ocs_block.max_distance,
+            'avg_distance': ocs_block.avg_distance,
+            'awc_min_distance': ocs_block.awc_min_distance,
+            'awc_max_distance': ocs_block.awc_max_distance,
+            'awc_avg_distance': ocs_block.awc_avg_distance,
+            'avg_depth': ocs_block.avg_depth,
+            'min_depth': ocs_block.min_depth,
+            'max_depth': ocs_block.max_depth,
+            'min_wind_speed': ocs_block.min_wind_speed,
+            'max_wind_speed': ocs_block.max_wind_speed,
+            'tsz_min_distance': ocs_block.tsz_min_distance,
+            'tsz_max_distance': ocs_block.tsz_max_distance,
+            'tsz_mean_distance': ocs_block.tsz_mean_distance,
+            'wea_name': ocs_block.wea_name,
+            'wea_number': ocs_block.wea_number,
+            'wea_state_name': ocs_block.wea_state_name            
+        })
+
+    return HttpResponse(dumps(json))

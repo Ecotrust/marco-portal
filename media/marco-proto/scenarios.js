@@ -72,7 +72,8 @@ var madrona = {
                     app.viewModel.scenarios.loadingMessage(null);
                     clearInterval(barTimer);
                     if (result.status === 400) {
-                        app.viewModel.scenarios.scenarioForm(result.responseText);
+                        $('#scenario-form').append(result.responseText);
+                        app.viewModel.scenarios.scenarioForm(true);
                     } else {
                         app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
                     }
@@ -82,6 +83,78 @@ var madrona = {
     }
 };
 
+function scenarioFormModel(options) {
+    var self = this;
+    
+    self.leaseblocksLeft = ko.observable(app.viewModel.scenarios.leaseblockList.length);
+    
+    self.filters = {};
+    
+    self.updateFilters = function(object) {
+        self.filters[object.key] = object.value;
+    };
+    self.removeFilter = function(key) {
+        delete self.filters[key];
+    };
+    
+    self.updateFiltersAndLeaseBlocks = function() {
+        if ($('#depth_widget').css('display') !== "none") {
+            self.updateFilters({'key': 'min_depth', 'value': $('#slider-input_min_depth').slider("values", 0)});
+            self.updateFilters({'key': 'max_depth', 'value': $('#slider-input_max_depth').slider("values", 1)});
+        } else {
+            self.removeFilter('min_depth');
+            self.removeFilter('max_depth');
+        }
+        if ($('#wind_speed_widget').css('display') !== "none") {
+            self.updateFilters({'key': 'wind', 'value': $('#slider-input_avg_wind_speed').slider("values", 0)});
+        } else {
+            self.removeFilter('wind');
+        }
+        if ($('#distance_to_shore_widget').css('display') !== "none") {
+            self.updateFilters({'key': 'min_distance', 'value': $('#slider-input_min_distance_to_shore').slider("values", 0)});
+            self.updateFilters({'key': 'max_distance', 'value': $('#slider-input_max_distance_to_shore').slider("values", 1)});
+        } else {
+            self.removeFilter('min_distance');
+            self.removeFilter('max_distance');
+        }
+        if ($('#distance_to_awc_widget').css('display') !== "none") {
+            self.updateFilters({'key': 'awc', 'value': $('#slider-input_distance_to_awc').slider("values", 0)});
+        } else {
+            self.removeFilter('awc');
+        }
+        self.updateLeaseblocksLeft();
+    
+    };
+    
+    self.updateLeaseblocksLeft = function() {
+        //self.leaseblocksLeft(23);
+        var list = app.viewModel.scenarios.leaseblockList,
+            count = 0;
+        for ( var i=0; i<list.length; i++ ) {
+            var addOne = true;
+            if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
+                addOne = false;
+            }
+            if (self.filters['min_distance'] && list[i].min_distance > self.filters['max_distance'] || 
+                self.filters['max_distance'] && list[i].max_distance < self.filters['min_distance'] ) {
+                addOne = false;
+            } 
+            if ( (self.filters['min_depth'] || self.filters['min_depth'] === 0) && -list[i].min_depth > self.filters['max_depth'] || 
+                self.filters['max_depth'] && -list[i].max_depth < self.filters['min_depth'] ) {
+                addOne = false;
+            }
+            if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] ) {
+                addOne = false;
+            }
+            if (addOne) {
+                count += 1;
+            }
+        }     
+        self.leaseblocksLeft(count);
+    };
+    
+    return self;
+}
 
 function scenarioModel(options) {
     var self = this;
@@ -90,6 +163,7 @@ function scenarioModel(options) {
     self.uid = options.uid;
     self.name = options.name;
     
+    self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
 
     self.features = options.features;
@@ -115,14 +189,9 @@ function scenarioModel(options) {
             if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
                 app.viewModel.aggregatedAttributes(false);
             }
-        
-            console.log('toggle off');
-            console.dir(scenario);
         } else { // otherwise layer is not currently active, so activate
             //scenario.activateLayer();
             app.viewModel.scenarios.addScenarioToMap(scenario);
-            console.log('toggle on');
-            console.dir(scenario);
         }
     };
     
@@ -131,7 +200,12 @@ function scenarioModel(options) {
         return $.ajax({
             url: '/features/scenario/' + scenario.uid + '/form/', 
             success: function(data) {
-                app.viewModel.scenarios.scenarioForm(data);
+                //$('#scenario-form').append(data);
+                app.viewModel.scenarios.scenarioForm(true);
+                $('#scenario-form').html(data);
+                app.viewModel.scenarios.scenarioFormModel = new scenarioFormModel();
+                ko.applyBindings(app.viewModel.scenarios.scenarioFormModel, document.getElementById('scenario-form'));
+                app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 
                 debugger; 
@@ -229,13 +303,20 @@ function scenariosModel(options) {
         self.loadingMessage(false);
         self.errorMessage(false);
         self.scenarioForm(false);
+        var scenarioForm = document.getElementById('scenario-form');
+        $(scenarioForm).empty();
+        ko.cleanNode(scenarioForm);
+        delete self.scenarioFormModel;
     };
 
     self.createWindScenario = function() {
         return $.ajax({
             url: '/features/scenario/form/',
             success: function(data) {
-                self.scenarioForm(data);
+                self.scenarioForm(true);
+                $('#scenario-form').html(data);
+                self.scenarioFormModel = new scenarioFormModel();
+                ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
             },
             error: function (result) { debugger }
         });
@@ -306,7 +387,8 @@ function scenariosModel(options) {
                         self.scenarioList.push(scenario);
                     }
                     
-                    self.scenarioForm(false);
+                    //self.scenarioForm(false);
+                    self.reset();
                 }
                 
                 //app.addVectorAttribution(layer);
@@ -341,7 +423,14 @@ function scenariosModel(options) {
             }));
         });
     }
-
+    
+    self.leaseblockList = [];    
+    
+    //populates leaseblockList
+    self.loadLeaseblocks = function (ocsblocks) {
+        self.leaseblockList = ocsblocks;
+    }   
+    
     return self;
 }
 
@@ -355,6 +444,19 @@ $.ajax({
     dataType: 'json',
     success: function (scenarios) {
         app.viewModel.scenarios.loadScenarios(scenarios);
+    },
+    error: function (result) {
+        debugger;
+    }
+})
+
+// load the leaseblocks
+$.ajax({
+    url: '/scenario/get_leaseblocks',
+    type: 'GET',
+    dataType: 'json',
+    success: function (ocsblocks) {
+        app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
     },
     error: function (result) {
         debugger;
