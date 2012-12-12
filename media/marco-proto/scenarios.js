@@ -92,6 +92,7 @@ function scenarioFormModel(options) {
     
     self.updateFilters = function(object) {
         self.filters[object.key] = object.value;
+        //console.log('updating filter ' + object.key + ' to ' + object.value);
     };
     self.removeFilter = function(key) {
         delete self.filters[key];

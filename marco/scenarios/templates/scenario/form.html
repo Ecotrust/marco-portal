@@ -207,7 +207,7 @@
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': ui.value});
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
         }); 
