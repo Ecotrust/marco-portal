@@ -100,8 +100,8 @@ function scenarioFormModel(options) {
     
     self.updateFiltersAndLeaseBlocks = function() {
         if ($('#depth_widget').css('display') !== "none") {
-            self.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_distance_to_shore')[0].value});
-            self.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_distance_to_shore')[0].value});
+            self.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
+            self.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
         } else {
             self.removeFilter('min_depth');
             self.removeFilter('max_depth');
@@ -131,18 +131,35 @@ function scenarioFormModel(options) {
         //self.leaseblocksLeft(23);
         var list = app.viewModel.scenarios.leaseblockList,
             count = 0;
+            
+        //console.log('min input is: ' + self.filters['min_depth']);
+        //console.log('max input is: ' + self.filters['max_depth']);
+        //console.log('list length is: ' + list.length);
         for ( var i=0; i<list.length; i++ ) {
             var addOne = true;
             if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
                 addOne = false;
             }
-            if (self.filters['min_distance'] && list[i].min_distance > self.filters['max_distance'] || 
-                self.filters['max_distance'] && list[i].max_distance < self.filters['min_distance'] ) {
+            if (self.filters['max_distance'] && list[i].max_distance > self.filters['max_distance'] || 
+                self.filters['min_distance'] && list[i].max_distance < self.filters['min_distance'] ) {
                 addOne = false;
             } 
-            if ( (self.filters['min_depth'] || self.filters['min_depth'] === 0) && -list[i].min_depth > self.filters['max_depth'] || 
-                self.filters['max_depth'] && -list[i].max_depth < self.filters['min_depth'] ) {
+            if (self.filters['max_depth'] && list[i].max_depth > self.filters['max_depth'] || 
+                self.filters['min_depth'] && list[i].min_depth < self.filters['min_depth'] ) {
                 addOne = false;
+            } else {
+                //NOTE: at times there seems to be some sort of rounding error that causes a discrepancy 
+                //      in which the client side count is more inclusive than the server side result
+                //      examples include requests for depth range of 40 to 50 feet
+                //      on the client there are 6 blocks identified, 2 of which have a max depth of 50 feet
+                //      these 2 blocks with a max depth of 50 feet (rounded result from -15.5237 and -15.3398 meters) 
+                //      are not part of the server side results
+                //FIX:  added 1 point of precision to feet to meters (and meters to feet) conversions 
+                //      on both client and server implementations
+                //console.log('counting this lease block');
+                //console.log('ocs min depth is: ' + list[i].min_depth);
+                //console.log('ocs max depth is: ' + list[i].max_depth);
+                //console.log('count is now: ' + count);
             }
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] ) {
                 addOne = false;

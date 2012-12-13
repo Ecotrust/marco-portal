@@ -1,6 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404
 from madrona.features import get_feature_by_uid
+from general.utils import meters_to_feet
 from models import *
 from simplejson import dumps
 
@@ -76,9 +77,9 @@ def get_leaseblocks(request):
             'awc_min_distance': ocs_block.awc_min_distance,
             'awc_max_distance': ocs_block.awc_max_distance,
             'awc_avg_distance': ocs_block.awc_avg_distance,
-            'avg_depth': ocs_block.avg_depth,
-            'min_depth': ocs_block.min_depth,
-            'max_depth': ocs_block.max_depth,
+            'avg_depth': meters_to_feet(-ocs_block.avg_depth, 1),
+            'min_depth': meters_to_feet(-ocs_block.min_depth, 1),
+            'max_depth': meters_to_feet(-ocs_block.max_depth, 1),
             'min_wind_speed': ocs_block.min_wind_speed,
             'max_wind_speed': ocs_block.max_wind_speed,
             'tsz_min_distance': ocs_block.tsz_min_distance,

@@ -93,7 +93,7 @@ class Scenario(Analysis):
             attributes.append({'title': 'Depth Range', 'data': depth_range})
         if self.input_parameter_distance_to_awc:
             distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
-            attributes.append({'title': 'Max Distance to AWC Station', 'data': distance_to_awc})
+            attributes.append({'title': 'Max Distance to Proposed AWC Hub', 'data': distance_to_awc})
         if self.input_filter_distance_to_shipping:
             miles_to_shipping = format(self.input_distance_to_shipping, 0)
             if miles_to_shipping == 1:
@@ -124,8 +124,9 @@ class Scenario(Analysis):
             #why isn't this max_distance >= input.min_distance && min_distance <= input.max_distance ???
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_depth:
-            input_min_depth = feet_to_meters(-self.input_min_depth)
-            input_max_depth = feet_to_meters(-self.input_max_depth)
+            #note:  converting input to negative values converted to meters (to match db)
+            input_min_depth = feet_to_meters(-self.input_min_depth, 1)
+            input_max_depth = feet_to_meters(-self.input_max_depth, 1)
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
         '''
         if self.input_parameter_substrate:
