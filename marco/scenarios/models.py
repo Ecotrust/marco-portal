@@ -139,7 +139,7 @@ class Scenario(Analysis):
         #Wind Energy
         if self.input_parameter_wind_speed:
             #input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
-            result = result.filter(min_wind_speed__gte=self.input_avg_wind_speed)
+            result = result.filter(min_wind_speed_rev__gte=self.input_avg_wind_speed)
         if self.input_parameter_wea:
             input_wea = [wea.wea_id for wea in self.input_wea.all()]
             result = result.filter(wea_number__in=input_wea)
