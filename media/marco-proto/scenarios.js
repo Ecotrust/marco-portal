@@ -169,10 +169,14 @@ function scenarioFormModel(options) {
                 //console.log('ocs min depth is: ' + list[i].min_depth);
                 //console.log('ocs max depth is: ' + list[i].max_depth);
                 //console.log('count is now: ' + count);
+                //console.log(self.filters['max_depth'] && list[i].max_depth + ' <= ' + self.filters['max_depth']);
+                //console.log('or');
+                //console.log(self.filters['min_depth'] && list[i].min_depth + ' >= ' + self.filters['min_depth']);
+                //console.log('');
             }
-            if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] ) {
+            if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || list[i].awc_min_distance === null ) {
                 addOne = false;
-            }
+            } 
             if (self.filters['tsz'] && list[i].tsz_min_distance < self.filters['tsz'] ) {
                 addOne = false;
             }
@@ -472,7 +476,10 @@ function scenariosModel(options) {
             attrs.push({'display': 'Wind Speed Range', 'data': data['WINDREV_MI'].toFixed(2) + ' to ' + data['WINDREV_MA'].toFixed(2) + ' m/s'});
         }
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
-            attrs.push({'display': 'Depth Range', 'data': -data['DEPTHM_MAX'].toFixed(0) + ' to ' + -data['DEPTHM_MIN'].toFixed(0) + ' feet'});
+            //convert depth values to positive feet values (from negative meter values)
+            var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0);
+            var min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0);
+            attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
         }
         if ('MI_MIN' in data && 'MI_MAX' in data) {
             attrs.push({'display': 'Miles to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0)});
