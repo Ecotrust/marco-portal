@@ -427,6 +427,45 @@ function scenariosModel(options) {
             }
         });
     }
+    
+    self.getOCSAttributes = function (title, data) {
+        attrs = [];
+        if ('BLOCK_LAB' in data) {
+            attrs.push({'display': 'OCS Block Number', 'data': data['BLOCK_LAB']});
+        }
+        if ('PROT_NUMBE' in data) {
+            attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
+        }
+        if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
+            attrs.push({'display': 'Wind Speed Range', 'data': data['WINDREV_MI'].toFixed(1) + ' to ' + data['WINDREV_MA'].toFixed(1) + ' m/s'});
+        }
+        if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
+            attrs.push({'display': 'Depth Range', 'data': -data['DEPTHM_MAX'].toFixed(0) + ' to ' + -data['DEPTHM_MIN'].toFixed(0) + ' feet'});
+        }
+        if ('MI_MIN' in data && 'MI_MAX' in data) {
+            attrs.push({'display': 'Miles to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0)});
+        }
+        if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
+            attrs.push({'display': 'Miles to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0)});
+        }
+        if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
+            attrs.push({'display': 'Miles to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0)});
+        }
+        if ('AIS7_MEAN' in data) {
+            if ( data['AIS7_MEAN'] < 1 ) {
+                var rank = 'Low';
+            } else {
+                var rank = 'High';
+            }
+            attrs.push({'display': 'Commercial Shipping Density', 'data': rank });
+        }
+        if ('WEA_NAME' in data) {
+            if ( data['WEA_NAME'] !== "" ) {
+                attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
+            }
+        }
+        return attrs;
+    };
             
     //populates scenarioList
     self.loadScenarios = function (scenarios) {

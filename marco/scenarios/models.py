@@ -93,7 +93,7 @@ class Scenario(Analysis):
             attributes.append({'title': 'Depth Range', 'data': depth_range})
         if self.input_parameter_distance_to_awc:
             distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
-            attributes.append({'title': 'Distance to AWC Station', 'data': distance_to_awc})
+            attributes.append({'title': 'Max Distance to AWC Station', 'data': distance_to_awc})
         if self.input_filter_distance_to_shipping:
             miles_to_shipping = format(self.input_distance_to_shipping, 0)
             if miles_to_shipping == 1:

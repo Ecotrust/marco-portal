@@ -203,10 +203,13 @@ app.init = function () {
                                     
                                 }
                             });
-                            var title = potential_layer.name;
-                            var text = attribute_objs;
-                            var date = new Date();
-                            var newTime = date.getTime();
+                            var title = potential_layer.name,
+                                date = new Date(),
+                                newTime = date.getTime(),
+                                text = attribute_objs;
+                            if ( title === 'OCS Lease Blocks' ) {
+                                text = app.viewModel.scenarios.getOCSAttributes(title, info.data);
+                            } 
                             if (newTime - app.map.clickOutput.time > 500) {
                                 app.map.clickOutput.attributes = {};
                                 app.map.clickOutput.time = newTime;
