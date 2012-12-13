@@ -92,7 +92,6 @@ function scenarioFormModel(options) {
     
     self.updateFilters = function(object) {
         self.filters[object.key] = object.value;
-        //console.log('updating filter ' + object.key + ' to ' + object.value);
     };
     self.removeFilter = function(key) {
         delete self.filters[key];
@@ -122,6 +121,16 @@ function scenarioFormModel(options) {
             self.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
         } else {
             self.removeFilter('awc');
+        }
+        if ($('#distance_to_shipping_widget').css('display') !== "none") {
+            self.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
+        } else {
+            self.removeFilter('tsz');
+        }
+        if ( $('#id_input_filter_ais_density').attr('checked') ) {
+            self.updateFilters({'key': 'ais', 'value': 1});
+        } else {
+            self.removeFilter('ais');
         }
         self.updateLeaseblocksLeft();
     
@@ -164,6 +173,12 @@ function scenarioFormModel(options) {
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] ) {
                 addOne = false;
             }
+            if (self.filters['tsz'] && list[i].tsz_min_distance < self.filters['tsz'] ) {
+                addOne = false;
+            }
+            if (self.filters['ais'] && list[i].ais_mean_density > 1 ) {
+                addOne = false;
+            } 
             if (addOne) {
                 count += 1;
             }

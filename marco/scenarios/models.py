@@ -100,7 +100,7 @@ class Scenario(Analysis):
                 distance_to_shipping = '%s mile' %miles_to_shipping
             else:
                 distance_to_shipping = '%s miles' %miles_to_shipping
-            attributes.append({'title': 'Distance to Shipping Lanes', 'data': distance_to_shipping})
+            attributes.append({'title': 'Minimum Distance to Shipping Lanes', 'data': distance_to_shipping})
         if self.input_filter_ais_density:
             attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
         attributes.append({'title': 'Number of Leaseblocks', 'data': self.lease_blocks.count(',')+1})

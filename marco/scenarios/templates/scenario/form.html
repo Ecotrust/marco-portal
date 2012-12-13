@@ -214,9 +214,36 @@
 
         // DISTANCE TO SHIPPING LANES
         //Expand Collapse Distance to Shipping Lanes
-        $('#id_input_filter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
+        $('#id_input_filter_distance_to_shipping').click( function() { 
+            if ($('#distance_to_shipping_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('tsz');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#distance_to_shipping_widget')); 
+        });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': ui.value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        }); 
            
         // TRAFFIC DENSITY   
+        $('#id_input_filter_ais_density').click( function(e) {
+            if ( $('#id_input_filter_ais_density').attr('checked') ) {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'ais', 'value': 1});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('ais');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });
+        
+        
         //Expand Collapse Traffic Density
         $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
         //Handle change events
