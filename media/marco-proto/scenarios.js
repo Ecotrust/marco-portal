@@ -454,7 +454,7 @@ function scenariosModel(options) {
             attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
         }
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
-            attrs.push({'display': 'Wind Speed Range', 'data': data['WINDREV_MI'].toFixed(1) + ' to ' + data['WINDREV_MA'].toFixed(1) + ' m/s'});
+            attrs.push({'display': 'Wind Speed Range', 'data': data['WINDREV_MI'].toFixed(2) + ' to ' + data['WINDREV_MA'].toFixed(2) + ' m/s'});
         }
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
             attrs.push({'display': 'Depth Range', 'data': -data['DEPTHM_MAX'].toFixed(0) + ' to ' + -data['DEPTHM_MIN'].toFixed(0) + ' feet'});
