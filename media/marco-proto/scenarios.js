@@ -253,6 +253,8 @@ function scenarioModel(options) {
     self.deleteScenario = function() {
         var scenario = this;
         
+        //remove from activeLayers
+        app.viewModel.activeLayers.remove(scenario);
         //remove from app.map
         if (scenario.layer) {
             app.map.removeLayer(scenario.layer);
