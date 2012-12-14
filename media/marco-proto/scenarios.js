@@ -196,7 +196,7 @@ function scenarioFormModel(options) {
 function scenarioModel(options) {
     var self = this;
 
-    self.id = options.id;
+    self.id = options.uid;
     self.uid = options.uid;
     self.name = options.name;
     
@@ -227,9 +227,14 @@ function scenarioModel(options) {
                 app.viewModel.aggregatedAttributes(false);
             }
         } else { // otherwise layer is not currently active, so activate
-            //scenario.activateLayer();
-            app.viewModel.scenarios.addScenarioToMap(scenario);
+            scenario.activateLayer();
+            //app.viewModel.scenarios.addScenarioToMap(scenario);
         }
+    };
+    
+    self.activateLayer = function() {
+        var scenario = this;
+        app.viewModel.scenarios.addScenarioToMap(scenario);
     };
     
     self.editScenario = function() {
@@ -278,12 +283,14 @@ function scenarioModel(options) {
     self.toggleVisible = function(manual) {
         var scenario = this;
         
-        if (scenario.visible()) { //make invisilbe
-            scenario.visible(false);
-            app.setLayerVisibility(scenario, false);
+        if (scenario.visible()) { //make invisible
+            scenario.visible(false)
+            app.setLayerVisibility(scenario, false)
+            //console.log('making invisible');
         } else { //make visible
             scenario.visible(true);
             app.setLayerVisibility(scenario, true);
+            //console.log('making visible');
         }
     };
 
@@ -405,7 +412,7 @@ function scenariosModel(options) {
                     var properties = feature.features[0].properties;
                     
                     scenario = new scenarioModel({
-                        id: properties.id,
+                        id: properties.uid,
                         uid: properties.uid,
                         name: properties.name, 
                         features: layer.features
@@ -511,12 +518,14 @@ function scenariosModel(options) {
     //populates scenarioList
     self.loadScenarios = function (scenarios) {
         $.each(scenarios, function (i, scenario) {
-            self.scenarioList.push(new scenarioModel({
-                id: scenario.id,
+            var scenarioViewModel = new scenarioModel({
+                id: scenario.uid,
                 uid: scenario.uid,
                 name: scenario.name,
                 attributes: scenario.attributes
-            }));
+            });
+            self.scenarioList.push(scenarioViewModel);
+            app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
     }
     
