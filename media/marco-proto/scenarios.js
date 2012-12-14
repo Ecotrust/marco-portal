@@ -500,7 +500,11 @@ function scenariosModel(options) {
             attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
         }
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
-            attrs.push({'display': 'Wind Speed Range', 'data': data['WINDREV_MI'].toFixed(2) + ' to ' + data['WINDREV_MA'].toFixed(2) + ' m/s'});
+            if ( data['WINDREV_MI'].toFixed(3) === data['WINDREV_MA'].toFixed(3) ) {
+                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': data['WINDREV_MI'].toFixed(3)});
+            } else {
+                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': data['WINDREV_MI'].toFixed(3) + ' to ' + data['WINDREV_MA'].toFixed(3)});
+            }
         }
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
             //convert depth values to positive feet values (from negative meter values)

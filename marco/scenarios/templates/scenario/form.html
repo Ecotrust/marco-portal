@@ -605,12 +605,13 @@
             {{ form.name.errors }}
             {{ form.name }}            
         </div>
-        <p class="instructions">Optionally, you may add a description and/or attach a file </p>
+        <p class="instructions">Optionally, you may add a description <!--and/or attach a file--> </p>
         <div class="step3-param">
             {{ form.description.label_tag }}
             {{ form.description.errors }}
             {{ form.description }}            
         </div>
+        <!--
         <div class="step3-param">
             {{ form.support_file.label_tag }}
             {{ form.support_file.errors }} 
@@ -619,6 +620,7 @@
             {% endif %}
             {{ form.support_file }}         
         </div>
+        -->
         <div id="scenario-cp">
             <!--<input type="color" value="#ff0667" data-text="hidden" style="height:20px;width:20px;" />-->
         </div>
