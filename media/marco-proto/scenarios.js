@@ -211,12 +211,23 @@ function scenarioModel(options) {
     self.opacity = ko.observable(self.defaultOpacity);
     self.type = 'Vector';
     
+    self.opacity.subscribe( function(newOpacity) {
+        if ( self.layer ) {
+            self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
+            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
+            self.layer.redraw();
+        } else {
+            //debugger;
+        }
+    });
+    
     self.toggleActive = function(self, event) {
         var scenario = this;
         //app.viewModel.activeLayer(layer);
         if (scenario.active()) { // if layer is active, then deactivate
             scenario.active(false);
             scenario.visible(false);
+            scenario.opacity(scenario.defaultOpacity);
             app.setLayerVisibility(scenario, false);
             app.viewModel.activeLayers.remove(scenario);
             
@@ -374,12 +385,10 @@ function scenariosModel(options) {
             opacity;
         if ( scenario ) {
             scenarioId = scenario.uid;
-            opacity = scenario.opacity();
             scenario.active(true);
             scenario.visible(true);
         } else {
             scenarioId = options.uid;
-            opacity = .8;
         }
         
         $.ajax( {
@@ -387,6 +396,13 @@ function scenariosModel(options) {
             type: 'GET',
             dataType: 'json',
             success: function(feature) {
+                if ( scenario ) {
+                    opacity = scenario.opacity();
+                    stroke = scenario.opacity();
+                } else {
+                    opacity = .8;
+                    stroke = 1;
+                }
                 var layer = new OpenLayers.Layer.Vector(
                     scenarioId,
                     {
@@ -396,7 +412,7 @@ function scenariosModel(options) {
                             fillColor: "#2F6A6C",
                             fillOpacity: opacity,
                             strokeColor: "#1F4A4C",
-                            strokeOpacity: 1
+                            strokeOpacity: stroke
                         }),     
                         //style: OpenLayers.Feature.Vector.style['default'],
                         scenarioModel: scenario
@@ -406,6 +422,8 @@ function scenariosModel(options) {
                 layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
                 
                 if ( scenario ) {
+                    //reasigning opacity here, as opacity wasn't 'catching' on state load for scenarios
+                    scenario.opacity(opacity);
                     scenario.layer = layer;
                 } else { //create new scenario
                     //only do the following if creating a scenario
