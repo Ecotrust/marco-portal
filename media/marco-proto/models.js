@@ -207,6 +207,7 @@ function layerModel(options, parent) {
             //changed the following so that 
             //if the layer is an attributed vector layer, it will be added to the top of activeLayers
             //otherwise, it will be added just before the first non-vector layer
+            /*
             if (layer.type === "Vector" && layer.attributes.length) {
                 // add it to the top of the active layers
                 app.viewModel.activeLayers.unshift(layer);
@@ -221,6 +222,9 @@ function layerModel(options, parent) {
                 });
                 app.viewModel.activeLayers.splice(index, 0, layer);
             }
+            */
+            //now that we now longer use the selectfeature control we can simply do the following 
+            app.viewModel.activeLayers.unshift(layer);
 
             // set the active flag
             layer.active(true);
