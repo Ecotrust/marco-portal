@@ -916,18 +916,18 @@ function viewModel() {
         //activeInfoSublayer() ? activeInfoSublayer().overview : activeInfoLayer().overview
         if ( self.activeInfoSublayer() ) {
             if ( self.activeInfoSublayer().overview === null ) {
-                return 'no description available';
+                return '';
             } else {
                 return self.activeInfoSublayer().overview;
             }   
         } else if (self.activeInfoLayer() ) {
             if ( self.activeInfoLayer().overview === null ) {
-                return 'no description available';
+                return '';
             } else {
                 return self.activeInfoLayer().overview;
             }  
         } else {
-            return 'no description available';
+            return '';
         }
     };
     
