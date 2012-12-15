@@ -225,18 +225,7 @@ function scenarioModel(options) {
         var scenario = this;
         //app.viewModel.activeLayer(layer);
         if (scenario.active()) { // if layer is active, then deactivate
-            scenario.active(false);
-            scenario.visible(false);
-            scenario.opacity(scenario.defaultOpacity);
-            app.setLayerVisibility(scenario, false);
-            app.viewModel.activeLayers.remove(scenario);
-            
-            //remove the key/value pair from aggregatedAttributes
-            delete app.viewModel.aggregatedAttributes()[scenario.name];
-            //if there are no more attributes left to display, then remove the overlay altogether
-            if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
-                app.viewModel.aggregatedAttributes(false);
-            }
+            scenario.deactivateLayer();
         } else { // otherwise layer is not currently active, so activate
             scenario.activateLayer();
             //app.viewModel.scenarios.addScenarioToMap(scenario);
@@ -246,6 +235,25 @@ function scenarioModel(options) {
     self.activateLayer = function() {
         var scenario = this;
         app.viewModel.scenarios.addScenarioToMap(scenario);
+    };
+    
+    self.deactivateLayer = function() {
+        var scenario = this;
+        
+        scenario.active(false);
+        scenario.visible(false);
+        
+        scenario.opacity(scenario.defaultOpacity);
+        app.setLayerVisibility(scenario, false);
+        app.viewModel.activeLayers.remove(scenario);
+        
+        //remove the key/value pair from aggregatedAttributes
+        delete app.viewModel.aggregatedAttributes()[scenario.name];
+        //if there are no more attributes left to display, then remove the overlay altogether
+        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
+            app.viewModel.aggregatedAttributes(false);
+        }
+    
     };
     
     self.editScenario = function() {

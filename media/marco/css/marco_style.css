@@ -221,6 +221,9 @@ a:focus {
 .pageguide-step {
     z-index: 1035 !important;
 }
+.pageguide-content {
+    margin-top: 5px !important;
+}
 #help-tab {
 	position: fixed;
     z-index: 950;
