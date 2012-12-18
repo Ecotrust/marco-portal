@@ -128,6 +128,7 @@ class Scenario(Analysis):
             input_min_depth = feet_to_meters(-self.input_min_depth, 1)
             input_max_depth = feet_to_meters(-self.input_max_depth, 1)
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
+            result = result.filter(avg_depth__lt=0) #not sure this is doing anything, but do want to ensure 'no data' values are not included
         '''
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]

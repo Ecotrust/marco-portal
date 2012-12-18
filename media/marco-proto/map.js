@@ -209,7 +209,11 @@ app.init = function () {
                                 text = attribute_objs;
                             if ( title === 'OCS Lease Blocks' ) {
                                 text = app.viewModel.scenarios.getOCSAttributes(title, info.data);
-                            } 
+                            } else if ( title === 'Sea Turtles' ) {
+                                text = app.viewModel.getSeaTurtleAttributes(title, info.data);
+                            } else if ( title === 'Toothed Mammals (All Seasons)' ) {
+                                text = app.viewModel.getToothedMammalAttributes(title, info.data);
+                            }
                             if (newTime - app.map.clickOutput.time > 500) {
                                 app.map.clickOutput.attributes = {};
                                 app.map.clickOutput.time = newTime;
@@ -327,12 +331,21 @@ app.addLayerToMap = function(layer) {
             });
             if (layer.lookupField) {
                 var mylookup = {};
-                $.each(layer.lookupDetails, function(index, details) {                  
+                $.each(layer.lookupDetails, function(index, details) {    
+                    var fillOp = 0.5;
+                    //the following are special cases for Shipping Lanes that ensure suitable attribution with proper display 
+                    if (details.value === 'Precautionary Area') {
+                        fillOp = 0.0; 
+                    } else if (details.value === 'Shipping Safety Fairway') {
+                        fillOp = 0.0;
+                    } else if (details.value === 'Traffic Lane') {
+                        fillOp = 0.0;
+                    }
                     mylookup[details.value] = { strokeColor: details.color, 
                                                 strokeDashstyle: details.dashstyle, 
                                                 fill: details.fill,
                                                 fillColor: details.color, 
-                                                fillOpacity: 0.5,
+                                                fillOpacity: fillOp,
                                                 externalGraphic: details.graphic }; 
                 });
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);

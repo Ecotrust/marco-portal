@@ -149,7 +149,11 @@ function layerModel(options, parent) {
         if (layer.utfgrid) { //NEED TO CHECK FOR PARENT LAYER HERE TOO...
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
+            //var control = $.inArray(this.utfgrid, app.map.UTFControl.layers);
+            //app.map.removeControl(
+            app.map.removeLayer(this.utfgrid);
         }
+        
         //remove the key/value pair from aggregatedAttributes
         delete app.viewModel.aggregatedAttributes()[layer.name];
         //if there are no more attributes left to display, then remove the overlay altogether
@@ -162,6 +166,8 @@ function layerModel(options, parent) {
 
         app.setLayerVisibility(layer, false);
         layer.opacity(layer.defaultOpacity);
+        
+        //layer.layer = null;
 
         if (layer.parent && layer.parent.isCheckBoxLayer()) { // if layer has a parent and that layer is a checkbox layer
             // see if there are any remaining active sublayers in this checkbox layer
@@ -188,13 +194,20 @@ function layerModel(options, parent) {
             layer.parent.activeSublayer(false);
             layer.parent.visible(false);
             layer.parent.visibleSublayer(false);
-        }
+        } 
         
         if (layer.activeSublayer()) {
+            if ($.inArray(layer.activeSublayer().layer, app.map.layers) !== -1) {
+                app.map.removeLayer(layer.activeSublayer().layer);
+            }
             layer.activeSublayer().deactivateLayer();
             layer.activeSublayer(false);
             layer.visibleSublayer(false);
+        } 
+        if ($.inArray(layer.layer, app.map.layers) !== -1) {
+            app.map.removeLayer(layer.layer);
         }
+        layer.layer = null;
 
     };
 
@@ -202,6 +215,7 @@ function layerModel(options, parent) {
         var layer = this;
 
         if (!layer.active() && layer.type !== 'placeholder') {
+        
             app.addLayerToMap(layer);
 
             //changed the following so that 
@@ -268,6 +282,10 @@ function layerModel(options, parent) {
                 }
             }
             app.setLayerVisibility(layer, false);
+            
+            if ($.isEmptyObject(app.viewModel.visibleLayers())) {
+                app.viewModel.aggregatedAttributes(false);
+            }
 
             //remove related utfgrid layer
             if (layer.utfgrid) {
@@ -1383,8 +1401,63 @@ function viewModel() {
         self.usernameError(false);
     };
     
+    self.getSeaTurtleAttributes = function (title, data) {
+        attrs = [];
+        if ('ST_LK_NUM' in data) {
+            attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
+        }
+        if ( data['ST_LK_NUM'] ) {
+            if ('GREEN_LK' in data && data['GREEN_LK']) {
+                var season = data['GREEN_LK'],
+                    species = 'Green Sea Turtle',
+                    sighting = species + ' (' + season + ') ';
+                attrs.push({'display': 'Species', 'data': sighting});
+            }  
+            if ('LEATH_LK' in data && data['LEATH_LK']) {
+                var season = data['LEATH_LK'],
+                    species = 'Leatherback Sea Turtle',
+                    sighting = species + ' (' + season + ') ';
+                attrs.push({'display': 'Species', 'data': sighting});
+            }  
+            if ('LOGG_LK' in data && data['LOGG_LK']) {
+                var season = data['LOGG_LK'],
+                    species = 'Loggerhead Sea Turtle',
+                    sighting = species + ' (' + season + ') ';
+                attrs.push({'display': 'Species', 'data': sighting});
+            }
+        }
+        return attrs;
+    };
+    
+    self.getToothedMammalAttributes = function (title, data) {
+        attrs = [];
+        if ('TOO_LK_NUM' in data) {
+            attrs.push({'display': 'Sightings', 'data': data['TOO_LK_NUM']});
+        }
+        if ( data['TOO_LK_NUM'] ) {
+            if ('SPERM_LK' in data && data['SPERM_LK']) {
+                var season = data['SPERM_LK'],
+                    species = 'Sperm Whale',
+                    sighting = species + ' (' + season + ') ';
+                attrs.push({'display': 'Species', 'data': sighting});
+            }  
+            if ('BND_LK' in data && data['BND_LK']) {
+                var season = data['BND_LK'],
+                    species = 'Bottlenose Dolphin',
+                    sighting = species + ' (' + season + ') ';
+                attrs.push({'display': 'Species', 'data': sighting});
+            }  
+            if ('STRIP_LK' in data && data['STRIP_LK']) {
+                var season = data['STRIP_LK'],
+                    species = 'Striped Dolphin',
+                    sighting = species + ' (' + season + ') ';
+                attrs.push({'display': 'Species', 'data': sighting});
+            }
+        }
+        return attrs;
+    };
     
     return self;
-}
+} //end viewModel
 
 app.viewModel = new viewModel();

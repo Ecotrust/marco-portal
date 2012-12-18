@@ -398,7 +398,8 @@ function scenariosModel(options) {
         } else {
             scenarioId = options.uid;
         }
-        
+        //perhaps much of this is not necessary once a scenario has been added to app.map.layers initially...?
+        //(add check for scenario.layer, reset the style and move on?)
         $.ajax( {
             url: '/features/generic-links/links/geojson/' + scenarioId + '/', 
             type: 'GET',
@@ -508,17 +509,27 @@ function scenariosModel(options) {
             attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
         }
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
-            if ( data['WINDREV_MI'].toFixed(3) === data['WINDREV_MA'].toFixed(3) ) {
-                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': data['WINDREV_MI'].toFixed(3)});
+            if ( data['WINDREV_MI'] ) {                
+                var min_speed = data['WINDREV_MI'].toFixed(3),
+                    max_speed = data['WINDREV_MA'].toFixed(3);
+                if ( min_speed === max_speed ) {
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': min_speed});
+                } else {
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': min_speed + ' to ' + max_speed});
+                }
             } else {
-                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': data['WINDREV_MI'].toFixed(3) + ' to ' + data['WINDREV_MA'].toFixed(3)});
+                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': 'no data'});
             }
         }
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
-            //convert depth values to positive feet values (from negative meter values)
-            var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0);
-            var min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0);
-            attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+            if ( data['DEPTHM_MIN'] ) {
+                //convert depth values to positive feet values (from negative meter values)
+                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+            } else {
+                attrs.push({'display': 'Depth Range', 'data': 'no data'});
+            }
         }
         if ('MI_MIN' in data && 'MI_MAX' in data) {
             attrs.push({'display': 'Miles to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0)});
