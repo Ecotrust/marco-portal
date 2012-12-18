@@ -642,6 +642,49 @@
         }
     },
     {
+        "pk": 85,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "placeholder",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "",
+            "attribute_title": "",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Commercial Vessel Density",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/CommercialVesselDensityOctober2009-2010/MapServer/export",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 22,
         "model": "data_manager.layer",
         "fields": {
@@ -1621,7 +1664,7 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/summer_flounder/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html",
@@ -1629,7 +1672,9 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).",
-            "attribute_fields": [],
+            "attribute_fields": [
+                110
+            ],
             "learn_more": "",
             "data_overview": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.",
             "attribute_title": "",
@@ -3842,6 +3887,16 @@
             "field_name": "TOO_LK_NUM",
             "display_name": "Toothed Mammal Sightings",
             "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 110,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "AVE_CATCH1",
+            "display_name": "Avg Annual Catch (lbs)",
+            "precision": 0,
             "order": 1
         }
     },

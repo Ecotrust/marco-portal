@@ -193,7 +193,8 @@ app.init = function () {
                                         attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
                                     } else {
                                         try {
-                                            value = value.toFixed(obj.precision);
+                                            //set the precision and add any necessary commas
+                                            value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                                         }
                                         catch (e) {
                                             //keep on keeping on
