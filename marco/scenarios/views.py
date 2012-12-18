@@ -1,5 +1,6 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404
+from django.views.decorators.cache import cache_page
 from madrona.features import get_feature_by_uid
 from general.utils import meters_to_feet
 from models import *
@@ -61,6 +62,7 @@ def get_attributes(request, uid):
     
     return HttpResponse(dumps(scenario_obj.serialize_attributes))
     
+@cache_page(60 * 60 * 24, key_prefix="scenarios_get_leaseblocks")
 def get_leaseblocks(request):
     json = []
     leaseblocks = LeaseBlock.objects.filter(avg_depth__lt=0.0)

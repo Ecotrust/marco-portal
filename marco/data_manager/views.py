@@ -3,10 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils import simplejson
+from django.views.decorators.cache import cache_page
 from models import *
 
 
-def getJson(request):
+@cache_page(60 * 60 * 24, key_prefix="data_manager_get_json")
+def get_json(request):
     json = {
         "state": { "activeLayers": [] },
         "layers": [layer.toDict for layer in Layer.objects.filter(is_sublayer=False).exclude(layer_type='placeholder').order_by('name')],
