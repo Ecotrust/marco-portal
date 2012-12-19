@@ -886,6 +886,7 @@ function viewModel() {
     
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
+        //console.log('updating scroll bars');
         var dataScrollpane = $('#data-accordion').data('jsp');
         if (dataScrollpane === undefined) {
             $('#data-accordion').jScrollPane();
@@ -896,7 +897,7 @@ function viewModel() {
         if (legendScrollpane === undefined) {
             $('#legend-content').jScrollPane();
         } else {
-            legendScrollpane.reinitialise();
+            setTimeout(function() {legendScrollpane.reinitialise();},10);
         }
         
     };
