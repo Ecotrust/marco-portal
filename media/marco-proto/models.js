@@ -897,7 +897,7 @@ function viewModel() {
         if (legendScrollpane === undefined) {
             $('#legend-content').jScrollPane();
         } else {
-            setTimeout(function() {legendScrollpane.reinitialise();},10);
+            setTimeout(function() {legendScrollpane.reinitialise();},100);
         }
         
     };
