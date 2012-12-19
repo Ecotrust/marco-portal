@@ -57,8 +57,10 @@ app.viewModel.loadLayers = function(data) {
                 }
             }
             return keys;
-        })();
-  
+    })();
+    
+    //re-initialise the legend scrollbar 
+    $('#legend-content').jScrollPane(); 
 
 };
 app.viewModel.loadLayersFromFixture = function() {

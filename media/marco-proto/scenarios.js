@@ -362,6 +362,9 @@ function scenariosModel(options) {
     // false for normal operation
     self.loadingMessage = ko.observable(false);
     self.errorMessage = ko.observable(false);
+    
+    // scenariosLoaded will be set to true after they have been loaded
+    self.scenariosLoaded = false;
 
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
@@ -568,6 +571,7 @@ function scenariosModel(options) {
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
+        self.scenariosLoaded = true;
     }
     
     self.leaseblockList = [];    
@@ -583,28 +587,32 @@ function scenariosModel(options) {
 
 app.viewModel.scenarios = new scenariosModel();
 
-// load the scenarios
-$.ajax({
-    url: '/scenario/get_scenarios',
-    type: 'GET',
-    dataType: 'json',
-    success: function (scenarios) {
-        app.viewModel.scenarios.loadScenarios(scenarios);
-    },
-    error: function (result) {
-        debugger;
-    }
-})
+$('#designsTab').on('show', function (e) {
+    if ( !app.viewModel.scenarios.scenariosLoaded ) {
+        // load the scenarios
+        $.ajax({
+            url: '/scenario/get_scenarios',
+            type: 'GET',
+            dataType: 'json',
+            success: function (scenarios) {
+                app.viewModel.scenarios.loadScenarios(scenarios);
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
 
-// load the leaseblocks
-$.ajax({
-    url: '/scenario/get_leaseblocks',
-    type: 'GET',
-    dataType: 'json',
-    success: function (ocsblocks) {
-        app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
-    },
-    error: function (result) {
-        debugger;
+        // load the leaseblocks
+        $.ajax({
+            url: '/scenario/get_leaseblocks',
+            type: 'GET',
+            dataType: 'json',
+            success: function (ocsblocks) {
+                app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
     }
-})
+});

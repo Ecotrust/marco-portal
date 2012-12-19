@@ -14,7 +14,7 @@ app.onResize = function(percent) {
     app.map.render('map');
   }
   
-  app.viewModel.updateScrollBar();
+  app.viewModel.updateScrollBars();
   
   var width = $(window).width();
   if (width < 946) {
@@ -117,9 +117,12 @@ $(document).ready(function() {
   //causing the data tab to appear empty
   //the following appears to fix that problem
   $('#dataTab[data-toggle="tab"]').on('shown', function(e) {
-    app.viewModel.updateScrollBar();
+    app.viewModel.updateScrollBars();
   });
-
+  
+  //format the legend scrollbar
+  //setTimeout(function() { $('#legend-content').jScrollPane(); }, 500);
+  //setTimeout(function() { app.viewModel.updateScrollBars(); }, 500);
   
   //resizable behavior for overview-overlay
   //might not use the following after all... 

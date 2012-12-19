@@ -158,7 +158,7 @@ function layerModel(options, parent) {
         delete app.viewModel.aggregatedAttributes()[layer.name];
         //if there are no more attributes left to display, then remove the overlay altogether
         if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
-            app.viewModel.aggregatedAttributes(false);
+            app.viewModel.closeAttribution();
         }
 
         layer.active(false);
@@ -284,7 +284,7 @@ function layerModel(options, parent) {
             app.setLayerVisibility(layer, false);
             
             if ($.isEmptyObject(app.viewModel.visibleLayers())) {
-                app.viewModel.aggregatedAttributes(false);
+                app.viewModel.closeAttribution();
             }
 
             //remove related utfgrid layer
@@ -495,11 +495,11 @@ function themeModel(options) {
         if (self.isOpenTheme(theme)) {
             //app.viewModel.activeTheme(null);
             app.viewModel.openThemes.remove(theme);
-            app.viewModel.updateScrollBar();
+            app.viewModel.updateScrollBars();
         } else {
             app.viewModel.openThemes.push(theme);
             //setTimeout( app.viewModel.updateScrollBar(), 1000);
-            app.viewModel.updateScrollBar();
+            app.viewModel.updateScrollBars();
         }
     };
     
@@ -708,9 +708,10 @@ function viewModel() {
 
     // attribute data
     self.aggregatedAttributes = ko.observable(false);
-    self.aggregatedAttributes.subscribe(function() {
+    self.aggregatedAttributes.subscribe(function(newValue) {
         //setTimeout( self.updateCustomScrollbar('#aggregated-attribute-content'), 1000);
         self.updateCustomScrollbar('#aggregated-attribute-content');
+        
     });
 
     // title for print view
@@ -718,7 +719,18 @@ function viewModel() {
 
     self.closeAttribution = function() {
         self.aggregatedAttributes(false);
+        app.markers.clearMarkers();
     };
+    
+    self.updateMarker = function() {
+        //$(elements[0]).closest('.scrollpane').data('jsp').reinitialise();  
+        if (app.marker && self.aggregatedAttributes()) {
+            //console.log('updating marker');
+            app.markers.clearMarkers();
+            app.markers.addMarker(app.marker);
+        }
+    };
+    
     /*
     self.getAttributeHTML = function() {
         var html = "";
@@ -844,7 +856,12 @@ function viewModel() {
         self.showLegend(!self.showLegend());
         if (!self.showLegend()) {
             app.map.render('map');
+        } else {
+            //update the legend scrollbar
+            //$('#legend-content').data('jsp').reinitialise();
+            self.updateScrollBars();
         }
+        
         //app.map.render('map');
         //if toggling legend during default pageguide, then correct step 4 position
         self.correctTourPosition();
@@ -868,13 +885,20 @@ function viewModel() {
     };
     
     //update jScrollPane scrollbar
-    self.updateScrollBar = function() {
-        var scrollpane = $('#data-accordion').data('jsp');
-        if (scrollpane === undefined) {
+    self.updateScrollBars = function() {
+        var dataScrollpane = $('#data-accordion').data('jsp');
+        if (dataScrollpane === undefined) {
             $('#data-accordion').jScrollPane();
         } else {
-            scrollpane.reinitialise();
+            dataScrollpane.reinitialise();
         }
+        var legendScrollpane = $('#legend-content').data('jsp');
+        if (legendScrollpane === undefined) {
+            $('#legend-content').jScrollPane();
+        } else {
+            legendScrollpane.reinitialise();
+        }
+        
     };
 
     // expand data description overlay
@@ -1095,6 +1119,10 @@ function viewModel() {
             return a.getZIndex() - b.getZIndex();
         });
 
+        //update the legend scrollbar
+        //setTimeout(function() {$('#legend-content').data('jsp').reinitialise();}, 200);
+        setTimeout(function() { app.viewModel.updateScrollBars(); }, 200);
+        
         // update the url hash
         app.updateUrl();
 
@@ -1113,7 +1141,7 @@ function viewModel() {
         for (var i=0; i< numOpenThemes; i++) {
             self.openThemes.remove(self.openThemes()[0]);
         }
-        self.updateScrollBar();
+        self.updateScrollBars();
     };
 
     // do this stuff when the visible layers change

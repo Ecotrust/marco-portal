@@ -269,9 +269,27 @@ app.init = function () {
         var date = new Date();
         var newTime = date.getTime();
         if (newTime - app.map.clickOutput.time > 300) {
-            app.viewModel.aggregatedAttributes(false);
+            //app.viewModel.aggregatedAttributes(false);
+            app.viewModel.closeAttribution();
         }
     });
+    
+    app.markers = new OpenLayers.Layer.Markers( "Markers" );
+    app.map.addLayer(app.markers);
+    app.map.events.register("click", app.map , function(e){
+        //console.log('creating new marker');
+        app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy));
+        app.marker.map = app.map;
+        app.viewModel.updateMarker();
+        //app.markers.addMarker(app.marker);
+        //app.markers.clearMarkers();
+        /*setTimeout(function() {
+            if ( app.viewModel.aggregatedAttributes() ) {
+                app.markers.addMarker(app.marker);
+            }
+        }, 300);*/
+    });
+
         
 };
 

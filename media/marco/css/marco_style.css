@@ -733,17 +733,22 @@ img + h3 {
 }
 */
 #legend-wrapper {
-	border: 1px solid #ccc;
-	border-radius: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   max-height: 80%;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 0px 10px 20px;
 }
 
 #legend-wrapper hr {
-	margin: 0px !important;
-	/*margin-bottom: 5px;*/
+  margin: 0px !important;
+  /*margin-bottom: 5px;*/
 }
+
+#legend-content {
+  height: 94%;
+}
+
 /* Rules for the layer switcher */
 
 #map-wrapper {
