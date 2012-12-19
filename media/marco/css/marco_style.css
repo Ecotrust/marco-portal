@@ -740,6 +740,10 @@ img + h3 {
   padding: 0px 10px 20px;
 }
 
+.legend-title {
+	font-weight: bold;
+}
+
 #legend-wrapper hr {
   margin: 0px !important;
   /*margin-bottom: 5px;*/
@@ -958,7 +962,7 @@ img + h3 {
 
 
 #printing-popover {
-	width: 395px;
+	width: 460px;
 }
 #printing-popover .arrow {
 	display: none;
@@ -966,6 +970,10 @@ img + h3 {
 
 #printing-popover .alert {
 	margin-bottom: 10px;
+}
+
+#printing-popover .print-title {
+	width: 418px;
 }
 
 #printing-popover .well {
