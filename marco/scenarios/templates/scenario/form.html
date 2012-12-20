@@ -6,7 +6,7 @@
 <script type="text/javascript" charset="utf-8">
 
     madrona.onShow(function(){
-        madrona.setupForm($('#featureform'));
+        madrona.setupForm($('#wind-design-form'));
         
         var step = 1;
         var max_step = 3;
@@ -41,6 +41,7 @@
         if ($('#id_input_filter_distance_to_shipping').is(':checked')) {
             $('#distance_to_shipping_widget').show();
         } 
+        updateDesignScrollBar();
         
         function validate(step) {
             if (step == 1) {
@@ -59,30 +60,6 @@
                     alert("Select at least 1 Criteria.");
                     return false;
                 } else {
-                    if ($('#id_input_parameter_substrate').is(':checked')) {
-                        substrate_selections = 0;
-                        $.each($('.substrate_checkboxes'), function(index, checkbox) {
-                            if (checkbox.checked) {
-                                substrate_selections += 1;
-                            }
-                        });
-                        if (substrate_selections == 0) {
-                            alert("Select at least 1 Seabed Type or de-activate the Seabed criteria.");
-                            return false;
-                        }
-                    }
-                    if ($('#id_input_parameter_sediment').is(':checked')) {
-                        sediment_selections = 0;
-                        $.each($('.sediment_checkboxes'), function(index, checkbox) {
-                            if (checkbox.checked) {
-                                sediment_selections += 1;
-                            }
-                        });
-                        if (sediment_selections == 0) {
-                            alert("Select at least 1 Sediment Type or de-activate the Sediment criteria.");
-                            return false;
-                        }
-                    }
                     if ($('#id_input_parameter_wea').is(':checked')) {
                         wea_selections = 0;
                         $.each($('.wea_checkboxes'), function(index, checkbox) {
@@ -132,15 +109,17 @@
         
         function showhide_widget(element) {
             element.fadeToggle(100); //slideToggle
-        }
-        function updateScrollBar() {
-            var scrollpane = $('#featureform').data('jsp');
-            if (scrollpane === undefined) {
-                $('#featureform').jScrollPane();
+        }  
+        
+        function updateDesignScrollBar() {
+            var designsWizardScrollpane = $('#wind-design-form').data('jsp');
+            if (designsWizardScrollpane === undefined) {
+                $('#wind-design-form').jScrollPane();
             } else {
-                scrollpane.reinitialise();
+                setTimeout(function() {designsWizardScrollpane.reinitialise();},100);
             }
-        };        
+        }
+        
               
               
         // DISTANCE TO SHORE
@@ -156,6 +135,7 @@
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
             showhide_widget($('#distance_to_shore_widget')); 
+            updateDesignScrollBar();
         });
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_shore').bind( "slide slidechange", function(event, ui) {
@@ -180,6 +160,7 @@
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
             showhide_widget($('#depth_widget')); 
+            updateDesignScrollBar();
             /*updateScrollBar();*/
         });
         //Update Remaining Leaseblocks 
@@ -203,6 +184,7 @@
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
             showhide_widget($('#distance_to_awc_widget')); 
+            updateDesignScrollBar();
         });
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
@@ -223,6 +205,7 @@
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
             showhide_widget($('#distance_to_shipping_widget')); 
+            updateDesignScrollBar();
         });
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
@@ -245,7 +228,10 @@
         
         
         //Expand Collapse Traffic Density
-        $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
+        $('#id_input_parameter_traffic_density').click( function() { 
+            showhide_widget($('#traffic_density_widget')); 
+            updateDesignScrollBar();
+        });
         //Handle change events
         $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
             $('#traffic_density_text').html('Medium');
@@ -265,7 +251,10 @@
         
         // WIND PLANNING AREAS 
         //Expand Collapse Wind Planning Areas
-        $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
+        $('#id_input_parameter_wea').click( function() { 
+            showhide_widget($('#wea_widget')); 
+            updateDesignScrollBar();
+        });
         
         // WIND SPEED
         //Expand Collapse Wind Speed
@@ -278,6 +267,7 @@
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
             }
             showhide_widget($('#wind_speed_widget')); 
+            updateDesignScrollBar();
         });
         //Update Leaseblocks
         //slide ensures that leaseblocks are updated when the slider is adjusted
@@ -441,7 +431,7 @@
     <!--<img src="/media/marco/img/multi.png"/>-->
     Wind Energy Design
 </h4>
-<form id="featureform" action="{{action}}" method="post"> 
+<form id="wind-design-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
     <div style="display:none;">
         {{ hidden.errors }}
@@ -694,22 +684,6 @@ div .field > label {
     font-size: 12px; 
     display: inline; 
 }
-/*div .step { 
-    -moz-box-shadow: 5px 5px 5px #ddd;
-    -webkit-box-shadow: 5px 5px 5px #ddd;
-    box-shadow: 5px 5px 5px #ddd; 
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -khtml-border-radius: 6px;
-    border-radius: 6px;
-    border: 1px #ddd solid;
-    padding: 6px;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    background-color: white; 
-    background-repeat: no-repeat;
-    min-height: 54px;
-}*/
 div.param-checkboxes {
     padding-left: 10px !important;
 }
@@ -791,10 +765,11 @@ img.info {
 /* design stuff */
 
 .panel form {
-    background: none repeat scroll 0 0 #DDDDDD;
+    /*background: none repeat scroll 0 0 #DDDDDD;*/
     border: 1px solid #BBBBBB;
     border-radius: 10px 10px 10px 10px;
     height: 60%;
+    width: 99%;
     padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;

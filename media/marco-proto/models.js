@@ -568,6 +568,10 @@ function bookmarkModel($popover) {
     self.removeBookmark = function(bookmark) {
         self.bookmarksList.remove(bookmark);
         //$('#bookmark-popover').hide();
+        
+        //if the user is logged in
+            //ajax call to remove bookmark on server
+        
         // store the bookmarks
         self.storeBookmarks();
     };
@@ -580,6 +584,10 @@ function bookmarkModel($popover) {
             name: self.bookmarkName()
         });
         $('#bookmark-popover').hide();
+        
+        //if the user is logged in 
+            //ajax call to add bookmark to server
+        
         // store the bookmarks
         self.storeBookmarks();
     };
@@ -598,16 +606,26 @@ function bookmarkModel($popover) {
         return "mailto:?subject=MARCO Bookmark&body=<a href='" + self.getUrl(bookmark).replace(/&/g, '%26') + "'>bookmark</a>";
     };
 
-    // store the bookmarks to local storage or server
+    // store the bookmarks to local storage
     self.storeBookmarks = function() {
+        // save bookmarks to server
+        
+        
         amplify.store("marco-bookmarks", self.bookmarksList());
     };
 
     // method for loading existing bookmarks
     self.getBookmarks = function() {
+        // load bookmarks from server while syncing with client 
+    
         var existingBookmarks = amplify.store("marco-bookmarks");
         if (existingBookmarks) {
             self.bookmarksList = ko.observableArray(existingBookmarks);
+            // if the user is logged in, then 
+                // save to the server (append any new bookmarks (altered state), adjust the names of any bookmarks (same state) already present)
+                // 
+        } else {
+            // check server for bookmarks, load if present, and amplify store to sync with client 
         }
     };
 
@@ -886,13 +904,14 @@ function viewModel() {
     
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
-        //console.log('updating scroll bars');
+    
         var dataScrollpane = $('#data-accordion').data('jsp');
         if (dataScrollpane === undefined) {
             $('#data-accordion').jScrollPane();
         } else {
             dataScrollpane.reinitialise();
         }
+        
         var legendScrollpane = $('#legend-content').data('jsp');
         if (legendScrollpane === undefined) {
             $('#legend-content').jScrollPane();

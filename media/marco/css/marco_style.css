@@ -350,6 +350,18 @@ input + i.icon-remove-sign {
   margin-left: -15px;
 }
 
+#wind-design-form {
+    width: 99% !important;
+    padding: 5px 0px 5px 0px !important;
+}
+#wind-design-form .jspContainer {
+    width: 98% !important;
+    height: 100% !important;
+}
+#wind-design-form .jspPane {
+    border-radius: 10px;
+}
+
 
 .showcase {
 	position: relative;

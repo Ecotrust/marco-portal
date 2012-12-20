@@ -190,6 +190,15 @@ function scenarioFormModel(options) {
         self.leaseblocksLeft(count);
     };
     
+    self.updateDesignScrollBar = function() {
+        var designsWizardScrollpane = $('#wind-design-form').data('jsp');
+        if (designsWizardScrollpane === undefined) {
+            $('#wind-design-form').jScrollPane();
+        } else {
+            setTimeout(function() {designsWizardScrollpane.reinitialise();},100);
+        }
+    };
+    
     return self;
 }
 
@@ -385,6 +394,7 @@ function scenariosModel(options) {
                 $('#scenario-form').html(data);
                 self.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
+                self.scenarioFormModel.updateDesignScrollBar();
             },
             error: function (result) { debugger }
         });
