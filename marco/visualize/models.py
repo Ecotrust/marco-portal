@@ -5,6 +5,5 @@ from madrona.features.models import Feature
 
 
 class Bookmark(Feature):
-    name = models.CharField(max_length=150) 
     state = models.CharField(max_length=2050) 
     
