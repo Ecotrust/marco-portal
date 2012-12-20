@@ -514,12 +514,16 @@ function scenariosModel(options) {
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
             if ( data['WINDREV_MI'] ) {                
                 var min_speed = data['WINDREV_MI'].toFixed(3),
-                    max_speed = data['WINDREV_MA'].toFixed(3);
-                if ( min_speed === max_speed ) {
-                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': min_speed});
+                    max_speed = data['WINDREV_MA'].toFixed(3),
+                    min_range = (parseFloat(min_speed)-.125).toPrecision(3),
+                    max_range = (parseFloat(max_speed)+.125).toPrecision(3);
+                /*if ( min_speed === max_speed ) {
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
                 } else {
-                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': min_speed + ' to ' + max_speed});
-                }
+                    var speed = (min_speed-.125) + ' to ' + (max_speed+.125);
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
+                }*/
+                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': min_range + ' to ' + max_range});
             } else {
                 attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': 'no data'});
             }
