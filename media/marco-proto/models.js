@@ -566,29 +566,53 @@ function bookmarkModel($popover) {
     };
 
     self.removeBookmark = function(bookmark) {
+        
+        //if the user is logged in, ajax call to add bookmark to server 
+        if (app.is_authenticated) { 
+            $.ajax({ 
+                url: '/visualize/remove_bookmark', 
+                data: { name: bookmark.name, hash: $.param(bookmark.state) }, 
+                type: 'POST',
+                dataType: 'json',
+                error: function(result) { 
+                    debugger;
+                } 
+            });
+        }
+        
         self.bookmarksList.remove(bookmark);
         //$('#bookmark-popover').hide();
         
-        //if the user is logged in
-            //ajax call to remove bookmark on server
-        
-        // store the bookmarks
+        // store the bookmarks locally
         self.storeBookmarks();
     };
 
     // handle the bookmark submit
     self.saveBookmark = function() {
         // add to the list of bookmarks
-        self.bookmarksList.unshift({
-            state: app.getState(),
-            name: self.bookmarkName()
-        });
+        var bookmarkState = app.getState(),
+            bookmark = { 
+                state: bookmarkState,
+                name: self.bookmarkName()
+            };
+            
+        //if the user is logged in, ajax call to add bookmark to server 
+        if (app.is_authenticated) { 
+            $.ajax({ 
+                url: '/visualize/add_bookmark', 
+                data: { name: self.bookmarkName(), hash: window.location.hash.slice(1) }, 
+                type: 'POST',
+                dataType: 'json',
+                error: function(result) { 
+                    debugger;
+                } 
+            });
+        }
+        
+        self.bookmarksList.unshift(bookmark);
         $('#bookmark-popover').hide();
         
-        //if the user is logged in 
-            //ajax call to add bookmark to server
-        
-        // store the bookmarks
+        // store the bookmarks locally
         self.storeBookmarks();
     };
 
@@ -608,25 +632,54 @@ function bookmarkModel($popover) {
 
     // store the bookmarks to local storage
     self.storeBookmarks = function() {
-        // save bookmarks to server
-        
-        
         amplify.store("marco-bookmarks", self.bookmarksList());
     };
 
     // method for loading existing bookmarks
     self.getBookmarks = function() {
+        //get bookmarks from local storage
+        var existingBookmarks = amplify.store("marco-bookmarks"),
+            local_bookmarks = [];
+        
+        for (var i=0; i < existingBookmarks.length; i++) {
+            local_bookmarks.push( {
+                'name': existingBookmarks[i].name,
+                'hash': $.param(existingBookmarks[i].state)
+            });
+        }
+        
         // load bookmarks from server while syncing with client 
+        //if the user is logged in, ajax call to sync bookmarks with server 
+        if (app.is_authenticated) { 
+            $.ajax({ 
+                url: '/visualize/get_bookmarks', 
+                data: { bookmarks: local_bookmarks }, 
+                type: 'POST',
+                dataType: 'json',
+                success: function(result) {
+                    var bookmarks = result || [],
+                        blist = [];
+                    for (var i=0; i < bookmarks.length; i++) {
+                        var bookmark = {
+                            state: $.deparam(bookmarks[i].hash),
+                            name: bookmarks[i].name
+                        }
+                        blist.push(bookmark);
+                    }
+                    if (blist.length > 0) {
+                        self.bookmarksList(blist);
+                        self.storeBookmarks();
+                    }
+                },
+                error: function(result) { 
+                    debugger;
+                } 
+            });
+        }
     
-        var existingBookmarks = amplify.store("marco-bookmarks");
         if (existingBookmarks) {
             self.bookmarksList = ko.observableArray(existingBookmarks);
-            // if the user is logged in, then 
-                // save to the server (append any new bookmarks (altered state), adjust the names of any bookmarks (same state) already present)
-                // 
-        } else {
-            // check server for bookmarks, load if present, and amplify store to sync with client 
-        }
+        } 
     };
 
     self.cancel = function() {
@@ -1367,6 +1420,7 @@ function viewModel() {
             if (self.passwordError() || self.inactiveError()) {
                 return false;
             } else {
+                self.bookmarks.getBookmarks();
                 return true;
             }
         }

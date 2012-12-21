@@ -3,4 +3,6 @@
 django==1.4
 madrona
 simplejson
+django-redis
+querystring-parser
 

@@ -5,5 +5,5 @@ from madrona.features.models import Feature
 
 
 class Bookmark(Feature):
-    state = models.CharField(max_length=2050) 
+    url_hash = models.CharField(max_length=2050) 
     
