@@ -183,7 +183,7 @@
                                     <div class="span12 ">
                                         <form class="form-search" data-bind="submit: layerSearch">
                                             <div class="span12">
-                                                <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis;" placeholder="find layers">
+                                                <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis;" placeholder="Search">
                                                 
                                                 <a class="btn">
                                                     <i class="icon-remove icon-large"></i> 
@@ -375,21 +375,21 @@
                                     </div>
                                   
                                     <!-- Aggregated Attribution Overlay -->
-                                    <div id="aggregated-attribute-overlay" data-bind="visible: aggregatedAttributes" style="display: none">
-                                        <span class="pull-right"><a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
+                                    <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes" style="display: none">
                                         <div id="aggregated-attribute-content">
-                                          <div data-bind="foreach: activeLayers()">
+                                          <div data-bind="foreach: visibleLayers()">
                                             <div data-bind="visible: $root.aggregatedAttributes()[name]">
                                               <h4 data-bind="text: name"></h4>
-                                              <dl data-bind="foreach: $root.aggregatedAttributes()[name]">
+                                              <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
                                                 <dt>
-                                                    <span data-bind="text: display"></span><span data-bind="visible: display">:</span>
+                                                    <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
                                                     <span style="font-weight: normal" data-bind="text: data"></span>
                                                 </dt>
                                               </dl>
                                             </div>
                                           </div>
                                         </div>
+                                        <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                     </div>
                                   
                                     <!-- Bookmark Message -->
@@ -432,7 +432,7 @@
                                     <div id="overview-overlay" class="row-fluid" style="display: none" data-bind="visible: showOverview()" >
                                         <div id="overview-overlay-content" class="span12">
                                             <div id="overview-overlay-header" >
-                                                <span class="btn-group" data-bind="visible: activeInfoLayer() && activeInfoLayer().subLayers.length !== 0">
+                                                <span class="btn-group" data-bind="visible: activeInfoLayer() && activeInfoLayer().subLayers && activeInfoLayer().subLayers.length !== 0">
                                                     <a id="overview-dropdown-button" class="btn dropdown-toggle" href="#" name="description-dropdown" data-bind="click: activateOverviewDropdown">
                                                         <span data-bind="text: activeInfoSublayer().name ? activeInfoSublayer().name : activeInfoLayer().name"></span>
                                                         <span class="caret"></span>
@@ -450,7 +450,7 @@
                                                         </li>
                                                     </ul>
                                                 </span>
-                                                <span class="title" data-bind="text: activeInfoLayer().name, visible: activeInfoLayer() && activeInfoLayer().subLayers.length == 0"></span> 
+                                                <span class="title" data-bind="text: activeInfoLayer().name, visible: activeInfoLayer() && (!activeInfoLayer().subLayers || activeInfoLayer().subLayers.length == 0)"></span> 
                                                 <!--<span class="caret" style="display:none" data-bind="visible: activeInfoLayer().subLayers"></span>-->
                                                 <span><a href="#" style="margin-left: 10px; opacity: .8;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> </span>
                                             </div>
@@ -524,7 +524,9 @@
                                 Legends (<span data-bind="text: activeLegendLayers().length"></span>)
                             </span>
                         </div>
-                        <div data-bind="foreach: activeLegendLayers">
+                        <div id="legend-content">
+                          <div data-bind="foreach: activeLegendLayers">
+                          <!--<div data-bind="foreach: { data: activeLegendLayers, afterRender: updateScrollBars }">-->
                             <div style="padding-bottom: 10px;">
                                 <span class="pagination-centered" data-bind="html: legendTitle ? legendTitle : name"></span>
                                 <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="visible: legendSubTitle, html: legendSubTitle"></p>
@@ -534,6 +536,7 @@
                                     </div>
                                 </span>
                             </div>
+                          </div>
                         </div>
                     </div>
                 </div>

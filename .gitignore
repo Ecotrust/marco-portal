@@ -30,3 +30,5 @@ portal/*.sql
 portal/wordpress/.htaccess
 portal/wordpress/wp-config.php
 printing/shots/*
+
+/media/data_manager/utfgrid

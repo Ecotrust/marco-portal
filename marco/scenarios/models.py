@@ -71,11 +71,41 @@ class Scenario(Analysis):
     description = models.TextField(null=True, blank=True)
     satisfied = models.BooleanField(default=True)
     #support_file = models.FileField(upload_to='scenarios/files/', null=True, blank=True)
+    active = models.BooleanField(default=True)
             
     #I'm finding myself wishing lease_blocks was spelled without the underscore...            
     lease_blocks = models.TextField(verbose_name='Lease Block IDs', null=True, blank=True)  
     geometry_final_area = models.FloatField(verbose_name='Total Area', null=True, blank=True)
-    geometry_dissolved = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Scenario result dissolved")
+    geometry_dissolved = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Scenario result dissolved")
+                
+    @property
+    def serialize_attributes(self):
+        from general.utils import format
+        attributes = []
+        if self.input_parameter_wind_speed:
+            wind_speed = '%s m/s' %format(self.input_avg_wind_speed, 1)
+            attributes.append({'title': 'Minimum Wind Speed', 'data': wind_speed})
+        if self.input_parameter_distance_to_shore:
+            distance_to_shore = '%s - %s miles' %(format(self.input_min_distance_to_shore, 0), format(self.input_max_distance_to_shore, 0))
+            attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
+        if self.input_parameter_depth:
+            depth_range = '%s - %s feet' %(format(self.input_min_depth, 0), format(self.input_max_depth, 0))
+            attributes.append({'title': 'Depth Range', 'data': depth_range})
+        if self.input_parameter_distance_to_awc:
+            distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
+            attributes.append({'title': 'Max Distance to Proposed AWC Hub', 'data': distance_to_awc})
+        if self.input_filter_distance_to_shipping:
+            miles_to_shipping = format(self.input_distance_to_shipping, 0)
+            if miles_to_shipping == 1:
+                distance_to_shipping = '%s mile' %miles_to_shipping
+            else:
+                distance_to_shipping = '%s miles' %miles_to_shipping
+            attributes.append({'title': 'Minimum Distance to Shipping Lanes', 'data': distance_to_shipping})
+        if self.input_filter_ais_density:
+            attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
+        attributes.append({'title': 'Number of Leaseblocks', 'data': self.lease_blocks.count(',')+1})
+        return { 'event': 'click', 'attributes': attributes }
+    
     
     def geojson(self, srid):
         props = get_properties_json(self)
@@ -86,14 +116,20 @@ class Scenario(Analysis):
     def run(self):
     
         result = LeaseBlock.objects.all()
-        '''
+        
+        import pdb
+        #pdb.set_trace()
         #GeoPhysical
         if self.input_parameter_distance_to_shore:
+            #why isn't this max_distance >= input.min_distance && min_distance <= input.max_distance ???
             result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_depth:
-            input_min_depth = feet_to_meters(-self.input_min_depth)
-            input_max_depth = feet_to_meters(-self.input_max_depth)
+            #note:  converting input to negative values and converted to meters (to match db)
+            input_min_depth = feet_to_meters(-self.input_min_depth, 1)
+            input_max_depth = feet_to_meters(-self.input_max_depth, 1)
             result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
+            result = result.filter(avg_depth__lt=0) #not sure this is doing anything, but do want to ensure 'no data' values are not included
+        '''
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
             result = result.filter(majority_substrate__in=input_substrate)
@@ -103,9 +139,8 @@ class Scenario(Analysis):
         '''
         #Wind Energy
         if self.input_parameter_wind_speed:
-            input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
-            result = result.filter(min_wind_speed__gte=input_wind_speed)
-        '''
+            #input_wind_speed = mph_to_mps(self.input_avg_wind_speed)
+            result = result.filter(min_wind_speed_rev__gte=self.input_avg_wind_speed)
         if self.input_parameter_wea:
             input_wea = [wea.wea_id for wea in self.input_wea.all()]
             result = result.filter(wea_number__in=input_wea)
@@ -116,16 +151,27 @@ class Scenario(Analysis):
             result = result.filter(ais_mean_density__lte=1)
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
-        ''' 
-        
+         
         dissolved_geom = result[0].geometry
-        for r in result:
-            dissolved_geom = dissolved_geom.union(r.geometry)
-        self.geometry_dissolved = dissolved_geom
+        for lb in result:
+            try:
+                dissolved_geom = dissolved_geom.union(lb.geometry)
+            except:
+                pass
         
-        self.geometry_final_area = sum([r.geometry.area for r in result.all()])
-        leaseblock_ids = [r.id for r in result.all()]
+        from django.contrib.gis.geos import MultiPolygon
+        if type(dissolved_geom) == MultiPolygon:
+            self.geometry_dissolved = dissolved_geom
+        else:
+            self.geometry_dissolved = MultiPolygon(dissolved_geom, srid=dissolved_geom.srid)
+        self.active = True
+        
+        
+        self.geometry_final_area = sum([lb.geometry.area for lb in result.all()])
+        leaseblock_ids = [lb.id for lb in result.all()]
         self.lease_blocks = ','.join(map(str, leaseblock_ids))
+        
+        #pdb.set_trace()
         
         
         if self.lease_blocks == '':

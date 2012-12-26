@@ -20,15 +20,15 @@ def meters_to_miles(meters):
         return 0
     return float(meters) * 0.000621371192
     
-def feet_to_meters(feet):
+def feet_to_meters(feet, precision=0):
     if feet is None:
         return 0
-    return int(float(feet) * .3048)
+    return format(float(feet) * .3048, precision)
     
-def meters_to_feet(meters):
+def meters_to_feet(meters, precision=0):
     if meters is None:
         return 0
-    return int(float(meters) * 3.2808399)
+    return format(float(meters) * 3.2808399, precision)
     
 def sq_meters_to_sq_miles(sq_meters):
     if sq_meters is None:

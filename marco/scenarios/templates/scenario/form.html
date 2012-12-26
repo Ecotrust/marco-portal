@@ -133,24 +133,124 @@
         function showhide_widget(element) {
             element.fadeToggle(100); //slideToggle
         }
+        function updateScrollBar() {
+            var scrollpane = $('#featureform').data('jsp');
+            if (scrollpane === undefined) {
+                $('#featureform').jScrollPane();
+            } else {
+                scrollpane.reinitialise();
+            }
+        };        
+              
+              
+        // DISTANCE TO SHORE
+        //Expand/Collapse Distance to Shore
+        $('#id_input_parameter_distance_to_shore').click( function() { 
+            if ($('#distance_to_shore_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('min_distance');
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('max_distance');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#distance_to_shore_widget')); 
+        });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_shore').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': ui.values[0]});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': ui.values[1]});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });  
         
-        $('#id_input_parameter_depth').click( function() { showhide_widget($('#depth_widget')); });
-        $('#id_input_parameter_substrate').click( function() { showhide_widget($('#substrate_widget')); });
-        $('#id_input_parameter_sediment').click( function() { showhide_widget($('#sediment_widget')); });
-        $('#id_input_parameter_wind_speed').click( function() { showhide_widget($('#wind_speed_widget')); });
-        $('#id_input_parameter_distance_to_shore').click( function() { showhide_widget($('#distance_to_shore_widget')); });
-        $('#id_input_parameter_distance_to_awc').click( function() { showhide_widget($('#distance_to_awc_widget')); });
-        $('#id_input_filter_distance_to_shipping').click( function() { showhide_widget($('#distance_to_shipping_widget')); });
-        //$('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
-        $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
-                
+        
+        // DEPTH RANGE
+        //Expand/Collapse Depth Range Widget
+        $('#id_input_parameter_depth').click( function() { 
+            if ($('#depth_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('min_depth');
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('max_depth');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#depth_widget')); 
+            /*updateScrollBar();*/
+        });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_depth').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': ui.values[0]});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': ui.values[1]});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });
+            
+         
+        // DISTANCE TO AWC  
+        //Expand Collapse Distance to AWC Hubs
+        $('#id_input_parameter_distance_to_awc').click( function() { 
+            if ($('#distance_to_awc_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('awc');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#distance_to_awc_widget')); 
+        });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': ui.value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        }); 
+
+        // DISTANCE TO SHIPPING LANES
+        //Expand Collapse Distance to Shipping Lanes
+        $('#id_input_filter_distance_to_shipping').click( function() { 
+            if ($('#distance_to_shipping_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('tsz');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#distance_to_shipping_widget')); 
+        });
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': ui.value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        }); 
+           
+        // TRAFFIC DENSITY   
+        $('#id_input_filter_ais_density').click( function(e) {
+            if ( $('#id_input_filter_ais_density').attr('checked') ) {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'ais', 'value': 1});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('ais');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });
+        
+        
+        //Expand Collapse Traffic Density
+        $('#id_input_parameter_traffic_density').click( function() { showhide_widget($('#traffic_density_widget')); });
+        //Handle change events
         $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
             $('#traffic_density_text').html('Medium');
         });
-        $('#slider-input_traffic_density').bind( "slidechange", function(event, ui) {
-            change_traffic_message(ui);
-        });
-        $('#slider-input_traffic_density').bind( "slide", function(event, ui) {
+        $('#slider-input_traffic_density').bind( "slide slidechange", function(event, ui) {
             change_traffic_message(ui);
         });
         function change_traffic_message(ui) {
@@ -162,6 +262,108 @@
                 $('#traffic_density_text').html('Low');
             } 
         }
+        
+        // WIND PLANNING AREAS 
+        //Expand Collapse Wind Planning Areas
+        $('#id_input_parameter_wea').click( function() { showhide_widget($('#wea_widget')); });
+        
+        // WIND SPEED
+        //Expand Collapse Wind Speed
+        $('#id_input_parameter_wind_speed').click( function() { 
+            if ($('#wind_speed_widget').css('display') === "none") {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('wind');
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+            showhide_widget($('#wind_speed_widget')); 
+        });
+        //Update Leaseblocks
+        //slide ensures that leaseblocks are updated when the slider is adjusted
+        //slidechange ensures that leaseblocks are updated when the text area is modified
+        $('#slider-input_avg_wind_speed').bind( "slide slidechange", function(event, ui) {
+            var $left_side = $(event.target).find('.ui-slider-range');
+            change_wind_message($left_side, ui);
+            //Update Remaining Leaseblocks 
+            if (app.viewModel.scenarios.scenarioFormModel) {
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
+                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            }
+        });
+        function change_wind_message($left_side, ui) {
+            var $text = $('#wind_speed_text'),
+                $label = $text.closest('.label');
+                $label.css('color', 'black');
+            if (ui.value < 7.0) {
+                $text.html('Fair');
+                $label.css('background', "#38a800");
+                //$label.attr('class', "label label-important");
+                //$left_side.css('background', '#aaaa00');
+            } else if (ui.value < 7.25) {
+                $text.html('Good');
+                $label.css('background', "#6fc400");
+                //$label.attr('class', "label label-warning");
+                //$left_side.css('background', '#aa5500');
+            } else if (ui.value < 7.5) {
+                $text.html('Good');
+                $label.css('background', "#8bd100");
+                //$label.attr('class', "label label-warning");
+                //$left_side.css('background', '#aa0000');
+            } else if (ui.value < 7.75) {
+                $text.html('Excellent');
+                $label.css('background', "#b0e000");
+                //$label.attr('class', "label label-warning");
+                //$left_side.css('background', '#aa0000');
+            } else if (ui.value < 8.0) {
+                $text.html('Excellent');
+                $label.css('background', "#e3f23b");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#880066');
+            } else if (ui.value < 8.25) {
+                $text.html('Outstanding');
+                $label.css('background', "#ffff78");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#880066');
+            } else if (ui.value < 8.5) {
+                $text.html('Outstanding');
+                $label.css('background', "#fff566");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#880066');
+            } else if (ui.value < 8.75) {
+                $text.html('Outstanding');
+                $label.css('background', "#f2db44");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#8800aa');
+            } else if (ui.value < 9.0) {
+                $text.html('Superb');
+                $label.css('background', "#fab525");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#8800aa');
+            } else if (ui.value < 9.25) {
+                $text.html('Superb');
+                $label.css('background', "#ffa600");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#8800aa');
+            } else if (ui.value < 9.5) {
+                $text.html('Superb');
+                $label.css('background', "#ff9400");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#8800aa');
+            } else {
+                $text.html('Superb');
+                $label.css('background', "#ff7300");
+                //$label.attr('class', "label label-success");
+                //$left_side.css('background', '#000088');
+            }
+            //Poor       < 12.5      (< 5.6)     ffff00
+            //Fair       14.3-15.7   (6.4-7.0)   ff0000
+            //Good       15.7-16.8   (7.0-7.5)   ff0077
+            //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
+            //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
+            //Superb     > 19.7      (> 8.8)     0000ff
+        }
+        
         
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
@@ -226,61 +428,6 @@
             }
         }); 
 
-        $('#slider-input_avg_wind_speed').bind( "slidecreate", function(event, ui) {
-            //debugger;
-            //$(event.target).find('.ui-slider-range').css('background', '#880066');
-        });
-        $('#slider-input_avg_wind_speed').bind( "slidechange", function(event, ui) {
-            //debugger;
-            var $left_side = $(event.target).find('.ui-slider-range');
-            change_wind_message($left_side, ui);
-        });
-        $('#slider-input_avg_wind_speed').bind( "slide", function(event, ui) {
-            var $left_side = $(event.target).find('.ui-slider-range');
-            change_wind_message($left_side, ui);
-        });
-        function change_wind_message($left_side, ui) {
-            var $text = $('#wind_speed_text'),
-                $label = $text.closest('.label');
-            if (ui.value < 12.5) {
-                $text.html('Poor');
-                $label.attr('class', "label label-important");
-                //$left_side.css('background', '#aaaa00');
-            } else if (ui.value < 14.3) {
-                $text.html('Marginal');
-                $label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa5500');
-            } else if (ui.value < 15.7) {
-                $text.html('Fair');
-                $label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
-            } else if (ui.value < 16.8) {
-                $text.html('Good');
-                $label.attr('class', "label label-success");
-
-                //$left_side.css('background', '#880066');
-            } else if (ui.value < 17.9) {
-                $text.html('Excellent');
-                $label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else if (ui.value < 15.7) {
-                $text.html('Outstanding');
-                $label.attr('class', "label label-success");
-                //$left_side.css('background', '#4400aa');
-            } else {
-                $text.html('Superb');
-                $label.attr('class', "label label-success");
-                //$left_side.css('background', '#000088');
-            }
-            //Poor      < 12.5      (< 5.6)     ffff00
-            //Marginal  12.5-14.3   (5.6-6.4)   ff7700
-            //Fair      14.3-15.7   (6.4-7.0)   ff0000
-            //Good      15.7-16.8   (7.0-7.5)   ff0077
-            //Excellent 16.8-17.9   (7.5-8.0)   ff00ff
-            //Oustanding    17.9-19.7   (8.0-8.8)   7700ff
-            //Superb    > 19.7      (> 8.8)     0000ff
-        }
-        
          
         if ($("input[type='color']").length) {
             $.getScript("media/marco/js/mColorPicker.js");
@@ -303,7 +450,7 @@
   {% endfor %}
   <div id="error_bar"></div>
   
-  <div class="step" id="step1">
+  <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 3 </i></p>
     <p class="instructions">Select 1 or more criteria for this sector </p>
     <label class="step1-header">Wind Energy</label>
@@ -312,17 +459,17 @@
         <li>
             <label>
                 {{ form.input_parameter_wind_speed }} Wind Speed 
-                <i class="icon-info-sign"></i>
+                <!--<i class="icon-info-sign"></i>-->
                 <span id="info_wind_speed_content" style="display: none;">{% flatblock "info_wind_speed" %}</span>
             </label>
             <div id="wind_speed_widget" class="inputfield">
-                <div>Potential:  
+                <div style="margin-top: 7px">Potential:  
                     <span class="label">
                         <span id="wind_speed_text" class="potential">Good</span>
                     </span>
                 </div>
                 <div> 
-                    Minimum Average Speed (mph) 
+                    Min Avg Speed (m/s)
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
                 </div> 
@@ -331,14 +478,13 @@
         <li>
             <label>
                 {{ form.input_parameter_distance_to_shore }} Distance to Shore 
-                <img src="/media/marco/img/info.png" id="info_shore" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_shore" class="info" />-->
             </label>
             <div id="distance_to_shore_widget" class="inputfield">
-                <span >
-                    Desired Distance (in miles)
+                <span> 
                     {{ form.input_min_distance_to_shore }}            
                     to
-                    {{ form.input_max_distance_to_shore }}            
+                    {{ form.input_max_distance_to_shore }} miles
                 </span>
                 {{ form.input_distance_to_shore }} 
                 {{ form.input_distance_to_shore.errors }} 
@@ -346,8 +492,23 @@
         </li>
         <li>
             <label>
-                {{ form.input_parameter_distance_to_awc }} Distance to AWC Station 
-                <img src="/media/marco/img/info.png" id="info_awc" class="info" />
+                {{ form.input_parameter_depth }} Depth Range 
+                <!--<img src="/media/marco/img/info.png" id="info_depth" class="info" />-->
+            </label>
+            <div id="depth_widget" class="inputfield">
+                <span>
+                    {{ form.input_min_depth }}            
+                    to
+                    {{ form.input_max_depth }} feet
+                </span>
+                {{ form.input_depth }}  
+                {{ form.input_depth.errors }}
+            </div>
+        </li>
+        <li>
+            <label>
+                {{ form.input_parameter_distance_to_awc }} Distance to Proposed AWC Stations 
+                <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
             </label>
             <div id="distance_to_awc_widget" class="inputfield">
                 <span > 
@@ -357,42 +518,7 @@
                 </span> 
             </div>
         </li>
-        <li>
-            <label>
-                {{ form.input_parameter_depth }} Depth Range 
-                <img src="/media/marco/img/info.png" id="info_depth" class="info" />
-            </label>
-            <div id="depth_widget" class="inputfield">
-                <span >
-                    Desired Range (in feet)
-                    {{ form.input_min_depth }}            
-                    to
-                    {{ form.input_max_depth }}            
-                </span>
-                {{ form.input_depth }}  
-                {{ form.input_depth.errors }}
-            </div>
-        </li>
-        <li>
-            <label>
-                {{ form.input_parameter_substrate }} Seabed Types 
-                <img src="/media/marco/img/info.png" id="info_seabed" class="info" />
-            </label>
-            <div id="substrate_widget" class="inputfield">
-                {{ form.input_substrate }}  
-                {{ form.input_substrate.errors }} 
-            </div>
-        </li>
-        <li>
-            <label>
-                {{ form.input_parameter_sediment }} Sediment Types 
-                <img src="/media/marco/img/info.png" id="info_sediment" class="info" />
-            </label>
-            <div id="sediment_widget" class="inputfield">
-                {{ form.input_sediment }}  
-                {{ form.input_sediment.errors }}
-            </div>
-        </li>
+        <!-- The following produces a '"False" is not a valid value for a primary key' Error (400 response)
         <li>
             <label>
                 {{ form.input_parameter_wea }} Wind Energy Areas 
@@ -400,16 +526,26 @@
             </label>
             <div id="wea_widget" class="inputfield">
                 <span > 
+                    Constrain results to the following Wind Planning Areas
                     {{ form.input_wea }}  
                     {{ form.input_wea.errors }}
                 </span>
             </div>
+        </li>-->
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Additional Parameters...</label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            Terrestrial Substations?
         </li>
         </ul>
     </div>
   </div>
 
-  <div class="step" id="step2">
+  <div id="step2" class="step">
     <p class="step-text"><i>Step 2 of 3 </i></p>
     <p class="instructions">Choose any filtering criteria from other sectors </p>
     <label class="step2-header">Shipping</label>
@@ -418,7 +554,7 @@
         <li>
             <label>
                 {{ form.input_filter_distance_to_shipping }} Distance to Shipping Lanes 
-                <img src="/media/marco/img/info.png" id="info_lanes" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
             </label>
             <div id="distance_to_shipping_widget" class="inputfield">
                 <label class="param"> Minimum Distance (miles)
@@ -430,7 +566,7 @@
         <li>
             <label>
                 {{ form.input_filter_ais_density }} Exclude Areas with High Ship Traffic 
-                <img src="/media/marco/img/info.png" id="info_ais" class="info" />
+                <!--<img src="/media/marco/img/info.png" id="info_ais" class="info" />-->
             </label>
             <!--<div id="traffic_density_widget" class="inputfield">
                 <div class="span traffic"> Limit traffic to the following density level: 
@@ -445,47 +581,75 @@
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Military (still in development)</label>
+    <label class="step2-header">Military (under development)</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
             <label>
-                {{ form.input_assessment_areas }} Exclude DoD Assessment Areas 
-                <img src="/media/marco/img/info.png" id="info_assessment" class="info" />
+                <!--{{ form.input_assessment_areas }} -->
+                Exclude DoD Assessment Areas 
+                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
             </label>
         </li>
         <li>
             <label>
-                {{ form.input_warn_areas }} Exclude Military Op Warn Areas 
-                <img src="/media/marco/img/info.png" id="info_warn" class="info" />
+                <!--{{ form.input_warn_areas }} -->
+                Exclude Military Op Warn Areas 
+                <!--<img src="/media/marco/img/info.png" id="info_warn" class="info" />-->
             </label>
         </li>
         <li>
             <label>
-                {{ form.input_ordinance_areas }} Exclude Unexploded Ordinance Areas 
-                <img src="/media/marco/img/info.png" id="info_ordinance" class="info" />
+                <!--{{ form.input_ordinance_areas }} -->
+                Exclude Unexploded Ordinance Areas 
+                <!--<img src="/media/marco/img/info.png" id="info_ordinance" class="info" />-->
+            </label>
+        </li>
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Conservation </label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            <label>
+                Coming Soon...
+                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
+            </label>
+        </li>
+        </ul>
+    </div>
+    <p></p>
+    <label class="step2-header">Fishing </label>
+    <div id="step2_inputs">
+        <ul class="parameters">
+        <li>
+            <label>
+                Coming Soon...
+                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
             </label>
         </li>
         </ul>
     </div>
   </div>
 
-<div class="step" id="step3">
+<div id="step3" class="step">
     <p class="step-text"><i>Step 3 of 3 </i>
     <p class="instructions">Provide a name to identify your Spatial Design </p>
     <div class="step3-inputs">
-        <div class="step4-header">
+        <div class="step3-param">
             {{ form.name.label_tag }}
             {{ form.name.errors }}
             {{ form.name }}            
         </div>
-        <p class="instructions">Optionally, you may add a description and/or attach a file </p>
-        <div class="step4-header">
+        <p class="instructions">Optionally, you may add a description <!--and/or attach a file--> </p>
+        <div class="step3-param">
             {{ form.description.label_tag }}
             {{ form.description.errors }}
             {{ form.description }}            
         </div>
-        <div class="step4-header">
+        <!--
+        <div class="step3-param">
             {{ form.support_file.label_tag }}
             {{ form.support_file.errors }} 
             {% if form.support_file.help_text %}
@@ -493,6 +657,7 @@
             {% endif %}
             {{ form.support_file }}         
         </div>
+        -->
         <div id="scenario-cp">
             <!--<input type="color" value="#ff0667" data-text="hidden" style="height:20px;width:20px;" />-->
         </div>
@@ -501,6 +666,10 @@
 
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
+
+<div>
+    <span style="margin-left: 5px">Estimated Leaseblocks Remaining: <span data-bind="text: leaseblocksLeft"></span></span>
+</div>
 
 <div class="wizard_nav" style="width:100%">
     <div class="btn-group pull-right">
@@ -512,7 +681,7 @@
 
 <div>
     <div class="btn-group pull-left">
-        <a href="#" class="cancel_button button red btn" onclick="this.blur(); return false;"><span>Cancel</span></a>
+        <a href="#" class="cancel_button button red btn"><span>Cancel</span></a>
         
     </div>
 </div>
@@ -543,9 +712,6 @@ div .field > label {
 }*/
 div.param-checkboxes {
     padding-left: 10px !important;
-}
-div.inputfield {
-    padding-bottom: 10px !important;
 }
 span.potential {
     font-weight:bold; !important;
@@ -614,9 +780,6 @@ label.step3-header {
     padding-left: 5px !important;
     padding-bottom: 10px !important;
 }
-div.step4-header {
-    font-weight: bold;
-}
 label.param {
     font-weight: normal !important;
     padding-left: 0px !important;
@@ -627,7 +790,7 @@ img.info {
 
 /* design stuff */
 
-.panel > form {
+.panel form {
     background: none repeat scroll 0 0 #DDDDDD;
     border: 1px solid #BBBBBB;
     border-radius: 10px 10px 10px 10px;
@@ -641,22 +804,6 @@ img.info {
 .panel > form textarea,
 .panel > form input[name="name"] {
     width: 90%;
-}
-
-.panel > form .slidervalue {
-    width: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    height: 16px;
-}
-.panel >form .inputfield > div,
-.panel >form .inputfield > span {
-    margin-left: 20px;
-}
-
-/*might remove the following and keep jquery-widgets.css...had some trouble getting this code to catch on its own*/
-.slidervalue { 
-    width: 40px !important;
 }
 
 .errorlist {

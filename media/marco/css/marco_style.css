@@ -57,7 +57,7 @@ a:focus {
 	top: 2px;
 
 }
-.jspContainer, .jspPane, .jspScrollable {
+#data-accordion .jspContainer, .jspPane, .jspScrollable {
 	background: white!important;
 }
 
@@ -167,7 +167,7 @@ a:focus {
 }
 
 .form-search input, .form-search input:focus{
-	width: 60%;
+	width: 70%;
 	background-color: #eee;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -220,6 +220,9 @@ a:focus {
 }
 .pageguide-step {
     z-index: 1035 !important;
+}
+.pageguide-content {
+    margin-top: 5px !important;
 }
 #help-tab {
 	position: fixed;
@@ -730,17 +733,22 @@ img + h3 {
 }
 */
 #legend-wrapper {
-	border: 1px solid #ccc;
-	border-radius: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   max-height: 80%;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 0px 10px 20px;
 }
 
 #legend-wrapper hr {
-	margin: 0px !important;
-	/*margin-bottom: 5px;*/
+  margin: 0px !important;
+  /*margin-bottom: 5px;*/
 }
+
+#legend-content {
+  height: 94%;
+}
+
 /* Rules for the layer switcher */
 
 #map-wrapper {

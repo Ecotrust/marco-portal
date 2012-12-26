@@ -145,83 +145,89 @@ app.init = function () {
         //events: {fallThrough: true},
         handlerMode: 'click',
         callback: function(infoLookup) {
-            if (infoLookup) {
+            for (var idx in infoLookup) {
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-                    for (var idx in infoLookup) {
-                        var attributes;
-                        var info = infoLookup[idx];
-                        if (info && info.data) { 
-                            var newmsg = '',
-                                hasAllAttributes = true,
-                                parentHasAllAttributes = false;
-                            // if info.data has all the attributes we're looking for
-                            // we'll accept this layer as the attribution layer 
-                            if ( ! potential_layer.attributes.length ) {
-                                hasAllAttributes = false;
+                  if (potential_layer.type !== 'Vector') {
+                    var new_attributes;
+                    var info = infoLookup[idx];
+                    if (info && info.data) { 
+                        var newmsg = '',
+                            hasAllAttributes = true,
+                            parentHasAllAttributes = false;
+                        // if info.data has all the attributes we're looking for
+                        // we'll accept this layer as the attribution layer 
+                        //if ( ! potential_layer.attributes.length ) {
+                        hasAllAttributes = false;
+                        //}
+                        $.each(potential_layer.attributes, function (attr_index, attr_obj) {
+                            if ( attr_obj.field in info.data ) {
+                                hasAllAttributes = true;
                             }
-                            $.each(potential_layer.attributes, function (attr_index, attr_obj) {
+                        });
+                        if ( !hasAllAttributes && potential_layer.parent) {
+                            parentHasAllAttributes = true;
+                            if ( ! potential_layer.parent.attributes.length ) {
+                                parentHasAllAttributes = false;
+                            }
+                            $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
                                 if ( !(attr_obj.field in info.data) ) {
-                                    hasAllAttributes = false;
-                                }
-                            });
-                            if ( !hasAllAttributes && potential_layer.parent) {
-                                parentHasAllAttributes = true;
-                                if ( ! potential_layer.parent.attributes.length ) {
                                     parentHasAllAttributes = false;
                                 }
-                                $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
-                                    if ( !(attr_obj.field in info.data) ) {
-                                        parentHasAllAttributes = false;
-                                    }
-                                });
-                            }
-                            if (hasAllAttributes) {
-                                attributes = potential_layer.attributes;
-                            } else if (parentHasAllAttributes) {
-                                attributes = potential_layer.parent.attributes;
-                            }
-                            if (attributes) { 
-                                var attribute_objs = [];
-                                $.each(attributes, function(index, obj) {
-                                    if ( potential_layer.compress_attributes ) {
-                                        var display = obj.display + ': ' + info.data[obj.field];
-                                        attribute_objs.push({'display': display, 'data': ''});
-                                    } else {
-                                        /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
-                                        var value = info.data[obj.field];
-                                        if (value === 999999) {
-                                            attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
-                                        } else {
-                                            try {
-                                                value = value.toFixed(obj.precision);
-                                            }
-                                            catch (e) {
-                                                //keep on keeping on
-                                            }
-                                            attribute_objs.push({'display': obj.display, 'data': value});
-                                        }
-                                        
-                                    }
-                                });
-                                
-                                var title = potential_layer.name;
-                                var text = attribute_objs;
-                                var date = new Date();
-                                var newTime = date.getTime();
-                                if (newTime - app.map.clickOutput.time > 500) {
-                                    app.map.clickOutput.attributes = {};
-                                    app.map.clickOutput.attributes[title] = text;
-                                    app.map.clickOutput.time = newTime;
+                            });
+                        }
+                        if (hasAllAttributes) {
+                            new_attributes = potential_layer.attributes;
+                        } else if (parentHasAllAttributes) {
+                            new_attributes = potential_layer.parent.attributes;
+                        }
+                        if (new_attributes) { 
+                            var attribute_objs = [];
+                            $.each(new_attributes, function(index, obj) {
+                                if ( potential_layer.compress_attributes ) {
+                                    var display = obj.display + ': ' + info.data[obj.field];
+                                    attribute_objs.push({'display': display, 'data': ''});
                                 } else {
-                                    if (text[0].data) {
-                                        app.map.clickOutput.attributes[title] = text;
+                                    /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
+                                    var value = info.data[obj.field];
+                                    if (value === 999999) {
+                                        attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
+                                    } else {
+                                        try {
+                                            //set the precision and add any necessary commas
+                                            value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                        }
+                                        catch (e) {
+                                            //keep on keeping on
+                                        }
+                                        attribute_objs.push({'display': obj.display, 'data': value});
                                     }
+                                    
                                 }
-                    
-                                app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                            } 
+                            });
+                            var title = potential_layer.name,
+                                date = new Date(),
+                                newTime = date.getTime(),
+                                text = attribute_objs;
+                            if ( title === 'OCS Lease Blocks' ) {
+                                text = app.viewModel.scenarios.getOCSAttributes(title, info.data);
+                            } else if ( title === 'Sea Turtles' ) {
+                                text = app.viewModel.getSeaTurtleAttributes(title, info.data);
+                            } else if ( title === 'Toothed Mammals (All Seasons)' ) {
+                                text = app.viewModel.getToothedMammalAttributes(title, info.data);
+                            }
+                            if (newTime - app.map.clickOutput.time > 500) {
+                                app.map.clickOutput.attributes = {};
+                                app.map.clickOutput.time = newTime;
+                                app.map.clickOutput.attributes[title] = text;
+                            } else {
+                                if ( text[0].data ) {
+                                    app.map.clickOutput.attributes[title] = text;
+                                }
+                            }
+                            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
                         } 
-                    }
+                    } 
+                  }
                 });
             } 
         }
@@ -229,14 +235,20 @@ app.init = function () {
     map.addControl(map.UTFControl);    
     
     app.map.events.register("featureclick", null, function(e) {
-        var layer = e.feature.layer.layerModel;
+        var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         var date = new Date();
         var newTime = date.getTime();
-        var attrs = layer.attributes,
-            title = layer.name,
-            text = [];
+        var text = [],
+            title = layer.name;
         
-        if ( layer.attributes.length ) {
+        if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
+            var attrs = layer.scenarioAttributes;
+            for (var i=0; i<attrs.length; i++) {
+                text.push({'display': attrs[i].title, 'data': attrs[i].data});
+            }
+        } else if ( layer.attributes.length ) {
+            var attrs = layer.attributes;
+            
             for (var i=0; i<attrs.length; i++) {
                 if ( e.feature.data[attrs[i].field] ) {
                     text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
@@ -257,9 +269,27 @@ app.init = function () {
         var date = new Date();
         var newTime = date.getTime();
         if (newTime - app.map.clickOutput.time > 300) {
-            app.viewModel.aggregatedAttributes(false);
+            //app.viewModel.aggregatedAttributes(false);
+            app.viewModel.closeAttribution();
         }
     });
+    
+    app.markers = new OpenLayers.Layer.Markers( "Markers" );
+    app.map.addLayer(app.markers);
+    app.map.events.register("click", app.map , function(e){
+        //console.log('creating new marker');
+        app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy));
+        app.marker.map = app.map;
+        app.viewModel.updateMarker();
+        //app.markers.addMarker(app.marker);
+        //app.markers.clearMarkers();
+        /*setTimeout(function() {
+            if ( app.viewModel.aggregatedAttributes() ) {
+                app.markers.addMarker(app.marker);
+            }
+        }, 300);*/
+    });
+
         
 };
 
@@ -320,12 +350,21 @@ app.addLayerToMap = function(layer) {
             });
             if (layer.lookupField) {
                 var mylookup = {};
-                $.each(layer.lookupDetails, function(index, details) {                  
+                $.each(layer.lookupDetails, function(index, details) {    
+                    var fillOp = 0.5;
+                    //the following are special cases for Shipping Lanes that ensure suitable attribution with proper display 
+                    if (details.value === 'Precautionary Area') {
+                        fillOp = 0.0; 
+                    } else if (details.value === 'Shipping Safety Fairway') {
+                        fillOp = 0.0;
+                    } else if (details.value === 'Traffic Lane') {
+                        fillOp = 0.0;
+                    }
                     mylookup[details.value] = { strokeColor: details.color, 
                                                 strokeDashstyle: details.dashstyle, 
                                                 fill: details.fill,
                                                 fillColor: details.color, 
-                                                fillOpacity: 0.5,
+                                                fillOpacity: fillOp,
                                                 externalGraphic: details.graphic }; 
                 });
                 styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);

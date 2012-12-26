@@ -18,41 +18,58 @@
     </div>
     
     <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
-        <div class="row-fluid"  data-bind="visible: ! scenarioForm()">
-            <div class="span12">
-                <div class="btn-group">
-                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="icon-plus-sign"></i> Create New Design
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a data-bind="click: createWindScenario">Wind Energy</a></li>
-                        <li><a href="#">Conservation</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Selection-Based</a></li>
-                    </ul>
+        <div data-bind="visible: ! scenarioForm()">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div id="create-new-design" class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-plus-sign"></i> Create New Design
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a data-bind="click: createWindScenario">Wind Energy</a></li>
+                            <li><a href="#">Conservation</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Selection-Based</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>    
-                
-        <div class="panel-container" data-bind="visible: scenarioForm, html: scenarioForm"></div>     
-        <div data-bind="visible: ! scenarioForm()">
-            <ul class="unstyled list" data-bind="foreach: scenarioList ">
-                <li class="layer">
-                    <div class="btn-group btn-group-layer">
-                        <a class="btn btn-info-sign">
-                            <i class="icon-info-sign icon-large"></i>
-                        </a>
-                        <a class="btn btn-layer">
-                            <div style="font-weight: normal">
-                                <span data-bind="text: name"></span>
-                            </div>
-                        </a>
+            
+            <div id="design-list" class="row-fluid">
+                <ul class="unstyled list" data-bind="foreach: scenarioList ">
+                    <li class="layer">
+                        <div class="btn-group btn-group-layer">
+                            <a class="btn btn-info-sign">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+                            <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                <div style="font-weight: normal">
+                                    <span data-bind="text: name"></span>
+                                    <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                    <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                </div>
+                            </a>
+                            <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a data-bind="click: editScenario">Edit</a></li>
+                                <li><a href="#">Share</a></li>
+                                <li class="divider"></li>
+                                <li><a data-bind="click: deleteScenario">Delete</a></li>
+                            </ul>
 
-                    </div>
-                </li>  
-            </ul>
+                        </div>
+                    </li>  
+                </ul>
+            </div>   
         </div>    
+           
+        <div style="height: 100%" data-bind="visible: scenarioForm">   
+            <div id="scenario-form" class="panel-container"></div>   
+        </div>
+        
     </div>
             <!-- Wind Energy Design -->
             <!--<div data-bind="visible: showWindDesignWizard()">-->

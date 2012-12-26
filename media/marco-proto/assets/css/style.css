@@ -51,9 +51,9 @@
   position: absolute;
   /*top: 25%;*/
   top: 180px;
-  left: 0;
+  left: 10px;
   z-index: 950; 
-  width: 260px;
+  width: 280px;
   max-height: 250px;
   font-size: 14px;
   color: white;  
@@ -78,13 +78,12 @@
 #aggregated-attribute-content .mCustomScrollBox {
   max-height: 250px;
   margin-right: -20px;
-  top: -22px;
   left: -5px;
 }
 
 #aggregated-attribute-overlay > span {
-  padding-right: 10px;
-  padding-top: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 #aggregated-attribute-overlay h4 {
@@ -560,12 +559,78 @@ a.disabled-link:hover {
     font-size: 12px;
 }
 
-
-
+#data-accordion .icon-info-sign {
+  margin-left: -15px;
+}
 
 #data-accordion .dropdown-menu {
   right: 0px;
   margin-top: 0px;
+}
+
+#designs .icon-info-sign {
+  margin-left: -15px;
+}
+
+#designs li.layer {
+  margin-bottom: 10px;
+}
+
+#create-new-design .dropdown-toggle {
+  background: rgba(45, 137, 152, .9);
+}
+
+#create-new-design .dropdown-menu {
+  margin-top: 0px;
+}
+
+#design-list .btn-layer {
+  text-align: left;
+  width: 70%;
+}
+
+#design-list .dropdown-toggle {
+  border-left: 0px;
+}
+
+#design-list .dropdown-menu {
+  min-width: 75px;
+  left: 70%;
+  top: 90%;
+}
+
+#designs .step ul {
+  margin-left: 10px;
+}
+
+#designs #step1 .slidervalue {
+  width: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  height: 16px;
+}
+
+#designs #step2 .slidervalue {
+  width: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  height: 16px;
+}
+
+#designs #step3 .step3-param {
+  margin-left: 5px;
+}
+
+#designs .inputfield {
+  margin-top: 7px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+#designs #wea_widget ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-left: 0px;
 }
 
 .attribution {
