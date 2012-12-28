@@ -66,7 +66,7 @@ def get_attributes(request, uid):
 @cache_page(60 * 60 * 24, key_prefix="scenarios_get_leaseblocks")
 def get_leaseblocks(request):
     json = []
-    leaseblocks = LeaseBlock.objects.filter(avg_depth__lt=0.0)
+    leaseblocks = LeaseBlock.objects.filter(avg_depth__lt=0.0, min_wind_speed_rev__isnull=False)
     for ocs_block in leaseblocks:
         json.append({
             'id': ocs_block.id,
@@ -92,5 +92,4 @@ def get_leaseblocks(request):
             'wea_number': ocs_block.wea_number,
             'wea_state_name': ocs_block.wea_state_name            
         })
-
     return HttpResponse(dumps(json))

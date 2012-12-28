@@ -307,6 +307,8 @@ function layerModel(options, parent) {
         }
         app.setLayerVisibility(layer, false);
         
+        app.viewModel.removeFromAggregatedAttributes(layer.name);
+        
         if ($.isEmptyObject(app.viewModel.visibleLayers())) {
             app.viewModel.closeAttribution();
         }
@@ -809,9 +811,9 @@ function viewModel() {
 
     // attribute data
     self.aggregatedAttributes = ko.observable(false);
+    self.aggregatedAttributesWidth = ko.observable('280px');
     self.aggregatedAttributes.subscribe( function() {
-        //setTimeout( self.updateCustomScrollbar('#aggregated-attribute-content'), 1000);
-        self.updateCustomScrollbar('#aggregated-attribute-content');
+        self.updateAggregatedAttributesOverlayWidthAndScrollbar();
     });
     self.removeFromAggregatedAttributes = function(layerName) {
         delete app.viewModel.aggregatedAttributes()[layerName];
@@ -819,10 +821,20 @@ function viewModel() {
         if ($.isEmptyObject(self.aggregatedAttributes())) {
             self.closeAttribution();
         } else {
-            self.updateCustomScrollbar('#aggregated-attribute-content');
+            //because the subscription on aggregatedAttributes is not triggered by this delete process
+            self.updateAggregatedAttributesOverlayWidthAndScrollbar();
+            //self.updateCustomScrollbar('#aggregated-attribute-content');
         }
     };
-        
+    self.updateAggregatedAttributesOverlayWidthAndScrollbar = function() {
+        setTimeout( function() {
+            var overlayWidth = (document.getElementById('aggregated-attribute-overlay-test').clientWidth+50),
+                width = overlayWidth < 380 ? overlayWidth : 380;
+            console.log('setting overlay width to ' + width);
+            self.aggregatedAttributesWidth(width + 'px');
+            self.updateCustomScrollbar('#aggregated-attribute-content');
+        }, 500);
+    };
 
     // title for print view
     self.mapTitle = ko.observable();

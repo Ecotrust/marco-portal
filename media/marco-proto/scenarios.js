@@ -174,14 +174,17 @@ function scenarioFormModel(options) {
             var addOne = true;
             if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
                 addOne = false;
+                //console.log('false for wind');
             }
             if (self.filters['max_distance'] && list[i].max_distance > self.filters['max_distance'] || 
                 self.filters['min_distance'] && list[i].max_distance < self.filters['min_distance'] ) {
                 addOne = false;
+                //console.log('false for distance to shore');
             } 
             if (self.filters['max_depth'] && list[i].max_depth > self.filters['max_depth'] || 
                 self.filters['min_depth'] && list[i].min_depth < self.filters['min_depth'] ) {
                 addOne = false;
+                //console.log('false for depth');
             } else {
                 //NOTE: at times there seems to be some sort of rounding error that causes a discrepancy 
                 //      in which the client side count is more inclusive than the server side result
@@ -203,12 +206,15 @@ function scenarioFormModel(options) {
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
+                //console.log('false for awc');
             } 
             if (self.filters['tsz'] && list[i].tsz_min_distance < self.filters['tsz'] ) {
                 addOne = false;
+                //console.log('false for tsz');
             }
             if (self.filters['ais'] && list[i].ais_mean_density > 1 ) {
                 addOne = false;
+                //console.log('false for ais');
             } 
             if (addOne) {
                 count += 1;
@@ -233,7 +239,6 @@ function scenarioFormModel(options) {
         if ( self.isLeaseblockLayerVisible() ) {
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
             var blockLayer = app.viewModel.scenarios.leaseblockLayer();
-           
             var filter = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.AND,
                 filters: []
@@ -312,12 +317,12 @@ function scenarioFormModel(options) {
             );
             */
             //if ( filter.filters.length ) {
-                blockLayer.styleMap.styles.default.rules[0] = new OpenLayers.Rule({
-                    filter: filter, 
-                    symbolizer: { strokeColor: '#fff' } 
-                });
+            blockLayer.styleMap.styles.default.rules[0] = new OpenLayers.Rule({
+                filter: filter, 
+                symbolizer: { strokeColor: '#fff' } 
+            });
                 //blockLayer.display(true);
-                self.showLeaseblockLayer(blockLayer);
+            self.showLeaseblockLayer(blockLayer);
             //} else {
                 //self.isLeaseblockLayerVisible(false);
                 //self.hideLeaseblockLayer();
