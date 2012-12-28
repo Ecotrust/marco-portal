@@ -288,7 +288,9 @@
         //Expand Collapse Wind Speed
         $('#id_input_parameter_wind_speed').click( function() { 
             if ($('#wind_speed_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
+                var value = $('#id_input_avg_wind_speed')[0].value;
+                change_wind_message(value);
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': value});
                 //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
                 app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
@@ -305,70 +307,70 @@
         //slide ensures that leaseblocks are updated when the slider is adjusted
         //slidechange ensures that leaseblocks are updated when the text area is modified
         $('#slider-input_avg_wind_speed').bind( "slide slidechange", function(event, ui) {
-            var $left_side = $(event.target).find('.ui-slider-range');
+            //var $left_side = $(event.target).find('.ui-slider-range');
             if (app.viewModel.scenarios.scenarioFormModel) {
-                change_wind_message($left_side, ui);
+                change_wind_message(ui.value);
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
                 //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
                 app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         });
-        function change_wind_message($left_side, ui) {
+        function change_wind_message(value) {
             var $text = $('#wind_speed_text'),
                 $label = $text.closest('.label');
                 $label.css('color', 'black');
-            if (ui.value < 7.0) {
+            if (value < 7.0) {
                 $text.html('Fair');
                 $label.css('background', "#38a800");
                 //$label.attr('class', "label label-important");
                 //$left_side.css('background', '#aaaa00');
-            } else if (ui.value < 7.25) {
+            } else if (value < 7.25) {
                 $text.html('Good');
                 $label.css('background', "#6fc400");
                 //$label.attr('class', "label label-warning");
                 //$left_side.css('background', '#aa5500');
-            } else if (ui.value < 7.5) {
+            } else if (value < 7.5) {
                 $text.html('Good');
                 $label.css('background', "#8bd100");
                 //$label.attr('class', "label label-warning");
                 //$left_side.css('background', '#aa0000');
-            } else if (ui.value < 7.75) {
+            } else if (value < 7.75) {
                 $text.html('Excellent');
                 $label.css('background', "#b0e000");
                 //$label.attr('class', "label label-warning");
                 //$left_side.css('background', '#aa0000');
-            } else if (ui.value < 8.0) {
+            } else if (value < 8.0) {
                 $text.html('Excellent');
                 $label.css('background', "#e3f23b");
                 //$label.attr('class', "label label-success");
                 //$left_side.css('background', '#880066');
-            } else if (ui.value < 8.25) {
+            } else if (value < 8.25) {
                 $text.html('Outstanding');
                 $label.css('background', "#ffff78");
                 //$label.attr('class', "label label-success");
                 //$left_side.css('background', '#880066');
-            } else if (ui.value < 8.5) {
+            } else if (value < 8.5) {
                 $text.html('Outstanding');
                 $label.css('background', "#fff566");
                 //$label.attr('class', "label label-success");
                 //$left_side.css('background', '#880066');
-            } else if (ui.value < 8.75) {
+            } else if (value < 8.75) {
                 $text.html('Outstanding');
                 $label.css('background', "#f2db44");
                 //$label.attr('class', "label label-success");
                 //$left_side.css('background', '#8800aa');
-            } else if (ui.value < 9.0) {
+            } else if (value < 9.0) {
                 $text.html('Superb');
                 $label.css('background', "#fab525");
                 //$label.attr('class', "label label-success");
                 //$left_side.css('background', '#8800aa');
-            } else if (ui.value < 9.25) {
+            } else if (value < 9.25) {
                 $text.html('Superb');
                 $label.css('background', "#ffa600");
                 //$label.attr('class', "label label-success");
                 //$left_side.css('background', '#8800aa');
-            } else if (ui.value < 9.5) {
+            } else if (value < 9.5) {
                 $text.html('Superb');
                 $label.css('background', "#ff9400");
                 //$label.attr('class', "label label-success");
@@ -488,7 +490,7 @@
             <div id="wind_speed_widget" class="inputfield">
                 <div style="margin-top: 7px">Potential:  
                     <span class="label">
-                        <span id="wind_speed_text" class="potential">Good</span>
+                        <span id="wind_speed_text" class="potential">Outstanding</span>
                     </span>
                 </div>
                 <div> 

@@ -41,8 +41,8 @@ class ScenarioForm(FeatureForm):
     # GeoPhysical
               
     input_parameter_depth = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
-    input_min_depth = forms.FloatField(initial=50, widget=forms.TextInput(attrs={'class':'slidervalue'}))
-    input_max_depth = forms.FloatField(initial=300, widget=forms.TextInput(attrs={'class':'slidervalue'}))
+    input_min_depth = forms.FloatField(initial=20, widget=forms.TextInput(attrs={'class':'slidervalue'}))
+    input_max_depth = forms.FloatField(initial=200, widget=forms.TextInput(attrs={'class':'slidervalue'}))
     input_depth = forms.FloatField( widget=DualSliderWidget('input_min_depth','input_max_depth',
                                                             min=10,max=500,step=10),
                                     required=False)
