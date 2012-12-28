@@ -98,6 +98,28 @@ function scenarioFormModel(options) {
     });
     //self.isLeaseblockButtonActivated = ko.observable(false);
     
+    
+    self.loadLeaseblockLayer = function() {
+        app.viewModel.scenarios.leaseblockLayer( new OpenLayers.Layer.Vector(
+            'Remaining OCS Blocks',
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                //styleMap: new OpenLayers.StyleMap( { 
+                //    "default": new OpenLayers.Style( { display: "none" } )
+                //})
+                layerModel: new layerModel({
+                    name: 'Remaining OCS Blocks'
+                })
+            }
+        ));
+    }
+    
     self.activateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(true);
         //self.showRemainingBlocks();
@@ -564,40 +586,13 @@ function scenariosModel(options) {
                 self.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
-                if ( ! self.leaseblockLayer() ) {
-                    self.loadLeaseblockLayer();
+                if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
+                    self.scenarioFormModel.loadLeaseblockLayer();
                 }
             },
             error: function (result) { debugger }
         });
-    }; 
-    
-    self.loadLeaseblockLayer = function() {
-        self.leaseblockLayer( new OpenLayers.Layer.Vector(
-            'Remaining OCS Blocks',
-            {
-                projection: new OpenLayers.Projection('EPSG:3857'),
-                displayInLayerSwitcher: false,
-                strategies: [new OpenLayers.Strategy.Fixed()],
-                protocol: new OpenLayers.Protocol.HTTP({
-                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
-                    format: new OpenLayers.Format.GeoJSON()
-                }),
-                //styleMap: new OpenLayers.StyleMap( { 
-                //    "default": new OpenLayers.Style( { display: "none" } )
-                //})
-                layerModel: new layerModel({
-                    name: 'Remaining OCS Blocks'
-                })
-            }
-        ));
-        //self.leaseblockLayer.display(false);
-        //self.leaseblockLayer.layerModel.visible(false);
-        
-        //app.map.addLayer(self.leaseblockLayer()); 
-        //self.leaseblockLayer().layerModel.setInvisible();
-        
-    }
+    };     
     
     //
     self.addScenarioToMap = function(scenario, options) {

@@ -710,6 +710,8 @@ function bookmarkModel($popover) {
 function viewModel() {
     var self = this;
 
+    self.modernBrowser = ko.observable( !($.browser.msie && $.browser.version < 9.0) );
+    
     // list of active layermodels
     self.activeLayers = ko.observableArray();
 
