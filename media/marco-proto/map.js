@@ -254,6 +254,8 @@ app.init = function () {
                     text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
                 }
             }
+        } else if ( layer.name === 'Remaining OCS Blocks' ) {
+            text = app.viewModel.scenarios.getOCSAttributes(title, e.feature.attributes);
         }
         
         if (newTime - app.map.clickOutput.time > 300) {

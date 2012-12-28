@@ -88,13 +88,39 @@ function scenarioFormModel(options) {
     
     self.leaseblocksLeft = ko.observable(app.viewModel.scenarios.leaseblockList.length);
     
+    self.isLeaseblockLayerVisible = ko.observable(false);
+    self.isLeaseblockLayerVisible.subscribe( function() {
+        if ( self.isLeaseblockLayerVisible() ) {
+            self.showRemainingBlocks();
+        } else {
+            self.hideLeaseblockLayer();
+        }
+    });
+    //self.isLeaseblockButtonActivated = ko.observable(false);
+    
+    self.activateLeaseblockLayer = function() {
+        self.isLeaseblockLayerVisible(true);
+        //self.showRemainingBlocks();
+    };
+    
+    self.deactivateLeaseblockLayer = function() {
+        self.isLeaseblockLayerVisible(false);
+        //self.hideLeaseblockLayer();
+    };
+    
+    self.lastChange = (new Date()).getTime();
+    
     self.filters = {};
     
     self.updateFilters = function(object) {
         self.filters[object.key] = object.value;
+        //self.isLeaseblockButtonActivated(true);
     };
     self.removeFilter = function(key) {
         delete self.filters[key];
+        //if ( $.isEmptyObject(self.filters) ) {
+        //    self.isLeaseblockButtonActivated(false);
+        //}
     };
     
     self.updateFiltersAndLeaseBlocks = function() {
@@ -174,7 +200,8 @@ function scenarioFormModel(options) {
                 //console.log(self.filters['min_depth'] && list[i].min_depth + ' >= ' + self.filters['min_depth']);
                 //console.log('');
             }
-            if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || list[i].awc_min_distance === null ) {
+            if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
+                list[i].awc_min_distance === null ) {
                 addOne = false;
             } 
             if (self.filters['tsz'] && list[i].tsz_min_distance < self.filters['tsz'] ) {
@@ -188,7 +215,131 @@ function scenarioFormModel(options) {
             }
         }     
         self.leaseblocksLeft(count);
+        
+        //self.showRemainingBlocks();
     };
+    
+    self.updateRemainingBlocks = function() {
+        self.lastChange = (new Date()).getTime(); 
+        setTimeout(function() {
+            var newTime = (new Date()).getTime();
+            if ( newTime - self.lastChange > 499 ) {
+                self.showRemainingBlocks();
+            }
+        }, 500);
+    };
+    
+    self.showRemainingBlocks = function() {
+        if ( self.isLeaseblockLayerVisible() ) {
+            //var blockLayer = app.map.getLayersByName('OCS Test')[0];
+            var blockLayer = app.viewModel.scenarios.leaseblockLayer();
+           
+            var filter = new OpenLayers.Filter.Logical({
+                type: OpenLayers.Filter.Logical.AND,
+                filters: []
+            });
+            if ( $('#wind_speed_widget').css('display') !== "none" ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if WINDREV_MI >= self.filters['wind']
+                        type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
+                        property: "WINDREV_MI", 
+                        value: self.filters['wind']
+                    })
+                );
+            }
+            if ( $('#distance_to_shore_widget').css('display') !== "none" ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if MI_MAX >= self.filters['min_distance']
+                        type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
+                        property: "MI_MAX", 
+                        value: self.filters['min_distance']
+                    }),
+                    new OpenLayers.Filter.Comparison({ // if MI_MAX <= self.filters['max_distance']
+                        type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+                        property: "MI_MAX", 
+                        value: self.filters['max_distance']
+                    })
+                );
+            }
+            if ( $('#depth_widget').css('display') !== "none" ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if DEPTHM_MAX >= self.filters['min_distance']
+                        type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+                        property: "DEPTHM_MAX", 
+                        value: (-self.filters['min_depth'] * .3048)
+                    }),
+                    new OpenLayers.Filter.Comparison({ // if DEPTHM_MIN <= self.filters['max_distance']
+                        type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
+                        property: "DEPTHM_MIN", 
+                        value: (-self.filters['max_depth'] * .3048)
+                    })
+                );
+            }
+            if ( $('#distance_to_awc_widget').css('display') !== "none" ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if AWCMI_MIN <= self.filters['awc']
+                        type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+                        property: "AWCMI_MIN", 
+                        value: self.filters['awc']
+                    })
+                );
+            }
+            if ( $('#distance_to_shipping_widget').css('display') !== "none" ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if TRSEP_MIN >= self.filters['tsz']
+                        type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
+                        property: "TRSEP_MIN", 
+                        value: self.filters['tsz']
+                    })
+                );
+            }
+            if ( $('#id_input_filter_ais_density').attr('checked') ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if AIS7_MEAN <= 1
+                        type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+                        property: "AIS7_MEAN", 
+                        value: 1
+                    })
+                );
+            }
+            //blockLayer.styleMap = { "default": new OpenLayers.Style( { display: "block" } ) }; 
+            /*
+            blockLayer.styleMap.styles.default.setDefaultStyle(
+                new OpenLayers.Style({
+                    'fillOpacity': 0,
+                    'display': 'block'
+                })
+            );
+            */
+            //if ( filter.filters.length ) {
+                blockLayer.styleMap.styles.default.rules[0] = new OpenLayers.Rule({
+                    filter: filter, 
+                    symbolizer: { strokeColor: '#fff' } 
+                });
+                //blockLayer.display(true);
+                self.showLeaseblockLayer(blockLayer);
+            //} else {
+                //self.isLeaseblockLayerVisible(false);
+                //self.hideLeaseblockLayer();
+            //}
+        }
+        
+    };
+    
+    self.showLeaseblockLayer = function(layer) {
+        app.map.addLayer(app.viewModel.scenarios.leaseblockLayer());
+        layer.layerModel.setVisible();
+        layer.refresh();
+    }
+    
+    self.hideLeaseblockLayer = function() {
+        if ( app.map.getLayersByName(app.viewModel.scenarios.leaseblockLayer().name).length ) {
+            app.map.removeLayer(app.viewModel.scenarios.leaseblockLayer());
+        }
+        //remove the key/value pair from aggregatedAttributes
+        app.viewModel.removeFromAggregatedAttributes(app.viewModel.scenarios.leaseblockLayer().name);
+        app.viewModel.updateAttributeLayers();
+    }
     
     self.updateDesignScrollBar = function() {
         var designsWizardScrollpane = $('#wind-design-form').data('jsp');
@@ -308,7 +459,7 @@ function scenarioModel(options) {
     self.visible = ko.observable(false);  
     
     // bound to click handler for layer visibility switching in Active panel
-    self.toggleVisible = function(manual) {
+    self.toggleVisible = function() {
         var scenario = this;
         
         if (scenario.visible()) { //make invisible
@@ -366,6 +517,12 @@ function scenariosModel(options) {
     self.scenarioList = ko.observableArray();
     
     self.scenarioForm = ko.observable(false);
+        
+    self.leaseblockLayer = ko.observable(false);
+
+    self.leaseblockLayer.subscribe( function() {
+        app.viewModel.updateAttributeLayers();
+    });
     
     // loading message for showing spinner
     // false for normal operation
@@ -384,6 +541,13 @@ function scenariosModel(options) {
         $(scenarioForm).empty();
         ko.cleanNode(scenarioForm);
         delete self.scenarioFormModel;
+        //hide remaining leaseblocks
+        if ( app.map.getLayersByName(self.leaseblockLayer().name).length ) {
+            app.map.removeLayer(self.leaseblockLayer()); 
+        }
+        //remove the key/value pair from aggregatedAttributes
+        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
+        app.viewModel.updateAttributeLayers();
     };
 
     self.createWindScenario = function() {
@@ -395,10 +559,40 @@ function scenariosModel(options) {
                 self.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
+                if ( ! self.leaseblockLayer() ) {
+                    self.loadLeaseblockLayer();
+                }
             },
             error: function (result) { debugger }
         });
     }; 
+    
+    self.loadLeaseblockLayer = function() {
+        self.leaseblockLayer( new OpenLayers.Layer.Vector(
+            'Remaining OCS Blocks',
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                //styleMap: new OpenLayers.StyleMap( { 
+                //    "default": new OpenLayers.Style( { display: "none" } )
+                //})
+                layerModel: new layerModel({
+                    name: 'Remaining OCS Blocks'
+                })
+            }
+        ));
+        //self.leaseblockLayer.display(false);
+        //self.leaseblockLayer.layerModel.visible(false);
+        
+        //app.map.addLayer(self.leaseblockLayer()); 
+        //self.leaseblockLayer().layerModel.setInvisible();
+        
+    }
     
     //
     self.addScenarioToMap = function(scenario, options) {
@@ -566,7 +760,7 @@ function scenariosModel(options) {
             attrs.push({'display': 'Commercial Shipping Density', 'data': rank });
         }
         if ('WEA_NAME' in data) {
-            if ( data['WEA_NAME'] !== "" ) {
+            if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {
                 attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
             }
         }

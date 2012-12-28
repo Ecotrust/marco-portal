@@ -128,11 +128,15 @@
             if ($('#distance_to_shore_widget').css('display') === "none") {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             } else {
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('min_distance');
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('max_distance');
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
             showhide_widget($('#distance_to_shore_widget')); 
             updateDesignScrollBar();
@@ -142,7 +146,9 @@
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': ui.values[0]});
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': ui.values[1]});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         });  
         
@@ -153,11 +159,15 @@
             if ($('#depth_widget').css('display') === "none") {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             } else {
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('min_depth');
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('max_depth');
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
             showhide_widget($('#depth_widget')); 
             updateDesignScrollBar();
@@ -168,7 +178,9 @@
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': ui.values[0]});
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': ui.values[1]});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         });
             
@@ -178,10 +190,14 @@
         $('#id_input_parameter_distance_to_awc').click( function() { 
             if ($('#distance_to_awc_widget').css('display') === "none") {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             } else {
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('awc');
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
             showhide_widget($('#distance_to_awc_widget')); 
             updateDesignScrollBar();
@@ -190,7 +206,9 @@
         $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': ui.value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         }); 
 
@@ -199,10 +217,14 @@
         $('#id_input_filter_distance_to_shipping').click( function() { 
             if ($('#distance_to_shipping_widget').css('display') === "none") {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             } else {
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('tsz');
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
             showhide_widget($('#distance_to_shipping_widget')); 
             updateDesignScrollBar();
@@ -211,7 +233,9 @@
         $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': ui.value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         }); 
            
@@ -219,10 +243,14 @@
         $('#id_input_filter_ais_density').click( function(e) {
             if ( $('#id_input_filter_ais_density').attr('checked') ) {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'ais', 'value': 1});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             } else {
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('ais');
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         });
         
@@ -261,10 +289,14 @@
         $('#id_input_parameter_wind_speed').click( function() { 
             if ($('#wind_speed_widget').css('display') === "none") {
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             } else {
                 app.viewModel.scenarios.scenarioFormModel.removeFilter('wind');
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
             showhide_widget($('#wind_speed_widget')); 
             updateDesignScrollBar();
@@ -274,11 +306,12 @@
         //slidechange ensures that leaseblocks are updated when the text area is modified
         $('#slider-input_avg_wind_speed').bind( "slide slidechange", function(event, ui) {
             var $left_side = $(event.target).find('.ui-slider-range');
-            change_wind_message($left_side, ui);
-            //Update Remaining Leaseblocks 
             if (app.viewModel.scenarios.scenarioFormModel) {
+                change_wind_message($left_side, ui);
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
+                //Update Remaining Leaseblocks 
                 app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
             }
         });
         function change_wind_message($left_side, ui) {
@@ -657,8 +690,13 @@
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
 
-<div>
-    <span style="margin-left: 5px">Estimated Leaseblocks Remaining: <span data-bind="text: leaseblocksLeft"></span></span>
+<div style="margin-top: -10px; margin-bottom: 10px;">
+    <!-- ko if: !isLeaseblockLayerVisible() -->
+    <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Remaining Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
+    <!-- /ko -->
+    <!-- ko if: isLeaseblockLayerVisible() -->
+    <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Remaining Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
+    <!-- /ko -->
 </div>
 
 <div class="wizard_nav" style="width:100%">

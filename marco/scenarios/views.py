@@ -62,6 +62,7 @@ def get_attributes(request, uid):
     
     return HttpResponse(dumps(scenario_obj.serialize_attributes))
     
+    
 @cache_page(60 * 60 * 24, key_prefix="scenarios_get_leaseblocks")
 def get_leaseblocks(request):
     json = []

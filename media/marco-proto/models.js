@@ -155,12 +155,12 @@ function layerModel(options, parent) {
         }
         
         //remove the key/value pair from aggregatedAttributes
-        delete app.viewModel.aggregatedAttributes()[layer.name];
-        //if there are no more attributes left to display, then remove the overlay altogether
-        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
-            app.viewModel.closeAttribution();
-        }
-
+        //debugger;
+        app.viewModel.removeFromAggregatedAttributes(layer.name);
+        //delete app.viewModel.aggregatedAttributes()[layer.name];
+        //app.viewModel.updateAggregatedAttributes
+        //debugger;
+        
         layer.active(false);
         layer.visible(false);
 
@@ -265,46 +265,58 @@ function layerModel(options, parent) {
     };
 
     // bound to click handler for layer visibility switching in Active panel
-    self.toggleVisible = function(manual) {
+    self.toggleVisible = function() {
         var layer = this;
         
-        if (layer.visible()) { //make invisilbe
-            layer.visible(false);
-            if (layer.parent) {
-                // if layer.parent is not a checkbox, set parent to invisible
-                if (layer.parent.type !== 'checkbox') {
-                    layer.parent.visible(false);
-                } else { //otherwise layer.parent is checkbox 
-                    //check to see if any sublayers are still visible 
-                    if (!layer.parent.hasVisibleSublayers()) {
-                        layer.parent.visible(false);
-                    }
-                }
-            }
-            app.setLayerVisibility(layer, false);
-            
-            if ($.isEmptyObject(app.viewModel.visibleLayers())) {
-                app.viewModel.closeAttribution();
-            }
-
-            //remove related utfgrid layer
-            if (layer.utfgrid) {
-                //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
-                app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
-            }
+        if (layer.visible()) { //make invisible
+            self.setInvisible(layer);
         } else { //make visible
-            layer.visible(true);
-            if (layer.parent) {
-                layer.parent.visible(true);
-            }
-            app.setLayerVisibility(layer, true);
-
-            //add utfgrid if applicable
-            if (layer.utfgrid) {
-                app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
-            }
+            self.setVisible(layer);
         }
     };
+    
+    self.setVisible = function() {
+        var layer = this;
+        
+        layer.visible(true);
+        if (layer.parent) {
+            layer.parent.visible(true);
+        }
+        app.setLayerVisibility(layer, true);
+
+        //add utfgrid if applicable
+        if (layer.utfgrid) {
+            app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
+        }
+    }
+    
+    self.setInvisible = function() {
+        var layer = this;
+        
+        layer.visible(false);
+        if (layer.parent) {
+            // if layer.parent is not a checkbox, set parent to invisible
+            if (layer.parent.type !== 'checkbox') {
+                layer.parent.visible(false);
+            } else { //otherwise layer.parent is checkbox 
+                //check to see if any sublayers are still visible 
+                if (!layer.parent.hasVisibleSublayers()) {
+                    layer.parent.visible(false);
+                }
+            }
+        }
+        app.setLayerVisibility(layer, false);
+        
+        if ($.isEmptyObject(app.viewModel.visibleLayers())) {
+            app.viewModel.closeAttribution();
+        }
+
+        //remove related utfgrid layer
+        if (layer.utfgrid) {
+            //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
+            app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
+        }
+    }
 
     self.showSublayers = ko.observable(false);
 
@@ -708,6 +720,24 @@ function viewModel() {
         });
     });
     
+    self.visibleLayers.subscribe( function() {
+        self.updateAttributeLayers();
+    });
+    
+    self.attributeLayers = ko.observable();
+    
+    self.updateAttributeLayers = function() {
+        var attributeLayersList = [];
+        if (self.scenarios && self.scenarios.leaseblockLayer()) {
+            attributeLayersList.push(self.scenarios.leaseblockLayer().layerModel);
+        }
+        
+        $.each(self.visibleLayers(), function(index, layer) {
+            attributeLayersList.push(layer);
+        });
+        self.attributeLayers(attributeLayersList);
+    };
+    
     // boolean flag determining whether or not to show layer panel
     self.showLayers = ko.observable(true);
     
@@ -779,11 +809,20 @@ function viewModel() {
 
     // attribute data
     self.aggregatedAttributes = ko.observable(false);
-    self.aggregatedAttributes.subscribe(function(newValue) {
+    self.aggregatedAttributes.subscribe( function() {
         //setTimeout( self.updateCustomScrollbar('#aggregated-attribute-content'), 1000);
         self.updateCustomScrollbar('#aggregated-attribute-content');
-        
     });
+    self.removeFromAggregatedAttributes = function(layerName) {
+        delete app.viewModel.aggregatedAttributes()[layerName];
+        //if there are no more attributes left to display, then remove the overlay altogether
+        if ($.isEmptyObject(self.aggregatedAttributes())) {
+            self.closeAttribution();
+        } else {
+            self.updateCustomScrollbar('#aggregated-attribute-content');
+        }
+    };
+        
 
     // title for print view
     self.mapTitle = ko.observable();
