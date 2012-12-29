@@ -84,7 +84,7 @@ class Scenario(Analysis):
         attributes = []
         if self.input_parameter_wind_speed:
             wind_speed = '%s m/s' %format(self.input_avg_wind_speed, 1)
-            attributes.append({'title': 'Minimum Wind Speed', 'data': wind_speed})
+            attributes.append({'title': 'Minimum Average Wind Speed', 'data': wind_speed})
         if self.input_parameter_distance_to_shore:
             distance_to_shore = '%s - %s miles' %(format(self.input_min_distance_to_shore, 0), format(self.input_max_distance_to_shore, 0))
             attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})

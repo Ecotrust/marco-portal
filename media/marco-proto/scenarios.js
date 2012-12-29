@@ -98,6 +98,8 @@ function scenarioFormModel(options) {
     });
     //self.isLeaseblockButtonActivated = ko.observable(false);
     
+    //not sure how best to tie the width of the show/hide leaseblocks button to the width of the form...
+    //self.showLeaseblockButtonWidth = ko.observable($('#scenario-form').width());
     
     self.loadLeaseblockLayer = function() {
         app.viewModel.scenarios.leaseblockLayer( new OpenLayers.Layer.Vector(
@@ -727,10 +729,13 @@ function scenariosModel(options) {
                     var speed = (min_speed-.125) + ' to ' + (max_speed+.125);
                     attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
                 }*/
-                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': min_range + ' to ' + max_range});
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_range + ' to ' + max_range + ' m/s'});
             } else {
-                attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': 'no data'});
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'no data'});
             }
+        }
+        if ('MI_MIN' in data && 'MI_MAX' in data) {
+            attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
         }
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
             if ( data['DEPTHM_MIN'] ) {
@@ -742,14 +747,11 @@ function scenariosModel(options) {
                 attrs.push({'display': 'Depth Range', 'data': 'no data'});
             }
         }
-        if ('MI_MIN' in data && 'MI_MAX' in data) {
-            attrs.push({'display': 'Miles to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0)});
-        }
         if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
-            attrs.push({'display': 'Miles to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0)});
+            attrs.push({'display': 'Distance to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0) + ' miles'});
         }
         if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
-            attrs.push({'display': 'Miles to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0)});
+            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
         }
         if ('AIS7_MEAN' in data) {
             if ( data['AIS7_MEAN'] < 1 ) {
@@ -757,7 +759,7 @@ function scenariosModel(options) {
             } else {
                 var rank = 'High';
             }
-            attrs.push({'display': 'Commercial Shipping Density', 'data': rank });
+            attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
         }
         if ('WEA_NAME' in data) {
             if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {

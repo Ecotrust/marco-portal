@@ -694,10 +694,10 @@
 
 <div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser">
     <!-- ko if: !isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Remaining Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
+    <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
     <!-- /ko -->
     <!-- ko if: isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Remaining Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
+    <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
     <!-- /ko -->
 </div>
 
