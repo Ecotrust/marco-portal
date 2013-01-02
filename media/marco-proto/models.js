@@ -473,7 +473,7 @@ function layerModel(options, parent) {
     };
 
     return self;
-}
+} // end layerModel
 
 function themeModel(options) {
     var self = this;
@@ -534,7 +534,7 @@ function themeModel(options) {
     };
 
     return self;
-}
+} // end of themeModel
 
 function bookmarkModel($popover) {
     var self = this;
@@ -674,12 +674,12 @@ function bookmarkModel($popover) {
                     }
                 },
                 error: function(result) { 
-                    debugger;
+                    if (existingBookmarks) {
+                        self.bookmarksList = ko.observableArray(existingBookmarks);
+                    } 
                 } 
             });
-        }
-    
-        if (existingBookmarks) {
+        } else if (existingBookmarks) {
             self.bookmarksList = ko.observableArray(existingBookmarks);
         } 
     };
@@ -692,7 +692,7 @@ function bookmarkModel($popover) {
     self.getBookmarks();
 
     return self;
-}
+} // end of bookmarkModel
 
 
 function viewModel() {
