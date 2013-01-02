@@ -274,7 +274,7 @@
                             
                             <!-- DESIGNS TAB -->
                             {% if user.is_authenticated and user|in_group:"Designers" %}
-                            {% include "scenarios.html" %}
+                              {% include "scenarios.html" %}
                             {% endif %}
                             <!-- END DESIGNS TAB -->
                             
