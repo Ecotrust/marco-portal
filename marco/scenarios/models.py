@@ -117,17 +117,18 @@ class Scenario(Analysis):
     
         result = LeaseBlock.objects.all()
         
-        import pdb
+        #import pdb
         #pdb.set_trace()
         #GeoPhysical
         if self.input_parameter_distance_to_shore:
             #why isn't this max_distance >= input.min_distance && min_distance <= input.max_distance ???
-            result = result.filter(max_distance__gte=self.input_min_distance_to_shore, max_distance__lte=self.input_max_distance_to_shore)
+            result = result.filter(avg_distance__gte=self.input_min_distance_to_shore, avg_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_depth:
             #note:  converting input to negative values and converted to meters (to match db)
-            input_min_depth = feet_to_meters(-self.input_min_depth, 1)
-            input_max_depth = feet_to_meters(-self.input_max_depth, 1)
-            result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
+            input_min_depth = feet_to_meters(-self.input_min_depth, 3)
+            input_max_depth = feet_to_meters(-self.input_max_depth, 3)
+            #result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
+            result = result.filter(avg_depth__lte=input_min_depth, avg_depth__gte=input_max_depth)
             result = result.filter(avg_depth__lt=0) #not sure this is doing anything, but do want to ensure 'no data' values are not included
         '''
         if self.input_parameter_substrate:

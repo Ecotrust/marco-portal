@@ -205,13 +205,13 @@ function scenarioFormModel(options) {
                 addOne = false;
                 //console.log('false for wind');
             }
-            if (self.filters['max_distance'] && list[i].max_distance > self.filters['max_distance'] || 
-                self.filters['min_distance'] && list[i].max_distance < self.filters['min_distance'] ) {
+            if (self.filters['max_distance'] && list[i].avg_distance > self.filters['max_distance'] || 
+                self.filters['min_distance'] && list[i].avg_distance < self.filters['min_distance'] ) {
                 addOne = false;
                 //console.log('false for distance to shore');
             } 
-            if (self.filters['max_depth'] && list[i].max_depth > self.filters['max_depth'] || 
-                self.filters['min_depth'] && list[i].min_depth < self.filters['min_depth'] ) {
+            if (self.filters['max_depth'] && list[i].avg_depth > self.filters['max_depth'] || 
+                self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
                 //console.log('false for depth');
             } else {
@@ -285,12 +285,12 @@ function scenarioFormModel(options) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if MI_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                        property: "MI_MAX", 
+                        property: "MI_MEAN", 
                         value: self.filters['min_distance']
                     }),
                     new OpenLayers.Filter.Comparison({ // if MI_MAX <= self.filters['max_distance']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
-                        property: "MI_MAX", 
+                        property: "MI_MEAN", 
                         value: self.filters['max_distance']
                     })
                 );
@@ -299,12 +299,12 @@ function scenarioFormModel(options) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if DEPTHM_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
-                        property: "DEPTHM_MAX", 
+                        property: "DEPTH_MEAN", 
                         value: (-self.filters['min_depth'] * .3048)
                     }),
                     new OpenLayers.Filter.Comparison({ // if DEPTHM_MIN <= self.filters['max_distance']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                        property: "DEPTHM_MIN", 
+                        property: "DEPTH_MEAN", 
                         value: (-self.filters['max_depth'] * .3048)
                     })
                 );
