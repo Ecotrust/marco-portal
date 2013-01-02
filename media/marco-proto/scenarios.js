@@ -101,9 +101,11 @@ function scenarioFormModel(options) {
     //not sure how best to tie the width of the show/hide leaseblocks button to the width of the form...
     //self.showLeaseblockButtonWidth = ko.observable($('#scenario-form').width());
     
+    self.selectedLeaseblocksLayerName = 'Selected OCS Blocks';
+    
     self.loadLeaseblockLayer = function() {
         app.viewModel.scenarios.leaseblockLayer( new OpenLayers.Layer.Vector(
-            'Remaining OCS Blocks',
+            self.selectedLeaseblocksLayerName,
             {
                 projection: new OpenLayers.Projection('EPSG:3857'),
                 displayInLayerSwitcher: false,
@@ -116,7 +118,7 @@ function scenarioFormModel(options) {
                 //    "default": new OpenLayers.Style( { display: "none" } )
                 //})
                 layerModel: new layerModel({
-                    name: 'Remaining OCS Blocks'
+                    name: self.selectedLeaseblocksLayerName
                 })
             }
         ));
@@ -129,6 +131,9 @@ function scenarioFormModel(options) {
     
     self.deactivateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(false);
+        //remove from attribute list (if it's there)
+        app.viewModel.removeFromAggregatedAttributes(self.selectedLeaseblocksLayerName);
+        app.viewModel.updateAggregatedAttributesOverlayWidthAndScrollbar();
         //self.hideLeaseblockLayer();
     };
     

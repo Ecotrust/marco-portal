@@ -832,7 +832,7 @@ function viewModel() {
         setTimeout( function() {
             var overlayWidth = (document.getElementById('aggregated-attribute-overlay-test').clientWidth+50),
                 width = overlayWidth < 380 ? overlayWidth : 380;
-            console.log('setting overlay width to ' + width);
+            //console.log('setting overlay width to ' + width);
             self.aggregatedAttributesWidth(width + 'px');
             self.updateCustomScrollbar('#aggregated-attribute-content');
         }, 500);

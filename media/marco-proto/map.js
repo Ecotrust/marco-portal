@@ -254,7 +254,7 @@ app.init = function () {
                     text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
                 }
             }
-        } else if ( layer.name === 'Remaining OCS Blocks' ) {
+        } else if ( layer.name === 'Selected OCS Blocks' ) {
             text = app.viewModel.scenarios.getOCSAttributes(title, e.feature.attributes);
         }
         
