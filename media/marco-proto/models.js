@@ -641,11 +641,13 @@ function bookmarkModel($popover) {
         var existingBookmarks = amplify.store("marco-bookmarks"),
             local_bookmarks = [];
         
-        for (var i=0; i < existingBookmarks.length; i++) {
-            local_bookmarks.push( {
-                'name': existingBookmarks[i].name,
-                'hash': $.param(existingBookmarks[i].state)
-            });
+        if (existingBookmarks) {
+            for (var i=0; i < existingBookmarks.length; i++) {
+                local_bookmarks.push( {
+                    'name': existingBookmarks[i].name,
+                    'hash': $.param(existingBookmarks[i].state)
+                });
+            }
         }
         
         // load bookmarks from server while syncing with client 
