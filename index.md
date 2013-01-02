@@ -52,11 +52,12 @@ tagline:
   </div>	
   <div class="span3">
   	<h3>Release 3 - Late Fall 2012</h3>
-  	<p>More data.  Improved spatial filters based on stakeholder feedback.  Ability to design and generate reports.</p>
+    <p><i>Complete!</i></p>
+  	<p>More data.  User account and print feature.  Improved spatial filters based on stakeholder feedback.  Ability to design and generate reports.</p>
   </div>  
   <div class="span3">
-  	<h3>Final release - June 2013</h3>
-  	<p>Stakeholder data and views incorporated to the extent possible.  Enhanced features and functions based on feedback and testing.</p>
+  	<h3>Release 4 - June 2013</h3>
+  	<p>Scenario planning/spatial filter features using lease blocks as the planning units.  Additional datasets.</p>
   </div>  
 </div>
 
