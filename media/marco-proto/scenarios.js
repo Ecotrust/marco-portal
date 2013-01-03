@@ -267,6 +267,9 @@ function scenarioFormModel(options) {
     self.showRemainingBlocks = function() {
         if ( self.isLeaseblockLayerVisible() ) {
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
+            if ( ! app.viewModel.scenarios.leaseblockLayer()) {
+                self.loadLeaseblockLayer();
+            } 
             var blockLayer = app.viewModel.scenarios.leaseblockLayer();
             var filter = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.AND,
