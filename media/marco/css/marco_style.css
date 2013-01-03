@@ -636,6 +636,10 @@ img + h3 {
 }
 
 .sidebar-nav ul.list {
+	padding: 10px 10px 10px 10px;
+}
+
+#designs ul.list {
 	padding: 10px 0px 10px 0px;
 }
 
