@@ -487,7 +487,7 @@ function layerModel(options, parent) {
     };
 
     return self;
-}
+} // end layerModel
 
 function themeModel(options) {
     var self = this;
@@ -548,7 +548,7 @@ function themeModel(options) {
     };
 
     return self;
-}
+} // end of themeModel
 
 function bookmarkModel($popover) {
     var self = this;
@@ -655,11 +655,13 @@ function bookmarkModel($popover) {
         var existingBookmarks = amplify.store("marco-bookmarks"),
             local_bookmarks = [];
         
-        for (var i=0; i < existingBookmarks.length; i++) {
-            local_bookmarks.push( {
-                'name': existingBookmarks[i].name,
-                'hash': $.param(existingBookmarks[i].state)
-            });
+        if (existingBookmarks) {
+            for (var i=0; i < existingBookmarks.length; i++) {
+                local_bookmarks.push( {
+                    'name': existingBookmarks[i].name,
+                    'hash': $.param(existingBookmarks[i].state)
+                });
+            }
         }
         
         // load bookmarks from server while syncing with client 
@@ -686,12 +688,12 @@ function bookmarkModel($popover) {
                     }
                 },
                 error: function(result) { 
-                    debugger;
+                    if (existingBookmarks) {
+                        self.bookmarksList = ko.observableArray(existingBookmarks);
+                    } 
                 } 
             });
-        }
-    
-        if (existingBookmarks) {
+        } else if (existingBookmarks) {
             self.bookmarksList = ko.observableArray(existingBookmarks);
         } 
     };
@@ -704,7 +706,7 @@ function bookmarkModel($popover) {
     self.getBookmarks();
 
     return self;
-}
+} // end of bookmarkModel
 
 
 function viewModel() {
