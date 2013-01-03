@@ -1614,6 +1614,16 @@ function viewModel() {
         return attrs;
     };
     
+    self.getWindSpeedAttributes = function (title, data) {
+        attrs = [];
+        if ('SPEED_90' in data) {
+            var min_speed = (parseFloat(data['SPEED_90'])-.125).toPrecision(3),
+                max_speed = (parseFloat(data['SPEED_90'])+.125).toPrecision(3);
+            attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_speed + ' to ' + max_speed + ' m/s'});
+        } 
+        return attrs;
+    };
+    
     return self;
 } //end viewModel
 

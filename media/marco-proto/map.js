@@ -214,6 +214,8 @@ app.init = function () {
                                 text = app.viewModel.getSeaTurtleAttributes(title, info.data);
                             } else if ( title === 'Toothed Mammals (All Seasons)' ) {
                                 text = app.viewModel.getToothedMammalAttributes(title, info.data);
+                            } else if ( title === 'Wind Speed' ) {
+                                text = app.viewModel.getWindSpeedAttributes(title, info.data);
                             }
                             if (newTime - app.map.clickOutput.time > 500) {
                                 app.map.clickOutput.attributes = {};
