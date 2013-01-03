@@ -62,6 +62,15 @@ def get_attributes(request, uid):
     
     return HttpResponse(dumps(scenario_obj.serialize_attributes))
     
+def get_sharing_groups(request):
+    from madrona.features import user_sharing_groups
+    json = []
+    sharing_groups = user_sharing_groups(request.user)
+    for group in sharing_groups:
+        json.append({
+            'group_name': group.name
+        })
+    return HttpResponse(dumps(json))
     
 @cache_page(60 * 60 * 24, key_prefix="scenarios_get_leaseblocks")
 def get_leaseblocks(request):
@@ -93,3 +102,4 @@ def get_leaseblocks(request):
             'wea_state_name': ocs_block.wea_state_name            
         })
     return HttpResponse(dumps(json))
+

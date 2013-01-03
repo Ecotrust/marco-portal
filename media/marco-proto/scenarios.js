@@ -569,6 +569,9 @@ function scenariosModel(options) {
     
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
+    
+    self.sharingGroups = ko.observableArray();
+        
 
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
@@ -819,7 +822,7 @@ $('#designsTab').on('show', function (e) {
             error: function (result) {
                 debugger;
             }
-        })
+        });
 
         // load the leaseblocks
         $.ajax({
@@ -832,6 +835,18 @@ $('#designsTab').on('show', function (e) {
             error: function (result) {
                 debugger;
             }
-        })
+        });
+        
+        $.ajax({
+            url: '/scenario/get_sharing_groups',
+            type: 'GET',
+            dataType: 'json',
+            success: function (groups) {
+                app.viewModel.scenarios.sharingGroups(groups);
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
     }
 });
