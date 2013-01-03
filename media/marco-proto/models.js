@@ -854,6 +854,7 @@ function viewModel() {
             //console.log('updating marker');
             app.markers.clearMarkers();
             app.markers.addMarker(app.marker);
+            app.map.setLayerIndex(app.markers, 99);
         }
     };
     
