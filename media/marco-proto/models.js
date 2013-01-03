@@ -732,7 +732,7 @@ function viewModel() {
     
     self.updateAttributeLayers = function() {
         var attributeLayersList = [];
-        if (self.scenarios && self.scenarios.leaseblockLayer()) {
+        if (self.scenarios && self.scenarios.scenarioFormModel && self.scenarios.scenarioFormModel.isLeaseblockLayerVisible()) {
             attributeLayersList.push(self.scenarios.leaseblockLayer().layerModel);
         }
         

@@ -81,7 +81,7 @@ var madrona = {
             });
         }); 
     }
-};
+}; // end madrona init
 
 function scenarioFormModel(options) {
     var self = this;
@@ -363,6 +363,7 @@ function scenarioFormModel(options) {
     self.showLeaseblockLayer = function(layer) {
         app.map.addLayer(app.viewModel.scenarios.leaseblockLayer());
         layer.layerModel.setVisible();
+        app.viewModel.updateAttributeLayers();
         layer.refresh();
     }
     
@@ -385,7 +386,7 @@ function scenarioFormModel(options) {
     };
     
     return self;
-}
+} // end scenarioFormModel
 
 function scenarioModel(options) {
     var self = this;
@@ -542,7 +543,7 @@ function scenarioModel(options) {
     };
     
     return self;
-}
+} // end scenarioModel
 
 
 function scenariosModel(options) {
@@ -797,7 +798,7 @@ function scenariosModel(options) {
     }   
     
     return self;
-}
+} // end scenariosModel
 
 
 app.viewModel.scenarios = new scenariosModel();
