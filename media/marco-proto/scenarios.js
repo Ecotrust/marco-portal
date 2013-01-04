@@ -388,6 +388,18 @@ function scenarioFormModel(options) {
         }
     };
     
+    self.windSpeedLayer = app.viewModel.getLayerById(7);
+    self.toggleWindSpeedLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#wind-speed-layer-toggle input').is(":checked")) {
+                self.windSpeedLayer.activateLayer();
+            } else {
+                self.windSpeedLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
     return self;
 } // end scenarioFormModel
 
