@@ -400,6 +400,30 @@ function scenarioFormModel(options) {
         return true;
     };
     
+    self.awcLayer = app.viewModel.getLayerById(65);
+    self.toggleAWCLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#awc-layer-toggle input').is(":checked")) {
+                self.awcLayer.activateLayer();
+            } else {
+                self.awcLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
+    self.shippingLanesLayer = app.viewModel.getLayerById(65);
+    self.toggleShippingLanesLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#shipping-lanes-layer-toggle input').is(":checked")) {
+                self.shippingLanesLayer.activateLayer();
+            } else {
+                self.shippingLanesLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
     return self;
 } // end scenarioFormModel
 
