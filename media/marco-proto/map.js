@@ -209,7 +209,7 @@ app.init = function () {
                                 newTime = date.getTime(),
                                 text = attribute_objs;
                             if ( title === 'OCS Lease Blocks' ) {
-                                text = app.viewModel.scenarios.getOCSAttributes(title, info.data);
+                                text = app.viewModel.getOCSAttributes(title, info.data);
                             } else if ( title === 'Sea Turtles' ) {
                                 text = app.viewModel.getSeaTurtleAttributes(title, info.data);
                             } else if ( title === 'Toothed Mammals (All Seasons)' ) {
@@ -257,7 +257,7 @@ app.init = function () {
                 }
             }
         } else if ( layer.name === 'Selected OCS Blocks' ) {
-            text = app.viewModel.scenarios.getOCSAttributes(title, e.feature.attributes);
+            text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
         }
         
         if (newTime - app.map.clickOutput.time > 300) {

@@ -1635,6 +1635,66 @@ function viewModel() {
         return attrs;
     };
     
+    self.getOCSAttributes = function (title, data) {
+        attrs = [];
+        if ('BLOCK_LAB' in data) {
+            attrs.push({'display': 'OCS Block Number', 'data': data['BLOCK_LAB']});
+        }
+        if ('PROT_NUMBE' in data) {
+            attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
+        }
+        if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
+            if ( data['WINDREV_MI'] ) {                
+                var min_speed = data['WINDREV_MI'].toFixed(3),
+                    max_speed = data['WINDREV_MA'].toFixed(3),
+                    min_range = (parseFloat(min_speed)-.125).toPrecision(3),
+                    max_range = (parseFloat(max_speed)+.125).toPrecision(3);
+                /*if ( min_speed === max_speed ) {
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
+                } else {
+                    var speed = (min_speed-.125) + ' to ' + (max_speed+.125);
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
+                }*/
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_range + ' to ' + max_range + ' m/s'});
+            } else {
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'no data'});
+            }
+        }
+        if ('MI_MIN' in data && 'MI_MAX' in data) {
+            attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
+        }
+        if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
+            if ( data['DEPTHM_MIN'] ) {
+                //convert depth values to positive feet values (from negative meter values)
+                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+            } else {
+                attrs.push({'display': 'Depth Range', 'data': 'no data'});
+            }
+        }
+        if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
+            attrs.push({'display': 'Distance to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0) + ' miles'});
+        }
+        if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
+            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
+        }
+        if ('AIS7_MEAN' in data) {
+            if ( data['AIS7_MEAN'] < 1 ) {
+                var rank = 'Low';
+            } else {
+                var rank = 'High';
+            }
+            attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
+        }
+        if ('WEA_NAME' in data) {
+            if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {
+                attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
+            }
+        }
+        return attrs;
+    };
+            
     return self;
 } //end viewModel
 
