@@ -619,7 +619,7 @@ function scenariosModel(options) {
         ko.cleanNode(scenarioForm);
         delete self.scenarioFormModel;
         //hide remaining leaseblocks
-        if ( app.map.getLayersByName(self.leaseblockLayer().name).length ) {
+        if ( self.leaseblockLayer() && app.map.getLayersByName(self.leaseblockLayer().name).length ) {
             app.map.removeLayer(self.leaseblockLayer()); 
         }
         //remove the key/value pair from aggregatedAttributes
