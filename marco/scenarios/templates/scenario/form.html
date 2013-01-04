@@ -498,6 +498,12 @@
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
                 </div> 
+                <div style="margin-top: 10px">
+                    <label id="wind-speed-layer-toggle" data-bind="click: toggleWindSpeedLayer">
+                        <input id="wind-speed-layer-checkbox" data-bind="checked: windSpeedLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                        Wind Speed</input>
+                    </label>
+                </div>
             </div>
         </li>
         <li>
@@ -541,6 +547,12 @@
                     {{ form.input_distance_to_awc }} 
                     {{ form.input_distance_to_awc.errors }}   
                 </span> 
+                <div style="margin-top: 10px">
+                    <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
+                        <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                        AWC Routes & Hubs</input>
+                    </label>
+                </div>
             </div>
         </li>
         <!-- The following produces a '"False" is not a valid value for a primary key' Error (400 response)
@@ -586,6 +598,12 @@
                     {{ form.input_distance_to_shipping }} 
                     {{ form.input_distance_to_shipping.errors }}   
                 </label> 
+                <div style="margin-top: 10px">
+                    <label id="shipping-lanes-layer-toggle" data-bind="click: toggleShippingLanesLayer">
+                        <input id="shipping-lanes-layer-checkbox" data-bind="checked: shippingLanesLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                        Shipping Lanes</input>
+                    </label>
+                </div>
             </div>
         </li>
         <li>

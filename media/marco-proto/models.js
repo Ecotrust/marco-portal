@@ -1205,6 +1205,16 @@ function viewModel() {
         self.showPointerInfo(!self.showPointerInfo());
     };
 
+    // get layer by id
+    self.getLayerById = function(id) {
+        for (var x=0; x<self.themes().length; x++) {
+            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return layer.id === id });
+            if (layer_list.length > 0) {
+                return layer_list[0];
+            }
+        }
+        return false;
+    };
 
     // handle the search form
     self.searchTerm = ko.observable();
