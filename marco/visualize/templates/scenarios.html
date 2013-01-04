@@ -40,7 +40,7 @@
                 <ul class="unstyled list" data-bind="foreach: scenarioList ">
                     <li class="layer">
                         <div class="btn-group btn-group-layer">
-                            <a class="btn btn-info-sign">
+                            <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
                                 <i class="icon-info-sign icon-large"></i>
                             </a>
                             <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">

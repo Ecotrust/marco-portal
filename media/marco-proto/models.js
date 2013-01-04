@@ -1083,7 +1083,7 @@ function viewModel() {
         }
     }; 
     
-    self.getOverviewText = function(test1, test2) {
+    self.getOverviewText = function() {
         //activeInfoSublayer() ? activeInfoSublayer().overview : activeInfoLayer().overview
         if ( self.activeInfoSublayer() ) {
             if ( self.activeInfoSublayer().overview === null ) {

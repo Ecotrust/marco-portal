@@ -44,6 +44,7 @@ def get_scenarios(request):
             'id': scenario.id,
             'uid': scenario.uid,
             'name': scenario.name,
+            'description': scenario.description,
             'attributes': scenario.serialize_attributes
         })
 

@@ -433,6 +433,9 @@ function scenarioModel(options) {
     self.id = options.uid;
     self.uid = options.uid;
     self.name = options.name;
+    self.description = options.description;
+    
+    self.overview = self.description || 'no description was provided';
     
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
@@ -696,6 +699,7 @@ function scenariosModel(options) {
                         id: properties.uid,
                         uid: properties.uid,
                         name: properties.name, 
+                        description: properties.description,
                         features: layer.features
                     });
                     scenario.layer = layer;
@@ -821,6 +825,7 @@ function scenariosModel(options) {
                 id: scenario.uid,
                 uid: scenario.uid,
                 name: scenario.name,
+                description: scenario.description,
                 attributes: scenario.attributes
             });
             self.scenarioList.push(scenarioViewModel);
