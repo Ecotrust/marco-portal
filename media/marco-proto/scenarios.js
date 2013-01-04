@@ -122,7 +122,7 @@ function scenarioFormModel(options) {
                 })
             }
         ));
-    }
+    };
     
     self.activateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(true);
@@ -349,7 +349,7 @@ function scenarioFormModel(options) {
             );
             */
             //if ( filter.filters.length ) {
-            blockLayer.styleMap.styles.default.rules[0] = new OpenLayers.Rule({
+            blockLayer.styleMap.styles['default'].rules[0] = new OpenLayers.Rule({
                 filter: filter, 
                 symbolizer: { strokeColor: '#fff' } 
             });
