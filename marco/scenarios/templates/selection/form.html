@@ -69,13 +69,21 @@
   
   <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 2 </i></p>
-    <p class="instructions">Select Lease Blocks from the map panel on the right</p>
+    <p class="instructions">Click the button below to begin the process of selecting your Lease Blocks from the map panel on the right.</p>
+    <a class="btn" style="margin-top: 10px">Select Lease Blocks</a>
     <div id="step1_inputs"></div>
   </div>
 
   <div id="step2" class="step">
     <p class="step-text"><i>Step 2 of 3 </i></p>
-    <p class="instructions">Provide a name to identify your Lease Block Selection </p>
+    <p class="instructions">Provide a name to identify your Selection </p>
+    <div class="step3-inputs">
+        <div class="step3-param">
+            {{ form.name.label_tag }}
+            {{ form.name.errors }}
+            {{ form.name }}            
+        </div>
+    </div>
   </div>
 
   <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
@@ -103,12 +111,14 @@
 
 p.step-text {
     margin: 0px;
+    padding-left: 0px;
     text-align:left;
 }
 p.instructions {
     margin: 0px; 
     margin-top: 10px;
     margin-bottom: 0px;
+    padding-left: 0px;
     text-align: left;
     color: #47556C;
     font-size: 14px;
