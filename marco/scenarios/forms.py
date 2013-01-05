@@ -120,3 +120,12 @@ class ScenarioForm(FeatureForm):
         for f in model.output_fields():
             exclude.append(f.attname)
 
+
+class LeaseBlockSelectionForm(FeatureForm):
+    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 3}), required=False)
+    
+    class Meta(FeatureForm.Meta):
+        model = LeaseBlockSelection
+        exclude = list(FeatureForm.Meta.exclude)
+        for f in model.output_fields():
+            exclude.append(f.attname)

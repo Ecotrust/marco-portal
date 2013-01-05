@@ -18,7 +18,7 @@
     </div>
     
     <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
-        <div data-bind="visible: ! scenarioForm()">
+        <div data-bind="visible: ! scenarioForm() && ! selectionForm()">
             <div class="row-fluid">
                 <div class="span12">
                     <div id="create-new-design" class="btn-group">
@@ -30,7 +30,7 @@
                             <li><a data-bind="click: createWindScenario">Wind Energy Site Selection</a></li>
                             <li><a href="#">Conservation Site Selection</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Selection-Based Design</a></li>
+                            <li><a data-bind="click: createSelectionDesign">Selection-Based Design</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,6 +68,10 @@
            
         <div style="height: 100%" data-bind="visible: scenarioForm">   
             <div id="scenario-form" class="panel-container"></div>   
+        </div>
+        
+        <div style="height: 100%" data-bind="visible: selectionForm">   
+            <div id="selection-form" class="panel-container"></div>   
         </div>
         
     </div>

@@ -55,7 +55,6 @@ var madrona = {
 
             app.viewModel.scenarios.scenarioForm(false);
             app.viewModel.scenarios.loadingMessage("Creating Scenario");
-            
 
 
             $.ajax( {
@@ -427,6 +426,13 @@ function scenarioFormModel(options) {
     return self;
 } // end scenarioFormModel
 
+
+function selectionFormModel(options) {
+    var self = this;
+    
+    return self;
+}; // end selectionFormModel
+
 function scenarioModel(options) {
     var self = this;
 
@@ -591,9 +597,11 @@ function scenarioModel(options) {
 function scenariosModel(options) {
     var self = this;
     
-    self.scenarioList = ko.observableArray();
-    
+    self.scenarioList = ko.observableArray();    
     self.scenarioForm = ko.observable(false);
+    
+    self.selectionList = ko.observableArray();  
+    self.selectionForm = ko.observable(false);
         
     self.leaseblockLayer = ko.observable(false);
 
@@ -613,6 +621,8 @@ function scenariosModel(options) {
     self.reset = function () {
         self.loadingMessage(false);
         self.errorMessage(false);
+        
+        //clean up scenario form
         self.scenarioForm(false);
         var scenarioForm = document.getElementById('scenario-form');
         $(scenarioForm).empty();
@@ -622,6 +632,14 @@ function scenariosModel(options) {
         if ( self.leaseblockLayer() && app.map.getLayersByName(self.leaseblockLayer().name).length ) {
             app.map.removeLayer(self.leaseblockLayer()); 
         }
+        
+        //clean up selection form
+        self.selectionForm(false);
+        var selectionForm = document.getElementById('selection-form');
+        $(selectionForm).empty();
+        ko.cleanNode(selectionForm);
+        delete self.selectionFormModel;
+        
         //remove the key/value pair from aggregatedAttributes
         app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
         app.viewModel.updateAttributeLayers();
@@ -640,9 +658,26 @@ function scenariosModel(options) {
                     self.scenarioFormModel.loadLeaseblockLayer();
                 }
             },
-            error: function (result) { debugger }
+            error: function (result) { debugger; }
         });
-    };     
+    };    
+
+    self.createSelectionDesign = function() {
+        return $.ajax({
+            url: '/features/leaseblockselection/form/',
+            success: function(data) {
+                self.selectionForm(true);
+                $('#selection-form').html(data);
+                self.selectionFormModel = new selectionFormModel();
+                ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
+                //self.selectionFormModel.updateDesignScrollBar();
+                //if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
+                //    self.selectionFormModel.loadLeaseblockLayer();
+                //}
+            },
+            error: function (result) { debugger; }
+        });
+    };        
     
     //
     self.addScenarioToMap = function(scenario, options) {

@@ -466,6 +466,7 @@ class Scenario(Analysis):
         form_template = 'scenario/form.html'
         show_template = 'scenario/show.html'
 
+#no longer needed?
 class Objective(models.Model):
     name = models.CharField(max_length=35)
     color = models.CharField(max_length=8, default='778B1A55')
@@ -473,6 +474,7 @@ class Objective(models.Model):
     def __unicode__(self):
         return u'%s' % self.name        
 
+#no longer needed?
 class Parameter(models.Model):
     ordering_id = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=35, null=True, blank=True)
@@ -623,7 +625,7 @@ class LeaseBlockAlt(models.Model):
     geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
     objects = models.GeoManager()
 '''
-
+#still needed?
 class Substrate(models.Model):
     substrate_id = models.IntegerField()
     substrate_name = models.CharField(max_length=35)
@@ -631,7 +633,7 @@ class Substrate(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.substrate_name
-     
+#still needed?     
 class Sediment(models.Model):
     sediment_id = models.IntegerField()
     sediment_name = models.CharField(max_length=35)
@@ -640,7 +642,7 @@ class Sediment(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.sediment_output
-     
+#still needed?     
 class WEA(models.Model):
     wea_id = models.IntegerField()
     wea_name = models.CharField(max_length=35)
@@ -648,4 +650,22 @@ class WEA(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.wea_name
-     
+
+@register
+class LeaseBlockSelection(Analysis):
+    #input_a = models.IntegerField()
+    #input_b = models.IntegerField()
+    #output_sum = models.IntegerField(blank=True, null=True)
+    leaseblocks = models.ManyToManyField("LeaseBlock")
+    geometry_actual = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Selection Geometry")
+
+    def run(self):
+        #self.output_sum = self.input_a + self.input_b
+        #traverse through leaseblock geometries, building geometry_actual
+        return True  
+        
+    class Options:
+        verbose_name = 'Lease Block Selection'
+        form = 'scenarios.forms.LeaseBlockSelectionForm'
+        form_template = 'selection/form.html'
+        #show_template = 'scenario/show.html'
