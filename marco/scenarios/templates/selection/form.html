@@ -12,6 +12,14 @@
         var max_step = 2;
 
         function validate(step) {            
+            if (step == 1) {
+                if (app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocksLayer &&
+                    app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocksLayer.features.length ) {
+                    app.viewModel.scenarios.selectionFormModel.disableSelectionProcess();
+                    return true;
+                }
+                return false;
+            } 
             return true;
         }; 
 
@@ -69,8 +77,17 @@
   
   <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 2 </i></p>
-    <p class="instructions">Click the button below to begin the process of selecting your Lease Blocks from the map panel on the right.</p>
-    <a class="btn" style="margin-top: 10px">Select Lease Blocks</a>
+    <p class="instructions">Click the button below to begin selecting your Lease Blocks from the map on the right.</p>
+    <a class="btn" style="margin-top: 10px" data-bind="click: toggleSelectionProcess">
+        <span data-bind="text: selectingLeaseBlocks() ? 'Complete Selection' : 'Select Lease Blocks'"></span>
+    </a>
+    
+    <div style="margin-top: 10px">
+        <label id="lease-blocks-layer-toggle" data-bind="click: toggleLeaseBlockLayer">
+            <input id="lease-blocks-layer-checkbox" data-bind="checked: leaseBlockLayer.active()" type="checkbox" name="checkbox" value="value"> 
+            Show OCS Lease Blocks</input>
+        </label>
+    </div>
     <div id="step1_inputs"></div>
   </div>
 

@@ -49,6 +49,36 @@ def get_scenarios(request):
         })
 
     return HttpResponse(dumps(json))
+    
+def get_leaseblock_features(request):
+    from madrona.common.jsonutils import get_properties_json, get_feature_json, srid_to_urn, srid_to_proj
+    srid = settings.GEOJSON_SRID
+    leaseblock_ids = request.GET.getlist('leaseblock_ids[]')
+    leaseblocks = LeaseBlock.objects.filter(prot_numb__in=leaseblock_ids)
+    feature_jsons = []
+    for leaseblock in leaseblocks:
+        geom = leaseblock.geometry.transform(srid, clone=True).json
+        feature_jsons.append(get_feature_json(geom, json.dumps('')))#json.dumps(props)))
+        #feature_jsons.append(leaseblock.geometry.transform(srid, clone=True).json)
+        '''
+        geojson = """{ 
+          "type": "Feature",
+          "geometry": %s,
+          "properties": {}
+        }""" %leaseblock.geometry.transform(settings.GEOJSON_SRID, clone=True).json
+        '''
+        #json.append({'type': "Feature", 'geometry': leaseblock.geometry.geojson, 'properties': {}})
+    #return HttpResponse(dumps(json[0]))
+    geojson = """{ 
+      "type": "FeatureCollection",
+      "crs": { "type": "name", "properties": {"name": "%s"}},
+      "features": [ 
+      %s 
+      ]
+    }""" % (srid_to_urn(srid), ', \n'.join(feature_jsons),)
+    return HttpResponse(geojson)
+    
+    
 
 def get_attributes(request, uid):
     try:

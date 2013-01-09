@@ -387,6 +387,7 @@
                                         </div>
                                     </div>
                                     <!-- Aggregated Attribution Overlay -->
+                                    <div data-bind="visible: featureAttribution">
                                     <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
                                         <div id="aggregated-attribute-content">
                                           <div data-bind="foreach: attributeLayers()">
@@ -402,6 +403,7 @@
                                           </div>
                                         </div>
                                         <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
+                                    </div>
                                     </div>
                                   
                                     <!-- Bookmark Message -->

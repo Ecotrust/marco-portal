@@ -142,24 +142,35 @@ function layerModel(options, parent) {
 
     self.deactivateLayer = function() {
         var layer = this;
+        
+        //deactivate layer
+        self.deactivateBaseLayer();
+        
+        //remove related utfgrid layer
+        if (layer.utfgrid) { 
+            self.deactivateUtfGridLayer();
+        }
+        //remove parent layer
+        if (layer.parent) {
+            self.deactivateParentLayer();
+        }
+        //remove sublayer
+        if (layer.activeSublayer()) {
+            self.deactivateSublayer();
+        } 
+        
+        layer.layer = null;
+
+    };
+    
+    // called from deactivateLayer
+    self.deactivateBaseLayer = function() {
+        var layer = this;
         // remove from active layers
         app.viewModel.activeLayers.remove(layer);
 
-        //remove related utfgrid layer
-        if (layer.utfgrid) { //NEED TO CHECK FOR PARENT LAYER HERE TOO...
-            //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
-            app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
-            //var control = $.inArray(this.utfgrid, app.map.UTFControl.layers);
-            //app.map.removeControl(
-            app.map.removeLayer(this.utfgrid);
-        }
-        
         //remove the key/value pair from aggregatedAttributes
-        //debugger;
         app.viewModel.removeFromAggregatedAttributes(layer.name);
-        //delete app.viewModel.aggregatedAttributes()[layer.name];
-        //app.viewModel.updateAggregatedAttributes
-        //debugger;
         
         layer.active(false);
         layer.visible(false);
@@ -167,8 +178,23 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, false);
         layer.opacity(layer.defaultOpacity);
         
-        //layer.layer = null;
+        if ($.inArray(layer.layer, app.map.layers) !== -1) {
+            app.map.removeLayer(layer.layer);
+        }
+    };
+    
+    // called from deactivateLayer
+    self.deactivateUtfGridLayer = function() {
+        var layer = this;
+        //NEED TO CHECK FOR PARENT LAYER HERE TOO...?
+        //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
+        app.map.UTFControl.layers.splice($.inArray(layer.utfgrid, app.map.UTFControl.layers), 1);
+        app.map.removeLayer(layer.utfgrid);
+    };
 
+    // called from deactivateLayer
+    self.deactivateParentLayer = function() {
+        var layer = this;
         if (layer.parent && layer.parent.isCheckBoxLayer()) { // if layer has a parent and that layer is a checkbox layer
             // see if there are any remaining active sublayers in this checkbox layer
             var stillActive = false;
@@ -195,73 +221,72 @@ function layerModel(options, parent) {
             layer.parent.visible(false);
             layer.parent.visibleSublayer(false);
         } 
-        
-        if (layer.activeSublayer()) {
-            if ($.inArray(layer.activeSublayer().layer, app.map.layers) !== -1) {
-                app.map.removeLayer(layer.activeSublayer().layer);
-            }
-            layer.activeSublayer().deactivateLayer();
-            layer.activeSublayer(false);
-            layer.visibleSublayer(false);
-        } 
-        if ($.inArray(layer.layer, app.map.layers) !== -1) {
-            app.map.removeLayer(layer.layer);
-        }
-        layer.layer = null;
-
     };
-
+    
+    // called from deactivateLayer
+    self.deactivateSublayer = function() {
+        var layer = this;
+        if ($.inArray(layer.activeSublayer().layer, app.map.layers) !== -1) {
+            app.map.removeLayer(layer.activeSublayer().layer);
+        }
+        layer.activeSublayer().deactivateLayer();
+        layer.activeSublayer(false);
+        layer.visibleSublayer(false);
+    };
+    
     self.activateLayer = function() {
         var layer = this;
 
         if (!layer.active() && layer.type !== 'placeholder') {
         
-            app.addLayerToMap(layer);
-
-            //changed the following so that 
-            //if the layer is an attributed vector layer, it will be added to the top of activeLayers
-            //otherwise, it will be added just before the first non-vector layer
-            /*
-            if (layer.type === "Vector" && layer.attributes.length) {
-                // add it to the top of the active layers
-                app.viewModel.activeLayers.unshift(layer);
-            } else {
-                var index = 0;
-                $.each(app.viewModel.activeLayers(), function(i, layer) {
-                    if (!(layer.type === "Vector" && layer.attributes.length)) {
-                        return false;
-                    } else {
-                        index += 1;
-                    }
-                });
-                app.viewModel.activeLayers.splice(index, 0, layer);
-            }
-            */
-            //now that we now longer use the selectfeature control we can simply do the following 
-            app.viewModel.activeLayers.unshift(layer);
-
-            // set the active flag
-            layer.active(true);
-            layer.visible(true);
+            self.activateBaseLayer();
 
             // save reference in parent layer
             if (layer.parent) {
-                if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
-                    // only allow one sublayer on at a time
-                    layer.parent.activeSublayer().deactivateLayer();
-                }
-                layer.parent.active(true);
-                layer.parent.activeSublayer(layer);
-                layer.parent.visible(true);
-                layer.parent.visibleSublayer(layer);
+                self.activateParentLayer();
             }
 
             //add utfgrid if applicable
             if (layer.utfgrid) {
-                app.map.UTFControl.layers.unshift(layer.utfgrid);
+                self.activateUtfGridLayer();
             }
 
         }
+    };
+    
+    // called from activateLayer
+    self.activateBaseLayer = function() {
+        var layer = this;
+        
+        app.addLayerToMap(layer);
+
+        //now that we now longer use the selectfeature control we can simply do the following 
+        app.viewModel.activeLayers.unshift(layer);
+
+        // set the active flag
+        layer.active(true);
+        layer.visible(true);
+    };
+    
+    // called from activateLayer
+    self.activateParentLayer = function() {
+        var layer = this;
+        
+        if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
+            // only allow one sublayer on at a time
+            layer.parent.activeSublayer().deactivateLayer();
+        }
+        layer.parent.active(true);
+        layer.parent.activeSublayer(layer);
+        layer.parent.visible(true);
+        layer.parent.visibleSublayer(layer);
+    };
+    
+    // called from activateLayer
+    self.activateUtfGridLayer = function() {
+        var layer = this;
+        
+        app.map.UTFControl.layers.unshift(layer.utfgrid);
     };
 
     // bound to click handler for layer visibility switching in Active panel
@@ -732,6 +757,16 @@ function viewModel() {
     
     self.attributeLayers = ko.observable();
     
+    self.featureAttribution = ko.observable(true);
+    self.enableFeatureAttribution = function() {
+        self.aggregatedAttributes(false);
+        self.featureAttribution(true);
+    };
+    self.disableFeatureAttribution = function() {
+        self.featureAttribution(false); 
+        app.markers.clearMarkers();
+    };
+    
     self.updateAttributeLayers = function() {
         var attributeLayersList = [];
         if (self.scenarios && self.scenarios.scenarioFormModel && self.scenarios.scenarioFormModel.isLeaseblockLayerVisible()) {
@@ -850,9 +885,9 @@ function viewModel() {
     
     self.updateMarker = function() {
         //$(elements[0]).closest('.scrollpane').data('jsp').reinitialise();  
-        if (app.marker && self.aggregatedAttributes()) {
+        app.markers.clearMarkers();
+        if (app.marker && self.aggregatedAttributes() && self.featureAttribution()) {
             //console.log('updating marker');
-            app.markers.clearMarkers();
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
         }
@@ -1635,6 +1670,24 @@ function viewModel() {
         return attrs;
     };
     
+    self.isSelectedLeaseBlock = function(name) {
+        if (name === "OCS Lease Blocks") {
+            return true;
+        }
+        if (self.scenarios && 
+            self.scenarios.selectionFormModel && 
+            self.scenarios.selectionFormModel.selectedLeaseBlockLayer && 
+            self.scenarios.selectionFormModel.selectedLeaseBlocksLayerName === name) {
+            return true;
+        } 
+        if (self.scenarios && 
+            self.scenarios.scenarioFormModel && 
+            self.scenarios.scenarioLeaseBlocksLayerName === name) {
+            return true;
+        }
+        return false;
+    };
+    
     self.getOCSAttributes = function (title, data) {
         attrs = [];
         if ('BLOCK_LAB' in data) {
@@ -1642,6 +1695,19 @@ function viewModel() {
         }
         if ('PROT_NUMBE' in data) {
             attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
+        }
+        if ('PROT_NUMB' in data) {
+            if (self.scenarios && self.scenarios.selectionFormModel && self.scenarios.selectionFormModel.IE && self.scenarios.selectionFormModel.selectingLeaseBlocks()) {
+                var blockID = data['PROT_NUMB'],
+                    index = self.scenarios.selectionFormModel.selectedLeaseBlocks.indexOf(blockID);
+                if ( index === -1) {
+                    //add that lease block to the list of selected leaseblocks
+                    self.scenarios.selectionFormModel.selectedLeaseBlocks.push(blockID);
+                } else {
+                    //remove that lease block from the list of selected leaseblocks
+                    self.scenarios.selectionFormModel.selectedLeaseBlocks.splice(index, 1);
+                }
+            }
         }
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
             if ( data['WINDREV_MI'] ) {                

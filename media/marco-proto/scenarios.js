@@ -100,29 +100,6 @@ function scenarioFormModel(options) {
     //not sure how best to tie the width of the show/hide leaseblocks button to the width of the form...
     //self.showLeaseblockButtonWidth = ko.observable($('#scenario-form').width());
     
-    self.selectedLeaseblocksLayerName = 'Selected OCS Blocks';
-    
-    self.loadLeaseblockLayer = function() {
-        app.viewModel.scenarios.leaseblockLayer( new OpenLayers.Layer.Vector(
-            self.selectedLeaseblocksLayerName,
-            {
-                projection: new OpenLayers.Projection('EPSG:3857'),
-                displayInLayerSwitcher: false,
-                strategies: [new OpenLayers.Strategy.Fixed()],
-                protocol: new OpenLayers.Protocol.HTTP({
-                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
-                    format: new OpenLayers.Format.GeoJSON()
-                }),
-                //styleMap: new OpenLayers.StyleMap( { 
-                //    "default": new OpenLayers.Style( { display: "none" } )
-                //})
-                layerModel: new layerModel({
-                    name: self.selectedLeaseblocksLayerName
-                })
-            }
-        ));
-    }
-    
     self.activateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(true);
         //self.showRemainingBlocks();
@@ -131,7 +108,7 @@ function scenarioFormModel(options) {
     self.deactivateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(false);
         //remove from attribute list (if it's there)
-        app.viewModel.removeFromAggregatedAttributes(self.selectedLeaseblocksLayerName);
+        app.viewModel.removeFromAggregatedAttributes(app.viewModel.scenarios.scenarioLeaseBlocksLayerName);
         app.viewModel.updateAggregatedAttributesOverlayWidthAndScrollbar();
         //self.hideLeaseblockLayer();
     };
@@ -267,7 +244,7 @@ function scenarioFormModel(options) {
         if ( self.isLeaseblockLayerVisible() ) {
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
             if ( ! app.viewModel.scenarios.leaseblockLayer()) {
-                self.loadLeaseblockLayer();
+                app.viewModel.scenarios.loadLeaseblockLayer();
             } 
             var blockLayer = app.viewModel.scenarios.leaseblockLayer();
             var filter = new OpenLayers.Filter.Logical({
@@ -338,26 +315,12 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            //blockLayer.styleMap = { "default": new OpenLayers.Style( { display: "block" } ) }; 
-            /*
-            blockLayer.styleMap.styles.default.setDefaultStyle(
-                new OpenLayers.Style({
-                    'fillOpacity': 0,
-                    'display': 'block'
-                })
-            );
-            */
-            //if ( filter.filters.length ) {
-            blockLayer.styleMap.styles.default.rules[0] = new OpenLayers.Rule({
+            blockLayer.styleMap.styles['default'].rules[0] = new OpenLayers.Rule({
                 filter: filter, 
                 symbolizer: { strokeColor: '#fff' } 
             });
-                //blockLayer.display(true);
+            
             self.showLeaseblockLayer(blockLayer);
-            //} else {
-                //self.isLeaseblockLayerVisible(false);
-                //self.hideLeaseblockLayer();
-            //}
         }
         
     };
@@ -426,12 +389,223 @@ function scenarioFormModel(options) {
     return self;
 } // end scenarioFormModel
 
+function selectionModel(options) {
+    var self = this;
+    
+    self.name = 'Selected Lease Blocks';
+    //self.scenarioAttributes = options && options.attributes ? options.attributes.attributes : [];
+    self.attributes = [];
+    
+} // end selectionModel
 
 function selectionFormModel(options) {
     var self = this;
     
+    self.IE = false;
+    
+    self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    self.leaseBlockLayer.activateLayer();
+    self.leaseBlockLayerUtfGrid = self.leaseBlockLayer.utfgrid;
+    
+    self.leaseBlockSelectionLayerIsLoaded = false;
+    
+    self.selectingLeaseBlocks = ko.observable(false);
+    
+    //will want to load this manually as it will likely be a placeholder layer in the data manager
+    self.leaseBlockSelectionLayer = app.viewModel.getLayerById(82);
+    
+    //self.selectedLeaseBlocks = ko.observableArray();
+    
+    self.loadLeaseBlockSelectionLayer = function() {
+        var defaultStyle = new OpenLayers.Style({
+            //display: 'none'
+            fillOpacity: 0,
+            strokeColor: '#000',
+            strokeOpacity: 0
+        });
+        var selectStyle = new OpenLayers.Style({
+            strokeColor: '#ff0',
+            strokeOpacity: .8
+        });
+        var styleMap = new OpenLayers.StyleMap( {
+            'default': defaultStyle,
+            'select': selectStyle
+        });
+        self.leaseBlockSelectionLayer.layer = new OpenLayers.Layer.Vector(
+            self.leaseBlockSelectionLayer.name,
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: self.leaseBlockSelectionLayer.url,
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                styleMap: styleMap,                    
+                layerModel: self.leaseBlockSelectionLayer
+            }
+        );
+        app.map.addLayer(self.leaseBlockSelectionLayer.layer);
+        self.leaseBlockSelectionLayerHoverControl = new OpenLayers.Control.SelectFeature(
+            self.leaseBlockSelectionLayer.layer, 
+            {
+                hover: true,
+                toggle: false,
+                multiple: false
+            }
+        );
+        
+        self.leaseBlockSelectionLayerClickControl = new OpenLayers.Control.SelectFeature(
+            self.leaseBlockSelectionLayer.layer, 
+            {
+                hover: false,
+                toggle: true,
+                multiple: true,
+                box: true
+            }
+        );
+        app.map.addControl(self.leaseBlockSelectionLayerClickControl);        
+        
+        app.map.addLayer(self.leaseBlockSelectionLayer.layer); 
+        self.leaseBlockSelectionLayerIsLoaded = true;
+    }
+    
+    self.toggleSelectionProcess = function() {
+        if ( ! self.selectingLeaseBlocks() ) { // if not currently in the selection process, enable selection process
+            // if lease block selection layer has not yet been loaded...
+            if ( ! self.leaseBlockSelectionLayerIsLoaded ) { 
+                self.loadLeaseBlockSelectionLayer();
+            } 
+            //activate the lease block feature selection 
+            self.leaseBlockSelectionLayerClickControl.activate();
+            //app.addUtfLayerToMap(self.leaseBlockLayer);
+            //disable feature attribution
+            app.viewModel.disableFeatureAttribution();
+            //change button text
+            self.selectingLeaseBlocks(true);
+            
+            
+        } else { // otherwise, disable selection process
+            //deactivate lease block feature selection
+            self.leaseBlockSelectionLayerClickControl.deactivate();
+            //enable feature attribution
+            app.viewModel.enableFeatureAttribution();
+            //change button text
+            self.selectingLeaseBlocks(false);
+            
+            //ON CANCEL, remove self.leaseBlockLayerUtfGrid and selectfeature control
+        }           
+        
+    };
+    
+    self.toggleLeaseBlockLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#lease-blocks-layer-toggle input').is(":checked")) {
+                self.leaseBlockLayer.activateLayer();
+            } else {
+                self.leaseBlockLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
     return self;
 }; // end selectionFormModel
+
+
+function IESelectionFormModel(options) {
+    var self = this;
+    
+    self.IE = true;
+    
+    self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    self.leaseBlockLayer.activateLayer();
+    self.leaseBlockLayer.setVisible();
+    
+    self.leaseBlockLayerUtfGrid = self.leaseBlockLayer.utfgrid;
+        
+    self.selectingLeaseBlocks = ko.observable(false);
+    
+    self.selectedLeaseBlocksLayerName = 'Selected Lease Blocks';
+    
+    self.selectedLeaseBlocks = ko.observableArray();
+    self.selectedLeaseBlocks.subscribe(function(test) {
+        if (self.selectedLeaseBlocksLayer) {
+            app.map.removeLayer(self.selectedLeaseBlocksLayer);
+        }
+        $.ajax({
+            url: '/scenario/get_leaseblock_features',
+            type: 'GET',
+            dataType: 'json',
+            data: { leaseblock_ids: test },
+            success: function (feature) {
+                var layer = new OpenLayers.Layer.Vector(
+                    self.selectedLeaseBlocksLayerName,
+                    {
+                        projection: new OpenLayers.Projection('EPSG:3857'),
+                        displayInLayerSwitcher: false,
+                        styleMap: new OpenLayers.StyleMap({
+                            strokeColor: '#ff0',
+                            strokeOpacity: .8,
+                            fillOpacity: 0
+                        }),     
+                        scenarioModel: new selectionModel()
+                    }
+                );
+                
+                layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
+                self.selectedLeaseBlocksLayer = layer
+                app.map.addLayer(self.selectedLeaseBlocksLayer);
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    });
+    
+    self.toggleSelectionProcess = function() {
+        if ( ! self.selectingLeaseBlocks() ) { // if not currently in the selection process, enable selection process
+            self.enableSelectionProcess();
+        } else { // otherwise, disable selection process
+            self.disableSelectionProcess();
+        }  
+    };
+    
+    self.enableSelectionProcess = function() {
+        //disable feature attribution
+        app.viewModel.disableFeatureAttribution();
+        //ensure lease blocks are visible
+        self.leaseBlockLayer.activateLayer();
+        self.leaseBlockLayer.setVisible();
+        //disable Show Lease Blocks checkbox 
+        $('#lease-blocks-layer-checkbox').prop('checked', true);
+        $('#lease-blocks-layer-checkbox').attr('disabled', 'disabled');
+        //change button text
+        self.selectingLeaseBlocks(true);
+    };
+    
+    self.disableSelectionProcess = function() {
+        //enable feature attribution
+        app.viewModel.enableFeatureAttribution();
+        //re-enable Show Lease Blocks checkbox
+        $('#lease-blocks-layer-checkbox').removeAttr('disabled');
+        //change button text
+        self.selectingLeaseBlocks(false);
+    };
+    
+    self.toggleLeaseBlockLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#lease-blocks-layer-toggle input').is(":checked")) {
+                self.leaseBlockLayer.setVisible();
+            } else {
+                self.leaseBlockLayer.setInvisible();
+            }
+        }
+        return true;
+    };
+    
+    return self;
+}; // end IESelectionFormModel
 
 function scenarioModel(options) {
     var self = this;
@@ -609,6 +783,8 @@ function scenariosModel(options) {
         app.viewModel.updateAttributeLayers();
     });
     
+    self.scenarioLeaseBlocksLayerName = 'Selected OCS Blocks';
+        
     // loading message for showing spinner
     // false for normal operation
     self.loadingMessage = ko.observable(false);
@@ -623,6 +799,38 @@ function scenariosModel(options) {
         self.errorMessage(false);
         
         //clean up scenario form
+        if (self.scenarioForm()) {
+            self.removeScenarioForm();
+        }
+        
+        //clean up selection form
+        if (self.selectionForm()) {
+            self.removeSelectionForm();
+        }
+        
+        //remove the key/value pair from aggregatedAttributes
+        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
+        app.viewModel.updateAttributeLayers();
+    };
+    
+    self.removeSelectionForm = function() {
+        self.selectionForm(false);
+        var selectionForm = document.getElementById('selection-form');
+        $(selectionForm).empty();
+        ko.cleanNode(selectionForm); 
+        if (self.selectionFormModel.IE) {
+            if (self.selectionFormModel.selectedLeaseBlocksLayer) {
+                app.map.removeLayer(self.selectionFormModel.selectedLeaseBlocksLayer);
+            }
+        } else {
+            app.map.removeControl(self.selectionFormModel.leaseBlockSelectionLayerClickControl); 
+            app.map.removeLayer(self.selectionFormModel.leaseBlockSelectionLayer.layer);        
+        }
+        delete self.selectionFormModel;
+        app.viewModel.enableFeatureAttribution();
+    };
+    
+    self.removeScenarioForm = function() {
         self.scenarioForm(false);
         var scenarioForm = document.getElementById('scenario-form');
         $(scenarioForm).empty();
@@ -632,17 +840,6 @@ function scenariosModel(options) {
         if ( self.leaseblockLayer() && app.map.getLayersByName(self.leaseblockLayer().name).length ) {
             app.map.removeLayer(self.leaseblockLayer()); 
         }
-        
-        //clean up selection form
-        self.selectionForm(false);
-        var selectionForm = document.getElementById('selection-form');
-        $(selectionForm).empty();
-        ko.cleanNode(selectionForm);
-        delete self.selectionFormModel;
-        
-        //remove the key/value pair from aggregatedAttributes
-        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
-        app.viewModel.updateAttributeLayers();
     };
 
     self.createWindScenario = function() {
@@ -655,7 +852,7 @@ function scenariosModel(options) {
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
                 if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
-                    self.scenarioFormModel.loadLeaseblockLayer();
+                    self.loadLeaseblockLayer();
                 }
             },
             error: function (result) { debugger; }
@@ -668,7 +865,7 @@ function scenariosModel(options) {
             success: function(data) {
                 self.selectionForm(true);
                 $('#selection-form').html(data);
-                self.selectionFormModel = new selectionFormModel();
+                self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
                 ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
                 //self.selectionFormModel.updateDesignScrollBar();
                 //if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
@@ -808,6 +1005,27 @@ function scenariosModel(options) {
         });
         self.scenariosLoaded = true;
     }
+    
+    self.loadLeaseblockLayer = function() {
+        self.leaseblockLayer( new OpenLayers.Layer.Vector(
+            self.scenarioLeaseBlocksLayerName,
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                //styleMap: new OpenLayers.StyleMap( { 
+                //    "default": new OpenLayers.Style( { display: "none" } )
+                //})
+                layerModel: new layerModel({
+                    name: self.scenarioLeaseBlocksLayerName
+                })
+            }
+        ));
+    }      
     
     self.leaseblockList = [];    
     
