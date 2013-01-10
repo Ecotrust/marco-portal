@@ -36,6 +36,23 @@ def delete_scenario(request, uid):
     
     return HttpResponse("", status=200)
 
+'''
+'''
+def delete_selection(request, uid):
+    try:
+        selection_obj = get_feature_by_uid(uid)
+    except Selection.DoesNotExist: #is this correct..?
+        raise Http404
+    
+    #check permissions
+    viewable, response = selection_obj.is_viewable(request.user)
+    if not viewable:
+        return response
+        
+    selection_obj.delete()
+    
+    return HttpResponse("", status=200)
+
 def get_scenarios(request):
     json = []
     scenarios = Scenario.objects.filter(user=request.user, active=True).order_by('date_created')
@@ -47,8 +64,20 @@ def get_scenarios(request):
             'description': scenario.description,
             'attributes': scenario.serialize_attributes
         })
-
     return HttpResponse(dumps(json))
+
+def get_selections(request):
+    json = []
+    selections = LeaseBlockSelection.objects.filter(user=request.user).order_by('date_created')
+    for selection in selections:
+        json.append({
+            'id': selection.id,
+            'uid': selection.uid,
+            'name': selection.name,
+            #'description': selection.description,
+            'attributes': selection.serialize_attributes
+        })
+    return HttpResponse(dumps(json))    
     
 def get_leaseblock_features(request):
     from madrona.common.jsonutils import get_properties_json, get_feature_json, srid_to_urn, srid_to_proj
@@ -57,7 +86,11 @@ def get_leaseblock_features(request):
     leaseblocks = LeaseBlock.objects.filter(prot_numb__in=leaseblock_ids)
     feature_jsons = []
     for leaseblock in leaseblocks:
-        geom = leaseblock.geometry.transform(srid, clone=True).json
+        try:
+            geom = leaseblock.geometry.transform(srid, clone=True).json
+        except:
+            srid = settings.GEOJSON_SRID_BACKUP
+            geom = leaseblock.geometry.transform(srid, clone=True).json
         feature_jsons.append(get_feature_json(geom, json.dumps('')))#json.dumps(props)))
         #feature_jsons.append(leaseblock.geometry.transform(srid, clone=True).json)
         '''

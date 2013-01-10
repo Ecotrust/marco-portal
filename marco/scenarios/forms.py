@@ -122,7 +122,8 @@ class ScenarioForm(FeatureForm):
 
 
 class LeaseBlockSelectionForm(FeatureForm):
-    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 3}), required=False)
+    leaseblock_ids = forms.CharField()
+    #description = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 3}), required=False)
     
     class Meta(FeatureForm.Meta):
         model = LeaseBlockSelection

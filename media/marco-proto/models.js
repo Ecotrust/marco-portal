@@ -1697,7 +1697,10 @@ function viewModel() {
             attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
         }
         if ('PROT_NUMB' in data) {
-            if (self.scenarios && self.scenarios.selectionFormModel && self.scenarios.selectionFormModel.IE && self.scenarios.selectionFormModel.selectingLeaseBlocks()) {
+            if (self.scenarios && 
+                self.scenarios.selectionFormModel && 
+                self.scenarios.selectionFormModel.IE && 
+                self.scenarios.selectionFormModel.selectingLeaseBlocks()) {
                 var blockID = data['PROT_NUMB'],
                     index = self.scenarios.selectionFormModel.selectedLeaseBlocks.indexOf(blockID);
                 if ( index === -1) {

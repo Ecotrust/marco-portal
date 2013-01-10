@@ -82,6 +82,8 @@
         <span data-bind="text: selectingLeaseBlocks() ? 'Complete Selection' : 'Select Lease Blocks'"></span>
     </a>
     
+    {{ form.leaseblock_ids.as_hidden }}
+    
     <div style="margin-top: 10px">
         <label id="lease-blocks-layer-toggle" data-bind="click: toggleLeaseBlockLayer">
             <input id="lease-blocks-layer-checkbox" data-bind="checked: leaseBlockLayer.active()" type="checkbox" name="checkbox" value="value"> 

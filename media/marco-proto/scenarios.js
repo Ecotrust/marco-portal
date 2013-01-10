@@ -393,9 +393,164 @@ function selectionModel(options) {
     var self = this;
     
     self.name = 'Selected Lease Blocks';
-    //self.scenarioAttributes = options && options.attributes ? options.attributes.attributes : [];
-    self.attributes = [];
     
+    var ret = scenarioModel.apply(this, arguments);
+    
+    //self.isSelectionModel = true;
+        
+    self.editScenario = function() {
+        var selection = this;
+        return $.ajax({
+            url: '/features/leaseblockselection/' + selection.uid + '/form/', 
+            success: function(data) {
+                app.viewModel.scenarios.scenarioForm(true);
+                $('#scenario-form').html(data);
+                app.viewModel.scenarios.selectionFormModel = new IESelectionFormModel();
+                ko.applyBindings(app.viewModel.scenarios.selectionFormModel, document.getElementById('scenario-form'));
+                //particular for IE selection form, another ajax call to retrieve the leaseblocks
+                app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocks($('#id_leaseblock_ids').val().split(','));
+                //app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
+            },
+            error: function (result) { 
+                debugger; 
+            }
+        });
+    }; 
+        
+    self.deleteScenario = function() {
+        var selection = this;
+        
+        //remove from activeLayers
+        app.viewModel.activeLayers.remove(selection);
+        //remove from app.map
+        if (selection.layer) {
+            app.map.removeLayer(selection.layer);
+        }
+        //remove from scenarioList
+        app.viewModel.scenarios.scenarioList.remove(selection);
+        
+        //remove from server-side db (this should provide error message to the user on fail)
+        $.ajax({
+            url: '/scenario/delete_selection/' + selection.uid + '/',
+            type: 'POST',
+            error: function (result) {
+                debugger;
+            }
+        })
+    };
+    
+    
+    return ret;
+    /*
+    self.id = options.uid;
+    self.uid = options.uid;
+    self.name = options.name;
+    self.description = options.description;
+    
+    self.overview = self.description || 'no description was provided';
+    
+    self.attributes = options.attributes ? options.attributes : [];
+    self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
+    
+    self.active = ko.observable(false);
+    self.visible = ko.observable(false);
+    self.defaultOpacity = options.opacity || 0.8;
+    self.opacity = ko.observable(self.defaultOpacity);
+    self.type = 'Vector';
+    
+    self.opacity.subscribe( function(newOpacity) {
+        if ( self.layer ) {
+            self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
+            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
+            self.layer.redraw();
+        } 
+    });
+    
+    self.toggleActive = function(self, event) {
+        var selection = this;
+        if (selection.active()) { // if layer is active, then deactivate
+            selection.deactivateLayer();
+        } else { // otherwise layer is not currently active, so activate
+            selection.activateLayer();
+        }
+    };
+    
+    self.activateLayer = function() {
+        var selection = this;
+        app.viewModel.scenarios.addScenarioToMap(selection);
+    };
+    
+    self.deactivateLayer = function() {
+        var selection = this;
+        
+        selection.active(false);
+        selection.visible(false);
+        
+        selection.opacity(selection.defaultOpacity);
+        app.setLayerVisibility(selection, false);
+        app.viewModel.activeLayers.remove(selection);
+        
+        //remove the key/value pair from aggregatedAttributes
+        delete app.viewModel.aggregatedAttributes()[selection.name];
+        //if there are no more attributes left to display, then remove the overlay altogether
+        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
+            app.viewModel.aggregatedAttributes(false);
+        }
+    
+    };
+    
+    
+    self.visible = ko.observable(false);  
+    
+    // bound to click handler for layer visibility switching in Active panel
+    self.toggleVisible = function() {
+        var selection = this;
+        
+        if (selection.visible()) { //make invisible
+            selection.visible(false)
+            app.setLayerVisibility(selection, false)
+        } else { //make visible
+            selection.visible(true);
+            app.setLayerVisibility(selection, true);
+        }
+    };
+
+    // is description active
+    self.infoActive = ko.observable(false);
+    app.viewModel.showOverview.subscribe( function() {
+        if ( app.viewModel.showOverview() === false ) {
+            self.infoActive(false);
+        }
+    });
+    
+    // display descriptive text below the map
+    self.toggleDescription = function(selection) {
+        if ( ! selection.infoActive() ) {
+            self.showDescription(selection);
+        } else {
+            self.hideDescription(selection);
+        }
+    };
+    
+    self.showDescription = function(selection) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.activeInfoLayer(selection);
+        self.infoActive(true);
+        $('#overview-overlay').height(186);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    self.hideDescription = function(selection) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.showMapAttribution();
+    };
+    
+    return self;
+    */
 } // end selectionModel
 
 function selectionFormModel(options) {
@@ -548,10 +703,13 @@ function IESelectionFormModel(options) {
                             strokeColor: '#ff0',
                             strokeOpacity: .8,
                             fillOpacity: 0
-                        }),     
-                        scenarioModel: new selectionModel()
+                        })//,     
+                        //scenarioModel: new selectionModel()
                     }
                 );
+                
+                //assign leaseblock ids to hidden leaseblock ids form field
+                $('#id_leaseblock_ids').val(self.selectedLeaseBlocks().join(","))
                 
                 layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
                 self.selectedLeaseBlocksLayer = layer
@@ -610,8 +768,8 @@ function IESelectionFormModel(options) {
 function scenarioModel(options) {
     var self = this;
 
-    self.id = options.uid;
-    self.uid = options.uid;
+    self.id = options.uid || null;
+    self.uid = options.uid || null;
     self.name = options.name;
     self.description = options.description;
     
@@ -792,6 +950,7 @@ function scenariosModel(options) {
     
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
+    self.selectionsLoaded = false;
 
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
@@ -799,12 +958,12 @@ function scenariosModel(options) {
         self.errorMessage(false);
         
         //clean up scenario form
-        if (self.scenarioForm()) {
+        if (self.scenarioForm() || self.scenarioFormModel) {
             self.removeScenarioForm();
         }
         
         //clean up selection form
-        if (self.selectionForm()) {
+        if (self.selectionForm() || self.selectionFormModel) {
             self.removeSelectionForm();
         }
         
@@ -879,13 +1038,24 @@ function scenariosModel(options) {
     //
     self.addScenarioToMap = function(scenario, options) {
         var scenarioId,
-            opacity;
+            opacity = .8,
+            stroke = 1,
+            fillColor = "#2F6A6C",
+            strokeColor = "#1F4A4C";
         if ( scenario ) {
             scenarioId = scenario.uid;
             scenario.active(true);
             scenario.visible(true);
         } else {
             scenarioId = options.uid;
+        }
+        if (scenarioId.indexOf('leaseblockselection') !== -1) {
+            var isSelectionModel = true;
+        } else {
+            var isSelectionModel = false;
+        }
+        if (self.scenarioFormModel) {
+            self.scenarioFormModel.isLeaseblockLayerVisible(false);
         }
         //perhaps much of this is not necessary once a scenario has been added to app.map.layers initially...?
         //(add check for scenario.layer, reset the style and move on?)
@@ -897,19 +1067,20 @@ function scenariosModel(options) {
                 if ( scenario ) {
                     opacity = scenario.opacity();
                     stroke = scenario.opacity();
-                } else {
-                    opacity = .8;
-                    stroke = 1;
-                }
+                } 
+                if ( isSelectionModel ) {
+                    fillColor = "#00467F";
+                    strokeColor = "#00265F";
+                } 
                 var layer = new OpenLayers.Layer.Vector(
                     scenarioId,
                     {
                         projection: new OpenLayers.Projection('EPSG:3857'),
                         displayInLayerSwitcher: false,
                         styleMap: new OpenLayers.StyleMap({
-                            fillColor: "#2F6A6C",
+                            fillColor: fillColor,
                             fillOpacity: opacity,
-                            strokeColor: "#1F4A4C",
+                            strokeColor: strokeColor,
                             strokeOpacity: stroke
                         }),     
                         //style: OpenLayers.Feature.Vector.style['default'],
@@ -926,14 +1097,23 @@ function scenariosModel(options) {
                 } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    
-                    scenario = new scenarioModel({
-                        id: properties.uid,
-                        uid: properties.uid,
-                        name: properties.name, 
-                        description: properties.description,
-                        features: layer.features
-                    });
+                    if (isSelectionModel) {
+                        scenario = new selectionModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    } else {
+                        scenario = new scenarioModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    }
                     scenario.layer = layer;
                     scenario.layer.scenarioModel = scenario;
                     scenario.active(true);
@@ -1003,7 +1183,21 @@ function scenariosModel(options) {
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
-        self.scenariosLoaded = true;
+    }
+    
+    //populates scenarioList..?
+    self.loadSelections = function (selections) {
+        $.each(selections, function (i, selection) {
+            var selectionViewModel = new selectionModel({
+                id: selection.uid,
+                uid: selection.uid,
+                name: selection.name,
+                //description: scenario.description,
+                attributes: selection.attributes
+            });
+            self.scenarioList.push(selectionViewModel);
+            app.viewModel.layerIndex[selection.uid] = selectionViewModel;
+        });
     }
     
     self.loadLeaseblockLayer = function() {
@@ -1041,7 +1235,7 @@ function scenariosModel(options) {
 app.viewModel.scenarios = new scenariosModel();
 
 $('#designsTab').on('show', function (e) {
-    if ( !app.viewModel.scenarios.scenariosLoaded ) {
+    if ( !app.viewModel.scenarios.scenariosLoaded || !app.viewModel.scenarios.selectionsLoaded) {
         // load the scenarios
         $.ajax({
             url: '/scenario/get_scenarios',
@@ -1049,6 +1243,21 @@ $('#designsTab').on('show', function (e) {
             dataType: 'json',
             success: function (scenarios) {
                 app.viewModel.scenarios.loadScenarios(scenarios);
+                app.viewModel.scenarios.scenariosLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+        
+        // load the selections
+        $.ajax({
+            url: '/scenario/get_selections',
+            type: 'GET',
+            dataType: 'json',
+            success: function (selections) {
+                app.viewModel.scenarios.loadSelections(selections);
+                app.viewModel.scenarios.selectionsLoaded = true;
             },
             error: function (result) {
                 debugger;

@@ -239,35 +239,37 @@ app.init = function () {
     
     app.map.events.register("featureclick", null, function(e) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
-        var date = new Date();
-        var newTime = date.getTime();
-        var text = [],
-            title = layer.name;
-        
-        if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
-            var attrs = layer.scenarioAttributes;
-            for (var i=0; i<attrs.length; i++) {
-                text.push({'display': attrs[i].title, 'data': attrs[i].data});
-            }
-        } else if ( layer.attributes.length ) {
-            var attrs = layer.attributes;
+        if (layer) {
+            var date = new Date();
+            var newTime = date.getTime();
+            var text = [],
+                title = layer.name;
             
-            for (var i=0; i<attrs.length; i++) {
-                if ( e.feature.data[attrs[i].field] ) {
-                    text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+            if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
+                var attrs = layer.scenarioAttributes;
+                for (var i=0; i<attrs.length; i++) {
+                    text.push({'display': attrs[i].title, 'data': attrs[i].data});
                 }
+            } else if ( layer.attributes.length ) {
+                var attrs = layer.attributes;
+                
+                for (var i=0; i<attrs.length; i++) {
+                    if ( e.feature.data[attrs[i].field] ) {
+                        text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                    }
+                }
+            } else if ( app.viewModel.isSelectedLeaseBlock(layer.name) ) {
+                text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
-        } else if ( app.viewModel.isSelectedLeaseBlock(layer.name) ) {
-            text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
+            
+            if (newTime - app.map.clickOutput.time > 300) {
+                app.map.clickOutput.attributes = {};
+                app.map.clickOutput.time = newTime;
+            } 
+            app.map.clickOutput.attributes[title] = text;
+            
+            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
-        
-        if (newTime - app.map.clickOutput.time > 300) {
-            app.map.clickOutput.attributes = {};
-            app.map.clickOutput.time = newTime;
-        } 
-        app.map.clickOutput.attributes[title] = text;
-        
-        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
     });
     
     app.map.events.register("nofeatureclick", null, function(e) {
