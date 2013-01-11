@@ -145,6 +145,10 @@
   left: 3px;
 }
 
+#data-accordion {
+    outline: none;
+}
+
 #data-accordion, #legend-accordion {
   height: 100%;
   overflow-y: auto;
