@@ -719,6 +719,10 @@
     <!-- /ko -->
 </div>
 
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser">
+    <label>Estimated Number of Selected Leaseblocks: <span data-bind="text: leaseblocksLeft"></span></label>
+</div>
+
 <div class="wizard_nav" style="width:100%">
     <div class="btn-group pull-right">
         <a href="#" class="button btn" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
