@@ -374,7 +374,7 @@ function scenarioFormModel(options) {
         return true;
     };
     
-    self.shippingLanesLayer = app.viewModel.getLayerById(65);
+    self.shippingLanesLayer = app.viewModel.getLayerById(64);
     self.toggleShippingLanesLayer = function(formModel, event) {
         if ( event.target.type === "checkbox" ) {
             if ($('#shipping-lanes-layer-toggle input').is(":checked")) {
