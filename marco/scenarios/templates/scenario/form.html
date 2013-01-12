@@ -713,7 +713,7 @@
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser">
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser()">
     <!-- ko if: !isLeaseblockLayerVisible() -->
     <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
     <!-- /ko -->
@@ -722,7 +722,7 @@
     <!-- /ko -->
 </div>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser">
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser()">
     <label>Estimated Number of Selected Leaseblocks: <span data-bind="text: leaseblocksLeft"></span></label>
 </div>
 

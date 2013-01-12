@@ -8,11 +8,68 @@ filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.00000000, M12=1.00000000,
 
 }
 
+div.olControlZoom a {
+    background-color: rgb(0, 109, 184) !important;
+}
+
+#basemaps a {
+    background-color: rgb(0, 109, 184) !important;
+}
+
+.SimpleLayerSwitcher a {
+    background-color: rgb(0, 109, 184) !important;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    width: 6px !important;
+}
+
+#overview-overlay-content .mCSB_scrollTools {
+    margin-right: 8px;
+}
+
+#overview-overlay-header .btn-mini {
+    margin-right: 5px;
+}
+
 #data-accordion i.icon-info-sign {
-	margin-left: 0px;
+	margin-left: -5px;
 }
 #data-accordion .btn-info-sign {
-	width: 15px;
+	width: 5px;
+}
+
+#designs .btn-primary {
+    background-color: rgb(0, 129, 204);
+}
+
+#designs .icon-plus-sign {
+    padding-right: 3px;
+}
+
+#designs .btn-info-sign {
+    padding-right: 6px;
+	width: 12px;
+}
+
+#designs .icon-info-sign {
+    padding-left: 10px;
+}
+
+#active .btn {
+    padding-right: 5px;
+}
+
+#active .icon-info-sign {
+    padding-left: 10px;
+}
+
+#active .icon-adjust {
+    padding-left: 10px;
+}
+
+#active .icon-remove {
+    padding-left: 10px;
 }
 
 .learn-page .image:hover .caption span {
@@ -45,7 +102,7 @@ filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.00000000, M12=1.00000000,
 	padding: 0px 10px 10px;
 }
 #overview-overlay .mCSB_dragger_bar {
-	margin-left: -2px;
+	margin-left: 6px;
 }
 #overview-overlay-content, #overview-overlay-close {
 
