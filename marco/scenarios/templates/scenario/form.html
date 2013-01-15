@@ -44,7 +44,7 @@
         updateDesignScrollBar();
         
         function validate(step) {
-            if (step == 1) {
+            if (step == 1) {/*
                 parameter_selections = 0;
                 var all_params = $('input.parameters');
                 //NOTE:  This will also examine parameters in Step 2...might call those 'filters' to prevent this problem?
@@ -72,7 +72,7 @@
                             return false;
                         }
                     }
-                }
+                }*/
             } 
             return true;
         }; 
@@ -91,6 +91,9 @@
                 $(this).hide();
             });
             $('div#step' + step).show();
+            updateDesignScrollBar();
+            $('#wind-design-form').data('jsp').scrollTo(0,0);
+            
 
             if (step == 1) {
                 $('#button_prev').hide();
@@ -116,7 +119,7 @@
             if (designsWizardScrollpane === undefined) {
                 $('#wind-design-form').jScrollPane();
             } else {
-                setTimeout(function() {designsWizardScrollpane.reinitialise();},100);
+                setTimeout(function() {designsWizardScrollpane.reinitialise();},200);
             }
         }
         
@@ -501,7 +504,7 @@
                 <div style="margin-top: 10px">
                     <label id="wind-speed-layer-toggle" data-bind="click: toggleWindSpeedLayer">
                         <input id="wind-speed-layer-checkbox" data-bind="checked: windSpeedLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                        Show Wind Speed</input>
+                        Show Wind Speed Data</input>
                     </label>
                 </div>
             </div>
@@ -550,7 +553,7 @@
                 <div style="margin-top: 10px">
                     <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
                         <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                        Show AWC Routes & Hubs</input>
+                        Show AWC Routes & Hubs Data</input>
                     </label>
                 </div>
             </div>
@@ -601,7 +604,7 @@
                 <div style="margin-top: 10px">
                     <label id="shipping-lanes-layer-toggle" data-bind="click: toggleShippingLanesLayer">
                         <input id="shipping-lanes-layer-checkbox" data-bind="checked: shippingLanesLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                        Show Shipping Lanes</input>
+                        Show Shipping Lanes Data</input>
                     </label>
                 </div>
             </div>
@@ -710,7 +713,7 @@
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser">
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser()">
     <!-- ko if: !isLeaseblockLayerVisible() -->
     <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
     <!-- /ko -->
@@ -719,7 +722,7 @@
     <!-- /ko -->
 </div>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser">
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser()">
     <label>Estimated Number of Selected Leaseblocks: <span data-bind="text: leaseblocksLeft"></span></label>
 </div>
 

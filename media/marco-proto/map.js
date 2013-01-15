@@ -144,99 +144,102 @@ app.init = function () {
         layers: [],
         //events: {fallThrough: true},
         handlerMode: 'click',
-        callback: function(infoLookup) {
-            for (var idx in infoLookup) {
-                $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-                  if (potential_layer.type !== 'Vector') {
-                    var new_attributes,
-                        info = infoLookup[idx],
-                        date = new Date(),
-                        newTime = date.getTime();
-                    if (info && info.data) { 
-                        var newmsg = '',
-                            hasAllAttributes = true,
-                            parentHasAllAttributes = false;
-                        // if info.data has all the attributes we're looking for
-                        // we'll accept this layer as the attribution layer 
-                        //if ( ! potential_layer.attributes.length ) {
-                        hasAllAttributes = false;
-                        //}
-                        $.each(potential_layer.attributes, function (attr_index, attr_obj) {
-                            if ( attr_obj.field in info.data ) {
-                                hasAllAttributes = true;
-                            }
-                        });
-                        if ( !hasAllAttributes && potential_layer.parent) {
-                            parentHasAllAttributes = true;
-                            if ( ! potential_layer.parent.attributes.length ) {
-                                parentHasAllAttributes = false;
-                            }
-                            $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
-                                if ( !(attr_obj.field in info.data) ) {
-                                    parentHasAllAttributes = false;
-                                }
-                            });
-                        }
-                        if (hasAllAttributes) {
-                            new_attributes = potential_layer.attributes;
-                        } else if (parentHasAllAttributes) {
-                            new_attributes = potential_layer.parent.attributes;
-                        }
-                        if (new_attributes) { 
-                            var attribute_objs = [];
-                            $.each(new_attributes, function(index, obj) {
-                                if ( potential_layer.compress_attributes ) {
-                                    var display = obj.display + ': ' + info.data[obj.field];
-                                    attribute_objs.push({'display': display, 'data': ''});
-                                } else {
-                                    /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
-                                    var value = info.data[obj.field];
-                                    if (value === 999999) {
-                                        attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
-                                    } else {
-                                        try {
-                                            //set the precision and add any necessary commas
-                                            value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                        }
-                                        catch (e) {
-                                            //keep on keeping on
-                                        }
-                                        attribute_objs.push({'display': obj.display, 'data': value});
-                                    }
-                                    
-                                }
-                            });
-                            var title = potential_layer.name,
-                                text = attribute_objs;
-                                
-                            if ( app.viewModel.isSelectedLeaseBlock(title) ) {
-                                text = app.viewModel.getOCSAttributes(title, info.data);
-                            } else if ( title === 'Sea Turtles' ) {
-                                text = app.viewModel.getSeaTurtleAttributes(title, info.data);
-                            } else if ( title === 'Toothed Mammals (All Seasons)' ) {
-                                text = app.viewModel.getToothedMammalAttributes(title, info.data);
-                            } else if ( title === 'Wind Speed' ) {
-                                text = app.viewModel.getWindSpeedAttributes(title, info.data);
-                            }
-                            if (newTime - app.map.clickOutput.time > 500) {
-                                app.map.clickOutput.attributes = {};
-                                app.map.clickOutput.time = newTime;
-                                app.map.clickOutput.attributes[title] = text;
-                            } else {
-                                if ( text[0].data || text[0].display) {
-                                    app.map.clickOutput.attributes[title] = text;
-                                }
-                            }
-                            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                        } 
-                    } 
-                  }
-                });
-            } 
+        callback: function(infoLookup, lonlat, xy) {   
+            app.map.utfGridClickHandling(infoLookup);
         }
     });
     map.addControl(map.UTFControl);    
     
+    app.map.utfGridClickHandling = function(infoLookup) {
+        for (var idx in infoLookup) {
+            $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
+              if (potential_layer.type !== 'Vector') {
+                var new_attributes,
+                    info = infoLookup[idx],
+                    date = new Date(),
+                    newTime = date.getTime();
+                if (info && info.data) { 
+                    console.log('utfcontrol click');
+                    var newmsg = '',
+                        hasAllAttributes = true,
+                        parentHasAllAttributes = false;
+                    // if info.data has all the attributes we're looking for
+                    // we'll accept this layer as the attribution layer 
+                    //if ( ! potential_layer.attributes.length ) {
+                    hasAllAttributes = false;
+                    //}
+                    $.each(potential_layer.attributes, function (attr_index, attr_obj) {
+                        if ( attr_obj.field in info.data ) {
+                            hasAllAttributes = true;
+                        }
+                    });
+                    if ( !hasAllAttributes && potential_layer.parent) {
+                        parentHasAllAttributes = true;
+                        if ( ! potential_layer.parent.attributes.length ) {
+                            parentHasAllAttributes = false;
+                        }
+                        $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
+                            if ( !(attr_obj.field in info.data) ) {
+                                parentHasAllAttributes = false;
+                            }
+                        });
+                    }
+                    if (hasAllAttributes) {
+                        new_attributes = potential_layer.attributes;
+                    } else if (parentHasAllAttributes) {
+                        new_attributes = potential_layer.parent.attributes;
+                    }
+                    if (new_attributes) { 
+                        var attribute_objs = [];
+                        $.each(new_attributes, function(index, obj) {
+                            if ( potential_layer.compress_attributes ) {
+                                var display = obj.display + ': ' + info.data[obj.field];
+                                attribute_objs.push({'display': display, 'data': ''});
+                            } else {
+                                /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
+                                var value = info.data[obj.field];
+                                if (value === 999999) {
+                                    attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
+                                } else {
+                                    try {
+                                        //set the precision and add any necessary commas
+                                        value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    }
+                                    catch (e) {
+                                        //keep on keeping on
+                                    }
+                                    attribute_objs.push({'display': obj.display, 'data': value});
+                                }
+                            }
+                        });
+                        var title = potential_layer.name,
+                            text = attribute_objs;
+                        if ( title === 'OCS Lease Blocks' ) {
+                            text = app.viewModel.getOCSAttributes(title, info.data);
+                        } else if ( title === 'Sea Turtles' ) {
+                            text = app.viewModel.getSeaTurtleAttributes(title, info.data);
+                        } else if ( title === 'Toothed Mammals (All Seasons)' ) {
+                            text = app.viewModel.getToothedMammalAttributes(title, info.data);
+                        } else if ( title === 'Wind Speed' ) {
+                            text = app.viewModel.getWindSpeedAttributes(title, info.data);
+                        }
+                        if (newTime - app.map.clickOutput.time > 500) {
+                            app.map.clickOutput.attributes = {};
+                            app.map.clickOutput.time = newTime;
+                            app.map.clickOutput.attributes[title] = text;
+                        } else {
+                            if ( text[0].data || text[0].display) {
+                                app.map.clickOutput.attributes[title] = text;
+                            }
+                        }
+                        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                    } 
+                } 
+              }
+            });
+        }
+    }; //end utfGridClickHandling
+      
     app.map.events.register("featureclick", null, function(e) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         if (layer) {
@@ -283,10 +286,8 @@ app.init = function () {
         var date = new Date();
         var newTime = date.getTime();
         if (newTime - app.map.clickOutput.time > 300) {
-            //app.viewModel.aggregatedAttributes(false);
-            //console.log('nofeatureclick resulting in attribution overlay removal');
             app.viewModel.closeAttribution();
-        }
+        } 
     });
     
     app.markers = new OpenLayers.Layer.Markers( "Markers" );
@@ -295,21 +296,14 @@ app.init = function () {
     //var icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.markers.icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.map.addLayer(app.markers);
-        
+              
+    //place the marker on click events
     app.map.events.register("click", app.map , function(e){
         app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
         app.marker.map = app.map;
         app.viewModel.updateMarker();
-        //app.markers.addMarker(app.marker);
-        //app.markers.clearMarkers();
-        /*setTimeout(function() {
-            if ( app.viewModel.aggregatedAttributes() ) {
-                app.markers.addMarker(app.marker);
-            }
-        }, 300);*/
     });
-
-        
+    
 };
 
 app.addLayerToMap = function(layer) {
