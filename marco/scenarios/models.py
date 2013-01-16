@@ -655,7 +655,7 @@ class LeaseBlockSelection(Analysis):
             attributes.append({'title': 'Distance to Shipping Lanes', 'data': miles_to_shipping})
             avg_distance_to_shipping = format(self.get_avg_distance_to_shipping(leaseblocks),1)
             avg_distance_to_shipping_output = '%s miles' %avg_distance_to_shipping
-            attributes.append({'title': 'Average Distance', 'data': avg_distance_output})
+            attributes.append({'title': 'Average Distance', 'data': avg_distance_to_shipping_output})
             '''
             if self.input_filter_ais_density:
                 attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
@@ -780,8 +780,7 @@ class LeaseBlockSelection(Analysis):
         for lb in leaseblocks:
             total += lb.tsz_mean_distance
         if total != 0:
-            avg = total / len(leaseblocks)
-            return avg
+            return total / len(leaseblocks)
         else:
             return 0
     
