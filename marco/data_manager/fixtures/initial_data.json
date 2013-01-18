@@ -1427,6 +1427,51 @@
         }
     },
     {
+        "pk": 84,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-72.38&y=38.59&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
+            "slug_name": "dod-wind-stipulation-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
+            "name": "DoD Wind Stipulation Areas",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "31",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 58,
         "model": "data_manager.layer",
         "fields": {
@@ -1778,51 +1823,6 @@
             "sublayers": [
                 21
             ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 84,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
-            "slug_name": "dod-wind-stipulation-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
-            "name": "DoD Wind Stipulation Areas",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
-            "arcgis_layers": "31",
-            "legend_title": "",
-            "sublayers": [],
             "attribute_title": ""
         }
     },
