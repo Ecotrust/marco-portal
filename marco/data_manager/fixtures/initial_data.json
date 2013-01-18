@@ -561,53 +561,6 @@
         }
     },
     {
-        "pk": 7,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-69.99413435384602&location%5By%5D=39.38478178286678&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml",
-            "source": "http://www.nrel.gov/gis/data_wind.html",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/windspeed90m/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/High_Resolution/Atlantic_Coast_90m_Windspeed_Offshore_Wind_High_Resolution.zip",
-            "metadata": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/metadata/atlantic_coast_metadata.htm",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower.",
-            "attribute_fields": [
-                67
-            ],
-            "learn_more": "",
-            "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam. ",
-            "slug_name": "wind-speed",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/legend.png",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "National Renewable Energy Laboratory",
-            "data_notes": "This layer represents an estimate of offshore annual average wind speeds and is based primarily on data extrapolated from onshore wind data, which is a source of uncertainty in the dataset. For more information visit nrel.gov and search for Technical Report TP-500-45889.",
-            "name": "Wind Speed",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeedNew/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "Wind Speed at 90m (m/s)",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 10,
         "model": "data_manager.layer",
         "fields": {
@@ -1382,6 +1335,53 @@
         }
     },
     {
+        "pk": 7,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-69.99413435384602&location%5By%5D=39.38478178286678&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=7&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml",
+            "source": "http://www.nrel.gov/gis/data_wind.html",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/windspeed90m/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/High_Resolution/Atlantic_Coast_90m_Windspeed_Offshore_Wind_High_Resolution.zip",
+            "metadata": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/metadata/atlantic_coast_metadata.htm",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower.",
+            "attribute_fields": [
+                67
+            ],
+            "learn_more": "",
+            "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. A horizontal discontinuity (seam) in the wind resource is present at the border of New York and New Jersey. Discontinuities in the data result from offshore data that is based on different versions of the numerical model used for the different onshore mapping projects and the way the extrapolation software interprets the data on either side of the seam. ",
+            "slug_name": "wind-speed",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed2013/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "National Renewable Energy Laboratory",
+            "data_notes": "This layer represents an estimate of offshore annual average wind speeds and is based primarily on data extrapolated from onshore wind data, which is a source of uncertainty in the dataset. For more information visit nrel.gov and search for Technical Report TP-500-45889.",
+            "name": "Wind Speed",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed2013/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "Wind Speed at 90m (m/s)",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 79,
         "model": "data_manager.layer",
         "fields": {
@@ -1682,51 +1682,6 @@
         }
     },
     {
-        "pk": 84,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "placeholder",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
-            "slug_name": "dod-wind-stipulation-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
-            "name": "DoD Wind Stipulation Areas",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
-            "arcgis_layers": "31",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 80,
         "model": "data_manager.layer",
         "fields": {
@@ -1823,6 +1778,51 @@
             "sublayers": [
                 21
             ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 84,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
+            "slug_name": "dod-wind-stipulation-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
+            "name": "DoD Wind Stipulation Areas",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "31",
+            "legend_title": "",
+            "sublayers": [],
             "attribute_title": ""
         }
     },
