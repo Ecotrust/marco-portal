@@ -38,6 +38,24 @@ def add_learn_links(themes):
         context.append({'theme': theme, 'learn_link': theme.learn_link})
     return context
     
+def tiles_page(request, slug=None, template='tiles_page.html'):
+    layer = get_object_or_404(Layer, slug_name=slug)
+    orig_url = layer.url
+    arctile_url = orig_url.replace('{z}', '{level}').replace('{x}', '{col}').replace('{y}', '{row}')
+    arcrest_url = orig_url.replace('/export', '')
+    context = {'layer': layer, 'arctile_url': arctile_url, 'arcrest_url': arcrest_url, 'domain': get_domain(8000)}
+    return render_to_response(template, RequestContext(request, context)) 
+
+def map_tile_example(request, slug=None, template='map_tile_example.html'):
+    layer = get_object_or_404(Layer, slug_name=slug)
+    context = {'layer': layer}
+    return render_to_response(template, RequestContext(request, context)) 
+
+def arcrest_example(request, slug=None, template='arcrest_example.html'):
+    layer = get_object_or_404(Layer, slug_name=slug)
+    context = {'layer': layer}
+    return render_to_response(template, RequestContext(request, context)) 
+
 def linkify(text):
     return text.lower().replace(' ', '-')
     

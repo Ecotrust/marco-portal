@@ -3,5 +3,8 @@ from views import *
 
 urlpatterns = patterns('',
     (r'^catalog', data_catalog),
-    (r'^needs', data_needs)
+    (r'^needs', data_needs),
+    (r'^map_tile_example/([\w-]*)', map_tile_example),
+    (r'^arcrest_example/([\w-]*)', arcrest_example),
+    (r'^([\w-]*)', tiles_page)
 )
