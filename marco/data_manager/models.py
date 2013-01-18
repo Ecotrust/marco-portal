@@ -193,7 +193,7 @@ class Layer(models.Model):
         if self.is_shareable and self.layer_type in ['XYZ', 'ArcRest', 'WMS']:
             domain = get_domain(8000)
             return '%s/explore/%s' %(domain, self.slug)
-        return False
+        return None
         
     @property
     def tooltip(self):
@@ -246,6 +246,7 @@ class Layer(models.Model):
                 'data_download': layer.data_download_link,
                 'metadata': layer.metadata_link,
                 'source': layer.source_link,
+                'tiles': layer.tiles_link,
                 'learn_link': layer.learn_link,
                 'attributes': layer.serialize_attributes,
                 'lookups': layer.serialize_lookups,
@@ -275,6 +276,7 @@ class Layer(models.Model):
             'data_download': self.data_download_link,
             'metadata': self.metadata_link,
             'source': self.source_link,
+            'tiles': self.tiles_link,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,
             'lookups': self.serialize_lookups,
