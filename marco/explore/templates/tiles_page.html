@@ -37,26 +37,34 @@ map.addLayer(layer);
         </div>
     </div>
     
-    <div class="row-fluid">
-        <div class="span11" style="margin-left: 0px;">
+    <div class="row-fluid" style="margin-left: 0px;">
+        <div class="span6">
             <h4>ArcGIS</h4>
             <p>If your development environment includes the javascript ArcGIS API, your application can consume the data using the
             WebTiledLayer class.  An example of this can be found in the 
             <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/jssamples/#sample/layers_webtiled_one" target="_blank">
             ArcGIS API for JavaScript documentation</a>.  
             An example similar to the one given in the documentation, but with the URL replaced, would be as follows
-            <pre>
+        </div>
+        <div class="span5">
+            <iframe scrolling="no" width="100%" height="250" frameborder="0" src="{{domain}}/explore/map_tile_esri_example/{{layer.slug}}"></iframe>
+        </div>
+        <div class="span1"></div>
+        <div class="row-fluid">
+            <div class="span11">
+                <pre>
 var wtl = esri.layers.WebTiledLayer;
 var layer = new wtl("{{arctile_url}}&nbsp;", {
     "id": "{{layer.name}}"
 });
 map.addLayer(layer);
-            </pre>
-            <p>ArcGIS Resources offers <a href="http://resources.arcgis.com/en/help/flex-api/samples/index.html#//01nq00000085000000" target="_blank">
-            a sample page</a> that lets you experiment with tiled/cached map services.  
-            By selecting Custom Web Tiled Layer (at the top), removing the subdomains entry, and replacing the URL template with the 
-            following link you can see the map display the {{layer.name}} dataset.
-            <pre>{{arctile_url}}</pre>   
+                </pre>
+                <p>ArcGIS Resources offers <a href="http://resources.arcgis.com/en/help/flex-api/samples/index.html#//01nq00000085000000" target="_blank">
+                a sample page</a> that lets you experiment with tiled/cached map services.  
+                By selecting Custom Web Tiled Layer (at the top), removing the subdomains entry, and replacing the URL template with the 
+                following link you can see the map display the {{layer.name}} dataset.
+                <pre>{{arctile_url}}</pre>   
+            </div>
         </div>
     </div>
     {% endif %}
