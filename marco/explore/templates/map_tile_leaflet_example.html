@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" >
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+ <title>Basemaps</title>
+ <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+ <script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>
+ <script type="text/javascript">
+ 
+ var map;
+ var esriocean;
+ var layer_url;
+ var layer;
+
+ function initmap() {
+	// set up the map
+	map = new L.Map('mymap');
+
+    esriocean = new L.TileLayer(
+        "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png", 
+        {
+            minZoom: 1, 
+            maxZoom: 12
+        }
+    );
+    map.addLayer(esriocean);
+       
+    layer_url_orig = "{{layer.url}}";
+    console.log(layer_url_orig);
+    layer_url = "{{leaflet_url}}";
+    console.log(layer_url);
+
+    layer = new L.TileLayer(
+        layer_url, 
+        {
+            minZoom: 1, 
+            maxZoom: 12
+        }
+    );
+    map.addLayer(layer);
+    
+	map.setView(new L.LatLng(38.7, -74), 6);
+ }
+ 
+ 
+ </script>
+ </head>
+ <body onload="initmap()">
+ <div id="mymap" style="width: 500px; height: 250px;"></div>
+ </body>
+ </html>

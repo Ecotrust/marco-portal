@@ -58,6 +58,13 @@ def map_tile_esri_example(request, slug=None, template='map_tile_esri_example.ht
     context = {'layer': layer, 'arctile_url': arctile_url}
     return render_to_response(template, RequestContext(request, context)) 
 
+def map_tile_leaflet_example(request, slug=None, template='map_tile_leaflet_example.html'):
+    layer = get_object_or_404(Layer, slug_name=slug)
+    orig_url = layer.url
+    leaflet_url = orig_url.replace('$', '')
+    context = {'layer': layer, 'leaflet_url': leaflet_url}
+    return render_to_response(template, RequestContext(request, context)) 
+
 def arcrest_example(request, slug=None, template='arcrest_example.html'):
     layer = get_object_or_404(Layer, slug_name=slug)
     context = {'layer': layer}

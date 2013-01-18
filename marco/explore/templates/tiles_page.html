@@ -37,6 +37,34 @@ map.addLayer(layer);
         </div>
     </div>
     
+    <div class="row-fluid" style="margin-top: 20px;">
+        <div class="span6">
+            <h4>Leaflet</h4>
+            <p>If you are developing with Leaflet, you will want to use the 
+            <a href="http://leafletjs.com/reference.html#tilelayer" target="_blank">Leaflet TileLayer class</a>.
+            <p>An example of your solution might look similar to the code below. 
+            
+        </div>
+        <div class="span5">
+            <iframe scrolling="no" width="100%" height="250" frameborder="0" src="{{domain}}/explore/map_tile_leaflet_example/{{layer.slug}}"></iframe>
+        </div>
+        <div class="span1"></div>
+        <div class="row-fluid">
+            <div class="span11">
+                <pre>
+layer = new L.TileLayer(
+    "{{layer.url}}",
+    {
+        minZoom: 1, 
+        maxZoom: 12
+    }
+);
+map.addLayer(layer);
+                </pre>
+            </div>
+        </div>
+    </div>
+    
     <div class="row-fluid" style="margin-left: 0px;">
         <div class="span6">
             <h4>ArcGIS</h4>
