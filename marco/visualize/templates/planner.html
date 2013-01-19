@@ -161,11 +161,11 @@
                             </li>
                             {% load in_group %}
                             {% if user.is_authenticated and user|in_group:"Designers" %}
-                            <li  data-tab="designs" >
+                            <li data-tab="designs" >
                                 <a href="#designs" data-toggle="tab" id="designsTab">Designs</a>
                             </li>
                             {% endif %}
-                            <li  data-tab="active" >
+                            <li data-tab="active" >
                                 <a href="#active" data-toggle="tab" id="activeTab">Active  
                                     <span data-bind="visible: activeLayers().length > 0">
                                         (<span  data-bind="text: activeLayers().length">0</span>)

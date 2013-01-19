@@ -427,7 +427,7 @@ function selectionModel(options) {
             app.map.removeLayer(selection.layer);
         }
         //remove from scenarioList
-        app.viewModel.scenarios.scenarioList.remove(selection);
+        app.viewModel.scenarios.selectionList.remove(selection);
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
@@ -951,6 +951,44 @@ function scenariosModel(options) {
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
     self.selectionsLoaded = false;
+    
+    self.isScenariosOpen = ko.observable(false);
+    self.toggleScenariosOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
+        
+        if ( self.isScenariosOpen() ) {
+            self.isScenariosOpen(false);
+        } else {
+            self.isScenariosOpen(true);
+        }
+        self.updateScrollBar();
+    }        
+    self.isCollectionsOpen = ko.observable(false);
+    self.toggleCollectionsOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
+        
+        if ( self.isCollectionsOpen() ) {
+            self.isCollectionsOpen(false);
+        } else {
+            self.isCollectionsOpen(true);
+        }
+        self.updateScrollBar();
+    }       
+    
+    self.updateScrollBar = function() {
+        var dataScrollpane = $('#data-accordion.designs').data('jsp');
+        if (dataScrollpane === undefined) {
+            $('#data-accordion.designs').jScrollPane();
+        } else {
+            dataScrollpane.reinitialise();
+        }
+    }
+    
+    self.runComparisonReports = function() {
+        
+    }
 
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
@@ -1136,13 +1174,24 @@ function scenariosModel(options) {
                     //in case of edit, removes previously stored scenario
                     //self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
                     
-                    var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
-                        return oldScenario.uid === scenario.uid;
-                    });
-                    if ( previousScenario ) {
-                        self.scenarioList.replace( previousScenario, scenario );
+                    if ( isSelectionModel ) {
+                        var previousSelection = ko.utils.arrayFirst(self.selectionList(), function(oldSelection) {
+                            return oldSelection.uid === scenario.uid;
+                        });
+                        if ( previousSelection ) {
+                            self.selectionList.replace( previousSelection, scenario );
+                        } else {
+                            self.selectionList.push(scenario);
+                        }
                     } else {
-                        self.scenarioList.push(scenario);
+                        var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
+                            return oldScenario.uid === scenario.uid;
+                        });
+                        if ( previousScenario ) {
+                            self.scenarioList.replace( previousScenario, scenario );
+                        } else {
+                            self.scenarioList.push(scenario);
+                        }
                     }
                     
                     //self.scenarioForm(false);
@@ -1195,7 +1244,7 @@ function scenariosModel(options) {
                 //description: scenario.description,
                 attributes: selection.attributes
             });
-            self.scenarioList.push(selectionViewModel);
+            self.selectionList.push(selectionViewModel);
             app.viewModel.layerIndex[selection.uid] = selectionViewModel;
         });
     }
