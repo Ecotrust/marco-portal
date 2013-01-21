@@ -986,10 +986,6 @@ function scenariosModel(options) {
         }
     }
     
-    self.runComparisonReports = function() {
-        
-    }
-
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
         self.loadingMessage(false);
