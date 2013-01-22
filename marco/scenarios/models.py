@@ -618,6 +618,7 @@ class LeaseBlockSelection(Analysis):
     def serialize_attributes(self):
         from general.utils import format
         attributes = []
+        report_values = {}
         leaseblocks = LeaseBlock.objects.filter(prot_numb__in=self.leaseblock_ids.split(','))
         if (len(leaseblocks) > 0): 
             #get wind speed range
@@ -628,26 +629,34 @@ class LeaseBlockSelection(Analysis):
             avg_wind_speed = format(self.get_avg_wind_speed(leaseblocks),3)
             avg_wind_speed_output = '%s m/s' %avg_wind_speed
             attributes.append({'title': 'Average Wind Speed', 'data': avg_wind_speed_output})
+            report_values['wind-speed'] = {'min': min_wind_speed, 'max': max_wind_speed, 'avg': avg_wind_speed, 'selection_id': self.uid}
             #get distance to shore range
-            distance_to_shore = '%s to %s miles' %(format(self.get_min_distance(leaseblocks), 0), format(self.get_max_distance(leaseblocks), 0))
+            min_distance = format(self.get_min_distance(leaseblocks), 0)
+            max_distance = format(self.get_max_distance(leaseblocks), 0)
+            distance_to_shore = '%s to %s miles' %(min_distance, max_distance)
             attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
             avg_distance = format(self.get_avg_distance(leaseblocks),1)
             avg_distance_output = '%s miles' %avg_distance
             attributes.append({'title': 'Average Distance to Shore', 'data': avg_distance_output})
+            report_values['distance-to-shore'] = {'min': min_distance, 'max': max_distance, 'avg': avg_distance, 'selection_id': self.uid}
             #get depth range
-            depth_range = '%s to %s feet' %(format(self.get_max_depth(leaseblocks), 0), format(self.get_min_depth(leaseblocks), 0))
+            min_depth = format(self.get_min_depth(leaseblocks), 0)
+            max_depth = format(self.get_max_depth(leaseblocks), 0)
+            depth_range = '%s to %s feet' %(min_depth, max_depth)
             attributes.append({'title': 'Depth', 'data': depth_range})
             avg_depth = format(self.get_avg_depth(leaseblocks), 0)
             avg_depth_output = '%s feet' %avg_depth
             attributes.append({'title': 'Average Depth', 'data': avg_depth_output})
+            report_values['depth'] = {'min': min_depth, 'max': max_depth, 'avg': avg_depth, 'selection_id': self.uid}
             #get distance to awc range
             min_distance_to_awc = format(self.get_min_distance_to_awc(leaseblocks), 0)
             max_distance_to_awc = format(self.get_max_distance_to_awc(leaseblocks), 0)
             distance_to_awc_range = '%s to %s miles' %(min_distance_to_awc, max_distance_to_awc)
             attributes.append({'title': 'Distance to Proposed AWC Hub', 'data': distance_to_awc_range})
-            avg_depth = format(self.get_avg_distance_to_awc(leaseblocks), 1)
-            avg_depth_output = '%s miles' %avg_depth
-            attributes.append({'title': 'Average Distance to Proposed AWC Hub', 'data': avg_depth_output})
+            avg_distance_to_awc = format(self.get_avg_distance_to_awc(leaseblocks), 1)
+            avg_distance_to_awc_output = '%s miles' %avg_distance_to_awc
+            attributes.append({'title': 'Average Distance to Proposed AWC Hub', 'data': avg_distance_to_awc_output})
+            report_values['distance-to-awc'] = {'min': min_distance_to_awc, 'max': max_distance_to_awc, 'avg': avg_distance_to_awc, 'selection_id': self.uid}
             #get distance to shipping lanes
             min_distance_to_shipping = format(self.get_min_distance_to_shipping(leaseblocks), 0)
             max_distance_to_shipping = format(self.get_max_distance_to_shipping(leaseblocks), 0)
@@ -656,6 +665,7 @@ class LeaseBlockSelection(Analysis):
             avg_distance_to_shipping = format(self.get_avg_distance_to_shipping(leaseblocks),1)
             avg_distance_to_shipping_output = '%s miles' %avg_distance_to_shipping
             attributes.append({'title': 'Average Distance', 'data': avg_distance_to_shipping_output})
+            report_values['distance-to-shipping'] = {'min': min_distance_to_shipping, 'max': max_distance_to_shipping, 'avg': avg_distance_to_shipping, 'selection_id': self.uid}
             '''
             if self.input_filter_ais_density:
                 attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
@@ -664,7 +674,7 @@ class LeaseBlockSelection(Analysis):
             attributes.append({'title': 'Number of Leaseblocks', 'data': self.leaseblock_ids.count(',')+1})
         else:
             attributes.append({'title': 'Number of Leaseblocks', 'data': 0})
-        return { 'event': 'click', 'attributes': attributes }
+        return { 'event': 'click', 'attributes': attributes, 'report_values': report_values }
     
     def get_min_wind_speed(self, leaseblocks):
         min_wind_speed = leaseblocks[0].min_wind_speed_rev
@@ -716,14 +726,14 @@ class LeaseBlockSelection(Analysis):
     def get_min_depth(self, leaseblocks): 
         min_depth = leaseblocks[0].min_depth
         for lb in leaseblocks:
-            if lb.min_depth < min_depth:
+            if lb.min_depth > min_depth:
                 min_depth = lb.min_depth
         return meters_to_feet(-min_depth)
     
     def get_max_depth(self, leaseblocks):
         max_depth = leaseblocks[0].max_depth
         for lb in leaseblocks:
-            if lb.max_depth > max_depth:
+            if lb.max_depth < max_depth:
                 max_depth = lb.max_depth
         return meters_to_feet(-max_depth)
           

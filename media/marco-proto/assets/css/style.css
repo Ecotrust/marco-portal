@@ -593,7 +593,7 @@ a.disabled-link:hover {
 }
 
 #create-new-design .dropdown-menu {
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 #design-list .btn-layer {

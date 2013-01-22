@@ -367,6 +367,10 @@ input + i.icon-remove-sign {
     border-radius: 10px;
 }
 
+#reports {
+    padding: 0 10px;
+}
+
 
 .showcase {
 	position: relative;

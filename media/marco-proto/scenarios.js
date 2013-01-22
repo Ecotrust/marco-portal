@@ -777,6 +777,8 @@ function scenarioModel(options) {
     
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
+    
+    self.scenarioReportValues = options.attributes ? options.attributes.report_values : [];
 
     self.features = options.features;
     
@@ -933,6 +935,15 @@ function scenariosModel(options) {
     self.scenarioForm = ko.observable(false);
     
     self.selectionList = ko.observableArray();  
+    self.getSelectionById = function(id) {
+        var selections = self.selectionList();
+        for (var i=0; i<selections.length; i++) {
+            if ( selections[i].id === id ) {
+                return selections[i];
+            }
+        }
+        return false;
+    };
     self.selectionForm = ko.observable(false);
         
     self.leaseblockLayer = ko.observable(false);
@@ -1160,6 +1171,9 @@ function scenariosModel(options) {
                         dataType: 'json',
                         success: function(result) {
                             scenario.scenarioAttributes = result.attributes;
+                            if (isSelectionModel) {
+                                scenario.scenarioReportValues = result.report_values;
+                            }
                         },
                         error: function (result) {
                             debugger;
@@ -1230,7 +1244,7 @@ function scenariosModel(options) {
         });
     }
     
-    //populates scenarioList..?
+    //populates selectionList..?
     self.loadSelections = function (selections) {
         $.each(selections, function (i, selection) {
             var selectionViewModel = new selectionModel({
