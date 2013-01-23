@@ -148,8 +148,10 @@ app.init = function () {
             for (var idx in infoLookup) {
                 $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
                   if (potential_layer.type !== 'Vector') {
-                    var new_attributes;
-                    var info = infoLookup[idx];
+                    var new_attributes,
+                        info = infoLookup[idx],
+                        date = new Date(),
+                        newTime = date.getTime();
                     if (info && info.data) { 
                         var newmsg = '',
                             hasAllAttributes = true,
@@ -205,8 +207,6 @@ app.init = function () {
                                 }
                             });
                             var title = potential_layer.name,
-                                date = new Date(),
-                                newTime = date.getTime(),
                                 text = attribute_objs;
                             if ( title === 'OCS Lease Blocks' ) {
                                 text = app.viewModel.getOCSAttributes(title, info.data);
@@ -222,7 +222,7 @@ app.init = function () {
                                 app.map.clickOutput.time = newTime;
                                 app.map.clickOutput.attributes[title] = text;
                             } else {
-                                if ( text[0].data ) {
+                                if ( text[0].data || text[0].display) {
                                     app.map.clickOutput.attributes[title] = text;
                                 }
                             }
@@ -265,7 +265,6 @@ app.init = function () {
             app.map.clickOutput.time = newTime;
         } 
         app.map.clickOutput.attributes[title] = text;
-        
         app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
     });
     
@@ -274,6 +273,7 @@ app.init = function () {
         var newTime = date.getTime();
         if (newTime - app.map.clickOutput.time > 300) {
             //app.viewModel.aggregatedAttributes(false);
+            //console.log('nofeatureclick resulting in attribution overlay removal');
             app.viewModel.closeAttribution();
         }
     });

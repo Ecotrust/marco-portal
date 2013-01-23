@@ -82201,6 +82201,9 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             if (layer instanceof OpenLayers.Layer.Vector && !clicked[layer.id]) {
                 this.triggerEvent("nofeatureclick", {layer: layer});
             } 
+            if (layer instanceof OpenLayers.Layer.UTFGrid && !clicked[layer.id]) {
+                this.triggerEvent("nofeatureclick", {layer: layer});
+            } 
         }
     },
     
