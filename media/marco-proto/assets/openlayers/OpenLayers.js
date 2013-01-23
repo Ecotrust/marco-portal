@@ -82160,12 +82160,10 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
     },
     
     start: function(evt) {
-        //debugger;
         this.startEvt = evt;
     },
     
     cancel: function(evt) {
-        //debugger;
         delete this.startEvt;
     },
     
@@ -82178,13 +82176,13 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
     */
     onClick: function(evt) {
         if (!this.startEvt || evt.type !== "touchend"
-                                    && !OpenLayers.Event.isLeftClick(evt)) {
+           && !OpenLayers.Event.isLeftClick(evt)) {
             return;
         }
         var features = this.getFeatures(this.startEvt);
-        //console.dir(features);
         delete this.startEvt;
-        // fire featureclick events
+        
+        // fire featureclick events for vector features
         var feature, layer, more, clicked = {};
         for (var i=0, len=features.length; i<len; ++i) {
             feature = features[i];
@@ -82195,13 +82193,11 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                 break;
             }
         }
+        
         // fire nofeatureclick events on all vector layers with no targets
         for (i=0, len=this.map.layers.length; i<len; ++i) {
             layer = this.map.layers[i];
             if (layer instanceof OpenLayers.Layer.Vector && !clicked[layer.id]) {
-                this.triggerEvent("nofeatureclick", {layer: layer});
-            } 
-            if (layer instanceof OpenLayers.Layer.UTFGrid && !clicked[layer.id]) {
                 this.triggerEvent("nofeatureclick", {layer: layer});
             } 
         }
@@ -82296,7 +82292,22 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             if (layer.renderer instanceof OpenLayers.Renderer.Elements) {
                 if (layer.div.style.display !== "none") {
                     if (layer instanceof OpenLayers.Layer.Vector) {
-                        target = document.elementFromPoint(x, y);
+                        //elevating the layer's zindex to ensure it is the first layer hit by document.elementFromPoint
+                        layer.setZIndex(parseInt(layer.getZIndex()) + 1000000);
+                        
+                        target = document.elementFromPoint(x, y); 
+                        if (target && target._featureId) {
+                            feature = layer.getFeatureById(target._featureId);
+                            if (feature) {
+                                features.push(feature);
+                            }
+                        }
+                        
+                        layer.setZIndex(parseInt(layer.getZIndex()) - 1000000);
+                        
+                        //Removing the following as it seems to prevent other events/controls from being triggered
+                        //Not sure how this (overlapping features in a single layer) would be handled with the new strategy...
+                        /*
                         while (target) { // && target._featureId) {
                             feature = layer.getFeatureById(target._featureId);
                             if (feature) {
@@ -82306,19 +82317,16 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                                 target = document.elementFromPoint(x, y);
                             } else {
                                 // sketch, all bets off
-                                // ADDING THE FOLLOWING SO THAT THE EVENT FALLS THROUGH ANY MAP TILES THAT LIE ON TOP OF THE FEATURES
-                                if (target.className === 'olTileImage') {
-                                    target.style.display = "none";
-                                    targets.push(target);
-                                    target = document.elementFromPoint(x, y);
-                                } else {
-                                    target = false;
-                                }
+                                target = false;
                             }
+                        }               
+                        // restore feature visibility
+                        for (i=0, len=targets.length; i<len; ++i) {
+                            targets[i].style.display = "";
                         }
+                        targets = [];
+                        */ 
                     }
-                    layers.push(layer);
-                    layer.div.style.display = "none";
                 }
             } else if (layer.renderer instanceof OpenLayers.Renderer.Canvas) {
                 feature = layer.renderer.getFeatureIdFromEvent(evt);
@@ -82330,14 +82338,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                 //debugger;
             }
         }
-        // restore feature visibility
-        for (i=0, len=targets.length; i<len; ++i) {
-            targets[i].style.display = "";
-        }
-        // restore layer visibility
-        for (i=layers.length-1; i>=0; --i) {
-            layers[i].div.style.display = "block";
-        }
+        
         return features;
     },
     
