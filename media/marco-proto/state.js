@@ -118,6 +118,8 @@ app.loadCompressedState = function(state) {
         setTimeout( function() { $('#activeTab').tab('show'); }, 200 );
     } else if (state.tab && state.tab === "designs") {
         setTimeout( function() { $('#designsTab').tab('show'); }, 200 );
+    } else if (state.tab && state.tab === "reports") {
+        setTimeout( function() { $('#reportsTab').tab('show'); }, 200 );
     } else {
         setTimeout( function() { $('#dataTab').tab('show'); }, 200 );
     }

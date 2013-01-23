@@ -210,7 +210,6 @@ app.init = function () {
                                     }
                                     attribute_objs.push({'display': obj.display, 'data': value});
                                 }
-                                
                             }
                         });
                         var title = potential_layer.name,
@@ -243,26 +242,36 @@ app.init = function () {
       
     app.map.events.register("featureclick", null, function(e) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
-        var date = new Date();
-        var newTime = date.getTime();
-        var text = [],
-            title = layer.name;
-        
-        if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
-            var attrs = layer.scenarioAttributes;
-            for (var i=0; i<attrs.length; i++) {
-                text.push({'display': attrs[i].title, 'data': attrs[i].data});
-            }
-        } else if ( layer.attributes.length ) {
-            var attrs = layer.attributes;
+        if (layer) {
+            var date = new Date();
+            var newTime = date.getTime();
+            var text = [],
+                title = layer.name;
             
-            for (var i=0; i<attrs.length; i++) {
-                if ( e.feature.data[attrs[i].field] ) {
-                    text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+            if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
+                var attrs = layer.scenarioAttributes;
+                for (var i=0; i<attrs.length; i++) {
+                    text.push({'display': attrs[i].title, 'data': attrs[i].data});
                 }
+            } else if ( layer.attributes.length ) {
+                var attrs = layer.attributes;
+                
+                for (var i=0; i<attrs.length; i++) {
+                    if ( e.feature.data[attrs[i].field] ) {
+                        text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                    }
+                }
+            } else if ( app.viewModel.isSelectedLeaseBlock(layer.name) ) {
+                text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
-        } else if ( layer.name === 'Selected OCS Blocks' ) {
-            text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
+            
+            if (newTime - app.map.clickOutput.time > 300) {
+                app.map.clickOutput.attributes = {};
+                app.map.clickOutput.time = newTime;
+            } 
+            app.map.clickOutput.attributes[title] = text;
+            
+            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
         
         if (newTime - app.map.clickOutput.time > 300) {
@@ -271,7 +280,6 @@ app.init = function () {
         } 
         app.map.clickOutput.attributes[title] = text;
         app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-        
     });
     
     app.map.events.register("nofeatureclick", null, function(e) {
@@ -300,10 +308,6 @@ app.init = function () {
 
 app.addLayerToMap = function(layer) {
     if (!layer.layer) {
-        var opts = {
-            displayInLayerSwitcher: false
-        };
-        
         /***BEGIN TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         if ( $.browser.msie && $.browser.version < 9.0 && layer.name === "Coldwater Corals" ) {
         //if ( layer.name === "Coldwater Corals" ) {    
@@ -314,126 +318,146 @@ app.addLayerToMap = function(layer) {
         /***END TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         
         if (layer.utfurl || (layer.parent && layer.parent.utfurl)) {
-            layer.utfgrid = new OpenLayers.Layer.UTFGrid({
-                layerModel: layer,
-                url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
-                sphericalMercator: true,
-                //events: {fallThrough: true},
-                utfgridResolution: 4, // default is 2
-                displayInLayerSwitcher: false,
-                useJSONP: false
-            });
-             
-            app.map.addLayer(layer.utfgrid);           
-            layer.layer = new OpenLayers.Layer.XYZ(
-                layer.name, 
-                layer.url,
-                $.extend({}, opts, 
-                    {
-                        sphericalMercator: true,
-                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-                    }
-                )
-            );  
-            app.map.addLayer(layer.layer);  
+            app.addUtfLayerToMap(layer);
         } else if (layer.type === 'Vector') {
-            var styleMap = new OpenLayers.StyleMap( {
-                fillColor: layer.color,
-                fillOpacity: layer.fillOpacity,
-                //strokeDashStyle: "dash",
-                //strokeOpacity: 1,
-                strokeColor: layer.color,
-                strokeOpacity: layer.defaultOpacity,
-                //strokeLinecap: "square",
-                //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
-                //title: 'testing'
-                pointRadius: 2,
-                externalGraphic: layer.graphic,
-                graphicWidth: 8,
-                graphicHeight: 8,
-                graphicOpacity: layer.defaultOpacity
-            });
-            if (layer.lookupField) {
-                var mylookup = {};
-                $.each(layer.lookupDetails, function(index, details) {    
-                    var fillOp = 0.5;
-                    //the following are special cases for Shipping Lanes that ensure suitable attribution with proper display 
-                    if (details.value === 'Precautionary Area') {
-                        fillOp = 0.0; 
-                    } else if (details.value === 'Shipping Safety Fairway') {
-                        fillOp = 0.0;
-                    } else if (details.value === 'Traffic Lane') {
-                        fillOp = 0.0;
-                    }
-                    mylookup[details.value] = { strokeColor: details.color, 
-                                                strokeDashstyle: details.dashstyle, 
-                                                fill: details.fill,
-                                                fillColor: details.color, 
-                                                fillOpacity: fillOp,
-                                                externalGraphic: details.graphic }; 
-                });
-                styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
-                //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
-            }
-            layer.layer = new OpenLayers.Layer.Vector(
-                layer.name,
-                {
-                    projection: new OpenLayers.Projection('EPSG:3857'),
-                    displayInLayerSwitcher: false,
-                    strategies: [new OpenLayers.Strategy.Fixed()],
-                    protocol: new OpenLayers.Protocol.HTTP({
-                        url: layer.url,
-                        format: new OpenLayers.Format.GeoJSON()
-                    }),
-                    styleMap: styleMap,                    
-                    layerModel: layer
-                }
-            );
-            app.map.addLayer(layer.layer); 
+            app.addVectorLayerToMap(layer);
         } else if (layer.type === 'ArcRest') {
-            layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
-                layer.name, 
-                layer.url,
-                {
-                    layers: "show:"+layer.arcgislayers,
-                    srs: 'EPSG:3857',
-                    transparent: true
-                },
-                {
-                    isBaseLayer: false
-                }
-            );
-            app.map.addLayer(layer.layer);  
+            app.addArcRestLayerToMap(layer);
         } else if (layer.type === 'WMS') {
-            layer.layer = new OpenLayers.Layer.WMS(
-                layer.name, 
-                layer.url,
-                {
-                    'layers': 'basic'
-                }
-            );
-            app.map.addLayer(layer.layer);  
+            app.addWmsLayerToMap(layer);
         } else { //if XYZ with no utfgrid
-            // adding layer to the map for the first time		
-            layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
-                //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
-                layer.url,
-                $.extend({}, opts, 
-                    {
-                        sphericalMercator: true,
-                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-                    }
-                )
-            );
-            app.map.addLayer(layer.layer);  
+            app.addXyzLayerToMap(layer);
         }
-    } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
-        //layer.utfcontrol = app.addUTFControl(layer);
-        //app.map.addControl(layer.utfcontrol); 
-    }
+    } 
+    app.map.addLayer(layer.layer); 
     layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
 };
+
+// add XYZ layer with no utfgrid
+app.addXyzLayerToMap = function(layer) {
+    var opts = { displayInLayerSwitcher: false };
+        
+    // adding layer to the map for the first time		
+    layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
+        //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
+        layer.url,
+        $.extend({}, opts, 
+            {
+                sphericalMercator: true,
+                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+            }
+        )
+    ); 
+};
+
+app.addWmsLayerToMap = function(layer) {
+    layer.layer = new OpenLayers.Layer.WMS(
+        layer.name, 
+        layer.url,
+        {
+            'layers': 'basic'
+        }
+    );
+};
+
+app.addArcRestLayerToMap = function(layer) {
+    layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
+        layer.name, 
+        layer.url,
+        {
+            layers: "show:"+layer.arcgislayers,
+            srs: 'EPSG:3857',
+            transparent: true
+        },
+        {
+            isBaseLayer: false
+        }
+    );
+};
+
+app.addVectorLayerToMap = function(layer) {
+    var styleMap = new OpenLayers.StyleMap( {
+        fillColor: layer.color,
+        fillOpacity: layer.fillOpacity,
+        //strokeDashStyle: "dash",
+        //strokeOpacity: 1,
+        strokeColor: layer.color,
+        strokeOpacity: layer.defaultOpacity,
+        //strokeLinecap: "square",
+        //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+        //title: 'testing'
+        pointRadius: 2,
+        externalGraphic: layer.graphic,
+        graphicWidth: 8,
+        graphicHeight: 8,
+        graphicOpacity: layer.defaultOpacity
+    });
+    if (layer.lookupField) {
+        var mylookup = {};
+        $.each(layer.lookupDetails, function(index, details) {    
+            var fillOp = 0.5;
+            //the following are special cases for Shipping Lanes that ensure suitable attribution with proper display 
+            if (details.value === 'Precautionary Area') {
+                fillOp = 0.0; 
+            } else if (details.value === 'Shipping Safety Fairway') {
+                fillOp = 0.0;
+            } else if (details.value === 'Traffic Lane') {
+                fillOp = 0.0;
+            }
+            mylookup[details.value] = { 
+                strokeColor: details.color, 
+                strokeDashstyle: details.dashstyle, 
+                fill: details.fill,
+                fillColor: details.color, 
+                fillOpacity: fillOp,
+                externalGraphic: details.graphic 
+            }; 
+        });
+        styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
+        //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
+    }
+    layer.layer = new OpenLayers.Layer.Vector(
+        layer.name,
+        {
+            projection: new OpenLayers.Projection('EPSG:3857'),
+            displayInLayerSwitcher: false,
+            strategies: [new OpenLayers.Strategy.Fixed()],
+            protocol: new OpenLayers.Protocol.HTTP({
+                url: layer.url,
+                format: new OpenLayers.Format.GeoJSON()
+            }),
+            styleMap: styleMap,                    
+            layerModel: layer
+        }
+    );
+
+};
+
+app.addUtfLayerToMap = function(layer) {
+    var opts = { displayInLayerSwitcher: false };
+    layer.utfgrid = new OpenLayers.Layer.UTFGrid({
+        layerModel: layer,
+        url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
+        sphericalMercator: true,
+        //events: {fallThrough: true},
+        utfgridResolution: 4, // default is 2
+        displayInLayerSwitcher: false,
+        useJSONP: false
+    });
+     
+    app.map.addLayer(layer.utfgrid);           
+    layer.layer = new OpenLayers.Layer.XYZ(
+        layer.name, 
+        layer.url,
+        $.extend({}, opts, 
+            {
+                sphericalMercator: true,
+                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+            }
+        )
+    );  
+}
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it

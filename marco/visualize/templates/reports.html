@@ -1,0 +1,32 @@
+
+<div class="tab-pane fade" id="reports" data-tab="reports" data-bind="with: scenarios.reports">
+    
+    <div class="form-container" data-bind="visible: true">
+        <div data-bind="visible: true">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div id="create-new-design" class="btn-group" style="padding-bottom: 10px;">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                            Comparison Reports
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a data-bind="click: showWindReport">Wind Energy Potential</a></li>
+                            <li><a data-bind="click: showAWCReport">Distance to AWC Hubs</a></li>
+                            <li><a data-bind="click: showShorelineReport">Distance to Shore</a></li>
+                            <li><a data-bind="click: showDepthReport">Depth Range</a></li>
+                            <li><a data-bind="click: showShippingReport">Distance to Shipping Lanes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>   
+        
+        <div id="reports-container" data-bind="visible: showingReport" style="min-width: 400px; height: 400px; margin: 0 auto">
+        
+        </div>
+        
+        
+    </div>
+</div>

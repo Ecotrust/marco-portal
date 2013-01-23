@@ -55,7 +55,6 @@ var madrona = {
 
             app.viewModel.scenarios.scenarioForm(false);
             app.viewModel.scenarios.loadingMessage("Creating Scenario");
-            
 
 
             $.ajax( {
@@ -101,29 +100,6 @@ function scenarioFormModel(options) {
     //not sure how best to tie the width of the show/hide leaseblocks button to the width of the form...
     //self.showLeaseblockButtonWidth = ko.observable($('#scenario-form').width());
     
-    self.selectedLeaseblocksLayerName = 'Selected OCS Blocks';
-    
-    self.loadLeaseblockLayer = function() {
-        app.viewModel.scenarios.leaseblockLayer( new OpenLayers.Layer.Vector(
-            self.selectedLeaseblocksLayerName,
-            {
-                projection: new OpenLayers.Projection('EPSG:3857'),
-                displayInLayerSwitcher: false,
-                strategies: [new OpenLayers.Strategy.Fixed()],
-                protocol: new OpenLayers.Protocol.HTTP({
-                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
-                    format: new OpenLayers.Format.GeoJSON()
-                }),
-                //styleMap: new OpenLayers.StyleMap( { 
-                //    "default": new OpenLayers.Style( { display: "none" } )
-                //})
-                layerModel: new layerModel({
-                    name: self.selectedLeaseblocksLayerName
-                })
-            }
-        ));
-    };
-    
     self.activateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(true);
         //self.showRemainingBlocks();
@@ -132,7 +108,7 @@ function scenarioFormModel(options) {
     self.deactivateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(false);
         //remove from attribute list (if it's there)
-        app.viewModel.removeFromAggregatedAttributes(self.selectedLeaseblocksLayerName);
+        app.viewModel.removeFromAggregatedAttributes(app.viewModel.scenarios.scenarioLeaseBlocksLayerName);
         app.viewModel.updateAggregatedAttributesOverlayWidthAndScrollbar();
         //self.hideLeaseblockLayer();
     };
@@ -268,7 +244,7 @@ function scenarioFormModel(options) {
         if ( self.isLeaseblockLayerVisible() ) {
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
             if ( ! app.viewModel.scenarios.leaseblockLayer()) {
-                self.loadLeaseblockLayer();
+                app.viewModel.scenarios.loadLeaseblockLayer();
             } 
             var blockLayer = app.viewModel.scenarios.leaseblockLayer();
             var filter = new OpenLayers.Filter.Logical({
@@ -339,26 +315,12 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            //blockLayer.styleMap = { "default": new OpenLayers.Style( { display: "block" } ) }; 
-            /*
-            blockLayer.styleMap.styles.default.setDefaultStyle(
-                new OpenLayers.Style({
-                    'fillOpacity': 0,
-                    'display': 'block'
-                })
-            );
-            */
-            //if ( filter.filters.length ) {
             blockLayer.styleMap.styles['default'].rules[0] = new OpenLayers.Rule({
                 filter: filter, 
                 symbolizer: { strokeColor: '#fff' } 
             });
-                //blockLayer.display(true);
+            
             self.showLeaseblockLayer(blockLayer);
-            //} else {
-                //self.isLeaseblockLayerVisible(false);
-                //self.hideLeaseblockLayer();
-            //}
         }
         
     };
@@ -427,9 +389,59 @@ function scenarioFormModel(options) {
     return self;
 } // end scenarioFormModel
 
-function scenarioModel(options) {
+function selectionModel(options) {
     var self = this;
-
+    
+    self.name = 'Selected Lease Blocks';
+    
+    var ret = scenarioModel.apply(this, arguments);
+    
+    //self.isSelectionModel = true;
+        
+    self.editScenario = function() {
+        var selection = this;
+        return $.ajax({
+            url: '/features/leaseblockselection/' + selection.uid + '/form/', 
+            success: function(data) {
+                app.viewModel.scenarios.scenarioForm(true);
+                $('#scenario-form').html(data);
+                app.viewModel.scenarios.selectionFormModel = new IESelectionFormModel();
+                ko.applyBindings(app.viewModel.scenarios.selectionFormModel, document.getElementById('scenario-form'));
+                //particular for IE selection form, another ajax call to retrieve the leaseblocks
+                app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocks($('#id_leaseblock_ids').val().split(','));
+                //app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
+            },
+            error: function (result) { 
+                debugger; 
+            }
+        });
+    }; 
+        
+    self.deleteScenario = function() {
+        var selection = this;
+        
+        //remove from activeLayers
+        app.viewModel.activeLayers.remove(selection);
+        //remove from app.map
+        if (selection.layer) {
+            app.map.removeLayer(selection.layer);
+        }
+        //remove from scenarioList
+        app.viewModel.scenarios.selectionList.remove(selection);
+        
+        //remove from server-side db (this should provide error message to the user on fail)
+        $.ajax({
+            url: '/scenario/delete_selection/' + selection.uid + '/',
+            type: 'POST',
+            error: function (result) {
+                debugger;
+            }
+        })
+    };
+    
+    
+    return ret;
+    /*
     self.id = options.uid;
     self.uid = options.uid;
     self.name = options.name;
@@ -437,8 +449,336 @@ function scenarioModel(options) {
     
     self.overview = self.description || 'no description was provided';
     
+    self.attributes = options.attributes ? options.attributes : [];
+    self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
+    
+    self.active = ko.observable(false);
+    self.visible = ko.observable(false);
+    self.defaultOpacity = options.opacity || 0.8;
+    self.opacity = ko.observable(self.defaultOpacity);
+    self.type = 'Vector';
+    
+    self.opacity.subscribe( function(newOpacity) {
+        if ( self.layer ) {
+            self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
+            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
+            self.layer.redraw();
+        } 
+    });
+    
+    self.toggleActive = function(self, event) {
+        var selection = this;
+        if (selection.active()) { // if layer is active, then deactivate
+            selection.deactivateLayer();
+        } else { // otherwise layer is not currently active, so activate
+            selection.activateLayer();
+        }
+    };
+    
+    self.activateLayer = function() {
+        var selection = this;
+        app.viewModel.scenarios.addScenarioToMap(selection);
+    };
+    
+    self.deactivateLayer = function() {
+        var selection = this;
+        
+        selection.active(false);
+        selection.visible(false);
+        
+        selection.opacity(selection.defaultOpacity);
+        app.setLayerVisibility(selection, false);
+        app.viewModel.activeLayers.remove(selection);
+        
+        //remove the key/value pair from aggregatedAttributes
+        delete app.viewModel.aggregatedAttributes()[selection.name];
+        //if there are no more attributes left to display, then remove the overlay altogether
+        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
+            app.viewModel.aggregatedAttributes(false);
+        }
+    
+    };
+    
+    
+    self.visible = ko.observable(false);  
+    
+    // bound to click handler for layer visibility switching in Active panel
+    self.toggleVisible = function() {
+        var selection = this;
+        
+        if (selection.visible()) { //make invisible
+            selection.visible(false)
+            app.setLayerVisibility(selection, false)
+        } else { //make visible
+            selection.visible(true);
+            app.setLayerVisibility(selection, true);
+        }
+    };
+
+    // is description active
+    self.infoActive = ko.observable(false);
+    app.viewModel.showOverview.subscribe( function() {
+        if ( app.viewModel.showOverview() === false ) {
+            self.infoActive(false);
+        }
+    });
+    
+    // display descriptive text below the map
+    self.toggleDescription = function(selection) {
+        if ( ! selection.infoActive() ) {
+            self.showDescription(selection);
+        } else {
+            self.hideDescription(selection);
+        }
+    };
+    
+    self.showDescription = function(selection) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.activeInfoLayer(selection);
+        self.infoActive(true);
+        $('#overview-overlay').height(186);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    self.hideDescription = function(selection) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.showMapAttribution();
+    };
+    
+    return self;
+    */
+} // end selectionModel
+
+function selectionFormModel(options) {
+    var self = this;
+    
+    self.IE = false;
+    
+    self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    self.leaseBlockLayer.activateLayer();
+    self.leaseBlockLayerUtfGrid = self.leaseBlockLayer.utfgrid;
+    
+    self.leaseBlockSelectionLayerIsLoaded = false;
+    
+    self.selectingLeaseBlocks = ko.observable(false);
+    
+    //will want to load this manually as it will likely be a placeholder layer in the data manager
+    self.leaseBlockSelectionLayer = app.viewModel.getLayerById(82);
+    
+    //self.selectedLeaseBlocks = ko.observableArray();
+    
+    self.loadLeaseBlockSelectionLayer = function() {
+        var defaultStyle = new OpenLayers.Style({
+            //display: 'none'
+            fillOpacity: 0,
+            strokeColor: '#000',
+            strokeOpacity: 0
+        });
+        var selectStyle = new OpenLayers.Style({
+            strokeColor: '#ff0',
+            strokeOpacity: .8
+        });
+        var styleMap = new OpenLayers.StyleMap( {
+            'default': defaultStyle,
+            'select': selectStyle
+        });
+        self.leaseBlockSelectionLayer.layer = new OpenLayers.Layer.Vector(
+            self.leaseBlockSelectionLayer.name,
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: self.leaseBlockSelectionLayer.url,
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                styleMap: styleMap,                    
+                layerModel: self.leaseBlockSelectionLayer
+            }
+        );
+        app.map.addLayer(self.leaseBlockSelectionLayer.layer);
+        self.leaseBlockSelectionLayerHoverControl = new OpenLayers.Control.SelectFeature(
+            self.leaseBlockSelectionLayer.layer, 
+            {
+                hover: true,
+                toggle: false,
+                multiple: false
+            }
+        );
+        
+        self.leaseBlockSelectionLayerClickControl = new OpenLayers.Control.SelectFeature(
+            self.leaseBlockSelectionLayer.layer, 
+            {
+                hover: false,
+                toggle: true,
+                multiple: true,
+                box: true
+            }
+        );
+        app.map.addControl(self.leaseBlockSelectionLayerClickControl);        
+        
+        app.map.addLayer(self.leaseBlockSelectionLayer.layer); 
+        self.leaseBlockSelectionLayerIsLoaded = true;
+    }
+    
+    self.toggleSelectionProcess = function() {
+        if ( ! self.selectingLeaseBlocks() ) { // if not currently in the selection process, enable selection process
+            // if lease block selection layer has not yet been loaded...
+            if ( ! self.leaseBlockSelectionLayerIsLoaded ) { 
+                self.loadLeaseBlockSelectionLayer();
+            } 
+            //activate the lease block feature selection 
+            self.leaseBlockSelectionLayerClickControl.activate();
+            //app.addUtfLayerToMap(self.leaseBlockLayer);
+            //disable feature attribution
+            app.viewModel.disableFeatureAttribution();
+            //change button text
+            self.selectingLeaseBlocks(true);
+            
+            
+        } else { // otherwise, disable selection process
+            //deactivate lease block feature selection
+            self.leaseBlockSelectionLayerClickControl.deactivate();
+            //enable feature attribution
+            app.viewModel.enableFeatureAttribution();
+            //change button text
+            self.selectingLeaseBlocks(false);
+            
+            //ON CANCEL, remove self.leaseBlockLayerUtfGrid and selectfeature control
+        }           
+        
+    };
+    
+    self.toggleLeaseBlockLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#lease-blocks-layer-toggle input').is(":checked")) {
+                self.leaseBlockLayer.activateLayer();
+            } else {
+                self.leaseBlockLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
+    return self;
+}; // end selectionFormModel
+
+
+function IESelectionFormModel(options) {
+    var self = this;
+    
+    self.IE = true;
+    
+    self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    self.leaseBlockLayer.activateLayer();
+    self.leaseBlockLayer.setVisible();
+    
+    self.leaseBlockLayerUtfGrid = self.leaseBlockLayer.utfgrid;
+        
+    self.selectingLeaseBlocks = ko.observable(false);
+    
+    self.selectedLeaseBlocksLayerName = 'Selected Lease Blocks';
+    
+    self.selectedLeaseBlocks = ko.observableArray();
+    self.selectedLeaseBlocks.subscribe(function(test) {
+        if (self.selectedLeaseBlocksLayer) {
+            app.map.removeLayer(self.selectedLeaseBlocksLayer);
+        }
+        $.ajax({
+            url: '/scenario/get_leaseblock_features',
+            type: 'GET',
+            dataType: 'json',
+            data: { leaseblock_ids: test },
+            success: function (feature) {
+                var layer = new OpenLayers.Layer.Vector(
+                    self.selectedLeaseBlocksLayerName,
+                    {
+                        projection: new OpenLayers.Projection('EPSG:3857'),
+                        displayInLayerSwitcher: false,
+                        styleMap: new OpenLayers.StyleMap({
+                            strokeColor: '#ff0',
+                            strokeOpacity: .8,
+                            fillOpacity: 0
+                        })//,     
+                        //scenarioModel: new selectionModel()
+                    }
+                );
+                
+                //assign leaseblock ids to hidden leaseblock ids form field
+                $('#id_leaseblock_ids').val(self.selectedLeaseBlocks().join(","))
+                
+                layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
+                self.selectedLeaseBlocksLayer = layer
+                app.map.addLayer(self.selectedLeaseBlocksLayer);
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    });
+    
+    self.toggleSelectionProcess = function() {
+        if ( ! self.selectingLeaseBlocks() ) { // if not currently in the selection process, enable selection process
+            self.enableSelectionProcess();
+        } else { // otherwise, disable selection process
+            self.disableSelectionProcess();
+        }  
+    };
+    
+    self.enableSelectionProcess = function() {
+        //disable feature attribution
+        app.viewModel.disableFeatureAttribution();
+        //ensure lease blocks are visible
+        self.leaseBlockLayer.activateLayer();
+        self.leaseBlockLayer.setVisible();
+        //disable Show Lease Blocks checkbox 
+        $('#lease-blocks-layer-checkbox').prop('checked', true);
+        $('#lease-blocks-layer-checkbox').attr('disabled', 'disabled');
+        //change button text
+        self.selectingLeaseBlocks(true);
+    };
+    
+    self.disableSelectionProcess = function() {
+        //enable feature attribution
+        app.viewModel.enableFeatureAttribution();
+        //re-enable Show Lease Blocks checkbox
+        $('#lease-blocks-layer-checkbox').removeAttr('disabled');
+        //change button text
+        self.selectingLeaseBlocks(false);
+    };
+    
+    self.toggleLeaseBlockLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#lease-blocks-layer-toggle input').is(":checked")) {
+                self.leaseBlockLayer.setVisible();
+            } else {
+                self.leaseBlockLayer.setInvisible();
+            }
+        }
+        return true;
+    };
+    
+    return self;
+}; // end IESelectionFormModel
+
+function scenarioModel(options) {
+    var self = this;
+
+    self.id = options.uid || null;
+    self.uid = options.uid || null;
+    self.name = options.name;
+    self.description = options.description;
+    
+    self.overview = self.description || 'no description was provided';
+    
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
+    
+    self.scenarioReportValues = options.attributes ? options.attributes.report_values : [];
 
     self.features = options.features;
     
@@ -591,9 +931,20 @@ function scenarioModel(options) {
 function scenariosModel(options) {
     var self = this;
     
-    self.scenarioList = ko.observableArray();
-    
+    self.scenarioList = ko.observableArray();    
     self.scenarioForm = ko.observable(false);
+    
+    self.selectionList = ko.observableArray();  
+    self.getSelectionById = function(id) {
+        var selections = self.selectionList();
+        for (var i=0; i<selections.length; i++) {
+            if ( selections[i].id === id ) {
+                return selections[i];
+            }
+        }
+        return false;
+    };
+    self.selectionForm = ko.observable(false);
         
     self.leaseblockLayer = ko.observable(false);
 
@@ -601,6 +952,8 @@ function scenariosModel(options) {
         app.viewModel.updateAttributeLayers();
     });
     
+    self.scenarioLeaseBlocksLayerName = 'Selected OCS Blocks';
+        
     // loading message for showing spinner
     // false for normal operation
     self.loadingMessage = ko.observable(false);
@@ -608,11 +961,80 @@ function scenariosModel(options) {
     
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
-
+    self.selectionsLoaded = false;
+    
+    self.isScenariosOpen = ko.observable(false);
+    self.toggleScenariosOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
+        
+        if ( self.isScenariosOpen() ) {
+            self.isScenariosOpen(false);
+        } else {
+            self.isScenariosOpen(true);
+        }
+        self.updateScrollBar();
+    }        
+    self.isCollectionsOpen = ko.observable(false);
+    self.toggleCollectionsOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
+        
+        if ( self.isCollectionsOpen() ) {
+            self.isCollectionsOpen(false);
+        } else {
+            self.isCollectionsOpen(true);
+        }
+        self.updateScrollBar();
+    }       
+    
+    self.updateScrollBar = function() {
+        var dataScrollpane = $('#data-accordion.designs').data('jsp');
+        if (dataScrollpane === undefined) {
+            $('#data-accordion.designs').jScrollPane();
+        } else {
+            dataScrollpane.reinitialise();
+        }
+    }
+    
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
         self.loadingMessage(false);
         self.errorMessage(false);
+        
+        //clean up scenario form
+        if (self.scenarioForm() || self.scenarioFormModel) {
+            self.removeScenarioForm();
+        }
+        
+        //clean up selection form
+        if (self.selectionForm() || self.selectionFormModel) {
+            self.removeSelectionForm();
+        }
+        
+        //remove the key/value pair from aggregatedAttributes
+        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
+        app.viewModel.updateAttributeLayers();
+    };
+    
+    self.removeSelectionForm = function() {
+        self.selectionForm(false);
+        var selectionForm = document.getElementById('selection-form');
+        $(selectionForm).empty();
+        ko.cleanNode(selectionForm); 
+        if (self.selectionFormModel.IE) {
+            if (self.selectionFormModel.selectedLeaseBlocksLayer) {
+                app.map.removeLayer(self.selectionFormModel.selectedLeaseBlocksLayer);
+            }
+        } else {
+            app.map.removeControl(self.selectionFormModel.leaseBlockSelectionLayerClickControl); 
+            app.map.removeLayer(self.selectionFormModel.leaseBlockSelectionLayer.layer);        
+        }
+        delete self.selectionFormModel;
+        app.viewModel.enableFeatureAttribution();
+    };
+    
+    self.removeScenarioForm = function() {
         self.scenarioForm(false);
         var scenarioForm = document.getElementById('scenario-form');
         $(scenarioForm).empty();
@@ -622,9 +1044,6 @@ function scenariosModel(options) {
         if ( self.leaseblockLayer() && app.map.getLayersByName(self.leaseblockLayer().name).length ) {
             app.map.removeLayer(self.leaseblockLayer()); 
         }
-        //remove the key/value pair from aggregatedAttributes
-        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
-        app.viewModel.updateAttributeLayers();
     };
 
     self.createWindScenario = function() {
@@ -637,23 +1056,51 @@ function scenariosModel(options) {
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
                 if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
-                    self.scenarioFormModel.loadLeaseblockLayer();
+                    self.loadLeaseblockLayer();
                 }
             },
-            error: function (result) { debugger }
+            error: function (result) { debugger; }
         });
-    };     
+    };    
+
+    self.createSelectionDesign = function() {
+        return $.ajax({
+            url: '/features/leaseblockselection/form/',
+            success: function(data) {
+                self.selectionForm(true);
+                $('#selection-form').html(data);
+                self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
+                ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
+                //self.selectionFormModel.updateDesignScrollBar();
+                //if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
+                //    self.selectionFormModel.loadLeaseblockLayer();
+                //}
+            },
+            error: function (result) { debugger; }
+        });
+    };        
     
     //
     self.addScenarioToMap = function(scenario, options) {
         var scenarioId,
-            opacity;
+            opacity = .8,
+            stroke = 1,
+            fillColor = "#2F6A6C",
+            strokeColor = "#1F4A4C";
         if ( scenario ) {
             scenarioId = scenario.uid;
             scenario.active(true);
             scenario.visible(true);
         } else {
             scenarioId = options.uid;
+        }
+        if (scenarioId.indexOf('leaseblockselection') !== -1) {
+            var isSelectionModel = true;
+        } else {
+            var isSelectionModel = false;
+        }
+        if (self.scenarioFormModel) {
+            self.scenarioFormModel.isLeaseblockLayerVisible(false);
         }
         //perhaps much of this is not necessary once a scenario has been added to app.map.layers initially...?
         //(add check for scenario.layer, reset the style and move on?)
@@ -665,19 +1112,20 @@ function scenariosModel(options) {
                 if ( scenario ) {
                     opacity = scenario.opacity();
                     stroke = scenario.opacity();
-                } else {
-                    opacity = .8;
-                    stroke = 1;
-                }
+                } 
+                if ( isSelectionModel ) {
+                    fillColor = "#00467F";
+                    strokeColor = "#00265F";
+                } 
                 var layer = new OpenLayers.Layer.Vector(
                     scenarioId,
                     {
                         projection: new OpenLayers.Projection('EPSG:3857'),
                         displayInLayerSwitcher: false,
                         styleMap: new OpenLayers.StyleMap({
-                            fillColor: "#2F6A6C",
+                            fillColor: fillColor,
                             fillOpacity: opacity,
-                            strokeColor: "#1F4A4C",
+                            strokeColor: strokeColor,
                             strokeOpacity: stroke
                         }),     
                         //style: OpenLayers.Feature.Vector.style['default'],
@@ -694,14 +1142,23 @@ function scenariosModel(options) {
                 } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    
-                    scenario = new scenarioModel({
-                        id: properties.uid,
-                        uid: properties.uid,
-                        name: properties.name, 
-                        description: properties.description,
-                        features: layer.features
-                    });
+                    if (isSelectionModel) {
+                        scenario = new selectionModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    } else {
+                        scenario = new scenarioModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    }
                     scenario.layer = layer;
                     scenario.layer.scenarioModel = scenario;
                     scenario.active(true);
@@ -714,6 +1171,9 @@ function scenariosModel(options) {
                         dataType: 'json',
                         success: function(result) {
                             scenario.scenarioAttributes = result.attributes;
+                            if (isSelectionModel) {
+                                scenario.scenarioReportValues = result.report_values;
+                            }
                         },
                         error: function (result) {
                             debugger;
@@ -724,13 +1184,24 @@ function scenariosModel(options) {
                     //in case of edit, removes previously stored scenario
                     //self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
                     
-                    var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
-                        return oldScenario.uid === scenario.uid;
-                    });
-                    if ( previousScenario ) {
-                        self.scenarioList.replace( previousScenario, scenario );
+                    if ( isSelectionModel ) {
+                        var previousSelection = ko.utils.arrayFirst(self.selectionList(), function(oldSelection) {
+                            return oldSelection.uid === scenario.uid;
+                        });
+                        if ( previousSelection ) {
+                            self.selectionList.replace( previousSelection, scenario );
+                        } else {
+                            self.selectionList.push(scenario);
+                        }
                     } else {
-                        self.scenarioList.push(scenario);
+                        var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
+                            return oldScenario.uid === scenario.uid;
+                        });
+                        if ( previousScenario ) {
+                            self.scenarioList.replace( previousScenario, scenario );
+                        } else {
+                            self.scenarioList.push(scenario);
+                        }
                     }
                     
                     //self.scenarioForm(false);
@@ -771,8 +1242,43 @@ function scenariosModel(options) {
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
-        self.scenariosLoaded = true;
     }
+    
+    //populates selectionList..?
+    self.loadSelections = function (selections) {
+        $.each(selections, function (i, selection) {
+            var selectionViewModel = new selectionModel({
+                id: selection.uid,
+                uid: selection.uid,
+                name: selection.name,
+                //description: scenario.description,
+                attributes: selection.attributes
+            });
+            self.selectionList.push(selectionViewModel);
+            app.viewModel.layerIndex[selection.uid] = selectionViewModel;
+        });
+    }
+    
+    self.loadLeaseblockLayer = function() {
+        self.leaseblockLayer( new OpenLayers.Layer.Vector(
+            self.scenarioLeaseBlocksLayerName,
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                //styleMap: new OpenLayers.StyleMap( { 
+                //    "default": new OpenLayers.Style( { display: "none" } )
+                //})
+                layerModel: new layerModel({
+                    name: self.scenarioLeaseBlocksLayerName
+                })
+            }
+        ));
+    }      
     
     self.leaseblockList = [];    
     
@@ -788,7 +1294,7 @@ function scenariosModel(options) {
 app.viewModel.scenarios = new scenariosModel();
 
 $('#designsTab').on('show', function (e) {
-    if ( !app.viewModel.scenarios.scenariosLoaded ) {
+    if ( !app.viewModel.scenarios.scenariosLoaded || !app.viewModel.scenarios.selectionsLoaded) {
         // load the scenarios
         $.ajax({
             url: '/scenario/get_scenarios',
@@ -796,6 +1302,21 @@ $('#designsTab').on('show', function (e) {
             dataType: 'json',
             success: function (scenarios) {
                 app.viewModel.scenarios.loadScenarios(scenarios);
+                app.viewModel.scenarios.scenariosLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+        
+        // load the selections
+        $.ajax({
+            url: '/scenario/get_selections',
+            type: 'GET',
+            dataType: 'json',
+            success: function (selections) {
+                app.viewModel.scenarios.loadSelections(selections);
+                app.viewModel.scenarios.selectionsLoaded = true;
             },
             error: function (result) {
                 debugger;

@@ -1,0 +1,170 @@
+{% extends "common/panel.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block panel %}
+{% load flatblock_tags %}
+
+<script type="text/javascript" charset="utf-8">
+
+    madrona.onShow(function(){
+        madrona.setupForm($('#leaseblock-selection-form'));
+        
+        var step = 1;
+        var max_step = 2;
+
+        function validate(step) {            
+            if (step == 1) {
+                if (app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocksLayer &&
+                    app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocksLayer.features.length ) {
+                    app.viewModel.scenarios.selectionFormModel.disableSelectionProcess();
+                    return true;
+                }
+                return false;
+            } 
+            return true;
+        }; 
+
+        function wizard(action) {
+            if (step == 1 && action == 'next') {
+                if (validate(step)) {
+                    step += 1;
+                }
+            } else if (step < max_step && action == 'next') {
+                step += 1;
+            } else if (step > 1 && action == 'prev') {
+                step -= 1;
+            }
+            $('div.step').each(function(index) {
+                $(this).hide();
+            });
+            $('div#step' + step).show();
+
+            if (step == 1) {
+                $('#button_prev').hide();
+            } else {
+                $('#button_prev').show();
+            }
+
+            if (step == max_step) {
+                $('#button_next').hide();
+                $('.submit_button').show();
+            } else {
+                $('#button_next').show();
+                $('.submit_button').hide();
+            }
+        };
+        
+        $('#button_prev').click( function() { wizard('prev'); });
+        $('#button_next').click( function() { wizard('next'); });
+        wizard();
+        
+                          
+    });
+    
+</script>
+
+{% if form.media %} {{ form.media }} {% endif %}
+<h4>
+    Lease Block Selection Design
+</h4>
+<form id="leaseblock-selection-form" action="{{action}}" method="post"> 
+  {% for hidden in form.hidden_fields %}
+    <div style="display:none;">
+        {{ hidden.errors }}
+    </div>
+    {{ hidden }}
+  {% endfor %}
+  <div id="error_bar"></div>
+  
+  <div id="step1" class="step">
+    <p class="step-text"><i>Step 1 of 2 </i></p>
+    <p class="instructions">Click the button below to begin selecting your Lease Blocks from the map on the right.</p>
+    <a class="btn" style="margin-top: 10px" data-bind="click: toggleSelectionProcess">
+        <span data-bind="text: selectingLeaseBlocks() ? 'Complete Selection' : 'Select Lease Blocks'"></span>
+    </a>
+    
+    {{ form.leaseblock_ids.as_hidden }}
+    
+    <div style="margin-top: 10px">
+        <label id="lease-blocks-layer-toggle" data-bind="click: toggleLeaseBlockLayer">
+            <input id="lease-blocks-layer-checkbox" data-bind="checked: leaseBlockLayer.active()" type="checkbox" name="checkbox" value="value"> 
+            Show OCS Lease Blocks</input>
+        </label>
+    </div>
+    <div id="step1_inputs"></div>
+  </div>
+
+  <div id="step2" class="step">
+    <p class="step-text"><i>Step 2 of 3 </i></p>
+    <p class="instructions">Provide a name to identify your Selection </p>
+    <div class="step3-inputs">
+        <div class="step3-param">
+            {{ form.name.label_tag }}
+            {{ form.name.errors }}
+            {{ form.name }}            
+        </div>
+    </div>
+  </div>
+
+  <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
+</form>
+
+
+<div class="wizard_nav" style="width:100%">
+    <div class="btn-group pull-right">
+        <a href="#" class="button btn" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
+        <a href="#" class="button btn"  onclick="this.blur(); return false;" id="button_next"><span>Next &gt;</span></a>
+        <a href="#" class="submit_button button btn" onclick="this.blur(); return false;"><span>Submit</span></a>
+    </div>
+</div>
+
+<div>
+    <div class="btn-group pull-left">
+        <a href="#" class="cancel_button button red btn"><span>Cancel</span></a>
+        
+    </div>
+</div>
+
+
+<!-- TODO: clean up the following (much of it is not being used) after we've made some progress -->
+<style type="text/css">
+
+p.step-text {
+    margin: 0px;
+    padding-left: 0px;
+    text-align:left;
+}
+p.instructions {
+    margin: 0px; 
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    text-align: left;
+    color: #47556C;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: sans-serif;
+}
+
+.panel form {
+    /*background: none repeat scroll 0 0 #DDDDDD;*/
+    border: 1px solid #BBBBBB;
+    border-radius: 10px 10px 10px 10px;
+    height: 60%;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.panel > form textarea,
+.panel > form input[name="name"] {
+    width: 90%;
+}
+
+.errorlist {
+    color: red;
+}
+
+</style>
+
+{% endblock %}
