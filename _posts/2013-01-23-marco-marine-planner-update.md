@@ -48,5 +48,5 @@ We also provide the ability (not available for IE browsers v8 and older) to visu
 
 The end result is a collection of dissolved polygons that reflect those lease blocks that meet the criteria specified by the user.  
 
-![lease blocks]({{BASE_PATH}}/assets/img/updates/lease_blocks.png) 
+![lease blocks]({{BASE_PATH}}/assets/img/updates/criteria.png) 
 
