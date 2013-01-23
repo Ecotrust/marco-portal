@@ -9,6 +9,7 @@ class LayerAdmin(admin.ModelAdmin):
     list_display = ('name', 'layer_type', 'url')
     search_fields = ['name', 'layer_type']
     ordering = ('name',)
+    exclude = ('slug_name',)
 
 class AttributeInfoAdmin(admin.ModelAdmin):
     list_display = ('field_name', 'display_name', 'precision', 'order')

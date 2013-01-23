@@ -512,6 +512,13 @@
                                                             </span>
                                                         </a>
                                                     </span>
+                                                    <span>
+                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeTilesLink() }, attr: { href: activeTilesLink() }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_tiles_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_tiles_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
                                                 </div>
                                               </span>
                                               <span class="span1"></span>
