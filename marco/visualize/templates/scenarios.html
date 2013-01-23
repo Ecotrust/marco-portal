@@ -27,10 +27,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a data-bind="click: createWindScenario">Wind Energy Site Selection</a></li>
-                            <li><a href="#">Conservation Site Selection</a></li>
-                            <li class="divider"></li>
-                            <li><a data-bind="click: createSelectionDesign">Selection-Based Design</a></li>
+                            <li><a data-bind="click: createWindScenario">Wind Energy Siting</a></li>
+                            <li><a data-bind="click: createSelectionDesign">Lease Block Collection</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,9 +39,9 @@
                     <div class="accordion">
                         <div class="accordion-group">
                             <div class="accordion-heading" data-bind="click: toggleScenariosOpen, css: { 'active': isScenariosOpen() }">
-                                <div>
-                                    <a class="accordion-toggle"><span>Site Selections</span></a>
-                                </div>
+                                <a class="accordion-toggle">
+                                    <span>Wind Energy Sitings</span>
+                                </a>
                             </div>
                             <div class="accordion-body collapse" data-bind="css: { 'in': isScenariosOpen() }">
                                 <div class="accordion-inner">
