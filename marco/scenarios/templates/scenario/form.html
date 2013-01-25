@@ -467,7 +467,7 @@
 {% if form.media %} {{ form.media }} {% endif %}
 <h4>
     <!--<img src="/media/marco/img/multi.png"/>-->
-    Wind Energy Design
+    Wind Energy Siting
 </h4>
 <form id="wind-design-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
@@ -714,16 +714,16 @@
 </form>
 
 <div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser()">
-    <!-- ko if: !isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
-    <!-- /ko -->
-    <!-- ko if: isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
-    <!-- /ko -->
+    <span data-bind="visible: !isLeaseblockLayerVisible()">
+        <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
+    </span>
+    <span data-bind="visible: isLeaseblockLayerVisible()">
+        <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
+    </span>
 </div>
 
 <div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser()">
-    <label>Estimated Number of Selected Leaseblocks: <span data-bind="text: leaseblocksLeft"></span></label>
+    <label>Estimated Number of Leaseblocks Identified: <span data-bind="text: leaseblocksLeft"></span></label>
 </div>
 
 <div class="wizard_nav" style="width:100%">

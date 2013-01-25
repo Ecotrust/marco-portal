@@ -145,15 +145,6 @@
   left: 3px;
 }
 
-#data-accordion {
-    outline: none;
-}
-
-#data-accordion, #legend-accordion {
-  height: 100%;
-  overflow-y: auto;
-}
-
 #legend-accordion .accordion-toggle {
     font-size: 12px;
 }
@@ -183,12 +174,6 @@ i.check {
   opacity: .4;
   /* for IE */
   filter: alpha(opacity=40);
-}
-
-#data-accordion .dropdown-menu {
-  right: 26px;
-  max-height: 100px;
-  overflow-y: auto;
 }
 
 .attribution {
@@ -545,8 +530,9 @@ a.disabled-link:hover {
   overflow: visible;
 }*/
 
-#data-accordion, #legend-accordion {
-  height: 400px;
+#data-accordion .dropdown-menu {
+  right: 26px;
+  max-height: 100px;
   overflow-y: auto;
 }
 
@@ -557,6 +543,16 @@ a.disabled-link:hover {
   margin-bottom: 0px; 
   padding-bottom: 0px;
 }
+
+#data-accordion, #designs-accordion{
+    outline: none;
+}
+
+#data-accordion, #legend-accordion, #designs-accordion{
+  height: 100%;
+  overflow-y: auto;
+}
+
 
 /*#data-accordion .accordion {
   overflow-x: visible;
@@ -609,6 +605,22 @@ a.disabled-link:hover {
   min-width: 75px;
   left: 70%;
   top: 90%;
+}
+
+#design-list .collections-header:hover .reports-btn {
+  display: block !important;
+  opacity: .9;
+  /* for IE */
+  filter: alpha(opacity=90);
+}
+
+
+#design-list .reports-btn {
+  margin-top: -37px;
+  padding-top: 11px !important;
+  padding-right: 14px !important;
+  padding-bottom: 10px !important;
+  padding-left: 14px !important;
 }
 
 #designs .step ul {
