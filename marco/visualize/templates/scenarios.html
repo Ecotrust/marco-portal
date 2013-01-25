@@ -1,5 +1,6 @@
 
 <div class="tab-pane fade" id="designs" data-tab="designs" data-bind="with: scenarios">
+  <div id="designs-slide">
     <!-- Create New Design dropdown menu -->
     <div class="row-fluid">
         <div class="alert alert-success" data-bind="visible: loadingMessage">
@@ -18,12 +19,12 @@
     </div>
     
     <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
-        <div data-bind="visible: ! scenarioForm() && ! selectionForm()">
+        <div id="designs-data" data-bind="visible: ! scenarioForm() && ! selectionForm() && !reportsVisible()">
             <div class="row-fluid">
                 <div class="span12">
                     <div id="create-new-design" class="btn-group" style="padding-bottom: 10px;">
                         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-plus-sign"></i> Create New
+                            Create New
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
@@ -35,7 +36,7 @@
             </div>
             
             <div id="design-list" class="row-fluid">
-                <div id="data-accordion" class="designs">
+                <div id="designs-accordion" class="designs">
                     <div class="accordion">
                         <div class="accordion-group">
                             <div class="accordion-heading" data-bind="click: toggleScenariosOpen, css: { 'active': isScenariosOpen() }">
@@ -75,9 +76,14 @@
                             </div>
                         </div>
                         <div class="accordion-group">
-                            <div class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
-                                <div>
-                                    <a class="accordion-toggle"><span>Lease Block Collections</span></a>
+                            <div class="collections-header">
+                                <div class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
+                                    <div>
+                                        <a class="accordion-toggle"><span>Lease Block Collections</span></a>
+                                    </div>
+                                </div>
+                                <div class="btn btn-large reports-btn pull-right" style="display: none" data-bind="click: showComparisonReports">
+                                    <i class="icon-bar-chart icon-large pull-right"></i>
                                 </div>
                             </div>
                             <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
@@ -124,5 +130,46 @@
             <div id="selection-form" class="panel-container"></div>   
         </div>
         
+        <div style="height: 100%" data-bind="visible: reportsVisible">   
+            <div id="reports" class="panel-container" data-bind="with: reports">
+                <div class="form-container">
+                    <div>
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="btn pull-right" data-bind="click: app.viewModel.scenarios.returnToDesigns">
+                                    Return to Designs
+                                </div>
+                                <div id="create-new-design" class="btn-group pull-left" style="padding-bottom: 10px;">
+                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Comparison Reports
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-bind="click: hideReport">Introduction</a></li>
+                                        <li><a data-bind="click: showWindReport">Wind Energy Potential</a></li>
+                                        <li><a data-bind="click: showAWCReport">Distance to AWC Hubs</a></li>
+                                        <li><a data-bind="click: showShorelineReport">Distance to Shore</a></li>
+                                        <li><a data-bind="click: showDepthReport">Depth Range</a></li>
+                                        <li><a data-bind="click: showShippingReport">Distance to Shipping Lanes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div id="reports-intro" data-bind="visible: !showingReport()">
+                        <p>Comparison Reports are used to easily compare the metric values of your Lease Block Collections.</p>
+                    </div>
+                    <div data-bind="visible: !showingReport() && !noActiveCollections()">
+                        <p>Select a Comparison Report from the menu above.</p>
+                    </div>
+                    <div data-bind="visible: noActiveCollections()">
+                        <p>Activate 1 or more Lease Block Collections before selecting a Comparison Report from the menue above.</p>
+                    </div>
+                    <div id="reports-container" data-bind="visible: showingReport && !noActiveCollections()" style="max-width: 400px; height: 400px; margin: 0 auto">
+                    </div>
+                </div>
+            </div>   
+        </div>
     </div>
+  </div>
 </div>

@@ -1,27 +1,40 @@
 
 function reportsModel(options) {
     var self = this;
-
+    
     self.getCollectionNames = function() {
         var names = [];
-        var selections = app.viewModel.scenarios.selectionList();
+        //var selections = app.viewModel.scenarios.selectionList();
+        var selections = app.viewModel.scenarios.activeSelections();
         for (var i=0; i<selections.length; i++) {
-            names.push(selections[i].name);
+            //if ( selections[i].active() ) {
+                names.push(selections[i].name);
+            //}
         }
         return names;
     };
     
     self.getSeriesData = function(key) {
         var data = [];
-        var selections = app.viewModel.scenarios.selectionList();
+        //var selections = app.viewModel.scenarios.selectionList();
+        var selections = app.viewModel.scenarios.activeSelections();
         for (var i=0; i<selections.length; i++) {
-            var vals = selections[i].scenarioReportValues[key];
-            data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
+            //if ( selections[i].active() ) {
+                var vals = selections[i].scenarioReportValues[key];
+                data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
+            //}
         }
         return data;
     };
     
     self.showingReport = ko.observable(false);
+    self.noActiveCollections = ko.observable(true);
+    self.noActiveCollections.subscribe( function() {
+        if ( self.noActiveCollections() === true ) {
+            self.showingReport(false);
+        } 
+    });
+    /*
     self.reportOptions = {
         'plotOptions': {
             columnrange: {
@@ -37,14 +50,16 @@ function reportsModel(options) {
             enabled: false
         }
     };
+    */
     
+    self.hideReport = function() {
+        self.showingReport(false);
+    }
+        
     self.showWindReport = function() {
         var windReportOptions = {
             'title': {
                 text: 'Wind Energy Potential'
-            },
-            'xAxis': {
-                categories: self.getCollectionNames()
             },
             'yAxis': {
                 title: {
@@ -63,23 +78,19 @@ function reportsModel(options) {
                             this.point.avg + ' m/s'; 
                 }
             },
-            'series': [{
-                name: 'Wind Speed',
-                data: self.getSeriesData('wind-speed')
-            }]        
+            'seriesName': 'Wind Speed',
+            'seriesStub': 'wind-speed'
         };
-        var options = $.extend({}, self.reportOptions, windReportOptions);
-        self.createChart(options);
-        self.showingReport(true);
+        //var options = $.extend({}, self.reportOptions, windReportOptions);
+        //self.createChart(options);
+        self.reportOptions = windReportOptions;
+        self.createChart(windReportOptions);
     };
     
     self.showAWCReport = function() {
         var awcReportOptions = {
             'title': { 
                 text: 'Distance to AWC Hubs' 
-            },
-            'xAxis': {
-                categories: self.getCollectionNames()
             },
             'yAxis': {
                 title: {
@@ -98,23 +109,19 @@ function reportsModel(options) {
                             this.point.avg + ' miles'; 
               }
             },
-            'series': [{
-                name: 'Distance to AWC Hubs',
-                data: self.getSeriesData('distance-to-awc')
-            }]
+            'seriesName': 'Distance to AWC Hubs',
+            'seriesStub': 'distance-to-awc'
         };
-        var options = $.extend({}, self.reportOptions, awcReportOptions);
-        self.createChart(options);
-        self.showingReport(true);
+        //var options = $.extend({}, self.reportOptions, awcReportOptions);
+        //self.createChart(options);
+        self.reportOptions = awcReportOptions;
+        self.createChart(awcReportOptions);
     };
     
     self.showShorelineReport = function() {
         var shorelineOptions = {
             'title': { 
                 text: 'Distance to Shore' 
-            },
-            'xAxis': {
-                categories: self.getCollectionNames()
             },
             'yAxis': {
                 title: {
@@ -133,23 +140,19 @@ function reportsModel(options) {
                             this.point.avg + ' miles'; 
               }
             },
-            'series': [{
-                name: 'Distance to Shoreline',
-                data: self.getSeriesData('distance-to-shore')
-            }]
+            'seriesName': 'Distance to Shoreline',
+            'seriesStub': 'distance-to-shore'
         };
-        var options = $.extend({}, self.reportOptions, shorelineOptions);
-        self.createChart(options);
-        self.showingReport(true);
+        //var options = $.extend({}, self.reportOptions, shorelineOptions);
+        //self.createChart(options);
+        self.reportOptions = shorelineOptions;
+        self.createChart(shorelineOptions);
     };
     
     self.showDepthReport = function() {
         var depthOptions = {
             'title': { 
                 text: 'Depth Range' 
-            },
-            'xAxis': {
-                categories: self.getCollectionNames()
             },
             'yAxis': {
                 title: {
@@ -168,23 +171,19 @@ function reportsModel(options) {
                             this.point.avg + ' feet'; 
               }
             },
-            'series': [{
-                name: 'Depth Range',
-                data: self.getSeriesData('depth')
-            }]
+            'seriesName': 'Depth Range',
+            'seriesStub': 'depth'
         };
-        var options = $.extend({}, self.reportOptions, depthOptions);
-        self.createChart(options);
-        self.showingReport(true);
+        //var options = $.extend({}, self.reportOptions, depthOptions);
+        //self.createChart(options);
+        self.reportOptions = depthOptions;
+        self.createChart(depthOptions);
     };
     
     self.showShippingReport = function() {
         var shippingOptions = {
             'title': { 
                 text: 'Distance to Shipping Lanes' 
-            },
-            'xAxis': {
-                categories: self.getCollectionNames()
             },
             'yAxis': {
                 title: {
@@ -203,42 +202,70 @@ function reportsModel(options) {
                             this.point.avg + ' miles'; 
               }
             },
-            'series': [{
-                name: 'Distance to Shipping Lanes',
-                data: self.getSeriesData('distance-to-shipping')
-            }]
+            'seriesName': 'Distance to Shipping Lanes',
+            'seriesStub': 'distance-to-shipping'
         };
-        var options = $.extend({}, self.reportOptions, shippingOptions);
-        self.createChart(options);
-        self.showingReport(true);
+        //var options = $.extend({}, self.reportOptions, shippingOptions);
+        //self.createChart(options);
+        self.reportOptions = shippingOptions;
+        self.createChart(shippingOptions);
     };
     
+    self.updateChart = function() {
+        if (self.reportOptions) {
+            self.createChart(self.reportOptions);
+        }
+    };
     
     self.createChart = function(options) {
+        if (app.viewModel.scenarios.activeSelections().length > 0) {
+            self.noActiveCollections(false);
+            self.showingReport(true);
+        } else {
+            self.noActiveCollections(true);
+            return;
+        }
         var chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'reports-container',
                 type: 'columnrange',
                 inverted: true
             },
+            credits: {
+                enabled: false
+            },
             title: options.title,
             subtitle: options.subtitle,
-            xAxis: options.xAxis,
+            xAxis: {
+                categories: self.getCollectionNames()
+            },
+            //xAxis: options.xAxis,
             yAxis: options.yAxis,
             tooltip: options.tooltip,
-            plotOptions: options.plotOptions,
-            legend: options.legend,
-            series: options.series,
+            plotOptions: {
+                columnrange: {
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return this.y;
+                        }
+                    }
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            //plotOptions: options.plotOptions,
+            //legend: options.legend,
+            series: [{
+                name: options.seriesName,
+                data: self.getSeriesData(options.seriesStub)
+            }],        
+            //series: options.series,
             plotOptions: {
                 series: {
                     point: {
                         events: {
-                            click: function() {
-                                var selection = app.viewModel.scenarios.getSelectionById(this.id);
-                                if (selection) {
-                                    selection.toggleActive();
-                                }
-                            },
                             mouseOver: function() {
                                 var selection = app.viewModel.scenarios.getSelectionById(this.id);
                                 if (selection && selection.layer) {

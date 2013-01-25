@@ -396,7 +396,7 @@ function selectionModel(options) {
     
     var ret = scenarioModel.apply(this, arguments);
     
-    //self.isSelectionModel = true;
+    self.isSelectionModel = true;
         
     self.editScenario = function() {
         var selection = this;
@@ -773,11 +773,24 @@ function scenarioModel(options) {
     self.name = options.name;
     self.description = options.description;
     
-    self.overview = self.description || 'no description was provided';
-    
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
     
+    //self.overview = self.description || 'no description was provided';
+    self.constructInfoText = function() {
+        var attrs = self.scenarioAttributes;
+        if (self.description && self.description !== '') {
+            var output = self.description + '\n\n';
+        } else {
+            var output = '';
+        }
+        for (var i=0; i< attrs.length; i++) {
+            output += attrs[i].title + ': ' + attrs[i].data + '\n';
+        }
+        return output;
+    };
+    self.overview = self.constructInfoText();
+        
     self.scenarioReportValues = options.attributes ? options.attributes.report_values : [];
 
     self.features = options.features;
@@ -812,6 +825,9 @@ function scenarioModel(options) {
     self.activateLayer = function() {
         var scenario = this;
         app.viewModel.scenarios.addScenarioToMap(scenario);
+        if ( scenario.isSelectionModel ) {
+            app.viewModel.scenarios.activeSelections().push(scenario);
+        }
     };
     
     self.deactivateLayer = function() {
@@ -819,6 +835,11 @@ function scenarioModel(options) {
         
         scenario.active(false);
         scenario.visible(false);
+        
+        if ( scenario.isSelectionModel ) {
+            var index = app.viewModel.scenarios.activeSelections().indexOf(scenario);
+            app.viewModel.scenarios.activeSelections().splice(index, 1);
+        }
         
         scenario.opacity(scenario.defaultOpacity);
         app.setLayerVisibility(scenario, false);
@@ -934,7 +955,7 @@ function scenariosModel(options) {
     self.scenarioList = ko.observableArray();    
     self.scenarioForm = ko.observable(false);
     
-    self.selectionList = ko.observableArray();  
+    self.selectionList = ko.observableArray(); 
     self.getSelectionById = function(id) {
         var selections = self.selectionList();
         for (var i=0; i<selections.length; i++) {
@@ -944,8 +965,39 @@ function scenariosModel(options) {
         }
         return false;
     };
+    
+    self.activeSelections = ko.observableArray();
+    
     self.selectionForm = ko.observable(false);
         
+    self.reportsVisible = ko.observable(false);
+    self.showComparisonReports = function() {
+        setTimeout(function() {
+            $('#designs-slide').hide('slide', {direction: 'left'}, 300);
+        }, 100);
+        setTimeout(function() {
+            self.reportsVisible(true);
+            $('#designs-slide').show('slide', {direction: 'right'}, 300);
+            if (self.activeSelections().length > 0) {
+                self.reports.noActiveCollections(false);
+                app.viewModel.scenarios.reports.updateChart();
+            } else { 
+                self.reports.noActiveCollections(true);
+            }
+        }, 420);
+    };
+    
+    self.returnToDesigns = function() {
+        setTimeout(function() {
+            $('#designs-slide').hide('slide', {direction: 'right'}, 300);
+        }, 100);
+        setTimeout(function() {
+            app.viewModel.scenarios.reportsVisible(false);
+            $('#designs-slide').show('slide', {direction: 'left'}, 300);
+        }, 420);
+    };
+    
+    
     self.leaseblockLayer = ko.observable(false);
 
     self.leaseblockLayer.subscribe( function() {
@@ -989,13 +1041,13 @@ function scenariosModel(options) {
     }       
     
     self.updateScrollBar = function() {
-        var dataScrollpane = $('#data-accordion.designs').data('jsp');
-        if (dataScrollpane === undefined) {
-            $('#data-accordion.designs').jScrollPane();
+        var designsScrollpane = $('#designs-accordion').data('jsp');
+        if (designsScrollpane === undefined) {
+            $('#designs-accordion').jScrollPane();
         } else {
-            dataScrollpane.reinitialise();
+            designsScrollpane.reinitialise();
         }
-    }
+    } 
     
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
@@ -1047,11 +1099,19 @@ function scenariosModel(options) {
     };
 
     self.createWindScenario = function() {
+        //hide designs tab by sliding left
         return $.ajax({
             url: '/features/scenario/form/',
             success: function(data) {
-                self.scenarioForm(true);
-                $('#scenario-form').html(data);
+                /*$('#scenario-form').html(data);
+                setTimeout(function() {
+                    $('#designs').hide('slide', {direction: 'left'}, 300);
+                }, 100);
+                setTimeout(function() {*/
+                    self.scenarioForm(true);
+                    $('#scenario-form').html(data);
+                /*    $('#designs').show('slide', {direction: 'right'}, 300);
+                }, 420);*/
                 self.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
@@ -1067,14 +1127,17 @@ function scenariosModel(options) {
         return $.ajax({
             url: '/features/leaseblockselection/form/',
             success: function(data) {
-                self.selectionForm(true);
-                $('#selection-form').html(data);
+                /*$('#selection-form').html(data);
+                setTimeout(function() {
+                    $('#designs').hide('slide', {direction: 'left'}, 300);
+                }, 100);
+                setTimeout(function() {*/
+                    self.selectionForm(true);
+                    $('#selection-form').html(data);
+                /*    $('#designs').show('slide', {direction: 'right'}, 300);
+                }, 420);*/
                 self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
                 ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
-                //self.selectionFormModel.updateDesignScrollBar();
-                //if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
-                //    self.selectionFormModel.loadLeaseblockLayer();
-                //}
             },
             error: function (result) { debugger; }
         });
@@ -1294,6 +1357,9 @@ function scenariosModel(options) {
 app.viewModel.scenarios = new scenariosModel();
 
 $('#designsTab').on('show', function (e) {
+    //if ( app.viewModel.scenarios.reports && app.viewModel.scenarios.reports.showingReport() ) {
+    //    app.viewModel.scenarios.reports.updateChart();
+    //}
     if ( !app.viewModel.scenarios.scenariosLoaded || !app.viewModel.scenarios.selectionsLoaded) {
         // load the scenarios
         $.ajax({
