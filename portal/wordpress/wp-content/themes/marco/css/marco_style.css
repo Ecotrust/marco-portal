@@ -265,7 +265,12 @@ hr {
 .news .bugs .wrapper {
 	padding: 5px 10px;
 	text-align: left;
+	min-height: 300px;
+}
 
+.news .bugs .wrapper a:link {
+	font-weight: bold;
+	
 }
 
 .news .bugs .wrapper:hover {

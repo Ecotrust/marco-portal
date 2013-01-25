@@ -1,0 +1,161 @@
+{% extends 'explore_base.html' %} 
+{% block main %}
+<div class="row-fluid">
+<div class="span12" style="margin: 10px">
+    <h3>{{layer.name}}</h3>
+    
+    <!-- XYZ DATA -->
+    {% if layer.layer_type == 'XYZ' %}
+    The {{layer.name}} dataset is stored as cached map tiles.
+    These map tiles are stored in an XYZ format (actually ZXY, or level / column / row).
+        
+    <div class="row-fluid" style="margin-top: 20px;">
+        <div class="span6">
+            <h4>OpenLayers</h4>
+            <p>If you are developing in OpenLayers, you will want to use the 
+            <a href="http://dev.openlayers.org/docs/files/OpenLayers/Layer/XYZ-js.html" target="_blank">OpenLayers XYZ class</a>.
+            <p>An example of your solution might look similar to the code below. 
+            
+        </div>
+        <div class="span5">
+            <iframe scrolling="no" width="100%" height="250" frameborder="0" src="{{domain}}/explore/map_tile_example/{{layer.slug}}"></iframe>
+        </div>
+        <div class="span1"></div>
+        <div class="row-fluid">
+            <div class="span11">
+                <pre>
+layer = new OpenLayers.Layer.XYZ( "{{layer.name}}", 
+    "{{layer.url}}",
+    {
+        sphericalMercator: true,
+        isBaseLayer: false 
+    }
+);
+map.addLayer(layer);  
+                </pre>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row-fluid" style="margin-top: 20px;">
+        <div class="span6">
+            <h4>Leaflet</h4>
+            <p>If you are developing with Leaflet, you will want to use the 
+            <a href="http://leafletjs.com/reference.html#tilelayer" target="_blank">Leaflet TileLayer class</a>.
+            <p>An example of your solution might look similar to the code below. 
+            
+        </div>
+        <div class="span5">
+            <iframe scrolling="no" width="100%" height="250" frameborder="0" src="{{domain}}/explore/map_tile_leaflet_example/{{layer.slug}}"></iframe>
+        </div>
+        <div class="span1"></div>
+        <div class="row-fluid">
+            <div class="span11">
+                <pre>
+layer = new L.TileLayer(
+    "{{layer.url}}",
+    {
+        minZoom: 1, 
+        maxZoom: 12
+    }
+);
+map.addLayer(layer);
+                </pre>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row-fluid" style="margin-left: 0px;">
+        <div class="span6">
+            <h4>ArcGIS</h4>
+            <p>If your development environment includes the javascript ArcGIS API, your application can consume the data using the
+            WebTiledLayer class.  An example of this can be found in the 
+            <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/jssamples/#sample/layers_webtiled_one" target="_blank">
+            ArcGIS API for JavaScript documentation</a>.  
+            An example similar to the one given in the documentation, but with the URL replaced, would be as follows
+        </div>
+        <div class="span5">
+            <iframe scrolling="no" width="100%" height="250" frameborder="0" src="{{domain}}/explore/map_tile_esri_example/{{layer.slug}}"></iframe>
+        </div>
+        <div class="span1"></div>
+        <div class="row-fluid">
+            <div class="span11">
+                <pre>
+var wtl = esri.layers.WebTiledLayer;
+var layer = new wtl("{{arctile_url}}&nbsp;", {
+    "id": "{{layer.name}}"
+});
+map.addLayer(layer);
+                </pre>
+                <p>ArcGIS Resources offers <a href="http://resources.arcgis.com/en/help/flex-api/samples/index.html#//01nq00000085000000" target="_blank">
+                a sample page</a> that lets you experiment with tiled/cached map services.  
+                By selecting Custom Web Tiled Layer (at the top), removing the subdomains entry, and replacing the URL template with the 
+                following link you can see the map display the {{layer.name}} dataset.
+                <pre>{{arctile_url}}</pre>   
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    
+    <!-- ARCREST DATA -->
+    {% if layer.layer_type == 'ArcRest' %}
+    The {{layer.name}} dataset is consumed from an external ArcGIS web service via the following URL and ID
+    
+<pre>{{arcrest_url}}
+ID: {{layer.arcgis_layers}}</pre>
+    
+    
+    <div class="row-fluid" style="margin-top: 20px;">
+        <div class="span6">
+            <h4>OpenLayers</h4>
+            <p>If you are developing in OpenLayers, you will want to use the 
+            <a href="http://dev.openlayers.org/docs/files/OpenLayers/Layer/ArcGIS93Rest-js.html" target="_blank">OpenLayers ArcGIS93Rest class</a>.
+            <p>An example of your solution might look similar to the code below. 
+        </div>
+        <div class="span5">
+            <iframe scrolling="no" width="100%" height="250" frameborder="0" src="{{domain}}/explore/arcrest_example/{{layer.slug}}"></iframe>
+        </div>
+        <div class="span1"></div>
+        <div class="row-fluid">
+            <div class="span11">
+                <pre>
+layer = new OpenLayers.Layer.ArcGIS93Rest(
+    "{{layer.name}}", 
+    "{{layer.url}}",
+    {
+        layers: "show:{{layer.arcgis_layers}}",
+        transparent: true
+    },
+    {
+        isBaseLayer: false
+    }
+);
+map.addLayer(layer); </pre> 
+                
+            </div>
+        </div>
+    </div>
+    
+    {% endif %}
+    
+    
+    <!-- VECTOR DATA -->
+    {% if layer.layer_type == 'Vector' %}
+    The {{layer.name}} dataset is displayed as a geojson vector layer which is currently not available for download.
+    {% endif %}
+    
+    
+</div>
+</div>
+<!-- endforeach theme -->
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function () {
+	$('[rel=tooltip]').tooltip();
+});
+</script>
+{% endblock %}

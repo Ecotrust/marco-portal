@@ -12,7 +12,7 @@ app.init = function () {
         sphericalMercator: true,
         isBaseLayer: true,
         numZoomLevels: 13,
-        attribution: "Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri"
+        attribution: "Sources: Esri, GEBCO, NOAA, National Geographic, DeLorme, NAVTEQ, Geonames.org, and other contributors"
     });
     
     openStreetMap = new OpenLayers.Layer.OSM("Open Street Map", "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png", {
@@ -265,14 +265,14 @@ app.init = function () {
                 text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
             
-            if (newTime - app.map.clickOutput.time > 300) {
-                app.map.clickOutput.attributes = {};
-                app.map.clickOutput.time = newTime;
-            } 
-            app.map.clickOutput.attributes[title] = text;
-            
-            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
+        
+        if (newTime - app.map.clickOutput.time > 300) {
+            app.map.clickOutput.attributes = {};
+            app.map.clickOutput.time = newTime;
+        } 
+        app.map.clickOutput.attributes[title] = text;
+        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
     });
     
     app.map.events.register("nofeatureclick", null, function(e) {

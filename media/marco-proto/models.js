@@ -68,6 +68,7 @@ function layerModel(options, parent) {
     self.data_download = options.data_download || null;
     self.metadata = options.metadata || null;
     self.source = options.source || null;
+    self.tiles = options.tiles || null;
 
     // opacity
     self.opacity.subscribe(function(newOpacity) {
@@ -884,15 +885,9 @@ function viewModel() {
     };
     
     self.updateMarker = function() {
-        //$(elements[0]).closest('.scrollpane').data('jsp').reinitialise();  
-<<<<<<< HEAD
         app.markers.clearMarkers();
         if (app.marker && self.aggregatedAttributes() && self.featureAttribution()) {
             //console.log('updating marker');
-=======
-        if (app.marker && self.aggregatedAttributes()) {
-            app.markers.clearMarkers();
->>>>>>> origin/master
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
         }
@@ -1181,6 +1176,17 @@ function viewModel() {
             return self.activeInfoSublayer().source;
         } else if (self.activeInfoLayer() ) {
             return self.activeInfoLayer().source;
+        } else {
+            return false;
+        }
+    };
+        
+    self.activeTilesLink = function() {
+        //activeInfoLayer().source
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().tiles;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().tiles;
         } else {
             return false;
         }

@@ -550,6 +550,14 @@ a.disabled-link:hover {
   overflow-y: auto;
 }
 
+#data-accordion.designs {
+  height: 500px;
+}
+#data-accordion.designs  ul.unstyled {
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+}
+
 /*#data-accordion .accordion {
   overflow-x: visible;
 }
@@ -585,7 +593,7 @@ a.disabled-link:hover {
 }
 
 #create-new-design .dropdown-menu {
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 #design-list .btn-layer {
