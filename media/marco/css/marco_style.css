@@ -126,6 +126,11 @@ a:focus {
 	margin-left: 0px;
     height: 50px;
 }
+
+.blog .navbar img {
+    height: 77px;
+}
+
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: white;
 	color: #ccc;

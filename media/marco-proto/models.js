@@ -885,9 +885,14 @@ function viewModel() {
     
     self.updateMarker = function() {
         //$(elements[0]).closest('.scrollpane').data('jsp').reinitialise();  
+<<<<<<< HEAD
         app.markers.clearMarkers();
         if (app.marker && self.aggregatedAttributes() && self.featureAttribution()) {
             //console.log('updating marker');
+=======
+        if (app.marker && self.aggregatedAttributes()) {
+            app.markers.clearMarkers();
+>>>>>>> origin/master
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
         }
@@ -979,6 +984,7 @@ function viewModel() {
     // is the legend panel visible?
     self.showLegend = ko.observable(false);
     self.showLegend.subscribe(function (newVal) {
+        self.updateScrollBars();
         if (self.printing.enabled()) {
             self.printing.showLegend(newVal);
         }
@@ -1606,27 +1612,35 @@ function viewModel() {
     
     self.getSeaTurtleAttributes = function (title, data) {
         attrs = [];
-        if ('ST_LK_NUM' in data) {
-            attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
+        if ('ST_LK_NUM' in data && data['ST_LK_NUM']) {
+            //attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
+            if (data['ST_LK_NUM'] === 99) {
+                attrs.push({'display': 'Insufficient Data available for this area', 'data': ''});
+            } else {
+                attrs.push({'display': 'Above Average Sightings for the following species:', 'data': ''});
+            }
+        } else {
+            attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
         }
-        if ( data['ST_LK_NUM'] ) {
+        
+        if ('ST_LK_NUM' in data && data['ST_LK_NUM'] ) {
             if ('GREEN_LK' in data && data['GREEN_LK']) {
                 var season = data['GREEN_LK'],
                     species = 'Green Sea Turtle',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('LEATH_LK' in data && data['LEATH_LK']) {
                 var season = data['LEATH_LK'],
                     species = 'Leatherback Sea Turtle',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('LOGG_LK' in data && data['LOGG_LK']) {
                 var season = data['LOGG_LK'],
                     species = 'Loggerhead Sea Turtle',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }
         }
         return attrs;
@@ -1634,27 +1648,33 @@ function viewModel() {
     
     self.getToothedMammalAttributes = function (title, data) {
         attrs = [];
-        if ('TOO_LK_NUM' in data) {
-            attrs.push({'display': 'Sightings', 'data': data['TOO_LK_NUM']});
+        if ('TOO_LK_NUM' in data && data['TOO_LK_NUM']) {
+            if (data['TOO_LK_NUM'] === 99) {
+                attrs.push({'display': 'Insufficient Data available for this area', 'data': ''});
+            } else {
+                attrs.push({'display': 'Above Average Sightings for the following species:', 'data': ''});
+            }
+        } else {
+            attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
         }
-        if ( data['TOO_LK_NUM'] ) {
+        if ('TOO_LK_NUM' in data && data['TOO_LK_NUM'] ) {
             if ('SPERM_LK' in data && data['SPERM_LK']) {
                 var season = data['SPERM_LK'],
                     species = 'Sperm Whale',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('BND_LK' in data && data['BND_LK']) {
                 var season = data['BND_LK'],
                     species = 'Bottlenose Dolphin',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('STRIP_LK' in data && data['STRIP_LK']) {
                 var season = data['STRIP_LK'],
                     species = 'Striped Dolphin',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }
         }
         return attrs;
