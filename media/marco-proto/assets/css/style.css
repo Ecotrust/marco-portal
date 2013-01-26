@@ -657,6 +657,10 @@ a.disabled-link:hover {
   margin-left: 0px;
 }
 
+#designs-slide {
+  height: 100%;
+}
+
 .attribution {
   font-size: 10px;
 }
