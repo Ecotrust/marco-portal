@@ -536,10 +536,7 @@ a.disabled-link:hover {
   overflow-y: auto;
 }
 
-#data-accordion.designs {
-  height: 500px;
-}
-#data-accordion.designs  ul.unstyled {
+#designs-accordion  ul.unstyled {
   margin-bottom: 0px; 
   padding-bottom: 0px;
 }
