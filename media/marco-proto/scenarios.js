@@ -1103,15 +1103,8 @@ function scenariosModel(options) {
         return $.ajax({
             url: '/features/scenario/form/',
             success: function(data) {
-                /*$('#scenario-form').html(data);
-                setTimeout(function() {
-                    $('#designs').hide('slide', {direction: 'left'}, 300);
-                }, 100);
-                setTimeout(function() {*/
-                    self.scenarioForm(true);
-                    $('#scenario-form').html(data);
-                /*    $('#designs').show('slide', {direction: 'right'}, 300);
-                }, 420);*/
+                self.scenarioForm(true);
+                $('#scenario-form').html(data);
                 self.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
