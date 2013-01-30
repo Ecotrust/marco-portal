@@ -159,7 +159,6 @@ app.init = function () {
                     date = new Date(),
                     newTime = date.getTime();
                 if (info && info.data) { 
-                    console.log('utfcontrol click');
                     var newmsg = '',
                         hasAllAttributes = true,
                         parentHasAllAttributes = false;
