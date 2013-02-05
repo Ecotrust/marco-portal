@@ -83,7 +83,9 @@
                                     </div>
                                 </div>
                                 <div class="btn btn-large reports-btn pull-right" style="display: none" data-bind="click: showComparisonReports">
-                                    <i class="icon-bar-chart icon-large pull-right"></i>
+                                    <span rel="tooltip" title="View Comparison Reports">
+                                        <i class="icon-bar-chart icon-large pull-right"></i>
+                                    </span>
                                 </div>
                             </div>
                             <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
@@ -157,13 +159,13 @@
                         </div>
                     </div> 
                     <div id="reports-intro" data-bind="visible: !showingReport()">
-                        <p>Comparison Reports are used to easily compare the metric values of your Lease Block Collections.</p>
+                        <p>Comparison Reports can be used to visually compare your Lease Block Collections across various measurable values.</p>
                     </div>
                     <div data-bind="visible: !showingReport() && !noActiveCollections()">
                         <p>Select a Comparison Report from the menu above.</p>
                     </div>
                     <div data-bind="visible: noActiveCollections()">
-                        <p>Activate 1 or more Lease Block Collections before selecting a Comparison Report from the menue above.</p>
+                        <p>Activate 1 or more Lease Block Collection before selecting a Comparison Report from the menu above.</p>
                     </div>
                     <div id="reports-container" data-bind="visible: showingReport && !noActiveCollections()" style="max-width: 400px; height: 400px; margin: 0 auto">
                     </div>
