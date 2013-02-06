@@ -1067,6 +1067,8 @@ function scenariosModel(options) {
         //remove the key/value pair from aggregatedAttributes
         app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
         app.viewModel.updateAttributeLayers();
+        
+        self.updateScrollBar();
     };
     
     self.removeSelectionForm = function() {
@@ -1259,6 +1261,7 @@ function scenariosModel(options) {
                             self.scenarioList.push(scenario);
                         }
                     }
+                    app.viewModel.scenarios.activeSelections().push(scenario)
                     
                     //self.scenarioForm(false);
                     self.reset();
