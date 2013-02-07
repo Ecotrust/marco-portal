@@ -145,11 +145,6 @@
   left: 3px;
 }
 
-#data-accordion, #legend-accordion {
-  height: 100%;
-  overflow-y: auto;
-}
-
 #legend-accordion .accordion-toggle {
     font-size: 12px;
 }
@@ -179,12 +174,6 @@ i.check {
   opacity: .4;
   /* for IE */
   filter: alpha(opacity=40);
-}
-
-#data-accordion .dropdown-menu {
-  right: 26px;
-  max-height: 100px;
-  overflow-y: auto;
 }
 
 .attribution {
@@ -291,6 +280,11 @@ a.disabled-link:hover {
   /*width: 68.3% !important;*/
   width: 75% !important;
 }
+.fullscreen-with-layers-authenticated {
+  margin-left: 0px !important;
+  /*width: 68.3% !important;*/
+  width: 65% !important;
+}
 .fullscreen-with-legend {
   margin-left: 0px !important;
   width: 80% !important;
@@ -302,6 +296,10 @@ a.disabled-link:hover {
 .fullscreen-data {
   margin-left: 0px !important;
   width: 25% !important;
+}
+.fullscreen-data-authenticated {
+  margin-left: 0px !important;
+  width: 35% !important;
 }
 .fullscreen-legend {
   margin-left: 0px !important;
@@ -541,10 +539,26 @@ a.disabled-link:hover {
   overflow: visible;
 }*/
 
-#data-accordion, #legend-accordion {
-  height: 400px;
+#data-accordion .dropdown-menu {
+  right: 26px;
+  max-height: 100px;
   overflow-y: auto;
 }
+
+#designs-accordion  ul.unstyled {
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+}
+
+#data-accordion, #designs-accordion{
+    outline: none;
+}
+
+#data-accordion, #legend-accordion, #designs-accordion{
+  height: 100%;
+  overflow-y: auto;
+}
+
 
 /*#data-accordion .accordion {
   overflow-x: visible;
@@ -581,7 +595,7 @@ a.disabled-link:hover {
 }
 
 #create-new-design .dropdown-menu {
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 #design-list .btn-layer {
@@ -597,6 +611,22 @@ a.disabled-link:hover {
   min-width: 75px;
   left: 70%;
   top: 90%;
+}
+
+#design-list .collections-header:hover .reports-btn {
+  display: block !important;
+  opacity: .9;
+  /* for IE */
+  filter: alpha(opacity=90);
+}
+
+
+#design-list .reports-btn {
+  margin-top: -37px;
+  padding-top: 11px !important;
+  padding-right: 14px !important;
+  padding-bottom: 10px !important;
+  padding-left: 14px !important;
 }
 
 #designs .step ul {
@@ -631,6 +661,10 @@ a.disabled-link:hover {
   list-style-type: none;
   padding-left: 0px;
   margin-left: 0px;
+}
+
+#designs-slide {
+  height: 100%;
 }
 
 .attribution {

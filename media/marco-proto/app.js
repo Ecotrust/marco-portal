@@ -11,10 +11,12 @@ app.onResize = function(percent) {
     $(".tabs").height(height);
     $("#legend-wrapper").height(height - 20);
     $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
+    $("#designs-accordion").height(height - 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
+    $("#active").height(height + 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
     app.map.render('map');
   }
   
-  app.viewModel.updateScrollBars();
+  app.viewModel.updateAllScrollBars();
   
   var width = $(window).width();
   if (width < 946) {
@@ -119,6 +121,12 @@ $(document).ready(function() {
   //the following appears to fix that problem
   $('#dataTab[data-toggle="tab"]').on('shown', function(e) {
     app.viewModel.updateScrollBars();
+  });
+  $('#activeTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateScrollBars();
+  });
+  $('#designsTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateAllScrollBars();
   });
   
   //format the legend scrollbar

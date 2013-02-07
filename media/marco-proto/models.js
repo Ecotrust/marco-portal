@@ -68,6 +68,7 @@ function layerModel(options, parent) {
     self.data_download = options.data_download || null;
     self.metadata = options.metadata || null;
     self.source = options.source || null;
+    self.tiles = options.tiles || null;
 
     // opacity
     self.opacity.subscribe(function(newOpacity) {
@@ -142,24 +143,35 @@ function layerModel(options, parent) {
 
     self.deactivateLayer = function() {
         var layer = this;
+        
+        //deactivate layer
+        self.deactivateBaseLayer();
+        
+        //remove related utfgrid layer
+        if (layer.utfgrid) { 
+            self.deactivateUtfGridLayer();
+        }
+        //remove parent layer
+        if (layer.parent) {
+            self.deactivateParentLayer();
+        }
+        //remove sublayer
+        if (layer.activeSublayer()) {
+            self.deactivateSublayer();
+        } 
+        
+        layer.layer = null;
+
+    };
+    
+    // called from deactivateLayer
+    self.deactivateBaseLayer = function() {
+        var layer = this;
         // remove from active layers
         app.viewModel.activeLayers.remove(layer);
 
-        //remove related utfgrid layer
-        if (layer.utfgrid) { //NEED TO CHECK FOR PARENT LAYER HERE TOO...
-            //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
-            app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
-            //var control = $.inArray(this.utfgrid, app.map.UTFControl.layers);
-            //app.map.removeControl(
-            app.map.removeLayer(this.utfgrid);
-        }
-        
         //remove the key/value pair from aggregatedAttributes
-        //debugger;
         app.viewModel.removeFromAggregatedAttributes(layer.name);
-        //delete app.viewModel.aggregatedAttributes()[layer.name];
-        //app.viewModel.updateAggregatedAttributes
-        //debugger;
         
         layer.active(false);
         layer.visible(false);
@@ -167,8 +179,23 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, false);
         layer.opacity(layer.defaultOpacity);
         
-        //layer.layer = null;
+        if ($.inArray(layer.layer, app.map.layers) !== -1) {
+            app.map.removeLayer(layer.layer);
+        }
+    };
+    
+    // called from deactivateLayer
+    self.deactivateUtfGridLayer = function() {
+        var layer = this;
+        //NEED TO CHECK FOR PARENT LAYER HERE TOO...?
+        //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
+        app.map.UTFControl.layers.splice($.inArray(layer.utfgrid, app.map.UTFControl.layers), 1);
+        app.map.removeLayer(layer.utfgrid);
+    };
 
+    // called from deactivateLayer
+    self.deactivateParentLayer = function() {
+        var layer = this;
         if (layer.parent && layer.parent.isCheckBoxLayer()) { // if layer has a parent and that layer is a checkbox layer
             // see if there are any remaining active sublayers in this checkbox layer
             var stillActive = false;
@@ -195,73 +222,72 @@ function layerModel(options, parent) {
             layer.parent.visible(false);
             layer.parent.visibleSublayer(false);
         } 
-        
-        if (layer.activeSublayer()) {
-            if ($.inArray(layer.activeSublayer().layer, app.map.layers) !== -1) {
-                app.map.removeLayer(layer.activeSublayer().layer);
-            }
-            layer.activeSublayer().deactivateLayer();
-            layer.activeSublayer(false);
-            layer.visibleSublayer(false);
-        } 
-        if ($.inArray(layer.layer, app.map.layers) !== -1) {
-            app.map.removeLayer(layer.layer);
-        }
-        layer.layer = null;
-
     };
-
+    
+    // called from deactivateLayer
+    self.deactivateSublayer = function() {
+        var layer = this;
+        if ($.inArray(layer.activeSublayer().layer, app.map.layers) !== -1) {
+            app.map.removeLayer(layer.activeSublayer().layer);
+        }
+        layer.activeSublayer().deactivateLayer();
+        layer.activeSublayer(false);
+        layer.visibleSublayer(false);
+    };
+    
     self.activateLayer = function() {
         var layer = this;
 
         if (!layer.active() && layer.type !== 'placeholder') {
         
-            app.addLayerToMap(layer);
-
-            //changed the following so that 
-            //if the layer is an attributed vector layer, it will be added to the top of activeLayers
-            //otherwise, it will be added just before the first non-vector layer
-            /*
-            if (layer.type === "Vector" && layer.attributes.length) {
-                // add it to the top of the active layers
-                app.viewModel.activeLayers.unshift(layer);
-            } else {
-                var index = 0;
-                $.each(app.viewModel.activeLayers(), function(i, layer) {
-                    if (!(layer.type === "Vector" && layer.attributes.length)) {
-                        return false;
-                    } else {
-                        index += 1;
-                    }
-                });
-                app.viewModel.activeLayers.splice(index, 0, layer);
-            }
-            */
-            //now that we now longer use the selectfeature control we can simply do the following 
-            app.viewModel.activeLayers.unshift(layer);
-
-            // set the active flag
-            layer.active(true);
-            layer.visible(true);
+            self.activateBaseLayer();
 
             // save reference in parent layer
             if (layer.parent) {
-                if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
-                    // only allow one sublayer on at a time
-                    layer.parent.activeSublayer().deactivateLayer();
-                }
-                layer.parent.active(true);
-                layer.parent.activeSublayer(layer);
-                layer.parent.visible(true);
-                layer.parent.visibleSublayer(layer);
+                self.activateParentLayer();
             }
 
             //add utfgrid if applicable
             if (layer.utfgrid) {
-                app.map.UTFControl.layers.unshift(layer.utfgrid);
+                self.activateUtfGridLayer();
             }
 
         }
+    };
+    
+    // called from activateLayer
+    self.activateBaseLayer = function() {
+        var layer = this;
+        
+        app.addLayerToMap(layer);
+
+        //now that we now longer use the selectfeature control we can simply do the following 
+        app.viewModel.activeLayers.unshift(layer);
+
+        // set the active flag
+        layer.active(true);
+        layer.visible(true);
+    };
+    
+    // called from activateLayer
+    self.activateParentLayer = function() {
+        var layer = this;
+        
+        if (layer.parent.type === 'radio' && layer.parent.activeSublayer()) {
+            // only allow one sublayer on at a time
+            layer.parent.activeSublayer().deactivateLayer();
+        }
+        layer.parent.active(true);
+        layer.parent.activeSublayer(layer);
+        layer.parent.visible(true);
+        layer.parent.visibleSublayer(layer);
+    };
+    
+    // called from activateLayer
+    self.activateUtfGridLayer = function() {
+        var layer = this;
+        
+        app.map.UTFControl.layers.unshift(layer.utfgrid);
     };
 
     // bound to click handler for layer visibility switching in Active panel
@@ -732,6 +758,16 @@ function viewModel() {
     
     self.attributeLayers = ko.observable();
     
+    self.featureAttribution = ko.observable(true);
+    self.enableFeatureAttribution = function() {
+        self.aggregatedAttributes(false);
+        self.featureAttribution(true);
+    };
+    self.disableFeatureAttribution = function() {
+        self.featureAttribution(false); 
+        app.markers.clearMarkers();
+    };
+    
     self.updateAttributeLayers = function() {
         var attributeLayersList = [];
         if (self.scenarios && self.scenarios.scenarioFormModel && self.scenarios.scenarioFormModel.isLeaseblockLayerVisible()) {
@@ -849,10 +885,9 @@ function viewModel() {
     };
     
     self.updateMarker = function() {
-        //$(elements[0]).closest('.scrollpane').data('jsp').reinitialise();  
-        if (app.marker && self.aggregatedAttributes()) {
+        app.markers.clearMarkers();
+        if (app.marker && self.aggregatedAttributes() && self.featureAttribution()) {
             //console.log('updating marker');
-            app.markers.clearMarkers();
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
         }
@@ -944,6 +979,7 @@ function viewModel() {
     // is the legend panel visible?
     self.showLegend = ko.observable(false);
     self.showLegend.subscribe(function (newVal) {
+        self.updateScrollBars();
         if (self.printing.enabled()) {
             self.printing.showLegend(newVal);
         }
@@ -1011,6 +1047,13 @@ function viewModel() {
         $('#fullscreen-error-overlay').hide();
     };
     
+    self.updateAllScrollBars = function() {
+        self.updateScrollBars();
+        if (self.scenarios) {
+            self.scenarios.updateDesignsScrollBar();
+        }
+    };
+    
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
     
@@ -1019,6 +1062,13 @@ function viewModel() {
             $('#data-accordion').jScrollPane();
         } else {
             dataScrollpane.reinitialise();
+        }
+        
+        var activeScrollpane = $('#active').data('jsp');
+        if (activeScrollpane === undefined) {
+            $('#active').jScrollPane();
+        } else {
+            activeScrollpane.reinitialise();
         }
         
         var legendScrollpane = $('#legend-content').data('jsp');
@@ -1083,7 +1133,7 @@ function viewModel() {
         }
     }; 
     
-    self.getOverviewText = function(test1, test2) {
+    self.getOverviewText = function() {
         //activeInfoSublayer() ? activeInfoSublayer().overview : activeInfoLayer().overview
         if ( self.activeInfoSublayer() ) {
             if ( self.activeInfoSublayer().overview === null ) {
@@ -1140,6 +1190,17 @@ function viewModel() {
             return self.activeInfoSublayer().source;
         } else if (self.activeInfoLayer() ) {
             return self.activeInfoLayer().source;
+        } else {
+            return false;
+        }
+    };
+        
+    self.activeTilesLink = function() {
+        //activeInfoLayer().source
+        if ( self.activeInfoSublayer() ) {
+            return self.activeInfoSublayer().tiles;
+        } else if (self.activeInfoLayer() ) {
+            return self.activeInfoLayer().tiles;
         } else {
             return false;
         }
@@ -1205,6 +1266,16 @@ function viewModel() {
         self.showPointerInfo(!self.showPointerInfo());
     };
 
+    // get layer by id
+    self.getLayerById = function(id) {
+        for (var x=0; x<self.themes().length; x++) {
+            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return layer.id === id });
+            if (layer_list.length > 0) {
+                return layer_list[0];
+            }
+        }
+        return false;
+    };
 
     // handle the search form
     self.searchTerm = ko.observable();
@@ -1561,27 +1632,35 @@ function viewModel() {
     
     self.getSeaTurtleAttributes = function (title, data) {
         attrs = [];
-        if ('ST_LK_NUM' in data) {
-            attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
+        if ('ST_LK_NUM' in data && data['ST_LK_NUM']) {
+            //attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
+            if (data['ST_LK_NUM'] === 99) {
+                attrs.push({'display': 'Insufficient Data available for this area', 'data': ''});
+            } else {
+                attrs.push({'display': 'Above Average Sightings for the following species:', 'data': ''});
+            }
+        } else {
+            attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
         }
-        if ( data['ST_LK_NUM'] ) {
+        
+        if ('ST_LK_NUM' in data && data['ST_LK_NUM'] ) {
             if ('GREEN_LK' in data && data['GREEN_LK']) {
                 var season = data['GREEN_LK'],
                     species = 'Green Sea Turtle',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('LEATH_LK' in data && data['LEATH_LK']) {
                 var season = data['LEATH_LK'],
                     species = 'Leatherback Sea Turtle',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('LOGG_LK' in data && data['LOGG_LK']) {
                 var season = data['LOGG_LK'],
                     species = 'Loggerhead Sea Turtle',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }
         }
         return attrs;
@@ -1589,27 +1668,33 @@ function viewModel() {
     
     self.getToothedMammalAttributes = function (title, data) {
         attrs = [];
-        if ('TOO_LK_NUM' in data) {
-            attrs.push({'display': 'Sightings', 'data': data['TOO_LK_NUM']});
+        if ('TOO_LK_NUM' in data && data['TOO_LK_NUM']) {
+            if (data['TOO_LK_NUM'] === 99) {
+                attrs.push({'display': 'Insufficient Data available for this area', 'data': ''});
+            } else {
+                attrs.push({'display': 'Above Average Sightings for the following species:', 'data': ''});
+            }
+        } else {
+            attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
         }
-        if ( data['TOO_LK_NUM'] ) {
+        if ('TOO_LK_NUM' in data && data['TOO_LK_NUM'] ) {
             if ('SPERM_LK' in data && data['SPERM_LK']) {
                 var season = data['SPERM_LK'],
                     species = 'Sperm Whale',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('BND_LK' in data && data['BND_LK']) {
                 var season = data['BND_LK'],
                     species = 'Bottlenose Dolphin',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }  
             if ('STRIP_LK' in data && data['STRIP_LK']) {
                 var season = data['STRIP_LK'],
                     species = 'Striped Dolphin',
                     sighting = species + ' (' + season + ') ';
-                attrs.push({'display': 'Species', 'data': sighting});
+                attrs.push({'display': '', 'data': sighting});
             }
         }
         return attrs;
@@ -1625,6 +1710,100 @@ function viewModel() {
         return attrs;
     };
     
+    self.isSelectedLeaseBlock = function(name) {
+        if (name === "OCS Lease Blocks") {
+            return true;
+        }
+        if (self.scenarios && 
+            self.scenarios.selectionFormModel && 
+            self.scenarios.selectionFormModel.selectedLeaseBlockLayer && 
+            self.scenarios.selectionFormModel.selectedLeaseBlocksLayerName === name) {
+            return true;
+        } 
+        if (self.scenarios && 
+            self.scenarios.scenarioFormModel && 
+            self.scenarios.scenarioLeaseBlocksLayerName === name) {
+            return true;
+        }
+        return false;
+    };
+    
+    self.getOCSAttributes = function (title, data) {
+        attrs = [];
+        if ('BLOCK_LAB' in data) {
+            attrs.push({'display': 'OCS Block Number', 'data': data['BLOCK_LAB']});
+        }
+        if ('PROT_NUMBE' in data) {
+            attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
+        }
+        if ('PROT_NUMB' in data) {
+            if (self.scenarios && 
+                self.scenarios.selectionFormModel && 
+                self.scenarios.selectionFormModel.IE && 
+                self.scenarios.selectionFormModel.selectingLeaseBlocks()) {
+                var blockID = data['PROT_NUMB'],
+                    index = self.scenarios.selectionFormModel.selectedLeaseBlocks.indexOf(blockID);
+                if ( index === -1) {
+                    //add that lease block to the list of selected leaseblocks
+                    self.scenarios.selectionFormModel.selectedLeaseBlocks.push(blockID);
+                } else {
+                    //remove that lease block from the list of selected leaseblocks
+                    self.scenarios.selectionFormModel.selectedLeaseBlocks.splice(index, 1);
+                }
+            }
+        }
+        if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
+            if ( data['WINDREV_MI'] ) {                
+                var min_speed = data['WINDREV_MI'].toFixed(3),
+                    max_speed = data['WINDREV_MA'].toFixed(3),
+                    min_range = (parseFloat(min_speed)-.125).toPrecision(3),
+                    max_range = (parseFloat(max_speed)+.125).toPrecision(3);
+                /*if ( min_speed === max_speed ) {
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
+                } else {
+                    var speed = (min_speed-.125) + ' to ' + (max_speed+.125);
+                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
+                }*/
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_range + ' to ' + max_range + ' m/s'});
+            } else {
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'no data'});
+            }
+        }
+        if ('MI_MIN' in data && 'MI_MAX' in data) {
+            attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
+        }
+        if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
+            if ( data['DEPTHM_MIN'] ) {
+                //convert depth values to positive feet values (from negative meter values)
+                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+            } else {
+                attrs.push({'display': 'Depth Range', 'data': 'no data'});
+            }
+        }
+        if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
+            attrs.push({'display': 'Distance to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0) + ' miles'});
+        }
+        if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
+            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
+        }
+        if ('AIS7_MEAN' in data) {
+            if ( data['AIS7_MEAN'] < 1 ) {
+                var rank = 'Low';
+            } else {
+                var rank = 'High';
+            }
+            attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
+        }
+        if ('WEA_NAME' in data) {
+            if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {
+                attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
+            }
+        }
+        return attrs;
+    };
+            
     return self;
 } //end viewModel
 

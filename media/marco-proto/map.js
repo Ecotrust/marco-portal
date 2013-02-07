@@ -12,7 +12,7 @@ app.init = function () {
         sphericalMercator: true,
         isBaseLayer: true,
         numZoomLevels: 13,
-        attribution: "Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri"
+        attribution: "Sources: Esri, GEBCO, NOAA, National Geographic, DeLorme, NAVTEQ, Geonames.org, and other contributors"
     });
     
     openStreetMap = new OpenLayers.Layer.OSM("Open Street Map", "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png", {
@@ -144,120 +144,126 @@ app.init = function () {
         layers: [],
         //events: {fallThrough: true},
         handlerMode: 'click',
-        callback: function(infoLookup) {
-            for (var idx in infoLookup) {
-                $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-                  if (potential_layer.type !== 'Vector') {
-                    var new_attributes;
-                    var info = infoLookup[idx];
-                    if (info && info.data) { 
-                        var newmsg = '',
-                            hasAllAttributes = true,
-                            parentHasAllAttributes = false;
-                        // if info.data has all the attributes we're looking for
-                        // we'll accept this layer as the attribution layer 
-                        //if ( ! potential_layer.attributes.length ) {
-                        hasAllAttributes = false;
-                        //}
-                        $.each(potential_layer.attributes, function (attr_index, attr_obj) {
-                            if ( attr_obj.field in info.data ) {
-                                hasAllAttributes = true;
-                            }
-                        });
-                        if ( !hasAllAttributes && potential_layer.parent) {
-                            parentHasAllAttributes = true;
-                            if ( ! potential_layer.parent.attributes.length ) {
-                                parentHasAllAttributes = false;
-                            }
-                            $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
-                                if ( !(attr_obj.field in info.data) ) {
-                                    parentHasAllAttributes = false;
-                                }
-                            });
-                        }
-                        if (hasAllAttributes) {
-                            new_attributes = potential_layer.attributes;
-                        } else if (parentHasAllAttributes) {
-                            new_attributes = potential_layer.parent.attributes;
-                        }
-                        if (new_attributes) { 
-                            var attribute_objs = [];
-                            $.each(new_attributes, function(index, obj) {
-                                if ( potential_layer.compress_attributes ) {
-                                    var display = obj.display + ': ' + info.data[obj.field];
-                                    attribute_objs.push({'display': display, 'data': ''});
-                                } else {
-                                    /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
-                                    var value = info.data[obj.field];
-                                    if (value === 999999) {
-                                        attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
-                                    } else {
-                                        try {
-                                            //set the precision and add any necessary commas
-                                            value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                        }
-                                        catch (e) {
-                                            //keep on keeping on
-                                        }
-                                        attribute_objs.push({'display': obj.display, 'data': value});
-                                    }
-                                    
-                                }
-                            });
-                            var title = potential_layer.name,
-                                date = new Date(),
-                                newTime = date.getTime(),
-                                text = attribute_objs;
-                            if ( title === 'OCS Lease Blocks' ) {
-                                text = app.viewModel.scenarios.getOCSAttributes(title, info.data);
-                            } else if ( title === 'Sea Turtles' ) {
-                                text = app.viewModel.getSeaTurtleAttributes(title, info.data);
-                            } else if ( title === 'Toothed Mammals (All Seasons)' ) {
-                                text = app.viewModel.getToothedMammalAttributes(title, info.data);
-                            } else if ( title === 'Wind Speed' ) {
-                                text = app.viewModel.getWindSpeedAttributes(title, info.data);
-                            }
-                            if (newTime - app.map.clickOutput.time > 500) {
-                                app.map.clickOutput.attributes = {};
-                                app.map.clickOutput.time = newTime;
-                                app.map.clickOutput.attributes[title] = text;
-                            } else {
-                                if ( text[0].data ) {
-                                    app.map.clickOutput.attributes[title] = text;
-                                }
-                            }
-                            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                        } 
-                    } 
-                  }
-                });
-            } 
+        callback: function(infoLookup, lonlat, xy) {   
+            app.map.utfGridClickHandling(infoLookup);
         }
     });
     map.addControl(map.UTFControl);    
     
+    app.map.utfGridClickHandling = function(infoLookup) {
+        for (var idx in infoLookup) {
+            $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
+              if (potential_layer.type !== 'Vector') {
+                var new_attributes,
+                    info = infoLookup[idx],
+                    date = new Date(),
+                    newTime = date.getTime();
+                if (info && info.data) { 
+                    var newmsg = '',
+                        hasAllAttributes = true,
+                        parentHasAllAttributes = false;
+                    // if info.data has all the attributes we're looking for
+                    // we'll accept this layer as the attribution layer 
+                    //if ( ! potential_layer.attributes.length ) {
+                    hasAllAttributes = false;
+                    //}
+                    $.each(potential_layer.attributes, function (attr_index, attr_obj) {
+                        if ( attr_obj.field in info.data ) {
+                            hasAllAttributes = true;
+                        }
+                    });
+                    if ( !hasAllAttributes && potential_layer.parent) {
+                        parentHasAllAttributes = true;
+                        if ( ! potential_layer.parent.attributes.length ) {
+                            parentHasAllAttributes = false;
+                        }
+                        $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
+                            if ( !(attr_obj.field in info.data) ) {
+                                parentHasAllAttributes = false;
+                            }
+                        });
+                    }
+                    if (hasAllAttributes) {
+                        new_attributes = potential_layer.attributes;
+                    } else if (parentHasAllAttributes) {
+                        new_attributes = potential_layer.parent.attributes;
+                    }
+                    if (new_attributes) { 
+                        var attribute_objs = [];
+                        $.each(new_attributes, function(index, obj) {
+                            if ( potential_layer.compress_attributes ) {
+                                var display = obj.display + ': ' + info.data[obj.field];
+                                attribute_objs.push({'display': display, 'data': ''});
+                            } else {
+                                /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
+                                var value = info.data[obj.field];
+                                if (value === 999999) {
+                                    attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
+                                } else {
+                                    try {
+                                        //set the precision and add any necessary commas
+                                        value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    }
+                                    catch (e) {
+                                        //keep on keeping on
+                                    }
+                                    attribute_objs.push({'display': obj.display, 'data': value});
+                                }
+                            }
+                        });
+                        var title = potential_layer.name,
+                            text = attribute_objs;
+                        if ( title === 'OCS Lease Blocks' ) {
+                            text = app.viewModel.getOCSAttributes(title, info.data);
+                        } else if ( title === 'Sea Turtles' ) {
+                            text = app.viewModel.getSeaTurtleAttributes(title, info.data);
+                        } else if ( title === 'Toothed Mammals (All Seasons)' ) {
+                            text = app.viewModel.getToothedMammalAttributes(title, info.data);
+                        } else if ( title === 'Wind Speed' ) {
+                            text = app.viewModel.getWindSpeedAttributes(title, info.data);
+                        }
+                        if (newTime - app.map.clickOutput.time > 500) {
+                            app.map.clickOutput.attributes = {};
+                            app.map.clickOutput.time = newTime;
+                            app.map.clickOutput.attributes[title] = text;
+                        } else {
+                            if ( text[0].data || text[0].display) {
+                                app.map.clickOutput.attributes[title] = text;
+                            }
+                        }
+                        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                    } 
+                } 
+              }
+            });
+        }
+    }; //end utfGridClickHandling
+      
     app.map.events.register("featureclick", null, function(e) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
-        var date = new Date();
-        var newTime = date.getTime();
-        var text = [],
-            title = layer.name;
-        
-        if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
-            var attrs = layer.scenarioAttributes;
-            for (var i=0; i<attrs.length; i++) {
-                text.push({'display': attrs[i].title, 'data': attrs[i].data});
-            }
-        } else if ( layer.attributes.length ) {
-            var attrs = layer.attributes;
+        if (layer) {
+            var date = new Date();
+            var newTime = date.getTime();
+            var text = [],
+                title = layer.name;
             
-            for (var i=0; i<attrs.length; i++) {
-                if ( e.feature.data[attrs[i].field] ) {
-                    text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+            if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
+                var attrs = layer.scenarioAttributes;
+                for (var i=0; i<attrs.length; i++) {
+                    text.push({'display': attrs[i].title, 'data': attrs[i].data});
                 }
+            } else if ( layer.attributes.length ) {
+                var attrs = layer.attributes;
+                
+                for (var i=0; i<attrs.length; i++) {
+                    if ( e.feature.data[attrs[i].field] ) {
+                        text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
+                    }
+                }
+            } else if ( app.viewModel.isSelectedLeaseBlock(layer.name) ) {
+                text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
-        } else if ( layer.name === 'Selected OCS Blocks' ) {
-            text = app.viewModel.scenarios.getOCSAttributes(title, e.feature.attributes);
+            
         }
         
         if (newTime - app.map.clickOutput.time > 300) {
@@ -265,7 +271,6 @@ app.init = function () {
             app.map.clickOutput.time = newTime;
         } 
         app.map.clickOutput.attributes[title] = text;
-        
         app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
     });
     
@@ -273,9 +278,8 @@ app.init = function () {
         var date = new Date();
         var newTime = date.getTime();
         if (newTime - app.map.clickOutput.time > 300) {
-            //app.viewModel.aggregatedAttributes(false);
             app.viewModel.closeAttribution();
-        }
+        } 
     });
     
     app.markers = new OpenLayers.Layer.Markers( "Markers" );
@@ -284,29 +288,18 @@ app.init = function () {
     //var icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.markers.icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.map.addLayer(app.markers);
-        
+              
+    //place the marker on click events
     app.map.events.register("click", app.map , function(e){
         app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
         app.marker.map = app.map;
         app.viewModel.updateMarker();
-        //app.markers.addMarker(app.marker);
-        //app.markers.clearMarkers();
-        /*setTimeout(function() {
-            if ( app.viewModel.aggregatedAttributes() ) {
-                app.markers.addMarker(app.marker);
-            }
-        }, 300);*/
     });
-
-        
+    
 };
 
 app.addLayerToMap = function(layer) {
     if (!layer.layer) {
-        var opts = {
-            displayInLayerSwitcher: false
-        };
-        
         /***BEGIN TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         if ( $.browser.msie && $.browser.version < 9.0 && layer.name === "Coldwater Corals" ) {
         //if ( layer.name === "Coldwater Corals" ) {    
@@ -317,126 +310,146 @@ app.addLayerToMap = function(layer) {
         /***END TEMPORARY FIX FOR CORALS LAYER IN IE8***/
         
         if (layer.utfurl || (layer.parent && layer.parent.utfurl)) {
-            layer.utfgrid = new OpenLayers.Layer.UTFGrid({
-                layerModel: layer,
-                url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
-                sphericalMercator: true,
-                //events: {fallThrough: true},
-                utfgridResolution: 4, // default is 2
-                displayInLayerSwitcher: false,
-                useJSONP: false
-            });
-             
-            app.map.addLayer(layer.utfgrid);           
-            layer.layer = new OpenLayers.Layer.XYZ(
-                layer.name, 
-                layer.url,
-                $.extend({}, opts, 
-                    {
-                        sphericalMercator: true,
-                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-                    }
-                )
-            );  
-            app.map.addLayer(layer.layer);  
+            app.addUtfLayerToMap(layer);
         } else if (layer.type === 'Vector') {
-            var styleMap = new OpenLayers.StyleMap( {
-                fillColor: layer.color,
-                fillOpacity: layer.fillOpacity,
-                //strokeDashStyle: "dash",
-                //strokeOpacity: 1,
-                strokeColor: layer.color,
-                strokeOpacity: layer.defaultOpacity,
-                //strokeLinecap: "square",
-                //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
-                //title: 'testing'
-                pointRadius: 2,
-                externalGraphic: layer.graphic,
-                graphicWidth: 8,
-                graphicHeight: 8,
-                graphicOpacity: layer.defaultOpacity
-            });
-            if (layer.lookupField) {
-                var mylookup = {};
-                $.each(layer.lookupDetails, function(index, details) {    
-                    var fillOp = 0.5;
-                    //the following are special cases for Shipping Lanes that ensure suitable attribution with proper display 
-                    if (details.value === 'Precautionary Area') {
-                        fillOp = 0.0; 
-                    } else if (details.value === 'Shipping Safety Fairway') {
-                        fillOp = 0.0;
-                    } else if (details.value === 'Traffic Lane') {
-                        fillOp = 0.0;
-                    }
-                    mylookup[details.value] = { strokeColor: details.color, 
-                                                strokeDashstyle: details.dashstyle, 
-                                                fill: details.fill,
-                                                fillColor: details.color, 
-                                                fillOpacity: fillOp,
-                                                externalGraphic: details.graphic }; 
-                });
-                styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
-                //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
-            }
-            layer.layer = new OpenLayers.Layer.Vector(
-                layer.name,
-                {
-                    projection: new OpenLayers.Projection('EPSG:3857'),
-                    displayInLayerSwitcher: false,
-                    strategies: [new OpenLayers.Strategy.Fixed()],
-                    protocol: new OpenLayers.Protocol.HTTP({
-                        url: layer.url,
-                        format: new OpenLayers.Format.GeoJSON()
-                    }),
-                    styleMap: styleMap,                    
-                    layerModel: layer
-                }
-            );
-            app.map.addLayer(layer.layer); 
+            app.addVectorLayerToMap(layer);
         } else if (layer.type === 'ArcRest') {
-            layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
-                layer.name, 
-                layer.url,
-                {
-                    layers: "show:"+layer.arcgislayers,
-                    srs: 'EPSG:3857',
-                    transparent: true
-                },
-                {
-                    isBaseLayer: false
-                }
-            );
-            app.map.addLayer(layer.layer);  
+            app.addArcRestLayerToMap(layer);
         } else if (layer.type === 'WMS') {
-            layer.layer = new OpenLayers.Layer.WMS(
-                layer.name, 
-                layer.url,
-                {
-                    'layers': 'basic'
-                }
-            );
-            app.map.addLayer(layer.layer);  
+            app.addWmsLayerToMap(layer);
         } else { //if XYZ with no utfgrid
-            // adding layer to the map for the first time		
-            layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
-                //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
-                layer.url,
-                $.extend({}, opts, 
-                    {
-                        sphericalMercator: true,
-                        isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-                    }
-                )
-            );
-            app.map.addLayer(layer.layer);  
+            app.addXyzLayerToMap(layer);
         }
-    } else if ( layer.utfurl ) { //re-adding utfcontrol for existing utf layers (they are destroyed in layer.deactivateLayer)
-        //layer.utfcontrol = app.addUTFControl(layer);
-        //app.map.addControl(layer.utfcontrol); 
-    }
+    } 
+    app.map.addLayer(layer.layer); 
     layer.layer.opacity = layer.opacity();
     layer.layer.setVisibility(true);
 };
+
+// add XYZ layer with no utfgrid
+app.addXyzLayerToMap = function(layer) {
+    var opts = { displayInLayerSwitcher: false };
+        
+    // adding layer to the map for the first time		
+    layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
+        //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
+        layer.url,
+        $.extend({}, opts, 
+            {
+                sphericalMercator: true,
+                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+            }
+        )
+    ); 
+};
+
+app.addWmsLayerToMap = function(layer) {
+    layer.layer = new OpenLayers.Layer.WMS(
+        layer.name, 
+        layer.url,
+        {
+            'layers': 'basic'
+        }
+    );
+};
+
+app.addArcRestLayerToMap = function(layer) {
+    layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
+        layer.name, 
+        layer.url,
+        {
+            layers: "show:"+layer.arcgislayers,
+            srs: 'EPSG:3857',
+            transparent: true
+        },
+        {
+            isBaseLayer: false
+        }
+    );
+};
+
+app.addVectorLayerToMap = function(layer) {
+    var styleMap = new OpenLayers.StyleMap( {
+        fillColor: layer.color,
+        fillOpacity: layer.fillOpacity,
+        //strokeDashStyle: "dash",
+        //strokeOpacity: 1,
+        strokeColor: layer.color,
+        strokeOpacity: layer.defaultOpacity,
+        //strokeLinecap: "square",
+        //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+        //title: 'testing'
+        pointRadius: 2,
+        externalGraphic: layer.graphic,
+        graphicWidth: 8,
+        graphicHeight: 8,
+        graphicOpacity: layer.defaultOpacity
+    });
+    if (layer.lookupField) {
+        var mylookup = {};
+        $.each(layer.lookupDetails, function(index, details) {    
+            var fillOp = 0.5;
+            //the following are special cases for Shipping Lanes that ensure suitable attribution with proper display 
+            if (details.value === 'Precautionary Area') {
+                fillOp = 0.0; 
+            } else if (details.value === 'Shipping Safety Fairway') {
+                fillOp = 0.0;
+            } else if (details.value === 'Traffic Lane') {
+                fillOp = 0.0;
+            }
+            mylookup[details.value] = { 
+                strokeColor: details.color, 
+                strokeDashstyle: details.dashstyle, 
+                fill: details.fill,
+                fillColor: details.color, 
+                fillOpacity: fillOp,
+                externalGraphic: details.graphic 
+            }; 
+        });
+        styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
+        //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
+    }
+    layer.layer = new OpenLayers.Layer.Vector(
+        layer.name,
+        {
+            projection: new OpenLayers.Projection('EPSG:3857'),
+            displayInLayerSwitcher: false,
+            strategies: [new OpenLayers.Strategy.Fixed()],
+            protocol: new OpenLayers.Protocol.HTTP({
+                url: layer.url,
+                format: new OpenLayers.Format.GeoJSON()
+            }),
+            styleMap: styleMap,                    
+            layerModel: layer
+        }
+    );
+
+};
+
+app.addUtfLayerToMap = function(layer) {
+    var opts = { displayInLayerSwitcher: false };
+    layer.utfgrid = new OpenLayers.Layer.UTFGrid({
+        layerModel: layer,
+        url: layer.utfurl ? layer.utfurl : layer.parent.utfurl,
+        sphericalMercator: true,
+        //events: {fallThrough: true},
+        utfgridResolution: 4, // default is 2
+        displayInLayerSwitcher: false,
+        useJSONP: false
+    });
+     
+    app.map.addLayer(layer.utfgrid);           
+    layer.layer = new OpenLayers.Layer.XYZ(
+        layer.name, 
+        layer.url,
+        $.extend({}, opts, 
+            {
+                sphericalMercator: true,
+                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+            }
+        )
+    );  
+}
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it

@@ -21,12 +21,6 @@
         if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
             $('#distance_to_shore_widget').show();
         } 
-        if ($('#id_input_parameter_substrate').is(':checked')) {
-            $('#substrate_widget').show();
-        } 
-        if ($('#id_input_parameter_sediment').is(':checked')) {
-            $('#sediment_widget').show();
-        } 
         //Wind Energy 
         if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
             $('#distance_to_awc_widget').show();
@@ -44,7 +38,7 @@
         updateDesignScrollBar();
         
         function validate(step) {
-            if (step == 1) {
+            if (step == 1) {/*
                 parameter_selections = 0;
                 var all_params = $('input.parameters');
                 //NOTE:  This will also examine parameters in Step 2...might call those 'filters' to prevent this problem?
@@ -72,7 +66,7 @@
                             return false;
                         }
                     }
-                }
+                }*/
             } 
             return true;
         }; 
@@ -91,6 +85,9 @@
                 $(this).hide();
             });
             $('div#step' + step).show();
+            updateDesignScrollBar();
+            $('#wind-design-form').data('jsp').scrollTo(0,0);
+            
 
             if (step == 1) {
                 $('#button_prev').hide();
@@ -116,7 +113,7 @@
             if (designsWizardScrollpane === undefined) {
                 $('#wind-design-form').jScrollPane();
             } else {
-                setTimeout(function() {designsWizardScrollpane.reinitialise();},100);
+                setTimeout(function() {designsWizardScrollpane.reinitialise();},200);
             }
         }
         
@@ -323,63 +320,39 @@
             if (value < 7.0) {
                 $text.html('Fair');
                 $label.css('background', "#38a800");
-                //$label.attr('class', "label label-important");
-                //$left_side.css('background', '#aaaa00');
             } else if (value < 7.25) {
                 $text.html('Good');
                 $label.css('background', "#6fc400");
-                //$label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa5500');
             } else if (value < 7.5) {
                 $text.html('Good');
                 $label.css('background', "#8bd100");
-                //$label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
             } else if (value < 7.75) {
                 $text.html('Excellent');
                 $label.css('background', "#b0e000");
-                //$label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
             } else if (value < 8.0) {
                 $text.html('Excellent');
                 $label.css('background', "#e3f23b");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
             } else if (value < 8.25) {
                 $text.html('Outstanding');
                 $label.css('background', "#ffff78");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
             } else if (value < 8.5) {
                 $text.html('Outstanding');
                 $label.css('background', "#fff566");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
             } else if (value < 8.75) {
                 $text.html('Outstanding');
                 $label.css('background', "#f2db44");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
             } else if (value < 9.0) {
                 $text.html('Superb');
                 $label.css('background', "#fab525");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
             } else if (value < 9.25) {
                 $text.html('Superb');
                 $label.css('background', "#ffa600");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
             } else if (value < 9.5) {
                 $text.html('Superb');
                 $label.css('background', "#ff9400");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
             } else {
                 $text.html('Superb');
                 $label.css('background', "#ff7300");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#000088');
             }
             //Poor       < 12.5      (< 5.6)     ffff00
             //Fair       14.3-15.7   (6.4-7.0)   ff0000
@@ -464,7 +437,7 @@
 {% if form.media %} {{ form.media }} {% endif %}
 <h4>
     <!--<img src="/media/marco/img/multi.png"/>-->
-    Wind Energy Design
+    Wind Energy Siting
 </h4>
 <form id="wind-design-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
@@ -498,6 +471,12 @@
                     {{ form.input_avg_wind_speed }} 
                     {{ form.input_avg_wind_speed.errors }}   
                 </div> 
+                <div style="margin-top: 10px">
+                    <label id="wind-speed-layer-toggle" data-bind="click: toggleWindSpeedLayer">
+                        <input id="wind-speed-layer-checkbox" data-bind="checked: windSpeedLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                        Show Wind Speed Data</input>
+                    </label>
+                </div>
             </div>
         </li>
         <li>
@@ -541,6 +520,12 @@
                     {{ form.input_distance_to_awc }} 
                     {{ form.input_distance_to_awc.errors }}   
                 </span> 
+                <div style="margin-top: 10px">
+                    <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
+                        <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                        Show AWC Routes & Hubs Data</input>
+                    </label>
+                </div>
             </div>
         </li>
         <!-- The following produces a '"False" is not a valid value for a primary key' Error (400 response)
@@ -560,14 +545,6 @@
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Additional Parameters...</label>
-    <div id="step2_inputs">
-        <ul class="parameters">
-        <li>
-            Terrestrial Substations?
-        </li>
-        </ul>
-    </div>
   </div>
 
   <div id="step2" class="step">
@@ -586,6 +563,12 @@
                     {{ form.input_distance_to_shipping }} 
                     {{ form.input_distance_to_shipping.errors }}   
                 </label> 
+                <div style="margin-top: 10px">
+                    <label id="shipping-lanes-layer-toggle" data-bind="click: toggleShippingLanesLayer">
+                        <input id="shipping-lanes-layer-checkbox" data-bind="checked: shippingLanesLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                        Show Shipping Lanes Data</input>
+                    </label>
+                </div>
             </div>
         </li>
         <li>
@@ -633,29 +616,6 @@
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Conservation </label>
-    <div id="step2_inputs">
-        <ul class="parameters">
-        <li>
-            <label>
-                Coming Soon...
-                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
-            </label>
-        </li>
-        </ul>
-    </div>
-    <p></p>
-    <label class="step2-header">Fishing </label>
-    <div id="step2_inputs">
-        <ul class="parameters">
-        <li>
-            <label>
-                Coming Soon...
-                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
-            </label>
-        </li>
-        </ul>
-    </div>
   </div>
 
 <div id="step3" class="step">
@@ -692,13 +652,23 @@
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser">
-    <!-- ko if: !isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
-    <!-- /ko -->
-    <!-- ko if: isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
-    <!-- /ko -->
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser()">
+    <span data-bind="visible: !isLeaseblockLayerVisible()">
+        <a class="button btn" data-bind="click: activateLeaseblockLayer">
+            Show Lease Blocks (<span data-bind="text: leaseblocksLeft"></span>)
+            <img src="/media/marco/img/ajax-loader.gif" style="width: 15px; height: 15px;" data-bind="visible: showLeaseblockSpinner()" />
+        </a>
+    </span>
+    <span data-bind="visible: isLeaseblockLayerVisible()">
+        <a class="button btn" data-bind="click: deactivateLeaseblockLayer">
+            Hide Lease Blocks (<span data-bind="text: leaseblocksLeft"></span>)
+            <img src="/media/marco/img/ajax-loader.gif" style="width: 15px; height: 15px;" data-bind="visible: showLeaseblockSpinner()" />
+        </a>
+    </span>
+</div>
+
+<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser()">
+    <label>Estimated Number of Lease Blocks Identified: <span data-bind="text: leaseblocksLeft"></span></label>
 </div>
 
 <div class="wizard_nav" style="width:100%">
@@ -823,6 +793,10 @@ img.info {
 
 .errorlist {
     color: red;
+}
+
+form {
+    outline: none;
 }
 
 </style>

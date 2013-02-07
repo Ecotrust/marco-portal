@@ -126,6 +126,11 @@ a:focus {
 	margin-left: 0px;
     height: 50px;
 }
+
+.blog .navbar img {
+    height: 77px;
+}
+
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: white;
 	color: #ccc;
@@ -360,6 +365,10 @@ input + i.icon-remove-sign {
 }
 #wind-design-form .jspPane {
     border-radius: 10px;
+}
+
+#reports {
+    padding: 0 10px;
 }
 
 

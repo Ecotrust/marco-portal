@@ -55,7 +55,6 @@ var madrona = {
 
             app.viewModel.scenarios.scenarioForm(false);
             app.viewModel.scenarios.loadingMessage("Creating Scenario");
-            
 
 
             $.ajax( {
@@ -87,6 +86,7 @@ function scenarioFormModel(options) {
     var self = this;
     
     self.leaseblocksLeft = ko.observable(app.viewModel.scenarios.leaseblockList.length);
+    self.showLeaseblockSpinner = ko.observable(false);
     
     self.isLeaseblockLayerVisible = ko.observable(false);
     self.isLeaseblockLayerVisible.subscribe( function() {
@@ -101,29 +101,6 @@ function scenarioFormModel(options) {
     //not sure how best to tie the width of the show/hide leaseblocks button to the width of the form...
     //self.showLeaseblockButtonWidth = ko.observable($('#scenario-form').width());
     
-    self.selectedLeaseblocksLayerName = 'Selected OCS Blocks';
-    
-    self.loadLeaseblockLayer = function() {
-        app.viewModel.scenarios.leaseblockLayer( new OpenLayers.Layer.Vector(
-            self.selectedLeaseblocksLayerName,
-            {
-                projection: new OpenLayers.Projection('EPSG:3857'),
-                displayInLayerSwitcher: false,
-                strategies: [new OpenLayers.Strategy.Fixed()],
-                protocol: new OpenLayers.Protocol.HTTP({
-                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
-                    format: new OpenLayers.Format.GeoJSON()
-                }),
-                //styleMap: new OpenLayers.StyleMap( { 
-                //    "default": new OpenLayers.Style( { display: "none" } )
-                //})
-                layerModel: new layerModel({
-                    name: self.selectedLeaseblocksLayerName
-                })
-            }
-        ));
-    }
-    
     self.activateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(true);
         //self.showRemainingBlocks();
@@ -132,7 +109,7 @@ function scenarioFormModel(options) {
     self.deactivateLeaseblockLayer = function() {
         self.isLeaseblockLayerVisible(false);
         //remove from attribute list (if it's there)
-        app.viewModel.removeFromAggregatedAttributes(self.selectedLeaseblocksLayerName);
+        app.viewModel.removeFromAggregatedAttributes(app.viewModel.scenarios.scenarioLeaseBlocksLayerName);
         app.viewModel.updateAggregatedAttributesOverlayWidthAndScrollbar();
         //self.hideLeaseblockLayer();
     };
@@ -214,24 +191,7 @@ function scenarioFormModel(options) {
                 self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
                 //console.log('false for depth');
-            } else {
-                //NOTE: at times there seems to be some sort of rounding error that causes a discrepancy 
-                //      in which the client side count is more inclusive than the server side result
-                //      examples include requests for depth range of 40 to 50 feet
-                //      on the client there are 6 blocks identified, 2 of which have a max depth of 50 feet
-                //      these 2 blocks with a max depth of 50 feet (rounded result from -15.5237 and -15.3398 meters) 
-                //      are not part of the server side results
-                //FIX:  added 1 point of precision to feet to meters (and meters to feet) conversions 
-                //      on both client and server implementations
-                //console.log('counting this lease block');
-                //console.log('ocs min depth is: ' + list[i].min_depth);
-                //console.log('ocs max depth is: ' + list[i].max_depth);
-                //console.log('count is now: ' + count);
-                //console.log(self.filters['max_depth'] && list[i].max_depth + ' <= ' + self.filters['max_depth']);
-                //console.log('or');
-                //console.log(self.filters['min_depth'] && list[i].min_depth + ' >= ' + self.filters['min_depth']);
-                //console.log('');
-            }
+            } 
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
@@ -250,7 +210,6 @@ function scenarioFormModel(options) {
             }
         }     
         self.leaseblocksLeft(count);
-        
         //self.showRemainingBlocks();
     };
     
@@ -266,9 +225,10 @@ function scenarioFormModel(options) {
     
     self.showRemainingBlocks = function() {
         if ( self.isLeaseblockLayerVisible() ) {
+            self.showLeaseblockSpinner(true);
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
             if ( ! app.viewModel.scenarios.leaseblockLayer()) {
-                self.loadLeaseblockLayer();
+                app.viewModel.scenarios.loadLeaseblockLayer();
             } 
             var blockLayer = app.viewModel.scenarios.leaseblockLayer();
             var filter = new OpenLayers.Filter.Logical({
@@ -339,26 +299,12 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            //blockLayer.styleMap = { "default": new OpenLayers.Style( { display: "block" } ) }; 
-            /*
-            blockLayer.styleMap.styles.default.setDefaultStyle(
-                new OpenLayers.Style({
-                    'fillOpacity': 0,
-                    'display': 'block'
-                })
-            );
-            */
-            //if ( filter.filters.length ) {
-            blockLayer.styleMap.styles.default.rules[0] = new OpenLayers.Rule({
+            blockLayer.styleMap.styles['default'].rules[0] = new OpenLayers.Rule({
                 filter: filter, 
                 symbolizer: { strokeColor: '#fff' } 
             });
-                //blockLayer.display(true);
+            
             self.showLeaseblockLayer(blockLayer);
-            //} else {
-                //self.isLeaseblockLayerVisible(false);
-                //self.hideLeaseblockLayer();
-            //}
         }
         
     };
@@ -388,18 +334,448 @@ function scenarioFormModel(options) {
         }
     };
     
+    self.windSpeedLayer = app.viewModel.getLayerById(7);
+    self.toggleWindSpeedLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#wind-speed-layer-toggle input').is(":checked")) {
+                self.windSpeedLayer.activateLayer();
+            } else {
+                self.windSpeedLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
+    self.awcLayer = app.viewModel.getLayerById(65);
+    self.toggleAWCLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#awc-layer-toggle input').is(":checked")) {
+                self.awcLayer.activateLayer();
+            } else {
+                self.awcLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
+    self.shippingLanesLayer = app.viewModel.getLayerById(64);
+    self.toggleShippingLanesLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#shipping-lanes-layer-toggle input').is(":checked")) {
+                self.shippingLanesLayer.activateLayer();
+            } else {
+                self.shippingLanesLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
     return self;
 } // end scenarioFormModel
+
+function selectionModel(options) {
+    var self = this;
+    
+    self.name = 'Selected Lease Blocks';
+    
+    var ret = scenarioModel.apply(this, arguments);
+    
+    self.isSelectionModel = true;
+        
+    self.editScenario = function() {
+        var selection = this;
+        return $.ajax({
+            url: '/features/leaseblockselection/' + selection.uid + '/form/', 
+            success: function(data) {
+                app.viewModel.scenarios.scenarioForm(true);
+                $('#scenario-form').html(data);
+                app.viewModel.scenarios.selectionFormModel = new IESelectionFormModel();
+                ko.applyBindings(app.viewModel.scenarios.selectionFormModel, document.getElementById('scenario-form'));
+                //particular for IE selection form, another ajax call to retrieve the leaseblocks
+                app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocks($('#id_leaseblock_ids').val().split(','));
+                //app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
+            },
+            error: function (result) { 
+                debugger; 
+            }
+        });
+    }; 
+        
+    self.deleteScenario = function() {
+        var selection = this;
+        
+        //remove from activeLayers
+        app.viewModel.activeLayers.remove(selection);
+        //remove from app.map
+        if (selection.layer) {
+            app.map.removeLayer(selection.layer);
+        }
+        //remove from scenarioList
+        app.viewModel.scenarios.selectionList.remove(selection);
+        
+        //remove from server-side db (this should provide error message to the user on fail)
+        $.ajax({
+            url: '/scenario/delete_selection/' + selection.uid + '/',
+            type: 'POST',
+            error: function (result) {
+                debugger;
+            }
+        })
+    };
+    
+    
+    return ret;
+    /*
+    self.id = options.uid;
+    self.uid = options.uid;
+    self.name = options.name;
+    self.description = options.description;
+    
+    self.overview = self.description || 'no description was provided';
+    
+    self.attributes = options.attributes ? options.attributes : [];
+    self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
+    
+    self.active = ko.observable(false);
+    self.visible = ko.observable(false);
+    self.defaultOpacity = options.opacity || 0.8;
+    self.opacity = ko.observable(self.defaultOpacity);
+    self.type = 'Vector';
+    
+    self.opacity.subscribe( function(newOpacity) {
+        if ( self.layer ) {
+            self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
+            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
+            self.layer.redraw();
+        } 
+    });
+    
+    self.toggleActive = function(self, event) {
+        var selection = this;
+        if (selection.active()) { // if layer is active, then deactivate
+            selection.deactivateLayer();
+        } else { // otherwise layer is not currently active, so activate
+            selection.activateLayer();
+        }
+    };
+    
+    self.activateLayer = function() {
+        var selection = this;
+        app.viewModel.scenarios.addScenarioToMap(selection);
+    };
+    
+    self.deactivateLayer = function() {
+        var selection = this;
+        
+        selection.active(false);
+        selection.visible(false);
+        
+        selection.opacity(selection.defaultOpacity);
+        app.setLayerVisibility(selection, false);
+        app.viewModel.activeLayers.remove(selection);
+        
+        //remove the key/value pair from aggregatedAttributes
+        delete app.viewModel.aggregatedAttributes()[selection.name];
+        //if there are no more attributes left to display, then remove the overlay altogether
+        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
+            app.viewModel.aggregatedAttributes(false);
+        }
+    
+    };
+    
+    
+    self.visible = ko.observable(false);  
+    
+    // bound to click handler for layer visibility switching in Active panel
+    self.toggleVisible = function() {
+        var selection = this;
+        
+        if (selection.visible()) { //make invisible
+            selection.visible(false)
+            app.setLayerVisibility(selection, false)
+        } else { //make visible
+            selection.visible(true);
+            app.setLayerVisibility(selection, true);
+        }
+    };
+
+    // is description active
+    self.infoActive = ko.observable(false);
+    app.viewModel.showOverview.subscribe( function() {
+        if ( app.viewModel.showOverview() === false ) {
+            self.infoActive(false);
+        }
+    });
+    
+    // display descriptive text below the map
+    self.toggleDescription = function(selection) {
+        if ( ! selection.infoActive() ) {
+            self.showDescription(selection);
+        } else {
+            self.hideDescription(selection);
+        }
+    };
+    
+    self.showDescription = function(selection) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.activeInfoLayer(selection);
+        self.infoActive(true);
+        $('#overview-overlay').height(186);
+        app.viewModel.showOverview(true);
+        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
+        app.viewModel.hideMapAttribution();
+    };
+    
+    self.hideDescription = function(selection) {
+        app.viewModel.showOverview(false);
+        app.viewModel.activeInfoSublayer(false);
+        app.viewModel.showMapAttribution();
+    };
+    
+    return self;
+    */
+} // end selectionModel
+
+function selectionFormModel(options) {
+    var self = this;
+    
+    self.IE = false;
+    
+    self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    self.leaseBlockLayer.activateLayer();
+    self.leaseBlockLayerUtfGrid = self.leaseBlockLayer.utfgrid;
+    
+    self.leaseBlockSelectionLayerIsLoaded = false;
+    
+    self.selectingLeaseBlocks = ko.observable(false);
+    
+    //will want to load this manually as it will likely be a placeholder layer in the data manager
+    self.leaseBlockSelectionLayer = app.viewModel.getLayerById(82);
+    
+    //self.selectedLeaseBlocks = ko.observableArray();
+    
+    self.loadLeaseBlockSelectionLayer = function() {
+        var defaultStyle = new OpenLayers.Style({
+            //display: 'none'
+            fillOpacity: 0,
+            strokeColor: '#000',
+            strokeOpacity: 0
+        });
+        var selectStyle = new OpenLayers.Style({
+            strokeColor: '#ff0',
+            strokeOpacity: .8
+        });
+        var styleMap = new OpenLayers.StyleMap( {
+            'default': defaultStyle,
+            'select': selectStyle
+        });
+        self.leaseBlockSelectionLayer.layer = new OpenLayers.Layer.Vector(
+            self.leaseBlockSelectionLayer.name,
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: self.leaseBlockSelectionLayer.url,
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                styleMap: styleMap,                    
+                layerModel: self.leaseBlockSelectionLayer
+            }
+        );
+        app.map.addLayer(self.leaseBlockSelectionLayer.layer);
+        self.leaseBlockSelectionLayerHoverControl = new OpenLayers.Control.SelectFeature(
+            self.leaseBlockSelectionLayer.layer, 
+            {
+                hover: true,
+                toggle: false,
+                multiple: false
+            }
+        );
+        
+        self.leaseBlockSelectionLayerClickControl = new OpenLayers.Control.SelectFeature(
+            self.leaseBlockSelectionLayer.layer, 
+            {
+                hover: false,
+                toggle: true,
+                multiple: true,
+                box: true
+            }
+        );
+        app.map.addControl(self.leaseBlockSelectionLayerClickControl);        
+        
+        app.map.addLayer(self.leaseBlockSelectionLayer.layer); 
+        self.leaseBlockSelectionLayerIsLoaded = true;
+    }
+    
+    self.toggleSelectionProcess = function() {
+        if ( ! self.selectingLeaseBlocks() ) { // if not currently in the selection process, enable selection process
+            // if lease block selection layer has not yet been loaded...
+            if ( ! self.leaseBlockSelectionLayerIsLoaded ) { 
+                self.loadLeaseBlockSelectionLayer();
+            } 
+            //activate the lease block feature selection 
+            self.leaseBlockSelectionLayerClickControl.activate();
+            //app.addUtfLayerToMap(self.leaseBlockLayer);
+            //disable feature attribution
+            app.viewModel.disableFeatureAttribution();
+            //change button text
+            self.selectingLeaseBlocks(true);
+            
+            
+        } else { // otherwise, disable selection process
+            //deactivate lease block feature selection
+            self.leaseBlockSelectionLayerClickControl.deactivate();
+            //enable feature attribution
+            app.viewModel.enableFeatureAttribution();
+            //change button text
+            self.selectingLeaseBlocks(false);
+            
+            //ON CANCEL, remove self.leaseBlockLayerUtfGrid and selectfeature control
+        }           
+        
+    };
+    
+    self.toggleLeaseBlockLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#lease-blocks-layer-toggle input').is(":checked")) {
+                self.leaseBlockLayer.activateLayer();
+            } else {
+                self.leaseBlockLayer.deactivateLayer();
+            }
+        }
+        return true;
+    };
+    
+    return self;
+}; // end selectionFormModel
+
+
+function IESelectionFormModel(options) {
+    var self = this;
+    
+    self.IE = true;
+    
+    self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    self.leaseBlockLayer.activateLayer();
+    self.leaseBlockLayer.setVisible();
+    
+    self.leaseBlockLayerUtfGrid = self.leaseBlockLayer.utfgrid;
+        
+    self.selectingLeaseBlocks = ko.observable(false);
+    
+    self.selectedLeaseBlocksLayerName = 'Selected Lease Blocks';
+    
+    self.selectedLeaseBlocks = ko.observableArray();
+    self.selectedLeaseBlocks.subscribe(function(test) {
+        if (self.selectedLeaseBlocksLayer) {
+            app.map.removeLayer(self.selectedLeaseBlocksLayer);
+        }
+        $.ajax({
+            url: '/scenario/get_leaseblock_features',
+            type: 'GET',
+            dataType: 'json',
+            data: { leaseblock_ids: test },
+            success: function (feature) {
+                var layer = new OpenLayers.Layer.Vector(
+                    self.selectedLeaseBlocksLayerName,
+                    {
+                        projection: new OpenLayers.Projection('EPSG:3857'),
+                        displayInLayerSwitcher: false,
+                        styleMap: new OpenLayers.StyleMap({
+                            strokeColor: '#ff0',
+                            strokeOpacity: .8,
+                            fillOpacity: 0
+                        })//,     
+                        //scenarioModel: new selectionModel()
+                    }
+                );
+                
+                //assign leaseblock ids to hidden leaseblock ids form field
+                $('#id_leaseblock_ids').val(self.selectedLeaseBlocks().join(","))
+                
+                layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
+                self.selectedLeaseBlocksLayer = layer
+                app.map.addLayer(self.selectedLeaseBlocksLayer);
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    });
+    
+    self.toggleSelectionProcess = function() {
+        if ( ! self.selectingLeaseBlocks() ) { // if not currently in the selection process, enable selection process
+            self.enableSelectionProcess();
+        } else { // otherwise, disable selection process
+            self.disableSelectionProcess();
+        }  
+    };
+    
+    self.enableSelectionProcess = function() {
+        //disable feature attribution
+        app.viewModel.disableFeatureAttribution();
+        //ensure lease blocks are visible
+        self.leaseBlockLayer.activateLayer();
+        self.leaseBlockLayer.setVisible();
+        //disable Show Lease Blocks checkbox 
+        $('#lease-blocks-layer-checkbox').prop('checked', true);
+        $('#lease-blocks-layer-checkbox').attr('disabled', 'disabled');
+        //change button text
+        self.selectingLeaseBlocks(true);
+    };
+    
+    self.disableSelectionProcess = function() {
+        //enable feature attribution
+        app.viewModel.enableFeatureAttribution();
+        //re-enable Show Lease Blocks checkbox
+        $('#lease-blocks-layer-checkbox').removeAttr('disabled');
+        //change button text
+        self.selectingLeaseBlocks(false);
+    };
+    
+    self.toggleLeaseBlockLayer = function(formModel, event) {
+        if ( event.target.type === "checkbox" ) {
+            if ($('#lease-blocks-layer-toggle input').is(":checked")) {
+                self.leaseBlockLayer.setVisible();
+            } else {
+                self.leaseBlockLayer.setInvisible();
+            }
+        }
+        return true;
+    };
+    
+    return self;
+}; // end IESelectionFormModel
 
 function scenarioModel(options) {
     var self = this;
 
-    self.id = options.uid;
-    self.uid = options.uid;
+    self.id = options.uid || null;
+    self.uid = options.uid || null;
     self.name = options.name;
+    self.description = options.description;
     
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
+    
+    //self.overview = self.description || 'no description was provided';
+    self.constructInfoText = function() {
+        var attrs = self.scenarioAttributes;
+        if (self.description && self.description !== '') {
+            var output = self.description + '\n\n';
+        } else {
+            var output = '';
+        }
+        for (var i=0; i< attrs.length; i++) {
+            output += attrs[i].title + ': ' + attrs[i].data + '\n';
+        }
+        return output;
+    };
+    self.overview = self.constructInfoText();
+        
+    self.scenarioReportValues = options.attributes ? options.attributes.report_values : [];
 
     self.features = options.features;
     
@@ -433,6 +809,9 @@ function scenarioModel(options) {
     self.activateLayer = function() {
         var scenario = this;
         app.viewModel.scenarios.addScenarioToMap(scenario);
+        if ( scenario.isSelectionModel ) {
+            app.viewModel.scenarios.activeSelections().push(scenario);
+        }
     };
     
     self.deactivateLayer = function() {
@@ -440,6 +819,11 @@ function scenarioModel(options) {
         
         scenario.active(false);
         scenario.visible(false);
+        
+        if ( scenario.isSelectionModel ) {
+            var index = app.viewModel.scenarios.activeSelections().indexOf(scenario);
+            app.viewModel.scenarios.activeSelections().splice(index, 1);
+        }
         
         scenario.opacity(scenario.defaultOpacity);
         app.setLayerVisibility(scenario, false);
@@ -552,46 +936,158 @@ function scenarioModel(options) {
 function scenariosModel(options) {
     var self = this;
     
-    self.scenarioList = ko.observableArray();
-    
+    self.scenarioList = ko.observableArray();    
     self.scenarioForm = ko.observable(false);
+    
+    self.selectionList = ko.observableArray(); 
+    self.getSelectionById = function(id) {
+        var selections = self.selectionList();
+        for (var i=0; i<selections.length; i++) {
+            if ( selections[i].id === id ) {
+                return selections[i];
+            }
+        }
+        return false;
+    };
+    
+    self.activeSelections = ko.observableArray();
+    
+    self.selectionForm = ko.observable(false);
         
+    self.reportsVisible = ko.observable(false);
+    self.showComparisonReports = function() {
+        setTimeout(function() {
+            $('#designs-slide').hide('slide', {direction: 'left'}, 300);
+        }, 100);
+        setTimeout(function() {
+            self.reportsVisible(true);
+            $('#designs-slide').show('slide', {direction: 'right'}, 300);
+            if (self.activeSelections().length > 0) {
+                self.reports.noActiveCollections(false);
+                app.viewModel.scenarios.reports.updateChart();
+            } else { 
+                self.reports.noActiveCollections(true);
+            }
+        }, 420);
+    };
+    
+    self.returnToDesigns = function() {
+        setTimeout(function() {
+            $('#designs-slide').hide('slide', {direction: 'right'}, 300);
+        }, 100);
+        setTimeout(function() {
+            app.viewModel.scenarios.reportsVisible(false);
+            $('#designs-slide').show('slide', {direction: 'left'}, 300);
+        }, 420);
+    };
+    
+    
     self.leaseblockLayer = ko.observable(false);
 
     self.leaseblockLayer.subscribe( function() {
         app.viewModel.updateAttributeLayers();
     });
     
+    self.scenarioLeaseBlocksLayerName = 'Selected OCS Blocks';
+        
     // loading message for showing spinner
     // false for normal operation
     self.loadingMessage = ko.observable(false);
     self.errorMessage = ko.observable(false);
     
+    self.sharingGroups = ko.observableArray();
+    
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
+    self.selectionsLoaded = false;
     
-    self.sharingGroups = ko.observableArray();
+    self.isScenariosOpen = ko.observable(false);
+    self.toggleScenariosOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
         
-
+        if ( self.isScenariosOpen() ) {
+            self.isScenariosOpen(false);
+        } else {
+            self.isScenariosOpen(true);
+        }
+        self.updateDesignsScrollBar();
+    }        
+    self.isCollectionsOpen = ko.observable(false);
+    self.toggleCollectionsOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
+        
+        if ( self.isCollectionsOpen() ) {
+            self.isCollectionsOpen(false);
+        } else {
+            self.isCollectionsOpen(true);
+        }
+        self.updateDesignsScrollBar();
+    }       
+    
+    self.updateDesignsScrollBar = function() {
+        var designsScrollpane = $('#designs-accordion').data('jsp');
+        if (designsScrollpane === undefined) {
+            $('#designs-accordion').jScrollPane();
+        } else {
+            designsScrollpane.reinitialise();
+        }
+    } 
+    
     //restores state of Designs tab to the initial list of designs
     self.reset = function () {
         self.loadingMessage(false);
         self.errorMessage(false);
+        
+        //clean up scenario form
+        if (self.scenarioForm() || self.scenarioFormModel) {
+            self.removeScenarioForm();
+        }
+        
+        //clean up selection form
+        if (self.selectionForm() || self.selectionFormModel) {
+            self.removeSelectionForm();
+        }
+        
+        //remove the key/value pair from aggregatedAttributes
+        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
+        app.viewModel.updateAttributeLayers();
+        
+        self.updateDesignsScrollBar();
+    };
+    
+    self.removeSelectionForm = function() {
+        self.selectionForm(false);
+        var selectionForm = document.getElementById('selection-form');
+        $(selectionForm).empty();
+        ko.cleanNode(selectionForm); 
+        if (self.selectionFormModel.IE) {
+            if (self.selectionFormModel.selectedLeaseBlocksLayer) {
+                app.map.removeLayer(self.selectionFormModel.selectedLeaseBlocksLayer);
+            }
+        } else {
+            app.map.removeControl(self.selectionFormModel.leaseBlockSelectionLayerClickControl); 
+            app.map.removeLayer(self.selectionFormModel.leaseBlockSelectionLayer.layer);        
+        }
+        delete self.selectionFormModel;
+        app.viewModel.enableFeatureAttribution();
+    };
+    
+    self.removeScenarioForm = function() {
         self.scenarioForm(false);
         var scenarioForm = document.getElementById('scenario-form');
         $(scenarioForm).empty();
         ko.cleanNode(scenarioForm);
         delete self.scenarioFormModel;
         //hide remaining leaseblocks
-        if ( app.map.getLayersByName(self.leaseblockLayer().name).length ) {
+        if ( self.leaseblockLayer() && app.map.getLayersByName(self.leaseblockLayer().name).length ) {
             app.map.removeLayer(self.leaseblockLayer()); 
         }
-        //remove the key/value pair from aggregatedAttributes
-        app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
-        app.viewModel.updateAttributeLayers();
     };
 
     self.createWindScenario = function() {
+        //hide designs tab by sliding left
         return $.ajax({
             url: '/features/scenario/form/',
             success: function(data) {
@@ -601,23 +1097,54 @@ function scenariosModel(options) {
                 ko.applyBindings(self.scenarioFormModel, document.getElementById('scenario-form'));
                 self.scenarioFormModel.updateDesignScrollBar();
                 if ( ! self.leaseblockLayer() && app.viewModel.modernBrowser() ) {
-                    self.scenarioFormModel.loadLeaseblockLayer();
+                    self.loadLeaseblockLayer();
                 }
             },
-            error: function (result) { debugger }
+            error: function (result) { debugger; }
         });
-    };     
+    };    
+
+    self.createSelectionDesign = function() {
+        return $.ajax({
+            url: '/features/leaseblockselection/form/',
+            success: function(data) {
+                /*$('#selection-form').html(data);
+                setTimeout(function() {
+                    $('#designs').hide('slide', {direction: 'left'}, 300);
+                }, 100);
+                setTimeout(function() {*/
+                    self.selectionForm(true);
+                    $('#selection-form').html(data);
+                /*    $('#designs').show('slide', {direction: 'right'}, 300);
+                }, 420);*/
+                self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
+                ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
+            },
+            error: function (result) { debugger; }
+        });
+    };        
     
     //
     self.addScenarioToMap = function(scenario, options) {
         var scenarioId,
-            opacity;
+            opacity = .8,
+            stroke = 1,
+            fillColor = "#2F6A6C",
+            strokeColor = "#1F4A4C";
         if ( scenario ) {
             scenarioId = scenario.uid;
             scenario.active(true);
             scenario.visible(true);
         } else {
             scenarioId = options.uid;
+        }
+        if (scenarioId.indexOf('leaseblockselection') !== -1) {
+            var isSelectionModel = true;
+        } else {
+            var isSelectionModel = false;
+        }
+        if (self.scenarioFormModel) {
+            self.scenarioFormModel.isLeaseblockLayerVisible(false);
         }
         //perhaps much of this is not necessary once a scenario has been added to app.map.layers initially...?
         //(add check for scenario.layer, reset the style and move on?)
@@ -629,19 +1156,20 @@ function scenariosModel(options) {
                 if ( scenario ) {
                     opacity = scenario.opacity();
                     stroke = scenario.opacity();
-                } else {
-                    opacity = .8;
-                    stroke = 1;
-                }
+                } 
+                if ( isSelectionModel ) {
+                    fillColor = "#00467F";
+                    strokeColor = "#00265F";
+                } 
                 var layer = new OpenLayers.Layer.Vector(
                     scenarioId,
                     {
                         projection: new OpenLayers.Projection('EPSG:3857'),
                         displayInLayerSwitcher: false,
                         styleMap: new OpenLayers.StyleMap({
-                            fillColor: "#2F6A6C",
+                            fillColor: fillColor,
                             fillOpacity: opacity,
-                            strokeColor: "#1F4A4C",
+                            strokeColor: strokeColor,
                             strokeOpacity: stroke
                         }),     
                         //style: OpenLayers.Feature.Vector.style['default'],
@@ -658,13 +1186,23 @@ function scenariosModel(options) {
                 } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    
-                    scenario = new scenarioModel({
-                        id: properties.uid,
-                        uid: properties.uid,
-                        name: properties.name, 
-                        features: layer.features
-                    });
+                    if (isSelectionModel) {
+                        scenario = new selectionModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    } else {
+                        scenario = new scenarioModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    }
                     scenario.layer = layer;
                     scenario.layer.scenarioModel = scenario;
                     scenario.active(true);
@@ -677,6 +1215,9 @@ function scenariosModel(options) {
                         dataType: 'json',
                         success: function(result) {
                             scenario.scenarioAttributes = result.attributes;
+                            if (isSelectionModel) {
+                                scenario.scenarioReportValues = result.report_values;
+                            }
                         },
                         error: function (result) {
                             debugger;
@@ -687,14 +1228,26 @@ function scenariosModel(options) {
                     //in case of edit, removes previously stored scenario
                     //self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
                     
-                    var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
-                        return oldScenario.uid === scenario.uid;
-                    });
-                    if ( previousScenario ) {
-                        self.scenarioList.replace( previousScenario, scenario );
+                    if ( isSelectionModel ) {
+                        var previousSelection = ko.utils.arrayFirst(self.selectionList(), function(oldSelection) {
+                            return oldSelection.uid === scenario.uid;
+                        });
+                        if ( previousSelection ) {
+                            self.selectionList.replace( previousSelection, scenario );
+                        } else {
+                            self.selectionList.push(scenario);
+                        }
                     } else {
-                        self.scenarioList.push(scenario);
+                        var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
+                            return oldScenario.uid === scenario.uid;
+                        });
+                        if ( previousScenario ) {
+                            self.scenarioList.replace( previousScenario, scenario );
+                        } else {
+                            self.scenarioList.push(scenario);
+                        }
                     }
+                    app.viewModel.scenarios.activeSelections().push(scenario)
                     
                     //self.scenarioForm(false);
                     self.reset();
@@ -721,66 +1274,6 @@ function scenariosModel(options) {
         });
     }
     
-    self.getOCSAttributes = function (title, data) {
-        attrs = [];
-        if ('BLOCK_LAB' in data) {
-            attrs.push({'display': 'OCS Block Number', 'data': data['BLOCK_LAB']});
-        }
-        if ('PROT_NUMBE' in data) {
-            attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
-        }
-        if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
-            if ( data['WINDREV_MI'] ) {                
-                var min_speed = data['WINDREV_MI'].toFixed(3),
-                    max_speed = data['WINDREV_MA'].toFixed(3),
-                    min_range = (parseFloat(min_speed)-.125).toPrecision(3),
-                    max_range = (parseFloat(max_speed)+.125).toPrecision(3);
-                /*if ( min_speed === max_speed ) {
-                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
-                } else {
-                    var speed = (min_speed-.125) + ' to ' + (max_speed+.125);
-                    attrs.push({'display': 'Estimated Avg Wind Speed (m/s)', 'data': speed});
-                }*/
-                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_range + ' to ' + max_range + ' m/s'});
-            } else {
-                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'no data'});
-            }
-        }
-        if ('MI_MIN' in data && 'MI_MAX' in data) {
-            attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
-        }
-        if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
-            if ( data['DEPTHM_MIN'] ) {
-                //convert depth values to positive feet values (from negative meter values)
-                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
-            } else {
-                attrs.push({'display': 'Depth Range', 'data': 'no data'});
-            }
-        }
-        if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
-            attrs.push({'display': 'Distance to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0) + ' miles'});
-        }
-        if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
-            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
-        }
-        if ('AIS7_MEAN' in data) {
-            if ( data['AIS7_MEAN'] < 1 ) {
-                var rank = 'Low';
-            } else {
-                var rank = 'High';
-            }
-            attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
-        }
-        if ('WEA_NAME' in data) {
-            if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {
-                attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
-            }
-        }
-        return attrs;
-    };
-            
     //populates scenarioList
     self.loadScenarios = function (scenarios) {
         $.each(scenarios, function (i, scenario) {
@@ -788,13 +1281,55 @@ function scenariosModel(options) {
                 id: scenario.uid,
                 uid: scenario.uid,
                 name: scenario.name,
+                description: scenario.description,
                 attributes: scenario.attributes
             });
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
-        self.scenariosLoaded = true;
     }
+    
+    //populates selectionList..?
+    self.loadSelections = function (selections) {
+        $.each(selections, function (i, selection) {
+            var selectionViewModel = new selectionModel({
+                id: selection.uid,
+                uid: selection.uid,
+                name: selection.name,
+                //description: scenario.description,
+                attributes: selection.attributes
+            });
+            self.selectionList.push(selectionViewModel);
+            app.viewModel.layerIndex[selection.uid] = selectionViewModel;
+        });
+    }
+    
+    self.loadLeaseblockLayer = function() {
+        self.leaseblockLayer( new OpenLayers.Layer.Vector(
+            self.scenarioLeaseBlocksLayerName,
+            {
+                projection: new OpenLayers.Projection('EPSG:3857'),
+                displayInLayerSwitcher: false,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
+                    format: new OpenLayers.Format.GeoJSON()
+                }),
+                //styleMap: new OpenLayers.StyleMap( { 
+                //    "default": new OpenLayers.Style( { display: "none" } )
+                //})
+                layerModel: new layerModel({
+                    name: self.scenarioLeaseBlocksLayerName
+                })
+            }
+        ));
+        
+        self.leaseblockLayer().events.register("loadend", self.leaseblockLayer(), function() {
+            if (self.scenarioFormModel && ! self.scenarioFormModel.IE) {
+                self.scenarioFormModel.showLeaseblockSpinner(false);
+            }
+        });
+    }      
     
     self.leaseblockList = [];    
     
@@ -810,7 +1345,10 @@ function scenariosModel(options) {
 app.viewModel.scenarios = new scenariosModel();
 
 $('#designsTab').on('show', function (e) {
-    if ( !app.viewModel.scenarios.scenariosLoaded ) {
+    //if ( app.viewModel.scenarios.reports && app.viewModel.scenarios.reports.showingReport() ) {
+    //    app.viewModel.scenarios.reports.updateChart();
+    //}
+    if ( !app.viewModel.scenarios.scenariosLoaded || !app.viewModel.scenarios.selectionsLoaded) {
         // load the scenarios
         $.ajax({
             url: '/scenario/get_scenarios',
@@ -818,6 +1356,21 @@ $('#designsTab').on('show', function (e) {
             dataType: 'json',
             success: function (scenarios) {
                 app.viewModel.scenarios.loadScenarios(scenarios);
+                app.viewModel.scenarios.scenariosLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+        
+        // load the selections
+        $.ajax({
+            url: '/scenario/get_selections',
+            type: 'GET',
+            dataType: 'json',
+            success: function (selections) {
+                app.viewModel.scenarios.loadSelections(selections);
+                app.viewModel.scenarios.selectionsLoaded = true;
             },
             error: function (result) {
                 debugger;

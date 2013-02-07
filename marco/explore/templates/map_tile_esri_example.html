@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" >
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+ <title>Basemaps</title>
+ <link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/css/esri.css" />
+<script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/" type="text/javascript"></script>
+ <script type="text/javascript">
+ dojo.require("esri.map");
+ dojo.require("esri.layers.WebTiledLayer");
+
+ var map;
+ // Create initialization function that sets option for the map 
+ function init() {
+    var options = { 
+        basemap: "topo",
+        center: [-74, 37.5],
+        zoom: 6
+    };
+    // Create map and call Init function
+    map = new esri.Map("mapDiv",options);
+    var wtl = esri.layers.WebTiledLayer;
+    var arctile_url = "{{arctile_url}}";
+    var layer_name = "{{layer.name}}";
+    var layer = new wtl(arctile_url, {
+        "id": layer_name
+    });
+    map.addLayer(layer);
+ }
+ dojo.addOnLoad(init);
+ </script>
+ </head>
+ <body>
+ <div id="mapDiv">
+ </div>
+ </body>
+ </html>

@@ -19,7 +19,7 @@ Template Name: News
 						</div>
 						<div class="row-fluid bugs">
 						 <?php 
-						  $categories = get_categories(); 
+						  $categories = get_categories('include=10,9,6'); 
 						  $index = 0;
 						  foreach ($categories as $category) { 
 						  	?>
