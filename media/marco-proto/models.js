@@ -1057,6 +1057,13 @@ function viewModel() {
             dataScrollpane.reinitialise();
         }
         
+        var activeScrollpane = $('#active').data('jsp');
+        if (activeScrollpane === undefined) {
+            $('#active').jScrollPane();
+        } else {
+            activeScrollpane.reinitialise();
+        }
+        
         var legendScrollpane = $('#legend-content').data('jsp');
         if (legendScrollpane === undefined) {
             $('#legend-content').jScrollPane();
