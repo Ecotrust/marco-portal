@@ -154,7 +154,7 @@
                 <!-- Data Panel (left panel) -->
                 {% load in_group %}
                 {% if user.is_authenticated and user|in_group:"Designers" %}
-                <div class="span5 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data': isFullScreen()}">
+                <div class="span5 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data-authenticated': isFullScreen()}">
                 {% else %}
                 <div class="span4 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data': isFullScreen()}">
                 {% endif %}
@@ -326,7 +326,7 @@
                 
                 <!-- Map Panel (center panel) -->
                 {% if user.is_authenticated and user|in_group:"Designers" %}
-                <div id="map-panel" data-bind="css: { 'fullscreen-map': isFullScreen() && !showLayers() && !showLegend(), 'fullscreen-with-layers': isFullScreen() && showLayers() && !showLegend(), 'fullscreen-with-legend': isFullScreen() && !showLayers() && showLegend(), 'fullscreen-with-legend-and-layers': isFullScreen() && showLayers() && showLegend(), 'shift-left': ! showLayers(), span12: !showLayers() && !showLegend(), span9: !showLayers() && showLegend(), span7: showLayers() && !showLegend(), span4: showLayers() && showLegend() }">       
+                <div id="map-panel" data-bind="css: { 'fullscreen-map': isFullScreen() && !showLayers() && !showLegend(), 'fullscreen-with-layers-authenticated': isFullScreen() && showLayers() && !showLegend(), 'fullscreen-with-legend': isFullScreen() && !showLayers() && showLegend(), 'fullscreen-with-legend-and-layers': isFullScreen() && showLayers() && showLegend(), 'shift-left': ! showLayers(), span12: !showLayers() && !showLegend(), span9: !showLayers() && showLegend(), span7: showLayers() && !showLegend(), span4: showLayers() && showLegend() }">       
                 {% else %}
                 <div id="map-panel" data-bind="css: { 'fullscreen-map': isFullScreen() && !showLayers() && !showLegend(), 'fullscreen-with-layers': isFullScreen() && showLayers() && !showLegend(), 'fullscreen-with-legend': isFullScreen() && !showLayers() && showLegend(), 'fullscreen-with-legend-and-layers': isFullScreen() && showLayers() && showLegend(), 'shift-left': ! showLayers(), span12: !showLayers() && !showLegend(), span9: !showLayers() && showLegend(), span8: showLayers() && !showLegend(), span5: showLayers() && showLegend() }">       
                 {% endif %}
