@@ -1047,6 +1047,13 @@ function viewModel() {
         $('#fullscreen-error-overlay').hide();
     };
     
+    self.updateAllScrollBars = function() {
+        self.updateScrollBars();
+        if (self.scenarios) {
+            self.scenarios.updateDesignsScrollBar();
+        }
+    };
+    
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
     

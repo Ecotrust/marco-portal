@@ -1009,7 +1009,7 @@ function scenariosModel(options) {
         } else {
             self.isScenariosOpen(true);
         }
-        self.updateScrollBar();
+        self.updateDesignsScrollBar();
     }        
     self.isCollectionsOpen = ko.observable(false);
     self.toggleCollectionsOpen = function() {
@@ -1021,10 +1021,10 @@ function scenariosModel(options) {
         } else {
             self.isCollectionsOpen(true);
         }
-        self.updateScrollBar();
+        self.updateDesignsScrollBar();
     }       
     
-    self.updateScrollBar = function() {
+    self.updateDesignsScrollBar = function() {
         var designsScrollpane = $('#designs-accordion').data('jsp');
         if (designsScrollpane === undefined) {
             $('#designs-accordion').jScrollPane();
@@ -1052,7 +1052,7 @@ function scenariosModel(options) {
         app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
         app.viewModel.updateAttributeLayers();
         
-        self.updateScrollBar();
+        self.updateDesignsScrollBar();
     };
     
     self.removeSelectionForm = function() {
