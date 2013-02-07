@@ -621,8 +621,11 @@
                                                         </span>
                                                     </td>
                                                     <td class="tweet-cell">
-                                                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-a" data-bind="attr: {'data-url': $parent.getUrl($data)}"
-                                                        data-lang="en" data-size="medium" data-count="none">Tweet</a>
+                                                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-a" 
+                                                           data-bind="attr: {'data-url': $parent.getUrl($data)}" data-lang="en" data-size="medium" data-count="none">
+                                                            <span rel="tooltip" title="Tweet"><i class="icon-twitter icon-large"></i></span>
+                                                        </a>
+                                                        
                                                         <script>
                                                             ! function(d, s, id) {
                                                                 var js, fjs = d.getElementsByTagName(s)[0];
@@ -645,8 +648,7 @@
                                                     
                                                     <td>
                                                         <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
-                                                            <i class="icon-trash icon-large">
-                                                            </i>
+                                                            <span rel="tooltip" title="Delete"><i class="icon-trash icon-large"></i></span>
                                                         </a>
                                                     </td>
                                                 </tr>
