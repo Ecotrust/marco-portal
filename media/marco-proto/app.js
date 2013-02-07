@@ -121,6 +121,9 @@ $(document).ready(function() {
   $('#dataTab[data-toggle="tab"]').on('shown', function(e) {
     app.viewModel.updateScrollBars();
   });
+  $('#activeTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateScrollBars();
+  });
   
   //format the legend scrollbar
   //setTimeout(function() { $('#legend-content').jScrollPane(); }, 500);

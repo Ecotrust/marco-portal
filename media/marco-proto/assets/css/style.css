@@ -280,6 +280,11 @@ a.disabled-link:hover {
   /*width: 68.3% !important;*/
   width: 75% !important;
 }
+.fullscreen-with-layers-authenticated {
+  margin-left: 0px !important;
+  /*width: 68.3% !important;*/
+  width: 65% !important;
+}
 .fullscreen-with-legend {
   margin-left: 0px !important;
   width: 80% !important;
@@ -291,6 +296,10 @@ a.disabled-link:hover {
 .fullscreen-data {
   margin-left: 0px !important;
   width: 25% !important;
+}
+.fullscreen-data-authenticated {
+  margin-left: 0px !important;
+  width: 35% !important;
 }
 .fullscreen-legend {
   margin-left: 0px !important;
