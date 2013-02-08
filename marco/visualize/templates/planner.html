@@ -381,6 +381,7 @@
                                         </a></p> 
                                         -->
                                     </div>
+                                    <!-- the following container is used to estimate width for the actual Aggregated Attribution Overlay -->
                                     <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                         <div data-bind="foreach: attributeLayers()">
                                             <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
@@ -396,22 +397,32 @@
                                     </div>
                                     <!-- Aggregated Attribution Overlay -->
                                     <div data-bind="visible: featureAttribution">
-                                    <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
-                                        <div id="aggregated-attribute-content">
-                                          <div data-bind="foreach: attributeLayers()">
-                                            <div data-bind="visible: $root.aggregatedAttributes()[name]">
-                                              <h4 data-bind="text: name"></h4>
-                                              <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
-                                                <dt>
-                                                    <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
-                                                    <span style="font-weight: normal" data-bind="text: data"></span>
-                                                </dt>
-                                              </dl>
+                                        <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
+                                            <div id="aggregated-attribute-content" class="accordion">
+                                              <div class="accordion-group">
+                                                <div data-bind="foreach: attributeLayers()">
+                                                    <div data-bind="visible: $root.aggregatedAttributes()[name]">
+                                                      <div class="accordion-heading">
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#aggregated-attribute-content" data-bind="attr: { href: '#' + $root.convertToSlug(name) }, click: $root.updateAggregatedAttributesOverlayScrollbar">
+                                                            <h4 data-bind="text: name"></h4>
+                                                        </a>
+                                                        <div data-bind="attr: { id: $root.convertToSlug(name) }" class="accordion-body collapse in">
+                                                            <div class="accordion-inner">
+                                                                <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
+                                                                    <dt>
+                                                                        <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
+                                                                        <span style="font-weight: normal" data-bind="text: data"></span>
+                                                                    </dt>
+                                                                </dl>
+                                                            </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                              </div>
                                             </div>
-                                          </div>
+                                            <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                         </div>
-                                        <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
-                                    </div>
                                     </div>
                                   
                                     <!-- Bookmark Message -->
