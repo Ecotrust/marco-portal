@@ -86,6 +86,7 @@ function scenarioFormModel(options) {
     var self = this;
     
     self.leaseblocksLeft = ko.observable(app.viewModel.scenarios.leaseblockList.length);
+    self.showLeaseblockSpinner = ko.observable(false);
     
     self.isLeaseblockLayerVisible = ko.observable(false);
     self.isLeaseblockLayerVisible.subscribe( function() {
@@ -190,24 +191,7 @@ function scenarioFormModel(options) {
                 self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
                 //console.log('false for depth');
-            } else {
-                //NOTE: at times there seems to be some sort of rounding error that causes a discrepancy 
-                //      in which the client side count is more inclusive than the server side result
-                //      examples include requests for depth range of 40 to 50 feet
-                //      on the client there are 6 blocks identified, 2 of which have a max depth of 50 feet
-                //      these 2 blocks with a max depth of 50 feet (rounded result from -15.5237 and -15.3398 meters) 
-                //      are not part of the server side results
-                //FIX:  added 1 point of precision to feet to meters (and meters to feet) conversions 
-                //      on both client and server implementations
-                //console.log('counting this lease block');
-                //console.log('ocs min depth is: ' + list[i].min_depth);
-                //console.log('ocs max depth is: ' + list[i].max_depth);
-                //console.log('count is now: ' + count);
-                //console.log(self.filters['max_depth'] && list[i].max_depth + ' <= ' + self.filters['max_depth']);
-                //console.log('or');
-                //console.log(self.filters['min_depth'] && list[i].min_depth + ' >= ' + self.filters['min_depth']);
-                //console.log('');
-            }
+            } 
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
@@ -226,7 +210,6 @@ function scenarioFormModel(options) {
             }
         }     
         self.leaseblocksLeft(count);
-        
         //self.showRemainingBlocks();
     };
     
@@ -242,6 +225,7 @@ function scenarioFormModel(options) {
     
     self.showRemainingBlocks = function() {
         if ( self.isLeaseblockLayerVisible() ) {
+            self.showLeaseblockSpinner(true);
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
             if ( ! app.viewModel.scenarios.leaseblockLayer()) {
                 app.viewModel.scenarios.loadLeaseblockLayer();
@@ -1025,7 +1009,7 @@ function scenariosModel(options) {
         } else {
             self.isScenariosOpen(true);
         }
-        self.updateScrollBar();
+        self.updateDesignsScrollBar();
     }        
     self.isCollectionsOpen = ko.observable(false);
     self.toggleCollectionsOpen = function() {
@@ -1037,10 +1021,10 @@ function scenariosModel(options) {
         } else {
             self.isCollectionsOpen(true);
         }
-        self.updateScrollBar();
+        self.updateDesignsScrollBar();
     }       
     
-    self.updateScrollBar = function() {
+    self.updateDesignsScrollBar = function() {
         var designsScrollpane = $('#designs-accordion').data('jsp');
         if (designsScrollpane === undefined) {
             $('#designs-accordion').jScrollPane();
@@ -1068,7 +1052,7 @@ function scenariosModel(options) {
         app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
         app.viewModel.updateAttributeLayers();
         
-        self.updateScrollBar();
+        self.updateDesignsScrollBar();
     };
     
     self.removeSelectionForm = function() {
@@ -1337,6 +1321,12 @@ function scenariosModel(options) {
                 })
             }
         ));
+        
+        self.leaseblockLayer().events.register("loadend", self.leaseblockLayer(), function() {
+            if (self.scenarioFormModel && ! self.scenarioFormModel.IE) {
+                self.scenarioFormModel.showLeaseblockSpinner(false);
+            }
+        });
     }      
     
     self.leaseblockList = [];    

@@ -286,6 +286,12 @@ function reportsModel(options) {
             }
                            
         });
+        var width = 400,
+            height = 90 + app.viewModel.scenarios.activeSelections().length * 60;
+        if (height > 500) { 
+            height = 500;
+        }
+        chart.setSize(width, height);
     };
 
 }

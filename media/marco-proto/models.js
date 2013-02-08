@@ -1047,6 +1047,13 @@ function viewModel() {
         $('#fullscreen-error-overlay').hide();
     };
     
+    self.updateAllScrollBars = function() {
+        self.updateScrollBars();
+        if (self.scenarios) {
+            self.scenarios.updateDesignsScrollBar();
+        }
+    };
+    
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
     
@@ -1055,6 +1062,13 @@ function viewModel() {
             $('#data-accordion').jScrollPane();
         } else {
             dataScrollpane.reinitialise();
+        }
+        
+        var activeScrollpane = $('#active').data('jsp');
+        if (activeScrollpane === undefined) {
+            $('#active').jScrollPane();
+        } else {
+            activeScrollpane.reinitialise();
         }
         
         var legendScrollpane = $('#legend-content').data('jsp');
