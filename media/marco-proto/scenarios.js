@@ -997,6 +997,10 @@ function scenariosModel(options) {
     
     self.sharingGroups = ko.observableArray();
     
+    self.groupMembers = function(groupName) {
+        return 'Members of the ' + groupName + ' group include...';
+    };
+    
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
     self.selectionsLoaded = false;
