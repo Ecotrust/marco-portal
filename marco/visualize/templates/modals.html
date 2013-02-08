@@ -76,6 +76,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Sharing</h3>
     </div>
+    <form data-bind="submit: submitShare">
     <div class="modal-body" style="height: 200px; text-align: center">  
       <div class="row-fluid">
         <div>
@@ -83,14 +84,15 @@
             <ul class="accordion unstyled" id="sharing-groups" style="margin-left: 1px">
               <div class="accordion-group" style="border: 0px">
                 <span data-bind="foreach: sharingGroups">
-                  <div class="accordion-heading">
-                    <div class="accordion-toggle" data-toggle="collapse" data-parent="#sharing-groups" data-bind="attr: {href: '#'+group_name}">
-                      <li rel="tooltip" data-bind="attr: {title: $parent.groupMembers(group_name)}">
+                  <div class="accordion-heading" style="text-align: left; margin-left: 50px;">
+                    <div class="accordion-toggle" style="padding: 4px;" data-toggle="collapse" data-parent="#sharing-groups" data-bind="attr: {href: '#'+$root.convertToSlug(group_name)}">
+                      <li>
+                        <input type="checkbox" style="margin-top: 0px; margin-bottom: 2px; margin-right: 3px;">
                         <span data-bind="text: group_name"></span> 
                         <i id="group-members" class="icon-group"> </i> 
-                        <div data-bind="attr: {id: group_name}" class="accordion-body collapse">
-                          <div class="accordion-inner" style="border-top: 0px; padding-top: 0px;">
-                            <ul class="unstyled" style="margin-left: 200px; text-align: left; font-size: 14px;" data-bind="foreach: members">
+                        <div data-bind="attr: {id: $root.convertToSlug(group_name)}" class="accordion-body collapse">
+                          <div class="accordion-inner" style="border-top: 0px; padding: 0px;">
+                            <ul class="unstyled" style="margin-left: 30px; text-align: left; font-size: 14px;" data-bind="foreach: members">
                               <li data-bind="text: name"></li>
                             </ul>
                           </div>
@@ -106,7 +108,8 @@
     </div>
     <div class="modal-footer">
         <button href="#" class="btn" data-dismiss="modal">Cancel</button>
-        <button href="#" class="btn" data-dismiss="modal">Share</button>
+        <button type="submit" class="btn-submit btn" data-dismiss="modal">Share</button>
     </div>
+    </form>
 </div>
 

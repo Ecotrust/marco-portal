@@ -1276,7 +1276,7 @@ function scenariosModel(options) {
                 app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
             }
         });
-    }
+    };
     
     //populates scenarioList
     self.loadScenarios = function (scenarios) {
@@ -1291,7 +1291,7 @@ function scenariosModel(options) {
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
-    }
+    };
     
     //populates selectionList..?
     self.loadSelections = function (selections) {
@@ -1306,7 +1306,7 @@ function scenariosModel(options) {
             self.selectionList.push(selectionViewModel);
             app.viewModel.layerIndex[selection.uid] = selectionViewModel;
         });
-    }
+    };
     
     self.loadLeaseblockLayer = function() {
         self.leaseblockLayer( new OpenLayers.Layer.Vector(
@@ -1333,14 +1333,19 @@ function scenariosModel(options) {
                 self.scenarioFormModel.showLeaseblockSpinner(false);
             }
         });
-    }      
+    };      
     
     self.leaseblockList = [];    
     
     //populates leaseblockList
     self.loadLeaseblocks = function (ocsblocks) {
         self.leaseblockList = ocsblocks;
-    }   
+    };  
+    
+    //SHARING DESIGNS
+    self.submitShare = function(data) {
+        debugger;
+    };
     
     return self;
 } // end scenariosModel
