@@ -798,7 +798,8 @@ function mapLinksModel() {
         var windowName = "new Map Window",
             windowSize = "width=850, height=650"
         mapWindow = window.open('', windowName, windowSize);
-        mapWindow.document.write('<html><body>' + $('#iframe-html')[0].value + '</body></html');
+        var header = '<header role="banner"><div class="navbar navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><div class="row-fluid"><div class="span12"><a href="/visualize"><img src="'+window.location.origin+'/media/marco/img/marco-logo_planner.jpg"/></a><h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3></div></div></div></div></div></header>';
+        mapWindow.document.write('<html><body>' + header + $('#iframe-html')[0].value + '</body></html');
         mapWindow.document.close();
         
     };
