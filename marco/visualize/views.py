@@ -16,6 +16,10 @@ def show_planner(request, template='planner.html'):
     context = {'MEDIA_URL': settings.MEDIA_URL, 'SOCKET_URL': socket_url, 'login': 'true'}
     return render_to_response(template, RequestContext(request, context)) 
     
+def show_embedded_map(request, template='map.html'):
+    context = {'MEDIA_URL': settings.MEDIA_URL}
+    return render_to_response(template, RequestContext(request, context)) 
+    
 def get_bookmarks(request):
     #sync the client-side bookmarks with the server side bookmarks
     #update the server-side bookmarks and return the new list

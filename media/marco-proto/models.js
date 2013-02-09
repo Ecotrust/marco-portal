@@ -734,6 +734,78 @@ function bookmarkModel($popover) {
     return self;
 } // end of bookmarkModel
 
+function mapLinksModel() {
+    var self = this;
+    
+    self.cancel = function() {
+        $('#map-links-popover').hide();
+    };
+    
+    self.getURL = function() {
+        //return window.location.href;
+        return 'http://portal.midatlanticocean.org' + app.viewModel.currentURL();
+    };
+    
+    self.shrinkURL = ko.observable();
+    self.shrinkURL.subscribe( function() {
+        if (self.shrinkURL()) {
+            self.useShortURL();
+        } else {
+            self.useLongURL();
+        }
+    });
+    
+    self.useLongURL = function() {
+        $('#short-url')[0].value = self.getURL();
+    };
+        
+    self.useShortURL = function() {
+        var bitly_login = "ecofletch",
+            bitly_api_key = 'R_d02e03290041107b75e3720d7e3c4b95',
+            long_url = self.getURL();
+            
+        $.getJSON( 
+            "http://api.bitly.com/v3/shorten?callback=?", 
+            { 
+                "format": "json",
+                "apiKey": bitly_api_key,
+                "login": bitly_login,
+                "longUrl": long_url
+            },
+            function(response)
+            {
+                $('#short-url')[0].value = response.data.url;
+            }
+        );
+    };
+    
+    self.getPortalURL = function() {
+        var urlOrigin = window.location.origin,
+            urlHash = window.location.hash;
+        return urlOrigin + '/visualize/' + urlHash;
+    };
+    
+    self.getIFrameHTML = function() {
+        var urlOrigin = window.location.origin,
+            urlHash = window.location.hash,
+            embedURL = urlOrigin + '/embed/map/' + urlHash;
+        $('#iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ' +
+                                     'src="' + embedURL + '">' + '</iframe>' + '<br />';// + 
+                                     //'<small><a href="' + embedURL + '" ' + 'style="color:#0000FF;text-align:left">View Larger Map</a></small>';
+    };
+    
+    self.openIFrameExample = function() {
+        var windowName = "new Map Window",
+            windowSize = "width=850, height=650"
+        mapWindow = window.open('', windowName, windowSize);
+        mapWindow.document.write('<html><body>' + $('#iframe-html')[0].value + '</body></html');
+        mapWindow.document.close();
+        
+    };
+
+    return self;
+} // end of mapLinks Model
+
 
 function viewModel() {
     var self = this;
@@ -841,6 +913,7 @@ function viewModel() {
     
     self.bookmarkEmail = ko.observable();
         
+    self.mapLinks = new mapLinksModel();
 
     // text for tooltip popup
     self.layerToolTipText = ko.observable();
@@ -1229,6 +1302,24 @@ function viewModel() {
             });
         }
     };
+    
+    //show Map Links
+    self.showMapLinks = function(self, event) {
+        var $button = $(event.target).closest('.btn'),
+            $popover = $('#map-links-popover');
+
+        if ($popover.is(":visible")) {
+            $popover.hide();
+        } else {
+            $popover.show().position({
+                "my": "top",
+                "at": "top",
+                "of": $('#map'),
+                offset: "0px 10px"
+            });
+        }
+    };
+    
     self.selectedLayer = ko.observable();
 
     self.showOpacity = function(layer, event) {
