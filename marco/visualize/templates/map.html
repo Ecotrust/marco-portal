@@ -218,6 +218,13 @@
 
         <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.mCustomScrollbar.js"></script>
         
+        <script type="text/javascript">
+            $('#aggregated-attribute-overlay').on('show', function(e) {
+                console.log('on show');
+                app.viewModel.hideMapAttribution();
+            });
+        </script>
+        
         
     </body>
 
