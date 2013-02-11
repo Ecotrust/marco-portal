@@ -81,6 +81,7 @@
 
         </script>
         
+        
         <style type="text/css">
             #aggregated-attribute-overlay {
                 top: 10px; 
@@ -127,9 +128,10 @@
                             <div class="row-fluid">
                                 <div id="map-wrapper">
                                     <div id="map"></div>
-                                    <a data-bind="attr: { href: mapLinks.getPortalURL() }" target="_blank">
+                                    <!-- commenting out the following until a transparent background is generated for the marco logo -->
+                                    <!--<a data-bind="attr: { href: mapLinks.getPortalURL() }" target="_blank">
                                         <img id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo_planner.jpg"/>
-                                    </a>
+                                    </a>-->
                                     <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                         <div data-bind="foreach: attributeLayers()">
                                             <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
@@ -215,6 +217,7 @@
         <!--<![endif]-->
 
         <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.mCustomScrollbar.js"></script>
+        
         
     </body>
 
