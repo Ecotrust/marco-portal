@@ -345,36 +345,54 @@ function scenarioFormModel(options) {
     
     self.windSpeedLayer = app.viewModel.getLayerById(7);
     self.toggleWindSpeedLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#wind-speed-layer-toggle input').is(":checked")) {
-                self.windSpeedLayer.activateLayer();
-            } else {
-                self.windSpeedLayer.deactivateLayer();
-            }
+        if ( self.windSpeedLayer.active() ) {
+            self.windSpeedLayer.deactivateLayer();
+        } else {
+            self.windSpeedLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleWindSpeedDescription = function(formModel) {
+        if ( self.windSpeedLayer.infoActive() ) {
+            self.windSpeedLayer.hideDescription(self.windSpeedLayer);
+        } else {
+            self.windSpeedLayer.showDescription(self.windSpeedLayer);
         }
         return true;
     };
     
     self.awcLayer = app.viewModel.getLayerById(65);
     self.toggleAWCLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#awc-layer-toggle input').is(":checked")) {
-                self.awcLayer.activateLayer();
-            } else {
-                self.awcLayer.deactivateLayer();
-            }
+        if ( self.awcLayer.active() ) {
+            self.awcLayer.deactivateLayer();
+        } else {
+            self.awcLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleAWCDescription = function(formModel) {
+        if ( self.awcLayer.infoActive() ) {
+            self.awcLayer.hideDescription(self.awcLayer);
+        } else {
+            self.awcLayer.showDescription(self.awcLayer);
         }
         return true;
     };
     
     self.shippingLanesLayer = app.viewModel.getLayerById(64);
     self.toggleShippingLanesLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#shipping-lanes-layer-toggle input').is(":checked")) {
-                self.shippingLanesLayer.activateLayer();
-            } else {
-                self.shippingLanesLayer.deactivateLayer();
-            }
+        if ( self.shippingLanesLayer.active() ) {
+            self.shippingLanesLayer.deactivateLayer();
+        } else {
+            self.shippingLanesLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleShippingLanesDescription = function(formModel) {
+        if ( self.shippingLanesLayer.infoActive() ) {
+            self.shippingLanesLayer.hideDescription(self.shippingLanesLayer);
+        } else {
+            self.shippingLanesLayer.showDescription(self.shippingLanesLayer);
         }
         return true;
     };

@@ -411,7 +411,7 @@
   <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 3 </i></p>
     <p class="instructions">Select 1 or more criteria for this sector </p>
-    <label class="step1-header">Wind Energy</label>
+    <label class="step-header">Wind Energy</label>
     <div id="step1_inputs">
         <ul class="parameters">
         <li>
@@ -437,11 +437,24 @@
                             {{ form.input_avg_wind_speed }} 
                             {{ form.input_avg_wind_speed.errors }}   
                         </div> 
-                        <div style="margin-top: 10px">
+                        <!--<div style="margin-top: 10px">
                             <label id="wind-speed-layer-toggle" data-bind="click: toggleWindSpeedLayer">
                                 <input id="wind-speed-layer-checkbox" data-bind="checked: windSpeedLayer.active()" type="checkbox" name="checkbox" value="value"> 
                                 Show Wind Speed Data</input>
                             </label>
+                        </div>-->
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleWindSpeedDescription, css: { 'active': windSpeedLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': windSpeedLayer.active(), 'not-active': ! windSpeedLayer.active() }, click: toggleWindSpeedLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show Wind Speed Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: windSpeedLayer.active() && windSpeedLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: windSpeedLayer.active() && ! windSpeedLayer.visible()"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -513,11 +526,24 @@
                             {{ form.input_distance_to_awc }} 
                             {{ form.input_distance_to_awc.errors }}   
                         </span> 
-                        <div style="margin-top: 10px">
+                        <!--<div style="margin-top: 10px">
                             <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
                                 <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
                                 Show AWC Routes & Hubs Data</input>
                             </label>
+                        </div>-->
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleAWCDescription, css: { 'active': awcLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': awcLayer.active(), 'not-active': ! awcLayer.active() }, click: toggleAWCLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show AWC Routes & Hubs Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: awcLayer.active() && awcLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: awcLayer.active() && ! awcLayer.visible()"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -531,7 +557,7 @@
   <div id="step2" class="step">
     <p class="step-text"><i>Step 2 of 3 </i></p>
     <p class="instructions">Choose any filtering criteria from other sectors </p>
-    <label class="step2-header">Shipping</label>
+    <label class="step-header">Shipping</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
@@ -551,11 +577,24 @@
                             {{ form.input_distance_to_shipping }} 
                             {{ form.input_distance_to_shipping.errors }}   
                         </label> 
-                        <div style="margin-top: 10px">
+                        <!--<div style="margin-top: 10px">
                             <label id="shipping-lanes-layer-toggle" data-bind="click: toggleShippingLanesLayer">
                                 <input id="shipping-lanes-layer-checkbox" data-bind="checked: shippingLanesLayer.active()" type="checkbox" name="checkbox" value="value"> 
                                 Show Shipping Lanes Data</input>
                             </label>
+                        </div>-->
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleShippingLanesDescription, css: { 'active': shippingLanesLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" data-bind="css: { 'active': shippingLanesLayer.active(), 'not-active': ! shippingLanesLayer.active() }, click: toggleShippingLanesLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show Shipping Lanes Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: shippingLanesLayer.active() && shippingLanesLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: shippingLanesLayer.active() && ! shippingLanesLayer.visible()"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -577,7 +616,7 @@
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Military (under development)</label>
+    <label class="step-header">Military (under development)</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
@@ -728,6 +767,23 @@
     /* for IE */
     filter: alpha(opacity=80);
 }
+#wind-design-form .show-layer-btn i.icon-check-empty {
+    display: none !important;
+}
+#wind-design-form .show-layer-btn:hover i.icon-check-empty {
+    display: block !important;
+    opacity: .4;
+    /* for IE */
+    filter: alpha(opacity=40);
+}
+#wind-design-form .show-layer-btn {
+    height: 16px; 
+    line-height: 16px;
+}
+#wind-design-form .show-layer-btn-group {
+    width: 70%; 
+    margin: 15px 0px 5px 0px;
+}
 #wind-design-form .accordion-heading .accordion-toggle {
     padding: 4px 15px;
 }
@@ -742,6 +798,7 @@
 #wind-design-form .inputfield {
     margin: 0px 20px;
 }
+
 
 
 div .field > label { 
@@ -804,14 +861,10 @@ form ul.parameters {
     padding-left: 0px;
     width: 90%;
 }
-label.step1-header {
+label.step-header {
+    margin-top: 5px;
     font-weight: bold;
     padding-left: 5px !important;
-}
-label.step2-header {
-    font-weight: bold;
-    padding-left: 5px !important;
-    padding-bottom: 10px !important;
 }
 label.step3-header {
     font-weight: bold;
