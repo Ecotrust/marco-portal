@@ -112,6 +112,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#wind_speed_widget').fadeIn('slow', function() {});
         });
         $('#wind_speed_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(false);
@@ -120,6 +121,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#wind_speed_widget').fadeOut('slow', function() {});
         });
         //Update Leaseblocks
         //slide ensures that leaseblocks are updated when the slider is adjusted
@@ -143,6 +145,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#distance_to_shore_widget').fadeIn('slow', function() {});
         });
         $('#distance_to_shore_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(false);
@@ -152,6 +155,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#distance_to_shore_widget').fadeOut('slow', function() {});
         });
         
         //Update Remaining Leaseblocks 
@@ -175,6 +179,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#depth_widget').fadeIn('slow', function() {});
         });
         $('#depth_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(false);
@@ -184,6 +189,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#depth_widget').fadeOut('slow', function() {});
         });
         
         //Update Remaining Leaseblocks 
@@ -206,6 +212,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#distance_to_awc_widget').fadeIn('slow', function() {});
         });
         $('#distance_to_awc_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(false);
@@ -214,6 +221,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#distance_to_awc_widget').fadeOut('slow', function() {});
         });
         
         //Update Remaining Leaseblocks 
@@ -235,6 +243,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#distance_to_shipping_widget').fadeIn('slow', function() {});
         });
         $('#distance_to_shipping_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(false);
@@ -243,6 +252,7 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
+            $('#distance_to_shipping_widget').fadeOut('slow', function() {});
         });
         
         //Update Remaining Leaseblocks 
@@ -720,32 +730,17 @@
 #id_input_parameter_wind_speed {
     display: none;
 }
-#wind_speed_widget {
-    display: block !important;
-}
 #id_input_parameter_distance_to_shore {
     display: none;
-}
-#distance_to_shore_widget {
-    display: block !important;
 }
 #id_input_parameter_depth {
     display: none;
 }
-#depth_widget {
-    display: block !important;
-}
 #id_input_parameter_distance_to_awc {
     display: none;
 }
-#distance_to_awc_widget {
-    display: block !important;
-}
 #id_input_filter_distance_to_shipping {
     display: none;
-}
-#distance_to_shipping_widget {
-    display: block !important;
 }
 #id_input_filter_ais_density {
     display: none;
