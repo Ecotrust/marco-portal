@@ -621,12 +621,18 @@ a.disabled-link:hover {
   top: 90%;
 }
 
-#design-list .collections-header:hover .reports-btn {
-  display: block !important;
-  opacity: .9;
+#bar-chart-button {
+  opacity: .4;
   /* for IE */
-  filter: alpha(opacity=90);
+  filter: alpha(opacity=40);
 }
+#bar-chart-button:hover  {
+  display: block !important;
+  opacity: .99;
+  /* for IE */
+  filter: alpha(opacity=99);
+}
+
 
 
 #design-list .reports-btn {
