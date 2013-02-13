@@ -112,7 +112,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#wind_speed_widget').fadeIn('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#wind_speed_widget').fadeIn(0, function() {});
+            } else {
+                $('#wind_speed_widget').fadeIn('slow', function() {});
+            }
         });
         $('#wind_speed_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(false);
@@ -121,7 +125,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#wind_speed_widget').fadeOut('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#wind_speed_widget').fadeOut(0, function() {});
+            } else {
+                $('#wind_speed_widget').fadeOut('slow', function() {});
+            }
         });
         //Update Leaseblocks
         //slide ensures that leaseblocks are updated when the slider is adjusted
@@ -145,7 +153,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#distance_to_shore_widget').fadeIn('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#distance_to_shore_widget').fadeIn(0, function() {});
+            } else {
+                $('#distance_to_shore_widget').fadeIn('slow', function() {});
+            }
         });
         $('#distance_to_shore_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(false);
@@ -155,7 +167,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#distance_to_shore_widget').fadeOut('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#distance_to_shore_widget').fadeOut(0, function() {});
+            } else {
+                $('#distance_to_shore_widget').fadeOut('slow', function() {});
+            }
         });
         
         //Update Remaining Leaseblocks 
@@ -179,7 +195,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#depth_widget').fadeIn('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#depth_widget').fadeIn(0, function() {});
+            } else {
+                $('#depth_widget').fadeIn('slow', function() {});
+            }
         });
         $('#depth_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(false);
@@ -189,7 +209,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#depth_widget').fadeOut('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#depth_widget').fadeOut(0, function() {});
+            } else {
+                $('#depth_widget').fadeOut('slow', function() {});
+            }
         });
         
         //Update Remaining Leaseblocks 
@@ -212,7 +236,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#distance_to_awc_widget').fadeIn('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#distance_to_awc_widget').fadeIn(0, function() {});
+            } else {
+                $('#distance_to_awc_widget').fadeIn('slow', function() {});
+            }
         });
         $('#distance_to_awc_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(false);
@@ -221,7 +249,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#distance_to_awc_widget').fadeOut('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#distance_to_awc_widget').fadeOut(0, function() {});
+            } else {
+                $('#distance_to_awc_widget').fadeOut('slow', function() {});
+            }
         });
         
         //Update Remaining Leaseblocks 
@@ -243,7 +275,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#distance_to_shipping_widget').fadeIn('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#distance_to_shipping_widget').fadeIn(0, function() {});
+            } else {
+                $('#distance_to_shipping_widget').fadeIn('slow', function() {});
+            }
         });
         $('#distance_to_shipping_widget').on('hide', function() {
             app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(false);
@@ -252,7 +288,11 @@
             //Update Remaining Leaseblocks 
             updateRemaininLeaseBlocks();
             updateDesignScrollBar();
-            $('#distance_to_shipping_widget').fadeOut('slow', function() {});
+            if ( $.browser.msie ) {
+                $('#distance_to_shipping_widget').fadeOut(0, function() {});
+            } else {
+                $('#distance_to_shipping_widget').fadeOut('slow', function() {});
+            }
         });
         
         //Update Remaining Leaseblocks 
@@ -408,6 +448,7 @@
 <h4>
     <!--<img src="/media/marco/img/multi.png"/>-->
     Wind Energy Siting
+    
 </h4>
 <form id="wind-design-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
@@ -429,8 +470,8 @@
                 <div class="accordion-heading">
                     <label class="accordion-toggle" data-toggle="collapse" data-parent="wind-speed-accordion" href="#wind_speed_widget">
                         {{ form.input_parameter_wind_speed }} 
-                        <i class="check icon-large icon-check" data-bind="visible: windSpeedParameter()" style="left: -10px"></i>
-                        <i class="check icon-large icon-check-empty" style="left: -10px"></i>
+                        <i class="check icon-large icon-check" data-bind="visible: windSpeedParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Wind Speed </span>
                     </label>
                 </div>
@@ -475,8 +516,8 @@
                 <div class="accordion-heading">
                     <label class="accordion-toggle" data-toggle="collapse" data-parent="distance-to-shore-accordion" href="#distance_to_shore_widget">
                         {{ form.input_parameter_distance_to_shore }} 
-                        <i class="check icon-large icon-check" data-bind="visible: distanceToShoreParameter()" style="left: -10px"></i>
-                        <i class="check icon-large icon-check-empty" style="left: -10px"></i>
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToShoreParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Distance to Shore  </span>
                         <!--<img src="/media/marco/img/info.png" id="info_shore" class="info" />-->
                     </label>
@@ -499,8 +540,8 @@
                 <div class="accordion-heading">
                     <label class="accordion-toggle" data-toggle="collapse" data-parent="depth-range-accordion" href="#depth_widget">
                         {{ form.input_parameter_depth }} 
-                        <i class="check icon-large icon-check" data-bind="visible: depthRangeParameter()" style="left: -10px"></i>
-                        <i class="check icon-large icon-check-empty" style="left: -10px"></i>
+                        <i class="check icon-large icon-check" data-bind="visible: depthRangeParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Depth Range  </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_depth" class="info" />-->
                     </label>
@@ -523,8 +564,8 @@
                 <div class="accordion-heading">
                     <label class="accordion-toggle" data-toggle="collapse" data-parent="distance-to-awc-accordion" href="#distance_to_awc_widget">
                         {{ form.input_parameter_distance_to_awc }}  
-                        <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()" style="left: -10px"></i>
-                        <i class="check icon-large icon-check-empty" style="left: -10px"></i>
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Distance to Proposed AWC Stations </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
                     </label>
@@ -575,8 +616,8 @@
                 <div class="accordion-heading">
                     <label class="accordion-toggle" data-toggle="collapse" data-parent="distance-to-shipping-accordion" href="#distance_to_shipping_widget">
                         {{ form.input_filter_distance_to_shipping }}  
-                        <i class="check icon-large icon-check" data-bind="visible: distanceToShippingParameter()" style="left: -10px"></i>
-                        <i class="check icon-large icon-check-empty" style="left: -10px"></i>
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToShippingParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Distance to Shipping Lanes </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
                     </label>
@@ -615,8 +656,8 @@
                 <div class="accordion-heading">
                     {{ form.input_filter_ais_density }}  
                     <label id="ship_traffic_density_widget" class="accordion-toggle">
-                        <i class="check icon-large icon-check" data-bind="visible: shipTrafficDensityParameter()" style="left: -10px"></i>
-                        <i class="check icon-large icon-check-empty" style="left: -10px"></i>
+                        <i class="check icon-large icon-check" data-bind="visible: shipTrafficDensityParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Exclude Areas with High Ship Traffic </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_ais" class="info" />-->
                     </label>
@@ -689,23 +730,25 @@
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser()">
+<div class="show-blocks-btn" data-bind="visible: app.viewModel.modernBrowser()">
     <span data-bind="visible: !isLeaseblockLayerVisible()">
         <a class="button btn" data-bind="click: activateLeaseblockLayer">
-            Show Lease Blocks <span class="badge" data-bind="text: leaseblocksLeft"></span>
-            <img src="/media/marco/img/ajax-loader.gif" style="width: 15px; height: 15px;" data-bind="visible: showLeaseblockSpinner()" />
+            <span class="badge" style="margin-right: 5px; margin-left: -5px;" data-bind="text: leaseblocksLeft"></span> Lease Blocks Remaining 
+            <i class="icon-large icon-check-empty" style="margin-right: -5px; margin-left: 5px;" data-bind="visible: !showLeaseblockSpinner()"></i>
+            <!--<img src="/media/marco/img/ajax-loader.gif" style="height: 15px; margin-right: -15px; margin-left: -15px;" data-bind="visible: showLeaseblockSpinner()" />-->
         </a>
     </span>
     <span data-bind="visible: isLeaseblockLayerVisible()">
         <a class="button btn" data-bind="click: deactivateLeaseblockLayer">
-            Hide Lease Blocks <span class="badge" data-bind="text: leaseblocksLeft"></span>
-            <img src="/media/marco/img/ajax-loader.gif" style="width: 15px; height: 15px;" data-bind="visible: showLeaseblockSpinner()" />
+            <span class="badge" style="margin-right: 5px; margin-left: -5px;" data-bind="text: leaseblocksLeft"></span> Lease Blocks Remaining 
+            <i class="icon-large icon-check" style="margin-right: -5px; margin-left: 5px;" data-bind="visible: !showLeaseblockSpinner()"></i>
+            <!--<img src="/media/marco/img/ajax-loader.gif" style="height: 15px; margin-right: -15px; margin-left: -15px;" data-bind="visible: showLeaseblockSpinner()" />-->
         </a>
     </span>
 </div>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser()">
-    <label>Estimated Number of Lease Blocks Identified: <span data-bind="text: leaseblocksLeft"></span></label>
+<div class="show-blocks-btn" style="padding-right: 1px; color: #333333" data-bind="visible: ! app.viewModel.modernBrowser()">
+    <label>Lease Blocks Remaining: <span data-bind="text: leaseblocksLeft"></span></label>
 </div>
 
 <div class="wizard_nav" style="width:100%">
@@ -750,6 +793,9 @@
 #wind-design-form i.check {
     top: 5px;
 }
+#wind-design-form .accordion-toggle i.check {
+    left: -10px;
+}
 #wind-design-form i.icon-check-empty {
     display: block !important;
     opacity: .4;
@@ -779,6 +825,10 @@
     width: 70%; 
     margin: 15px 0px 5px 0px;
 }
+.show-blocks-btn a{
+    height: 16px; 
+    line-height: 16px;
+}
 #wind-design-form .accordion-heading .accordion-toggle {
     padding: 4px 15px;
 }
@@ -792,6 +842,10 @@
 }
 #wind-design-form .inputfield {
     margin: 0px 20px;
+}
+.show-blocks-btn {
+    margin-top: -10px;
+    padding-bottom: 10px;
 }
 
 
