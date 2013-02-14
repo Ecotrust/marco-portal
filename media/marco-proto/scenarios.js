@@ -116,6 +116,15 @@ function scenarioFormModel(options) {
     
     self.lastChange = (new Date()).getTime();
     
+    //Parameters
+    self.windSpeedParameter = ko.observable(false);
+    self.distanceToShoreParameter = ko.observable(false);
+    self.depthRangeParameter = ko.observable(false);
+    self.distanceToAWCParameter = ko.observable(false);
+    self.distanceToShippingParameter = ko.observable(false);
+    self.shipTrafficDensityParameter = ko.observable(false);
+    
+    
     self.filters = {};
     
     self.updateFilters = function(object) {
@@ -130,36 +139,36 @@ function scenarioFormModel(options) {
     };
     
     self.updateFiltersAndLeaseBlocks = function() {
-        if ($('#depth_widget').css('display') !== "none") {
+        if ( self.depthRangeParameter() ) {
             self.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
             self.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
         } else {
             self.removeFilter('min_depth');
             self.removeFilter('max_depth');
         }
-        if ($('#wind_speed_widget').css('display') !== "none") {
+        if ( self.windSpeedParameter() ) {
             self.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
         } else {
             self.removeFilter('wind');
         }
-        if ($('#distance_to_shore_widget').css('display') !== "none") {
+        if ( self.distanceToShoreParameter() ) {
             self.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
             self.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
         } else {
             self.removeFilter('min_distance');
             self.removeFilter('max_distance');
         }
-        if ($('#distance_to_awc_widget').css('display') !== "none") {
+        if ( self.distanceToAWCParameter() ) {
             self.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
         } else {
             self.removeFilter('awc');
         }
-        if ($('#distance_to_shipping_widget').css('display') !== "none") {
+        if ( self.distanceToShippingParameter() ) {
             self.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
         } else {
             self.removeFilter('tsz');
         }
-        if ( $('#id_input_filter_ais_density').attr('checked') ) {
+        if ( self.shipTrafficDensityParameter() ) {
             self.updateFilters({'key': 'ais', 'value': 1});
         } else {
             self.removeFilter('ais');
@@ -235,7 +244,7 @@ function scenarioFormModel(options) {
                 type: OpenLayers.Filter.Logical.AND,
                 filters: []
             });
-            if ( $('#wind_speed_widget').css('display') !== "none" ) {
+            if ( self.windSpeedParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if WINDREV_MI >= self.filters['wind']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -244,7 +253,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#distance_to_shore_widget').css('display') !== "none" ) {
+            if ( self.distanceToShoreParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if MI_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -258,7 +267,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#depth_widget').css('display') !== "none" ) {
+            if ( self.depthRangeParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if DEPTHM_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
@@ -272,7 +281,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#distance_to_awc_widget').css('display') !== "none" ) {
+            if ( self.distanceToAWCParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if AWCMI_MIN <= self.filters['awc']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
@@ -281,7 +290,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#distance_to_shipping_widget').css('display') !== "none" ) {
+            if ( self.distanceToShippingParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if TRSEP_MIN >= self.filters['tsz']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -290,7 +299,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#id_input_filter_ais_density').attr('checked') ) {
+            if ( self.shipTrafficDensityParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if AIS7_MEAN <= 1
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
@@ -336,36 +345,54 @@ function scenarioFormModel(options) {
     
     self.windSpeedLayer = app.viewModel.getLayerById(7);
     self.toggleWindSpeedLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#wind-speed-layer-toggle input').is(":checked")) {
-                self.windSpeedLayer.activateLayer();
-            } else {
-                self.windSpeedLayer.deactivateLayer();
-            }
+        if ( self.windSpeedLayer.active() ) {
+            self.windSpeedLayer.deactivateLayer();
+        } else {
+            self.windSpeedLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleWindSpeedDescription = function(formModel) {
+        if ( self.windSpeedLayer.infoActive() ) {
+            self.windSpeedLayer.hideDescription(self.windSpeedLayer);
+        } else {
+            self.windSpeedLayer.showDescription(self.windSpeedLayer);
         }
         return true;
     };
     
     self.awcLayer = app.viewModel.getLayerById(65);
     self.toggleAWCLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#awc-layer-toggle input').is(":checked")) {
-                self.awcLayer.activateLayer();
-            } else {
-                self.awcLayer.deactivateLayer();
-            }
+        if ( self.awcLayer.active() ) {
+            self.awcLayer.deactivateLayer();
+        } else {
+            self.awcLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleAWCDescription = function(formModel) {
+        if ( self.awcLayer.infoActive() ) {
+            self.awcLayer.hideDescription(self.awcLayer);
+        } else {
+            self.awcLayer.showDescription(self.awcLayer);
         }
         return true;
     };
     
     self.shippingLanesLayer = app.viewModel.getLayerById(64);
     self.toggleShippingLanesLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#shipping-lanes-layer-toggle input').is(":checked")) {
-                self.shippingLanesLayer.activateLayer();
-            } else {
-                self.shippingLanesLayer.deactivateLayer();
-            }
+        if ( self.shippingLanesLayer.active() ) {
+            self.shippingLanesLayer.deactivateLayer();
+        } else {
+            self.shippingLanesLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleShippingLanesDescription = function(formModel) {
+        if ( self.shippingLanesLayer.infoActive() ) {
+            self.shippingLanesLayer.hideDescription(self.shippingLanesLayer);
+        } else {
+            self.shippingLanesLayer.showDescription(self.shippingLanesLayer);
         }
         return true;
     };
@@ -848,6 +875,25 @@ function scenarioModel(options) {
                 $('#scenario-form').html(data);
                 app.viewModel.scenarios.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(app.viewModel.scenarios.scenarioFormModel, document.getElementById('scenario-form'));
+                app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
+                if ($('#id_input_parameter_wind_speed').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(true);
+                } 
+                if ($('#id_input_parameter_depth').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(true);
+                } 
+                if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(true);
+                } 
+                if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(true);
+                } 
+                if ($('#id_input_filter_distance_to_shipping').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(true);
+                } 
+                if ($('#id_input_filter_ais_density').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(true);
+                } 
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 

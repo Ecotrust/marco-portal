@@ -112,3 +112,7 @@ div.olControlZoom a {
 		margin-left: 0% !important;
 	}
 }
+
+#wind-design-form .accordion-toggle i.check {
+    margin-left: 10px;
+}
