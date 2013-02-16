@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     url(r'get_scenarios$', get_scenarios),
     url(r'get_leaseblocks$', get_leaseblocks),
     url(r'get_sharing_groups$', get_sharing_groups),
+    url(r'share_design$', share_design),
+    url(r'copy_scenario/(?P<uid>[\w_]+)/$', copy_scenario),
     url(r'get_selections$', get_selections),
     url(r'get_leaseblock_features$', get_leaseblock_features)
 )

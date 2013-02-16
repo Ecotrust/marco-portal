@@ -783,6 +783,29 @@ function scenarioModel(options) {
     self.uid = options.uid || null;
     self.name = options.name;
     self.description = options.description;
+    self.shared = ko.observable();
+    self.sharedByName = options.sharedByName || null;
+    self.sharedByUsername = options.sharedByUsername;
+    if (self.sharedByName && $.trim(self.sharedByName) !== '') {
+        self.sharedByWho = self.sharedByName + ' (' + self.sharedByUsername + ')';
+    } else {
+        self.sharedByWho = self.sharedByUsername;
+    }
+    self.sharedBy = ko.observable();
+    if (options.shared) {
+        console.log(self.name + ' is shared');
+        self.shared(true);
+        self.sharedBy('Shared by ' + self.sharedByWho);
+    } else {
+        console.log(self.name + ' is not shared');
+        self.shared(false);
+        self.sharedBy(false);
+    }
+    self.selectedGroups = ko.observableArray();
+    self.sharedGroupsList = [];
+    if (options.sharingGroups && options.sharingGroups.length) {
+        self.selectedGroups(options.sharingGroups);
+    } 
     
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
@@ -901,7 +924,23 @@ function scenarioModel(options) {
             }
         });
     }; 
-        
+    
+    self.createCopyScenario = function() {
+        var scenario = this;
+    
+        //create a copy of this shape to be owned by the user
+        $.ajax({
+            url: '/scenario/copy_scenario/' + scenario.uid + '/',
+            type: 'POST',
+            success: function(data) {
+                app.viewModel.scenarios.loadScenariosFromServer();
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    }
+                
     self.deleteScenario = function() {
         var scenario = this;
         
@@ -1043,9 +1082,94 @@ function scenariosModel(options) {
     
     self.sharingGroups = ko.observableArray();
     
+    self.sharingLayer = ko.observable();
+    self.showSharingModal = function(scenario) {
+        self.sharingLayer(scenario);
+        $('#share-modal').modal('show');
+    };
+    
     self.groupMembers = function(groupName) {
         return 'Members of the ' + groupName + ' group include...';
     };
+    
+    self.toggleGroup = function(obj) {
+        var groupName = obj.group_name,
+            indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
+    
+        if ( indexOf === -1 ) {  //add group to list
+            self.sharingLayer().selectedGroups.push(groupName);
+        } else { //remove group from list
+            self.sharingLayer().selectedGroups.splice(indexOf, 1);
+        }
+    };
+    
+    self.initSharingModal = function() {
+        console.log('initializing sharing modal');
+        for (var i=0; i<self.sharingGroups().length; i++) {
+            var groupID = '#' + self.sharingGroups()[i].group_slug;
+            $(groupID).collapse( { toggle: false } );
+        }
+    }
+    
+    //TODO:  Fix the problem in which the first group toggled open will not toggle open again, once it's closed
+    self.lastMembersClickTime = 0;
+    self.toggleGroupMembers = function(obj, e) {
+        var groupName = obj.group_name,
+            groupID = '#' + obj.group_slug,
+            clickTime = new Date().getTime();
+        if (clickTime - self.lastMembersClickTime > 800) {
+            self.lastMembersClickTime = clickTime;
+            if ( ! $(groupID).hasClass('in') ) {  //toggle on and add group to list
+                $(groupID).css("display", "none"); //allows the fade effect to display as expected
+                if ( $.browser.msie ) {
+                    $(groupID).fadeIn(0, function() {});
+                } else {
+                    $(groupID).fadeIn('slow', function() {});
+                }
+                $(groupID).collapse('show'); 
+                //console.log('showing ' + groupID);
+            } else { //toggle off and remove group from list
+                if ( $.browser.msie ) {
+                    $(groupID).fadeOut(0, function() {});
+                } else {
+                    $(groupID).fadeOut('slow', function() {});
+                }
+                $(groupID).collapse('hide');
+                //console.log('hiding ' + groupID);
+                //set .modal-body background to eliminate residue that appears when the last Group is opened and then closed?
+            }
+            setTimeout(function() { self.updateSharingScrollBar(groupID); }, 300);
+        }
+    };
+    
+    self.groupIsSelected = function(groupName) {
+        if (self.sharingLayer()) {
+            var indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
+            return indexOf !== -1;
+        }
+        return false;
+    };
+    
+    self.updateSharingScrollBar = function(groupID) {
+        var sharingScrollpane = $('#sharing-groups').data('jsp');
+        if (sharingScrollpane === undefined) {
+            $('#sharing-groups').jScrollPane( {animateScroll: true});
+        } else {
+            sharingScrollpane.reinitialise();
+            var groupPosition = $(groupID).position().top,
+                containerPosition = $('#sharing-groups .jspPane').position().top,
+                actualPosition = groupPosition + containerPosition;
+            //console.log('group position = ' + groupPosition);
+            //console.log('container position = ' + containerPosition);
+            //console.log('actual position = ' + actualPosition);
+            if (actualPosition > 140) {
+                //console.log('scroll to ' + (groupPosition-120));
+                sharingScrollpane.scrollToY(groupPosition-120);
+            } 
+            
+        }
+    };
+    
     
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
@@ -1324,15 +1448,35 @@ function scenariosModel(options) {
         });
     };
     
+    self.loadScenariosFromServer = function() {
+        $.ajax({
+            url: '/scenario/get_scenarios',
+            type: 'GET',
+            dataType: 'json',
+            success: function (scenarios) {
+                self.loadScenarios(scenarios);
+                self.scenariosLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+    };
+    
     //populates scenarioList
     self.loadScenarios = function (scenarios) {
+        self.scenarioList.removeAll();
         $.each(scenarios, function (i, scenario) {
             var scenarioViewModel = new scenarioModel({
                 id: scenario.uid,
                 uid: scenario.uid,
                 name: scenario.name,
                 description: scenario.description,
-                attributes: scenario.attributes
+                attributes: scenario.attributes,
+                shared: scenario.shared,
+                sharedByUsername: scenario.shared_by_username,
+                sharedByName: scenario.shared_by_name,
+                sharingGroups: scenario.sharing_groups
             });
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
@@ -1389,8 +1533,20 @@ function scenariosModel(options) {
     };  
     
     //SHARING DESIGNS
-    self.submitShare = function(data) {
-        debugger;
+    self.submitShare = function() {
+        var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
+        $.ajax( {
+            url: '/scenario/share_design',
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            success: function(result) {
+                debugger;
+            },
+            error: function(result) {
+                debugger;
+            }
+        });
     };
     
     return self;
@@ -1405,18 +1561,7 @@ $('#designsTab').on('show', function (e) {
     //}
     if ( !app.viewModel.scenarios.scenariosLoaded || !app.viewModel.scenarios.selectionsLoaded) {
         // load the scenarios
-        $.ajax({
-            url: '/scenario/get_scenarios',
-            type: 'GET',
-            dataType: 'json',
-            success: function (scenarios) {
-                app.viewModel.scenarios.loadScenarios(scenarios);
-                app.viewModel.scenarios.scenariosLoaded = true;
-            },
-            error: function (result) {
-                debugger;
-            }
-        });
+        app.viewModel.scenarios.loadScenariosFromServer();
         
         // load the selections
         $.ajax({

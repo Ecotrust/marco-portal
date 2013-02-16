@@ -581,7 +581,7 @@ a.disabled-link:hover {
   padding-bottom: 0px;
 }
 
-#data-accordion, #designs-accordion{
+#data-accordion, #designs-accordion, #sharing-groups{
     outline: none;
 }
 

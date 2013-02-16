@@ -291,6 +291,14 @@ $(document).ready(function() {
     app.viewModel.startActiveTour();
   });
 
+  $(document).on('click', '#share-option', function() {
+    app.viewModel.scenarios.initSharingModal();
+  });
+  
+    //$(document).on('click', '#share-option', function(a,b,c) {
+    //    debugger;
+    //});
+
   $('a[data-toggle="tab"]').on('shown', function (e) {
     app.updateUrl();
   });
