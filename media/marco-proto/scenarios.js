@@ -409,7 +409,7 @@ function selectionModel(options) {
     
     self.isSelectionModel = true;
         
-    self.editScenario = function() {
+    self.editSelection = function() {
         var selection = this;
         return $.ajax({
             url: '/features/leaseblockselection/' + selection.uid + '/form/', 
@@ -428,7 +428,22 @@ function selectionModel(options) {
         });
     }; 
         
-    self.deleteScenario = function() {
+    self.createCopySelection = function() {
+        var selection = this;
+    
+        //create a copy of this shape to be owned by the user
+        $.ajax({
+            url: '/scenario/copy_design/' + selection.uid + '/',
+            type: 'POST',
+            success: function(data) {
+                app.viewModel.scenarios.loadSelectionsFromServer();
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    }
+    self.deleteSelection = function() {
         var selection = this;
         
         //remove from activeLayers
@@ -437,12 +452,12 @@ function selectionModel(options) {
         if (selection.layer) {
             app.map.removeLayer(selection.layer);
         }
-        //remove from scenarioList
+        //remove from selectionList
         app.viewModel.scenarios.selectionList.remove(selection);
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
-            url: '/scenario/delete_selection/' + selection.uid + '/',
+            url: '/scenario/delete_design/' + selection.uid + '/',
             type: 'POST',
             error: function (result) {
                 debugger;
@@ -450,118 +465,7 @@ function selectionModel(options) {
         })
     };
     
-    
     return ret;
-    /*
-    self.id = options.uid;
-    self.uid = options.uid;
-    self.name = options.name;
-    self.description = options.description;
-    
-    self.overview = self.description || 'no description was provided';
-    
-    self.attributes = options.attributes ? options.attributes : [];
-    self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
-    
-    self.active = ko.observable(false);
-    self.visible = ko.observable(false);
-    self.defaultOpacity = options.opacity || 0.8;
-    self.opacity = ko.observable(self.defaultOpacity);
-    self.type = 'Vector';
-    
-    self.opacity.subscribe( function(newOpacity) {
-        if ( self.layer ) {
-            self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
-            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
-            self.layer.redraw();
-        } 
-    });
-    
-    self.toggleActive = function(self, event) {
-        var selection = this;
-        if (selection.active()) { // if layer is active, then deactivate
-            selection.deactivateLayer();
-        } else { // otherwise layer is not currently active, so activate
-            selection.activateLayer();
-        }
-    };
-    
-    self.activateLayer = function() {
-        var selection = this;
-        app.viewModel.scenarios.addScenarioToMap(selection);
-    };
-    
-    self.deactivateLayer = function() {
-        var selection = this;
-        
-        selection.active(false);
-        selection.visible(false);
-        
-        selection.opacity(selection.defaultOpacity);
-        app.setLayerVisibility(selection, false);
-        app.viewModel.activeLayers.remove(selection);
-        
-        //remove the key/value pair from aggregatedAttributes
-        delete app.viewModel.aggregatedAttributes()[selection.name];
-        //if there are no more attributes left to display, then remove the overlay altogether
-        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
-            app.viewModel.aggregatedAttributes(false);
-        }
-    
-    };
-    
-    
-    self.visible = ko.observable(false);  
-    
-    // bound to click handler for layer visibility switching in Active panel
-    self.toggleVisible = function() {
-        var selection = this;
-        
-        if (selection.visible()) { //make invisible
-            selection.visible(false)
-            app.setLayerVisibility(selection, false)
-        } else { //make visible
-            selection.visible(true);
-            app.setLayerVisibility(selection, true);
-        }
-    };
-
-    // is description active
-    self.infoActive = ko.observable(false);
-    app.viewModel.showOverview.subscribe( function() {
-        if ( app.viewModel.showOverview() === false ) {
-            self.infoActive(false);
-        }
-    });
-    
-    // display descriptive text below the map
-    self.toggleDescription = function(selection) {
-        if ( ! selection.infoActive() ) {
-            self.showDescription(selection);
-        } else {
-            self.hideDescription(selection);
-        }
-    };
-    
-    self.showDescription = function(selection) {
-        app.viewModel.showOverview(false);
-        app.viewModel.activeInfoSublayer(false);
-        app.viewModel.activeInfoLayer(selection);
-        self.infoActive(true);
-        $('#overview-overlay').height(186);
-        app.viewModel.showOverview(true);
-        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
-        app.viewModel.hideMapAttribution();
-    };
-    
-    self.hideDescription = function(selection) {
-        app.viewModel.showOverview(false);
-        app.viewModel.activeInfoSublayer(false);
-        app.viewModel.showMapAttribution();
-    };
-    
-    return self;
-    */
 } // end selectionModel
 
 function selectionFormModel(options) {
@@ -793,11 +697,9 @@ function scenarioModel(options) {
     }
     self.sharedBy = ko.observable();
     if (options.shared) {
-        console.log(self.name + ' is shared');
         self.shared(true);
         self.sharedBy('Shared by ' + self.sharedByWho);
     } else {
-        console.log(self.name + ' is not shared');
         self.shared(false);
         self.sharedBy(false);
     }
@@ -813,6 +715,8 @@ function scenarioModel(options) {
     //self.overview = self.description || 'no description was provided';
     self.constructInfoText = function() {
         var attrs = self.scenarioAttributes;
+        console.log(self.name);
+        console.log(self.description);
         if (self.description && self.description !== '') {
             var output = self.description + '\n\n';
         } else {
@@ -930,7 +834,7 @@ function scenarioModel(options) {
     
         //create a copy of this shape to be owned by the user
         $.ajax({
-            url: '/scenario/copy_scenario/' + scenario.uid + '/',
+            url: '/scenario/copy_design/' + scenario.uid + '/',
             type: 'POST',
             success: function(data) {
                 app.viewModel.scenarios.loadScenariosFromServer();
@@ -939,7 +843,7 @@ function scenarioModel(options) {
                 debugger;
             }
         })
-    }
+    };
                 
     self.deleteScenario = function() {
         var scenario = this;
@@ -955,7 +859,7 @@ function scenarioModel(options) {
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
-            url: '/scenario/delete_scenario/' + scenario.uid + '/',
+            url: '/scenario/delete_design/' + scenario.uid + '/',
             type: 'POST',
             error: function (result) {
                 debugger;
@@ -1483,15 +1387,34 @@ function scenariosModel(options) {
         });
     };
     
+    self.loadSelectionsFromServer = function() {
+        $.ajax({
+            url: '/scenario/get_selections',
+            type: 'GET',
+            dataType: 'json',
+            success: function (selections) {
+                app.viewModel.scenarios.loadSelections(selections);
+                app.viewModel.scenarios.selectionsLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+    };
     //populates selectionList..?
     self.loadSelections = function (selections) {
+        self.selectionList.removeAll();
         $.each(selections, function (i, selection) {
             var selectionViewModel = new selectionModel({
                 id: selection.uid,
                 uid: selection.uid,
                 name: selection.name,
-                //description: scenario.description,
-                attributes: selection.attributes
+                description: selection.description,
+                attributes: selection.attributes,
+                shared: selection.shared,
+                sharedByUsername: selection.shared_by_username,
+                sharedByName: selection.shared_by_name,
+                sharingGroups: selection.sharing_groups
             });
             self.selectionList.push(selectionViewModel);
             app.viewModel.layerIndex[selection.uid] = selectionViewModel;
@@ -1540,9 +1463,6 @@ function scenariosModel(options) {
             data: data,
             type: 'POST',
             dataType: 'json',
-            success: function(result) {
-                debugger;
-            },
             error: function(result) {
                 debugger;
             }
@@ -1564,18 +1484,7 @@ $('#designsTab').on('show', function (e) {
         app.viewModel.scenarios.loadScenariosFromServer();
         
         // load the selections
-        $.ajax({
-            url: '/scenario/get_selections',
-            type: 'GET',
-            dataType: 'json',
-            success: function (selections) {
-                app.viewModel.scenarios.loadSelections(selections);
-                app.viewModel.scenarios.selectionsLoaded = true;
-            },
-            error: function (result) {
-                debugger;
-            }
-        });
+        app.viewModel.scenarios.loadSelectionsFromServer();
 
         // load the leaseblocks
         $.ajax({
