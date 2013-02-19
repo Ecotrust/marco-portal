@@ -822,6 +822,7 @@ img + h3 {
     padding: 1px;
     color: white;
     text-decoration: none;
+    outline: none;
     overflow: hidden;
     width: 25px;
     line-height: 22px;
