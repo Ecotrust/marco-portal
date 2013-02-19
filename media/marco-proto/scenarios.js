@@ -4,7 +4,6 @@ var madrona = {
     setupForm: function($form) {
         $form.find('.btn-submit').hide();
 
-
         $form.find('label').each(function (i, label) {
             if ($(label).find('input[type="checkbox"]').length) {
                 $(label).addClass('checkbox');
@@ -182,37 +181,28 @@ function scenarioFormModel(options) {
         var list = app.viewModel.scenarios.leaseblockList,
             count = 0;
             
-        //console.log('min input is: ' + self.filters['min_depth']);
-        //console.log('max input is: ' + self.filters['max_depth']);
-        //console.log('list length is: ' + list.length);
         for ( var i=0; i<list.length; i++ ) {
             var addOne = true;
             if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
                 addOne = false;
-                //console.log('false for wind');
             }
             if (self.filters['max_distance'] && list[i].avg_distance > self.filters['max_distance'] || 
                 self.filters['min_distance'] && list[i].avg_distance < self.filters['min_distance'] ) {
                 addOne = false;
-                //console.log('false for distance to shore');
             } 
             if (self.filters['max_depth'] && list[i].avg_depth > self.filters['max_depth'] || 
                 self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
-                //console.log('false for depth');
             } 
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
-                //console.log('false for awc');
             } 
             if (self.filters['tsz'] && list[i].tsz_min_distance < self.filters['tsz'] ) {
                 addOne = false;
-                //console.log('false for tsz');
             }
             if (self.filters['ais'] && list[i].ais_mean_density > 1 ) {
                 addOne = false;
-                //console.log('false for ais');
             } 
             if (addOne) {
                 count += 1;
@@ -715,8 +705,6 @@ function scenarioModel(options) {
     //self.overview = self.description || 'no description was provided';
     self.constructInfoText = function() {
         var attrs = self.scenarioAttributes;
-        console.log(self.name);
-        console.log(self.description);
         if (self.description && self.description !== '') {
             var output = self.description + '\n\n';
         } else {
@@ -876,11 +864,9 @@ function scenarioModel(options) {
         if (scenario.visible()) { //make invisible
             scenario.visible(false)
             app.setLayerVisibility(scenario, false)
-            //console.log('making invisible');
         } else { //make visible
             scenario.visible(true);
             app.setLayerVisibility(scenario, true);
-            //console.log('making visible');
         }
     };
 
@@ -993,9 +979,19 @@ function scenariosModel(options) {
     };
     
     self.groupMembers = function(groupName) {
-        return 'Members of the ' + groupName + ' group include...';
+        var memberList = "";
+        for (var i=0; i<self.sharingGroups().length; i++) {
+            var group = self.sharingGroups()[i];
+            if (group.group_name === groupName) {
+                for (var m=0; m<group.members.length; m++) {
+                    var member = group.members[m];
+                    memberList += member.name + '<br>';
+                }
+            }
+        }
+        return memberList;
     };
-    
+        
     self.toggleGroup = function(obj) {
         var groupName = obj.group_name,
             indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
@@ -1008,7 +1004,6 @@ function scenariosModel(options) {
     };
     
     self.initSharingModal = function() {
-        console.log('initializing sharing modal');
         for (var i=0; i<self.sharingGroups().length; i++) {
             var groupID = '#' + self.sharingGroups()[i].group_slug;
             $(groupID).collapse( { toggle: false } );
@@ -1031,7 +1026,6 @@ function scenariosModel(options) {
                     $(groupID).fadeIn('slow', function() {});
                 }
                 $(groupID).collapse('show'); 
-                //console.log('showing ' + groupID);
             } else { //toggle off and remove group from list
                 if ( $.browser.msie ) {
                     $(groupID).fadeOut(0, function() {});
@@ -1039,7 +1033,6 @@ function scenariosModel(options) {
                     $(groupID).fadeOut('slow', function() {});
                 }
                 $(groupID).collapse('hide');
-                //console.log('hiding ' + groupID);
                 //set .modal-body background to eliminate residue that appears when the last Group is opened and then closed?
             }
             setTimeout(function() { self.updateSharingScrollBar(groupID); }, 300);
