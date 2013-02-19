@@ -985,7 +985,7 @@ function scenariosModel(options) {
             if (group.group_name === groupName) {
                 for (var m=0; m<group.members.length; m++) {
                     var member = group.members[m];
-                    memberList += member.name + '<br>';
+                    memberList += member + '<br>';
                 }
             }
         }

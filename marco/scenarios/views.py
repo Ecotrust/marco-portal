@@ -180,19 +180,23 @@ def get_attributes(request, uid):
 '''    
 def get_sharing_groups(request):
     from madrona.features import user_sharing_groups
+    from functools import cmp_to_key
+    import locale
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     json = []
     sharing_groups = user_sharing_groups(request.user)
     for group in sharing_groups:
         members = []
         for user in group.user_set.all():
             if user.first_name.replace(' ', '') != '' and user.last_name.replace(' ', '') != '':
-                members.append({'name': user.first_name + ' ' + user.last_name})
+                members.append(user.first_name + ' ' + user.last_name)
             else:
-                members.append({'name': user.username})
+                members.append(user.username)
+        sorted_members = sorted(members, key=cmp_to_key(locale.strcoll))
         json.append({
             'group_name': group.name,
             'group_slug': slugify(group.name)+'-sharing',
-            'members': members
+            'members': sorted_members
         })
     return HttpResponse(dumps(json))
     
