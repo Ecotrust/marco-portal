@@ -618,70 +618,66 @@
                 </h3>
                 <div class="popover-content">
                     <p>
-                        <div>
-                            <div>
-                                <div>
-                                    <div id="bookmarks-table">
-                                        <table class="table table-condensed">
-                                            <tbody data-bind="foreach: bookmarksList">
-                                                <tr>
-                                                    <td>
-                                                        <span data-bind="click: $parent.loadBookmark">
-                                                        <a data-bind="text: name, attr: {href: $parent.getUrl($data)}">name</a>
-                                                        </span>
-                                                    </td>
-                                                    <td class="tweet-cell">
-                                                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-a" 
-                                                           data-bind="attr: {'data-url': $parent.getUrl($data)}" data-lang="en" data-size="medium" data-count="none">
-                                                            <span rel="tooltip" title="Tweet"><i class="icon-twitter icon-large"></i></span>
-                                                        </a>
-                                                        
-                                                        <script>
-                                                            ! function(d, s, id) {
-                                                                var js, fjs = d.getElementsByTagName(s)[0];
-                                                                if (!d.getElementById(id)) {
-                                                                    js = d.createElement(s);
-                                                                    js.id = id;
-                                                                    js.src = "//platform.twitter.com/widgets.js";
-                                                                    fjs.parentNode.insertBefore(js, fjs);
-                                                                }
-                                                            }(document, "script", "twitter-wjs");
-                                                        </script>
-                                                    </td>
-                                                    
-                                                 <!--   <td>
-                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.prepareEmail" data-toggle="modal" data-target="#bookmark-modal">
-                                                            <i class="icon-envelope icon-large"></i>
-                                                        </a>
-                                                        
-                                                    </td>-->
-                                                    
-                                                    <td>
-                                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
-                                                            <span rel="tooltip" title="Delete"><i class="icon-trash icon-large"></i></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <p data-bind="visible: bookmarksList().length === 0">
-                                            Bookmarks save the map and active layers. You currently have no bookmarks.
-                                        </p>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <h5>
-                                    Create new bookmark
-                                </h5>
-                                <form data-bind="submit: saveBookmark">
-                                    <input type="text" data-bind="value: bookmarkName" class="input">
-                                    <div class="pull-right">
-                                        <button class="btn btn-mini" type="submit">save</button>
-                                        <button data-bind="click: cancel" class="btn btn-mini">cancel</button>
-                                    </div>
-                                </form>
-                            </div>
+                        <div id="bookmarks-table">
+                            <table class="table table-condensed">
+                                <tbody data-bind="foreach: bookmarksList">
+                                    <tr>
+                                        <td>
+                                            <span data-bind="click: $parent.loadBookmark">
+                                            <a data-bind="text: name, attr: {href: $parent.getUrl($data)}">name</a>
+                                            </span>
+                                        </td>
+                                        <!--
+                                        <td class="tweet-cell">
+                                            <a href="https://twitter.com/share" target="_blank" class="twitter-share-a" 
+                                               data-bind="attr: {'data-url': $parent.getUrl($data)}" data-lang="en" data-size="medium" data-count="none">
+                                                <span rel="tooltip" title="Tweet"><i class="icon-twitter icon-large"></i></span>
+                                            </a>
+                                            
+                                            <script>
+                                                ! function(d, s, id) {
+                                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                                    if (!d.getElementById(id)) {
+                                                        js = d.createElement(s);
+                                                        js.id = id;
+                                                        js.src = "//platform.twitter.com/widgets.js";
+                                                        fjs.parentNode.insertBefore(js, fjs);
+                                                    }
+                                                }(document, "script", "twitter-wjs");
+                                            </script>
+                                        </td>
+                                        -->
+                                        <!--
+                                        <td>
+                                            <a class="btn btn-mini tweet-trash" data-bind="click: $parent.prepareEmail" data-toggle="modal" data-target="#bookmark-modal">
+                                                <i class="icon-envelope icon-large"></i>
+                                            </a>
+                                            
+                                        </td>
+                                        -->
+                                        <td>
+                                            <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
+                                                <span rel="tooltip" title="Delete"><i class="icon-trash icon-large"></i></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p data-bind="visible: bookmarksList().length === 0">
+                                Bookmarks save the map and active layers. You currently have no bookmarks.
+                            </p>
                         </div>
+                        <hr/>
+                        <h5>
+                            Create new bookmark
+                        </h5>
+                        <form data-bind="submit: saveBookmark">
+                            <input type="text" data-bind="value: bookmarkName" class="input">
+                            <div class="pull-right">
+                                <button class="btn btn-mini" type="submit">save</button>
+                                <button data-bind="click: cancel" class="btn btn-mini">cancel</button>
+                            </div>
+                        </form>
                     </p>
                 </div>
             </div>
