@@ -4,7 +4,6 @@ var madrona = {
     setupForm: function($form) {
         $form.find('.btn-submit').hide();
 
-
         $form.find('label').each(function (i, label) {
             if ($(label).find('input[type="checkbox"]').length) {
                 $(label).addClass('checkbox');
@@ -116,6 +115,15 @@ function scenarioFormModel(options) {
     
     self.lastChange = (new Date()).getTime();
     
+    //Parameters
+    self.windSpeedParameter = ko.observable(false);
+    self.distanceToShoreParameter = ko.observable(false);
+    self.depthRangeParameter = ko.observable(false);
+    self.distanceToAWCParameter = ko.observable(false);
+    self.distanceToShippingParameter = ko.observable(false);
+    self.shipTrafficDensityParameter = ko.observable(false);
+    
+    
     self.filters = {};
     
     self.updateFilters = function(object) {
@@ -130,36 +138,36 @@ function scenarioFormModel(options) {
     };
     
     self.updateFiltersAndLeaseBlocks = function() {
-        if ($('#depth_widget').css('display') !== "none") {
+        if ( self.depthRangeParameter() ) {
             self.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
             self.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
         } else {
             self.removeFilter('min_depth');
             self.removeFilter('max_depth');
         }
-        if ($('#wind_speed_widget').css('display') !== "none") {
+        if ( self.windSpeedParameter() ) {
             self.updateFilters({'key': 'wind', 'value': $('#id_input_avg_wind_speed')[0].value});
         } else {
             self.removeFilter('wind');
         }
-        if ($('#distance_to_shore_widget').css('display') !== "none") {
+        if ( self.distanceToShoreParameter() ) {
             self.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
             self.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
         } else {
             self.removeFilter('min_distance');
             self.removeFilter('max_distance');
         }
-        if ($('#distance_to_awc_widget').css('display') !== "none") {
+        if ( self.distanceToAWCParameter() ) {
             self.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
         } else {
             self.removeFilter('awc');
         }
-        if ($('#distance_to_shipping_widget').css('display') !== "none") {
+        if ( self.distanceToShippingParameter() ) {
             self.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
         } else {
             self.removeFilter('tsz');
         }
-        if ( $('#id_input_filter_ais_density').attr('checked') ) {
+        if ( self.shipTrafficDensityParameter() ) {
             self.updateFilters({'key': 'ais', 'value': 1});
         } else {
             self.removeFilter('ais');
@@ -173,37 +181,28 @@ function scenarioFormModel(options) {
         var list = app.viewModel.scenarios.leaseblockList,
             count = 0;
             
-        //console.log('min input is: ' + self.filters['min_depth']);
-        //console.log('max input is: ' + self.filters['max_depth']);
-        //console.log('list length is: ' + list.length);
         for ( var i=0; i<list.length; i++ ) {
             var addOne = true;
             if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
                 addOne = false;
-                //console.log('false for wind');
             }
             if (self.filters['max_distance'] && list[i].avg_distance > self.filters['max_distance'] || 
                 self.filters['min_distance'] && list[i].avg_distance < self.filters['min_distance'] ) {
                 addOne = false;
-                //console.log('false for distance to shore');
             } 
             if (self.filters['max_depth'] && list[i].avg_depth > self.filters['max_depth'] || 
                 self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
-                //console.log('false for depth');
             } 
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
-                //console.log('false for awc');
             } 
             if (self.filters['tsz'] && list[i].tsz_min_distance < self.filters['tsz'] ) {
                 addOne = false;
-                //console.log('false for tsz');
             }
             if (self.filters['ais'] && list[i].ais_mean_density > 1 ) {
                 addOne = false;
-                //console.log('false for ais');
             } 
             if (addOne) {
                 count += 1;
@@ -235,7 +234,7 @@ function scenarioFormModel(options) {
                 type: OpenLayers.Filter.Logical.AND,
                 filters: []
             });
-            if ( $('#wind_speed_widget').css('display') !== "none" ) {
+            if ( self.windSpeedParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if WINDREV_MI >= self.filters['wind']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -244,7 +243,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#distance_to_shore_widget').css('display') !== "none" ) {
+            if ( self.distanceToShoreParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if MI_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -258,7 +257,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#depth_widget').css('display') !== "none" ) {
+            if ( self.depthRangeParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if DEPTHM_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
@@ -272,7 +271,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#distance_to_awc_widget').css('display') !== "none" ) {
+            if ( self.distanceToAWCParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if AWCMI_MIN <= self.filters['awc']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
@@ -281,7 +280,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#distance_to_shipping_widget').css('display') !== "none" ) {
+            if ( self.distanceToShippingParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if TRSEP_MIN >= self.filters['tsz']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
@@ -290,7 +289,7 @@ function scenarioFormModel(options) {
                     })
                 );
             }
-            if ( $('#id_input_filter_ais_density').attr('checked') ) {
+            if ( self.shipTrafficDensityParameter() ) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if AIS7_MEAN <= 1
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
@@ -336,36 +335,54 @@ function scenarioFormModel(options) {
     
     self.windSpeedLayer = app.viewModel.getLayerById(7);
     self.toggleWindSpeedLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#wind-speed-layer-toggle input').is(":checked")) {
-                self.windSpeedLayer.activateLayer();
-            } else {
-                self.windSpeedLayer.deactivateLayer();
-            }
+        if ( self.windSpeedLayer.active() ) {
+            self.windSpeedLayer.deactivateLayer();
+        } else {
+            self.windSpeedLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleWindSpeedDescription = function(formModel) {
+        if ( self.windSpeedLayer.infoActive() ) {
+            self.windSpeedLayer.hideDescription(self.windSpeedLayer);
+        } else {
+            self.windSpeedLayer.showDescription(self.windSpeedLayer);
         }
         return true;
     };
     
     self.awcLayer = app.viewModel.getLayerById(65);
     self.toggleAWCLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#awc-layer-toggle input').is(":checked")) {
-                self.awcLayer.activateLayer();
-            } else {
-                self.awcLayer.deactivateLayer();
-            }
+        if ( self.awcLayer.active() ) {
+            self.awcLayer.deactivateLayer();
+        } else {
+            self.awcLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleAWCDescription = function(formModel) {
+        if ( self.awcLayer.infoActive() ) {
+            self.awcLayer.hideDescription(self.awcLayer);
+        } else {
+            self.awcLayer.showDescription(self.awcLayer);
         }
         return true;
     };
     
     self.shippingLanesLayer = app.viewModel.getLayerById(64);
     self.toggleShippingLanesLayer = function(formModel, event) {
-        if ( event.target.type === "checkbox" ) {
-            if ($('#shipping-lanes-layer-toggle input').is(":checked")) {
-                self.shippingLanesLayer.activateLayer();
-            } else {
-                self.shippingLanesLayer.deactivateLayer();
-            }
+        if ( self.shippingLanesLayer.active() ) {
+            self.shippingLanesLayer.deactivateLayer();
+        } else {
+            self.shippingLanesLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleShippingLanesDescription = function(formModel) {
+        if ( self.shippingLanesLayer.infoActive() ) {
+            self.shippingLanesLayer.hideDescription(self.shippingLanesLayer);
+        } else {
+            self.shippingLanesLayer.showDescription(self.shippingLanesLayer);
         }
         return true;
     };
@@ -382,7 +399,7 @@ function selectionModel(options) {
     
     self.isSelectionModel = true;
         
-    self.editScenario = function() {
+    self.editSelection = function() {
         var selection = this;
         return $.ajax({
             url: '/features/leaseblockselection/' + selection.uid + '/form/', 
@@ -401,7 +418,22 @@ function selectionModel(options) {
         });
     }; 
         
-    self.deleteScenario = function() {
+    self.createCopySelection = function() {
+        var selection = this;
+    
+        //create a copy of this shape to be owned by the user
+        $.ajax({
+            url: '/scenario/copy_design/' + selection.uid + '/',
+            type: 'POST',
+            success: function(data) {
+                app.viewModel.scenarios.loadSelectionsFromServer();
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    }
+    self.deleteSelection = function() {
         var selection = this;
         
         //remove from activeLayers
@@ -410,12 +442,12 @@ function selectionModel(options) {
         if (selection.layer) {
             app.map.removeLayer(selection.layer);
         }
-        //remove from scenarioList
+        //remove from selectionList
         app.viewModel.scenarios.selectionList.remove(selection);
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
-            url: '/scenario/delete_selection/' + selection.uid + '/',
+            url: '/scenario/delete_design/' + selection.uid + '/',
             type: 'POST',
             error: function (result) {
                 debugger;
@@ -423,118 +455,7 @@ function selectionModel(options) {
         })
     };
     
-    
     return ret;
-    /*
-    self.id = options.uid;
-    self.uid = options.uid;
-    self.name = options.name;
-    self.description = options.description;
-    
-    self.overview = self.description || 'no description was provided';
-    
-    self.attributes = options.attributes ? options.attributes : [];
-    self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
-    
-    self.active = ko.observable(false);
-    self.visible = ko.observable(false);
-    self.defaultOpacity = options.opacity || 0.8;
-    self.opacity = ko.observable(self.defaultOpacity);
-    self.type = 'Vector';
-    
-    self.opacity.subscribe( function(newOpacity) {
-        if ( self.layer ) {
-            self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
-            self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
-            self.layer.redraw();
-        } 
-    });
-    
-    self.toggleActive = function(self, event) {
-        var selection = this;
-        if (selection.active()) { // if layer is active, then deactivate
-            selection.deactivateLayer();
-        } else { // otherwise layer is not currently active, so activate
-            selection.activateLayer();
-        }
-    };
-    
-    self.activateLayer = function() {
-        var selection = this;
-        app.viewModel.scenarios.addScenarioToMap(selection);
-    };
-    
-    self.deactivateLayer = function() {
-        var selection = this;
-        
-        selection.active(false);
-        selection.visible(false);
-        
-        selection.opacity(selection.defaultOpacity);
-        app.setLayerVisibility(selection, false);
-        app.viewModel.activeLayers.remove(selection);
-        
-        //remove the key/value pair from aggregatedAttributes
-        delete app.viewModel.aggregatedAttributes()[selection.name];
-        //if there are no more attributes left to display, then remove the overlay altogether
-        if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
-            app.viewModel.aggregatedAttributes(false);
-        }
-    
-    };
-    
-    
-    self.visible = ko.observable(false);  
-    
-    // bound to click handler for layer visibility switching in Active panel
-    self.toggleVisible = function() {
-        var selection = this;
-        
-        if (selection.visible()) { //make invisible
-            selection.visible(false)
-            app.setLayerVisibility(selection, false)
-        } else { //make visible
-            selection.visible(true);
-            app.setLayerVisibility(selection, true);
-        }
-    };
-
-    // is description active
-    self.infoActive = ko.observable(false);
-    app.viewModel.showOverview.subscribe( function() {
-        if ( app.viewModel.showOverview() === false ) {
-            self.infoActive(false);
-        }
-    });
-    
-    // display descriptive text below the map
-    self.toggleDescription = function(selection) {
-        if ( ! selection.infoActive() ) {
-            self.showDescription(selection);
-        } else {
-            self.hideDescription(selection);
-        }
-    };
-    
-    self.showDescription = function(selection) {
-        app.viewModel.showOverview(false);
-        app.viewModel.activeInfoSublayer(false);
-        app.viewModel.activeInfoLayer(selection);
-        self.infoActive(true);
-        $('#overview-overlay').height(186);
-        app.viewModel.showOverview(true);
-        app.viewModel.updateCustomScrollbar('#overview-overlay-text');
-        app.viewModel.hideMapAttribution();
-    };
-    
-    self.hideDescription = function(selection) {
-        app.viewModel.showOverview(false);
-        app.viewModel.activeInfoSublayer(false);
-        app.viewModel.showMapAttribution();
-    };
-    
-    return self;
-    */
 } // end selectionModel
 
 function selectionFormModel(options) {
@@ -756,6 +677,27 @@ function scenarioModel(options) {
     self.uid = options.uid || null;
     self.name = options.name;
     self.description = options.description;
+    self.shared = ko.observable();
+    self.sharedByName = options.sharedByName || null;
+    self.sharedByUsername = options.sharedByUsername;
+    if (self.sharedByName && $.trim(self.sharedByName) !== '') {
+        self.sharedByWho = self.sharedByName + ' (' + self.sharedByUsername + ')';
+    } else {
+        self.sharedByWho = self.sharedByUsername;
+    }
+    self.sharedBy = ko.observable();
+    if (options.shared) {
+        self.shared(true);
+        self.sharedBy('Shared by ' + self.sharedByWho);
+    } else {
+        self.shared(false);
+        self.sharedBy(false);
+    }
+    self.selectedGroups = ko.observableArray();
+    self.sharedGroupsList = [];
+    if (options.sharingGroups && options.sharingGroups.length) {
+        self.selectedGroups(options.sharingGroups);
+    } 
     
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
@@ -849,13 +791,48 @@ function scenarioModel(options) {
                 app.viewModel.scenarios.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(app.viewModel.scenarios.scenarioFormModel, document.getElementById('scenario-form'));
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
+                if ($('#id_input_parameter_wind_speed').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(true);
+                } 
+                if ($('#id_input_parameter_depth').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(true);
+                } 
+                if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(true);
+                } 
+                if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(true);
+                } 
+                if ($('#id_input_filter_distance_to_shipping').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(true);
+                } 
+                if ($('#id_input_filter_ais_density').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(true);
+                } 
+                app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 
                 debugger; 
             }
         });
     }; 
-        
+    
+    self.createCopyScenario = function() {
+        var scenario = this;
+    
+        //create a copy of this shape to be owned by the user
+        $.ajax({
+            url: '/scenario/copy_design/' + scenario.uid + '/',
+            type: 'POST',
+            success: function(data) {
+                app.viewModel.scenarios.loadScenariosFromServer();
+            },
+            error: function (result) {
+                debugger;
+            }
+        })
+    };
+                
     self.deleteScenario = function() {
         var scenario = this;
         
@@ -870,7 +847,7 @@ function scenarioModel(options) {
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
-            url: '/scenario/delete_scenario/' + scenario.uid + '/',
+            url: '/scenario/delete_design/' + scenario.uid + '/',
             type: 'POST',
             error: function (result) {
                 debugger;
@@ -887,11 +864,9 @@ function scenarioModel(options) {
         if (scenario.visible()) { //make invisible
             scenario.visible(false)
             app.setLayerVisibility(scenario, false)
-            //console.log('making invisible');
         } else { //make visible
             scenario.visible(true);
             app.setLayerVisibility(scenario, true);
-            //console.log('making visible');
         }
     };
 
@@ -994,6 +969,104 @@ function scenariosModel(options) {
     // false for normal operation
     self.loadingMessage = ko.observable(false);
     self.errorMessage = ko.observable(false);
+    
+    self.sharingGroups = ko.observableArray();
+    
+    self.sharingLayer = ko.observable();
+    self.showSharingModal = function(scenario) {
+        self.sharingLayer(scenario);
+        $('#share-modal').modal('show');
+    };
+    
+    self.groupMembers = function(groupName) {
+        var memberList = "";
+        for (var i=0; i<self.sharingGroups().length; i++) {
+            var group = self.sharingGroups()[i];
+            if (group.group_name === groupName) {
+                for (var m=0; m<group.members.length; m++) {
+                    var member = group.members[m];
+                    memberList += member + '<br>';
+                }
+            }
+        }
+        return memberList;
+    };
+        
+    self.toggleGroup = function(obj) {
+        var groupName = obj.group_name,
+            indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
+    
+        if ( indexOf === -1 ) {  //add group to list
+            self.sharingLayer().selectedGroups.push(groupName);
+        } else { //remove group from list
+            self.sharingLayer().selectedGroups.splice(indexOf, 1);
+        }
+    };
+    
+    self.initSharingModal = function() {
+        for (var i=0; i<self.sharingGroups().length; i++) {
+            var groupID = '#' + self.sharingGroups()[i].group_slug;
+            $(groupID).collapse( { toggle: false } );
+        }
+    }
+    
+    //TODO:  Fix the problem in which the first group toggled open will not toggle open again, once it's closed
+    self.lastMembersClickTime = 0;
+    self.toggleGroupMembers = function(obj, e) {
+        var groupName = obj.group_name,
+            groupID = '#' + obj.group_slug,
+            clickTime = new Date().getTime();
+        if (clickTime - self.lastMembersClickTime > 800) {
+            self.lastMembersClickTime = clickTime;
+            if ( ! $(groupID).hasClass('in') ) {  //toggle on and add group to list
+                $(groupID).css("display", "none"); //allows the fade effect to display as expected
+                if ( $.browser.msie ) {
+                    $(groupID).fadeIn(0, function() {});
+                } else {
+                    $(groupID).fadeIn('slow', function() {});
+                }
+                $(groupID).collapse('show'); 
+            } else { //toggle off and remove group from list
+                if ( $.browser.msie ) {
+                    $(groupID).fadeOut(0, function() {});
+                } else {
+                    $(groupID).fadeOut('slow', function() {});
+                }
+                $(groupID).collapse('hide');
+                //set .modal-body background to eliminate residue that appears when the last Group is opened and then closed?
+            }
+            setTimeout(function() { self.updateSharingScrollBar(groupID); }, 300);
+        }
+    };
+    
+    self.groupIsSelected = function(groupName) {
+        if (self.sharingLayer()) {
+            var indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
+            return indexOf !== -1;
+        }
+        return false;
+    };
+    
+    self.updateSharingScrollBar = function(groupID) {
+        var sharingScrollpane = $('#sharing-groups').data('jsp');
+        if (sharingScrollpane === undefined) {
+            $('#sharing-groups').jScrollPane( {animateScroll: true});
+        } else {
+            sharingScrollpane.reinitialise();
+            var groupPosition = $(groupID).position().top,
+                containerPosition = $('#sharing-groups .jspPane').position().top,
+                actualPosition = groupPosition + containerPosition;
+            //console.log('group position = ' + groupPosition);
+            //console.log('container position = ' + containerPosition);
+            //console.log('actual position = ' + actualPosition);
+            if (actualPosition > 140) {
+                //console.log('scroll to ' + (groupPosition-120));
+                sharingScrollpane.scrollToY(groupPosition-120);
+            } 
+            
+        }
+    };
+    
     
     // scenariosLoaded will be set to true after they have been loaded
     self.scenariosLoaded = false;
@@ -1270,37 +1343,76 @@ function scenariosModel(options) {
                 app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
             }
         });
-    }
+    };
+    
+    self.loadScenariosFromServer = function() {
+        $.ajax({
+            url: '/scenario/get_scenarios',
+            type: 'GET',
+            dataType: 'json',
+            success: function (scenarios) {
+                self.loadScenarios(scenarios);
+                self.scenariosLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+    };
     
     //populates scenarioList
     self.loadScenarios = function (scenarios) {
+        self.scenarioList.removeAll();
         $.each(scenarios, function (i, scenario) {
             var scenarioViewModel = new scenarioModel({
                 id: scenario.uid,
                 uid: scenario.uid,
                 name: scenario.name,
                 description: scenario.description,
-                attributes: scenario.attributes
+                attributes: scenario.attributes,
+                shared: scenario.shared,
+                sharedByUsername: scenario.shared_by_username,
+                sharedByName: scenario.shared_by_name,
+                sharingGroups: scenario.sharing_groups
             });
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
-    }
+    };
     
+    self.loadSelectionsFromServer = function() {
+        $.ajax({
+            url: '/scenario/get_selections',
+            type: 'GET',
+            dataType: 'json',
+            success: function (selections) {
+                app.viewModel.scenarios.loadSelections(selections);
+                app.viewModel.scenarios.selectionsLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+    };
     //populates selectionList..?
     self.loadSelections = function (selections) {
+        self.selectionList.removeAll();
         $.each(selections, function (i, selection) {
             var selectionViewModel = new selectionModel({
                 id: selection.uid,
                 uid: selection.uid,
                 name: selection.name,
-                //description: scenario.description,
-                attributes: selection.attributes
+                description: selection.description,
+                attributes: selection.attributes,
+                shared: selection.shared,
+                sharedByUsername: selection.shared_by_username,
+                sharedByName: selection.shared_by_name,
+                sharingGroups: selection.sharing_groups
             });
             self.selectionList.push(selectionViewModel);
             app.viewModel.layerIndex[selection.uid] = selectionViewModel;
         });
-    }
+    };
     
     self.loadLeaseblockLayer = function() {
         self.leaseblockLayer( new OpenLayers.Layer.Vector(
@@ -1327,14 +1439,28 @@ function scenariosModel(options) {
                 self.scenarioFormModel.showLeaseblockSpinner(false);
             }
         });
-    }      
+    };      
     
     self.leaseblockList = [];    
     
     //populates leaseblockList
     self.loadLeaseblocks = function (ocsblocks) {
         self.leaseblockList = ocsblocks;
-    }   
+    };  
+    
+    //SHARING DESIGNS
+    self.submitShare = function() {
+        var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
+        $.ajax( {
+            url: '/scenario/share_design',
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            error: function(result) {
+                debugger;
+            }
+        });
+    };
     
     return self;
 } // end scenariosModel
@@ -1348,32 +1474,10 @@ $('#designsTab').on('show', function (e) {
     //}
     if ( !app.viewModel.scenarios.scenariosLoaded || !app.viewModel.scenarios.selectionsLoaded) {
         // load the scenarios
-        $.ajax({
-            url: '/scenario/get_scenarios',
-            type: 'GET',
-            dataType: 'json',
-            success: function (scenarios) {
-                app.viewModel.scenarios.loadScenarios(scenarios);
-                app.viewModel.scenarios.scenariosLoaded = true;
-            },
-            error: function (result) {
-                debugger;
-            }
-        });
+        app.viewModel.scenarios.loadScenariosFromServer();
         
         // load the selections
-        $.ajax({
-            url: '/scenario/get_selections',
-            type: 'GET',
-            dataType: 'json',
-            success: function (selections) {
-                app.viewModel.scenarios.loadSelections(selections);
-                app.viewModel.scenarios.selectionsLoaded = true;
-            },
-            error: function (result) {
-                debugger;
-            }
-        })
+        app.viewModel.scenarios.loadSelectionsFromServer();
 
         // load the leaseblocks
         $.ajax({
@@ -1386,6 +1490,18 @@ $('#designsTab').on('show', function (e) {
             error: function (result) {
                 debugger;
             }
-        })
+        });
+        
+        $.ajax({
+            url: '/scenario/get_sharing_groups',
+            type: 'GET',
+            dataType: 'json',
+            success: function (groups) {
+                app.viewModel.scenarios.sharingGroups(groups);
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
     }
 });

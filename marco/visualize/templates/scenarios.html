@@ -38,84 +38,115 @@
             <div id="design-list" class="row-fluid">
                 <div id="designs-accordion" class="designs">
                     <div class="accordion" style="padding-bottom: 90px">
-                        <div class="accordion-group">
-                            <div class="accordion-heading" data-bind="click: toggleScenariosOpen, css: { 'active': isScenariosOpen() }">
-                                <a class="accordion-toggle">
-                                    <span>Wind Energy Sitings</span>
-                                </a>
+                    
+                        <div data-bind="visible: !scenarioList().length && !selectionList().length">
+                            <div style="padding: 10px;">
+                                <p>
+                                    You currently have no Wind Energy Sitings or Lease Block Collections. 
+                                </p>
+                                <p>
+                                    Any Sitings or Collections that you create will be listed here in the Designs panel.
+                                </p>
+                                <p>
+                                    You may, at any time, edit, share, or remove any of the designs that you have created.  
+                                    Any designs shared with you can be copied so that they too can be edited, shared, or removed.
+                                </p>
                             </div>
-                            <div class="accordion-body collapse" data-bind="css: { 'in': isScenariosOpen() }">
-                                <div class="accordion-inner">
-                                    <ul class="unstyled list" data-bind="foreach: scenarioList ">
-                                        <li class="layer">
-                                            <div class="btn-group btn-group-layer">
-                                                <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
-                                                    <i class="icon-info-sign icon-large"></i>
-                                                </a>
-                                                <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
-                                                    <div style="font-weight: normal">
-                                                        <span data-bind="text: name"></span>
-                                                        <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
-                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
-                                                    </div>
-                                                </a>
-                                                <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    <span class="caret"></span>
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a data-bind="click: editScenario">Edit</a></li>
-                                                    <li><a href="#">Share</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a data-bind="click: deleteScenario">Delete</a></li>
-                                                </ul>
-
-                                            </div>
-                                        </li>  
-                                    </ul>
+                        </div>
+                    
+                        <!-- WIND ENERGY SITINGS -->
+                        <div data-bind="visible: scenarioList().length">
+                            <div class="accordion-group">
+                                <div class="accordion-heading" data-bind="click: toggleScenariosOpen, css: { 'active': isScenariosOpen() }">
+                                    <a class="accordion-toggle">
+                                        <span>Wind Energy Sitings</span>
+                                    </a>
+                                </div>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isScenariosOpen() }">
+                                    <div class="accordion-inner">
+                                        <ul class="unstyled list" data-bind="foreach: scenarioList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div style="font-weight: normal">
+                                                            <span data-bind="text: name"></span>
+                                                            <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                                <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            </span>
+                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle"data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editScenario">Edit</a></li>
+                                                        <!--<li><a id="share-option" href="#share-modal" data-toggle="modal">Share</a></li>-->
+                                                        <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
+                                                        <li class="divider" data-bind="visible: ! shared()"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteScenario">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopyScenario">Create Copy</a></li>
+                                                    </ul>
+                                                    <!-- style="height: 20px; padding: 4px 12px; border-left-width: 0px" -->
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-group">
-                            <div class="collections-header">
-                                <div class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
-                                    <div>
-                                        <a class="accordion-toggle"><span>Lease Block Collections</span></a>
+                        
+                        <!-- LEASE BLOCK COLLECTIONS -->
+                        <div data-bind="visible: selectionList().length">
+                            <div class="accordion-group">
+                                <div class="collections-header">
+                                    <div id="lease-block-collections-header" class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
+                                        <div>
+                                            <a class="accordion-toggle"><span>Lease Block Collections</span></a>
+                                        </div>
+                                    </div>
+                                    <div id="bar-chart-button" class="btn btn-large reports-btn pull-right" data-bind="click: showComparisonReports">
+                                        <span rel="tooltip" title="View Comparison Reports">
+                                            <i class="icon-bar-chart icon-large pull-right"></i>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="btn btn-large reports-btn pull-right" style="display: none" data-bind="click: showComparisonReports">
-                                    <span rel="tooltip" title="View Comparison Reports">
-                                        <i class="icon-bar-chart icon-large pull-right"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
-                                <div class="accordion-inner">
-                                    <ul class="unstyled list" data-bind="foreach: selectionList ">
-                                        <li class="layer">
-                                            <div class="btn-group btn-group-layer">
-                                                <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
-                                                    <i class="icon-info-sign icon-large"></i>
-                                                </a>
-                                                <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
-                                                    <div style="font-weight: normal">
-                                                        <span data-bind="text: name"></span>
-                                                        <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
-                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
-                                                    </div>
-                                                </a>
-                                                <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    <span class="caret"></span>
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a data-bind="click: editScenario">Edit</a></li>
-                                                    <li><a href="#">Share</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a data-bind="click: deleteScenario">Delete</a></li>
-                                                </ul>
-
-                                            </div>
-                                        </li>  
-                                    </ul>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
+                                    <div class="accordion-inner">
+                                        <ul class="unstyled list" data-bind="foreach: selectionList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div style="font-weight: normal">
+                                                            <span data-bind="text: name"></span>
+                                                            <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                                <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            </span>
+                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editSelection">Edit</a></li>
+                                                        <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
+                                                        <li class="divider" data-bind="visible: ! shared()"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteSelection">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopySelection">Create Copy</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

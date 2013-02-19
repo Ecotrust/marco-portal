@@ -58,6 +58,29 @@
   font-size: 14px;
   color: white;  
 }
+
+#aggregated-attribute-overlay .accordion-group {
+  border: 0px;
+}
+
+#aggregated-attribute-overlay .accordion-heading {
+  font-size: 14px;
+}
+
+#aggregated-attribute-overlay .accordion-toggle {
+  padding: 0px;
+}
+
+#aggregated-attribute-overlay .accordion-inner {
+  padding: 0px;
+  border-top: 0px;
+  background-color: rgba(60, 110, 160, 0);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#002d8998, endColorstr=#002d8998);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#002d8998, endColorstr=#002d8998)";
+}
+
 #aggregated-attribute-content {
   max-height: 250px;
   padding-bottom: 0px;
@@ -558,7 +581,7 @@ a.disabled-link:hover {
   padding-bottom: 0px;
 }
 
-#data-accordion, #designs-accordion{
+#data-accordion, #designs-accordion, #sharing-groups{
     outline: none;
 }
 
@@ -621,12 +644,18 @@ a.disabled-link:hover {
   top: 90%;
 }
 
-#design-list .collections-header:hover .reports-btn {
-  display: block !important;
-  opacity: .9;
+#bar-chart-button {
+  opacity: .4;
   /* for IE */
-  filter: alpha(opacity=90);
+  filter: alpha(opacity=40);
 }
+#bar-chart-button:hover  {
+  display: block !important;
+  opacity: .99;
+  /* for IE */
+  filter: alpha(opacity=99);
+}
+
 
 
 #design-list .reports-btn {

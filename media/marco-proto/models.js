@@ -949,6 +949,9 @@ function viewModel() {
             self.updateCustomScrollbar('#aggregated-attribute-content');
         }, 500);
     };
+    self.updateAggregatedAttributesOverlayScrollbar = function() {
+        self.updateCustomScrollbar('#aggregated-attribute-content');
+    };
 
     // title for print view
     self.mapTitle = ko.observable();
@@ -1601,16 +1604,23 @@ function viewModel() {
                 $.pageguide('showStep', $.pageguide().guide().steps.length-1);
             }
         }
-    }
+    };
     
     self.showMapAttribution = function() {
         $('.olControlScaleBar').show();
         $('.olControlAttribution').show();
-    }
+    };
     self.hideMapAttribution = function() {
         $('.olControlScaleBar').hide();
         $('.olControlAttribution').hide();
-    }
+    };
+    
+    self.convertToSlug = function(orig) {
+        return orig
+            .toLowerCase()
+            .replace(/[^\w ]+/g,'')
+            .replace(/ +/g,'-');
+    };
     
     /* REGISTRATION */
     self.username = ko.observable();
