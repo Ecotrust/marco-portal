@@ -1312,6 +1312,7 @@ function viewModel() {
         if ($popover.is(":visible")) {
             $popover.hide();
         } else {
+            self.resetMapLinks();
             $popover.show().position({
                 "my": "top",
                 "at": "top",
@@ -1319,6 +1320,12 @@ function viewModel() {
                 offset: "0px 10px"
             });
         }
+    };
+    
+    self.resetMapLinks = function() {
+        self.mapLinks.shrinkURL(false);
+        $('#short-url').text = self.mapLinks.getURL();
+        $('#iframe-html').text = self.mapLinks.getIFrameHTML();
     };
     
     self.selectedLayer = ko.observable();
