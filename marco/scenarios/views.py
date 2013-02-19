@@ -1,6 +1,8 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404
+from django.template.defaultfilters import slugify
 from django.views.decorators.cache import cache_page
+from madrona.features.models import Feature
 from madrona.features import get_feature_by_uid
 from general.utils import meters_to_feet
 from models import *
@@ -20,65 +22,113 @@ def sdc_analysis(request, sdc_id):
     
 '''
 '''
-def delete_scenario(request, uid):
+def copy_design(request, uid):
     try:
-        scenario_obj = get_feature_by_uid(uid)
-    except Scenario.DoesNotExist:
+        design_obj = get_feature_by_uid(uid)
+    except Feature.DoesNotExist:
         raise Http404
-    
+       
     #check permissions
-    viewable, response = scenario_obj.is_viewable(request.user)
+    viewable, response = design_obj.is_viewable(request.user)
     if not viewable:
         return response
         
-    scenario_obj.active = False
-    scenario_obj.save(rerun=False)
+    design_obj.pk = None
+    design_obj.user = request.user
+    design_obj.save()
+    
+    return HttpResponse("", status=200)
+    
+'''
+'''
+def delete_design(request, uid):
+    try:
+        design_obj = get_feature_by_uid(uid)
+    except Feature.DoesNotExist:
+        raise Http404
+    
+    #check permissions
+    viewable, response = design_obj.is_viewable(request.user)
+    if not viewable:
+        return response
+        
+    design_obj.delete()
+    #design_obj.active = False
+    #design_obj.save(rerun=False)
     
     return HttpResponse("", status=200)
 
 '''
 '''
-def delete_selection(request, uid):
-    try:
-        selection_obj = get_feature_by_uid(uid)
-    except Selection.DoesNotExist: #is this correct..?
-        raise Http404
-    
-    #check permissions
-    viewable, response = selection_obj.is_viewable(request.user)
-    if not viewable:
-        return response
-        
-    selection_obj.delete()
-    
-    return HttpResponse("", status=200)
-
 def get_scenarios(request):
     json = []
+    
     scenarios = Scenario.objects.filter(user=request.user, active=True).order_by('date_created')
     for scenario in scenarios:
+        sharing_groups = [group.name for group in scenario.sharing_groups.all()]
         json.append({
             'id': scenario.id,
             'uid': scenario.uid,
             'name': scenario.name,
             'description': scenario.description,
-            'attributes': scenario.serialize_attributes
+            'attributes': scenario.serialize_attributes,
+            'sharing_groups': sharing_groups
         })
+        
+    shared_scenarios = Scenario.objects.shared_with_user(request.user)
+    for scenario in shared_scenarios:
+        if scenario.active and scenario not in scenarios:
+            username = scenario.user.username
+            actual_name = scenario.user.first_name + ' ' + scenario.user.last_name
+            json.append({
+                'id': scenario.id,
+                'uid': scenario.uid,
+                'name': scenario.name,
+                'description': scenario.description,
+                'attributes': scenario.serialize_attributes,
+                'shared': True,
+                'shared_by_username': username,
+                'shared_by_name': actual_name
+            })
+        
     return HttpResponse(dumps(json))
 
+'''
+'''    
 def get_selections(request):
     json = []
     selections = LeaseBlockSelection.objects.filter(user=request.user).order_by('date_created')
     for selection in selections:
+        sharing_groups = [group.name for group in selection.sharing_groups.all()]
         json.append({
             'id': selection.id,
             'uid': selection.uid,
             'name': selection.name,
-            #'description': selection.description,
-            'attributes': selection.serialize_attributes
+            'description': selection.description,
+            'attributes': selection.serialize_attributes,
+            'sharing_groups': sharing_groups
         })
+        
+    shared_selections = LeaseBlockSelection.objects.shared_with_user(request.user)
+    for selection in shared_selections:
+        if selection not in selections:
+            username = selection.user.username
+            actual_name = selection.user.first_name + ' ' + selection.user.last_name
+            json.append({
+                'id': selection.id,
+                'uid': selection.uid,
+                'name': selection.name,
+                'description': selection.description,
+                'attributes': selection.serialize_attributes,
+                'shared': True,
+                'shared_by_username': username,
+                'shared_by_name': actual_name
+            })
+        
     return HttpResponse(dumps(json))    
     
+'''
+'''    
 def get_leaseblock_features(request):
     from madrona.common.jsonutils import get_properties_json, get_feature_json, srid_to_urn, srid_to_proj
     srid = settings.GEOJSON_SRID
@@ -111,8 +161,8 @@ def get_leaseblock_features(request):
     }""" % (srid_to_urn(srid), ', \n'.join(feature_jsons),)
     return HttpResponse(geojson)
     
-    
-
+'''
+'''    
 def get_attributes(request, uid):
     try:
         scenario_obj = get_feature_by_uid(uid)
@@ -126,7 +176,50 @@ def get_attributes(request, uid):
     
     return HttpResponse(dumps(scenario_obj.serialize_attributes))
     
+'''
+'''    
+def get_sharing_groups(request):
+    from madrona.features import user_sharing_groups
+    from functools import cmp_to_key
+    import locale
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+    json = []
+    sharing_groups = user_sharing_groups(request.user)
+    for group in sharing_groups:
+        members = []
+        for user in group.user_set.all():
+            if user.first_name.replace(' ', '') != '' and user.last_name.replace(' ', '') != '':
+                members.append(user.first_name + ' ' + user.last_name)
+            else:
+                members.append(user.username)
+        sorted_members = sorted(members, key=cmp_to_key(locale.strcoll))
+        json.append({
+            'group_name': group.name,
+            'group_slug': slugify(group.name)+'-sharing',
+            'members': sorted_members
+        })
+    return HttpResponse(dumps(json))
     
+'''
+'''    
+def share_design(request):
+    from django.contrib.auth.models import Group
+    group_names = request.POST.getlist('groups[]')
+    design_uid = request.POST['scenario']
+    design = get_feature_by_uid(design_uid)
+    viewable, response = design.is_viewable(request.user)
+    if not viewable:
+        return response
+    #remove previously shared with groups, before sharing with new list
+    design.share_with(None)
+    groups = []
+    for group_name in group_names:
+        groups.append(Group.objects.get(name=group_name))
+    design.share_with(groups, append=False)
+    return HttpResponse("", status=200)
+    
+'''
+'''
 @cache_page(60 * 60 * 24, key_prefix="scenarios_get_leaseblocks")
 def get_leaseblocks(request):
     json = []
@@ -157,3 +250,4 @@ def get_leaseblocks(request):
             'wea_state_name': ocs_block.wea_state_name            
         })
     return HttpResponse(dumps(json))
+

@@ -611,6 +611,7 @@ class LeaseBlockSelection(Analysis):
     #input_b = models.IntegerField()
     #output_sum = models.IntegerField(blank=True, null=True)
     leaseblock_ids = models.TextField()
+    description = models.TextField(null=True, blank=True)
     #leaseblocks = models.ManyToManyField("LeaseBlock", null=True, blank=True)
     geometry_actual = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Selection Geometry")
     

@@ -218,12 +218,6 @@
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                                 <div style="font-weight: normal">
-                                                                                    <!--<span data-bind="visible: ! activeSublayer() || isCheckBoxLayer()">
-                                                                                        <span data-bind="text: name"></span>
-                                                                                    </span>
-                                                                                    <span data-bind="visible: activeSublayer && ! isCheckBoxLayer()">
-                                                                                        <span data-bind="text: activeSublayer().name"></span>
-                                                                                    </span>-->
                                                                                     <span data-bind="text: name"></span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                                     <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
@@ -381,6 +375,7 @@
                                         </a></p> 
                                         -->
                                     </div>
+                                    <!-- the following container is used to estimate width for the actual Aggregated Attribution Overlay -->
                                     <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                         <div data-bind="foreach: attributeLayers()">
                                             <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
@@ -396,22 +391,32 @@
                                     </div>
                                     <!-- Aggregated Attribution Overlay -->
                                     <div data-bind="visible: featureAttribution">
-                                    <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
-                                        <div id="aggregated-attribute-content">
-                                          <div data-bind="foreach: attributeLayers()">
-                                            <div data-bind="visible: $root.aggregatedAttributes()[name]">
-                                              <h4 data-bind="text: name"></h4>
-                                              <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
-                                                <dt>
-                                                    <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
-                                                    <span style="font-weight: normal" data-bind="text: data"></span>
-                                                </dt>
-                                              </dl>
+                                        <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
+                                            <div id="aggregated-attribute-content" class="accordion">
+                                              <div class="accordion-group">
+                                                <div data-bind="foreach: attributeLayers()">
+                                                    <div data-bind="visible: $root.aggregatedAttributes()[name]">
+                                                      <div class="accordion-heading">
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#aggregated-attribute-content" data-bind="attr: { href: '#' + $root.convertToSlug(name) }, click: $root.updateAggregatedAttributesOverlayScrollbar">
+                                                            <h4 data-bind="text: name"></h4>
+                                                        </a>
+                                                        <div data-bind="attr: { id: $root.convertToSlug(name) }" class="accordion-body collapse in">
+                                                            <div class="accordion-inner">
+                                                                <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
+                                                                    <dt>
+                                                                        <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
+                                                                        <span style="font-weight: normal" data-bind="text: data"></span>
+                                                                    </dt>
+                                                                </dl>
+                                                            </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                              </div>
                                             </div>
-                                          </div>
+                                            <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                         </div>
-                                        <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
-                                    </div>
                                     </div>
                                   
                                     <!-- Bookmark Message -->
@@ -477,7 +482,7 @@
                                                 <span><a href="#" style="margin-left: 10px; opacity: .8;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> </span>
                                             </div>
                                             <div id="overview-overlay-text" style="margin-top: 5px"> 
-                                                <span class="text" data-bind="text: getOverviewText()"></span>
+                                                <span class="text" data-bind="text: getOverviewText()" style="white-space: pre-wrap"></span>
                                                 <div class="notes">
                                                     <div data-bind="visible: activeInfoSublayer() ? activeInfoSublayer().data_source : activeInfoLayer().data_source">
                                                         Source: 
@@ -754,6 +759,7 @@
             }
         }(document, "script", "twitter-wjs");
         </script>
+        
     </body>
 
 </html>

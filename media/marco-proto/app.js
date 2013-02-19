@@ -127,6 +127,7 @@ $(document).ready(function() {
   });
   $('#designsTab[data-toggle="tab"]').on('shown', function(e) {
     app.viewModel.updateAllScrollBars();
+    setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
   });
   
   //format the legend scrollbar
@@ -290,6 +291,14 @@ $(document).ready(function() {
   $(document).on('click', '#start-active-tour', function() {
     app.viewModel.startActiveTour();
   });
+
+  $(document).on('click', '#share-option', function() {
+    app.viewModel.scenarios.initSharingModal();
+  });
+  
+    //$(document).on('click', '#share-option', function(a,b,c) {
+    //    debugger;
+    //});
 
   $('a[data-toggle="tab"]').on('shown', function (e) {
     app.updateUrl();
