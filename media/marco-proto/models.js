@@ -576,7 +576,7 @@ function themeModel(options) {
     return self;
 } // end of themeModel
 
-function bookmarkModel($popover) {
+function bookmarkModel(options) {
     var self = this;
 
     // name of the bookmark
@@ -605,8 +605,71 @@ function bookmarkModel($popover) {
         app.saveStateMode = true;
     };
 
+    self.currentBookmark = ko.observable();
+    self.sharingGroups = ko.observableArray();
+    /*self.selectedGroups = ko.observableArray();
+    self.selectedGroups.subscribe( function() {
+        if (self.currentBookmark() && self.currentBookmark().sharingGroups && self.currentBookmark().sharingGroups.length) {
+            self.selectedGroups(self.currentBookmark().sharingGroups);
+        } else {
+            self.selectedGroups();
+        }
+    });*/
+    
+    self.showSharingModal = function(bookmark, event) {
+        self.currentBookmark(bookmark);
+        $('#bookmark-share-modal').modal('show');
+    };
+    
+    self.groupIsSelected = function(groupName) {
+        if (self.selectedGroups()) {
+            var indexOf = self.selectedGroups().indexOf(groupName);
+            return indexOf !== -1;
+        }
+        return false;
+    };
+    
+    self.groupMembers = function(groupName) {
+        var memberList = "";
+        for (var i=0; i<self.sharingGroups().length; i++) {
+            var group = self.sharingGroups()[i];
+            if (group.group_name === groupName) {
+                for (var m=0; m<group.members.length; m++) {
+                    var member = group.members[m];
+                    memberList += member + '<br>';
+                }
+            }
+        }
+        return memberList;
+    };
+          
+    self.toggleGroup = function(obj) {
+        var groupName = obj.group_name,
+            indexOf = self.selectedGroups().indexOf(groupName);
+    
+        if ( indexOf === -1 ) {  //add group to list
+            self.selectedGroups().push(groupName);
+        } else { //remove group from list
+            self.selectedGroups().splice(indexOf, 1);
+        }
+    };
+    
+    self.groupIsSelected = function(groupName) {
+        if (self.selectedGroups()) {
+            var indexOf = self.selectedGroups().indexOf(groupName);
+            return indexOf !== -1;
+        }
+        return false;
+    };
+      
+    self.resetBookmarkMapLinks = function(bookmark) {
+        self.currentBookmark(bookmark);
+        self.shrinkBookmarkURL(false);
+        $('#short-url').text = self.getCurrentBookmarkURL();
+        $('#iframe-html').text = self.getBookmarkIFrameHTML();
+    };
+    
     self.removeBookmark = function(bookmark) {
-        
         //if the user is logged in, ajax call to add bookmark to server 
         if (app.is_authenticated) { 
             $.ajax({ 
@@ -614,6 +677,9 @@ function bookmarkModel($popover) {
                 data: { name: bookmark.name, hash: $.param(bookmark.state) }, 
                 type: 'POST',
                 dataType: 'json',
+                success: function() {
+                    self.updateBookmarkScrollBar();
+                },
                 error: function(result) { 
                     debugger;
                 } 
@@ -643,6 +709,9 @@ function bookmarkModel($popover) {
                 data: { name: self.bookmarkName(), hash: window.location.hash.slice(1) }, 
                 type: 'POST',
                 dataType: 'json',
+                success: function() {
+                    self.updateBookmarkScrollBar();
+                },
                 error: function(result) { 
                     debugger;
                 } 
@@ -657,22 +726,90 @@ function bookmarkModel($popover) {
     };
 
     // get the url from a bookmark
-    self.getUrl = function(bookmark) {
+    self.getBookmarkUrl = function(bookmark) {
         var host = window.location.href.split('#')[0];
         return host + "#" + $.param(bookmark.state);
     };
+    
+    self.getCurrentBookmarkURL = function() {
+        if ( self.currentBookmark() ) {
+            return self.getBookmarkUrl(self.currentBookmark());
+        } else {
+            return '';
+        }
+    };
+    
+    self.shrinkBookmarkURL = ko.observable();
+    self.shrinkBookmarkURL.subscribe( function() {
+        if (self.shrinkBookmarkURL()) {
+            self.useShortBookmarkURL();
+        } else {
+            self.useLongBookmarkURL();
+        }
+    });
+    
+    self.useLongBookmarkURL = function() {
+        $('#bookmark-short-url')[0].value = self.getCurrentBookmarkURL();
+    };
+        
+    self.useShortBookmarkURL = function() {
+        var bitly_login = "ecofletch",
+            bitly_api_key = 'R_d02e03290041107b75e3720d7e3c4b95',
+            long_url = self.getCurrentBookmarkURL();
+            
+        $.getJSON( 
+            "http://api.bitly.com/v3/shorten?callback=?", 
+            { 
+                "format": "json",
+                "apiKey": bitly_api_key,
+                "login": bitly_login,
+                "longUrl": long_url
+            },
+            function(response)
+            {
+                $('#short-url')[0].value = response.data.url;
+            }
+        );
+    };
+    
+    self.getBookmarkIFrameHTML = function() {
+        var urlOrigin = window.location.origin,
+            urlHash = $.param(self.currentBookmark().state),
+            embedURL = urlOrigin + '/embed/map/#' + urlHash;
+        $('#bookmark-iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ' +
+                                     'src="' + embedURL + '">' + '</iframe>' + '<br />';
+    };
+    
+    self.openBookmarkIFrameExample = function() {
+        var windowName = "new Map Window",
+            windowSize = "width=650, height=550"
+        mapWindow = window.open('', windowName, windowSize);
+        var header = '<header role="banner"><div class="navbar navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><div class="row-fluid"><div class="span12"><a href="/visualize"><img src="'+window.location.origin+'/media/marco/img/marco-logo_planner.jpg"/></a><h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3></div></div></div></div></div></header>';
+        mapWindow.document.write('<html><body>' + header + $('#bookmark-iframe-html')[0].value + '</body></html');
+        mapWindow.document.close();
+        
+    };
 
     self.prepareEmail = function(bookmark) {
-        app.viewModel.bookmarkEmail(self.getUrl(bookmark));
+        app.viewModel.bookmarkEmail(self.getBookmarkUrl(bookmark));
     }
 
     self.getEmailHref = function(bookmark) {
-        return "mailto:?subject=MARCO Bookmark&body=<a href='" + self.getUrl(bookmark).replace(/&/g, '%26') + "'>bookmark</a>";
+        return "mailto:?subject=MARCO Bookmark&body=<a href='" + self.getBookmarkUrl(bookmark).replace(/&/g, '%26') + "'>bookmark</a>";
     };
 
     // store the bookmarks to local storage
     self.storeBookmarks = function() {
         amplify.store("marco-bookmarks", self.bookmarksList());
+    };
+    
+    self.updateBookmarkScrollBar = function() {
+        var bookmarkScrollpane = $('#bookmarks-table').data('jsp');
+        if (bookmarkScrollpane === undefined) {
+            $('#bookmarks-table').jScrollPane();
+        } else {
+            bookmarkScrollpane.reinitialise();
+        }
     };
 
     // method for loading existing bookmarks
@@ -685,7 +822,8 @@ function bookmarkModel($popover) {
             for (var i=0; i < existingBookmarks.length; i++) {
                 local_bookmarks.push( {
                     'name': existingBookmarks[i].name,
-                    'hash': $.param(existingBookmarks[i].state)
+                    'hash': $.param(existingBookmarks[i].state),
+                    'sharing_groups': existingBookmarks[i].sharingGroups
                 });
             }
         }
@@ -704,7 +842,8 @@ function bookmarkModel($popover) {
                     for (var i=0; i < bookmarks.length; i++) {
                         var bookmark = {
                             state: $.deparam(bookmarks[i].hash),
-                            name: bookmarks[i].name
+                            name: bookmarks[i].name,
+                            sharingGroups: bookmarks[i].sharing_groups
                         }
                         blist.push(bookmark);
                     }
@@ -722,6 +861,36 @@ function bookmarkModel($popover) {
         } else if (existingBookmarks) {
             self.bookmarksList = ko.observableArray(existingBookmarks);
         } 
+        self.getSharingGroups();
+    };
+    
+    self.getSharingGroups = function() {
+        $.ajax({
+            url: '/visualize/get_sharing_groups',
+            type: 'GET',
+            dataType: 'json',
+            success: function (groups) {
+                self.sharingGroups(groups);
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+    };
+    
+    //sharing bookmark
+    self.submitShare = function() {
+        /*var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
+        $.ajax( {
+            url: '/scenario/share_design',
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            error: function(result) {
+                debugger;
+            }
+        });*/
+        debugger;
     };
 
     self.cancel = function() {
@@ -733,6 +902,10 @@ function bookmarkModel($popover) {
 
     return self;
 } // end of bookmarkModel
+
+function bookmarksModel() {
+
+} // end of bookmarksModel
 
 function mapLinksModel() {
     var self = this;
@@ -790,8 +963,7 @@ function mapLinksModel() {
             urlHash = window.location.hash,
             embedURL = urlOrigin + '/embed/map/' + urlHash;
         $('#iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ' +
-                                     'src="' + embedURL + '">' + '</iframe>' + '<br />';// + 
-                                     //'<small><a href="' + embedURL + '" ' + 'style="color:#0000FF;text-align:left">View Larger Map</a></small>';
+                                     'src="' + embedURL + '">' + '</iframe>' + '<br />';
     };
     
     self.openIFrameExample = function() {
@@ -1304,10 +1476,12 @@ function viewModel() {
                 "of": $button,
                 offset: "-10px 0px"
             });
+            self.bookmarks.updateBookmarkScrollBar();
         }
     };
     
     //show Map Links
+    /*
     self.showMapLinks = function(self, event) {
         var $button = $(event.target).closest('.btn'),
             $popover = $('#map-links-popover');
@@ -1324,6 +1498,7 @@ function viewModel() {
             });
         }
     };
+    */
     
     self.resetMapLinks = function() {
         self.mapLinks.shrinkURL(false);

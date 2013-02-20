@@ -5,6 +5,7 @@ urlpatterns = patterns('',
     url(r'^get_bookmarks$', get_bookmarks),
     url(r'^remove_bookmark$', remove_bookmark),
     url(r'^add_bookmark$', add_bookmark),
+    url(r'^get_sharing_groups$', get_sharing_groups),
     (r'^map', show_embedded_map),
     (r'', show_planner),
 )

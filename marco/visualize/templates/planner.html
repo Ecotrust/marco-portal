@@ -356,7 +356,7 @@
                                               </span>
                                           </a>
                                           <!--Map Links Button-->
-                                          <a id="basemap-button" class="btn" href="#map-links-modal" data-toggle="modal" data-bind="click: showMapLinks">
+                                          <a id="basemap-button" class="btn" href="#map-links-modal" data-toggle="modal" data-bind="click: resetMapLinks">
                                               <i class="icon-link icon-large"></i>
                                               <span>Map Links</span>
                                           </a>
@@ -613,72 +613,97 @@
             <div class="arrow">
             </div>
             <div class="popover-inner">
-                <h3 class="popover-title">
+                <h3 class="popover-title" style="font-size: 16px; font-weight: bold">
                     Bookmarks
                 </h3>
                 <div class="popover-content">
-                    <p>
-                        <div id="bookmarks-table">
-                            <table class="table table-condensed">
-                                <tbody data-bind="foreach: bookmarksList">
-                                    <tr>
-                                        <td>
-                                            <span data-bind="click: $parent.loadBookmark">
-                                            <a data-bind="text: name, attr: {href: $parent.getUrl($data)}">name</a>
-                                            </span>
-                                        </td>
-                                        <!--
-                                        <td class="tweet-cell">
-                                            <a href="https://twitter.com/share" target="_blank" class="twitter-share-a" 
-                                               data-bind="attr: {'data-url': $parent.getUrl($data)}" data-lang="en" data-size="medium" data-count="none">
-                                                <span rel="tooltip" title="Tweet"><i class="icon-twitter icon-large"></i></span>
+                    <div id="bookmarks-table">
+                        <table class="table table-condensed" style="margin-bottom: 5px;">
+                            <tbody data-bind="foreach: bookmarksList">
+                                <tr style="border-bottom: 1px solid #dddddd;">
+                                    <td>
+                                        <span data-bind="click: $parent.loadBookmark">
+                                        <a data-bind="text: name, attr: {href: $parent.getBookmarkUrl($data)}">name</a>
+                                        </span>
+                                    </td>
+                                    <!--
+                                    <td class="tweet-cell">
+                                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-a" 
+                                           data-bind="attr: {'data-url': $parent.getUrl($data)}" data-lang="en" data-size="medium" data-count="none">
+                                            <span rel="tooltip" title="Tweet"><i class="icon-twitter icon-large"></i></span>
+                                        </a>
+                                        
+                                        <script>
+                                            ! function(d, s, id) {
+                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                if (!d.getElementById(id)) {
+                                                    js = d.createElement(s);
+                                                    js.id = id;
+                                                    js.src = "//platform.twitter.com/widgets.js";
+                                                    fjs.parentNode.insertBefore(js, fjs);
+                                                }
+                                            }(document, "script", "twitter-wjs");
+                                        </script>
+                                    </td>
+                                    -->
+                                    <!--
+                                    <td>
+                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.prepareEmail" data-toggle="modal" data-target="#bookmark-modal">
+                                            <i class="icon-envelope icon-large"></i>
+                                        </a>
+                                        
+                                    </td>
+                                    -->
+                                    <!-- CREATE DROPDOWN MENU INSTEAD -->
+                                    <!--
+                                    <td>
+                                        <span class="btn-group">
+                                              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <span class="caret"></span>
+                                              </a>
+                                              <ul id="bookmark-dropdown" class="dropdown-menu">
+                                                    <li><a data-bind="click: $parent.showSharingModal"><i class="icon-group"></i> Share</a></li>
+                                                    <li><a data-bind="click: $parent.showMapLinksModal"><i class="icon-link"></i> Map Links</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a  data-bind="click: $parent.removeBookmark"><i class="icon-trash"></i>Delete</a></li>
+                                              </ul>
+                                        </span>
+                                    </td>
+                                    -->
+                                    <td style="padding-right: 0px">
+                                        <div class="btn-group" style="text-align: center">
+                                            <a class="btn btn-mini tweet-trash" data-bind="click: $parent.showSharingModal">
+                                                <span rel="tooltip" title="Share"><i class="icon-group icon-medium"></i></span>
                                             </a>
-                                            
-                                            <script>
-                                                ! function(d, s, id) {
-                                                    var js, fjs = d.getElementsByTagName(s)[0];
-                                                    if (!d.getElementById(id)) {
-                                                        js = d.createElement(s);
-                                                        js.id = id;
-                                                        js.src = "//platform.twitter.com/widgets.js";
-                                                        fjs.parentNode.insertBefore(js, fjs);
-                                                    }
-                                                }(document, "script", "twitter-wjs");
-                                            </script>
-                                        </td>
-                                        -->
-                                        <!--
-                                        <td>
-                                            <a class="btn btn-mini tweet-trash" data-bind="click: $parent.prepareEmail" data-toggle="modal" data-target="#bookmark-modal">
-                                                <i class="icon-envelope icon-large"></i>
+                                            <a class="btn btn-mini tweet-trash"  href="#bookmark-map-links-modal" data-toggle="modal" data-bind="click: $parent.resetBookmarkMapLinks">
+                                                <span rel="tooltip" title="Map Links"><i class="icon-link icon-medium"></i></span>
                                             </a>
-                                            
-                                        </td>
-                                        -->
-                                        <td>
-                                            <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
-                                                <span rel="tooltip" title="Delete"><i class="icon-trash icon-large"></i></span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p data-bind="visible: bookmarksList().length === 0">
-                                Bookmarks save the map and active layers. You currently have no bookmarks.
-                            </p>
+                                        </div>
+                                    </td>
+                                    <td style="padding-left: 0px">
+                                        <a class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
+                                            <span rel="tooltip" title="Delete"><i class="icon-trash icon-medium"></i></span>
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p data-bind="visible: bookmarksList().length === 0">
+                            Bookmarks save the map and active layers. You currently have no bookmarks.
+                        </p>
+                    </div>
+                    <hr style="margin-bottom: 10px" />
+                    <h5>
+                        Create new bookmark
+                    </h5>
+                    <form data-bind="submit: saveBookmark" style="margin-bottom: 0px">
+                        <input type="text" data-bind="value: bookmarkName" class="input">
+                        <div class="pull-right">
+                            <button class="btn" type="submit">save</button>
+                            <button data-bind="click: cancel" class="btn">cancel</button>
                         </div>
-                        <hr/>
-                        <h5>
-                            Create new bookmark
-                        </h5>
-                        <form data-bind="submit: saveBookmark">
-                            <input type="text" data-bind="value: bookmarkName" class="input">
-                            <div class="pull-right">
-                                <button class="btn btn-mini" type="submit">save</button>
-                                <button data-bind="click: cancel" class="btn btn-mini">cancel</button>
-                            </div>
-                        </form>
-                    </p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -731,6 +756,7 @@
         <script src="{{MEDIA_URL}}/marco-proto/fixtures.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/map.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/state.js"></script>
+        <script src="{{MEDIA_URL}}/marco-proto/bookmarks.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/models.js"></script>
         {% if user.is_authenticated and user|in_group:"Designers" %}
             <script src="{{MEDIA_URL}}/marco-proto/scenarios.js"></script>

@@ -265,6 +265,11 @@ a:focus {
     top: 0px;
 }
 
+#bookmark-sharing-groups i.check {
+    position: relative;
+    top: 0px;
+}
+
 input + i.icon-remove-sign {
 	margin-left: -25px;
 	margin-right: 4px;

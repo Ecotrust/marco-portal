@@ -141,8 +141,9 @@
 }
 
 #bookmarks-table {
-  max-height: 150px;
-  overflow-y: auto;
+  height: 150px;
+  overflow: hidden;
+  outline: none;
 }
 
 #opacity-popover .controls {
@@ -581,7 +582,7 @@ a.disabled-link:hover {
   padding-bottom: 0px;
 }
 
-#data-accordion, #designs-accordion, #sharing-groups{
+#data-accordion, #designs-accordion, #sharing-groups, #bookmark-sharing-groups{
     outline: none;
 }
 
@@ -790,8 +791,8 @@ a.disabled-link:hover {
 
 
 #bookmark-popover {
-  left: 650px;
-  width: 300px;
+  left: 550px;
+  width: 400px;
   z-index: 1030;
 }
 
