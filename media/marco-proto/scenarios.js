@@ -698,6 +698,7 @@ function scenarioModel(options) {
     if (options.sharingGroups && options.sharingGroups.length) {
         self.selectedGroups(options.sharingGroups);
     } 
+    self.temporarilySelectedGroups = ko.observableArray();
     
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
@@ -975,6 +976,8 @@ function scenariosModel(options) {
     self.sharingLayer = ko.observable();
     self.showSharingModal = function(scenario) {
         self.sharingLayer(scenario);
+        self.sharingLayer().temporarilySelectedGroups.removeAll();
+        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups());
         $('#share-modal').modal('show');
     };
     
@@ -994,12 +997,12 @@ function scenariosModel(options) {
         
     self.toggleGroup = function(obj) {
         var groupName = obj.group_name,
-            indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
+            indexOf = self.sharingLayer().temporarilySelectedGroups.indexOf(groupName);
     
         if ( indexOf === -1 ) {  //add group to list
-            self.sharingLayer().selectedGroups.push(groupName);
+            self.sharingLayer().temporarilySelectedGroups.push(groupName);
         } else { //remove group from list
-            self.sharingLayer().selectedGroups.splice(indexOf, 1);
+            self.sharingLayer().temporarilySelectedGroups.splice(indexOf, 1);
         }
     };
     
@@ -1041,7 +1044,7 @@ function scenariosModel(options) {
     
     self.groupIsSelected = function(groupName) {
         if (self.sharingLayer()) {
-            var indexOf = self.sharingLayer().selectedGroups.indexOf(groupName);
+            var indexOf = self.sharingLayer().temporarilySelectedGroups.indexOf(groupName);
             return indexOf !== -1;
         }
         return false;
@@ -1450,6 +1453,7 @@ function scenariosModel(options) {
     
     //SHARING DESIGNS
     self.submitShare = function() {
+        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups());
         var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
         $.ajax( {
             url: '/scenario/share_design',
