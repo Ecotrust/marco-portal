@@ -241,7 +241,7 @@ function bookmarksModel(options) {
                         uid: bookmark[0].uid,
                         sharingGroups: bookmark[0].sharing_groups
                     });
-                    self.bookmarksList.push(newBookmark);
+                    self.bookmarksList.unshift(newBookmark);
                     self.updateBookmarkScrollBar();
                 },
                 error: function(result) { 
@@ -267,7 +267,7 @@ function bookmarksModel(options) {
                 self.sharingGroups(groups);
             },
             error: function (result) {
-                debugger;
+                //console.log('error in getSharingGroups');
             }
         });
     };
