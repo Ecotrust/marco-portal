@@ -803,3 +803,15 @@ a.disabled-link:hover {
 .modal-backdrop {
   z-index: 1050;
 }
+
+.modal-body .sharing-header {
+  text-align: left; 
+  margin-left: 20px;
+}
+
+.group-members-popover {
+  cursor: default;
+}
+.group-members-popover:hover {
+  text-decoration: none; 
+}

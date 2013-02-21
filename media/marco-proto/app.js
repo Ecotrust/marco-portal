@@ -130,6 +130,9 @@ $(document).ready(function() {
     setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
   });
   
+  //the following appears to handle the bookmark sharing, while the earlier popover activation handles the design sharing
+  setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
+    
   //format the legend scrollbar
   //setTimeout(function() { $('#legend-content').jScrollPane(); }, 500);
   //setTimeout(function() { app.viewModel.updateScrollBars(); }, 500);

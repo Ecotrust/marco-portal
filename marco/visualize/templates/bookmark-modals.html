@@ -8,7 +8,7 @@
     </div>
     <div class="modal-body" style="height: 200px; text-align: center; overflow: hidden;">  
         <div class="row-fluid">
-            <h4 style="text-align: left; margin-left: 20px;">Share my bookmark with the following:</h4>
+            <h4 class="sharing-header">Share my bookmark with the following:</h4>
             <ul class="unstyled" id="bookmark-sharing-groups" style="margin-left: 1px; height: 165px; outline: none;">
                 <span data-bind="foreach: sharingGroups">
                     <li>
@@ -18,7 +18,7 @@
                                 <i class="check icon-large icon-check" data-bind="visible: $parent.groupIsSelected(group_name), click: $parent.toggleGroup"></i>
                                 <i class="check icon-large icon-check-empty" data-bind="visible: !$parent.groupIsSelected(group_name), click: $parent.toggleGroup"></i>
                                 <span data-bind="text: group_name, click: $parent.toggleGroup"></span> 
-                                <a class="group-members-popover" rel="popover" data-bind="attr: {'data-content': $parent.groupMembers(group_name)}" data-original-title="Members" style="text-decoration: none"> 
+                                <a class="group-members-popover" rel="popover" data-bind="attr: {'data-content': $parent.groupMembers(group_name)}" data-original-title="Members"> 
                                     <i class="icon-group"> </i>
                                 </a>
                             </div>
