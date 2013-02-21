@@ -251,7 +251,8 @@ function bookmarksModel(options) {
         } else {
             self.bookmarksList.unshift(bookmark);
         }
-        $('#bookmark-popover').hide();
+        //$('#bookmark-popover').hide();
+        self.newBookmarkName('');
         
         // store the bookmarks locally
         self.storeBookmarks();
