@@ -127,23 +127,99 @@ function scenarioFormModel(options) {
         if ( self.windSpeedParameter() ) {
             self.windSpeedParameter(false);
             $('#id_input_parameter_wind_speed').removeAttr('checked');
-            self.removeFilter('wind');
-            self.updateDesignScrollBar();
-            //Update Remaining Leaseblocks 
-            self.updateLeaseblocksLeft();
-            self.updateRemainingBlocks();
         } else {
             var value = $('#id_input_avg_wind_speed')[0].value;
             $('#id_input_parameter_wind_speed').attr('checked', 'checked');
             self.windSpeedParameter(true);
             self.change_wind_message(value);
-            self.updateFilters({'key': 'wind', 'value': value});
-            self.updateDesignScrollBar();
-            //Update Remaining Leaseblocks 
-            self.updateLeaseblocksLeft();
-            self.updateRemainingBlocks();
         }
-        //update scroll bar?
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
+    self.toggleDistanceToShoreWidget = function() {
+        if ( self.distanceToShoreParameter() ) {
+            self.distanceToShoreParameter(false);
+            $('#id_input_parameter_distance_to_shore').removeAttr('checked');
+        } else {
+            var minValue = $('#id_input_min_distance_to_shore')[0].value,
+                maxValue = $('#id_input_max_distance_to_shore')[0].value;
+            self.distanceToShoreParameter(true);
+            $('#id_input_parameter_distance_to_shore').attr('checked', 'checked');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
+    self.toggleDepthWidget = function() {
+        if ( self.depthRangeParameter() ) {
+            self.depthRangeParameter(false);
+            $('#id_input_parameter_depth').removeAttr('checked');
+        } else {
+            var minValue = $('#id_input_min_depth')[0].value,
+                maxValue = $('#id_input_max_depth')[0].value;
+            self.depthRangeParameter(true);
+            $('#id_input_parameter_depth').attr('checked', 'checked');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
+    self.toggleAWCWidget = function() {
+        if ( self.distanceToAWCParameter() ) {
+            self.distanceToAWCParameter(false);
+            $('#id_input_parameter_distance_to_awc').removeAttr('checked');
+        } else {
+            var value = $('#id_input_distance_to_awc')[0].value;
+            self.distanceToAWCParameter(true);
+            $('#id_input_parameter_distance_to_awc').attr('checked', 'checked');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
+    self.toggleShippingLanesWidget = function() {
+        if ( self.distanceToShippingParameter() ) {
+            self.distanceToShippingParameter(false);
+            $('#id_input_filter_distance_to_shipping').removeAttr('checked');
+        } else {
+            var value = $('#id_input_distance_to_shipping')[0].value;
+            self.distanceToShippingParameter(true);
+            $('#id_input_filter_distance_to_shipping').attr('checked', 'checked');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
+    self.toggleShipTrafficWidget = function() {
+        if ( self.shipTrafficDensityParameter() ) {
+            self.shipTrafficDensityParameter(false);
+            $('#id_input_filter_ais_density').removeAttr('checked');
+        } else {
+            var value = 1;
+            self.shipTrafficDensityParameter(true);
+            $('#id_input_filter_ais_density').attr('checked', 'checked');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
     };
     
     self.change_wind_message = function(value) {
@@ -152,40 +228,40 @@ function scenarioFormModel(options) {
             $label.css('color', 'black');
         if (value < 7.0) {
             $text.html('Fair');
-            $label.css('background', "#38a800");
+            $label.css('background', "#377EB8");
         } else if (value < 7.25) {
             $text.html('Good');
-            $label.css('background', "#6fc400");
+            $label.css('background', "#377EB8");
         } else if (value < 7.5) {
             $text.html('Good');
-            $label.css('background', "#8bd100");
+            $label.css('background', "#377EB8");
         } else if (value < 7.75) {
             $text.html('Excellent');
-            $label.css('background', "#b0e000");
+            $label.css('background', "#40B3A7");
         } else if (value < 8.0) {
             $text.html('Excellent');
-            $label.css('background', "#e3f23b");
+            $label.css('background', "#45B06C");
         } else if (value < 8.25) {
             $text.html('Outstanding');
-            $label.css('background', "#ffff78");
+            $label.css('background', "#84D439");
         } else if (value < 8.5) {
             $text.html('Outstanding');
-            $label.css('background', "#fff566");
+            $label.css('background', "#CCED26");
         } else if (value < 8.75) {
             $text.html('Outstanding');
-            $label.css('background', "#f2db44");
+            $label.css('background', "#FFFF12");
         } else if (value < 9.0) {
             $text.html('Superb');
-            $label.css('background', "#fab525");
+            $label.css('background', "#FFE712");
         } else if (value < 9.25) {
             $text.html('Superb');
-            $label.css('background', "#ffa600");
+            $label.css('background', "#FCA326");
         } else if (value < 9.5) {
             $text.html('Superb');
-            $label.css('background', "#ff9400");
+            $label.css('background', "#F07224");
         } else {
             $text.html('Superb');
-            $label.css('background', "#ff7300");
+            $label.css('background', "#E35539");
         }
         //Poor       < 12.5      (< 5.6)     ffff00
         //Fair       14.3-15.7   (6.4-7.0)   ff0000
@@ -287,14 +363,16 @@ function scenarioFormModel(options) {
         self.lastChange = (new Date()).getTime(); 
         setTimeout(function() {
             var newTime = (new Date()).getTime();
-            if ( newTime - self.lastChange > 499 ) {
+            if ( newTime - self.lastChange > 100 ) {
+                //console.log('showRemainingBlocks');
                 self.showRemainingBlocks();
             }
-        }, 500);
+        }, 200);
     };
     
     self.showRemainingBlocks = function() {
         if ( self.isLeaseblockLayerVisible() ) {
+            //console.log('showing remaining blocks');
             self.showLeaseblockSpinner(true);
             //var blockLayer = app.map.getLayersByName('OCS Test')[0];
             if ( ! app.viewModel.scenarios.leaseblockLayer()) {
@@ -380,16 +458,21 @@ function scenarioFormModel(options) {
     };
     
     self.showLeaseblockLayer = function(layer) {
-        app.map.addLayer(app.viewModel.scenarios.leaseblockLayer());
-        layer.layerModel.setVisible();
+        if ( ! app.map.getLayersByName(app.viewModel.scenarios.leaseblockLayer().name).length ) {
+            app.map.addLayer(app.viewModel.scenarios.leaseblockLayer());
+        }
+        //layer.layerModel.setVisible();
+        layer.setVisibility(true);
         app.viewModel.updateAttributeLayers();
-        layer.refresh();
+        //layer.refresh();
+        layer.redraw();
     }
     
     self.hideLeaseblockLayer = function() {
-        if ( app.map.getLayersByName(app.viewModel.scenarios.leaseblockLayer().name).length ) {
-            app.map.removeLayer(app.viewModel.scenarios.leaseblockLayer());
-        }
+        app.viewModel.scenarios.leaseblockLayer().setVisibility(false);
+        //if ( app.map.getLayersByName(app.viewModel.scenarios.leaseblockLayer().name).length ) {
+        //    app.map.removeLayer(app.viewModel.scenarios.leaseblockLayer());
+        //}
         //remove the key/value pair from aggregatedAttributes
         app.viewModel.removeFromAggregatedAttributes(app.viewModel.scenarios.leaseblockLayer().name);
         app.viewModel.updateAttributeLayers();
@@ -1489,7 +1572,8 @@ function scenariosModel(options) {
     };
     
     self.loadLeaseblockLayer = function() {
-        self.leaseblockLayer( new OpenLayers.Layer.Vector(
+        //console.log('loading lease block layer');
+        var leaseBlockLayer = new OpenLayers.Layer.Vector(
             self.scenarioLeaseBlocksLayerName,
             {
                 projection: new OpenLayers.Projection('EPSG:3857'),
@@ -1506,7 +1590,8 @@ function scenariosModel(options) {
                     name: self.scenarioLeaseBlocksLayerName
                 })
             }
-        ));
+        );
+        self.leaseblockLayer(leaseBlockLayer);
         
         self.leaseblockLayer().events.register("loadend", self.leaseblockLayer(), function() {
             if (self.scenarioFormModel && ! self.scenarioFormModel.IE) {

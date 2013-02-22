@@ -31,6 +31,10 @@ p {
 a:focus {
     outline: none;
 }
+li a {
+    cursor: pointer;
+    cursor: hand;
+}
 
 #fullscreen {
 	display: none;
@@ -113,10 +117,10 @@ a:focus {
 	border-right: 1px solid #ccc;
 
 }
-	.navbar .nav > li > a {
-		line-height: 12px;
-		color: #333;
-	}	
+.navbar .nav > li > a {
+    line-height: 12px;
+    color: #333;
+}	
 .navbar form {
 	margin-top: 26px;
 }

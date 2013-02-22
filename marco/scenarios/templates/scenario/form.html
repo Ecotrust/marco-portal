@@ -102,36 +102,6 @@
         }
               
         // WIND SPEED UPDATED
-        /*
-        $('#wind_speed_widget').on('show', function() {
-            var value = $('#id_input_avg_wind_speed')[0].value;
-            $('#id_input_parameter_wind_speed').attr('checked', 'checked');
-            app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(true);
-            change_wind_message(value);
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': value});
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#wind_speed_widget').fadeIn(0, function() {});
-            } else {
-                $('#wind_speed_widget').fadeIn('slow', function() {});
-            }
-        });
-        $('#wind_speed_widget').on('hide', function() {
-            app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(false);
-            $('#id_input_parameter_wind_speed').removeAttr('checked');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('wind');
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#wind_speed_widget').fadeOut(0, function() {});
-            } else {
-                $('#wind_speed_widget').fadeOut('slow', function() {});
-            }
-        });
-        */
         //Update Leaseblocks
         //slide ensures that leaseblocks are updated when the slider is adjusted
         //slidechange ensures that leaseblocks are updated when the text area is modified
@@ -145,36 +115,6 @@
         });
               
         // DISTANCE TO SHORE UPDATED
-        
-        $('#distance_to_shore_widget').on('show', function() {
-            app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(true);
-            $('#id_input_parameter_distance_to_shore').attr('checked', 'checked');
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#distance_to_shore_widget').fadeIn(0, function() {});
-            } else {
-                $('#distance_to_shore_widget').fadeIn('slow', function() {});
-            }
-        });
-        $('#distance_to_shore_widget').on('hide', function() {
-            app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(false);
-            $('#id_input_parameter_distance_to_shore').removeAttr('checked');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('min_distance');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('max_distance');
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#distance_to_shore_widget').fadeOut(0, function() {});
-            } else {
-                $('#distance_to_shore_widget').fadeOut('slow', function() {});
-            }
-        });
-        
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_shore').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
@@ -186,37 +126,7 @@
         });  
         
         
-        // DEPTH RANGE UPDATED 
-        
-        $('#depth_widget').on('show', function() {
-            app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(true);
-            $('#id_input_parameter_depth').attr('checked', 'checked');
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#depth_widget').fadeIn(0, function() {});
-            } else {
-                $('#depth_widget').fadeIn('slow', function() {});
-            }
-        });
-        $('#depth_widget').on('hide', function() {
-            app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(false);
-            $('#id_input_parameter_depth').removeAttr('checked');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('min_depth');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('max_depth');
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#depth_widget').fadeOut(0, function() {});
-            } else {
-                $('#depth_widget').fadeOut('slow', function() {});
-            }
-        });
-        
+        // DEPTH RANGE UPDATED
         //Update Remaining Leaseblocks 
         $('#slider-input_depth').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
@@ -229,34 +139,6 @@
             
          
         // DISTANCE TO AWC UPDATED
-        
-        $('#distance_to_awc_widget').on('show', function() {
-            app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(true);
-            $('#id_input_parameter_distance_to_awc').attr('checked', 'checked');
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#distance_to_awc_widget').fadeIn(0, function() {});
-            } else {
-                $('#distance_to_awc_widget').fadeIn('slow', function() {});
-            }
-        });
-        $('#distance_to_awc_widget').on('hide', function() {
-            app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(false);
-            $('#id_input_parameter_distance_to_awc').removeAttr('checked');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('awc');
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#distance_to_awc_widget').fadeOut(0, function() {});
-            } else {
-                $('#distance_to_awc_widget').fadeOut('slow', function() {});
-            }
-        });
-        
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
@@ -268,34 +150,6 @@
 
         
         // DISTANCE TO SHIPPING LANES UPDATED
-        
-        $('#distance_to_shipping_widget').on('show', function() {
-            app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(true);
-            $('#id_input_filter_distance_to_shipping').attr('checked', 'checked');
-            app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#distance_to_shipping_widget').fadeIn(0, function() {});
-            } else {
-                $('#distance_to_shipping_widget').fadeIn('slow', function() {});
-            }
-        });
-        $('#distance_to_shipping_widget').on('hide', function() {
-            app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(false);
-            $('#id_input_filter_distance_to_shipping').removeAttr('checked');
-            app.viewModel.scenarios.scenarioFormModel.removeFilter('tsz');
-            //Update Remaining Leaseblocks 
-            updateRemaininLeaseBlocks();
-            updateDesignScrollBar();
-            if ( $.browser.msie ) {
-                $('#distance_to_shipping_widget').fadeOut(0, function() {});
-            } else {
-                $('#distance_to_shipping_widget').fadeOut('slow', function() {});
-            }
-        });
-        
         //Update Remaining Leaseblocks 
         $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
             if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
@@ -307,7 +161,7 @@
            
         
         // TRAFFIC DENSITY UPDATED 
-        
+        /*
         $('#ship_traffic_density_widget').click( function(e) {
             if ( ! app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter() ) {
                 app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(true);
@@ -322,7 +176,7 @@
                 updateRemaininLeaseBlocks();
             }
         });
-        
+        */
                 
         
         
@@ -460,16 +314,15 @@
         </li>
         <li>
             <div class="accordion" id="distance-to-shore-accordion">
-                <div class="accordion-heading">
-                    <label class="accordion-toggle" data-toggle="collapse" data-parent="distance-to-shore-accordion" href="#distance_to_shore_widget">
+                <div class="accordion-heading" data-bind="click: toggleDistanceToShoreWidget">
+                    <label class="accordion-toggle">
                         {{ form.input_parameter_distance_to_shore }} 
                         <i class="check icon-large icon-check" data-bind="visible: distanceToShoreParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Distance to Shore  </span>
-                        <!--<img src="/media/marco/img/info.png" id="info_shore" class="info" />-->
                     </label>
                 </div>
-                <div id="distance_to_shore_widget" class="inputfield accordion-body collapse">
+                <div id="distance_to_shore_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToShoreParameter()}">
                     <div class="accordion-inner">
                         <span> 
                             {{ form.input_min_distance_to_shore }}            
@@ -484,8 +337,8 @@
         </li>
         <li>
             <div class="accordion" id="depth-range-accordion">
-                <div class="accordion-heading">
-                    <label class="accordion-toggle" data-toggle="collapse" data-parent="depth-range-accordion" href="#depth_widget">
+                <div class="accordion-heading" data-bind="click: toggleDepthWidget">
+                    <label class="accordion-toggle">
                         {{ form.input_parameter_depth }} 
                         <i class="check icon-large icon-check" data-bind="visible: depthRangeParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
@@ -493,7 +346,7 @@
                         <!--<img src="/media/marco/img/info.png" id="info_depth" class="info" />-->
                     </label>
                 </div>
-                <div id="depth_widget" class="inputfield accordion-body collapse">
+                <div id="depth_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': depthRangeParameter()}">
                     <div class="accordion-inner">
                         <span>
                             {{ form.input_min_depth }}            
@@ -508,8 +361,8 @@
         </li>
         <li>
             <div class="accordion" id="distance-to-awc-accordion">
-                <div class="accordion-heading">
-                    <label class="accordion-toggle" data-toggle="collapse" data-parent="distance-to-awc-accordion" href="#distance_to_awc_widget">
+                <div class="accordion-heading" data-bind="click: toggleAWCWidget">
+                    <label class="accordion-toggle">
                         {{ form.input_parameter_distance_to_awc }}  
                         <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
@@ -517,7 +370,7 @@
                         <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
                     </label>
                 </div>
-                <div id="distance_to_awc_widget" class="inputfield accordion-body collapse">
+                <div id="distance_to_awc_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToAWCParameter()}">
                     <div class="accordion-inner">
                         <span > 
                             Maximum Distance (in miles) 
@@ -560,8 +413,8 @@
         <ul class="parameters">
         <li>
             <div class="accordion" id="distance-to-shipping-accordion">
-                <div class="accordion-heading">
-                    <label class="accordion-toggle" data-toggle="collapse" data-parent="distance-to-shipping-accordion" href="#distance_to_shipping_widget">
+                <div class="accordion-heading" data-bind="click: toggleShippingLanesWidget">
+                    <label class="accordion-toggle">
                         {{ form.input_filter_distance_to_shipping }}  
                         <i class="check icon-large icon-check" data-bind="visible: distanceToShippingParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
@@ -569,7 +422,7 @@
                         <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
                     </label>
                 </div>
-                <div id="distance_to_shipping_widget" class="inputfield accordion-body collapse">
+                <div id="distance_to_shipping_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToShippingParameter()}">
                     <div class="accordion-inner">
                         <label class="param"> Minimum Distance (miles)
                             {{ form.input_distance_to_shipping }} 
@@ -600,7 +453,7 @@
         </li>
         <li>
             <div class="accordion" id="distance-to-shipping-accordion">
-                <div class="accordion-heading">
+                <div class="accordion-heading" data-bind="click: toggleShipTrafficWidget">
                     {{ form.input_filter_ais_density }}  
                     <label id="ship_traffic_density_widget" class="accordion-toggle">
                         <i class="check icon-large icon-check" data-bind="visible: shipTrafficDensityParameter()"></i>
@@ -735,6 +588,18 @@
 }
 
 #wind_speed_widget {
+    display: block !important;
+}
+#distance_to_shore_widget {
+    display: block !important;
+}
+#depth_widget {
+    display: block !important;
+}
+#distance_to_awc_widget {
+    display: block !important;
+}
+#distance_to_shipping_widget {
     display: block !important;
 }
 
