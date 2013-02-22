@@ -102,7 +102,7 @@
         }
               
         // WIND SPEED UPDATED
-        
+        /*
         $('#wind_speed_widget').on('show', function() {
             var value = $('#id_input_avg_wind_speed')[0].value;
             $('#id_input_parameter_wind_speed').attr('checked', 'checked');
@@ -131,13 +131,14 @@
                 $('#wind_speed_widget').fadeOut('slow', function() {});
             }
         });
+        */
         //Update Leaseblocks
         //slide ensures that leaseblocks are updated when the slider is adjusted
         //slidechange ensures that leaseblocks are updated when the text area is modified
         $('#slider-input_avg_wind_speed').bind( "slide slidechange", function(event, ui) {
             //var $left_side = $(event.target).find('.ui-slider-range');
             if (app.viewModel.scenarios.scenarioFormModel) {
-                change_wind_message(ui.value);
+                app.viewModel.scenarios.scenarioFormModel.change_wind_message(ui.value);
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
                 updateRemaininLeaseBlocks();
             }
@@ -323,54 +324,6 @@
         });
         
                 
-        function change_wind_message(value) {
-            var $text = $('#wind_speed_text'),
-                $label = $text.closest('.label');
-                $label.css('color', 'black');
-            if (value < 7.0) {
-                $text.html('Fair');
-                $label.css('background', "#38a800");
-            } else if (value < 7.25) {
-                $text.html('Good');
-                $label.css('background', "#6fc400");
-            } else if (value < 7.5) {
-                $text.html('Good');
-                $label.css('background', "#8bd100");
-            } else if (value < 7.75) {
-                $text.html('Excellent');
-                $label.css('background', "#b0e000");
-            } else if (value < 8.0) {
-                $text.html('Excellent');
-                $label.css('background', "#e3f23b");
-            } else if (value < 8.25) {
-                $text.html('Outstanding');
-                $label.css('background', "#ffff78");
-            } else if (value < 8.5) {
-                $text.html('Outstanding');
-                $label.css('background', "#fff566");
-            } else if (value < 8.75) {
-                $text.html('Outstanding');
-                $label.css('background', "#f2db44");
-            } else if (value < 9.0) {
-                $text.html('Superb');
-                $label.css('background', "#fab525");
-            } else if (value < 9.25) {
-                $text.html('Superb');
-                $label.css('background', "#ffa600");
-            } else if (value < 9.5) {
-                $text.html('Superb');
-                $label.css('background', "#ff9400");
-            } else {
-                $text.html('Superb');
-                $label.css('background', "#ff7300");
-            }
-            //Poor       < 12.5      (< 5.6)     ffff00
-            //Fair       14.3-15.7   (6.4-7.0)   ff0000
-            //Good       15.7-16.8   (7.0-7.5)   ff0077
-            //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
-            //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
-            //Superb     > 19.7      (> 8.8)     0000ff
-        }
         
         
         $('#button_prev').click( function() { wizard('prev'); });
@@ -467,15 +420,15 @@
         <ul class="parameters">
         <li>
             <div class="accordion" id="wind-speed-accordion">
-                <div class="accordion-heading">
-                    <label class="accordion-toggle" data-toggle="collapse" data-parent="wind-speed-accordion" href="#wind_speed_widget">
+                <div class="accordion-heading" data-bind="click: toggleWindSpeedWidget">
+                    <label class="accordion-toggle">
                         {{ form.input_parameter_wind_speed }} 
                         <i class="check icon-large icon-check" data-bind="visible: windSpeedParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
                         <span class="parameter-label" style="margin-left: 5px">Wind Speed </span>
                     </label>
                 </div>
-                <div id="wind_speed_widget" class="inputfield accordion-body collapse">
+                <div id="wind_speed_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': windSpeedParameter()}">
                     <div class="accordion-inner">
                         <div>
                             Potential:  
@@ -488,12 +441,6 @@
                             {{ form.input_avg_wind_speed }} 
                             {{ form.input_avg_wind_speed.errors }}   
                         </div> 
-                        <!--<div style="margin-top: 10px">
-                            <label id="wind-speed-layer-toggle" data-bind="click: toggleWindSpeedLayer">
-                                <input id="wind-speed-layer-checkbox" data-bind="checked: windSpeedLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                                Show Wind Speed Data</input>
-                            </label>
-                        </div>-->
                         <div class="btn-group btn-group-layer show-layer-btn-group">
                             <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleWindSpeedDescription, css: { 'active': windSpeedLayer.infoActive() }">
                                 <i class="icon-info-sign icon-large"></i>
@@ -785,6 +732,10 @@
 }
 #id_input_filter_ais_density {
     display: none;
+}
+
+#wind_speed_widget {
+    display: block !important;
 }
 
 

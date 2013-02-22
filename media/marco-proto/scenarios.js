@@ -123,6 +123,77 @@ function scenarioFormModel(options) {
     self.distanceToShippingParameter = ko.observable(false);
     self.shipTrafficDensityParameter = ko.observable(false);
     
+    self.toggleWindSpeedWidget = function() {
+        if ( self.windSpeedParameter() ) {
+            self.windSpeedParameter(false);
+            $('#id_input_parameter_wind_speed').removeAttr('checked');
+            self.removeFilter('wind');
+            self.updateDesignScrollBar();
+            //Update Remaining Leaseblocks 
+            self.updateLeaseblocksLeft();
+            self.updateRemainingBlocks();
+        } else {
+            var value = $('#id_input_avg_wind_speed')[0].value;
+            $('#id_input_parameter_wind_speed').attr('checked', 'checked');
+            self.windSpeedParameter(true);
+            self.change_wind_message(value);
+            self.updateFilters({'key': 'wind', 'value': value});
+            self.updateDesignScrollBar();
+            //Update Remaining Leaseblocks 
+            self.updateLeaseblocksLeft();
+            self.updateRemainingBlocks();
+        }
+        //update scroll bar?
+    };
+    
+    self.change_wind_message = function(value) {
+        var $text = $('#wind_speed_text'),
+            $label = $text.closest('.label');
+            $label.css('color', 'black');
+        if (value < 7.0) {
+            $text.html('Fair');
+            $label.css('background', "#38a800");
+        } else if (value < 7.25) {
+            $text.html('Good');
+            $label.css('background', "#6fc400");
+        } else if (value < 7.5) {
+            $text.html('Good');
+            $label.css('background', "#8bd100");
+        } else if (value < 7.75) {
+            $text.html('Excellent');
+            $label.css('background', "#b0e000");
+        } else if (value < 8.0) {
+            $text.html('Excellent');
+            $label.css('background', "#e3f23b");
+        } else if (value < 8.25) {
+            $text.html('Outstanding');
+            $label.css('background', "#ffff78");
+        } else if (value < 8.5) {
+            $text.html('Outstanding');
+            $label.css('background', "#fff566");
+        } else if (value < 8.75) {
+            $text.html('Outstanding');
+            $label.css('background', "#f2db44");
+        } else if (value < 9.0) {
+            $text.html('Superb');
+            $label.css('background', "#fab525");
+        } else if (value < 9.25) {
+            $text.html('Superb');
+            $label.css('background', "#ffa600");
+        } else if (value < 9.5) {
+            $text.html('Superb');
+            $label.css('background', "#ff9400");
+        } else {
+            $text.html('Superb');
+            $label.css('background', "#ff7300");
+        }
+        //Poor       < 12.5      (< 5.6)     ffff00
+        //Fair       14.3-15.7   (6.4-7.0)   ff0000
+        //Good       15.7-16.8   (7.0-7.5)   ff0077
+        //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
+        //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
+        //Superb     > 19.7      (> 8.8)     0000ff
+    }
     
     self.filters = {};
     
