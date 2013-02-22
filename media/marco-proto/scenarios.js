@@ -127,11 +127,13 @@ function scenarioFormModel(options) {
         if ( self.windSpeedParameter() ) {
             self.windSpeedParameter(false);
             $('#id_input_parameter_wind_speed').removeAttr('checked');
+            $('#wind_speed_widget').css('display', 'none');
         } else {
             var value = $('#id_input_avg_wind_speed')[0].value;
             $('#id_input_parameter_wind_speed').attr('checked', 'checked');
             self.windSpeedParameter(true);
             self.change_wind_message(value);
+            $('#wind_speed_widget').css('display', 'block');
         }
         //update scrollbar
         self.updateDesignScrollBar();
@@ -144,11 +146,13 @@ function scenarioFormModel(options) {
         if ( self.distanceToShoreParameter() ) {
             self.distanceToShoreParameter(false);
             $('#id_input_parameter_distance_to_shore').removeAttr('checked');
+            $('#distance_to_shore_widget').css('display', 'none');
         } else {
             var minValue = $('#id_input_min_distance_to_shore')[0].value,
                 maxValue = $('#id_input_max_distance_to_shore')[0].value;
-            self.distanceToShoreParameter(true);
             $('#id_input_parameter_distance_to_shore').attr('checked', 'checked');
+            self.distanceToShoreParameter(true);
+            $('#distance_to_shore_widget').css('display', 'block');
         }
         //update scrollbar
         self.updateDesignScrollBar();
@@ -161,11 +165,13 @@ function scenarioFormModel(options) {
         if ( self.depthRangeParameter() ) {
             self.depthRangeParameter(false);
             $('#id_input_parameter_depth').removeAttr('checked');
+            $('#depth_widget').css('display', 'none');
         } else {
             var minValue = $('#id_input_min_depth')[0].value,
                 maxValue = $('#id_input_max_depth')[0].value;
-            self.depthRangeParameter(true);
             $('#id_input_parameter_depth').attr('checked', 'checked');
+            self.depthRangeParameter(true);
+            $('#depth_widget').css('display', 'block');
         }
         //update scrollbar
         self.updateDesignScrollBar();
@@ -176,12 +182,14 @@ function scenarioFormModel(options) {
     
     self.toggleAWCWidget = function() {
         if ( self.distanceToAWCParameter() ) {
-            self.distanceToAWCParameter(false);
             $('#id_input_parameter_distance_to_awc').removeAttr('checked');
+            self.distanceToAWCParameter(false);
+            $('#distance_to_awc_widget').css('display', 'none');
         } else {
             var value = $('#id_input_distance_to_awc')[0].value;
-            self.distanceToAWCParameter(true);
             $('#id_input_parameter_distance_to_awc').attr('checked', 'checked');
+            self.distanceToAWCParameter(true);
+            $('#distance_to_awc_widget').css('display', 'block');
         }
         //update scrollbar
         self.updateDesignScrollBar();
@@ -192,12 +200,14 @@ function scenarioFormModel(options) {
     
     self.toggleShippingLanesWidget = function() {
         if ( self.distanceToShippingParameter() ) {
-            self.distanceToShippingParameter(false);
             $('#id_input_filter_distance_to_shipping').removeAttr('checked');
+            self.distanceToShippingParameter(false);
+            $('#distance_to_shipping_widget').css('display', 'none');
         } else {
             var value = $('#id_input_distance_to_shipping')[0].value;
-            self.distanceToShippingParameter(true);
             $('#id_input_filter_distance_to_shipping').attr('checked', 'checked');
+            self.distanceToShippingParameter(true);
+            $('#distance_to_shipping_widget').css('display', 'block');
         }
         //update scrollbar
         self.updateDesignScrollBar();
