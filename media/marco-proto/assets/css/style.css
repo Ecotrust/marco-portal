@@ -596,7 +596,7 @@ a.disabled-link:hover {
   overflow-x: visible;
 }
 */
-.accordion-inner {
+#myTabContent .accordion-inner {
   /*overflow: visible;*/
   background: white;
 }

@@ -134,7 +134,7 @@
             <div> 
                 <input id="iframe-html" type="text" style="width: 96%" data-bind="attr: {value: getIFrameHTML()}"> 
             </div> 
-            <div style="margin-top: -4px"> 
+            <div style="margin-top: -4px" data-bind="visible: app.viewModel.modernBrowser"> 
                 <a href="#" data-bind="click: openIFrameExample"> 
                     Customize and preview embedded map 
                 </a> 

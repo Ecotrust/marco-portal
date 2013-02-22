@@ -63,7 +63,7 @@
             <div> 
                 <input id="bookmark-iframe-html" type="text" style="width: 96%" data-bind="attr: {value: getBookmarkIFrameHTML}"> 
             </div> 
-            <div style="margin-top: -4px"> 
+            <div style="margin-top: -4px" data-bind="visible: app.viewModel.modernBrowser"> 
                 <a href="#" data-bind="click: openBookmarkIFrameExample"> 
                     Customize and preview embedded map 
                 </a> 
