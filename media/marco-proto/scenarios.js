@@ -867,6 +867,20 @@ function scenarioModel(options) {
     self.attributes = [];
     self.scenarioAttributes = options.attributes ? options.attributes.attributes : [];
     
+    self.showingLayerAttribution = ko.observable(true);
+    self.toggleLayerAttribution = function() {
+        var layerID = '#' + app.viewModel.convertToSlug(self.name);
+        if ( self.showingLayerAttribution() ) {
+            self.showingLayerAttribution(false);
+            $(layerID).css('display', 'none');
+        } else {
+            self.showingLayerAttribution(true);
+            $(layerID).css('display', 'block');
+        }
+        //update scrollbar
+        app.viewModel.updateAggregatedAttributesOverlayScrollbar();
+    };
+    
     //self.overview = self.description || 'no description was provided';
     self.constructInfoText = function() {
         var attrs = self.scenarioAttributes;

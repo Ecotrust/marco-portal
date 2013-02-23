@@ -432,6 +432,20 @@ function layerModel(options, parent) {
         return app.viewModel.activeLayers.indexOf(layer) === app.viewModel.activeLayers().length - 1;
     };
     
+    self.showingLayerAttribution = ko.observable(true);
+    self.toggleLayerAttribution = function() {
+        var layerID = '#' + app.viewModel.convertToSlug(self.name);
+        if ( self.showingLayerAttribution() ) {
+            self.showingLayerAttribution(false);
+            $(layerID).css('display', 'none');
+        } else {
+            self.showingLayerAttribution(true);
+            $(layerID).css('display', 'block');
+        }
+        //update scrollbar
+        app.viewModel.updateAggregatedAttributesOverlayScrollbar();
+    };
+    
     self.toggleSublayerDescription = function(layer) {
         if ( ! self.infoActive() ) {
             self.showSublayerDescription(self);
