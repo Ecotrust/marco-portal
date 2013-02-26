@@ -76,8 +76,12 @@ function layerModel(options, parent) {
             self.layer.styleMap.styles['default'].defaultStyle.strokeOpacity = newOpacity;
             self.layer.styleMap.styles['default'].defaultStyle.graphicOpacity = newOpacity;
             //fill is currently turned off for many of the vector layers
-            //the following line has the effect of overriding the zeroed out fill opacity (which we don't want)
-            //self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newOpacity;
+            //the following should not override the zeroed out fill opacity 
+            //however we do still need to account for shipping lanes (in which styling is handled via lookup)
+            if (self.fillOpacity > 0) {
+                var newFillOpacity = self.fillOpacity - (self.defaultOpacity - newOpacity);
+                self.layer.styleMap.styles['default'].defaultStyle.fillOpacity = newFillOpacity;
+            }
             self.layer.redraw();
         } else {
             self.layer.setOpacity(newOpacity);
