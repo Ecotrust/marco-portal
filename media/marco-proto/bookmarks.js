@@ -170,18 +170,25 @@ function bookmarksModel(options) {
     };
     
     self.getBookmarkIFrameHTML = function() {
-        var urlOrigin = window.location.origin,
+        var bookmarkState = self.sharingBookmark().state;
+        $('#bookmark-iframe-html')[0].value = app.viewModel.mapLinks.getIFrameHTML(bookmarkState);
+        
+        /*var urlOrigin = window.location.origin,
             urlHash = $.param(self.sharingBookmark().state);
+        
         if ( !urlOrigin ) {
             urlOrigin = 'http://' + window.location.host;
         }
         var embedURL = urlOrigin + '/embed/map/#' + urlHash
         $('#bookmark-iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ' +
                                      'src="' + embedURL + '">' + '</iframe>' + '<br />';
+        */
     };
     
     self.openBookmarkIFrameExample = function() {
-        var windowName = "new Map Window",
+        app.viewModel.mapLinks.openIFrameExample('bookmark');
+        
+        /*var windowName = "newMapWindow",
             windowSize = "width=650, height=550",
             mapWindow = window.open('', windowName, windowSize);
         var urlOrigin = window.location.origin;
@@ -189,9 +196,9 @@ function bookmarksModel(options) {
             urlOrigin = 'http://' + window.location.host;
         }
         var header = '<header role="banner"><div class="navbar navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><div class="row-fluid"><div class="span12"><a href="/visualize"><img src="'+urlOrigin+'/media/marco/img/marco-logo_planner.jpg"/></a><h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3></div></div></div></div></div></header>';
-        mapWindow.document.write('<html><body>' + header + $('#bookmark-iframe-html')[0].value + '</body></html');
+        mapWindow.document.write('<html><body>' + header + $('#bookmark-iframe-html')[0].value + '</body></html>');
         mapWindow.document.close();
-        
+        */
     };
     
     self.removeBookmark = function(bookmark) {

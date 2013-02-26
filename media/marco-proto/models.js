@@ -641,27 +641,38 @@ function mapLinksModel() {
         return urlOrigin + '/visualize/' + urlHash;
     };
     
-    self.getIFrameHTML = function() {
-        var urlOrigin = window.location.origin,
-            urlHash = window.location.hash;
+    self.getIFrameHTML = function(bookmarkState) {
+        var urlOrigin = window.location.origin;
+        if ( !bookmarkState) {
+            var urlHash = window.location.hash;
+        } else {
+            var urlHash = '#'+$.param(bookmarkState);
+        }
         if ( !urlOrigin ) {
             urlOrigin = 'http://' + window.location.host;
         }
         var embedURL = urlOrigin + '/embed/map/' + urlHash;
-        $('#iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ' +
+        return '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"' +
                                      'src="' + embedURL + '">' + '</iframe>' + '<br />';
+        //$('#iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"' +
+        //                             'src="' + embedURL + '">' + '</iframe>' + '<br />';
     };
     
-    self.openIFrameExample = function() {
-        var windowName = "new Map Window",
+    self.openIFrameExample = function(info) {
+        var windowName = "newMapWindow",
             windowSize = "width=650, height=550";
             mapWindow = window.open('', windowName, windowSize);
         var urlOrigin = window.location.origin;
         if ( !urlOrigin ) {
             urlOrigin = 'http://' + window.location.host;
         }
-        var header = '<header role="banner"><div class="navbar navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><div class="row-fluid"><div class="span12"><a href="/visualize"><img src="'+urlOrigin+'/media/marco/img/marco-logo_planner.jpg"/></a><h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3></div></div></div></div></div></header>';
-        mapWindow.document.write('<html><body>' + header + $('#iframe-html')[0].value + '</body></html');
+        var header = '<a href="/visualize"><img src="'+urlOrigin+'/media/marco/img/marco-logo_planner.jpg" style="border: 0px;"/></a>';
+        if (info === 'bookmark') {
+            var iframeID = '#bookmark-iframe-html';
+        } else {
+            var iframeID = '#iframe-html';
+        }
+        mapWindow.document.write('<html><body>' + header + $(iframeID)[0].value + '</body></html>');
         mapWindow.document.close();
         
     };
