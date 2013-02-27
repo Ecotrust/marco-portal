@@ -69,6 +69,7 @@
 
 #aggregated-attribute-overlay .accordion-toggle {
   padding: 0px;
+  text-decoration: none;
 }
 
 #aggregated-attribute-overlay .accordion-inner {
