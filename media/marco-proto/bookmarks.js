@@ -142,7 +142,7 @@ function bookmarksModel(options) {
         self.sharingBookmark(bookmark);
         self.shrinkBookmarkURL(false);
         $('#short-url').text = self.getCurrentBookmarkURL();
-        $('#iframe-html').text = self.getBookmarkIFrameHTML();
+        self.setBookmarkIFrameHTML();
     };
     
     self.useLongBookmarkURL = function() {
@@ -169,7 +169,7 @@ function bookmarksModel(options) {
         );
     };
     
-    self.getBookmarkIFrameHTML = function() {
+    self.setBookmarkIFrameHTML = function() {
         var bookmarkState = self.sharingBookmark().state;
         $('#bookmark-iframe-html')[0].value = app.viewModel.mapLinks.getIFrameHTML(bookmarkState);
         

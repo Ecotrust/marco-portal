@@ -645,17 +645,26 @@ function mapLinksModel() {
         return urlOrigin + '/visualize/' + urlHash;
     };
     
+    self.setIFrameHTML = function() {
+        $('#iframe-html')[0].value = self.getIFrameHTML();
+    };
+    
     self.getIFrameHTML = function(bookmarkState) {
-        var urlOrigin = window.location.origin;
-        if ( !bookmarkState) {
-            var urlHash = window.location.hash;
-        } else {
-            var urlHash = '#'+$.param(bookmarkState);
+        var urlOrigin = window.location.origin,
+            urlHash = window.location.hash;
+        //console.log(urlOrigin);
+        //console.log(urlHash);
+        //console.log(app.viewModel.currentURL());
+        //app.updateURL();
+        //urlHash = app.viewModel.currentURL().replace('visualize/', '')
+        if ( bookmarkState ) {
+            urlHash = '#'+$.param(bookmarkState);
         }
         if ( !urlOrigin ) {
             urlOrigin = 'http://' + window.location.host;
         }
         var embedURL = urlOrigin + '/embed/map/' + urlHash;
+        //console.log(embedURL);
         return '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"' +
                                      'src="' + embedURL + '">' + '</iframe>' + '<br />';
         //$('#iframe-html')[0].value = '<iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"' +
@@ -1203,7 +1212,7 @@ function viewModel() {
     self.resetMapLinks = function() {
         self.mapLinks.shrinkURL(false);
         $('#short-url').text = self.mapLinks.getURL();
-        $('#iframe-html').text = self.mapLinks.getIFrameHTML();
+        self.mapLinks.setIFrameHTML();
     };
     
     self.selectedLayer = ko.observable();
