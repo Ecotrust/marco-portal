@@ -411,6 +411,9 @@
                                                                 <div class="accordion-inner">
                                                                     <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
                                                                         <dt>
+                                                                            <!-- ko if: $data.hasOwnProperty("tab") --> 
+                                                                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+                                                                            <!-- /ko -->
                                                                             <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
                                                                             <span style="font-weight: normal" data-bind="text: data"></span>
                                                                         </dt>

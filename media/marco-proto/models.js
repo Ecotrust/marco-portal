@@ -1725,9 +1725,15 @@ function viewModel() {
         attrs = [];
         if ('BLOCK_LAB' in data) {
             attrs.push({'display': 'OCS Block Number', 'data': data['BLOCK_LAB']});
+        } else if ('PROT_NUMB' in data) {
+            var blockLab = data['PROT_NUMB'].substring(data['PROT_NUMB'].indexOf('_')+1);
+            attrs.push({'display': 'OCS Block Number', 'data': blockLab});
         }
         if ('PROT_NUMBE' in data) {
             attrs.push({'display': 'Protraction Number', 'data': data['PROT_NUMBE']});
+        }else if ('PROT_NUMB' in data) {
+            var protNumbe = data['PROT_NUMB'].substring(0,data['PROT_NUMB'].indexOf('_'));
+            attrs.push({'display': 'Protraction Number', 'data': protNumbe});
         }
         if ('PROT_NUMB' in data) {
             if (self.scenarios && 
@@ -1745,6 +1751,7 @@ function viewModel() {
                 }
             }
         }
+        //Wind Speed
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
             if ( data['WINDREV_MI'] ) {                
                 var min_speed = data['WINDREV_MI'].toFixed(3),
@@ -1759,12 +1766,14 @@ function viewModel() {
                 }*/
                 attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_range + ' to ' + max_range + ' m/s'});
             } else {
-                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'no data'});
+                attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'Unknown'});
             }
         }
+        //Distance to Shore
         if ('MI_MIN' in data && 'MI_MAX' in data) {
             attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
         }
+        //Depth Range
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
             if ( data['DEPTHM_MIN'] ) {
                 //convert depth values to positive feet values (from negative meter values)
@@ -1772,15 +1781,18 @@ function viewModel() {
                     min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
             } else {
-                attrs.push({'display': 'Depth Range', 'data': 'no data'});
+                attrs.push({'display': 'Depth Range', 'data': 'Unknown'});
             }
         }
+        //Distance to AWC Hubs
         if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
             attrs.push({'display': 'Distance to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0) + ' miles'});
         }
+        //Distance to Shipping Lanes
         if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
             attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
         }
+        //Traffic Density (High/Low)
         if ('AIS7_MEAN' in data) {
             if ( data['AIS7_MEAN'] < 1 ) {
                 var rank = 'Low';
@@ -1789,11 +1801,108 @@ function viewModel() {
             }
             attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
         }
-        if ('WEA_NAME' in data) {
+        
+        //Coral Count
+        var coralCount = 0,
+            laceCount = 0,
+            blackCount = 0,
+            softCount = 0,
+            gorgoCount = 0,
+            hardCount = 0;
+        if ('FREQ_LACE' in data) {
+            laceCount = data['FREQ_LACE'];
+            coralCount += laceCount;
+        }
+        if ('FREQ_BLACK' in data) {
+            blackCount = data['FREQ_BLACK'];
+            coralCount += blackCount;
+        }
+        if ('FREQ_SOFT' in data) {
+            softCount = data['FREQ_SOFT'];
+            coralCount += softCount;
+        }
+        if ('FREQ_GORGO' in data) {
+            gorgoCount = data['FREQ_GORGO'];
+            coralCount += gorgoCount;
+        }
+        if ('FREQ_HARD' in data) {
+            hardCount = data['FREQ_HARD'];  
+            coralCount += hardCount;  
+        }
+        if (coralCount > 0) {
+            attrs.push({'display': 'Corals Identified', 'data': coralCount});
+            if (laceCount > 0) {
+                attrs.push({'tab': true, 'display': 'Lace Corals (' + laceCount + ')', 'data': ''});
+            }
+            if (blackCount > 0) {
+                attrs.push({'tab': true, 'display': 'Black/Thorny Corals (' + blackCount + ')', 'data': ''});
+            }
+            if (softCount > 0) {
+                attrs.push({'tab': true, 'display': 'Soft Corals (' + softCount + ')', 'data': ''});
+            }
+            if (gorgoCount > 0) {
+                attrs.push({'tab': true, 'display': 'Gorgonian Corals (' + gorgoCount + ')', 'data': ''});
+            }
+            if (hardCount > 0) {
+                attrs.push({'tab': true, 'display': 'Hard Corals (' + hardCount + ')', 'data': ''});
+            }
+        }
+        if ('FREQ_PENS' in data && data['FREQ_PENS'] > 0) {
+            var seaPenCount = data['FREQ_PENS'];
+            attrs.push({'display': 'Sea Pens Identified', 'data': seaPenCount});
+        }
+        
+        //Seabed Form
+        if ('PCT_TOTAL' in data) {
+            if (data['PCT_TOTAL'] < 99.9) {
+                attrs.push({'display': 'Seabed Form', 'data': 'Unknown'});
+            } else {
+                attrs.push({'display': 'Seabed Form', 'data': ''});
+                if ('PCTDEPRESS' in data && Math.round(data['PCTDEPRESS']) > 0) {
+                    attrs.push({'tab': true, 'display': 'Depression (' + Math.round(data['PCTDEPRESS']) + '%)', 'data': ''});
+                }
+                if ('PCTHIGHFLA' in data && Math.round(data['PCTHIGHFLA']) > 0) {
+                    attrs.push({'tab': true, 'display': 'High Flat (' + Math.round(data['PCTHIGHFLA']) + '%)', 'data': ''}); 
+                }
+                if ('PCTHIGHSLO' in data && Math.round(data['PCTHIGHSLO']) > 0) {
+                    attrs.push({'tab': true, 'display': 'High Slope (' + Math.round(data['PCTHIGHSLO']) + '%)', 'data': ''}); 
+                }
+                if ('PCTLOWSLOP' in data && Math.round(data['PCTLOWSLOP']) > 0) {
+                    attrs.push({'tab': true, 'display': 'Low Slope (' + Math.round(data['PCTLOWSLOP']) + '%)', 'data': ''});
+                }
+                if ('PCTMIDFLAT' in data && Math.round(data['PCTMIDFLAT']) > 0) {
+                    attrs.push({'tab': true, 'display': 'Mid Flat (' + Math.round(data['PCTMIDFLAT']) + '%)', 'data': ''});
+                }
+                if ('PCTSIDESLO' in data && Math.round(data['PCTSIDESLO']) > 0) {
+                    attrs.push({'tab': true, 'display': 'Side Slope (' + Math.round(data['PCTSIDESLO']) + '%)', 'data': ''}); 
+                }
+                if ('PCTSTEEP' in data && Math.round(data['PCTSTEEP']) > 0) {
+                    attrs.push({'tab': true, 'display': 'Steep (' + Math.round(data['PCTSTEEP']) + '%)', 'data': ''});
+                }
+            }
+        }
+        
+        //Distance to Discharge Point Locations
+        if ('DISCHMEAN' in data) {
+            attrs.push({'display': 'Avg Distance to Offshore Discharge', 'data': data['DISCHMEAN'].toFixed(1) + ' miles'});
+        }
+        if ('DFLOWMEAN' in data) {
+            attrs.push({'display': 'Avg Distance to Flow-Only Offshore Discharge', 'data': data['DFLOWMEAN'].toFixed(1) + ' miles'});
+        }
+        
+        //Dredge Disposal Locations
+        if ('DREDGE_LOC' in data) {
+            if (data['DREDGE_LOC'] === 1) {
+                attrs.push({'display': 'Contains a Dredge Disposal Location', 'data': ''});
+            }
+        }
+        
+        //Wind Planning Areas
+        /*if ('WEA_NAME' in data) {
             if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {
                 attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
             }
-        }
+        }*/
         return attrs;
     };
             
