@@ -133,7 +133,7 @@ class Scenario(Analysis):
         '''
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
-            result = result.filter(majority_substrate__in=input_substrate)
+            result = result.filter(majority_seabed__in=input_substrate)
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
@@ -381,7 +381,7 @@ class Scenario(Analysis):
                     </Placemark>
                     """ % ( self.model_uid(), self.name, leaseblock.prot_numb,                             
                             leaseblock.depth_range_output, 
-                            leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
+                            leaseblock.majority_seabed, #LeaseBlock Update: might change back to leaseblock.substrate
                             leaseblock.majority_sediment, #TODO: might change sediment to a more user friendly output
                             leaseblock.wea_label,
                             leaseblock.wea_state_name,
@@ -496,8 +496,8 @@ class LeaseBlock(models.Model):
     max_wind_speed = models.FloatField()
     majority_sediment = models.CharField(max_length=35, null=True, blank=True)  #LeaseBlock Update: might change back to IntegerField 
     variety_sediment = models.IntegerField()
-    majority_substrate = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
-    variety_substrate = models.IntegerField()
+    majority_seabed = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
+    variety_seabed = models.IntegerField(null=True, blank=True)
     min_distance = models.FloatField(null=True, blank=True)
     max_distance = models.FloatField(null=True, blank=True)
     avg_distance = models.FloatField(null=True, blank=True)
@@ -514,14 +514,42 @@ class LeaseBlock(models.Model):
     tsz_min_distance = models.FloatField(null=True, blank=True)
     tsz_max_distance = models.FloatField(null=True, blank=True)
     tsz_mean_distance = models.FloatField(null=True, blank=True)
+    lace_coral_count = models.IntegerField(null=True, blank=True)
+    lace_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    black_coral_count = models.IntegerField(null=True, blank=True)
+    black_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    soft_coral_count = models.IntegerField(null=True, blank=True)
+    soft_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    gorgo_coral_count = models.IntegerField(null=True, blank=True)
+    gorgo_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    sea_pen_count = models.IntegerField(null=True, blank=True)
+    sea_pen_name = models.CharField(max_length=50, null=True, blank=True)
+    hard_coral_count = models.IntegerField(null=True, blank=True)
+    hard_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    seabed_depression = models.FloatField(null=True, blank=True)
+    seabed_low_slope = models.FloatField(null=True, blank=True)
+    seabed_steep = models.FloatField(null=True, blank=True)
+    seabed_mid_flat = models.FloatField(null=True, blank=True)
+    seabed_side_slow = models.FloatField(null=True, blank=True)
+    seabed_high_flat = models.FloatField(null=True, blank=True)
+    seabed_high_slope = models.FloatField(null=True, blank=True)
+    seabed_total = models.FloatField(null=True, blank=True)
+    discharge_min_distance = models.FloatField(null=True, blank=True)
+    discharge_max_distance = models.FloatField(null=True, blank=True)
+    discharge_mean_distance = models.FloatField(null=True, blank=True)
+    discharge_flow_min_distance = models.FloatField(null=True, blank=True)
+    discharge_flow_max_distance = models.FloatField(null=True, blank=True)
+    discharge_flow_mean_distance = models.FloatField(null=True, blank=True)
+    dredge_site = models.IntegerField(null=True, blank=True)
+    wpa = models.IntegerField(null=True, blank=True)
     geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
-    geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
+    #geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
     objects = models.GeoManager()   
 
     @property
     def substrate(self):
         try:
-            return Substrate.objects.get(substrate_id=self.majority_substrate).substrate_name
+            return Substrate.objects.get(substrate_id=self.majority_seabed).substrate_name
         except:
             return 'Unknown'
         
