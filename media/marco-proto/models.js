@@ -685,7 +685,7 @@ function mapLinksModel() {
         } else {
             var iframeID = '#iframe-html';
         }
-        mapWindow.document.write('<html><body>' + header + $(iframeID)[0].value + '</body></html>');
+        mapWindow.document.write('<html><body>' + header + '<div class="pull-left">' + $(iframeID)[0].value + '</div>' + '</body></html>');
         mapWindow.document.close();
         
     };
