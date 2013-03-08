@@ -623,12 +623,18 @@ a.disabled-link:hover {
   margin-bottom: 10px;
 }
 
-#create-new-design .dropdown-toggle {
+#create-new-button {
   background: rgba(45, 137, 152, .9);
 }
 
 #create-new-design .dropdown-menu {
   margin-top: -10px;
+}
+
+#create-new-design .dropdown-submenu .dropdown-menu {
+  top: 4px;
+  border-radius: 4px;
+  left: 183px;
 }
 
 #design-list .btn-layer {

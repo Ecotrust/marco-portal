@@ -19,17 +19,25 @@
     </div>
     
     <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
-        <div id="designs-data" data-bind="visible: ! scenarioForm() && ! selectionForm() && !reportsVisible()">
+        <div id="designs-data" data-bind="visible: !scenarioForm() && !selectionForm() && !reportsVisible() && !drawingForm()">
             <div class="row-fluid">
                 <div class="span12">
                     <div id="create-new-design" class="btn-group" style="padding-bottom: 10px;">
-                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a id="create-new-button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                             Create New
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a data-bind="click: createWindScenario">Wind Energy Siting</a></li>
                             <li><a data-bind="click: createSelectionDesign">Lease Block Collection</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sketch of the Sea</a>
+                                <ul class="dropdown-menu">
+                                    <li><a data-bind="click: createPointDesign">Point</a></li>
+                                    <li><a data-bind="click: createLineDesign">Line</a></li>
+                                    <li><a data-bind="click: createPolygonDesign">Polygon</a></li>
+                                </ul>                                
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -87,7 +95,8 @@
                                                         <li><a data-bind="visible: ! shared(), click: editScenario">Edit</a></li>
                                                         <!--<li><a id="share-option" href="#share-modal" data-toggle="modal">Share</a></li>-->
                                                         <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
-                                                        <li class="divider" data-bind="visible: ! shared()"></li>
+                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
+                                                        <li class="divider"></li>
                                                         <li><a data-bind="visible: ! shared(), click: deleteScenario">Delete</a></li>
                                                         <li><a data-bind="visible: shared, click: createCopyScenario">Create Copy</a></li>
                                                     </ul>
@@ -99,6 +108,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- end wind sitings -->
                         
                         <!-- LEASE BLOCK COLLECTIONS -->
                         <div data-bind="visible: selectionList().length">
@@ -139,7 +149,8 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a data-bind="visible: ! shared(), click: editSelection">Edit</a></li>
                                                         <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
-                                                        <li class="divider" data-bind="visible: ! shared()"></li>
+                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
+                                                        <li class="divider"></li>
                                                         <li><a data-bind="visible: ! shared(), click: deleteSelection">Delete</a></li>
                                                         <li><a data-bind="visible: shared, click: createCopySelection">Create Copy</a></li>
                                                     </ul>
@@ -150,6 +161,55 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- end collections -->
+                        
+                        <!-- DRAWINGS -->
+                        <div data-bind="visible: drawingList().length">
+                            <div class="accordion-group">
+                                <div class="collections-header">
+                                    <div id="drawings-header" class="accordion-heading" data-bind="click: toggleDrawingsOpen, css: { 'active': isDrawingsOpen() }">
+                                        <div>
+                                            <a class="accordion-toggle"><span>Sketches of the Sea</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isDrawingsOpen() }">
+                                    <div class="accordion-inner">
+                                        <ul class="unstyled list" data-bind="foreach: drawingList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div style="font-weight: normal">
+                                                            <span data-bind="text: name"></span>
+                                                            <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                                <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            </span>
+                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editDrawing">Edit</a></li>
+                                                        <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
+                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteDrawing">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopyDrawing">Create Copy</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end drawings -->
                     </div>
                 </div>
             </div>   
@@ -161,6 +221,10 @@
         
         <div style="height: 100%" data-bind="visible: selectionForm">   
             <div id="selection-form" class="panel-container"></div>   
+        </div>
+        
+        <div style="height: 100%" data-bind="visible: drawingForm">   
+            <div id="drawing-form" class="panel-container"></div> 
         </div>
         
         <div style="height: 100%" data-bind="visible: reportsVisible">   

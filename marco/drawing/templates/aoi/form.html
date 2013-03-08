@@ -5,22 +5,21 @@
 
 <script type="text/javascript" charset="utf-8">
     madrona.onShow(function(){
-        madrona.setupForm($('#featureform'));
-        is_spatial = "{{is_spatial}}";
+        madrona.setupForm($('#polygon-design-form'));
         var max_step = 2;
         
-        if (is_spatial == "True") {
-            var step = 1;
-        } else {
-            var step = max_step;
-            $('#button_prev').hide();
-            $('#button_next').hide();
-        }
+        var step = 1;
         
         function validate(step) {
             return_value = true;
             if (step == 1) {
-            
+                if ( app.viewModel.scenarios.drawingFormModel.isDrawing()) {
+                    $('#double-click-instructions').effect("highlight", {}, 1000);
+                    return_value = false;
+                } else if ( ! app.viewModel.scenarios.drawingFormModel.hasShape() ) {
+                    $('#click-to-begin-drawing').effect("highlight", {}, 1000);
+                    return_value = false;
+                }
             } else if (step == max_step) {
             
             } 
@@ -31,6 +30,8 @@
             if (step == 1 && action == 'next') {
                 if (validate(step)) {
                     step += 1;
+                    app.viewModel.scenarios.drawingFormModel.completeEdit();
+                    $('#id_geometry_orig')[0].value = 'SRID=3857;' + new OpenLayers.Format.WKT().write(app.viewModel.scenarios.drawingFormModel.polygonLayer.features[0]);
                 }
             } else if (step > 1 && action == 'prev') {
                 step -= 1;
@@ -58,86 +59,102 @@
         
         $('#button_prev').click( function() { wizard('prev'); });
         $('#button_next').click( function() { wizard('next'); });
-        if (is_spatial == "True") {
-            {% if form.errors %}
+        step = 1;
+        {% if form.errors %}
             step = 2; // form errors exist
-            {% endif %}
-            wizard();
-        }
+        {% endif %}
+        wizard();
     });
 </script>
 
 {% if form.media %} {{ form.media }} {% endif %}
-<h1>
-    <img src="/media/marco/img/aoi.png"/>
-    <small>Area of Interest </small> 
-</h1>
+<h4>
+    Sketch of the Sea 
+</h4>
 
-{% if is_spatial %} 
+<form id="polygon-design-form" action="{{action}}" method="post"> 
+    {% for hidden in form.hidden_fields %}
+        <div style="display:none;">
+            {{ hidden.errors }}
+        </div>
+        {{ hidden }}
+    {% endfor %}
+    <div id="error_bar"></div>
 
-    <div class="step" id="step1" style="padding-bottom: 40px;">
+    <div id="step1" class="step" style="padding-bottom: 40px;">
         <p class="step-text"><i>Step 1 of 2 </i>
+        <div data-bind="visible: ! showEdit()">
+            <p id="click-to-begin-drawing" class="instructions">Click the button below to begin drawing your polygon.</p>
+            <a class="btn" style="margin-top: 10px" data-bind="click: startSketch, css: { disabled: isDrawing() }">
+                <span>Draw Shape</span>
+            </a>
+            <p id="double-click-instructions" class="instructions">
+                Click on the map to add the points that make up your polygon. 
+                Double-click to finish drawing.
+            </p>
+        </div>
+        <div data-bind="visible: showEdit()">
+            <p class="instructions">Click <b>Next</b> if you are satisfied with your shape.</p>
+            <p class="instructions">Click <b>Edit Shape</b> if you would like to make changes to your shape.</p>
+            <a class="btn" style="margin-top: 10px" data-bind="click: startEdit, css: { disabled: isEditing() }">
+                <span>Edit Shape</span>
+            </a>
+            <p class="instructions">
+                Click and drag the handles or vertices of the shape.                 
+            </p>
+            <p class="instructions">
+                When you are done, click <b>Done Editing</b> below.                 
+            </p>
+            <a class="btn" style="margin-top: 10px" data-bind="click: completeEdit">
+                <span>Done Editing</span>
+            </a>
+        </div>
         <div id="PanelGeometry"></div>
     </div>
      
     <div class="step" id="step2">
-        <p class="step-text"><i>Step 2 of 2 </i> 
-        <div id="PanelAttributes">
-            
-{% endif %}
-
-{% if form.is_multipart %}
-    <form id="featureform" enctype="multipart/form-data" action="{{action}}" method="post">
-        <input type='hidden' name='MAX_FILE_SIZE' value="10485760" /> <!-- 10 MB upload limit -->
-{% else %}
-    <form id="featureform" action="{{action}}" method="post"> 
-{% endif %}
-{% if json %}
-        <div style="display:none;" class="json">{{json}}</div>
-{% endif %}
-    <p class="instructions">Provide a name to identify your Area of Interest: </p>
-{% for field in form.visible_fields %}
-    <div class="field{% if field.field.required %} required{% endif %}">
-        {# Include the hidden fields in the form #}
-        {% if forloop.first %}
-            {% for hidden in form.hidden_fields %}
-            <div style="display:none;">
-                {{ hidden.errors }}
-                {{ hidden }}
+        <p class="step-text"><i>Step 2 of 2 </i></p>
+        <p class="instructions">Provide a <b>Name</b> to identify your Selection </p>
+        <div class="step3-inputs">
+            <div class="step3-param">
+                {{ form.name.errors }}
+                {{ form.name }}            
             </div>
-            {% endfor %}
-        {% endif %}
-
-        {{ field.label_tag }}
-        {{ field.errors }}
-        {% if field.help_text %}
-            <p class="help_text">
-                {{ field.help_text|safe }}            
-            </p>            
-        {% endif %}
-        {{ field }}            
-    </div>
-{% endfor %}
-<p><input type="submit" value="submit"></p>
-</form>
-
-{% if is_spatial %}
+            <p class="instructions">Optionally, you may add a <b>Description</b> <!--and/or attach a file--> </p>
+            <div class="step3-param">
+                {{ form.description.errors }}
+                {{ form.description }}            
+            </div>
         </div>
     </div>
-{% endif %}
+</form>
 
-        
+
 <div class="wizard_nav" style="width:100%">
-    <a href="#" class="button" style="float:left;" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
-    <a href="#" class="button" style="float:right;" onclick="this.blur(); return false;" id="button_next"><span>Next &gt;</span></a>
+    <div class="btn-group pull-right">
+        <a href="#" class="button btn" onclick="this.blur(); return false;" id="button_prev"><span>&lt; Previous</span></a>
+        <a href="#" class="button btn button-next"  onclick="this.blur(); return false;" id="button_next"><span>Next &gt;</span></a>
+        <a href="#" class="submit_button button btn" onclick="this.blur(); return false;"><span>Submit</span></a>
+    </div>
 </div>
 
 <div>
-    <a href="#" class="cancel_button button red" onclick="this.blur(); return false;"><span>Cancel</span></a>
-    <a href="#" class="submit_button button" onclick="this.blur(); return false;" id="button_submit"><span>Submit</span></a>
+    <div class="btn-group pull-left">
+        <a href="#" class="cancel_button button red btn"><span>Cancel</span></a>
+        
+    </div>
 </div>
-
+   
 <style type="text/css">
+
+#drawing-form .button-next {
+    border-radius: 4px;
+}
+
+#drawing-form textarea,
+#drawing-form input[name="name"] {
+    width: 90%;
+}
 
 div .field > label { font-size: 12px; display: inline; }
 div .step { 

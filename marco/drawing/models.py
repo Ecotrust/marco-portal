@@ -59,15 +59,26 @@ class AOI(PolygonFeature):
             </LineStyle>
         </Style>
         """ % (self.model_uid(), self.fill_color(), self.outline_color())
-
+     
+    @property
+    def area_in_sq_miles(self):
+        return sq_meters_to_sq_miles(self.geometry_final.area)
+        
+    @property
+    def serialize_attributes(self):
+        from general.utils import format
+        attributes = []
+        attributes.append({'area': 'Area', 'data': '%s sq miles' %format(self.area_in_sq_miles, 1)})
+        return { 'event': 'click', 'attributes': attributes }
+    
     @classmethod
     def fill_color(self):
         return '776BAEFD'      
     
     @classmethod
     def outline_color(self):
-        return '776BAEFD'          
-    
+        return '776BAEFD'       
+
     class Options:
         verbose_name = 'Area of Interest'
         icon_url = 'marco/img/aoi.png'
