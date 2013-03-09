@@ -727,6 +727,12 @@ function viewModel() {
         app.markers.clearMarkers();
     };
     
+    self.showFeatureAttribution = ko.observable(false);
+    
+    self.featureAttribution.subscribe( function() {
+        self.showFeatureAttribution( self.featureAttribution() && !($.isEmptyObject(self.aggregatedAttributes())) );
+    });
+    
     self.updateAttributeLayers = function() {
         var attributeLayersList = [];
         if (self.scenarios && self.scenarios.scenarioFormModel && self.scenarios.scenarioFormModel.isLeaseblockLayerVisible()) {
@@ -809,6 +815,7 @@ function viewModel() {
     self.aggregatedAttributesWidth = ko.observable('280px');
     self.aggregatedAttributes.subscribe( function() {
         self.updateAggregatedAttributesOverlayWidthAndScrollbar();
+        self.showFeatureAttribution( self.featureAttribution() && !($.isEmptyObject(self.aggregatedAttributes())) );
     });
     self.removeFromAggregatedAttributes = function(layerName) {
         delete app.viewModel.aggregatedAttributes()[layerName];
@@ -844,8 +851,7 @@ function viewModel() {
     
     self.updateMarker = function() {
         app.markers.clearMarkers();
-        if (app.marker && self.aggregatedAttributes() && self.featureAttribution()) {
-            //console.log('updating marker');
+        if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
         }
