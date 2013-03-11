@@ -173,58 +173,6 @@
         }
     },
     {
-        "pk": 6,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-73.18319085091335&location%5By%5D=38.706459372319244&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
-            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MMC_OCSBlocks.html",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Outer Continental Shelf lease blocks.",
-            "attribute_fields": [
-                59,
-                58,
-                96,
-                98,
-                97,
-                99
-            ],
-            "learn_more": "",
-            "data_overview": "Outer Continental Shelf Lease Blocks are used to assist in leasing on the Outer Continental Shelf. Blocks are numbered areas depicted on the OPDs or Leasing Maps. Most are of a uniform size according to the projection and type of map on which they are depicted, but many are of non-uniform size and shape due to their proximity to an adjacent map, projection zone, or boundary. Blocks should always be referred to with their parent protraction name or number since block numbers repeat from one protraction to the next.",
-            "slug_name": "ocs-lease-blocks",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Bureau of Ocean Energy Management",
-            "data_notes": "",
-            "name": "OCS Lease Blocks",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": "ID: "
-        }
-    },
-    {
         "pk": 22,
         "model": "data_manager.layer",
         "fields": {
@@ -463,55 +411,6 @@
         }
     },
     {
-        "pk": 14,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "catch/year (2000-2009)",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.55&location%5By%5D=39.16&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz",
-            "source": "http://www.nefsc.noaa.gov/ ",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/summer_flounder/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).",
-            "attribute_fields": [
-                110
-            ],
-            "learn_more": "",
-            "data_overview": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.",
-            "slug_name": "summer-flounder-landings",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "National Marine Fisheries Service",
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
-            "name": "Summer Flounder Landings",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 11,
         "model": "data_manager.layer",
         "fields": {
@@ -552,6 +451,55 @@
             "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
             "name": "All Gear Types",
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 14,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "catch/year (2000-2009)",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.55&location%5By%5D=39.16&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=14&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz",
+            "source": "http://www.nefsc.noaa.gov/ ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/summer_flounder/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data set represents fishing effort (days fished) and landings for one species (summer flounder) compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009).",
+            "attribute_fields": [
+                110
+            ],
+            "learn_more": "",
+            "data_overview": "Fishing effort (days fished) and landings compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.",
+            "slug_name": "summer-flounder-landings",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "name": "Summer Flounder Landings",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
@@ -659,6 +607,53 @@
         }
     },
     {
+        "pk": 74,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-74.40&y=39.21&z=6&dls%5B%5D=true&dls%5B%5D=0.7&dls%5B%5D=74&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&themes%5Bids%5D%5B%5D=4&tab=data&legends=false",
+            "vector_graphic": "",
+            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz",
+            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_SLA(3).aspx",
+            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-SLA.aspx",
+            "opacity": 0.7,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands.  In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "The Submerged Lands Act (SLA) boundary line (also known as State Seaward Boundary or Fed State Boundary) defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.",
+            "slug_name": "submerged-lands-act-boundary",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch",
+            "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are not an official record for the exact Submerged Lands Act Boundary.",
+            "name": "Submerged Lands Act Boundary",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                80
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 20,
         "model": "data_manager.layer",
         "fields": {
@@ -696,108 +691,12 @@
             "data_status": "Available",
             "vector_fill": null,
             "data_source": "The Nature Conservancy",
-            "data_notes": "These data were compiled from various state sources. In Delaware, Digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).",
+            "data_notes": "These data were compiled from various state sources. In Delaware, digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).",
             "name": "Artificial Reefs",
             "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 74,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-74.40&y=39.21&z=6&dls%5B%5D=true&dls%5B%5D=0.7&dls%5B%5D=74&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&themes%5Bids%5D%5B%5D=4&tab=data&legends=false",
-            "vector_graphic": "",
-            "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz",
-            "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_SLA(3).aspx",
-            "metadata": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL-SLA.aspx",
-            "opacity": 0.7,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands.  In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "The Submerged Lands Act (SLA) boundary line (also known as State Seaward Boundary or Fed State Boundary) defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.",
-            "slug_name": "submerged-lands-act-boundary",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch",
-            "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.",
-            "name": "Submerged Lands Act Boundary",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                80
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 72,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=72&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                74
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "other-gear",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Other Gear",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherGear/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
             "attribute_title": ""
         }
     },
@@ -1037,6 +936,55 @@
         }
     },
     {
+        "pk": 72,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=72&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                74
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "other-gear",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Other Gear",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherGear/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 83,
         "model": "data_manager.layer",
         "fields": {
@@ -1163,7 +1111,7 @@
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "",
+            "data_source": "National Marine Fisheries Service",
             "data_notes": "",
             "name": "Gill Nets",
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/${z}/${x}/${y}.png",
@@ -1203,7 +1151,7 @@
             "description": "This data set, obtained from the United States Navy, include point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.\r\n",
             "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "Sightings per unit effort aggregated to ten minute squares.",
+            "data_overview": "Sightings per unit effort aggregated to 10-minute squares.",
             "slug_name": "marine-mammals",
             "is_sublayer": false,
             "lookup_field": "",
@@ -1217,27 +1165,27 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
+                35,
+                36,
+                37,
+                38,
                 39,
-                48,
-                46,
-                51,
+                40,
+                41,
+                42,
+                43,
                 44,
                 45,
-                37,
-                43,
-                35,
-                50,
-                27,
-                40,
+                46,
                 47,
-                29,
-                28,
-                42,
+                48,
                 49,
-                41,
-                61,
-                36,
-                38
+                50,
+                51,
+                29,
+                27,
+                28,
+                61
             ],
             "attribute_title": ""
         }
@@ -1427,6 +1375,58 @@
         }
     },
     {
+        "pk": 6,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-73.18319085091335&location%5By%5D=38.706459372319244&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=6&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
+            "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MMC_OCSBlocks.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Outer Continental Shelf lease blocks.",
+            "attribute_fields": [
+                59,
+                58,
+                96,
+                98,
+                97,
+                99
+            ],
+            "learn_more": "",
+            "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary, known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS. They are not meant to depict areas offshore as pertaining to or controlled by any particular state.",
+            "slug_name": "ocs-lease-blocks",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Bureau of Ocean Energy Management",
+            "data_notes": "",
+            "name": "OCS Lease Blocks",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": "ID: "
+        }
+    },
+    {
         "pk": 79,
         "model": "data_manager.layer",
         "fields": {
@@ -1519,6 +1519,58 @@
         }
     },
     {
+        "pk": 65,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-74.19255957976071&location%5By%5D=38.8306639766425&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=65&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [
+                12,
+                11
+            ],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 1.0,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                32,
+                30,
+                31
+            ],
+            "learn_more": "",
+            "data_overview": "Routes and hubs planned for the Atlantic Wind Connection (AWC), a proposed undersea transmission cable system that would bring power generated by Mid-Atlantic offshore wind turbines to shore. The private-sector project would span approximately 350 miles from northern New Jersey to southern Virginia and would be built in phases over a 10-year period.",
+            "slug_name": "awc-routes-hubs",
+            "is_sublayer": false,
+            "lookup_field": "TYPE",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Atlantic Wind Connection",
+            "data_notes": "The Atlantic Wind Connection (AWC) is a proposed undersea transmission cable system that would bring power generated by Mid-Atlantic offshore wind turbines to shore. The private-sector project would span approximately 350 miles from northern New Jersey to southern Virginia and would be built in phases over a 10-year period.",
+            "name": "AWC Routes & Hubs",
+            "url": "/media/data_manager/geojson/AWCRoutesAndHubs.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 84,
         "model": "data_manager.layer",
         "fields": {
@@ -1553,7 +1605,7 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "",
+            "data_source": "Marine Cadastre",
             "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
             "name": "DoD Wind Stipulation Areas",
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
@@ -1602,6 +1654,58 @@
             "data_notes": "",
             "name": "Coastal Energy Facilities",
             "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Facilities/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 64,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [
+                8,
+                10,
+                9,
+                7
+            ],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                29
+            ],
+            "learn_more": "",
+            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
+            "slug_name": "shipping-lanes",
+            "is_sublayer": false,
+            "lookup_field": "Type",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "NOAA Coastal Services Center via MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Shipping Lanes",
+            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -1804,7 +1908,7 @@
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "",
+            "data_source": "National Marine Fisheries Service",
             "data_notes": "",
             "name": "Pots Traps",
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/PotsTraps/${z}/${x}/${y}.png",
@@ -1852,7 +1956,7 @@
             "data_status": "",
             "vector_fill": null,
             "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch",
-            "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are NOT an OFFICIAL record for the exact Submerged Lands Act Boundary.",
+            "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are not an official record for the exact Submerged Lands Act Boundary.",
             "name": "Limit of OCSLA '8(g)' zone",
             "url": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_2_RevenueSharingBoundary/${z}/${x}/${y}.png",
             "arcgis_layers": "",
@@ -2060,51 +2164,6 @@
         }
     },
     {
-        "pk": 57,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Depth contours at 20, 50, and 100 fathoms.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "fathom-lines",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "The Nature Conservancy and NOAA",
-            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
-            "name": "Fathom Lines",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 50,
         "model": "data_manager.layer",
         "fields": {
@@ -2154,6 +2213,51 @@
         }
     },
     {
+        "pk": 57,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Depth contours at 20, 50, and 100 fathoms.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
+            "slug_name": "fathom-lines",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "The Nature Conservancy and NOAA",
+            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
+            "name": "Fathom Lines",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 34,
         "model": "data_manager.layer",
         "fields": {
@@ -2192,107 +2296,6 @@
             "data_notes": "NOAA ENC Direct to GIS data is not intended for navigational purposes. This data is provided for use in GIS software packages for coastal planning and research.",
             "name": "Submarine Cables",
             "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 70,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=70&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                72
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "midwater-trawls",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Midwater Trawls",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 65,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-74.19255957976071&location%5By%5D=38.8306639766425&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=65&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [
-                12,
-                11
-            ],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 1.0,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                32,
-                30,
-                31
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "awc-routes-hubs",
-            "is_sublayer": false,
-            "lookup_field": "TYPE",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Atlantic Wind Connection",
-            "data_notes": "The Atlantic Wind Connection (AWC) is a proposed undersea transmission cable system that would bring power generated by Mid-Atlantic offshore wind turbines to shore. The private-sector project would span approximately 350 miles from northern New Jersey to southern Virginia and would be built in phases over a 10-year period.",
-            "name": "AWC Routes & Hubs",
-            "url": "/media/data_manager/geojson/AWCRoutesAndHubs.json",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -2396,6 +2399,55 @@
         }
     },
     {
+        "pk": 70,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=70&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                72
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "midwater-trawls",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Midwater Trawls",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 43,
         "model": "data_manager.layer",
         "fields": {
@@ -2445,55 +2497,6 @@
         }
     },
     {
-        "pk": 71,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=71&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                73
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "other-dredges",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Other Dredges",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 59,
         "model": "data_manager.layer",
         "fields": {
@@ -2535,6 +2538,55 @@
             "arcgis_layers": "24",
             "legend_title": "",
             "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 71,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=71&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                73
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "other-dredges",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Other Dredges",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
             "attribute_title": ""
         }
     },
@@ -2631,58 +2683,6 @@
             "sublayers": [
                 21
             ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 64,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "fact_sheet": "",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [
-                8,
-                10,
-                9,
-                7
-            ],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                29
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "shipping-lanes",
-            "is_sublayer": false,
-            "lookup_field": "Type",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "NOAA Coastal Services Center via MarineCadastre.gov",
-            "data_notes": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
-            "name": "Shipping Lanes",
-            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -3114,55 +3114,6 @@
         }
     },
     {
-        "pk": 69,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=69&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                71
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "long-lines",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Long Lines",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 26,
         "model": "data_manager.layer",
         "fields": {
@@ -3298,6 +3249,55 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 69,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=69&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                71
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "long-lines",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Long Lines",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
             "attribute_title": ""
         }
     },
@@ -4092,8 +4092,8 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
-                14,
                 11,
+                14,
                 72,
                 68,
                 73,
