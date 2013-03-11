@@ -40,10 +40,16 @@
                             <a class="btn pull-right" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
                         </div>
                     </div>
+                    {% if layer.data_source_text or layer.data_notes_text %}
                     <div class="well">
+                        {% if layer.data_source_text %}
                         <div><strong>Source: </strong>{{ layer.data_source_text }}</div>
+                        {% endif %}
+                        {% if layer.data_notes_text %}
                         <div><strong>Notes: </strong>{{ layer.data_notes_text|safe }}</div>
+                        {% endif %}
                     </div>
+                    {% endif %}
                 </div>
 			<br/>
 			{% endif %}
