@@ -1744,7 +1744,7 @@
             "slug_name": "unexploded-ordinances",
             "is_sublayer": false,
             "lookup_field": "",
-            "legend": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/legend.png",
             "data_status": "",
             "vector_fill": null,
             "data_source": "",
