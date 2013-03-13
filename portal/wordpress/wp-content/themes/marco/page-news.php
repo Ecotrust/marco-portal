@@ -55,14 +55,14 @@ Template Name: News
 							    <?php endforeach; ?>
 							      <div class="span4">
 							      <?php
-							      $args = sprintf('category_name=%s&numberposts=1', "Updates");
+							      $args = sprintf('category_name=%s&numberposts=1', "News");
 							      $lastposts = get_posts($args);
 							      foreach($lastposts as $post) : setup_postdata($post); ?>
 							      	<div class="wrapper">
-							      		<a href="/portal/category/updates/">
+							      		<a href="/portal/category/news/">
 							    	  		<div class="image">
 							    				<img src="/portal/assets/planner.jpg" class="attachment-medium wp-post-image" alt="planner" title="planner">
-							    	  			<h2>Updates</h2>
+							    	  			<h2>News</h2>
 							    	  		</div>
 							      		</a>
 							      		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
