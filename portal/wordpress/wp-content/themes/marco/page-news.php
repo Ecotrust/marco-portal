@@ -18,21 +18,17 @@ Template Name: News
 							</div>
 						</div>
 						<div class="row-fluid bugs">
-						 <?php 
-						  $categories = get_categories('include=10,9,6'); 
-						  $index = 0;
-						  foreach ($categories as $category) { 
-						  	?>
+
 							  <div class="span4">
 							  <?php
-							  $args = sprintf('category=%d&numberposts=1', $category->cat_ID);
+							  $args = sprintf('category_slug=data-updates&numberposts=1');
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
 							  	<div class="wrapper">
-							  		<a href="<?php echo get_category_link( $category->cat_ID ); ?>">
+							  		<a href="/portal/category/data-updates/">
 								  		<div class="image">
-											<?php echo the_post_thumbnail('medium'); ?>
-								  			<h2><?php echo $category->cat_name; ?></h2>
+											<img src="/portal/assets/ais2.jpg" class="attachment-medium wp-post-image" alt="ais" title="ais">
+								  			<h2>Data Updates</h2>
 								  		</div>
 							  		</a>
 							  		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
@@ -40,8 +36,41 @@ Template Name: News
 							 	</div>
 							  </div>	
 							  <?php endforeach; ?>
-							  <?php
-							$index++; } ?>			
+							    <div class="span4">
+							    <?php
+							    $args = sprintf('category_name=%s&numberposts=1', "Events");
+							    $lastposts = get_posts($args);
+							    foreach($lastposts as $post) : setup_postdata($post); ?>
+							    	<div class="wrapper">
+							    		<a href="/portal/category/events/">
+							  	  		<div class="image">
+							  				<img src="/portal/assets/energy1.jpg" class="attachment-medium wp-post-image" alt="energy" title="energy">
+							  	  			<h2>Events</h2>
+							  	  		</div>
+							    		</a>
+							    		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
+							    		<?php the_excerpt(); ?>
+							   	</div>
+							    </div>	
+							    <?php endforeach; ?>
+							      <div class="span4">
+							      <?php
+							      $args = sprintf('category_name=%s&numberposts=1', "News");
+							      $lastposts = get_posts($args);
+							      foreach($lastposts as $post) : setup_postdata($post); ?>
+							      	<div class="wrapper">
+							      		<a href="/portal/category/news/">
+							    	  		<div class="image">
+							    				<img src="/portal/assets/planner.jpg" class="attachment-medium wp-post-image" alt="planner" title="planner">
+							    	  			<h2>News</h2>
+							    	  		</div>
+							      		</a>
+							      		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
+							      		<?php the_excerpt(); ?>
+							     	</div>
+							      </div>	
+							      <?php endforeach; ?>
+						
 					</div>
 				</div> <!-- end #main -->
 			    <?php get_sidebar(); // sidebar 1 ?>
