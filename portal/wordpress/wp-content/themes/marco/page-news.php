@@ -21,14 +21,14 @@ Template Name: News
 
 							  <div class="span4">
 							  <?php
-							  $args = sprintf('category_name=%s&numberposts=1', "Data");
+							  $args = sprintf('category_name=%s&numberposts=1', "Data Updates");
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
 							  	<div class="wrapper">
 							  		<a href="/portal/category/data/">
 								  		<div class="image">
 											<img src="/portal/assets/ais2.jpg" class="attachment-medium wp-post-image" alt="ais" title="ais">
-								  			<h2>Data</h2>
+								  			<h2>Data Updates</h2>
 								  		</div>
 							  		</a>
 							  		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
