@@ -21,7 +21,7 @@ Template Name: News
 
 							  <div class="span4">
 							  <?php
-							  $args = sprintf('category_slug=data&numberposts=1');
+							  $args = sprintf('category_slug=data-updates&numberposts=1');
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
 							  	<div class="wrapper">
