@@ -18,7 +18,7 @@ Template Name: News
 							</div>
 						</div>
 						<div class="row-fluid bugs">
-						 
+
 							  <div class="span4">
 							  <?php
 							  $args = sprintf('category_name=%s&numberposts=1', "Data");

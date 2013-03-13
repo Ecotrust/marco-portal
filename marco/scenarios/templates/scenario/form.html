@@ -14,33 +14,6 @@
         $('.inputfield').each(function() {
             $(this).hide();
         });
-        //GeoPhysical 
-        if ($('#id_input_parameter_depth').is(':checked')) {
-            $('#depth_widget').show();
-        } 
-        if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
-            $('#distance_to_shore_widget').show();
-        } 
-        if ($('#id_input_parameter_substrate').is(':checked')) {
-            $('#substrate_widget').show();
-        } 
-        if ($('#id_input_parameter_sediment').is(':checked')) {
-            $('#sediment_widget').show();
-        } 
-        //Wind Energy 
-        if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
-            $('#distance_to_awc_widget').show();
-        } 
-        if ($('#id_input_parameter_wind_speed').is(':checked')) {
-            $('#wind_speed_widget').show();
-        } 
-        if ($('#id_input_parameter_wea').is(':checked')) {
-            $('#wea_widget').show();
-        } 
-        //Shipping
-        if ($('#id_input_filter_distance_to_shipping').is(':checked')) {
-            $('#distance_to_shipping_widget').show();
-        } 
         updateDesignScrollBar();
         
         function validate(step) {
@@ -123,274 +96,88 @@
             }
         }
         
-              
-              
-        // DISTANCE TO SHORE
-        //Expand/Collapse Distance to Shore
-        $('#id_input_parameter_distance_to_shore').click( function() { 
-            if ($('#distance_to_shore_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': $('#id_input_min_distance_to_shore')[0].value});
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': $('#id_input_max_distance_to_shore')[0].value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('min_distance');
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('max_distance');
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-            showhide_widget($('#distance_to_shore_widget')); 
-            updateDesignScrollBar();
-        });
-        //Update Remaining Leaseblocks 
-        $('#slider-input_distance_to_shore').bind( "slide slidechange", function(event, ui) {
-            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': ui.values[0]});
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': ui.values[1]});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-        });  
-        
-        
-        // DEPTH RANGE
-        //Expand/Collapse Depth Range Widget
-        $('#id_input_parameter_depth').click( function() { 
-            if ($('#depth_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': $('#id_input_min_depth')[0].value});
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': $('#id_input_max_depth')[0].value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('min_depth');
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('max_depth');
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-            showhide_widget($('#depth_widget')); 
-            updateDesignScrollBar();
-            /*updateScrollBar();*/
-        });
-        //Update Remaining Leaseblocks 
-        $('#slider-input_depth').bind( "slide slidechange", function(event, ui) {
-            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': ui.values[0]});
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': ui.values[1]});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-        });
-            
-         
-        // DISTANCE TO AWC  
-        //Expand Collapse Distance to AWC Hubs
-        $('#id_input_parameter_distance_to_awc').click( function() { 
-            if ($('#distance_to_awc_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('awc');
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-            showhide_widget($('#distance_to_awc_widget')); 
-            updateDesignScrollBar();
-        });
-        //Update Remaining Leaseblocks 
-        $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
-            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': ui.value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-        }); 
-
-        // DISTANCE TO SHIPPING LANES
-        //Expand Collapse Distance to Shipping Lanes
-        $('#id_input_filter_distance_to_shipping').click( function() { 
-            if ($('#distance_to_shipping_widget').css('display') === "none") {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': $('#id_input_distance_to_shipping')[0].value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('tsz');
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-            showhide_widget($('#distance_to_shipping_widget')); 
-            updateDesignScrollBar();
-        });
-        //Update Remaining Leaseblocks 
-        $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
-            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': ui.value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-        }); 
-           
-        // TRAFFIC DENSITY   
-        $('#id_input_filter_ais_density').click( function(e) {
-            if ( $('#id_input_filter_ais_density').attr('checked') ) {
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'ais', 'value': 1});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('ais');
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-        });
-        
-        
-        //Expand Collapse Traffic Density
-        $('#id_input_parameter_traffic_density').click( function() { 
-            showhide_widget($('#traffic_density_widget')); 
-            updateDesignScrollBar();
-        });
-        //Handle change events
-        $('#slider-input_traffic_density').bind( "slidecreate", function(event, ui) {
-            $('#traffic_density_text').html('Medium');
-        });
-        $('#slider-input_traffic_density').bind( "slide slidechange", function(event, ui) {
-            change_traffic_message(ui);
-        });
-        function change_traffic_message(ui) {
-            if(ui.value == 2) {
-                $('#traffic_density_text').html('Medium');
-            } else if (ui.value == 3) {
-                $('#traffic_density_text').html('High');
-            } else if (ui.value == 1) {
-                $('#traffic_density_text').html('Low');
-            } 
+        function updateRemaininLeaseBlocks() {
+            app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
+            app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
         }
-        
-        // WIND PLANNING AREAS 
-        //Expand Collapse Wind Planning Areas
-        $('#id_input_parameter_wea').click( function() { 
-            showhide_widget($('#wea_widget')); 
-            updateDesignScrollBar();
-        });
-        
-        // WIND SPEED
-        //Expand Collapse Wind Speed
-        $('#id_input_parameter_wind_speed').click( function() { 
-            if ($('#wind_speed_widget').css('display') === "none") {
-                var value = $('#id_input_avg_wind_speed')[0].value;
-                change_wind_message(value);
-                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            } else {
-                app.viewModel.scenarios.scenarioFormModel.removeFilter('wind');
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
-            }
-            showhide_widget($('#wind_speed_widget')); 
-            updateDesignScrollBar();
-        });
+              
+        // WIND SPEED UPDATED
         //Update Leaseblocks
         //slide ensures that leaseblocks are updated when the slider is adjusted
         //slidechange ensures that leaseblocks are updated when the text area is modified
         $('#slider-input_avg_wind_speed').bind( "slide slidechange", function(event, ui) {
             //var $left_side = $(event.target).find('.ui-slider-range');
             if (app.viewModel.scenarios.scenarioFormModel) {
-                change_wind_message(ui.value);
+                app.viewModel.scenarios.scenarioFormModel.change_wind_message(ui.value);
                 app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'wind', 'value': ui.value});
-                //Update Remaining Leaseblocks 
-                app.viewModel.scenarios.scenarioFormModel.updateLeaseblocksLeft();
-                app.viewModel.scenarios.scenarioFormModel.updateRemainingBlocks();
+                updateRemaininLeaseBlocks();
             }
         });
-        function change_wind_message(value) {
-            var $text = $('#wind_speed_text'),
-                $label = $text.closest('.label');
-                $label.css('color', 'black');
-            if (value < 7.0) {
-                $text.html('Fair');
-                $label.css('background', "#38a800");
-                //$label.attr('class', "label label-important");
-                //$left_side.css('background', '#aaaa00');
-            } else if (value < 7.25) {
-                $text.html('Good');
-                $label.css('background', "#6fc400");
-                //$label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa5500');
-            } else if (value < 7.5) {
-                $text.html('Good');
-                $label.css('background', "#8bd100");
-                //$label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
-            } else if (value < 7.75) {
-                $text.html('Excellent');
-                $label.css('background', "#b0e000");
-                //$label.attr('class', "label label-warning");
-                //$left_side.css('background', '#aa0000');
-            } else if (value < 8.0) {
-                $text.html('Excellent');
-                $label.css('background', "#e3f23b");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
-            } else if (value < 8.25) {
-                $text.html('Outstanding');
-                $label.css('background', "#ffff78");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
-            } else if (value < 8.5) {
-                $text.html('Outstanding');
-                $label.css('background', "#fff566");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#880066');
-            } else if (value < 8.75) {
-                $text.html('Outstanding');
-                $label.css('background', "#f2db44");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else if (value < 9.0) {
-                $text.html('Superb');
-                $label.css('background', "#fab525");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else if (value < 9.25) {
-                $text.html('Superb');
-                $label.css('background', "#ffa600");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else if (value < 9.5) {
-                $text.html('Superb');
-                $label.css('background', "#ff9400");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#8800aa');
-            } else {
-                $text.html('Superb');
-                $label.css('background', "#ff7300");
-                //$label.attr('class', "label label-success");
-                //$left_side.css('background', '#000088');
+              
+        // DISTANCE TO SHORE UPDATED
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_shore').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_distance', 'value': ui.values[0]});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_distance', 'value': ui.values[1]});
+                //Update Remaining Leaseblocks 
+                updateRemaininLeaseBlocks();
             }
-            //Poor       < 12.5      (< 5.6)     ffff00
-            //Fair       14.3-15.7   (6.4-7.0)   ff0000
-            //Good       15.7-16.8   (7.0-7.5)   ff0077
-            //Excellent  16.8-17.9   (7.5-8.0)   ff00ff
-            //Oustanding 17.9-19.7   (8.0-8.8)   7700ff
-            //Superb     > 19.7      (> 8.8)     0000ff
-        }
+        });  
+        
+        
+        // DEPTH RANGE UPDATED
+        //Update Remaining Leaseblocks 
+        $('#slider-input_depth').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'min_depth', 'value': ui.values[0]});
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'max_depth', 'value': ui.values[1]});
+                //Update Remaining Leaseblocks 
+                updateRemaininLeaseBlocks();
+            }
+        });
+            
+         
+        // DISTANCE TO AWC UPDATED
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_awc').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'awc', 'value': ui.value});
+                //Update Remaining Leaseblocks 
+                updateRemaininLeaseBlocks();
+            }
+        }); 
+
+        
+        // DISTANCE TO SHIPPING LANES UPDATED
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_shipping').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'tsz', 'value': ui.value});
+                //Update Remaining Leaseblocks 
+                updateRemaininLeaseBlocks();
+            }
+        }); 
+           
+        
+        // TRAFFIC DENSITY UPDATED 
+        /*
+        $('#ship_traffic_density_widget').click( function(e) {
+            if ( ! app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter() ) {
+                app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(true);
+                $('#id_input_filter_ais_density').attr('checked', 'checked');
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'ais', 'value': 1});
+                //Update Remaining Leaseblocks 
+                updateRemaininLeaseBlocks();
+            } else {
+                app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(false);
+                $('#id_input_filter_ais_density').removeAttr('checked');
+                app.viewModel.scenarios.scenarioFormModel.removeFilter('ais');
+                updateRemaininLeaseBlocks();
+            }
+        });
+        */
+                
         
         
         $('#button_prev').click( function() { wizard('prev'); });
@@ -467,7 +254,8 @@
 {% if form.media %} {{ form.media }} {% endif %}
 <h4>
     <!--<img src="/media/marco/img/multi.png"/>-->
-    Wind Energy Design
+    Wind Energy Siting
+    
 </h4>
 <form id="wind-design-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
@@ -481,153 +269,205 @@
   <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 3 </i></p>
     <p class="instructions">Select 1 or more criteria for this sector </p>
-    <label class="step1-header">Wind Energy</label>
+    <label class="step-header">Wind Energy</label>
     <div id="step1_inputs">
         <ul class="parameters">
         <li>
-            <label>
-                {{ form.input_parameter_wind_speed }} Wind Speed 
-                <!--<i class="icon-info-sign"></i>-->
-                <span id="info_wind_speed_content" style="display: none;">{% flatblock "info_wind_speed" %}</span>
-            </label>
-            <div id="wind_speed_widget" class="inputfield">
-                <div style="margin-top: 7px">Potential:  
-                    <span class="label">
-                        <span id="wind_speed_text" class="potential">Outstanding</span>
-                    </span>
-                </div>
-                <div> 
-                    Min Avg Speed (m/s)
-                    {{ form.input_avg_wind_speed }} 
-                    {{ form.input_avg_wind_speed.errors }}   
-                </div> 
-                <div style="margin-top: 10px">
-                    <label id="wind-speed-layer-toggle" data-bind="click: toggleWindSpeedLayer">
-                        <input id="wind-speed-layer-checkbox" data-bind="checked: windSpeedLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                        Show Wind Speed Data</input>
+            <div class="accordion" id="wind-speed-accordion">
+                <div class="accordion-heading" data-bind="click: toggleWindSpeedWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_parameter_wind_speed }} 
+                        <i class="check icon-large icon-check" data-bind="visible: windSpeedParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Wind Speed </span>
                     </label>
                 </div>
-            </div>
-        </li>
-        <li>
-            <label>
-                {{ form.input_parameter_distance_to_shore }} Distance to Shore 
-                <!--<img src="/media/marco/img/info.png" id="info_shore" class="info" />-->
-            </label>
-            <div id="distance_to_shore_widget" class="inputfield">
-                <span> 
-                    {{ form.input_min_distance_to_shore }}            
-                    to
-                    {{ form.input_max_distance_to_shore }} miles
-                </span>
-                {{ form.input_distance_to_shore }} 
-                {{ form.input_distance_to_shore.errors }} 
-            </div>
-        </li>
-        <li>
-            <label>
-                {{ form.input_parameter_depth }} Depth Range 
-                <!--<img src="/media/marco/img/info.png" id="info_depth" class="info" />-->
-            </label>
-            <div id="depth_widget" class="inputfield">
-                <span>
-                    {{ form.input_min_depth }}            
-                    to
-                    {{ form.input_max_depth }} feet
-                </span>
-                {{ form.input_depth }}  
-                {{ form.input_depth.errors }}
-            </div>
-        </li>
-        <li>
-            <label>
-                {{ form.input_parameter_distance_to_awc }} Distance to Proposed AWC Stations 
-                <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
-            </label>
-            <div id="distance_to_awc_widget" class="inputfield">
-                <span > 
-                    Maximum Distance (in miles) 
-                    {{ form.input_distance_to_awc }} 
-                    {{ form.input_distance_to_awc.errors }}   
-                </span> 
-                <div style="margin-top: 10px">
-                    <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
-                        <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                        Show AWC Routes & Hubs Data</input>
-                    </label>
+                <div id="wind_speed_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': windSpeedParameter()}">
+                    <div class="accordion-inner">
+                        <div>
+                            Potential:  
+                            <span class="label">
+                                <span id="wind_speed_text" class="potential">Outstanding</span>
+                            </span>
+                        </div>
+                        <div> 
+                            Min Avg Speed (m/s)
+                            {{ form.input_avg_wind_speed }} 
+                            {{ form.input_avg_wind_speed.errors }}   
+                        </div> 
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleWindSpeedDescription, css: { 'active': windSpeedLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': windSpeedLayer.active(), 'not-active': ! windSpeedLayer.active() }, click: toggleWindSpeedLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show Wind Speed Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: windSpeedLayer.active() && windSpeedLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: windSpeedLayer.active() && ! windSpeedLayer.visible()"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>
-        <!-- The following produces a '"False" is not a valid value for a primary key' Error (400 response)
         <li>
-            <label>
-                {{ form.input_parameter_wea }} Wind Energy Areas 
-                <img src="/media/marco/img/info.png" id="info_wea" class="info" />
-            </label>
-            <div id="wea_widget" class="inputfield">
-                <span > 
-                    Constrain results to the following Wind Planning Areas
-                    {{ form.input_wea }}  
-                    {{ form.input_wea.errors }}
-                </span>
+            <div class="accordion" id="distance-to-shore-accordion">
+                <div class="accordion-heading" data-bind="click: toggleDistanceToShoreWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_parameter_distance_to_shore }} 
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToShoreParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Shore  </span>
+                    </label>
+                </div>
+                <div id="distance_to_shore_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToShoreParameter()}">
+                    <div class="accordion-inner">
+                        <span> 
+                            {{ form.input_min_distance_to_shore }}            
+                            to
+                            {{ form.input_max_distance_to_shore }} miles
+                        </span>
+                        {{ form.input_distance_to_shore }} 
+                        {{ form.input_distance_to_shore.errors }} 
+                    </div>
+                </div>
             </div>
-        </li>-->
+        </li>
+        <li>
+            <div class="accordion" id="depth-range-accordion">
+                <div class="accordion-heading" data-bind="click: toggleDepthWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_parameter_depth }} 
+                        <i class="check icon-large icon-check" data-bind="visible: depthRangeParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Depth Range  </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_depth" class="info" />-->
+                    </label>
+                </div>
+                <div id="depth_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': depthRangeParameter()}">
+                    <div class="accordion-inner">
+                        <span>
+                            {{ form.input_min_depth }}            
+                            to
+                            {{ form.input_max_depth }} feet
+                        </span>
+                        {{ form.input_depth }}  
+                        {{ form.input_depth.errors }}
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="accordion" id="distance-to-awc-accordion">
+                <div class="accordion-heading" data-bind="click: toggleAWCWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_parameter_distance_to_awc }}  
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Proposed AWC Stations </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
+                    </label>
+                </div>
+                <div id="distance_to_awc_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToAWCParameter()}">
+                    <div class="accordion-inner">
+                        <span > 
+                            Maximum Distance (in miles) 
+                            {{ form.input_distance_to_awc }} 
+                            {{ form.input_distance_to_awc.errors }}   
+                        </span> 
+                        <!--<div style="margin-top: 10px">
+                            <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
+                                <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                                Show AWC Routes & Hubs Data</input>
+                            </label>
+                        </div>-->
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleAWCDescription, css: { 'active': awcLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': awcLayer.active(), 'not-active': ! awcLayer.active() }, click: toggleAWCLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show AWC Routes & Hubs Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: awcLayer.active() && awcLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: awcLayer.active() && ! awcLayer.visible()"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Additional Parameters...</label>
-    <div id="step2_inputs">
-        <ul class="parameters">
-        <li>
-            Terrestrial Substations?
-        </li>
-        </ul>
-    </div>
   </div>
 
   <div id="step2" class="step">
     <p class="step-text"><i>Step 2 of 3 </i></p>
     <p class="instructions">Choose any filtering criteria from other sectors </p>
-    <label class="step2-header">Shipping</label>
+    <label class="step-header">Shipping</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
-            <label>
-                {{ form.input_filter_distance_to_shipping }} Distance to Shipping Lanes 
-                <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
-            </label>
-            <div id="distance_to_shipping_widget" class="inputfield">
-                <label class="param"> Minimum Distance (miles)
-                    {{ form.input_distance_to_shipping }} 
-                    {{ form.input_distance_to_shipping.errors }}   
-                </label> 
-                <div style="margin-top: 10px">
-                    <label id="shipping-lanes-layer-toggle" data-bind="click: toggleShippingLanesLayer">
-                        <input id="shipping-lanes-layer-checkbox" data-bind="checked: shippingLanesLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                        Show Shipping Lanes Data</input>
+            <div class="accordion" id="distance-to-shipping-accordion">
+                <div class="accordion-heading" data-bind="click: toggleShippingLanesWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_filter_distance_to_shipping }}  
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToShippingParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Shipping Lanes </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
                     </label>
+                </div>
+                <div id="distance_to_shipping_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToShippingParameter()}">
+                    <div class="accordion-inner">
+                        <label class="param"> Minimum Distance (miles)
+                            {{ form.input_distance_to_shipping }} 
+                            {{ form.input_distance_to_shipping.errors }}   
+                        </label> 
+                        <!--<div style="margin-top: 10px">
+                            <label id="shipping-lanes-layer-toggle" data-bind="click: toggleShippingLanesLayer">
+                                <input id="shipping-lanes-layer-checkbox" data-bind="checked: shippingLanesLayer.active()" type="checkbox" name="checkbox" value="value"> 
+                                Show Shipping Lanes Data</input>
+                            </label>
+                        </div>-->
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleShippingLanesDescription, css: { 'active': shippingLanesLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" data-bind="css: { 'active': shippingLanesLayer.active(), 'not-active': ! shippingLanesLayer.active() }, click: toggleShippingLanesLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show Shipping Lanes Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: shippingLanesLayer.active() && shippingLanesLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: shippingLanesLayer.active() && ! shippingLanesLayer.visible()"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>
         <li>
-            <label>
-                {{ form.input_filter_ais_density }} Exclude Areas with High Ship Traffic 
-                <!--<img src="/media/marco/img/info.png" id="info_ais" class="info" />-->
-            </label>
-            <!--<div id="traffic_density_widget" class="inputfield">
-                <div class="span traffic"> Limit traffic to the following density level: 
-                    <span id="traffic_density_text" class="traffic">Medium</span>
+            <div class="accordion" id="distance-to-shipping-accordion">
+                <div class="accordion-heading" data-bind="click: toggleShipTrafficWidget">
+                    {{ form.input_filter_ais_density }}  
+                    <label id="ship_traffic_density_widget" class="accordion-toggle">
+                        <i class="check icon-large icon-check" data-bind="visible: shipTrafficDensityParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Exclude Areas with High Ship Traffic </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_ais" class="info" />-->
+                    </label>
                 </div>
-                <div class="traffic_widget">
-                    {{ form.input_traffic_density }} 
-                    {{ form.input_traffic_density.errors }}   
-                </div>
-            </div>-->
+            </div>
         </li>
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Military (under development)</label>
+    <label class="step-header">Military (under development)</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
@@ -654,43 +494,18 @@
         </ul>
     </div>
     <p></p>
-    <label class="step2-header">Conservation </label>
-    <div id="step2_inputs">
-        <ul class="parameters">
-        <li>
-            <label>
-                Coming Soon...
-                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
-            </label>
-        </li>
-        </ul>
-    </div>
-    <p></p>
-    <label class="step2-header">Fishing </label>
-    <div id="step2_inputs">
-        <ul class="parameters">
-        <li>
-            <label>
-                Coming Soon...
-                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
-            </label>
-        </li>
-        </ul>
-    </div>
   </div>
 
 <div id="step3" class="step">
     <p class="step-text"><i>Step 3 of 3 </i>
-    <p class="instructions">Provide a name to identify your Spatial Design </p>
+    <p class="instructions">Provide a <b>Name</b> to identify your Spatial Design </p>
     <div class="step3-inputs">
         <div class="step3-param">
-            {{ form.name.label_tag }}
             {{ form.name.errors }}
             {{ form.name }}            
         </div>
-        <p class="instructions">Optionally, you may add a description <!--and/or attach a file--> </p>
+        <p class="instructions">Optionally, you may add a <b>Description</b> <!--and/or attach a file--> </p>
         <div class="step3-param">
-            {{ form.description.label_tag }}
             {{ form.description.errors }}
             {{ form.description }}            
         </div>
@@ -713,17 +528,25 @@
 <p><button type="submit" value="submit" class="btn-submit btn">submit</button></p>
 </form>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: app.viewModel.modernBrowser()">
-    <!-- ko if: !isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: activateLeaseblockLayer">Show Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
-    <!-- /ko -->
-    <!-- ko if: isLeaseblockLayerVisible() -->
-    <a class="button btn" data-bind="click: deactivateLeaseblockLayer">Hide Selected Leaseblocks (<span data-bind="text: leaseblocksLeft"></span>)</a>
-    <!-- /ko -->
+<div class="show-blocks-btn" data-bind="visible: app.viewModel.modernBrowser()">
+    <span data-bind="visible: !isLeaseblockLayerVisible()">
+        <a class="button btn" data-bind="click: activateLeaseblockLayer">
+            <span class="badge" style="margin-right: 5px; margin-left: -5px;" data-bind="text: leaseblocksLeft"></span> Lease Blocks Remaining 
+            <i class="icon-large icon-check-empty" style="margin-right: -5px; margin-left: 5px;"></i>
+            <!--<img src="/media/marco/img/ajax-loader.gif" style="height: 15px; margin-right: -15px; margin-left: -15px;" data-bind="visible: showLeaseblockSpinner()" />-->
+        </a>
+    </span>
+    <span data-bind="visible: isLeaseblockLayerVisible()">
+        <a class="button btn" data-bind="click: deactivateLeaseblockLayer">
+            <span class="badge" style="margin-right: 5px; margin-left: -5px;" data-bind="text: leaseblocksLeft"></span> Lease Blocks Remaining 
+            <i class="icon-large icon-check" style="margin-right: -5px; margin-left: 5px;"></i>
+            <!--<img src="/media/marco/img/ajax-loader.gif" style="height: 15px; margin-right: -15px; margin-left: -15px;" data-bind="visible: showLeaseblockSpinner()" />-->
+        </a>
+    </span>
 </div>
 
-<div style="margin-top: -10px; margin-bottom: 10px;" data-bind="visible: ! app.viewModel.modernBrowser()">
-    <label>Estimated Number of Selected Leaseblocks: <span data-bind="text: leaseblocksLeft"></span></label>
+<div class="show-blocks-btn" style="padding-right: 1px; color: #333333" data-bind="visible: ! app.viewModel.modernBrowser()">
+    <label>Lease Blocks Remaining: <span data-bind="text: leaseblocksLeft"></span></label>
 </div>
 
 <div class="wizard_nav" style="width:100%">
@@ -744,6 +567,87 @@
 
 <!-- TODO: clean up the following (much of it is not being used) after we've made some progress -->
 <style type="text/css">
+
+#id_input_parameter_wind_speed {
+    display: none;
+}
+#id_input_parameter_distance_to_shore {
+    display: none;
+}
+#id_input_parameter_depth {
+    display: none;
+}
+#id_input_parameter_distance_to_awc {
+    display: none;
+}
+#id_input_filter_distance_to_shipping {
+    display: none;
+}
+#id_input_filter_ais_density {
+    display: none;
+}
+
+
+#wind-design-form i.check {
+    top: 5px;
+}
+#wind-design-form .accordion-toggle i.check {
+    left: -10px;
+}
+#wind-design-form i.icon-check-empty {
+    display: block !important;
+    opacity: .4;
+    /* for IE */
+    filter: alpha(opacity=40);
+}
+#wind-design-form label:hover i.icon-check-empty {
+    display: block !important;
+    opacity: .8;
+    /* for IE */
+    filter: alpha(opacity=80);
+}
+#wind-design-form .show-layer-btn {
+    height: 16px; 
+    line-height: 16px;
+}
+#wind-design-form .show-layer-btn-group {
+    width: 70%; 
+    margin: 15px 0px 5px 0px;
+}
+.show-blocks-btn a{
+    height: 16px; 
+    line-height: 16px;
+}
+.show-blocks-btn i.icon-check-empty {
+    opacity: .4;
+    /* for IE */
+    filter: alpha(opacity=40);
+}
+.show-blocks-btn:hover i.icon-check-empty {
+    opacity: .8;
+    /* for IE */
+    filter: alpha(opacity=80);
+}
+#wind-design-form .accordion-heading .accordion-toggle {
+    padding: 4px 15px;
+}
+#wind-design-form .accordion-body {
+    border-left: 0px !important;
+}
+#wind-design-form .accordion-inner {
+    padding: 5px 0px;
+    border-top: 0px;
+    font-weight: normal;
+}
+#wind-design-form .inputfield {
+    margin: 0px 20px;
+}
+.show-blocks-btn {
+    margin-top: -10px;
+    padding-bottom: 10px;
+}
+
+
 
 div .field > label { 
     font-size: 12px; 
@@ -805,14 +709,10 @@ form ul.parameters {
     padding-left: 0px;
     width: 90%;
 }
-label.step1-header {
+label.step-header {
+    margin-top: 5px;
     font-weight: bold;
     padding-left: 5px !important;
-}
-label.step2-header {
-    font-weight: bold;
-    padding-left: 5px !important;
-    padding-bottom: 10px !important;
 }
 label.step3-header {
     font-weight: bold;

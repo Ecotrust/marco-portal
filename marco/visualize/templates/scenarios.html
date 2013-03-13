@@ -1,5 +1,6 @@
 
 <div class="tab-pane fade" id="designs" data-tab="designs" data-bind="with: scenarios">
+  <div id="designs-slide">
     <!-- Create New Design dropdown menu -->
     <div class="row-fluid">
         <div class="alert alert-success" data-bind="visible: loadingMessage">
@@ -18,51 +19,139 @@
     </div>
     
     <div class="form-container" data-bind="visible: ! (loadingMessage() || errorMessage())">
-        <div data-bind="visible: ! scenarioForm()">
+        <div id="designs-data" data-bind="visible: ! scenarioForm() && ! selectionForm() && !reportsVisible()">
             <div class="row-fluid">
                 <div class="span12">
-                    <div id="create-new-design" class="btn-group">
+                    <div id="create-new-design" class="btn-group" style="padding-bottom: 10px;">
                         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-plus-sign"></i> Create New
+                            Create New
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a data-bind="click: createWindScenario">Wind Energy Site Selection</a></li>
-                            <li><a href="#">Conservation Site Selection</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Selection-Based Design</a></li>
+                            <li><a data-bind="click: createWindScenario">Wind Energy Siting</a></li>
+                            <li><a data-bind="click: createSelectionDesign">Lease Block Collection</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <div id="design-list" class="row-fluid">
-                <ul class="unstyled list" data-bind="foreach: scenarioList ">
-                    <li class="layer">
-                        <div class="btn-group btn-group-layer">
-                            <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
-                                <i class="icon-info-sign icon-large"></i>
-                            </a>
-                            <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
-                                <div style="font-weight: normal">
-                                    <span data-bind="text: name"></span>
-                                    <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
-                                    <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
-                                </div>
-                            </a>
-                            <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a data-bind="click: editScenario">Edit</a></li>
-                                <li><a href="#">Share</a></li>
-                                <li class="divider"></li>
-                                <li><a data-bind="click: deleteScenario">Delete</a></li>
-                            </ul>
-
+                <div id="designs-accordion" class="designs">
+                    <div class="accordion" style="padding-bottom: 90px">
+                    
+                        <div data-bind="visible: !scenarioList().length && !selectionList().length">
+                            <div style="padding: 10px;">
+                                <p>
+                                    You currently have no Wind Energy Sitings or Lease Block Collections. 
+                                </p>
+                                <p>
+                                    Any Sitings or Collections that you create will be listed here in the Designs panel.
+                                </p>
+                                <p>
+                                    You may, at any time, edit, share, or remove any of the designs that you have created.  
+                                    Any designs shared with you can be copied so that they too can be edited, shared, or removed.
+                                </p>
+                            </div>
                         </div>
-                    </li>  
-                </ul>
+                    
+                        <!-- WIND ENERGY SITINGS -->
+                        <div data-bind="visible: scenarioList().length">
+                            <div class="accordion-group">
+                                <div class="accordion-heading" data-bind="click: toggleScenariosOpen, css: { 'active': isScenariosOpen() }">
+                                    <a class="accordion-toggle">
+                                        <span>Wind Energy Sitings</span>
+                                    </a>
+                                </div>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isScenariosOpen() }">
+                                    <div class="accordion-inner">
+                                        <ul class="unstyled list" data-bind="foreach: scenarioList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div style="font-weight: normal">
+                                                            <span data-bind="text: name"></span>
+                                                            <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                                <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            </span>
+                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle"data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editScenario">Edit</a></li>
+                                                        <!--<li><a id="share-option" href="#share-modal" data-toggle="modal">Share</a></li>-->
+                                                        <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
+                                                        <li class="divider" data-bind="visible: ! shared()"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteScenario">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopyScenario">Create Copy</a></li>
+                                                    </ul>
+                                                    <!-- style="height: 20px; padding: 4px 12px; border-left-width: 0px" -->
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- LEASE BLOCK COLLECTIONS -->
+                        <div data-bind="visible: selectionList().length">
+                            <div class="accordion-group">
+                                <div class="collections-header">
+                                    <div id="lease-block-collections-header" class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
+                                        <div>
+                                            <a class="accordion-toggle"><span>Lease Block Collections</span></a>
+                                        </div>
+                                    </div>
+                                    <div id="bar-chart-button" class="btn btn-large reports-btn pull-right" data-bind="click: showComparisonReports">
+                                        <span rel="tooltip" title="View Comparison Reports">
+                                            <i class="icon-bar-chart icon-large pull-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
+                                    <div class="accordion-inner">
+                                        <ul class="unstyled list" data-bind="foreach: selectionList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div style="font-weight: normal">
+                                                            <span data-bind="text: name"></span>
+                                                            <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                                <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            </span>
+                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editSelection">Edit</a></li>
+                                                        <li><a id="share-option" data-bind="visible: ! shared(), click: $parent.showSharingModal">Share</a></li>
+                                                        <li class="divider" data-bind="visible: ! shared()"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteSelection">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopySelection">Create Copy</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>   
         </div>    
            
@@ -70,33 +159,50 @@
             <div id="scenario-form" class="panel-container"></div>   
         </div>
         
-    </div>
-            <!-- Wind Energy Design -->
-            <!--<div data-bind="visible: showWindDesignWizard()">-->
-            <!--
-            <div data-bind="visible: false">
-                <div>  
-                  <ul class="breadcrumb">  
-                    <li id="wind-design-breadcrumb-step-1">  
-                      <a href="#" data-bind="click: showWindDesignStep1">Step 1</a> <span class="divider">></span>  
-                    </li>  
-                    <li id="wind-design-breadcrumb-step-2">  
-                      <a href="#" data-bind="click: showWindDesignStep2">Step 2</a> <span class="divider">></span>  
-                    </li>  
-                    <li id="wind-design-breadcrumb-step-3">
-                      <a href="#" data-bind="click: showWindDesignStep3">Step 3</a> 
-                    </li>  
-                  </ul>  
-                </div>  
-                <div data-bind="visible: windDesignStep1()">
-                    <span>This is step 1</span>
-                </div>
-                <div data-bind="visible: windDesignStep2()">
-                    <span>This is step 2</span>
-                </div>
-                <div data-bind="visible: windDesignStep3()">
-                    <span>This is step 3</span>
+        <div style="height: 100%" data-bind="visible: selectionForm">   
+            <div id="selection-form" class="panel-container"></div>   
+        </div>
+        
+        <div style="height: 100%" data-bind="visible: reportsVisible">   
+            <div id="reports" class="panel-container" data-bind="with: reports">
+                <div class="form-container">
+                    <div>
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="btn pull-right" data-bind="click: app.viewModel.scenarios.returnToDesigns">
+                                    Return to Designs
+                                </div>
+                                <div id="create-new-design" class="btn-group pull-left" style="padding-bottom: 10px;">
+                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Comparison Reports
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-bind="click: hideReport">Introduction</a></li>
+                                        <li><a data-bind="click: showWindReport">Wind Energy Potential</a></li>
+                                        <li><a data-bind="click: showAWCReport">Distance to AWC Hubs</a></li>
+                                        <li><a data-bind="click: showShorelineReport">Distance to Shore</a></li>
+                                        <li><a data-bind="click: showDepthReport">Depth Range</a></li>
+                                        <li><a data-bind="click: showShippingReport">Distance to Shipping Lanes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div id="reports-intro" data-bind="visible: !showingReport()">
+                        <p>Comparison Reports can be used to visually compare your Lease Block Collections across various measurable values.</p>
+                    </div>
+                    <div data-bind="visible: !showingReport() && !noActiveCollections()">
+                        <p>Select a Comparison Report from the menu above.</p>
+                    </div>
+                    <div data-bind="visible: noActiveCollections()">
+                        <p>Activate 1 or more Lease Block Collection before selecting a Comparison Report from the menu above.</p>
+                    </div>
+                    <div id="reports-container" data-bind="visible: showingReport && !noActiveCollections()" style="max-width: 400px; height: 400px; margin: 0 auto">
+                    </div>
                 </div>
             </div>   
-            -->    
+        </div>
+    </div>
+  </div>
 </div>

@@ -5,10 +5,11 @@ def kmlcolor_to_htmlcolor(kmlcolor):
     return str('#' + kmlcolor[6] + kmlcolor[7] + kmlcolor[4] + kmlcolor[5] + kmlcolor[2] + kmlcolor[3] )
     
 def format(value, precision=1):
+    original_value = float(value)
     if precision == 0:
-        return int(float(value))
-    new_value = int(float(value) * 10 ** precision)
-    return new_value / 10. ** precision
+        return int(round(original_value))
+    new_value = int(round(original_value * (10 ** precision)))
+    return new_value / (10. ** precision)
     
 def miles_to_meters(miles):
     if miles is None:

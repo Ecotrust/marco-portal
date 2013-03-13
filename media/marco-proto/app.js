@@ -11,10 +11,12 @@ app.onResize = function(percent) {
     $(".tabs").height(height);
     $("#legend-wrapper").height(height - 20);
     $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
+    $("#designs-accordion").height(height - 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
+    $("#active").height(height + 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
     app.map.render('map');
   }
   
-  app.viewModel.updateScrollBars();
+  app.viewModel.updateAllScrollBars();
   
   var width = $(window).width();
   if (width < 946) {
@@ -120,7 +122,17 @@ $(document).ready(function() {
   $('#dataTab[data-toggle="tab"]').on('shown', function(e) {
     app.viewModel.updateScrollBars();
   });
+  $('#activeTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateScrollBars();
+  });
+  $('#designsTab[data-toggle="tab"]').on('shown', function(e) {
+    app.viewModel.updateAllScrollBars();
+    setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
+  });
   
+  //the following appears to handle the bookmark sharing, while the earlier popover activation handles the design sharing
+  setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
+    
   //format the legend scrollbar
   //setTimeout(function() { $('#legend-content').jScrollPane(); }, 500);
   //setTimeout(function() { app.viewModel.updateScrollBars(); }, 500);
@@ -139,21 +151,23 @@ $(document).ready(function() {
   app.fullscreen = {};
   // fullscreen stuff
   // for security reasons, this event listener must be bound directly
-  if ( document.getElementById('btn-fullscreen').addEventListener ) {
-      document.getElementById('btn-fullscreen').addEventListener('click', function() {
-        if ( BigScreen.enabled ) {
-          BigScreen.toggle(document.getElementById('fullscreen'));
-          // You could also use .toggle(element)
-        } else {
-          // fallback for browsers that don't support full screen
-          $('#fullscreen-error-overlay').show();
-        }
-      }, false);
-  } else {    
-      $('#btn-fullscreen').on('click', function() {
-        // fallback for browsers that don't support addEventListener
-        $('#fullscreen-error-overlay').show();
-      });
+  if ( document.getElementById('btn-fullscreen') ) {
+      if ( document.getElementById('btn-fullscreen').addEventListener ) {
+          document.getElementById('btn-fullscreen').addEventListener('click', function() {
+            if ( BigScreen.enabled ) {
+              BigScreen.toggle(document.getElementById('fullscreen'));
+              // You could also use .toggle(element)
+            } else {
+              // fallback for browsers that don't support full screen
+              $('#fullscreen-error-overlay').show();
+            }
+          }, false);
+      } else {    
+          $('#btn-fullscreen').on('click', function() {
+            // fallback for browsers that don't support addEventListener
+            $('#fullscreen-error-overlay').show();
+          });
+      }
   }
 
   // called when entering full screen
@@ -282,6 +296,14 @@ $(document).ready(function() {
   $(document).on('click', '#start-active-tour', function() {
     app.viewModel.startActiveTour();
   });
+
+  $(document).on('click', '#share-option', function() {
+    app.viewModel.scenarios.initSharingModal();
+  });
+  
+    //$(document).on('click', '#share-option', function(a,b,c) {
+    //    debugger;
+    //});
 
   $('a[data-toggle="tab"]').on('shown', function (e) {
     app.updateUrl();

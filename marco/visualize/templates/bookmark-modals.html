@@ -1,0 +1,76 @@
+
+<!-- BOOKMARK SHARE MODAL -->
+
+<div id="bookmark-share-modal" class="modal hide fade" data-bind="with: app.viewModel.bookmarks">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Sharing</h3>
+    </div>
+    <div class="modal-body" style="height: 200px; text-align: center; overflow: hidden;">  
+        <div class="row-fluid">
+            <h4 class="sharing-header">Share my bookmark with the following:</h4>
+            <ul class="unstyled" id="bookmark-sharing-groups" style="margin-left: 1px; height: 165px; outline: none;">
+                <span data-bind="foreach: sharingGroups">
+                    <li>
+                        <div style="text-align: left; margin-left: 50px;">
+                            <div>
+                                <!--<input type="checkbox" style="margin-top: 0px; margin-bottom: 2px; margin-right: 3px;">-->
+                                <i class="check icon-large icon-check" data-bind="visible: $parent.groupIsSelected(group_name), click: $parent.toggleGroup"></i>
+                                <i class="check icon-large icon-check-empty" data-bind="visible: !$parent.groupIsSelected(group_name), click: $parent.toggleGroup"></i>
+                                <span data-bind="text: group_name, click: $parent.toggleGroup"></span> 
+                                <a class="group-members-popover" rel="popover" data-bind="attr: {'data-content': $parent.groupMembers(group_name)}" data-original-title="Members"> 
+                                    <i class="icon-group"> </i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </span>
+            </ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button href="#" class="btn" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn-submit btn" data-bind="click: submitShare" data-dismiss="modal">Share</button>
+    </div>
+</div>
+
+
+<!-- BOOKMARK MAP LINKS MODAL -->
+
+<div style="display:none; width: 450px;" id="bookmark-map-links-modal" class="modal hide fade" data-bind="with: app.viewModel.bookmarks">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Map Links</h3>
+    </div>
+    
+    <div class="modal-body" style="height: 165px; overflow: hidden"> 
+        <div class="row-fluid" style="padding-top: 5px">
+            <div>
+                Paste Link in email or browser  
+                <span class="pull-right">
+                    <label> 
+                        <input class="short-url-checkbox" type="checkbox" data-bind="checked: shrinkBookmarkURL" style="margin-top: 0px; margin-bottom: 3px"> 
+                        Short URL 
+                    </label>
+                </span>
+            </div>
+            <div>
+                <input id="bookmark-short-url" type="text" style="width: 96%" data-bind="attr: {value: getCurrentBookmarkURL}"> 
+            </div>
+            <div style="padding-top: 12px; padding-bottom: 5px"> 
+                Paste HTML to embed in website 
+            </div> 
+            <div> 
+                <input id="bookmark-iframe-html" type="text" style="width: 96%" data-bind="attr: {value: setBookmarkIFrameHTML}"> 
+            </div> 
+            <div style="margin-top: -4px"> 
+                <a href="#" data-bind="click: openBookmarkIFrameExample"> 
+                    Customize and preview embedded map 
+                </a> 
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button href="#" class="btn" data-dismiss="modal">Close</button>
+    </div>
+</div>

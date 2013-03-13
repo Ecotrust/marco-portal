@@ -133,7 +133,7 @@ class Scenario(Analysis):
         '''
         if self.input_parameter_substrate:
             input_substrate = [s.substrate_name for s in self.input_substrate.all()]
-            result = result.filter(majority_substrate__in=input_substrate)
+            result = result.filter(majority_seabed__in=input_substrate)
         if self.input_parameter_sediment:
             input_sediment = [s.sediment_name for s in self.input_sediment.all()]
             result = result.filter(majority_sediment__in=input_sediment)
@@ -381,7 +381,7 @@ class Scenario(Analysis):
                     </Placemark>
                     """ % ( self.model_uid(), self.name, leaseblock.prot_numb,                             
                             leaseblock.depth_range_output, 
-                            leaseblock.majority_substrate, #LeaseBlock Update: might change back to leaseblock.substrate
+                            leaseblock.majority_seabed, #LeaseBlock Update: might change back to leaseblock.substrate
                             leaseblock.majority_sediment, #TODO: might change sediment to a more user friendly output
                             leaseblock.wea_label,
                             leaseblock.wea_state_name,
@@ -466,6 +466,7 @@ class Scenario(Analysis):
         form_template = 'scenario/form.html'
         show_template = 'scenario/show.html'
 
+#no longer needed?
 class Objective(models.Model):
     name = models.CharField(max_length=35)
     color = models.CharField(max_length=8, default='778B1A55')
@@ -473,6 +474,7 @@ class Objective(models.Model):
     def __unicode__(self):
         return u'%s' % self.name        
 
+#no longer needed?
 class Parameter(models.Model):
     ordering_id = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=35, null=True, blank=True)
@@ -494,8 +496,8 @@ class LeaseBlock(models.Model):
     max_wind_speed = models.FloatField()
     majority_sediment = models.CharField(max_length=35, null=True, blank=True)  #LeaseBlock Update: might change back to IntegerField 
     variety_sediment = models.IntegerField()
-    majority_substrate = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
-    variety_substrate = models.IntegerField()
+    majority_seabed = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
+    variety_seabed = models.IntegerField(null=True, blank=True)
     min_distance = models.FloatField(null=True, blank=True)
     max_distance = models.FloatField(null=True, blank=True)
     avg_distance = models.FloatField(null=True, blank=True)
@@ -512,14 +514,42 @@ class LeaseBlock(models.Model):
     tsz_min_distance = models.FloatField(null=True, blank=True)
     tsz_max_distance = models.FloatField(null=True, blank=True)
     tsz_mean_distance = models.FloatField(null=True, blank=True)
+    lace_coral_count = models.IntegerField(null=True, blank=True)
+    lace_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    black_coral_count = models.IntegerField(null=True, blank=True)
+    black_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    soft_coral_count = models.IntegerField(null=True, blank=True)
+    soft_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    gorgo_coral_count = models.IntegerField(null=True, blank=True)
+    gorgo_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    sea_pen_count = models.IntegerField(null=True, blank=True)
+    sea_pen_name = models.CharField(max_length=50, null=True, blank=True)
+    hard_coral_count = models.IntegerField(null=True, blank=True)
+    hard_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    seabed_depression = models.FloatField(null=True, blank=True)
+    seabed_low_slope = models.FloatField(null=True, blank=True)
+    seabed_steep = models.FloatField(null=True, blank=True)
+    seabed_mid_flat = models.FloatField(null=True, blank=True)
+    seabed_side_slow = models.FloatField(null=True, blank=True)
+    seabed_high_flat = models.FloatField(null=True, blank=True)
+    seabed_high_slope = models.FloatField(null=True, blank=True)
+    seabed_total = models.FloatField(null=True, blank=True)
+    discharge_min_distance = models.FloatField(null=True, blank=True)
+    discharge_max_distance = models.FloatField(null=True, blank=True)
+    discharge_mean_distance = models.FloatField(null=True, blank=True)
+    discharge_flow_min_distance = models.FloatField(null=True, blank=True)
+    discharge_flow_max_distance = models.FloatField(null=True, blank=True)
+    discharge_flow_mean_distance = models.FloatField(null=True, blank=True)
+    dredge_site = models.IntegerField(null=True, blank=True)
+    wpa = models.IntegerField(null=True, blank=True)
     geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
-    geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
+    #geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
     objects = models.GeoManager()   
 
     @property
     def substrate(self):
         try:
-            return Substrate.objects.get(substrate_id=self.majority_substrate).substrate_name
+            return Substrate.objects.get(substrate_id=self.majority_seabed).substrate_name
         except:
             return 'Unknown'
         
@@ -577,53 +607,7 @@ class LeaseBlock(models.Model):
                 asKml(self.geometry.transform( settings.GEOMETRY_CLIENT_SRID, clone=True ))
               )        
        
-'''
-class LeaseBlockAlt(models.Model):
-    objectid = models.IntegerField()
-    blkclip = models.FloatField()
-    blkclip_id = models.FloatField()
-    mms_region = models.CharField(max_length=1)
-    mms_plan_a = models.CharField(max_length=3)
-    prot_numbe = models.CharField(max_length=7)
-    prot_aprv = models.CharField(max_length=11)
-    block_numb = models.CharField(max_length=6)
-    blk_fed_ap = models.CharField(max_length=11)
-    block_lab = models.CharField(max_length=6)
-    ac_lab = models.CharField(max_length=8)
-    globalid = models.CharField(max_length=38)
-    prot_numb = models.CharField(max_length=12)
-    depthm_min = models.FloatField()
-    depthm_max = models.FloatField()
-    depth_mean = models.FloatField()
-    bensed_var = models.IntegerField()
-    bensed_maj = models.CharField(max_length=24)
-    bdform_var = models.IntegerField()
-    bdform_maj = models.CharField(max_length=14)
-    wnd90m_min = models.FloatField()
-    wind90m_ma = models.FloatField()
-    mi_min = models.FloatField()
-    mi_max = models.FloatField()
-    mi_mean = models.FloatField()
-    mi_min50 = models.FloatField()
-    mi_max50 = models.FloatField()
-    mi_mean50 = models.FloatField()
-    awcmi_min = models.FloatField()
-    awcmi_max = models.FloatField()
-    awcmi_mean = models.FloatField()
-    wea_num = models.IntegerField()
-    wea_name = models.CharField(max_length=10)
-    ais7_min = models.FloatField()
-    ais7_max = models.FloatField()
-    ais7_mean = models.FloatField()
-    windrev_mi = models.FloatField(null=True, blank=True)
-    windrev_ma = models.FloatField(null=True, blank=True)
-    trsep_min = models.FloatField()
-    trsep_max = models.FloatField()
-    trsep_mean = models.FloatField()
-    geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
-    objects = models.GeoManager()
-'''
-
+#still needed?
 class Substrate(models.Model):
     substrate_id = models.IntegerField()
     substrate_name = models.CharField(max_length=35)
@@ -631,7 +615,7 @@ class Substrate(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.substrate_name
-     
+#still needed?     
 class Sediment(models.Model):
     sediment_id = models.IntegerField()
     sediment_name = models.CharField(max_length=35)
@@ -640,7 +624,7 @@ class Sediment(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.sediment_output
-     
+#still needed?     
 class WEA(models.Model):
     wea_id = models.IntegerField()
     wea_name = models.CharField(max_length=35)
@@ -648,4 +632,224 @@ class WEA(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.wea_name
-     
+
+@register
+class LeaseBlockSelection(Analysis):
+    #input_a = models.IntegerField()
+    #input_b = models.IntegerField()
+    #output_sum = models.IntegerField(blank=True, null=True)
+    leaseblock_ids = models.TextField()
+    description = models.TextField(null=True, blank=True)
+    #leaseblocks = models.ManyToManyField("LeaseBlock", null=True, blank=True)
+    geometry_actual = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Selection Geometry")
+    
+    @property
+    def serialize_attributes(self):
+        from general.utils import format
+        attributes = []
+        report_values = {}
+        leaseblocks = LeaseBlock.objects.filter(prot_numb__in=self.leaseblock_ids.split(','))
+        if (len(leaseblocks) > 0): 
+            #get wind speed range
+            min_wind_speed = format(self.get_min_wind_speed(leaseblocks),3)
+            max_wind_speed = format(self.get_max_wind_speed(leaseblocks),3)
+            wind_speed_range = '%s to %s m/s' %(min_wind_speed, max_wind_speed)
+            attributes.append({'title': 'Average Wind Speed Range', 'data': wind_speed_range})
+            avg_wind_speed = format(self.get_avg_wind_speed(leaseblocks),3)
+            avg_wind_speed_output = '%s m/s' %avg_wind_speed
+            attributes.append({'title': 'Average Wind Speed', 'data': avg_wind_speed_output})
+            report_values['wind-speed'] = {'min': min_wind_speed, 'max': max_wind_speed, 'avg': avg_wind_speed, 'selection_id': self.uid}
+            #get distance to shore range
+            min_distance = format(self.get_min_distance(leaseblocks), 0)
+            max_distance = format(self.get_max_distance(leaseblocks), 0)
+            distance_to_shore = '%s to %s miles' %(min_distance, max_distance)
+            attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
+            avg_distance = format(self.get_avg_distance(leaseblocks),1)
+            avg_distance_output = '%s miles' %avg_distance
+            attributes.append({'title': 'Average Distance to Shore', 'data': avg_distance_output})
+            report_values['distance-to-shore'] = {'min': min_distance, 'max': max_distance, 'avg': avg_distance, 'selection_id': self.uid}
+            #get depth range
+            min_depth = format(self.get_min_depth(leaseblocks), 0)
+            max_depth = format(self.get_max_depth(leaseblocks), 0)
+            depth_range = '%s to %s feet' %(min_depth, max_depth)
+            attributes.append({'title': 'Depth', 'data': depth_range})
+            avg_depth = format(self.get_avg_depth(leaseblocks), 0)
+            avg_depth_output = '%s feet' %avg_depth
+            attributes.append({'title': 'Average Depth', 'data': avg_depth_output})
+            report_values['depth'] = {'min': min_depth, 'max': max_depth, 'avg': avg_depth, 'selection_id': self.uid}
+            #get distance to awc range
+            min_distance_to_awc = format(self.get_min_distance_to_awc(leaseblocks), 0)
+            max_distance_to_awc = format(self.get_max_distance_to_awc(leaseblocks), 0)
+            distance_to_awc_range = '%s to %s miles' %(min_distance_to_awc, max_distance_to_awc)
+            attributes.append({'title': 'Distance to Proposed AWC Hub', 'data': distance_to_awc_range})
+            avg_distance_to_awc = format(self.get_avg_distance_to_awc(leaseblocks), 1)
+            avg_distance_to_awc_output = '%s miles' %avg_distance_to_awc
+            attributes.append({'title': 'Average Distance to Proposed AWC Hub', 'data': avg_distance_to_awc_output})
+            report_values['distance-to-awc'] = {'min': min_distance_to_awc, 'max': max_distance_to_awc, 'avg': avg_distance_to_awc, 'selection_id': self.uid}
+            #get distance to shipping lanes
+            min_distance_to_shipping = format(self.get_min_distance_to_shipping(leaseblocks), 0)
+            max_distance_to_shipping = format(self.get_max_distance_to_shipping(leaseblocks), 0)
+            miles_to_shipping = '%s to %s miles' %(min_distance_to_shipping, max_distance_to_shipping)
+            attributes.append({'title': 'Distance to Shipping Lanes', 'data': miles_to_shipping})
+            avg_distance_to_shipping = format(self.get_avg_distance_to_shipping(leaseblocks),1)
+            avg_distance_to_shipping_output = '%s miles' %avg_distance_to_shipping
+            attributes.append({'title': 'Average Distance', 'data': avg_distance_to_shipping_output})
+            report_values['distance-to-shipping'] = {'min': min_distance_to_shipping, 'max': max_distance_to_shipping, 'avg': avg_distance_to_shipping, 'selection_id': self.uid}
+            '''
+            if self.input_filter_ais_density:
+                attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
+            '''    
+                
+            attributes.append({'title': 'Number of Leaseblocks', 'data': self.leaseblock_ids.count(',')+1})
+        else:
+            attributes.append({'title': 'Number of Leaseblocks', 'data': 0})
+        return { 'event': 'click', 'attributes': attributes, 'report_values': report_values }
+    
+    def get_min_wind_speed(self, leaseblocks):
+        min_wind_speed = leaseblocks[0].min_wind_speed_rev
+        for lb in leaseblocks:
+            if lb.min_wind_speed_rev < min_wind_speed:
+                min_wind_speed = lb.min_wind_speed_rev
+        return min_wind_speed - .125
+                
+    def get_max_wind_speed(self, leaseblocks):
+        max_wind_speed = leaseblocks[0].max_wind_speed_rev
+        for lb in leaseblocks:
+            if lb.max_wind_speed_rev > max_wind_speed:
+                max_wind_speed = lb.max_wind_speed_rev
+        return max_wind_speed + .125
+          
+    def get_avg_wind_speed(self, leaseblocks):
+        total = 0
+        for lb in leaseblocks:
+            total += lb.min_wind_speed_rev
+            total += lb.max_wind_speed_rev
+        if total > 0:
+            return total / (len(leaseblocks) * 2)
+        else:
+            return 0
+    
+    def get_min_distance(self, leaseblocks): 
+        min_distance = leaseblocks[0].min_distance
+        for lb in leaseblocks:
+            if lb.min_distance < min_distance:
+                min_distance = lb.min_distance
+        return min_distance 
+    
+    def get_max_distance(self, leaseblocks):
+        max_distance = leaseblocks[0].max_distance
+        for lb in leaseblocks:
+            if lb.max_distance > max_distance:
+                max_distance = lb.max_distance
+        return max_distance 
+          
+    def get_avg_distance(self, leaseblocks):
+        total = 0
+        for lb in leaseblocks:
+            total += lb.avg_distance
+        if total > 0:
+            return total / (len(leaseblocks))
+        else:
+            return 0
+    
+    def get_min_depth(self, leaseblocks): 
+        min_depth = leaseblocks[0].min_depth
+        for lb in leaseblocks:
+            if lb.min_depth > min_depth:
+                min_depth = lb.min_depth
+        return meters_to_feet(-min_depth)
+    
+    def get_max_depth(self, leaseblocks):
+        max_depth = leaseblocks[0].max_depth
+        for lb in leaseblocks:
+            if lb.max_depth < max_depth:
+                max_depth = lb.max_depth
+        return meters_to_feet(-max_depth)
+          
+    def get_avg_depth(self, leaseblocks):
+        total = 0
+        for lb in leaseblocks:
+            total += lb.avg_depth
+        if total != 0:
+            avg = meters_to_feet(-total / (len(leaseblocks)))
+            return avg
+        else:
+            return 0
+    
+    def get_min_distance_to_awc(self, leaseblocks): 
+        awc_min_distance = leaseblocks[0].awc_min_distance
+        for lb in leaseblocks:
+            if lb.awc_min_distance < awc_min_distance:
+                awc_min_distance = lb.awc_min_distance
+        return awc_min_distance
+    
+    def get_max_distance_to_awc(self, leaseblocks):
+        awc_max_distance = leaseblocks[0].awc_max_distance
+        for lb in leaseblocks:
+            if lb.awc_max_distance > awc_max_distance:
+                awc_max_distance = lb.awc_max_distance
+        return awc_max_distance
+          
+    def get_avg_distance_to_awc(self, leaseblocks):
+        total = 0
+        for lb in leaseblocks:
+            total += lb.awc_avg_distance
+        if total != 0:
+            avg = total / len(leaseblocks)
+            return avg
+        else:
+            return 0
+    
+    def get_min_distance_to_shipping(self, leaseblocks): 
+        tsz_min_distance = leaseblocks[0].tsz_min_distance
+        for lb in leaseblocks:
+            if lb.tsz_min_distance < tsz_min_distance:
+                tsz_min_distance = lb.tsz_min_distance
+        return tsz_min_distance
+    
+    def get_max_distance_to_shipping(self, leaseblocks):
+        tsz_max_distance = leaseblocks[0].tsz_max_distance
+        for lb in leaseblocks:
+            if lb.tsz_max_distance > tsz_max_distance:
+                tsz_max_distance = lb.tsz_max_distance
+        return tsz_max_distance
+          
+    def get_avg_distance_to_shipping(self, leaseblocks):
+        total = 0
+        for lb in leaseblocks:
+            total += lb.tsz_mean_distance
+        if total != 0:
+            return total / len(leaseblocks)
+        else:
+            return 0
+    
+    
+    def run(self):
+        leaseblocks = LeaseBlock.objects.filter(prot_numb__in=self.leaseblock_ids.split(','))
+        leaseblock_geoms = [lb.geometry for lb in leaseblocks]
+        
+        from django.contrib.gis.geos import MultiPolygon
+        dissolved_geom = leaseblock_geoms[0]
+        for geom in leaseblock_geoms:
+            try:
+                dissolved_geom = dissolved_geom.union(geom)
+            except:
+                pass
+        
+        if type(dissolved_geom) == MultiPolygon:
+            self.geometry_actual = dissolved_geom
+        else:
+            self.geometry_actual = MultiPolygon(dissolved_geom, srid=dissolved_geom.srid)
+        return True  
+    
+    def geojson(self, srid):
+        props = get_properties_json(self)
+        props['absolute_url'] = self.get_absolute_url()
+        json_geom = self.geometry_actual.transform(srid, clone=True).json
+        return get_feature_json(json_geom, json.dumps(props))
+    
+    class Options:
+        verbose_name = 'Lease Block Selection'
+        form = 'scenarios.forms.LeaseBlockSelectionForm'
+        form_template = 'selection/form.html'
+        #show_template = 'scenario/show.html'

@@ -53,8 +53,10 @@ class Layer(models.Model):
         ('placeholder', 'placeholder'),
     )
     name = models.CharField(max_length=100)
+    slug_name = models.CharField(max_length=100, blank=True, null=True)
     layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     url = models.CharField(max_length=255, blank=True, null=True)
+    shareable_url = models.BooleanField(default=True)
     arcgis_layers = models.CharField(max_length=255, blank=True, null=True)
     sublayers = models.ManyToManyField('self', blank=True, null=True)
     themes = models.ManyToManyField("Theme", blank=True, null=True)
@@ -187,6 +189,13 @@ class Layer(models.Model):
         return '%s/learn/%s#%s' %(domain, theme_name, self.slug)
         
     @property
+    def tiles_link(self):
+        if self.is_shareable and self.layer_type in ['XYZ', 'ArcRest', 'WMS']:
+            domain = get_domain(8000)
+            return '%s/explore/%s' %(domain, self.slug)
+        return None
+        
+    @property
     def tooltip(self):
         if self.description and self.description.strip() != '':
             return self.description
@@ -194,6 +203,14 @@ class Layer(models.Model):
             return self.parent.description
         else:
             return None
+            
+    @property
+    def is_shareable(self):
+        if self.shareable_url == False:
+            return False
+        if self.parent and self.parent.shareable_url == False:
+            return False
+        return True
             
     @property
     def serialize_attributes(self):
@@ -229,6 +246,7 @@ class Layer(models.Model):
                 'data_download': layer.data_download_link,
                 'metadata': layer.metadata_link,
                 'source': layer.source_link,
+                'tiles': layer.tiles_link,
                 'learn_link': layer.learn_link,
                 'attributes': layer.serialize_attributes,
                 'lookups': layer.serialize_lookups,
@@ -258,6 +276,7 @@ class Layer(models.Model):
             'data_download': self.data_download_link,
             'metadata': self.metadata_link,
             'source': self.source_link,
+            'tiles': self.tiles_link,
             'learn_link': self.learn_link,
             'attributes': self.serialize_attributes,
             'lookups': self.serialize_lookups,
@@ -267,6 +286,10 @@ class Layer(models.Model):
             'opacity': self.opacity
         }
         return layers_dict
+        
+    def save(self, *args, **kwargs):
+        self.slug_name = self.slug
+        super(Layer, self).save(*args, **kwargs)
 
 class AttributeInfo(models.Model):
     display_name = models.CharField(max_length=255, blank=True, null=True)

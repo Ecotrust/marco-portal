@@ -58,6 +58,30 @@
   font-size: 14px;
   color: white;  
 }
+
+#aggregated-attribute-overlay .accordion-group {
+  border: 0px;
+}
+
+#aggregated-attribute-overlay .accordion-heading {
+  font-size: 14px;
+}
+
+#aggregated-attribute-overlay .accordion-toggle {
+  padding: 0px;
+  text-decoration: none;
+}
+
+#aggregated-attribute-overlay .accordion-inner {
+  padding: 0px;
+  border-top: 0px;
+  background-color: rgba(60, 110, 160, 0);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#002d8998, endColorstr=#002d8998);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#002d8998, endColorstr=#002d8998)";
+}
+
 #aggregated-attribute-content {
   max-height: 250px;
   padding-bottom: 0px;
@@ -79,6 +103,10 @@
   max-height: 250px;
   margin-right: -20px;
   left: -5px;
+}
+
+#aggregated-attribute-content .mCSB_dragger_bar {
+  width: 6px;
 }
 
 #aggregated-attribute-overlay > span {
@@ -114,8 +142,9 @@
 }
 
 #bookmarks-table {
-  max-height: 150px;
-  overflow-y: auto;
+  height: 150px;
+  overflow: hidden;
+  outline: none;
 }
 
 #opacity-popover .controls {
@@ -143,15 +172,6 @@
 #map .olControlAttribution {
   bottom: 0px;
   left: 3px;
-}
-
-#data-accordion {
-    outline: none;
-}
-
-#data-accordion, #legend-accordion {
-  height: 100%;
-  overflow-y: auto;
 }
 
 #legend-accordion .accordion-toggle {
@@ -183,12 +203,6 @@ i.check {
   opacity: .4;
   /* for IE */
   filter: alpha(opacity=40);
-}
-
-#data-accordion .dropdown-menu {
-  right: 26px;
-  max-height: 100px;
-  overflow-y: auto;
 }
 
 .attribution {
@@ -295,6 +309,11 @@ a.disabled-link:hover {
   /*width: 68.3% !important;*/
   width: 75% !important;
 }
+.fullscreen-with-layers-authenticated {
+  margin-left: 0px !important;
+  /*width: 68.3% !important;*/
+  width: 65% !important;
+}
 .fullscreen-with-legend {
   margin-left: 0px !important;
   width: 80% !important;
@@ -306,6 +325,10 @@ a.disabled-link:hover {
 .fullscreen-data {
   margin-left: 0px !important;
   width: 25% !important;
+}
+.fullscreen-data-authenticated {
+  margin-left: 0px !important;
+  width: 35% !important;
 }
 .fullscreen-legend {
   margin-left: 0px !important;
@@ -453,6 +476,10 @@ a.disabled-link:hover {
   height: 95%;
 }
 
+#overview-overlay-text .mCSB_dragger_bar {
+  width: 6px;
+}
+
 #overview-overlay .title {
   font-size: 16px;
   font-weight: bold;
@@ -545,16 +572,32 @@ a.disabled-link:hover {
   overflow: visible;
 }*/
 
-#data-accordion, #legend-accordion {
-  height: 400px;
+#data-accordion .dropdown-menu {
+  right: 26px;
+  max-height: 100px;
   overflow-y: auto;
 }
+
+#designs-accordion  ul.unstyled {
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+}
+
+#data-accordion, #designs-accordion, #sharing-groups, #bookmark-sharing-groups{
+    outline: none;
+}
+
+#data-accordion, #legend-accordion, #designs-accordion{
+  height: 100%;
+  overflow-y: auto;
+}
+
 
 /*#data-accordion .accordion {
   overflow-x: visible;
 }
 */
-.accordion-inner {
+#myTabContent .accordion-inner {
   /*overflow: visible;*/
   background: white;
 }
@@ -585,7 +628,7 @@ a.disabled-link:hover {
 }
 
 #create-new-design .dropdown-menu {
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 #design-list .btn-layer {
@@ -601,6 +644,28 @@ a.disabled-link:hover {
   min-width: 75px;
   left: 70%;
   top: 90%;
+}
+
+#bar-chart-button {
+  opacity: .4;
+  /* for IE */
+  filter: alpha(opacity=40);
+}
+#bar-chart-button:hover  {
+  display: block !important;
+  opacity: .99;
+  /* for IE */
+  filter: alpha(opacity=99);
+}
+
+
+
+#design-list .reports-btn {
+  margin-top: -37px;
+  padding-top: 11px !important;
+  padding-right: 14px !important;
+  padding-bottom: 10px !important;
+  padding-left: 14px !important;
 }
 
 #designs .step ul {
@@ -635,6 +700,10 @@ a.disabled-link:hover {
   list-style-type: none;
   padding-left: 0px;
   margin-left: 0px;
+}
+
+#designs-slide {
+  height: 100%;
 }
 
 .attribution {
@@ -723,8 +792,8 @@ a.disabled-link:hover {
 
 
 #bookmark-popover {
-  left: 650px;
-  width: 300px;
+  left: 550px;
+  width: 400px;
   z-index: 1030;
 }
 
@@ -734,4 +803,16 @@ a.disabled-link:hover {
 
 .modal-backdrop {
   z-index: 1050;
+}
+
+.modal-body .sharing-header {
+  text-align: left; 
+  margin-left: 20px;
+}
+
+.group-members-popover {
+  cursor: default;
+}
+.group-members-popover:hover {
+  text-decoration: none; 
 }

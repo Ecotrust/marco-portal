@@ -31,6 +31,10 @@ p {
 a:focus {
     outline: none;
 }
+li a {
+    cursor: pointer;
+    cursor: hand;
+}
 
 #fullscreen {
 	display: none;
@@ -113,10 +117,10 @@ a:focus {
 	border-right: 1px solid #ccc;
 
 }
-	.navbar .nav > li > a {
-		line-height: 12px;
-		color: #333;
-	}	
+.navbar .nav > li > a {
+    line-height: 12px;
+    color: #333;
+}	
 .navbar form {
 	margin-top: 26px;
 }
@@ -260,6 +264,16 @@ a:focus {
     text-decoration: none;
 }
 
+#sharing-groups i.check {
+    position: relative;
+    top: 0px;
+}
+
+#bookmark-sharing-groups i.check {
+    position: relative;
+    top: 0px;
+}
+
 input + i.icon-remove-sign {
 	margin-left: -25px;
 	margin-right: 4px;
@@ -365,6 +379,10 @@ input + i.icon-remove-sign {
 }
 #wind-design-form .jspPane {
     border-radius: 10px;
+}
+
+#reports {
+    padding: 0 10px;
 }
 
 
@@ -813,6 +831,7 @@ img + h3 {
     padding: 1px;
     color: white;
     text-decoration: none;
+    outline: none;
     overflow: hidden;
     width: 25px;
     line-height: 22px;

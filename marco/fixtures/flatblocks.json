@@ -160,5 +160,23 @@
             "header": "",
             "slug": "data_catalog_source_link_tooltip"
         }
+    },
+    {
+        "pk": 19,
+        "model": "flatblocks.flatblock",
+        "fields": {
+            "content": "Cached Map Tiles",
+            "header": "",
+            "slug": "data_catalog_tiles_link_tooltip"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "flatblocks.flatblock",
+        "fields": {
+            "content": "tiles",
+            "header": "",
+            "slug": "data_catalog_tiles_link"
+        }
     }
 ]
