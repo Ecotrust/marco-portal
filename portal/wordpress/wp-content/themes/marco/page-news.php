@@ -21,7 +21,7 @@ Template Name: News
 
 							  <div class="span4">
 							  <?php
-							  $args = sprintf('category_slug=data-updates&numberposts=1');
+							  $args = sprintf('category_slug=%s&numberposts=1', "Data-Updates");
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
 							  	<div class="wrapper">
@@ -34,7 +34,7 @@ Template Name: News
 							  		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>	
 							  		<?php the_excerpt(); ?>
 							 	</div>
-							  </div>	
+							  </div>
 							  <?php endforeach; ?>
 							    <div class="span4">
 							    <?php
