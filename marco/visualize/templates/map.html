@@ -118,8 +118,8 @@
             }
             #embedded-marco-logo {
                 position: absolute;
-                top: 10px;
-                left: 50px;
+                top: 12px;
+                left: 53px;
                 z-index: 800;
                 width: 20%;
             }
@@ -144,9 +144,9 @@
                                 <div id="map-wrapper">
                                     <div id="map"></div>
                                     <!-- commenting out the following until a transparent background is generated for the marco logo -->
-                                    <!--<a data-bind="attr: { href: mapLinks.getPortalURL() }" target="_blank">
-                                        <img id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo_planner.jpg"/>
-                                    </a>-->
+                                    <a data-bind="attr: { href: mapLinks.getPortalURL() }" target="_blank">
+                                        <img id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo-transparent.png"/>
+                                    </a>
                                     <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                         <div data-bind="foreach: attributeLayers()">
                                             <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                     <!-- Aggregated Attribution Overlay -->
-                                    <div data-bind="visible: featureAttribution">
+                                    <div data-bind="visible: showFeatureAttribution">
                                         <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
                                             <div id="aggregated-attribute-content" class="accordion">
                                                 <div data-bind="foreach: attributeLayers()">
