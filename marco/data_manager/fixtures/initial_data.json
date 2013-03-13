@@ -1575,7 +1575,7 @@
             "layer_type": "Vector",
             "fact_sheet": "",
             "themes": [
-                1
+                8
             ],
             "compress_display": false,
             "map_tiles": "",
@@ -1719,7 +1719,7 @@
             "layer_type": "ArcRest",
             "fact_sheet": "",
             "themes": [
-                1
+                5
             ],
             "compress_display": false,
             "map_tiles": "",
@@ -1740,14 +1740,14 @@
             "description": "",
             "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "",
+            "data_overview": "These are explosive weapons that did not explode when they were employed and may still pose a risk of detonation ",
             "slug_name": "unexploded-ordinances",
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "",
+            "data_source": "Marine Cadastre, NOAA and BOEM",
             "data_notes": "",
             "name": "Unexploded Ordinances",
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
@@ -1764,7 +1764,7 @@
             "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                2
+                8
             ],
             "compress_display": false,
             "map_tiles": "",
@@ -1785,16 +1785,16 @@
             "description": "",
             "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "",
-            "slug_name": "boem-shipwreck-density",
+            "data_overview": "Areas where shipwrecks are known, usage maybe diving, fishing, or a known archaeological site",
+            "slug_name": "shipwreck-density",
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ShipWreckBlockDensity/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "",
+            "data_source": "BOEM",
             "data_notes": "",
-            "name": "BOEM Shipwreck Density",
+            "name": "Shipwreck Density",
             "url": "http://s3.amazonaws.com/marco-public-2d/Conservation/ShipWreckBlockDensity/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
