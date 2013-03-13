@@ -25,7 +25,7 @@ Template Name: News
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
 							  	<div class="wrapper">
-							  		<a href="/portal/category/data/">
+							  		<a href="/portal/category/data-updates/">
 								  		<div class="image">
 											<img src="/portal/assets/ais2.jpg" class="attachment-medium wp-post-image" alt="ais" title="ais">
 								  			<h2>Data Updates</h2>
