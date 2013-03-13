@@ -118,11 +118,11 @@
                                     <!--<li class=""><a href="/portal">Return to Portal</a></li>-->
                                     <!--<li class=""><a href="">Help</a></li>-->
                                     <span class="user-btn">
-                                        <a id="help-button" class="btn" href="#help-modal" data-toggle="modal">Help</a>
+                                        <a id="help-button" class="btn" style="outline: none; margin-top: 10px;" href="#help-modal" data-toggle="modal">Help</a>
                                       
                                         {% if user.is_authenticated %}
                                         <span class="btn-group">
-                                          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                          <a class="btn dropdown-toggle" style="margin-top: 2px;" data-toggle="dropdown" href="#">
                                             <i class="icon-user"></i> 
                                             {{user.username}}
                                             <span class="caret"></span>
@@ -135,7 +135,7 @@
                                           </ul>
                                         </span>
                                         {% else %}
-                                        <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a>                            
+                                        <a id="#sign-in-button" style="margin-top: 10px;" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a>                            
                                         {% endif %}
                                     </span>
                                 </div>
