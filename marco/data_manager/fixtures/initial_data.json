@@ -1330,6 +1330,51 @@
         }
     },
     {
+        "pk": 86,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-72.76&y=39.04&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=86&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. ",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Locations and flow attribute of discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. Only offshore locations are included; inland source facilities were excluded. EPA flow data marked by facility are attributed to the federal and state offshore point data.",
+            "slug_name": "offshore-discharge-flow",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Outflow/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "EPA",
+            "data_notes": "",
+            "name": "Offshore Discharge Flow",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 6,
         "model": "data_manager.layer",
         "fields": {
@@ -1379,51 +1424,6 @@
             "legend_title": "",
             "sublayers": [],
             "attribute_title": "ID: "
-        }
-    },
-    {
-        "pk": 86,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-72.76&y=39.04&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=86&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. ",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Locations and flow attribute of discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. Only offshore locations are included; inland source facilities were excluded. EPA flow data marked by facility are attributed to the federal and state offshore point data.",
-            "slug_name": "offshore-discharge-flow",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Outflow/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "EPA",
-            "data_notes": "",
-            "name": "Offshore Discharge Flow",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
         }
     },
     {
