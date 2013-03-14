@@ -1066,6 +1066,7 @@ function viewModel() {
             });
         }
         //$(elem).mCustomScrollbar("update");
+        $(elem).mCustomScrollbar("scrollTo", "top"); 
         setTimeout( function() { $(elem).mCustomScrollbar("update"); }, 500);
     };
     
