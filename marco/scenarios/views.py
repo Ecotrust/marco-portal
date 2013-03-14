@@ -227,27 +227,27 @@ def get_leaseblocks(request):
     for ocs_block in leaseblocks:
         json.append({
             'id': ocs_block.id,
-            'ais_density': ocs_block.ais_density,
-            'ais_min_density': ocs_block.ais_min_density,
-            'ais_max_density': ocs_block.ais_max_density,
+            #'ais_density': ocs_block.ais_density,
+            #'ais_min_density': ocs_block.ais_min_density,
+            #'ais_max_density': ocs_block.ais_max_density,
             'ais_mean_density': ocs_block.ais_mean_density,
-            'min_distance': ocs_block.min_distance,
-            'max_distance': ocs_block.max_distance,
+            #'min_distance': ocs_block.min_distance,
+            #'max_distance': ocs_block.max_distance,
             'avg_distance': ocs_block.avg_distance,
             'awc_min_distance': ocs_block.awc_min_distance,
-            'awc_max_distance': ocs_block.awc_max_distance,
-            'awc_avg_distance': ocs_block.awc_avg_distance,
+            #'awc_max_distance': ocs_block.awc_max_distance,
+            #'awc_avg_distance': ocs_block.awc_avg_distance,
             'avg_depth': meters_to_feet(-ocs_block.avg_depth, 1),
-            'min_depth': meters_to_feet(-ocs_block.min_depth, 1),
-            'max_depth': meters_to_feet(-ocs_block.max_depth, 1),
+            #'min_depth': meters_to_feet(-ocs_block.min_depth, 1),
+            #'max_depth': meters_to_feet(-ocs_block.max_depth, 1),
             'min_wind_speed': ocs_block.min_wind_speed_rev,
-            'max_wind_speed': ocs_block.max_wind_speed_rev,
+            #'max_wind_speed': ocs_block.max_wind_speed_rev,
             'tsz_min_distance': ocs_block.tsz_min_distance,
-            'tsz_max_distance': ocs_block.tsz_max_distance,
-            'tsz_mean_distance': ocs_block.tsz_mean_distance,
-            'wea_name': ocs_block.wea_name,
-            'wea_number': ocs_block.wea_number,
-            'wea_state_name': ocs_block.wea_state_name            
+            #'tsz_max_distance': ocs_block.tsz_max_distance,
+            #'tsz_mean_distance': ocs_block.tsz_mean_distance,
+            #'wea_name': ocs_block.wea_name,
+            #'wea_number': ocs_block.wea_number,
+            #'wea_state_name': ocs_block.wea_state_name            
         })
     return HttpResponse(dumps(json))
 
