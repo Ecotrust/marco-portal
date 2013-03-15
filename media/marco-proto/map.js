@@ -417,6 +417,14 @@ app.addVectorLayerToMap = function(layer) {
                 fillOpacity: fillOp,
                 externalGraphic: details.graphic 
             }; 
+            /*special case for Discharge Flow
+            if (layer.lookupField === "Flow") {
+                mylookup[details.value] = { 
+                    strokeColor: layer.color,
+                    pointRadius: details.value * 5
+                }; 
+                console.log(mylookup);
+            }*/
         });
         styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
         //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
