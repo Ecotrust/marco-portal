@@ -308,6 +308,15 @@ app.init = function () {
         //app.viewModel.updateMarker();
     });
     
+    app.map.removeLayerByName = function(layerName) {
+        for (var i=0; i<app.map.layers.length; i++) {
+            if (app.map.layers[i].name === layerName) {
+                app.map.removeLayer(app.map.layers[i]);
+                i--;
+            }
+        }
+    };
+    
 };
 
 app.addLayerToMap = function(layer) {

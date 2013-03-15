@@ -70,8 +70,13 @@
 
             if (step == 1) {
                 $('#button_prev').hide();
+                $('#button_next').css('border-radius', '4px');
             } else {
                 $('#button_prev').show();
+                $('#button_next').css('border-top-right-radius', '4px');
+                $('#button_next').css('border-bottom-right-radius', '4px');
+                $('#button_next').css('border-top-left-radius', '0px');
+                $('#button_next').css('border-bottom-left-radius', '0px');
             }
 
             if (step == max_step) {
@@ -498,7 +503,7 @@
 
 <div id="step3" class="step">
     <p class="step-text"><i>Step 3 of 3 </i>
-    <p class="instructions">Provide a <b>Name</b> to identify your Spatial Design </p>
+    <p class="instructions">Provide a <b>Name</b> to identify your Wind Energy Siting </p>
     <div class="step3-inputs">
         <div class="step3-param">
             {{ form.name.errors }}

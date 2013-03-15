@@ -53,9 +53,8 @@ var madrona = {
 
 
             app.viewModel.scenarios.scenarioForm(false);
-            app.viewModel.scenarios.loadingMessage("Creating Scenario");
-
-
+            app.viewModel.scenarios.loadingMessage("Creating Design");
+            
             $.ajax( {
                 url: url,
                 data: data,
@@ -930,7 +929,9 @@ function scenarioModel(options) {
     self.activateLayer = function() {
         var scenario = this;
         app.viewModel.scenarios.addScenarioToMap(scenario);
-        if ( scenario.isSelectionModel ) {
+        if (scenario.isDrawingModel ) {
+            
+        } else if ( scenario.isSelectionModel ) {
             app.viewModel.scenarios.activeSelections().push(scenario);
         }
     };
@@ -1093,7 +1094,13 @@ function scenariosModel(options) {
     self.scenarioList = ko.observableArray();    
     self.scenarioForm = ko.observable(false);
     
+    self.activeSelections = ko.observableArray();
     self.selectionList = ko.observableArray(); 
+    self.selectionForm = ko.observable(false);
+    
+    self.drawingList = ko.observableArray();
+    self.drawingForm = ko.observable(false);
+    
     self.getSelectionById = function(id) {
         var selections = self.selectionList();
         for (var i=0; i<selections.length; i++) {
@@ -1104,9 +1111,6 @@ function scenariosModel(options) {
         return false;
     };
     
-    self.activeSelections = ko.observableArray();
-    
-    self.selectionForm = ko.observable(false);
         
     self.reportsVisible = ko.observable(false);
     self.showComparisonReports = function() {
@@ -1228,6 +1232,16 @@ function scenariosModel(options) {
         return false;
     };
     
+    self.zoomToScenario = function(scenario) {
+        if (scenario.layer) {
+            var layer = scenario.layer;
+            app.map.zoomToExtent(layer.getDataExtent());
+            app.map.zoomOut();
+        } else {
+            self.addScenarioToMap(scenario, {zoomTo: true});
+        }
+    }
+    
     self.updateSharingScrollBar = function(groupID) {
         var sharingScrollpane = $('#sharing-groups').data('jsp');
         if (sharingScrollpane === undefined) {
@@ -1276,7 +1290,19 @@ function scenariosModel(options) {
             self.isCollectionsOpen(true);
         }
         self.updateDesignsScrollBar();
-    }       
+    }           
+    self.isDrawingsOpen = ko.observable(false);
+    self.toggleDrawingsOpen = function() {
+        // ensure designs tab is activated
+        $('#designsTab').tab('show');
+        
+        if ( self.isDrawingsOpen() ) {
+            self.isDrawingsOpen(false);
+        } else {
+            self.isDrawingsOpen(true);
+        }
+        self.updateDesignsScrollBar();
+    }      
     
     self.updateDesignsScrollBar = function() {
         var designsScrollpane = $('#designs-accordion').data('jsp');
@@ -1302,11 +1328,25 @@ function scenariosModel(options) {
             self.removeSelectionForm();
         }
         
+        //clean up drawing form
+        if (self.drawingForm() || self.drawingFormModel) {
+            self.removeDrawingForm();
+        }
+        
         //remove the key/value pair from aggregatedAttributes
         app.viewModel.removeFromAggregatedAttributes(self.leaseblockLayer().name);
         app.viewModel.updateAttributeLayers();
         
         self.updateDesignsScrollBar();
+    };
+        
+    self.removeDrawingForm = function() {    
+        self.drawingFormModel.cleanUp();
+        self.drawingForm(false);
+        var drawingForm = document.getElementById('drawing-form');
+        $(drawingForm).empty();
+        ko.cleanNode(drawingForm);
+        delete self.drawingFormModel;
     };
     
     self.removeSelectionForm = function() {
@@ -1337,7 +1377,7 @@ function scenariosModel(options) {
             app.map.removeLayer(self.leaseblockLayer()); 
         }
     };
-
+    
     self.createWindScenario = function() {
         //hide designs tab by sliding left
         return $.ajax({
@@ -1374,7 +1414,25 @@ function scenariosModel(options) {
             },
             error: function (result) { debugger; }
         });
-    };        
+    };   
+
+    self.createPolygonDesign = function() {
+        return $.ajax({
+            url: '/features/aoi/form/',
+            success: function(data) {
+                app.viewModel.scenarios.drawingForm(true);
+                $('#drawing-form').html(data);
+                app.viewModel.scenarios.drawingFormModel = new polygonFormModel();
+                ko.applyBindings(app.viewModel.scenarios.drawingFormModel, document.getElementById('drawing-form'));
+                //self.polygonFormModel.updateDesignScrollBar();
+            },
+            error: function (result) { debugger; }
+        });
+    }; 
+
+    self.createLineDesign = function() {};
+
+    self.createPointDesign = function() {};    
     
     //
     self.addScenarioToMap = function(scenario, options) {
@@ -1382,7 +1440,9 @@ function scenariosModel(options) {
             opacity = .8,
             stroke = 1,
             fillColor = "#2F6A6C",
-            strokeColor = "#1F4A4C";
+            strokeColor = "#1F4A4C",
+            zoomTo = (options && options.zoomTo) || false;
+        
         if ( scenario ) {
             scenarioId = scenario.uid;
             scenario.active(true);
@@ -1390,11 +1450,15 @@ function scenariosModel(options) {
         } else {
             scenarioId = options.uid;
         }
-        if (scenarioId.indexOf('leaseblockselection') !== -1) {
-            var isSelectionModel = true;
-        } else {
-            var isSelectionModel = false;
+        
+        var isDrawingModel = false,
+            isSelectionModel = false;
+        if (scenarioId.indexOf('drawing') !== -1) {
+            isDrawingModel = true;
         }
+        else if (scenarioId.indexOf('leaseblockselection') !== -1) {
+            isSelectionModel = true;
+        } 
         if (self.scenarioFormModel) {
             self.scenarioFormModel.isLeaseblockLayerVisible(false);
         }
@@ -1409,7 +1473,12 @@ function scenariosModel(options) {
                     opacity = scenario.opacity();
                     stroke = scenario.opacity();
                 } 
-                if ( isSelectionModel ) {
+                if ( isDrawingModel ) {
+                    fillColor = "#C9BE62";
+                    strokeColor = "#A99E42";
+                    //fillColor = "#EBE486";
+                    //strokeColor = "#CBC466";
+                } else if ( isSelectionModel ) {
                     fillColor = "#00467F";
                     strokeColor = "#00265F";
                 } 
@@ -1438,7 +1507,15 @@ function scenariosModel(options) {
                 } else { //create new scenario
                     //only do the following if creating a scenario
                     var properties = feature.features[0].properties;
-                    if (isSelectionModel) {
+                    if (isDrawingModel) {
+                        scenario = new drawingModel({
+                            id: properties.uid,
+                            uid: properties.uid,
+                            name: properties.name, 
+                            description: properties.description,
+                            features: layer.features
+                        });
+                    } else if (isSelectionModel) {
                         scenario = new selectionModel({
                             id: properties.uid,
                             uid: properties.uid,
@@ -1480,7 +1557,16 @@ function scenariosModel(options) {
                     //in case of edit, removes previously stored scenario
                     //self.scenarioList.remove(function(item) { return item.uid === scenario.uid } );
                     
-                    if ( isSelectionModel ) {
+                    if ( isDrawingModel ) {
+                        var previousDrawing = ko.utils.arrayFirst(self.drawingList(), function(oldDrawing) {
+                            return oldDrawing.uid === scenario.uid;
+                        });
+                        if ( previousDrawing ) {
+                            self.drawingList.replace( previousDrawing, scenario );
+                        } else {
+                            self.drawingList.push(scenario);
+                        }
+                    } else if ( isSelectionModel ) {
                         var previousSelection = ko.utils.arrayFirst(self.selectionList(), function(oldSelection) {
                             return oldSelection.uid === scenario.uid;
                         });
@@ -1517,6 +1603,11 @@ function scenariosModel(options) {
                 //add scenario to Active tab    
                 app.viewModel.activeLayers.remove(function(item) { return item.uid === scenario.uid } );
                 app.viewModel.activeLayers.unshift(scenario);
+                
+                if (zoomTo) {
+                    app.map.zoomToExtent(scenario.layer.getDataExtent());
+                    app.map.zoomOut();
+                }
                 
             },
             error: function(result) {
@@ -1575,7 +1666,7 @@ function scenariosModel(options) {
             }
         });
     };
-    //populates selectionList..?
+    //populates selectionList
     self.loadSelections = function (selections) {
         self.selectionList.removeAll();
         $.each(selections, function (i, selection) {
@@ -1592,6 +1683,40 @@ function scenariosModel(options) {
             });
             self.selectionList.push(selectionViewModel);
             app.viewModel.layerIndex[selection.uid] = selectionViewModel;
+        });
+    };
+    
+    self.loadDrawingsFromServer = function() {
+        $.ajax({
+            url: '/drawing/get_drawings',
+            type: 'GET',
+            dataType: 'json',
+            success: function (drawings) {
+                app.viewModel.scenarios.loadDrawings(drawings);
+                app.viewModel.scenarios.drawingsLoaded = true;
+            },
+            error: function (result) {
+                debugger;
+            }
+        });
+    };
+    //populates selectionList
+    self.loadDrawings = function (drawings) {
+        self.drawingList.removeAll();
+        $.each(drawings, function (i, drawing) {
+            var drawingViewModel = new drawingModel({
+                id: drawing.uid,
+                uid: drawing.uid,
+                name: drawing.name,
+                description: drawing.description,
+                attributes: drawing.attributes,
+                shared: drawing.shared,
+                sharedByUsername: drawing.shared_by_username,
+                sharedByName: drawing.shared_by_name,
+                sharingGroups: drawing.sharing_groups
+            });
+            self.drawingList.push(drawingViewModel);
+            app.viewModel.layerIndex[drawing.uid] = drawingViewModel;
         });
     };
     
@@ -1664,6 +1789,9 @@ $('#designsTab').on('show', function (e) {
         // load the selections
         app.viewModel.scenarios.loadSelectionsFromServer();
 
+        // load the drawing
+        app.viewModel.scenarios.loadDrawingsFromServer();
+        
         // load the leaseblocks
         $.ajax({
             url: '/scenario/get_leaseblocks',
