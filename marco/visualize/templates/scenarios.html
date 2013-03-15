@@ -30,7 +30,7 @@
                         <ul class="dropdown-menu" style="min-width: 115px;">
                             <li><a data-bind="click: createWindScenario" style="padding-left: 15px">Siting</a></li>
                             <li><a data-bind="click: createSelectionDesign" style="padding-left: 15px">Selection</a></li>
-                            <li><a data-bind="click: createPolygonDesign" style="padding-left: 15px">Drawings</a></li>
+                            <li><a data-bind="click: createPolygonDesign" style="padding-left: 15px">Drawing</a></li>
                             <!--
                             <li class="dropdown-submenu">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sketch of the Sea</a>
@@ -125,11 +125,22 @@
                                                 <span>Selections</span>
                                             </a>
                                         </div>
-                                    </div>
-                                    <div id="bar-chart-button" class="btn btn-large reports-btn pull-right" data-bind="click: showComparisonReports">
+                                    <!--<div id="bar-chart-button" class="btn reports-btn pull-right" data-bind="click: showComparisonReports">
                                         <span rel="tooltip" title="Comparison Reports">
                                             <i class="icon-bar-chart icon-large pull-right"></i>
-                                        </span>
+                                        </span>-->
+                                    </div>
+                                    <div class="btn-group btn-group-layer pull-right" style="margin-top: -33px; margin-right: 5px;">
+                                        <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" style="left: -60px; min-width: 100px;">
+                                            <li style="text-align: center">
+                                                <a data-bind="click: showComparisonReports" style="padding: 3px 10px;">
+                                                    View Reports
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
