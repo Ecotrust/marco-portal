@@ -87,6 +87,37 @@ function reportsModel(options) {
         self.createChart(windReportOptions);
     };
     
+    self.showSubstationReport = function() {
+        var awcReportOptions = {
+            'title': { 
+                text: 'Distance to Coastal Substation' 
+            },
+            'yAxis': {
+                title: {
+                    text: 'Distance in miles'
+                },
+                min: 0,
+                max: 100
+            },
+            'tooltip': {
+                valueSuffix: 'miles',
+                formatter: function() {
+                    return  'Distance to Coastal Substation: ' +
+                            this.point.low + ' - ' +
+                            this.point.high + ' miles' +
+                            '<br/>Average Distance: ' + 
+                            this.point.avg + ' miles'; 
+              }
+            },
+            'seriesName': 'Distance to Coastal Substation',
+            'seriesStub': 'distance-to-substation'
+        };
+        //var options = $.extend({}, self.reportOptions, awcReportOptions);
+        //self.createChart(options);
+        self.reportOptions = awcReportOptions;
+        self.createChart(awcReportOptions);
+    };
+    
     self.showAWCReport = function() {
         var awcReportOptions = {
             'title': { 

@@ -318,6 +318,41 @@
             </div>
         </li>
         <li>
+            <div class="accordion" id="distance-to-awc-accordion">
+                <div class="accordion-heading" data-bind="click: toggleAWCWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_parameter_distance_to_awc }}  
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Proposed AWC Stations </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
+                    </label>
+                </div>
+                <div id="distance_to_awc_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToAWCParameter()}">
+                    <div class="accordion-inner">
+                        <span > 
+                            Maximum Distance (in miles) 
+                            {{ form.input_distance_to_awc }} 
+                            {{ form.input_distance_to_awc.errors }}   
+                        </span> 
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleAWCDescription, css: { 'active': awcLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': awcLayer.active(), 'not-active': ! awcLayer.active() }, click: toggleAWCLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show AWC Routes & Hubs Data</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: awcLayer.active() && awcLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: awcLayer.active() && ! awcLayer.visible()"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
             <div class="accordion" id="distance-to-shore-accordion">
                 <div class="accordion-heading" data-bind="click: toggleDistanceToShoreWidget">
                     <label class="accordion-toggle">
@@ -360,47 +395,6 @@
                         </span>
                         {{ form.input_depth }}  
                         {{ form.input_depth.errors }}
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="accordion" id="distance-to-awc-accordion">
-                <div class="accordion-heading" data-bind="click: toggleAWCWidget">
-                    <label class="accordion-toggle">
-                        {{ form.input_parameter_distance_to_awc }}  
-                        <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()"></i>
-                        <i class="check icon-large icon-check-empty"></i>
-                        <span class="parameter-label" style="margin-left: 5px">Distance to Proposed AWC Stations </span> 
-                        <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
-                    </label>
-                </div>
-                <div id="distance_to_awc_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToAWCParameter()}">
-                    <div class="accordion-inner">
-                        <span > 
-                            Maximum Distance (in miles) 
-                            {{ form.input_distance_to_awc }} 
-                            {{ form.input_distance_to_awc.errors }}   
-                        </span> 
-                        <!--<div style="margin-top: 10px">
-                            <label id="awc-layer-toggle" data-bind="click: toggleAWCLayer">
-                                <input id="awc-layer-checkbox" data-bind="checked: awcLayer.active()" type="checkbox" name="checkbox" value="value"> 
-                                Show AWC Routes & Hubs Data</input>
-                            </label>
-                        </div>-->
-                        <div class="btn-group btn-group-layer show-layer-btn-group">
-                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleAWCDescription, css: { 'active': awcLayer.infoActive() }">
-                                <i class="icon-info-sign icon-large"></i>
-                            </a>
-
-                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': awcLayer.active(), 'not-active': ! awcLayer.active() }, click: toggleAWCLayer">
-                                <div style="font-weight: normal">
-                                    <span>Show AWC Routes & Hubs Data</span>
-                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: awcLayer.active() && awcLayer.visible()"></i>
-                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: awcLayer.active() && ! awcLayer.visible()"></i>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
