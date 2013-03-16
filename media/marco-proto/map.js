@@ -93,6 +93,10 @@ app.init = function () {
     map.events.register("zoomend", null, function () {
         if (map.zoomBox.active) {
             app.viewModel.deactivateZoomBox();
+        }   
+        if( map.getZoom() < 5)
+        {
+            map.zoomTo(5);
         }        
     });
 

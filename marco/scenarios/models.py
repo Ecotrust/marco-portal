@@ -711,7 +711,7 @@ class LeaseBlockSelection(Analysis):
             attributes.append({'title': 'Distance to Shipping Lanes', 'data': miles_to_shipping})
             avg_distance_to_shipping = format(self.get_avg_distance_to_shipping(leaseblocks),1)
             avg_distance_to_shipping_output = '%s miles' %avg_distance_to_shipping
-            attributes.append({'title': 'Average Distance', 'data': avg_distance_to_shipping_output})
+            attributes.append({'title': 'Average Distance to Shipping Lanes', 'data': avg_distance_to_shipping_output})
             report_values['distance-to-shipping'] = {'min': min_distance_to_shipping, 'max': max_distance_to_shipping, 'avg': avg_distance_to_shipping, 'selection_id': self.uid}
             
             #get distance to shore range

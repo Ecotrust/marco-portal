@@ -21,7 +21,9 @@ function reportsModel(options) {
         for (var i=0; i<selections.length; i++) {
             //if ( selections[i].active() ) {
                 var vals = selections[i].scenarioReportValues[key];
-                data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
+                if (vals) {
+                    data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
+                }
             //}
         }
         return data;
