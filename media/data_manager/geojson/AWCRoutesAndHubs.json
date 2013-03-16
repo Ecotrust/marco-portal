@@ -19,4 +19,4 @@
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[-8329513.1818,4621408.4246]},"properties":{"TYPE":"Hub","Lat":38.2966,"OBJECTID":4,"OBJECTID_1":4,"Long":-74.8253,"STATE_GEN":"MD Hub","Descr":"AWC Delmarva Energy Link: Phase 1"}}
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[-8402406.4862,4425721.1722]},"properties":{"TYPE":"Hub","Lat":36.9039,"OBJECTID":5,"OBJECTID_1":5,"Long":-75.4801,"STATE_GEN":"VA Hub","Descr":"AWC Delmarva Energy Link: Phase 2"}}
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[-8320650.5969,4667752.2727]},"properties":{"TYPE":"Hub","Lat":38.6226,"OBJECTID":7,"OBJECTID_1":6,"Long":-74.7457,"STATE_GEN":"DE Hub","Descr":"AWC Delmarva Energy Link: Phase 1"}}
-]}
+]} 
