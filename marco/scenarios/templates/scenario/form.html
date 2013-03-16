@@ -484,7 +484,7 @@
             </div>
         </li>
         <li>
-            <div class="accordion" id="distance-to-shipping-accordion">
+            <div class="accordion" id="exclude-ship-traffic-selectbox">
                 <div class="accordion-heading" data-bind="click: toggleShipTrafficWidget">
                     {{ form.input_filter_ais_density }}  
                     <label id="ship_traffic_density_widget" class="accordion-toggle">
@@ -499,29 +499,21 @@
         </ul>
     </div>
     <p></p>
-    <label class="step-header">Military (under development)</label>
+    <label class="step-header">Security</label>
     <div id="step2_inputs">
         <ul class="parameters">
         <li>
-            <label>
-                <!--{{ form.input_assessment_areas }} -->
-                Exclude DoD Assessment Areas 
-                <!--<img src="/media/marco/img/info.png" id="info_assessment" class="info" />-->
-            </label>
-        </li>
-        <li>
-            <label>
-                <!--{{ form.input_warn_areas }} -->
-                Exclude Military Op Warn Areas 
-                <!--<img src="/media/marco/img/info.png" id="info_warn" class="info" />-->
-            </label>
-        </li>
-        <li>
-            <label>
-                <!--{{ form.input_ordinance_areas }} -->
-                Exclude Unexploded Ordinance Areas 
-                <!--<img src="/media/marco/img/info.png" id="info_ordinance" class="info" />-->
-            </label>
+            <div class="accordion" id="exclude-uxo-selectbox">
+                <div class="accordion-heading" data-bind="click: toggleUXOWidget">
+                    {{ form.input_filter_uxo }}  
+                    <label id="uxo_widget" class="accordion-toggle">
+                        <i class="check icon-large icon-check" data-bind="visible: uxoParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Exclude Areas with Unexploded Ordnances </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_uxo" class="info" />-->
+                    </label>
+                </div>
+            </div>
         </li>
         </ul>
     </div>
@@ -619,6 +611,9 @@
     display: none;
 }
 #id_input_filter_ais_density {
+    display: none;
+}
+#id_input_filter_uxo {
     display: none;
 }
 

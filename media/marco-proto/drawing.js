@@ -123,7 +123,6 @@ function polygonFormModel(options) {
         //disable feature attribution
         app.viewModel.disableFeatureAttribution();
         //select polygon
-        console.dir(self.polygonLayer);
         self.editControl.selectFeature(self.polygonLayer.features[0]);
     };
          

@@ -122,6 +122,7 @@ function scenarioFormModel(options) {
     self.distanceToAWCParameter = ko.observable(false);
     self.distanceToShippingParameter = ko.observable(false);
     self.shipTrafficDensityParameter = ko.observable(false);
+    self.uxoParameter = ko.observable(false);
     
     self.toggleWindSpeedWidget = function() {
         if ( self.windSpeedParameter() ) {
@@ -250,6 +251,21 @@ function scenarioFormModel(options) {
         self.updateRemainingBlocks();
     };
     
+    self.toggleUXOWidget = function() {
+        if ( self.uxoParameter() ) {
+            self.uxoParameter(false);
+            $('#id_input_filter_uxo').removeAttr('checked');
+        } else {
+            self.uxoParameter(true);
+            $('#id_input_filter_uxo').attr('checked', 'checked');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
     self.change_wind_message = function(value) {
         var $text = $('#wind_speed_text'),
             $label = $text.closest('.label');
@@ -352,6 +368,11 @@ function scenarioFormModel(options) {
         } else {
             self.removeFilter('ais');
         }
+        if ( self.uxoParameter() ) {
+            self.updateFilters({'key': 'uxo', 'value': 1});
+        } else {
+            self.removeFilter('uxo');
+        }
         self.updateLeaseblocksLeft();
     
     };
@@ -360,7 +381,7 @@ function scenarioFormModel(options) {
         //self.leaseblocksLeft(23);
         var list = app.viewModel.scenarios.leaseblockList,
             count = 0;
-        
+            
         for ( var i=0; i<list.length; i++ ) {
             var addOne = true;
             if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
@@ -374,12 +395,10 @@ function scenarioFormModel(options) {
                 self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
             } 
-            if (self.filters['substation'] && list[i].substation_min_distance > self.filters['substation'] || 
-                list[i].substation_min_distance === null ) {
+            if (self.filters['substation'] && 
+                (list[i].substation_min_distance > self.filters['substation'] || list[i].substation_min_distance === null) ) {
                 addOne = false;
-            } else {
-                console.log(list[i].substation_min_distance);
-            }
+            } 
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
@@ -388,6 +407,9 @@ function scenarioFormModel(options) {
                 addOne = false;
             }
             if (self.filters['ais'] && list[i].ais_mean_density > 1 ) {
+                addOne = false;
+            } 
+            if (self.filters['uxo'] && list[i].uxo !== 0 ) {
                 addOne = false;
             } 
             if (addOne) {
@@ -497,6 +519,15 @@ function scenarioFormModel(options) {
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
                         property: "AIS7_MEAN", 
                         value: 1
+                    })
+                );
+            }
+            if ( self.uxoParameter() ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if UXO == 0
+                        type: OpenLayers.Filter.Comparison.EQUAL_TO,
+                        property: "UXO", 
+                        value: 0
                     })
                 );
             }
@@ -1035,6 +1066,9 @@ function scenarioModel(options) {
                 } 
                 if ($('#id_input_filter_ais_density').is(':checked')) {
                     app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(true);
+                } 
+                if ($('#id_input_filter_uxo').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.uxoParameter(true);
                 } 
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },

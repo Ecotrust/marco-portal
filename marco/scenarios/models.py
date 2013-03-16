@@ -69,6 +69,10 @@ class Scenario(Analysis):
     input_filter_distance_to_shipping = models.BooleanField(verbose_name='Distance to Shipping Lanes (Traffic Separation Zones)')
     input_distance_to_shipping = models.FloatField(verbose_name='Minimum Distance to Shipping Lanes (Traffic Separation Zones)', null=True, blank=True)
     
+    #Security
+    
+    input_filter_uxo = models.BooleanField(verbose_name='Excluding Areas with UXO')
+    
     #Descriptors (name field is inherited from Analysis)
     
     description = models.TextField(null=True, blank=True)
@@ -109,6 +113,8 @@ class Scenario(Analysis):
             attributes.append({'title': 'Minimum Distance to Shipping Lanes', 'data': distance_to_shipping})
         if self.input_filter_ais_density:
             attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
+        if self.input_filter_uxo:
+            attributes.append({'title': 'Excluding Areas with Unexploded Ordnances', 'data': ''})
         attributes.append({'title': 'Number of Leaseblocks', 'data': self.lease_blocks.count(',')+1})
         return { 'event': 'click', 'attributes': attributes }
     
@@ -160,7 +166,10 @@ class Scenario(Analysis):
             result = result.filter(ais_mean_density__lte=1)
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
-         
+        #Security
+        if self.input_filter_uxo:
+            result = result.filter(uxo=0)
+            
         dissolved_geom = result[0].geometry
         for lb in result:
             try:

@@ -248,7 +248,8 @@ def get_leaseblocks(request):
             #'tsz_mean_distance': ocs_block.tsz_mean_distance,
             #'wea_name': ocs_block.wea_name,
             #'wea_number': ocs_block.wea_number,
-            #'wea_state_name': ocs_block.wea_state_name            
+            #'wea_state_name': ocs_block.wea_state_name  
+            'uxo': ocs_block.uxo
         })
     return HttpResponse(dumps(json))
 
