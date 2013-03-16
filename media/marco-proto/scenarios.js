@@ -83,7 +83,8 @@ var madrona = {
 function scenarioFormModel(options) {
     var self = this;
     
-    self.leaseblocksLeft = ko.observable(app.viewModel.scenarios.leaseblockList.length);
+    var initial_leaseblocks_left = app.viewModel.scenarios.leaseblockList.length || 3426;
+    self.leaseblocksLeft = ko.observable(initial_leaseblocks_left);
     self.showLeaseblockSpinner = ko.observable(false);
     
     self.isLeaseblockLayerVisible = ko.observable(false);
