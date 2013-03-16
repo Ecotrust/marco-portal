@@ -142,6 +142,17 @@
             }
         });
             
+            
+        // DISTANCE TO SUBSTATION UPDATED
+        //Update Remaining Leaseblocks 
+        $('#slider-input_distance_to_substation').bind( "slide slidechange", function(event, ui) {
+            if (app.viewModel.scenarios.scenarioFormModel) { //this condition prevents error thrown at form creation time
+                app.viewModel.scenarios.scenarioFormModel.updateFilters({'key': 'substation', 'value': ui.value});
+                //Update Remaining Leaseblocks 
+                updateRemaininLeaseBlocks();
+            }
+        }); 
+        
          
         // DISTANCE TO AWC UPDATED
         //Update Remaining Leaseblocks 
@@ -318,13 +329,35 @@
             </div>
         </li>
         <li>
+            <div class="accordion" id="distance-to-substation-accordion">
+                <div class="accordion-heading" data-bind="click: toggleSubstationWidget">
+                    <label class="accordion-toggle">
+                        {{ form.input_parameter_distance_to_substation }}  
+                        <i class="check icon-large icon-check" data-bind="visible: distanceToSubstationParameter()"></i>
+                        <i class="check icon-large icon-check-empty"></i>
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Coastal Substation </span> 
+                        <!--<img src="/media/marco/img/info.png" id="info_substation" class="info" />-->
+                    </label>
+                </div>
+                <div id="distance_to_substation_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': distanceToSubstationParameter()}">
+                    <div class="accordion-inner">
+                        <span > 
+                            Maximum Distance (in miles) 
+                            {{ form.input_distance_to_substation }} 
+                            {{ form.input_distance_to_substation.errors }}   
+                        </span> 
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
             <div class="accordion" id="distance-to-awc-accordion">
                 <div class="accordion-heading" data-bind="click: toggleAWCWidget">
                     <label class="accordion-toggle">
                         {{ form.input_parameter_distance_to_awc }}  
                         <i class="check icon-large icon-check" data-bind="visible: distanceToAWCParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
-                        <span class="parameter-label" style="margin-left: 5px">Distance to Proposed AWC Stations </span> 
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Proposed AWC Hubs </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_awc" class="info" />-->
                     </label>
                 </div>
@@ -574,6 +607,9 @@
     display: none;
 }
 #id_input_parameter_depth {
+    display: none;
+}
+#id_input_parameter_distance_to_substation {
     display: none;
 }
 #id_input_parameter_distance_to_awc {

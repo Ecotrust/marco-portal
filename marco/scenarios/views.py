@@ -235,6 +235,7 @@ def get_leaseblocks(request):
             #'max_distance': ocs_block.max_distance,
             'avg_distance': ocs_block.avg_distance,
             'awc_min_distance': ocs_block.awc_min_distance,
+            'substation_min_distance': ocs_block.substation_min_distance,
             #'awc_max_distance': ocs_block.awc_max_distance,
             #'awc_avg_distance': ocs_block.awc_avg_distance,
             'avg_depth': meters_to_feet(-ocs_block.avg_depth, 1),

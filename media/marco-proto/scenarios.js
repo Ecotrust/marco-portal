@@ -118,6 +118,7 @@ function scenarioFormModel(options) {
     self.windSpeedParameter = ko.observable(false);
     self.distanceToShoreParameter = ko.observable(false);
     self.depthRangeParameter = ko.observable(false);
+    self.distanceToSubstationParameter = ko.observable(false);
     self.distanceToAWCParameter = ko.observable(false);
     self.distanceToShippingParameter = ko.observable(false);
     self.shipTrafficDensityParameter = ko.observable(false);
@@ -171,6 +172,24 @@ function scenarioFormModel(options) {
             $('#id_input_parameter_depth').attr('checked', 'checked');
             self.depthRangeParameter(true);
             $('#depth_widget').css('display', 'block');
+        }
+        //update scrollbar
+        self.updateDesignScrollBar();
+        //Update Remaining Leaseblocks 
+        self.updateFiltersAndLeaseBlocks();
+        self.updateRemainingBlocks();
+    };
+    
+    self.toggleSubstationWidget = function() {
+        if ( self.distanceToSubstationParameter() ) {
+            $('#id_input_parameter_distance_to_substation').removeAttr('checked');
+            self.distanceToSubstationParameter(false);
+            $('#distance_to_substation_widget').css('display', 'none');
+        } else {
+            var value = $('#id_input_distance_to_substation')[0].value;
+            $('#id_input_parameter_distance_to_substation').attr('checked', 'checked');
+            self.distanceToSubstationParameter(true);
+            $('#distance_to_substation_widget').css('display', 'block');
         }
         //update scrollbar
         self.updateDesignScrollBar();
@@ -313,6 +332,11 @@ function scenarioFormModel(options) {
             self.removeFilter('min_distance');
             self.removeFilter('max_distance');
         }
+        if ( self.distanceToSubstationParameter() ) {
+            self.updateFilters({'key': 'substation', 'value': $('#id_input_distance_to_substation')[0].value});
+        } else {
+            self.removeFilter('substation');
+        }
         if ( self.distanceToAWCParameter() ) {
             self.updateFilters({'key': 'awc', 'value': $('#id_input_distance_to_awc')[0].value});
         } else {
@@ -336,7 +360,7 @@ function scenarioFormModel(options) {
         //self.leaseblocksLeft(23);
         var list = app.viewModel.scenarios.leaseblockList,
             count = 0;
-            
+        
         for ( var i=0; i<list.length; i++ ) {
             var addOne = true;
             if (self.filters['wind'] && list[i].min_wind_speed < self.filters['wind'] ) {
@@ -350,6 +374,12 @@ function scenarioFormModel(options) {
                 self.filters['min_depth'] && list[i].avg_depth < self.filters['min_depth'] ) {
                 addOne = false;
             } 
+            if (self.filters['substation'] && list[i].substation_min_distance > self.filters['substation'] || 
+                list[i].substation_min_distance === null ) {
+                addOne = false;
+            } else {
+                console.log(list[i].substation_min_distance);
+            }
             if (self.filters['awc'] && list[i].awc_min_distance > self.filters['awc'] || 
                 list[i].awc_min_distance === null ) {
                 addOne = false;
@@ -426,6 +456,20 @@ function scenarioFormModel(options) {
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
                         property: "DEPTH_MEAN", 
                         value: (-self.filters['max_depth'] * .3048)
+                    })
+                );
+            }
+            if ( self.distanceToSubstationParameter() ) {
+                filter.filters.push(
+                    new OpenLayers.Filter.Comparison({ // if SUBSTAMIN <= self.filters['substation']
+                        type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
+                        property: "SUBSTAMIN", 
+                        value: self.filters['substation']
+                    }),
+                    new OpenLayers.Filter.Comparison({ // if SUBSTAMIN <= self.filters['substation']
+                        type: OpenLayers.Filter.Comparison.NOT_EQUAL_TO,
+                        property: "SUBSTAMIN", 
+                        value: 0
                     })
                 );
             }
@@ -979,6 +1023,9 @@ function scenarioModel(options) {
                 } 
                 if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
                     app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(true);
+                } 
+                if ($('#id_input_parameter_distance_to_substation').is(':checked')) {
+                    app.viewModel.scenarios.scenarioFormModel.distanceToSubstationParameter(true);
                 } 
                 if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
                     app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(true);

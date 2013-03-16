@@ -123,7 +123,6 @@ function polygonFormModel(options) {
         //disable feature attribution
         app.viewModel.disableFeatureAttribution();
         //select polygon
-        console.log('inside startEdit');
         console.dir(self.polygonLayer);
         self.editControl.selectFeature(self.polygonLayer.features[0]);
     };
@@ -169,7 +168,6 @@ function polygonFormModel(options) {
         app.map.removeControl(self.polygonControl);
         self.editControl.deactivate();
         app.map.removeControl(self.editControl);
-        console.log('removing polygonLayer from map');
         //BETTER YET -- just remove all app.map.layer items that match the name New Polygon Layer
         //might make the name slightly more cryptic for this...
         app.map.removeLayerByName(self.newPolygonLayerName);

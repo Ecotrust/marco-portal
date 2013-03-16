@@ -55,6 +55,9 @@ class Scenario(Analysis):
     input_parameter_distance_to_awc = models.BooleanField(verbose_name='Distance to AWC Station')
     input_distance_to_awc = models.FloatField(verbose_name='Maximum Distance to AWC Station', null=True, blank=True)
     
+    input_parameter_distance_to_substation = models.BooleanField(verbose_name='Distance to Coastal Substation')
+    input_distance_to_substation = models.FloatField(verbose_name='Maximum Distance to Coastal Substation', null=True, blank=True)
+    
     input_parameter_wea = models.BooleanField(verbose_name='WEA Parameter')
     input_wea = models.ManyToManyField('WEA', null=True, blank=True)
     
@@ -94,6 +97,9 @@ class Scenario(Analysis):
         if self.input_parameter_distance_to_awc:
             distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
             attributes.append({'title': 'Max Distance to Proposed AWC Hub', 'data': distance_to_awc})
+        if self.input_parameter_distance_to_substation:
+            distance_to_substation = '%s miles' %format(self.input_distance_to_substation, 0)
+            attributes.append({'title': 'Max Distance to Coastal Substation', 'data': distance_to_substation})
         if self.input_filter_distance_to_shipping:
             miles_to_shipping = format(self.input_distance_to_shipping, 0)
             if miles_to_shipping == 1:
@@ -147,6 +153,8 @@ class Scenario(Analysis):
             result = result.filter(wea_number__in=input_wea)
         if self.input_parameter_distance_to_awc:
             result = result.filter(awc_min_distance__lte=self.input_distance_to_awc)
+        if self.input_parameter_distance_to_substation:
+            result = result.filter(substation_min_distance__lte=self.input_distance_to_substation)
         #Shipping
         if self.input_filter_ais_density:
             result = result.filter(ais_mean_density__lte=1)
