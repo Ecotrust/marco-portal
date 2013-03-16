@@ -467,17 +467,28 @@ app.addUtfLayerToMap = function(layer) {
         useJSONP: false
     });
      
-    app.map.addLayer(layer.utfgrid);           
-    layer.layer = new OpenLayers.Layer.XYZ(
-        layer.name, 
-        layer.url,
-        $.extend({}, opts, 
-            {
-                sphericalMercator: true,
-                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-            }
-        )
-    );  
+    app.map.addLayer(layer.utfgrid);      
+    
+    if (layer.type === 'ArcRest') {
+        app.addArcRestLayerToMap(layer);
+    } else if (layer.type === 'XYZ') {
+        //maybe just call app.addXyzLayerToMap(layer)
+        app.addXyzLayerToMap(layer);
+        /*
+        layer.layer = new OpenLayers.Layer.XYZ(
+            layer.name, 
+            layer.url,
+            $.extend({}, opts, 
+                {
+                    sphericalMercator: true,
+                    isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+                }
+            )
+        );  
+        */
+    } else {
+        debugger;
+    }
 }
 
 app.setLayerVisibility = function(layer, visibility) {

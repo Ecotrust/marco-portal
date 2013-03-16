@@ -1345,17 +1345,32 @@
             "vector_graphic": "",
             "kml": "",
             "source": "",
-            "lookup_table": [],
+            "lookup_table": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+            ],
             "shareable_url": true,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
             "metadata": "",
             "opacity": 0.5,
-            "vector_color": "",
+            "vector_color": "#333333",
             "attribute_event": "click",
             "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. ",
-            "attribute_fields": [],
+            "attribute_fields": [
+                118,
+                119
+            ],
             "learn_more": "",
             "data_overview": "Locations and flow attribute of discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. Only offshore locations are included; inland source facilities were excluded. EPA flow data marked by facility are attributed to the federal and state offshore point data.",
             "slug_name": "offshore-discharge-flow",
@@ -1367,7 +1382,7 @@
             "data_source": "EPA",
             "data_notes": "",
             "name": "Offshore Discharge Flow",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png ",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -1616,6 +1631,54 @@
         }
     },
     {
+        "pk": 88,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-73.17&y=39.18&z=7&dls%5B%5D=true&dls%5B%5D=0.6&dls%5B%5D=88&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.csc.noaa.gov/",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/coastalenergy/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/CoastalEnergyFacilities.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/CoastalEnergyFacilities.htm",
+            "opacity": 0.6,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data product depicts the locations of facilities that generate electricity. Only facilities adjacent to the coast and Great Lakes are identified. Contained within the database are records that define the fuel source and other characteristics of the facility that may benefit ocean planners. In some cases, the presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning activities. ",
+            "attribute_fields": [
+                116,
+                117
+            ],
+            "learn_more": "",
+            "data_overview": "Electricity-generating facilities along the Mid-Atlantic coast. Parameters such as fuel source of the facility may be useful in ocean planning. The presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning processes.",
+            "slug_name": "coastal-energy-facilities",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Facilities/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Marine Cadastre",
+            "data_notes": "",
+            "name": "Coastal Energy Facilities",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Facilities/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 64,
         "model": "data_manager.layer",
         "fields": {
@@ -1668,51 +1731,6 @@
         }
     },
     {
-        "pk": 88,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-73.17&y=39.18&z=7&dls%5B%5D=true&dls%5B%5D=0.6&dls%5B%5D=88&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.csc.noaa.gov/",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/CoastalEnergyFacilities.zip",
-            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/CoastalEnergyFacilities.htm",
-            "opacity": 0.6,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data product depicts the locations of facilities that generate electricity. Only facilities adjacent to the coast and Great Lakes are identified. Contained within the database are records that define the fuel source and other characteristics of the facility that may benefit ocean planners. In some cases, the presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning activities. ",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Electricity-generating facilities along the Mid-Atlantic coast. Parameters such as fuel source of the facility may be useful in ocean planning. The presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning processes.",
-            "slug_name": "coastal-energy-facilities",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Facilities/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Marine Cadastre",
-            "data_notes": "",
-            "name": "Coastal Energy Facilities",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Facilities/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 89,
         "model": "data_manager.layer",
         "fields": {
@@ -1730,7 +1748,7 @@
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/uxo/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "",
@@ -1738,7 +1756,10 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                120,
+                121
+            ],
             "learn_more": "",
             "data_overview": "These are explosive weapons that did not explode when they were employed and may still pose a risk of detonation ",
             "slug_name": "unexploded-ordinances",
@@ -1775,7 +1796,7 @@
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/shipwrecks/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "",
@@ -1783,7 +1804,9 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                115
+            ],
             "learn_more": "",
             "data_overview": "Areas where shipwrecks are known, usage maybe diving, fishing, or a known archaeological site",
             "slug_name": "shipwreck-density",
@@ -4496,6 +4519,56 @@
         }
     },
     {
+        "pk": 112,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantType",
+            "display_name": "Plant Type",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 114,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "designCapa",
+            "display_name": "Capacity",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 116,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantName",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 118,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Source",
+            "display_name": "Source",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 120,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "descriptio",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
         "pk": 58,
         "model": "data_manager.attributeinfo",
         "fields": {
@@ -4773,6 +4846,56 @@
             "display_name": "",
             "precision": null,
             "order": 1
+        }
+    },
+    {
+        "pk": 113,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantName",
+            "display_name": "Name",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 115,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "FREQUENCY",
+            "display_name": "Number of Shipwrecks",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 117,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantType",
+            "display_name": "Type",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 119,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Flow",
+            "display_name": "Flow",
+            "precision": 3,
+            "order": 2
+        }
+    },
+    {
+        "pk": 121,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "sourceDate",
+            "display_name": "Source Date",
+            "precision": null,
+            "order": 2
         }
     },
     {
@@ -5413,6 +5536,127 @@
             "graphic": "",
             "value": "Precautionary Area",
             "fill": true
+        }
+    },
+    {
+        "pk": 13,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "0",
+            "fill": false
+        }
+    },
+    {
+        "pk": 14,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "1",
+            "fill": false
+        }
+    },
+    {
+        "pk": 15,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "2",
+            "fill": false
+        }
+    },
+    {
+        "pk": 16,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "3",
+            "fill": false
+        }
+    },
+    {
+        "pk": 17,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "4",
+            "fill": false
+        }
+    },
+    {
+        "pk": 18,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "5",
+            "fill": false
+        }
+    },
+    {
+        "pk": 19,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "6",
+            "fill": false
+        }
+    },
+    {
+        "pk": 20,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "7",
+            "fill": false
+        }
+    },
+    {
+        "pk": 21,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "8",
+            "fill": false
+        }
+    },
+    {
+        "pk": 22,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "9",
+            "fill": false
+        }
+    },
+    {
+        "pk": 23,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "10",
+            "fill": false
         }
     },
     {
