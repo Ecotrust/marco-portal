@@ -1218,6 +1218,7 @@ function scenariosModel(options) {
         setTimeout(function() {
             app.viewModel.scenarios.reportsVisible(false);
             $('#designs-slide').show('slide', {direction: 'left'}, 300);
+            self.updateDesignsScrollBar();
         }, 420);
     };
     
