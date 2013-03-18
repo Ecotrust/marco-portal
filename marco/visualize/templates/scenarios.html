@@ -22,7 +22,10 @@
         <div id="designs-data" data-bind="visible: !scenarioForm() && !selectionForm() && !reportsVisible() && !drawingForm()">
             <div class="row-fluid">
                 <div class="span12">
-                    <div id="create-new-design" class="btn-group" style="padding-bottom: 10px;">
+                    <div id="view-reports-button" class="btn pull-right" data-bind="click: showComparisonReports">
+                        View Reports
+                    </div>
+                    <div id="create-new-design" class="btn-group pull-left" style="padding-bottom: 10px;">
                         <a id="create-new-button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                             Create New
                             <span class="caret"></span>
@@ -43,6 +46,7 @@
                             -->
                         </ul>
                     </div>
+                    
                 </div>
             </div>
             
@@ -130,10 +134,11 @@
                                             <i class="icon-bar-chart icon-large pull-right"></i>
                                         </span>-->
                                     </div>
+                                    <!--
                                     <div class="btn-group btn-group-layer pull-right" style="margin-top: -33px; margin-right: 5px;">
                                         <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
                                             <span class="caret"></span>
-                                        </a>
+                                        </a>                                        
                                         <ul class="dropdown-menu" style="left: -60px; min-width: 100px;">
                                             <li style="text-align: center">
                                                 <a data-bind="click: showComparisonReports" style="padding: 3px 10px;">
@@ -142,6 +147,7 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    -->
                                 </div>
                                 <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
                                     <div class="accordion-inner">
@@ -258,7 +264,7 @@
                                     Return to Designs
                                 </div>
                                 <div id="create-new-design" class="btn-group pull-left" style="padding-bottom: 10px;">
-                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <a id="comparison-reports-button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                                         Comparison Reports
                                         <span class="caret"></span>
                                     </a>
@@ -276,13 +282,23 @@
                         </div>
                     </div> 
                     <div id="reports-intro" data-bind="visible: !showingReport()">
-                        <p>Comparison Reports can be used to visually compare your Sollections across various measurable values.</p>
+                        <p>Comparison Reports can be used to visually compare your Lease Block Selections across various measurable values.</p>
                     </div>
                     <div data-bind="visible: !showingReport() && !noActiveCollections()">
                         <p>Select a Comparison Report from the menu above.</p>
                     </div>
                     <div data-bind="visible: noActiveCollections()">
-                        <p>Display 1 or more Selection on the map before selecting a Comparison Report from the menu above.</p>
+                        <p>Comparison Reports will provide a comparison of all of your visible Lease Block Selections.</p>
+                        <p id="comparison-report-flash-instructions">
+                            <span data-bind="visible: $parent.selectionList().length==0">
+                                You do not currently have any Lease Block Selections to compare.  
+                                Create Lease Block Selections through the Create New button on the Designs panel.
+                            </span>
+                            <span data-bind="visible: $parent.selectionList().length!=0">
+                                You currently have no Lease Block Selections displayed on the map.  
+                                Activate 1 or more Lease Block Selections before choosing a report.
+                            </span>
+                        </p>
                     </div>
                     <div id="reports-container" data-bind="visible: showingReport() && !noActiveCollections()" style="max-width: 400px; height: 400px; margin: 0 auto">
                     </div>

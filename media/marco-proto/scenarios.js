@@ -1659,6 +1659,7 @@ function scenariosModel(options) {
                         } else {
                             self.selectionList.push(scenario);
                         }
+                        app.viewModel.scenarios.activeSelections().push(scenario);
                     } else {
                         var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
                             return oldScenario.uid === scenario.uid;
@@ -1669,7 +1670,6 @@ function scenariosModel(options) {
                             self.scenarioList.push(scenario);
                         }
                     }
-                    app.viewModel.scenarios.activeSelections().push(scenario)
                     
                     //self.scenarioForm(false);
                     self.reset();

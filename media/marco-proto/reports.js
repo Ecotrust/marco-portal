@@ -255,6 +255,7 @@ function reportsModel(options) {
             self.noActiveCollections(false);
             self.showingReport(true);
         } else {
+            $('#comparison-report-flash-instructions').effect("highlight", {}, 1000);
             self.noActiveCollections(true);
             return;
         }

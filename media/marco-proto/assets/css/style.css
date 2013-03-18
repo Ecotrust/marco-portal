@@ -627,6 +627,14 @@ a.disabled-link:hover {
   background: rgba(45, 137, 152, .9);
 }
 
+#view-reports-button {
+  border-radius: 4px;
+}
+
+#comparison-reports-button {
+  background: rgba(45, 137, 152, .9);
+}
+
 #create-new-design .dropdown-menu {
   margin-top: -10px;
 }
