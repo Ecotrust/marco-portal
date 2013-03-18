@@ -1021,6 +1021,7 @@ function scenarioModel(options) {
         if ( scenario.isSelectionModel ) {
             var index = app.viewModel.scenarios.activeSelections().indexOf(scenario);
             app.viewModel.scenarios.activeSelections().splice(index, 1);
+            app.viewModel.scenarios.reports.updateChart();
         }
         
         scenario.opacity(scenario.defaultOpacity);
