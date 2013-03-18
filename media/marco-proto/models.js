@@ -1808,8 +1808,8 @@ function viewModel() {
         }
         
         //Distance to Shipping Lanes
-        if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
-            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
+        if ('TRAFFCMIN' in data && 'TRAFFCMAX' in data) {
+            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRAFFCMIN'].toFixed(0) + ' to ' + data['TRAFFCMAX'].toFixed(0) + ' miles'});
         }
         
         //Traffic Density (High/Low)
