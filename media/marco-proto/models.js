@@ -26,7 +26,10 @@ function layerModel(options, parent) {
     self.defaultOpacity = options.opacity || 0.5;
     self.opacity = ko.observable(self.defaultOpacity);
     self.graphic = options.graphic || null;
-
+    
+    self.sharedBy = ko.observable(false);
+    self.shared = ko.observable(false);
+    
     // set target blank for all links
     if (options.description) {
         $descriptionTemp = $("<div/>", {

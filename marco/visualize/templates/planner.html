@@ -219,7 +219,7 @@
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                                 <div style="font-weight: normal">
-                                                                                    <span data-bind="text: name"></span>
+                                                                                    <span style="padding-left: 2px;" data-bind="text: name"></span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                                     <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
                                                                                     <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
@@ -300,6 +300,9 @@
                                                     <button class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive()}"><i class="icon-info-sign icon-large"></i></button>
                                                     <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <div data-bind="text: name"></div>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
                                                         <span ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></span>
                                                     </a>
                                                     <a class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust icon-large"></i></a>
