@@ -71,7 +71,9 @@
                                             {% endif %}
                                         </div>
                                         <div><strong>Expected Date of Upload to Portal: </strong>{{ need.expected_date }}</div>
+                                        {% if need.notes %}
                                         <div><strong>Notes: </strong>{{ need.notes }}</div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div></li>

@@ -5682,24 +5682,6 @@
         }
     },
     {
-        "pk": 10,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Not initiated.",
-            "archived": false,
-            "name": "State landings and fishing effort data",
-            "expected_date": "To be determined (beyond scope of current funding)",
-            "notes": "Most ocean fishery harvests are documented through federal reporting systems but there are gaps for some fisheries that do not require federal licenses.",
-            "themes": [
-                4
-            ],
-            "source": "States",
-            "contact": "The Nature Conservancy",
-            "contact_email": "",
-            "description": "Information about commercial harvest activity collected by state agencies in the Mid-Atlantic."
-        }
-    },
-    {
         "pk": 21,
         "model": "data_manager.dataneed",
         "fields": {
@@ -5736,24 +5718,6 @@
         }
     },
     {
-        "pk": 18,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "No efforts currently underway to obtain and compile data",
-            "archived": false,
-            "name": "Important coastal bird habitat",
-            "expected_date": "TBD",
-            "notes": "Need to leverage existing data and efforts; additional data needs to be collected.",
-            "themes": [
-                2
-            ],
-            "source": "Multiple sources ",
-            "contact": "The Nature Conservancy",
-            "contact_email": "",
-            "description": "Point and polygon data on coastal bird use of coastal and marine habitats for nesting, breeding, wintering and stopover."
-        }
-    },
-    {
         "pk": 24,
         "model": "data_manager.dataneed",
         "fields": {
@@ -5772,21 +5736,39 @@
         }
     },
     {
-        "pk": 5,
+        "pk": 10,
         "model": "data_manager.dataneed",
         "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal",
+            "status": "Not initiated.",
             "archived": false,
-            "name": "Turtles-Distribution and Nesting Areas (ESI)",
-            "expected_date": "As soon as vetted by Portal Data Review Team ",
-            "notes": "ESI maps provide a concise summary of coastal resources that are at risk if an oil spill occurs nearby. Vector polygons in this data set represent turtle distribution.",
+            "name": "State landings and fishing effort ",
+            "expected_date": "To be determined (beyond scope of current funding)",
+            "notes": "Most ocean fishery harvests are documented through federal reporting systems but there are gaps for some fisheries that do not require federal licenses, e.g. croaker and whelks (\"conch\") in Virginia.",
+            "themes": [
+                4
+            ],
+            "source": "States",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Information about commercial harvest activity collected by state agencies in the Mid-Atlantic."
+        }
+    },
+    {
+        "pk": 18,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "No efforts currently underway to obtain and compile data",
+            "archived": false,
+            "name": "Important coastal bird habitat",
+            "expected_date": "TBD",
+            "notes": "Need to leverage existing data and efforts; additional data needs to be collected.",
             "themes": [
                 2
             ],
-            "source": "TNC NAM ERA compiled; source data from Environmental Sensitivity Index, NOAA",
-            "contact": "The Nature Conservancy ",
+            "source": "Multiple sources ",
+            "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "Sea turtle areas displayed on the maps are limited to nesting beaches and several well-known in-water concentration areas. Sea turtle nesting beaches include sandy beach areas where sea turtles come ashore to nest."
+            "description": "Point and polygon data on coastal bird habitats (for nesting, breeding, wintering and stopover)."
         }
     },
     {
@@ -5794,7 +5776,7 @@
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
-            "archived": false,
+            "archived": true,
             "name": "Energy facilities",
             "expected_date": "Spring 2013",
             "notes": "In addition to point locations, plume models would be useful for informing ocean planning efforts.",
@@ -5814,7 +5796,7 @@
             "status": "Efforts underway to incorporate authorized data into Portal",
             "archived": false,
             "name": "Coldwater coral predictive distribution model",
-            "expected_date": "Early 2013",
+            "expected_date": "Spring 2013",
             "notes": "NCCOS and NEFSC working on a predictive model for the Mid-Atlantic.",
             "themes": [
                 2
@@ -5826,11 +5808,47 @@
         }
     },
     {
+        "pk": 6,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": false,
+            "name": "Large Pelagic Species (sharks, tuna, marlin)-Species Richness, Persistence and EFH",
+            "expected_date": "As soon as vetted by Portal Data Review Group",
+            "notes": "14 species represented include: Albacore Tuna, Bigeye Thresher, Blue Marlin, Bluefin Tuna, Dusky shark, Great Hammerhead, Porbeagle, Sandbar shark, Sand Tiger, Shortfin Mako, Swordfish, Thresher, White Marlin, Scalloped Hammerhead\r\n",
+            "themes": [
+                2
+            ],
+            "source": "TNC NAM ERA compiled; source data from NMFS- SEFSC and NMFS-NEFSC; EFH from NMFS and HMS FMP",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Target species richness refers to the total number of target species by age class observed within a TMS summed and mapped based on all available data (1965-2004).  Persistence refers to the sum of the number of decades that a given target species was present (1-4) for combined juvenile and adult observations.  Habitat refers to the number of target species whose EFH overlapped each TMS determined and summarized by total target species and by age class.\r\n"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": false,
+            "name": "Turtles-Distribution and Nesting Areas (ESI)",
+            "expected_date": "As soon as vetted by Portal Data Review Group",
+            "notes": "ESI maps provide a concise summary of coastal resources that are at risk if an oil spill occurs nearby. Vector polygons in this data set represent turtle distribution.",
+            "themes": [
+                2
+            ],
+            "source": "TNC NAM ERA compiled; source data from Environmental Sensitivity Index, NOAA",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Sea turtle areas displayed on the maps are limited to nesting beaches and several well-known in-water concentration areas. Sea turtle nesting beaches include sandy beach areas where sea turtles come ashore to nest."
+        }
+    },
+    {
         "pk": 4,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Efforts underway to incorporate authorized data into Portal\r\n",
-            "archived": false,
+            "archived": true,
             "name": "Turtles-Sightings per Unit Effort (SPUE) ",
             "expected_date": "As soon as vetted by Portal Data Review Team ",
             "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n",
@@ -5844,24 +5862,6 @@
         }
     },
     {
-        "pk": 6,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal",
-            "archived": false,
-            "name": "Large Pelagic Species (sharks, tuna, marlin)-Species Richness, Persistence and EFH",
-            "expected_date": "As soon as vetted by Portal Data Review Team ",
-            "notes": "14 species represented include: Albacore Tuna, Bigeye Thresher, Blue Marlin, Bluefin Tuna, Dusky shark, Great Hammerhead, Porbeagle, Sandbar shark, Sand Tiger, Shortfin Mako, Swordfish, Thresher, White Marlin, Scalloped Hammerhead\r\n",
-            "themes": [
-                2
-            ],
-            "source": "TNC NAM ERA compiled; source data from NMFS- SEFSC and NMFS-NEFSC; EFH from NMFS and HMS FMP",
-            "contact": "The Nature Conservancy ",
-            "contact_email": "",
-            "description": "Target species richness refers to the total number of target species by age class observed within a TMS summed and mapped based on all available data (1965-2004).  Persistence refers to the sum of the number of decades that a given target species was present (1-4) for combined juvenile and adult observations.  Habitat refers to the number of target species whose EFH overlapped each TMS determined and summarized by total target species and by age class.\r\n"
-        }
-    },
-    {
         "pk": 15,
         "model": "data_manager.dataneed",
         "fields": {
@@ -5869,7 +5869,7 @@
             "archived": false,
             "name": "Marine mammal migration paths",
             "expected_date": "Early 2014",
-            "notes": "Multiple data collection efforts ongoing currently, including AMAPPS (funded by BOEM), BRI study (funded by DOE), and VA Aquarium study (funded by VACZM).",
+            "notes": "Multiple data collection efforts ongoing currently, including AMAPPS (NEFSC, funded by BOEM), BRI study (funded by DOE), and VA Aquarium study (funded by VACZM).",
             "themes": [
                 2
             ],
@@ -5880,21 +5880,21 @@
         }
     },
     {
-        "pk": 14,
+        "pk": 17,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
             "archived": false,
-            "name": "Port locations and attributes",
+            "name": "Regional scale sea bird and sea duck predictive distribution model",
             "expected_date": "Spring 2013",
-            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
+            "notes": "BOEM-funded project underway to expand New York scale work to Mid-Atlantic region. Data expected in late 2012.",
             "themes": [
-                8
+                2
             ],
-            "source": "ACOE; Individual ports",
-            "contact": "The Nature Conservancy",
+            "source": "Manomet's CETAP",
+            "contact": "NOAA-NCCOS Biogeography Branch",
             "contact_email": "",
-            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
+            "description": "A high resolution, predictive model for sea bird and sea duck habitat and distribution."
         }
     },
     {
@@ -5916,21 +5916,39 @@
         }
     },
     {
-        "pk": 17,
+        "pk": 1,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n",
+            "archived": false,
+            "name": "Military, hazard and restricted areas",
+            "expected_date": "Unknown ",
+            "notes": "",
+            "themes": [
+                5
+            ],
+            "source": "USCG & DOD including ACOE, Navy, etc. ",
+            "contact": "NOAA CSC  ",
+            "contact_email": "",
+            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
+        }
+    },
+    {
+        "pk": 14,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
             "archived": false,
-            "name": "Regional scale sea bird and sea duck predictive distribution model",
-            "expected_date": "Early 2013",
-            "notes": "BOEM-funded project underway to enable NCCOS to expand New York scale work to Mid-Atlantic region. Data expected in late 2012.",
+            "name": "Port locations and attributes",
+            "expected_date": "Spring 2013",
+            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
             "themes": [
-                2
+                8
             ],
-            "source": "Manomet's CETAP",
-            "contact": "NOAA Biogeography Branch",
+            "source": "ACOE; Individual ports",
+            "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "A high resolution, predictive model for sea bird and sea duck habitat and distribution."
+            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
         }
     },
     {
@@ -5949,24 +5967,6 @@
             "contact": "Rutgers CRSSA ",
             "contact_email": "",
             "description": "Areas where recreational boating (regattas, pleasure, cruises, water skiing, etc.) occurs."
-        }
-    },
-    {
-        "pk": 1,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n",
-            "archived": false,
-            "name": "Military, hazard and restricted areas",
-            "expected_date": "Unknown ",
-            "notes": "\r\n",
-            "themes": [
-                5
-            ],
-            "source": "USCG & DOD including ACOE, Navy, etc. ",
-            "contact": "NOAA CSC  ",
-            "contact_email": "",
-            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
         }
     },
     {
@@ -5991,36 +5991,18 @@
         "pk": 13,
         "model": "data_manager.dataneed",
         "fields": {
-            "status": "Data available",
+            "status": "Data under development",
             "archived": false,
-            "name": "Automatic Identification System (AIS) shipping data",
-            "expected_date": "June 2012",
+            "name": "Automatic Identification System (AIS) ship traffic",
+            "expected_date": "June 2013",
             "notes": "",
             "themes": [
                 8
             ],
-            "source": "NOAA",
+            "source": "USCG & NOAA",
             "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed."
-        }
-    },
-    {
-        "pk": 11,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Data under development",
-            "archived": false,
-            "name": "Municipal and private discharge",
-            "expected_date": "Fall, 2012",
-            "notes": "In addition to point locations, effluent plume models would be useful for informing ocean planning efforts.",
-            "themes": [
-                1
-            ],
-            "source": "EPA",
-            "contact": "Rutgers CRSSA ",
-            "contact_email": "",
-            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments and industries in the coastal drainage basin."
+            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed. A preliminary AIS map layer has been added to the Portal as a placeholder; enhanced AIS map layers showing traffic patterns by vessel type and other attributes are under development by NOAA Coastal Services Center and others."
         }
     },
     {
@@ -6060,11 +6042,29 @@
         }
     },
     {
+        "pk": 11,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Municipal and private discharge",
+            "expected_date": "Fall, 2012",
+            "notes": "In addition to point locations, effluent plume models would be useful for informing ocean planning efforts.",
+            "themes": [
+                1
+            ],
+            "source": "EPA",
+            "contact": "Rutgers CRSSA ",
+            "contact_email": "",
+            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments and industries in the coastal drainage basin."
+        }
+    },
+    {
         "pk": 3,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Efforts underway to incorporate authorized data into Portal\r\n",
-            "archived": false,
+            "archived": true,
             "name": "Marine Mammals-Sightings per Unit Effort (SPUE) ",
             "expected_date": "As soon as vetted by Portal Data Review Team ",
             "notes": "Need to add summary data layers with SPUE grids combined for multiple species and seasons (e.g. all toothed whales).  Assessed species include include fin whale, humpback whale, minke whale, northern Atlantic right whale, sperm whale, sei whale, Atlantic whitesided dolphin, bottlenose dolphin, harbor porpoise, and Atlantic striped dolphin.\r\n",
@@ -6081,18 +6081,18 @@
         "pk": 7,
         "model": "data_manager.dataneed",
         "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal",
+            "status": "Data under development",
             "archived": false,
-            "name": "Vessel Trip Report (VTR) data",
-            "expected_date": "June 2012",
-            "notes": "VTR data are available upon request and can be posted on the portal at appropriate scale and with appropriate attribution. Data will need to be depicted in consideration of confidentiality requirements.",
+            "name": "Vessel Trip Report (VTR)",
+            "expected_date": "Fall 2013",
+            "notes": "Regional scale VTR data aggregated to ten minute squares are currently displayed on the portal and are available upon request.  Finer resolution data linking fishing locations with communities are under development in consultation with fishing industry participants.  All fishery data will be depicted in consideration of confidentiality requirements established by NOAA-Fisheries.",
             "themes": [
                 4
             ],
-            "source": "NOAA/NMFS",
-            "contact": "The Nature Conservancy ",
+            "source": "NOAA/NMFS, analysis by Rutgers University",
+            "contact": "Center for Remote Sensing and Spatial Analysis, Rutgers University",
             "contact_email": "",
-            "description": "Data on catch and value for many commercially important species aggregated to ten minute squares."
+            "description": "Derived data products representing fishing effort by port and gear type."
         }
     }
 ]
