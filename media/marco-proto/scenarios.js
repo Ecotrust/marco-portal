@@ -1319,8 +1319,17 @@ function scenariosModel(options) {
     self.zoomToScenario = function(scenario) {
         if (scenario.layer) {
             var layer = scenario.layer;
+            if (!scenario.active()) {
+                scenario.activateLayer();
+            }
             app.map.zoomToExtent(layer.getDataExtent());
-            app.map.zoomOut();
+            if (scenario.uid.indexOf('leaseblockselection') !== -1) {
+                app.map.zoomOut();
+                app.map.zoomOut();
+            } else if (scenario.uid.indexOf('drawing') !== -1) {
+                app.map.zoomOut();
+                app.map.zoomOut();
+            } 
         } else {
             self.addScenarioToMap(scenario, {zoomTo: true});
         }
@@ -1352,38 +1361,56 @@ function scenariosModel(options) {
     self.selectionsLoaded = false;
     
     self.isScenariosOpen = ko.observable(false);
-    self.toggleScenariosOpen = function() {
+    self.toggleScenariosOpen = function(force) {
         // ensure designs tab is activated
         $('#designsTab').tab('show');
         
-        if ( self.isScenariosOpen() ) {
+        if (force === 'open') {
+            self.isScenariosOpen(true);
+        } else if (force === 'close') {
             self.isScenariosOpen(false);
         } else {
-            self.isScenariosOpen(true);
+            if ( self.isScenariosOpen() ) {
+                self.isScenariosOpen(false);
+            } else {
+                self.isScenariosOpen(true);
+            }
         }
         self.updateDesignsScrollBar();
     }        
     self.isCollectionsOpen = ko.observable(false);
-    self.toggleCollectionsOpen = function() {
+    self.toggleCollectionsOpen = function(force) {
         // ensure designs tab is activated
         $('#designsTab').tab('show');
         
-        if ( self.isCollectionsOpen() ) {
+        if (force === 'open') {
+            self.isCollectionsOpen(true);
+        } else if (force === 'close') {
             self.isCollectionsOpen(false);
         } else {
-            self.isCollectionsOpen(true);
+            if ( self.isCollectionsOpen() ) {
+                self.isCollectionsOpen(false);
+            } else {
+                self.isCollectionsOpen(true);
+            }
         }
         self.updateDesignsScrollBar();
     }           
     self.isDrawingsOpen = ko.observable(false);
-    self.toggleDrawingsOpen = function() {
+    self.toggleDrawingsOpen = function(force) {
         // ensure designs tab is activated
         $('#designsTab').tab('show');
         
-        if ( self.isDrawingsOpen() ) {
+        if (force === 'open') {
+            self.isDrawingsOpen(true);
+        } else if (force === 'close') {
             self.isDrawingsOpen(false);
         } else {
-            self.isDrawingsOpen(true);
+            if ( self.isDrawingsOpen() ) {
+                self.isDrawingsOpen(false);
+            } else {
+                self.isDrawingsOpen(true);
+            }
         }
         self.updateDesignsScrollBar();
     }      
@@ -1536,13 +1563,16 @@ function scenariosModel(options) {
         }
         
         var isDrawingModel = false,
-            isSelectionModel = false;
+            isSelectionModel = false,
+            isScenarioModel = false;
         if (scenarioId.indexOf('drawing') !== -1) {
             isDrawingModel = true;
         }
         else if (scenarioId.indexOf('leaseblockselection') !== -1) {
             isSelectionModel = true;
-        } 
+        } else {
+            isScenarioModel = true;
+        }
         if (self.scenarioFormModel) {
             self.scenarioFormModel.isLeaseblockLayerVisible(false);
         }
@@ -1599,6 +1629,7 @@ function scenariosModel(options) {
                             description: properties.description,
                             features: layer.features
                         });
+                        self.toggleDrawingsOpen('open');
                     } else if (isSelectionModel) {
                         scenario = new selectionModel({
                             id: properties.uid,
@@ -1607,6 +1638,8 @@ function scenariosModel(options) {
                             description: properties.description,
                             features: layer.features
                         });
+                        self.toggleCollectionsOpen('open');
+                        self.zoomToScenario(scenario);
                     } else {
                         scenario = new scenarioModel({
                             id: properties.uid,
@@ -1615,6 +1648,8 @@ function scenariosModel(options) {
                             description: properties.description,
                             features: layer.features
                         });
+                        self.toggleScenariosOpen('open');
+                        self.zoomToScenario(scenario);
                     }
                     scenario.layer = layer;
                     scenario.layer.scenarioModel = scenario;
@@ -1659,7 +1694,7 @@ function scenariosModel(options) {
                         } else {
                             self.selectionList.push(scenario);
                         }
-                        app.viewModel.scenarios.activeSelections().push(scenario);
+                        self.activeSelections().push(scenario);
                     } else {
                         var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
                             return oldScenario.uid === scenario.uid;
@@ -1689,8 +1724,7 @@ function scenariosModel(options) {
                 app.viewModel.activeLayers.unshift(scenario);
                 
                 if (zoomTo) {
-                    app.map.zoomToExtent(scenario.layer.getDataExtent());
-                    app.map.zoomOut();
+                    self.zoomToScenario(scenario);
                 }
                 
             },
@@ -1814,7 +1848,7 @@ function scenariosModel(options) {
                 strategies: [new OpenLayers.Strategy.Fixed()],
                 protocol: new OpenLayers.Protocol.HTTP({
                     //url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
-                    url: '/media/data_manager/geojson/OCSBlocks20130313.json',
+                    url: '/media/data_manager/geojson/OCSBlocks20130319.json',
                     format: new OpenLayers.Format.GeoJSON()
                 }),
                 //styleMap: new OpenLayers.StyleMap( { 
