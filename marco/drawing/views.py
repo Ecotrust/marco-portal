@@ -25,7 +25,7 @@ def get_drawings(request):
         
     shared_drawings = AOI.objects.shared_with_user(request.user)
     for drawing in shared_drawings:
-        if drawing.active and drawing not in drawings:
+        if drawing not in drawings:
             username = drawing.user.username
             actual_name = drawing.user.first_name + ' ' + drawing.user.last_name
             json.append({
