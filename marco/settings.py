@@ -53,6 +53,8 @@ DEFAULT_FROM_EMAIL = "MARCO Portal Team <info@midatlanticocean.org>"
 # url for socket.io printing
 #SOCKET_URL = 'http://dev.marco.marineplanning.org:8080'
 
+# Change the following line to True, to display the 'under maintenance' template
+UNDER_MAINTENANCE_TEMPLATE = False
 
 TEMPLATE_DIRS = ( os.path.realpath(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')), )
 
