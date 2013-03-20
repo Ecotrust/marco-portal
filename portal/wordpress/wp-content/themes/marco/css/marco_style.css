@@ -90,6 +90,13 @@ hr {
 	color: #ccc;
 }
 
+.alignright {
+	float: right;
+}
+
+.alignleft {
+	float: left;
+}
 
 .form-search .btn {
 	padding: 4px 0px;
