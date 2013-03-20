@@ -15,17 +15,19 @@ def data_catalog(request, template='catalog.html'):
 
 def data_needs(request, template='needs.html'):
     themes = Theme.objects.all().order_by('display_name')
-    theme_dict = add_ordered_needs_lists(themes)
-    #needs = DataNeed.objects.all().order_by('name')
-    context = {'themes': themes, 'theme_dict': theme_dict, 'domain': get_domain(8000), 'domain8010': get_domain()}
+    ordered_themes, theme_dict = add_ordered_needs_lists(themes)
+    context = {'themes': themes, 'theme_dict': theme_dict, 'ordered_themes': ordered_themes, 'domain': get_domain(8000), 'domain8010': get_domain()}
     return render_to_response(template, RequestContext(request, context)) 
     
 def add_ordered_needs_lists(themes_list):
     theme_dict = {}
+    ordered_themes = []
     for theme in themes_list:
-        needs = theme.dataneed_set.all().order_by('name')
-        theme_dict[theme] = needs
-    return theme_dict
+        needs = theme.dataneed_set.all().exclude(archived=True).order_by('name')
+        if len(needs) > 0:
+            ordered_themes.append(theme)
+            theme_dict[theme] = needs
+    return ordered_themes, theme_dict
     
 def add_ordered_layers_lists(themes_list): 
     for theme_dict in themes_list:

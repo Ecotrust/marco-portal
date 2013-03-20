@@ -17,6 +17,8 @@ def show_planner(request, template='planner.html'):
     except AttributeError:
         socket_url = ''
     context = {'MEDIA_URL': settings.MEDIA_URL, 'SOCKET_URL': socket_url, 'login': 'true'}
+    if settings.UNDER_MAINTENANCE_TEMPLATE:
+        return render_to_response('under_maintenance.html', RequestContext(request, context))
     return render_to_response(template, RequestContext(request, context)) 
     
 def show_embedded_map(request, template='map.html'):

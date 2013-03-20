@@ -93,6 +93,10 @@ app.init = function () {
     map.events.register("zoomend", null, function () {
         if (map.zoomBox.active) {
             app.viewModel.deactivateZoomBox();
+        }   
+        if( map.getZoom() < 5)
+        {
+            map.zoomTo(5);
         }        
     });
 
@@ -308,6 +312,15 @@ app.init = function () {
         //app.viewModel.updateMarker();
     });
     
+    app.map.removeLayerByName = function(layerName) {
+        for (var i=0; i<app.map.layers.length; i++) {
+            if (app.map.layers[i].name === layerName) {
+                app.map.removeLayer(app.map.layers[i]);
+                i--;
+            }
+        }
+    };
+    
 };
 
 app.addLayerToMap = function(layer) {
@@ -417,6 +430,14 @@ app.addVectorLayerToMap = function(layer) {
                 fillOpacity: fillOp,
                 externalGraphic: details.graphic 
             }; 
+            /*special case for Discharge Flow
+            if (layer.lookupField === "Flow") {
+                mylookup[details.value] = { 
+                    strokeColor: layer.color,
+                    pointRadius: details.value * 5
+                }; 
+                console.log(mylookup);
+            }*/
         });
         styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
         //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
@@ -450,17 +471,28 @@ app.addUtfLayerToMap = function(layer) {
         useJSONP: false
     });
      
-    app.map.addLayer(layer.utfgrid);           
-    layer.layer = new OpenLayers.Layer.XYZ(
-        layer.name, 
-        layer.url,
-        $.extend({}, opts, 
-            {
-                sphericalMercator: true,
-                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-            }
-        )
-    );  
+    app.map.addLayer(layer.utfgrid);      
+    
+    if (layer.type === 'ArcRest') {
+        app.addArcRestLayerToMap(layer);
+    } else if (layer.type === 'XYZ') {
+        //maybe just call app.addXyzLayerToMap(layer)
+        app.addXyzLayerToMap(layer);
+        /*
+        layer.layer = new OpenLayers.Layer.XYZ(
+            layer.name, 
+            layer.url,
+            $.extend({}, opts, 
+                {
+                    sphericalMercator: true,
+                    isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+                }
+            )
+        );  
+        */
+    } else {
+        debugger;
+    }
 }
 
 app.setLayerVisibility = function(layer, visibility) {

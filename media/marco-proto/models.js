@@ -685,7 +685,8 @@ function mapLinksModel() {
         } else {
             var iframeID = '#iframe-html';
         }
-        mapWindow.document.write('<html><body style="border: 0px; margin: 0px; padding: 0px;"><div class="pull-left">' + $(iframeID)[0].value + '</div>' + '</body></html>');
+        mapWindow.document.write('<html><body>' + $(iframeID)[0].value + '</body></html>');
+        mapWindow.document.title = "Your MARCO Map!";
         mapWindow.document.close();
         
     };
@@ -1065,6 +1066,7 @@ function viewModel() {
             });
         }
         //$(elem).mCustomScrollbar("update");
+        $(elem).mCustomScrollbar("scrollTo", "top"); 
         setTimeout( function() { $(elem).mCustomScrollbar("update"); }, 500);
     };
     
@@ -1757,6 +1759,7 @@ function viewModel() {
                 }
             }
         }
+        
         //Wind Speed
         if ('WINDREV_MI' in data && 'WINDREV_MA' in data) {
             if ( data['WINDREV_MI'] ) {                
@@ -1775,29 +1778,40 @@ function viewModel() {
                 attrs.push({'display': 'Estimated Avg Wind Speed', 'data': 'Unknown'});
             }
         }
-        //Distance to Shore
-        if ('MI_MIN' in data && 'MI_MAX' in data) {
-            attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
-        }
-        //Depth Range
-        if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
-            if ( data['DEPTHM_MIN'] ) {
-                //convert depth values to positive feet values (from negative meter values)
-                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+        
+        //Distance to Coastal Substation
+        if ('SUBSTAMIN' in data && 'SUBSTMAX' in data) {
+            if (data['SUBSTAMIN'] !== 0 && data['SUBSTMAX'] !== 0) {
+                attrs.push({'display': 'Distance to Coastal Substation', 'data': data['SUBSTAMIN'].toFixed(0) + ' to ' + data['SUBSTMAX'].toFixed(0) + ' miles'});
             } else {
-                attrs.push({'display': 'Depth Range', 'data': 'Unknown'});
+                attrs.push({'display': 'Distance to Coastal Substation Unknown', 'data': null});
             }
         }
+        
         //Distance to AWC Hubs
         if ('AWCMI_MIN' in data && 'AWCMI_MAX' in data) {
             attrs.push({'display': 'Distance to Proposed AWC Hub', 'data': data['AWCMI_MIN'].toFixed(0) + ' to ' + data['AWCMI_MAX'].toFixed(0) + ' miles'});
         }
-        //Distance to Shipping Lanes
-        if ('TRSEP_MIN' in data && 'TRSEP_MAX' in data) {
-            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRSEP_MIN'].toFixed(0) + ' to ' + data['TRSEP_MAX'].toFixed(0) + ' miles'});
+        
+        //Wind Planning Areas
+        if ('WEA2' in data && data['WEA2'] !== 0) {
+            var weaName = data['WEA2_NAME'],
+                stateName = weaName.substring(0, weaName.indexOf(' '));
+            if (stateName === 'New') { 
+                stateName = 'New Jersey'; 
+            } else if (stateName === 'Rhode') {
+                stateName = 'Rhode Island / Massachusetts';
+            }
+            //if ( data['WEA2_NAME'].replace(/\s+/g, '') !== "" ) {
+            attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
+            //}
         }
+        
+        //Distance to Shipping Lanes
+        if ('TRAFFCMIN' in data && 'TRAFFCMAX' in data) {
+            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRAFFCMIN'].toFixed(0) + ' to ' + data['TRAFFCMAX'].toFixed(0) + ' miles'});
+        }
+        
         //Traffic Density (High/Low)
         if ('AIS7_MEAN' in data) {
             if ( data['AIS7_MEAN'] < 1 ) {
@@ -1808,54 +1822,21 @@ function viewModel() {
             attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
         }
         
-        //Coral Count
-        var coralCount = 0,
-            laceCount = 0,
-            blackCount = 0,
-            softCount = 0,
-            gorgoCount = 0,
-            hardCount = 0;
-        if ('FREQ_LACE' in data) {
-            laceCount = data['FREQ_LACE'];
-            coralCount += laceCount;
+        //Distance to Shore
+        if ('MI_MIN' in data && 'MI_MAX' in data) {
+            attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
         }
-        if ('FREQ_BLACK' in data) {
-            blackCount = data['FREQ_BLACK'];
-            coralCount += blackCount;
-        }
-        if ('FREQ_SOFT' in data) {
-            softCount = data['FREQ_SOFT'];
-            coralCount += softCount;
-        }
-        if ('FREQ_GORGO' in data) {
-            gorgoCount = data['FREQ_GORGO'];
-            coralCount += gorgoCount;
-        }
-        if ('FREQ_HARD' in data) {
-            hardCount = data['FREQ_HARD'];  
-            coralCount += hardCount;  
-        }
-        if (coralCount > 0) {
-            attrs.push({'display': 'Corals Identified', 'data': coralCount});
-            if (laceCount > 0) {
-                attrs.push({'tab': true, 'display': 'Lace Corals (' + laceCount + ')', 'data': ''});
+        
+        //Depth Range
+        if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
+            if ( data['DEPTHM_MIN'] ) {
+                //convert depth values to positive feet values (from negative meter values)
+                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+            } else {
+                attrs.push({'display': 'Depth Range', 'data': 'Unknown'});
             }
-            if (blackCount > 0) {
-                attrs.push({'tab': true, 'display': 'Black/Thorny Corals (' + blackCount + ')', 'data': ''});
-            }
-            if (softCount > 0) {
-                attrs.push({'tab': true, 'display': 'Soft Corals (' + softCount + ')', 'data': ''});
-            }
-            if (gorgoCount > 0) {
-                attrs.push({'tab': true, 'display': 'Gorgonian Corals (' + gorgoCount + ')', 'data': ''});
-            }
-            if (hardCount > 0) {
-                attrs.push({'tab': true, 'display': 'Hard Corals (' + hardCount + ')', 'data': ''});
-            }
-        }
-        if ('FREQ_PENS' in data && data['FREQ_PENS'] > 0) {
-            var seaPenCount = data['FREQ_PENS'];
-            attrs.push({'display': 'Sea Pens Identified', 'data': seaPenCount});
         }
         
         //Seabed Form
@@ -1888,6 +1869,61 @@ function viewModel() {
             }
         }
         
+        //Coral Count
+        var coralCount = 0,
+            laceCount = 0,
+            blackCount = 0,
+            softCount = 0,
+            gorgoCount = 0,
+            hardCount = 0;
+        if ('FREQ_LACE' in data) {
+            laceCount = data['FREQ_LACE'];
+            coralCount += laceCount;
+        }
+        if ('FREQ_BLACK' in data) {
+            blackCount = data['FREQ_BLACK'];
+            coralCount += blackCount;
+        }
+        if ('FREQ_SOFT' in data) {
+            softCount = data['FREQ_SOFT'];
+            coralCount += softCount;
+        }
+        if ('FREQ_GORGO' in data) {
+            gorgoCount = data['FREQ_GORGO'];
+            coralCount += gorgoCount;
+        }
+        if ('FREQ_HARD' in data) {
+            hardCount = data['FREQ_HARD'];  
+            coralCount += hardCount;  
+        }
+        if (coralCount > 0) {
+            attrs.push({'display': 'Identified Corals', 'data': coralCount});
+            if (laceCount > 0) {
+                attrs.push({'tab': true, 'display': 'Lace Corals (' + laceCount + ')', 'data': ''});
+            }
+            if (blackCount > 0) {
+                attrs.push({'tab': true, 'display': 'Black/Thorny Corals (' + blackCount + ')', 'data': ''});
+            }
+            if (softCount > 0) {
+                attrs.push({'tab': true, 'display': 'Soft Corals (' + softCount + ')', 'data': ''});
+            }
+            if (gorgoCount > 0) {
+                attrs.push({'tab': true, 'display': 'Gorgonian Corals (' + gorgoCount + ')', 'data': ''});
+            }
+            if (hardCount > 0) {
+                attrs.push({'tab': true, 'display': 'Hard Corals (' + hardCount + ')', 'data': ''});
+            }
+        }
+        if ('FREQ_PENS' in data && data['FREQ_PENS'] > 0) {
+            var seaPenCount = data['FREQ_PENS'];
+            attrs.push({'display': 'Sea Pens Identified', 'data': seaPenCount});
+        }
+        
+        //Shipwrecks
+        if ('BOEMSHPDEN' in data) {
+            attrs.push({'display': 'Number of Shipwrecks', 'data': data['BOEMSHPDEN']});
+        }
+                
         //Distance to Discharge Point Locations
         if ('DISCHMEAN' in data) {
             attrs.push({'display': 'Avg Distance to Offshore Discharge', 'data': data['DISCHMEAN'].toFixed(1) + ' miles'});
@@ -1898,17 +1934,22 @@ function viewModel() {
         
         //Dredge Disposal Locations
         if ('DREDGE_LOC' in data) {
-            if (data['DREDGE_LOC'] === 1) {
+            if (data['DREDGE_LOC'] > 0) {
                 attrs.push({'display': 'Contains a Dredge Disposal Location', 'data': ''});
+            } else {
+                attrs.push({'display': 'Does not contain a Dredge Disposal Location', 'data': ''});
             }
         }
         
-        //Wind Planning Areas
-        /*if ('WEA_NAME' in data) {
-            if ( data['WEA_NAME'].replace(/\s+/g, '') !== "" ) {
-                attrs.push({'display': 'Part of ' + data['WEA_NAME'] + ' WPA', 'data': null});
+        //Unexploded Ordinances 
+        if ('UXO' in data) {
+            if (data['UXO'] === 0) {
+                attrs.push({'display': 'No known Unexploded Ordnances', 'data': ''});
+            } else {
+                attrs.push({'display': 'Known to contain Unexploded Ordnance(s)', 'data': ''});
             }
-        }*/
+        }
+        
         return attrs;
     };
             

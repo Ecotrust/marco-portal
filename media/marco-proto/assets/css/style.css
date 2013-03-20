@@ -623,12 +623,26 @@ a.disabled-link:hover {
   margin-bottom: 10px;
 }
 
-#create-new-design .dropdown-toggle {
+#create-new-button {
+  background: rgba(45, 137, 152, .9);
+}
+
+#view-reports-button {
+  border-radius: 4px;
+}
+
+#comparison-reports-button {
   background: rgba(45, 137, 152, .9);
 }
 
 #create-new-design .dropdown-menu {
   margin-top: -10px;
+}
+
+#create-new-design .dropdown-submenu .dropdown-menu {
+  top: 4px;
+  border-radius: 4px;
+  left: 183px;
 }
 
 #design-list .btn-layer {
@@ -647,9 +661,9 @@ a.disabled-link:hover {
 }
 
 #bar-chart-button {
-  opacity: .4;
+  opacity: .8;
   /* for IE */
-  filter: alpha(opacity=40);
+  filter: alpha(opacity=80);
 }
 #bar-chart-button:hover  {
   display: block !important;

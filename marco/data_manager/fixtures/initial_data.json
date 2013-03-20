@@ -448,7 +448,7 @@
             "data_status": "",
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "data_notes": "",
             "name": "All Gear Types",
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/${z}/${x}/${y}.png",
             "arcgis_layers": "",
@@ -497,7 +497,7 @@
             "data_status": "Available",
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "data_notes": "",
             "name": "Summer Flounder Landings",
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/${z}/${x}/${y}.png",
             "arcgis_layers": "",
@@ -505,104 +505,6 @@
             "sublayers": [
                 15
             ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 10,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-73.07195411101019&location%5By%5D=39.3847817828661&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml",
-            "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS_Trackline_Density.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.",
-            "slug_name": "ais-shipping-data",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "The Nature Conservancy",
-            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.",
-            "name": "AIS Shipping Data",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "Commercial Shipping Density",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 52,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-70.84172950163513&location%5By%5D=40.19098662573042&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=52&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/sne_benhab/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/benthic_habitats.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.",
-            "attribute_fields": [
-                57,
-                33,
-                25,
-                26,
-                27,
-                28,
-                24
-            ],
-            "learn_more": "",
-            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.",
-            "slug_name": "benthic-habitats-north",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "The Nature Conservancy",
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
-            "name": "Benthic Habitats (North)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>",
-            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -654,6 +556,59 @@
         }
     },
     {
+        "pk": 52,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-70.84172950163513&location%5By%5D=40.19098662573042&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=52&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/sne_benhab/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/benthic_habitats.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data set shows benthic habitats based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships.",
+            "attribute_fields": [
+                57,
+                33,
+                25,
+                26,
+                27,
+                28,
+                24
+            ],
+            "learn_more": "",
+            "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.",
+            "slug_name": "benthic-habitats-north",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "USGS, NOAA; analysis by TNC",
+            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
+            "name": "Benthic Habitats (North)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 20,
         "model": "data_manager.layer",
         "fields": {
@@ -690,12 +645,57 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ArtificialReefs/legend.png",
             "data_status": "Available",
             "vector_fill": null,
-            "data_source": "The Nature Conservancy",
+            "data_source": "Compiled by TNC from various sources",
             "data_notes": "These data were compiled from various state sources. In Delaware, digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).",
             "name": "Artificial Reefs",
             "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json",
             "arcgis_layers": "",
             "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 10,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-73.07195411101019&location%5By%5D=39.3847817828661&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml",
+            "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS_Trackline_Density.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.",
+            "slug_name": "ais-shipping-data",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "USGS, NOAA; analysis by TNC",
+            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.",
+            "name": "AIS Shipping Data",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "Commercial Shipping Density",
             "sublayers": [],
             "attribute_title": ""
         }
@@ -791,53 +791,6 @@
             "sublayers": [
                 80
             ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 9,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-70.60936872884616&location%5By%5D=40.35025527422819&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=9&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/sediment_grain_size/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Estimated_Sediment_Grain_Size_mm.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/sediment_grain_size.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data layer was created from interpolation of usSEABED point data and analyzes the averaged grain-size for each sample to produce a robust interpretation of sediment texture, showing local variation as well as large-scale patterns.",
-            "attribute_fields": [
-                6
-            ],
-            "learn_more": "",
-            "data_overview": "This layer was created from interpolation of usSEABED point data. usSEABED's averaged grain-size for each sample produced a robust interpretation of sediment texture, showing local variation as well as large-scale patterns. The point samples were interpolated using the Kriging interpolation method in ArcGIS to create surfaces representing the area between sample points at a cell size of 500 meters. These data were created to be used for planning purposes only at an ecoregional scale. The source sediment data were point data that in some cases is very widely spaced. We classified grain-size according to organisms' preferences, and assigned names to these classes based on the Wentworth (1922) scheme. ",
-            "slug_name": "sediment-grain-size",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "The Nature Conservancy",
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
-            "name": "Sediment Grain Size",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "Sediment Grain Size (mm)",
-            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -1158,7 +1111,7 @@
             "legend": "",
             "data_status": "Available",
             "vector_fill": null,
-            "data_source": "The Nature Conservancy and U.S. Navy",
+            "data_source": "US Navy, NOAA; analysis by TNC",
             "data_notes": "Sightings data obtained from the U.S. Navy were taken from NMFS-NEFSC Aerial Surveys, NMFS-NEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  SPUE was calculated for each species, for each season, and for each ten minute square.",
             "name": "Marine Mammals",
             "url": "",
@@ -1330,6 +1283,66 @@
         }
     },
     {
+        "pk": 86,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-72.76&y=39.04&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=86&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23
+            ],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#333333",
+            "attribute_event": "click",
+            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. ",
+            "attribute_fields": [
+                118,
+                119
+            ],
+            "learn_more": "",
+            "data_overview": "Locations and flow attribute of discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. Only offshore locations are included; inland source facilities were excluded. EPA flow data marked by facility are attributed to the federal and state offshore point data.",
+            "slug_name": "offshore-discharge-flow",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Outflow/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "EPA",
+            "data_notes": "",
+            "name": "Offshore Discharge Flow",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png ",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 6,
         "model": "data_manager.layer",
         "fields": {
@@ -1382,51 +1395,6 @@
         }
     },
     {
-        "pk": 86,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-72.76&y=39.04&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=86&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. ",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Locations and flow attribute of discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. Only offshore locations are included; inland source facilities were excluded. EPA flow data marked by facility are attributed to the federal and state offshore point data.",
-            "slug_name": "offshore-discharge-flow",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Outflow/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "EPA",
-            "data_notes": "",
-            "name": "Offshore Discharge Flow",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 79,
         "model": "data_manager.layer",
         "fields": {
@@ -1466,6 +1434,53 @@
             "name": "Federal ArceRest OCS Administrative Boundaries",
             "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/export",
             "arcgis_layers": "5",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 33,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-70.60936872884616&location%5By%5D=40.35025527422819&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Seabed_Form.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/seabed_form.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data set is comprised of seabed position calculations that describe the topography of the area surrounding a particular cell on the seafloor. The calculations based on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.",
+            "attribute_fields": [
+                4
+            ],
+            "learn_more": "",
+            "data_overview": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.",
+            "slug_name": "seabed-forms",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "NOAA; analysis by TNC",
+            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
+            "name": "Seabed Forms",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
             "attribute_title": ""
@@ -1616,6 +1631,101 @@
         }
     },
     {
+        "pk": 88,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-73.17&y=39.18&z=7&dls%5B%5D=true&dls%5B%5D=0.6&dls%5B%5D=88&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.csc.noaa.gov/",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/coastalenergy/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/CoastalEnergyFacilities.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/CoastalEnergyFacilities.htm",
+            "opacity": 0.6,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data product depicts the locations of facilities that generate electricity. Only facilities adjacent to the coast and Great Lakes are identified. Contained within the database are records that define the fuel source and other characteristics of the facility that may benefit ocean planners. In some cases, the presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning activities. ",
+            "attribute_fields": [
+                116,
+                117
+            ],
+            "learn_more": "",
+            "data_overview": "Electricity-generating facilities along the Mid-Atlantic coast. Parameters such as fuel source of the facility may be useful in ocean planning. The presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning processes.",
+            "slug_name": "coastal-energy-facilities",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Facilities/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Marine Cadastre",
+            "data_notes": "",
+            "name": "Coastal Energy Facilities",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Facilities/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 9,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-70.60936872884616&location%5By%5D=40.35025527422819&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=9&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/sediment_grain_size/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Estimated_Sediment_Grain_Size_mm.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/sediment_grain_size.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data layer was created from interpolation of usSEABED point data and analyzes the averaged grain-size for each sample to produce a robust interpretation of sediment texture, showing local variation as well as large-scale patterns.",
+            "attribute_fields": [
+                6
+            ],
+            "learn_more": "",
+            "data_overview": "This layer was created from interpolation of usSEABED point data. usSEABED's averaged grain-size for each sample produced a robust interpretation of sediment texture, showing local variation as well as large-scale patterns. The point samples were interpolated using the Kriging interpolation method in ArcGIS to create surfaces representing the area between sample points at a cell size of 500 meters. These data were created to be used for planning purposes only at an ecoregional scale. The source sediment data were point data that in some cases is very widely spaced. We classified grain-size according to organisms' preferences, and assigned names to these classes based on the Wentworth (1922) scheme. ",
+            "slug_name": "sediment-grain-size",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "USGS; analysis by TNC",
+            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
+            "name": "Sediment Grain Size",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "Sediment Grain Size (mm)",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 64,
         "model": "data_manager.layer",
         "fields": {
@@ -1668,51 +1778,6 @@
         }
     },
     {
-        "pk": 88,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-73.17&y=39.18&z=7&dls%5B%5D=true&dls%5B%5D=0.6&dls%5B%5D=88&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.csc.noaa.gov/",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/CoastalEnergyFacilities.zip",
-            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/CoastalEnergyFacilities.htm",
-            "opacity": 0.6,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data product depicts the locations of facilities that generate electricity. Only facilities adjacent to the coast and Great Lakes are identified. Contained within the database are records that define the fuel source and other characteristics of the facility that may benefit ocean planners. In some cases, the presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning activities. ",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Electricity-generating facilities along the Mid-Atlantic coast. Parameters such as fuel source of the facility may be useful in ocean planning. The presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning processes.",
-            "slug_name": "coastal-energy-facilities",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Facilities/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Marine Cadastre",
-            "data_notes": "",
-            "name": "Coastal Energy Facilities",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Facilities/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 89,
         "model": "data_manager.layer",
         "fields": {
@@ -1724,13 +1789,13 @@
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
-            "bookmark": "",
+            "bookmark": "/visualize/#x=-73.40&y=38.89&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=89&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
             "vector_graphic": "",
             "kml": "",
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/uxo/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "",
@@ -1738,10 +1803,13 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                120,
+                121
+            ],
             "learn_more": "",
-            "data_overview": "These are explosive weapons that did not explode when they were employed and may still pose a risk of detonation ",
-            "slug_name": "unexploded-ordinances",
+            "data_overview": "Known areas of explosive weapons (e.g., bombs, mines, and shells) that did not explode when they were employed and may still pose a risk of detonation years after being used or discarded.",
+            "slug_name": "unexploded-ordnances",
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/legend.png",
@@ -1749,7 +1817,7 @@
             "vector_fill": null,
             "data_source": "Marine Cadastre, NOAA and BOEM",
             "data_notes": "",
-            "name": "Unexploded Ordinances",
+            "name": "Unexploded Ordnances",
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
             "arcgis_layers": "25",
             "legend_title": "",
@@ -1769,13 +1837,13 @@
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
-            "bookmark": "",
+            "bookmark": "/visualize/#x=-74.49&y=39.13&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=90&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&tab=data&legends=false&layers=true",
             "vector_graphic": "",
             "kml": "",
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/shipwrecks/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "",
@@ -1783,9 +1851,11 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                115
+            ],
             "learn_more": "",
-            "data_overview": "Areas where shipwrecks are known, usage maybe diving, fishing, or a known archaeological site",
+            "data_overview": "Known shipwrecks. These areas may be used in recreational pursuits for scuba diving, fishing, archaeology, historical study, and recovery of materials.",
             "slug_name": "shipwreck-density",
             "is_sublayer": false,
             "lookup_field": "",
@@ -1862,49 +1932,51 @@
         }
     },
     {
-        "pk": 33,
+        "pk": 73,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                2
+                4
             ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-70.60936872884616&location%5By%5D=40.35025527422819&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=33&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=73&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
             "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
+            "kml": "",
+            "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json",
+            "utfurl": "",
             "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Seabed_Form.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/seabed_form.html",
+            "data_download": "",
+            "metadata": "",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
-            "description": "This data set is comprised of seabed position calculations that describe the topography of the area surrounding a particular cell on the seafloor. The calculations based on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.",
+            "description": "",
             "attribute_fields": [
-                4
+                75
             ],
             "learn_more": "",
-            "data_overview": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.",
-            "slug_name": "seabed-forms",
-            "is_sublayer": false,
+            "data_overview": "",
+            "slug_name": "pots-traps",
+            "is_sublayer": true,
             "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png",
-            "data_status": "Available",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
+            "data_status": "",
             "vector_fill": null,
-            "data_source": "The Nature Conservancy",
-            "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
-            "name": "Seabed Forms",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png",
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Pots Traps",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/PotsTraps/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
+            "sublayers": [
+                15
+            ],
             "attribute_title": ""
         }
     },
@@ -1951,62 +2023,13 @@
             "legend": "",
             "data_status": "Available",
             "vector_fill": null,
-            "data_source": "The Nature Conservancy",
+            "data_source": "USGS, NOAA; analysis by TNC",
             "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
             "name": "Benthic Habitats (South)",
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>",
             "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 73,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=73&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                75
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "pots-traps",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "National Marine Fisheries Service",
-            "data_notes": "",
-            "name": "Pots Traps",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/PotsTraps/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
             "attribute_title": ""
         }
     },
@@ -2203,52 +2226,46 @@
         }
     },
     {
-        "pk": 60,
+        "pk": 57,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                2
+                4
             ],
             "compress_display": false,
             "map_tiles": "",
-            "legend_subtitle": "# of species above avg.",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.65380232259686&location%5By%5D=40.199378535702834&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=60&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/toothed_turtles/${z}/${x}/${y}.json",
+            "utfurl": "",
             "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm",
+            "opacity": 0.8,
             "vector_color": "",
             "attribute_event": "click",
-            "description": "Areas where sightings of loggerhead, leatherback, or green sea turtles are common.",
-            "attribute_fields": [
-                100,
-                102,
-                104,
-                101,
-                103
-            ],
+            "description": "Depth contours at 20, 50, and 100 fathoms.",
+            "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.",
-            "slug_name": "sea-turtles",
+            "data_overview": "Lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
+            "slug_name": "fathom-lines",
             "is_sublayer": false,
             "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png",
-            "data_status": "Available",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
+            "data_status": "",
             "vector_fill": null,
-            "data_source": "New Jersey Department of Environmental Protection",
-            "data_notes": "This data layer was created for use in the New Jersey Ocean/Wind Power Ecological Baseline Study. The overall goal of the study is to provide spatial and temporal data on species utilizing New Jersey offshore waters to assist in determining potential areas for wind power development. ",
-            "name": "Sea Turtles",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png",
+            "data_source": "NOAA; contours derived by TNC",
+            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
+            "name": "Fathom Lines",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
             "arcgis_layers": "",
-            "legend_title": "Sea Turtles",
+            "legend_title": "",
             "sublayers": [],
             "attribute_title": ""
         }
@@ -2303,46 +2320,52 @@
         }
     },
     {
-        "pk": 57,
+        "pk": 60,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                4
+                2
             ],
             "compress_display": false,
             "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "legend_subtitle": "# of species above avg.",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.65380232259686&location%5By%5D=40.199378535702834&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=60&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/toothed_turtles/${z}/${x}/${y}.json",
             "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm",
-            "opacity": 0.8,
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
-            "description": "Depth contours at 20, 50, and 100 fathoms.",
-            "attribute_fields": [],
+            "description": "Areas where sightings of loggerhead, leatherback, or green sea turtles are common.",
+            "attribute_fields": [
+                100,
+                102,
+                104,
+                101,
+                103
+            ],
             "learn_more": "",
-            "data_overview": "Lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
-            "slug_name": "fathom-lines",
+            "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.",
+            "slug_name": "sea-turtles",
             "is_sublayer": false,
             "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
-            "data_status": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png",
+            "data_status": "Available",
             "vector_fill": null,
-            "data_source": "The Nature Conservancy and NOAA",
-            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
-            "name": "Fathom Lines",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
+            "data_source": "NOAA; analysis by TNC",
+            "data_notes": "",
+            "name": "Sea Turtles",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png",
             "arcgis_layers": "",
-            "legend_title": "",
+            "legend_title": "Sea Turtles",
             "sublayers": [],
             "attribute_title": ""
         }
@@ -2681,53 +2704,6 @@
         }
     },
     {
-        "pk": 8,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-73.22576270476023&location%5By%5D=39.06136488007781&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Smart_from_the_Start/Atlantic_OCS_Wind_Energy_Areas_shapefile_07_18_11.ZIP",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/WPA_June2012_Dissolve.html",
-            "opacity": 0.8,
-            "vector_color": "#e66101",
-            "attribute_event": "mouseover",
-            "description": "This data set identfies Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development.",
-            "attribute_fields": [
-                1
-            ],
-            "learn_more": "",
-            "data_overview": "The Department of the Interior's \"Smart from the Start\" initiative calls for the identification of Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments.",
-            "slug_name": "wind-planning-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA/legend.png",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "Bureau of Ocean Energy Management",
-            "data_notes": "The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.",
-            "name": "Wind Planning Areas",
-            "url": "/media/data_manager/geojson/WindPlanningAreas.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 44,
         "model": "data_manager.layer",
         "fields": {
@@ -2773,6 +2749,53 @@
             "sublayers": [
                 21
             ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 8,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-73.22576270476023&location%5By%5D=39.06136488007781&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Smart_from_the_Start/Atlantic_OCS_Wind_Energy_Areas_shapefile_07_18_11.ZIP",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/WPA_June2012_Dissolve.html",
+            "opacity": 0.8,
+            "vector_color": "#e66101",
+            "attribute_event": "mouseover",
+            "description": "This data set identfies Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development.",
+            "attribute_fields": [
+                1
+            ],
+            "learn_more": "",
+            "data_overview": "The Department of the Interior's \"Smart from the Start\" initiative calls for the identification of Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments.",
+            "slug_name": "wind-planning-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "BOEM",
+            "data_notes": "The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.",
+            "name": "Wind Planning Areas",
+            "url": "/media/data_manager/geojson/WindPlanningAreas.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -3631,55 +3654,6 @@
         }
     },
     {
-        "pk": 12,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476334&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.nefsc.noaa.gov/ ",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.",
-            "attribute_fields": [
-                69
-            ],
-            "learn_more": "",
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).",
-            "slug_name": "bottom-trawl",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "National Marine Fisheries Service",
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
-            "name": "Bottom Trawl",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 35,
         "model": "data_manager.layer",
         "fields": {
@@ -3778,6 +3752,55 @@
         }
     },
     {
+        "pk": 12,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476334&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=12&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nefsc.noaa.gov/ ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR_Effort_metadata.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data product represents fishing effort (average number of trips) by federally permitted commercial fishing vessels from 2000 to 2009 for all gear types.",
+            "attribute_fields": [
+                69
+            ],
+            "learn_more": "",
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).",
+            "slug_name": "bottom-trawl",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Bottom Trawl",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 51,
         "model": "data_manager.layer",
         "fields": {
@@ -3818,6 +3841,55 @@
             "data_notes": "",
             "name": "Sperm Whales (Winter)",
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesWinter/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                21
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 49,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Spring.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
+            "attribute_fields": [
+                93
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "sperm-whales-spring",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Sperm Whales (Spring)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
@@ -3881,62 +3953,13 @@
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png",
             "data_status": "Available",
             "vector_fill": null,
-            "data_source": "The Nature Conservancy, NOAA",
+            "data_source": "NOAA; analysis by TNC",
             "data_notes": "This layer was developed for general visualization and informational purposes only and does not necessarily represent the most important habitats. Additionally, only certain species were included in this analysis; included species are those under Federal management for which spatial data exists. There are numerous managed species for which spatial data does not yet exist. See below for a list of the species considered.",
             "name": "Essential Fish Habitat",
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Essential Fish Habitats",
             "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 49,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Spring.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                93
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "sperm-whales-spring",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Sperm Whales (Spring)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SpermWhalesSpring/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
-            ],
             "attribute_title": ""
         }
     },
@@ -4168,7 +4191,7 @@
             "description": "Fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).",
             "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ",
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). ",
             "slug_name": "commercial",
             "is_sublayer": false,
             "lookup_field": "",
@@ -4176,7 +4199,7 @@
             "data_status": "",
             "vector_fill": null,
             "data_source": "",
-            "data_notes": "",
+            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
             "name": "Commercial",
             "url": "",
             "arcgis_layers": "",
@@ -4496,6 +4519,56 @@
         }
     },
     {
+        "pk": 112,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantType",
+            "display_name": "Plant Type",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 114,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "designCapa",
+            "display_name": "Capacity",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 116,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantName",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 118,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Source",
+            "display_name": "Source",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 120,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "descriptio",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
         "pk": 58,
         "model": "data_manager.attributeinfo",
         "fields": {
@@ -4773,6 +4846,56 @@
             "display_name": "",
             "precision": null,
             "order": 1
+        }
+    },
+    {
+        "pk": 113,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantName",
+            "display_name": "Name",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 115,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "FREQUENCY",
+            "display_name": "Number of Shipwrecks",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 117,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "plantType",
+            "display_name": "Type",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 119,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Flow",
+            "display_name": "Flow",
+            "precision": 3,
+            "order": 2
+        }
+    },
+    {
+        "pk": 121,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "sourceDate",
+            "display_name": "Source Date",
+            "precision": null,
+            "order": 2
         }
     },
     {
@@ -5416,6 +5539,127 @@
         }
     },
     {
+        "pk": 13,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "0",
+            "fill": false
+        }
+    },
+    {
+        "pk": 14,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "1",
+            "fill": false
+        }
+    },
+    {
+        "pk": 15,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "2",
+            "fill": false
+        }
+    },
+    {
+        "pk": 16,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "3",
+            "fill": false
+        }
+    },
+    {
+        "pk": 17,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "4",
+            "fill": false
+        }
+    },
+    {
+        "pk": 18,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "5",
+            "fill": false
+        }
+    },
+    {
+        "pk": 19,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "6",
+            "fill": false
+        }
+    },
+    {
+        "pk": 20,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "7",
+            "fill": false
+        }
+    },
+    {
+        "pk": 21,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "8",
+            "fill": false
+        }
+    },
+    {
+        "pk": 22,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "9",
+            "fill": false
+        }
+    },
+    {
+        "pk": 23,
+        "model": "data_manager.lookupinfo",
+        "fields": {
+            "color": "",
+            "dashstyle": "solid",
+            "graphic": "",
+            "value": "10",
+            "fill": false
+        }
+    },
+    {
         "pk": 12,
         "model": "data_manager.lookupinfo",
         "fields": {
@@ -5435,24 +5679,6 @@
             "graphic": "/media/data_manager/images/awc_hub_icon.png",
             "value": "Hub",
             "fill": false
-        }
-    },
-    {
-        "pk": 10,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Not initiated.",
-            "archived": false,
-            "name": "State landings and fishing effort data",
-            "expected_date": "To be determined (beyond scope of current funding)",
-            "notes": "Most ocean fishery harvests are documented through federal reporting systems but there are gaps for some fisheries that do not require federal licenses.",
-            "themes": [
-                4
-            ],
-            "source": "States",
-            "contact": "The Nature Conservancy",
-            "contact_email": "",
-            "description": "Information about commercial harvest activity collected by state agencies in the Mid-Atlantic."
         }
     },
     {
@@ -5492,24 +5718,6 @@
         }
     },
     {
-        "pk": 18,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "No efforts currently underway to obtain and compile data",
-            "archived": false,
-            "name": "Important coastal bird habitat",
-            "expected_date": "TBD",
-            "notes": "Need to leverage existing data and efforts; additional data needs to be collected.",
-            "themes": [
-                2
-            ],
-            "source": "Multiple sources ",
-            "contact": "The Nature Conservancy",
-            "contact_email": "",
-            "description": "Point and polygon data on coastal bird use of coastal and marine habitats for nesting, breeding, wintering and stopover."
-        }
-    },
-    {
         "pk": 24,
         "model": "data_manager.dataneed",
         "fields": {
@@ -5528,21 +5736,39 @@
         }
     },
     {
-        "pk": 5,
+        "pk": 10,
         "model": "data_manager.dataneed",
         "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal",
+            "status": "Not initiated.",
             "archived": false,
-            "name": "Turtles-Distribution and Nesting Areas (ESI)",
-            "expected_date": "As soon as vetted by Portal Data Review Team ",
-            "notes": "ESI maps provide a concise summary of coastal resources that are at risk if an oil spill occurs nearby. Vector polygons in this data set represent turtle distribution.",
+            "name": "State landings and fishing effort ",
+            "expected_date": "To be determined (beyond scope of current funding)",
+            "notes": "Most ocean fishery harvests are documented through federal reporting systems but there are gaps for some fisheries that do not require federal licenses, e.g. croaker and whelks (\"conch\") in Virginia.",
+            "themes": [
+                4
+            ],
+            "source": "States",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Information about commercial harvest activity collected by state agencies in the Mid-Atlantic."
+        }
+    },
+    {
+        "pk": 18,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "No efforts currently underway to obtain and compile data",
+            "archived": false,
+            "name": "Important coastal bird habitat",
+            "expected_date": "TBD",
+            "notes": "Need to leverage existing data and efforts; additional data needs to be collected.",
             "themes": [
                 2
             ],
-            "source": "TNC NAM ERA compiled; source data from Environmental Sensitivity Index, NOAA",
-            "contact": "The Nature Conservancy ",
+            "source": "Multiple sources ",
+            "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "Sea turtle areas displayed on the maps are limited to nesting beaches and several well-known in-water concentration areas. Sea turtle nesting beaches include sandy beach areas where sea turtles come ashore to nest."
+            "description": "Point and polygon data on coastal bird habitats (for nesting, breeding, wintering and stopover)."
         }
     },
     {
@@ -5550,7 +5776,7 @@
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
-            "archived": false,
+            "archived": true,
             "name": "Energy facilities",
             "expected_date": "Spring 2013",
             "notes": "In addition to point locations, plume models would be useful for informing ocean planning efforts.",
@@ -5570,7 +5796,7 @@
             "status": "Efforts underway to incorporate authorized data into Portal",
             "archived": false,
             "name": "Coldwater coral predictive distribution model",
-            "expected_date": "Early 2013",
+            "expected_date": "Spring 2013",
             "notes": "NCCOS and NEFSC working on a predictive model for the Mid-Atlantic.",
             "themes": [
                 2
@@ -5582,11 +5808,47 @@
         }
     },
     {
+        "pk": 6,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": false,
+            "name": "Large Pelagic Species (sharks, tuna, marlin)-Species Richness, Persistence and EFH",
+            "expected_date": "As soon as vetted by Portal Data Review Group",
+            "notes": "14 species represented include: Albacore Tuna, Bigeye Thresher, Blue Marlin, Bluefin Tuna, Dusky shark, Great Hammerhead, Porbeagle, Sandbar shark, Sand Tiger, Shortfin Mako, Swordfish, Thresher, White Marlin, Scalloped Hammerhead\r\n",
+            "themes": [
+                2
+            ],
+            "source": "TNC NAM ERA compiled; source data from NMFS- SEFSC and NMFS-NEFSC; EFH from NMFS and HMS FMP",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Target species richness refers to the total number of target species by age class observed within a TMS summed and mapped based on all available data (1965-2004).  Persistence refers to the sum of the number of decades that a given target species was present (1-4) for combined juvenile and adult observations.  Habitat refers to the number of target species whose EFH overlapped each TMS determined and summarized by total target species and by age class.\r\n"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": false,
+            "name": "Turtles-Distribution and Nesting Areas (ESI)",
+            "expected_date": "As soon as vetted by Portal Data Review Group",
+            "notes": "ESI maps provide a concise summary of coastal resources that are at risk if an oil spill occurs nearby. Vector polygons in this data set represent turtle distribution.",
+            "themes": [
+                2
+            ],
+            "source": "TNC NAM ERA compiled; source data from Environmental Sensitivity Index, NOAA",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Sea turtle areas displayed on the maps are limited to nesting beaches and several well-known in-water concentration areas. Sea turtle nesting beaches include sandy beach areas where sea turtles come ashore to nest."
+        }
+    },
+    {
         "pk": 4,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Efforts underway to incorporate authorized data into Portal\r\n",
-            "archived": false,
+            "archived": true,
             "name": "Turtles-Sightings per Unit Effort (SPUE) ",
             "expected_date": "As soon as vetted by Portal Data Review Team ",
             "notes": "Need to add summary SPUE grid for all three species assessed (green, leatherback and Atlantic loggerhead turtles) across seasons.\r\n",
@@ -5600,24 +5862,6 @@
         }
     },
     {
-        "pk": 6,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal",
-            "archived": false,
-            "name": "Large Pelagic Species (sharks, tuna, marlin)-Species Richness, Persistence and EFH",
-            "expected_date": "As soon as vetted by Portal Data Review Team ",
-            "notes": "14 species represented include: Albacore Tuna, Bigeye Thresher, Blue Marlin, Bluefin Tuna, Dusky shark, Great Hammerhead, Porbeagle, Sandbar shark, Sand Tiger, Shortfin Mako, Swordfish, Thresher, White Marlin, Scalloped Hammerhead\r\n",
-            "themes": [
-                2
-            ],
-            "source": "TNC NAM ERA compiled; source data from NMFS- SEFSC and NMFS-NEFSC; EFH from NMFS and HMS FMP",
-            "contact": "The Nature Conservancy ",
-            "contact_email": "",
-            "description": "Target species richness refers to the total number of target species by age class observed within a TMS summed and mapped based on all available data (1965-2004).  Persistence refers to the sum of the number of decades that a given target species was present (1-4) for combined juvenile and adult observations.  Habitat refers to the number of target species whose EFH overlapped each TMS determined and summarized by total target species and by age class.\r\n"
-        }
-    },
-    {
         "pk": 15,
         "model": "data_manager.dataneed",
         "fields": {
@@ -5625,7 +5869,7 @@
             "archived": false,
             "name": "Marine mammal migration paths",
             "expected_date": "Early 2014",
-            "notes": "Multiple data collection efforts ongoing currently, including AMAPPS (funded by BOEM), BRI study (funded by DOE), and VA Aquarium study (funded by VACZM).",
+            "notes": "Multiple data collection efforts ongoing currently, including AMAPPS (NEFSC, funded by BOEM), BRI study (funded by DOE), and VA Aquarium study (funded by VACZM).",
             "themes": [
                 2
             ],
@@ -5636,21 +5880,21 @@
         }
     },
     {
-        "pk": 14,
+        "pk": 17,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
             "archived": false,
-            "name": "Port locations and attributes",
+            "name": "Regional scale sea bird and sea duck predictive distribution model",
             "expected_date": "Spring 2013",
-            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
+            "notes": "BOEM-funded project underway to expand New York scale work to Mid-Atlantic region. Data expected in late 2012.",
             "themes": [
-                8
+                2
             ],
-            "source": "ACOE; Individual ports",
-            "contact": "The Nature Conservancy",
+            "source": "Manomet's CETAP",
+            "contact": "NOAA-NCCOS Biogeography Branch",
             "contact_email": "",
-            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
+            "description": "A high resolution, predictive model for sea bird and sea duck habitat and distribution."
         }
     },
     {
@@ -5672,21 +5916,39 @@
         }
     },
     {
-        "pk": 17,
+        "pk": 1,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n",
+            "archived": false,
+            "name": "Military, hazard and restricted areas",
+            "expected_date": "Unknown ",
+            "notes": "",
+            "themes": [
+                5
+            ],
+            "source": "USCG & DOD including ACOE, Navy, etc. ",
+            "contact": "NOAA CSC  ",
+            "contact_email": "",
+            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
+        }
+    },
+    {
+        "pk": 14,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
             "archived": false,
-            "name": "Regional scale sea bird and sea duck predictive distribution model",
-            "expected_date": "Early 2013",
-            "notes": "BOEM-funded project underway to enable NCCOS to expand New York scale work to Mid-Atlantic region. Data expected in late 2012.",
+            "name": "Port locations and attributes",
+            "expected_date": "Spring 2013",
+            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
             "themes": [
-                2
+                8
             ],
-            "source": "Manomet's CETAP",
-            "contact": "NOAA Biogeography Branch",
+            "source": "ACOE; Individual ports",
+            "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "A high resolution, predictive model for sea bird and sea duck habitat and distribution."
+            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
         }
     },
     {
@@ -5705,24 +5967,6 @@
             "contact": "Rutgers CRSSA ",
             "contact_email": "",
             "description": "Areas where recreational boating (regattas, pleasure, cruises, water skiing, etc.) occurs."
-        }
-    },
-    {
-        "pk": 1,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n",
-            "archived": false,
-            "name": "Military, hazard and restricted areas",
-            "expected_date": "Unknown ",
-            "notes": "\r\n",
-            "themes": [
-                5
-            ],
-            "source": "USCG & DOD including ACOE, Navy, etc. ",
-            "contact": "NOAA CSC  ",
-            "contact_email": "",
-            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
         }
     },
     {
@@ -5747,36 +5991,18 @@
         "pk": 13,
         "model": "data_manager.dataneed",
         "fields": {
-            "status": "Data available",
+            "status": "Data under development",
             "archived": false,
-            "name": "Automatic Identification System (AIS) shipping data",
-            "expected_date": "June 2012",
+            "name": "Automatic Identification System (AIS) ship traffic",
+            "expected_date": "June 2013",
             "notes": "",
             "themes": [
                 8
             ],
-            "source": "NOAA",
+            "source": "USCG & NOAA",
             "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed."
-        }
-    },
-    {
-        "pk": 11,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Data under development",
-            "archived": false,
-            "name": "Municipal and private discharge",
-            "expected_date": "Fall, 2012",
-            "notes": "In addition to point locations, effluent plume models would be useful for informing ocean planning efforts.",
-            "themes": [
-                1
-            ],
-            "source": "EPA",
-            "contact": "Rutgers CRSSA ",
-            "contact_email": "",
-            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments and industries in the coastal drainage basin."
+            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed. A preliminary AIS map layer has been added to the Portal as a placeholder; enhanced AIS map layers showing traffic patterns by vessel type and other attributes are under development by NOAA Coastal Services Center and others."
         }
     },
     {
@@ -5816,11 +6042,29 @@
         }
     },
     {
+        "pk": 11,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Municipal and private discharge",
+            "expected_date": "Fall, 2012",
+            "notes": "In addition to point locations, effluent plume models would be useful for informing ocean planning efforts.",
+            "themes": [
+                1
+            ],
+            "source": "EPA",
+            "contact": "Rutgers CRSSA ",
+            "contact_email": "",
+            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments and industries in the coastal drainage basin."
+        }
+    },
+    {
         "pk": 3,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Efforts underway to incorporate authorized data into Portal\r\n",
-            "archived": false,
+            "archived": true,
             "name": "Marine Mammals-Sightings per Unit Effort (SPUE) ",
             "expected_date": "As soon as vetted by Portal Data Review Team ",
             "notes": "Need to add summary data layers with SPUE grids combined for multiple species and seasons (e.g. all toothed whales).  Assessed species include include fin whale, humpback whale, minke whale, northern Atlantic right whale, sperm whale, sei whale, Atlantic whitesided dolphin, bottlenose dolphin, harbor porpoise, and Atlantic striped dolphin.\r\n",
@@ -5837,18 +6081,18 @@
         "pk": 7,
         "model": "data_manager.dataneed",
         "fields": {
-            "status": "Efforts underway to incorporate authorized data into Portal",
+            "status": "Data under development",
             "archived": false,
-            "name": "Vessel Trip Report (VTR) data",
-            "expected_date": "June 2012",
-            "notes": "VTR data are available upon request and can be posted on the portal at appropriate scale and with appropriate attribution. Data will need to be depicted in consideration of confidentiality requirements.",
+            "name": "Vessel Trip Report (VTR)",
+            "expected_date": "Fall 2013",
+            "notes": "Regional scale VTR data aggregated to ten minute squares are currently displayed on the portal and are available upon request.  Finer resolution data linking fishing locations with communities are under development in consultation with fishing industry participants.  All fishery data will be depicted in consideration of confidentiality requirements established by NOAA-Fisheries.",
             "themes": [
                 4
             ],
-            "source": "NOAA/NMFS",
-            "contact": "The Nature Conservancy ",
+            "source": "NOAA/NMFS, analysis by Rutgers University",
+            "contact": "Center for Remote Sensing and Spatial Analysis, Rutgers University",
             "contact_email": "",
-            "description": "Data on catch and value for many commercially important species aggregated to ten minute squares."
+            "description": "Derived data products representing fishing effort by port and gear type."
         }
     }
 ]

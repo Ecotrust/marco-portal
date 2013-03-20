@@ -40,8 +40,11 @@
 
             if (step == 1) {
                 $('#button_prev').hide();
+                $('#button_next').css('border-radius', '4px');
             } else {
                 $('#button_prev').show();
+                $('#button_next').css('border-top-right-radius', '4px');
+                $('#button_next').css('border-bottom-right-radius', '4px');
             }
 
             if (step == max_step) {
@@ -64,7 +67,7 @@
 
 {% if form.media %} {{ form.media }} {% endif %}
 <h4>
-    Lease Block Collection
+    Lease Block Selection
 </h4>
 <form id="leaseblock-selection-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
