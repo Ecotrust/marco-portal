@@ -92,10 +92,12 @@ hr {
 
 .alignright {
 	float: right;
+	padding: 0px 20px;
 }
 
 .alignleft {
 	float: left;
+	padding: 0px 20px;
 }
 
 .form-search .btn {
