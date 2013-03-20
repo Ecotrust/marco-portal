@@ -664,16 +664,22 @@ function selectionModel(options) {
         $.ajax({
             url: '/scenario/copy_design/' + selection.uid + '/',
             type: 'POST',
+            dataType: 'json',
             success: function(data) {
-                app.viewModel.scenarios.loadSelectionsFromServer();
+                //app.viewModel.scenarios.loadSelectionsFromServer();
+                app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
                 debugger;
             }
         })
-    }
+    };
+            
     self.deleteSelection = function() {
         var selection = this;
+        
+        //first deactivate the layer 
+        selection.deactivateLayer();
         
         //remove from activeLayers
         app.viewModel.activeLayers.remove(selection);
@@ -683,6 +689,8 @@ function selectionModel(options) {
         }
         //remove from selectionList
         app.viewModel.scenarios.selectionList.remove(selection);
+        //update scrollbar
+        app.viewModel.scenarios.updateDesignsScrollBar();
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
@@ -1087,17 +1095,22 @@ function scenarioModel(options) {
         $.ajax({
             url: '/scenario/copy_design/' + scenario.uid + '/',
             type: 'POST',
+            dataType: 'json',
             success: function(data) {
-                app.viewModel.scenarios.loadScenariosFromServer();
+                //app.viewModel.scenarios.loadSelectionsFromServer();
+                app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
                 debugger;
             }
         })
     };
-                
+        
     self.deleteScenario = function() {
         var scenario = this;
+        
+        //first deactivate the layer 
+        scenario.deactivateLayer();
         
         //remove from activeLayers
         app.viewModel.activeLayers.remove(scenario);
@@ -1107,6 +1120,8 @@ function scenarioModel(options) {
         }
         //remove from scenarioList
         app.viewModel.scenarios.scenarioList.remove(scenario);
+        //update scrollbar
+        app.viewModel.scenarios.updateDesignsScrollBar();
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
@@ -1630,6 +1645,7 @@ function scenariosModel(options) {
                             features: layer.features
                         });
                         self.toggleDrawingsOpen('open');
+                        self.zoomToScenario(scenario);
                     } else if (isSelectionModel) {
                         scenario = new selectionModel({
                             id: properties.uid,

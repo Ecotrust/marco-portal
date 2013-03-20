@@ -37,7 +37,16 @@ def copy_design(request, uid):
     design_obj.user = request.user
     design_obj.save()
     
-    return HttpResponse("", status=200)
+    json = []
+    json.append({
+        'id': design_obj.id,
+        'uid': design_obj.uid,
+        'name': design_obj.name,
+        'description': design_obj.description,
+        'attributes': design_obj.serialize_attributes
+    })
+    
+    return HttpResponse(dumps(json), status=200)
     
 '''
 '''
