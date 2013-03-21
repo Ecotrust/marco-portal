@@ -123,6 +123,14 @@ package { "build-essential":
 
 }
 
+
+
+package { "apache2-mpm-itk":
+    ensure => "installed"
+
+}
+
+
 package { "libapache2-mod-wsgi":
     ensure => "installed"
 
@@ -220,8 +228,8 @@ exec { "Add PostGIS SRID 4326":
 }
 
 
-exec { "Django Syncdb":
-  path => "/bin:/usr/bin",
-  command => "/usr/local/venv/marco/bin/python /vagrant/marco/manage.py --noinput syncdb && /usr/local/venv/marco/bin/python /vagrant/marco/manage.py migrate",
-  subscribe => [Exec["Add PostGIS SRID 4326"], Exec["Add PostGIS SRID 99996"]]
-}
+#exec { "Django Syncdb":
+#  path => "/bin:/usr/bin",
+#  command => "/usr/local/venv/marco/bin/python /vagrant/marco/manage.py --noinput syncdb && /usr/local/venv/marco/bin/python /vagrant/marco/manage.py migrate",
+#  subscribe => [Exec["Add PostGIS SRID 4326"], Exec["Add PostGIS SRID 99996"]]
+#}
