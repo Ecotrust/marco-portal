@@ -2,6 +2,8 @@
 var madrona = { 
     onShow: function(callback) { callback(); },
     setupForm: function($form) {
+        var submitted = false;
+    
         $form.find('.btn-submit').hide();
 
         $form.find('label').each(function (i, label) {
@@ -17,13 +19,35 @@ var madrona = {
 
         $form.closest('.panel').on('click', '.submit_button', function(e) {
             e.preventDefault();
-            var $form = $(this).closest('.panel').find('form'),
-                url = $form.attr('action'),
+            var name = $('#id_name').val();
+            if ($.trim(name) === "") {  
+                $('#invalid-name-message').show();
+                return false;
+            } 
+            submitted = true;
+            submitForm($form);
+        }); 
+        
+        //no longer needed...? (if it was going here it meant there was a problem)
+        /*
+        $form.submit( function() {
+            var name = $('#id_name').val();
+            if ($.trim(name) === "") {  
+                $('#invalid-name-message').show();
+                return false;
+            } 
+            if (!submitted) {
+                submitForm($form);
+            }
+        });
+        */
+        submitForm = function($form) {
+            //var $form = $(this).closest('.panel').find('form'),
+            var url = $form.attr('action'),
                 $bar = $form.closest('.tab-pane').find('.bar'),
-                
                 data = {},
                 barTimer;
-
+                
             //progress bar
             barTimer = setInterval(function () {
                 var width = parseInt($bar.css('width').replace('px', ''), 10) + 5,
@@ -76,7 +100,8 @@ var madrona = {
                     }
                 }
             });
-        }); 
+        };
+        
     }
 }; // end madrona init
 

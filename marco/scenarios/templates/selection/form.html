@@ -60,7 +60,23 @@
         $('#button_next').click( function() { wizard('next'); });
         wizard();
         
-                          
+        $('#id_name').keypress(function (e) {
+            if (e.which === 13) {
+                $('#selection-form .submit_button').click();
+                return false;
+            }
+        });
+        /*
+        $('#selection-form .submit_button').click( function(e) {
+            var name = $('#id_name').val();
+            if ($.trim(name) !== "") {  
+                return true;
+            }
+            $('#invalid-name-message').show();
+            e.stopPropagation();
+            return false;
+        });
+        */               
     });
     
 </script>
@@ -102,7 +118,10 @@
     <div class="step3-inputs">
         <div class="step3-param">
             {{ form.name.errors }}
-            {{ form.name }}            
+            {{ form.name }}  
+            <div id="invalid-name-message" class="control-group error" style="display: none; margin-top: -10px; margin-left: -5px;">
+                <span class="help-inline">Please enter a <b>Name</b> for your Wind Energy Siting</span>
+            </div>                    
         </div>
         <p class="instructions">Optionally, you may add a <b>Description</b> <!--and/or attach a file--> </p>
         <div class="step3-param">
