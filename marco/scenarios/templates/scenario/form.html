@@ -268,6 +268,8 @@
             if (e.which === 13) {
                 $('#scenario-form .submit_button').click();
                 return false;
+            } else {
+                $('#invalid-name-message').hide();
             }
         });
         /*
@@ -545,7 +547,7 @@
             {{ form.name.errors }}
             {{ form.name }} 
             <div id="invalid-name-message" class="control-group error" style="display: none; margin-top: -10px; margin-left: -5px;">
-                <span class="help-inline">Please enter a <b>Name</b> for your Wind Energy Siting</span>
+                <span class="help-inline">The <b>Name</b> field is required.</span>
             </div>           
         </div>
         <p class="instructions">Optionally, you may add a <b>Description</b> <!--and/or attach a file--> </p>

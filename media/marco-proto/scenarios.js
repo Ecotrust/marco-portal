@@ -2,7 +2,7 @@
 var madrona = { 
     onShow: function(callback) { callback(); },
     setupForm: function($form) {
-        var submitted = false;
+        //var submitted = false;
     
         $form.find('.btn-submit').hide();
 
@@ -24,7 +24,7 @@ var madrona = {
                 $('#invalid-name-message').show();
                 return false;
             } 
-            submitted = true;
+            //submitted = true;
             submitForm($form);
         }); 
         
