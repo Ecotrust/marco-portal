@@ -40,32 +40,6 @@
         type="text/css" media="all" />-->
         <link rel="shortcut icon" href="{{MEDIA_URL}}marco/ico/favicon.ico">
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-            <link href="{{MEDIA_URL}}/marco/css/marco_style.ie.css" rel="stylesheet">
-            <style>
-                    #feedback-tab {
-                        -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1.836909530733566e-16, M12=-1, M21=1, M22=-1.836909530733566e-16, SizingMethod='auto expand')";
-                        left: 0px;
-
-                        /* IE6 and 7 */ 
-                        filter: progid:DXImageTransform.Microsoft.Matrix(
-                                 M11=-1.836909530733566e-16,
-                                 M12=-1,
-                                 M21=1,
-                                 M22=-1.836909530733566e-16,
-                                 SizingMethod='auto expand');
-
-                      }
-            </style>
-            <script src="{{MEDIA_URL}}marco/js/respond.min.js"></script>
-        <![endif]-->
-        <!-- Le fav and touch icons -->
-        <!--[if IE 7]>
-          <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/font-awesome-ie7.css">
-        <![endif]-->
-
         <style>
         .navbar .nav > li:hover > a, .navbar .nav > li.active > a, .navbar .nav > li:hover > a:visited {
             height: 30px;
@@ -151,8 +125,8 @@
                 font-size: 20px !important;
             }
             #embedded-marco-logo {
-                margin-left: 26px;
-                margin-bottom: 10px;
+                margin-left: 25px;
+                margin-bottom: 8px;
                 width: 133px;
             }
         </style>
@@ -238,8 +212,8 @@
                                                                                 <h4 data-bind="text: name"></h4>
                                                                             </a>
                                                                         </div>
-                                                                        <div class="accordion-body collapse in" data-bind="attr: { id: $root.convertToSlug(name) }" >
-                                                                            <div class="accordion-inner">
+                                                                        <div class="accordion-body collapse in" style="background-color: inherit; width: 95%; color: white;" data-bind="attr: { id: $root.convertToSlug(name) }" >
+                                                                            <div class="accordion-inner" style="border-left: 0px; margin-left: 1px;">
                                                                                 <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
                                                                                     <dt>
                                                                                         <!-- ko if: $data.hasOwnProperty("tab") --> 
