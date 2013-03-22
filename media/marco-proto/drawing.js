@@ -50,10 +50,12 @@ function drawingModel(options) {
     
         //create a copy of this shape to be owned by the user
         $.ajax({
-            url: '/drawing/copy_design/' + drawing.uid + '/',
+            url: '/scenario/copy_design/' + drawing.uid + '/',
             type: 'POST',
+            dataType: 'json',
             success: function(data) {
-                app.viewModel.scenarios.loadDrawingsFromServer();
+                //app.viewModel.scenarios.loadSelectionsFromServer();
+                app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
                 debugger;
@@ -71,6 +73,8 @@ function drawingModel(options) {
         }
         //remove from selectionList
         app.viewModel.scenarios.drawingList.remove(drawing);
+        //update scrollbar
+        app.viewModel.scenarios.updateDesignsScrollBar();
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({

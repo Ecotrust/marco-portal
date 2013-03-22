@@ -2,6 +2,8 @@
 var madrona = { 
     onShow: function(callback) { callback(); },
     setupForm: function($form) {
+        //var submitted = false;
+    
         $form.find('.btn-submit').hide();
 
         $form.find('label').each(function (i, label) {
@@ -17,13 +19,35 @@ var madrona = {
 
         $form.closest('.panel').on('click', '.submit_button', function(e) {
             e.preventDefault();
-            var $form = $(this).closest('.panel').find('form'),
-                url = $form.attr('action'),
+            var name = $('#id_name').val();
+            if ($.trim(name) === "") {  
+                $('#invalid-name-message').show();
+                return false;
+            } 
+            //submitted = true;
+            submitForm($form);
+        }); 
+        
+        //no longer needed...? (if it was going here it meant there was a problem)
+        /*
+        $form.submit( function() {
+            var name = $('#id_name').val();
+            if ($.trim(name) === "") {  
+                $('#invalid-name-message').show();
+                return false;
+            } 
+            if (!submitted) {
+                submitForm($form);
+            }
+        });
+        */
+        submitForm = function($form) {
+            //var $form = $(this).closest('.panel').find('form'),
+            var url = $form.attr('action'),
                 $bar = $form.closest('.tab-pane').find('.bar'),
-                
                 data = {},
                 barTimer;
-
+                
             //progress bar
             barTimer = setInterval(function () {
                 var width = parseInt($bar.css('width').replace('px', ''), 10) + 5,
@@ -76,7 +100,8 @@ var madrona = {
                     }
                 }
             });
-        }); 
+        };
+        
     }
 }; // end madrona init
 
@@ -664,16 +689,22 @@ function selectionModel(options) {
         $.ajax({
             url: '/scenario/copy_design/' + selection.uid + '/',
             type: 'POST',
+            dataType: 'json',
             success: function(data) {
-                app.viewModel.scenarios.loadSelectionsFromServer();
+                //app.viewModel.scenarios.loadSelectionsFromServer();
+                app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
                 debugger;
             }
         })
-    }
+    };
+            
     self.deleteSelection = function() {
         var selection = this;
+        
+        //first deactivate the layer 
+        selection.deactivateLayer();
         
         //remove from activeLayers
         app.viewModel.activeLayers.remove(selection);
@@ -683,6 +714,8 @@ function selectionModel(options) {
         }
         //remove from selectionList
         app.viewModel.scenarios.selectionList.remove(selection);
+        //update scrollbar
+        app.viewModel.scenarios.updateDesignsScrollBar();
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
@@ -1087,17 +1120,22 @@ function scenarioModel(options) {
         $.ajax({
             url: '/scenario/copy_design/' + scenario.uid + '/',
             type: 'POST',
+            dataType: 'json',
             success: function(data) {
-                app.viewModel.scenarios.loadScenariosFromServer();
+                //app.viewModel.scenarios.loadSelectionsFromServer();
+                app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
                 debugger;
             }
         })
     };
-                
+        
     self.deleteScenario = function() {
         var scenario = this;
+        
+        //first deactivate the layer 
+        scenario.deactivateLayer();
         
         //remove from activeLayers
         app.viewModel.activeLayers.remove(scenario);
@@ -1107,6 +1145,8 @@ function scenarioModel(options) {
         }
         //remove from scenarioList
         app.viewModel.scenarios.scenarioList.remove(scenario);
+        //update scrollbar
+        app.viewModel.scenarios.updateDesignsScrollBar();
         
         //remove from server-side db (this should provide error message to the user on fail)
         $.ajax({
@@ -1630,6 +1670,7 @@ function scenariosModel(options) {
                             features: layer.features
                         });
                         self.toggleDrawingsOpen('open');
+                        self.zoomToScenario(scenario);
                     } else if (isSelectionModel) {
                         scenario = new selectionModel({
                             id: properties.uid,

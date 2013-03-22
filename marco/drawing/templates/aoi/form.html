@@ -64,6 +64,26 @@
             step = 2; // form errors exist
         {% endif %}
         wizard();
+        
+        
+        $('#id_name').keypress(function (e) {
+            if (e.which === 13) {
+                $('#drawing-form .submit_button').click();
+                return false;
+            } else {
+                $('#invalid-name-message').hide();
+            }
+        });
+        /*
+        $('#drawing-form .submit_button').click( function() {
+            var name = $('#id_name').val();
+            if ($.trim(name) !== "") {  
+                return true;
+            }
+            $('#invalid-name-message').show();
+            return false;
+        });
+        */
     });
 </script>
 
@@ -118,7 +138,10 @@
         <div class="step3-inputs">
             <div class="step3-param">
                 {{ form.name.errors }}
-                {{ form.name }}            
+                {{ form.name }}  
+                <div id="invalid-name-message" class="control-group error" style="display: none; margin-top: -10px; margin-left: -5px;">
+                    <span class="help-inline">The <b>Name</b> field is required.</span>
+                </div>                     
             </div>
             <p class="instructions">Optionally, you may add a <b>Description</b> <!--and/or attach a file--> </p>
             <div class="step3-param">
