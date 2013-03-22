@@ -162,7 +162,7 @@
         <header class="bar-title">
             <a id="mobile-data-button" class="button pull-left" href="#">
                 Data
-                <span class="count">5</span>
+                <span class="count" data-bind="text: activeLayers().length"></span>
             </a>
             <a id="mobile-map-left-button" class="button pull-left" href="#" style="display: none">
                 Map
@@ -172,7 +172,7 @@
             </h1>
             <a id="mobile-legend-button" class="button pull-right" href="#">
                 Legend
-                <span class="count">4</span>
+                <span class="count" data-bind="text: activeLegendLayers().length"></span>
             </a>
             <a id="mobile-map-right-button" class="button pull-right" href="#" style="display: none">
                 Map
@@ -186,7 +186,7 @@
                 <h2>Loading...</h2>
             </div>
             -->
-            <div id="myCarousel" class="carousel slide" style="height: 100%;">
+            <div id="myCarousel" class="carousel slide" style="height: 100%; top: 11px;">
                 <!-- Carousel items -->
                 <div class="carousel-inner" style="height: 100%; overflow: hidden;">
                     
