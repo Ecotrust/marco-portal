@@ -1025,25 +1025,26 @@ function viewModel() {
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
     
-        var dataScrollpane = $('#data-accordion').data('jsp');
-        if (dataScrollpane === undefined) {
-            $('#data-accordion').jScrollPane();
-        } else {
-            dataScrollpane.reinitialise();
-        }
-        
-        var activeScrollpane = $('#active').data('jsp');
-        if (activeScrollpane === undefined) {
-            $('#active').jScrollPane();
-        } else {
-            activeScrollpane.reinitialise();
-        }
-        
-        var legendScrollpane = $('#legend-content').data('jsp');
-        if (legendScrollpane === undefined) {
-            $('#legend-content').jScrollPane();
-        } else {
-            setTimeout(function() {legendScrollpane.reinitialise();},100);
+        if ( ! app.embeddedMap ) {
+            var dataScrollpane = $('#data-accordion').data('jsp');
+            if (dataScrollpane === undefined) {
+                $('#data-accordion').jScrollPane();
+            } else {
+                dataScrollpane.reinitialise();
+            }
+            
+            var activeScrollpane = $('#active').data('jsp');
+            if (activeScrollpane === undefined) {
+                $('#active').jScrollPane();
+            } else {
+                activeScrollpane.reinitialise();
+            }
+            var legendScrollpane = $('#legend-content').data('jsp');
+            if (legendScrollpane === undefined) {
+                $('#legend-content').jScrollPane();
+            } else {
+                setTimeout(function() {legendScrollpane.reinitialise();},100);
+            }
         }
         
     };

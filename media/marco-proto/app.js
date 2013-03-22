@@ -75,7 +75,9 @@ app.viewModel.loadLayersFromServer().done(function() {
   });
 
   // if (! ($.browser.msie && $.browser.version < 9)) {
+  if ( ! app.embeddedMap ) {
     $("#data-accordion").jScrollPane();
+  }
     //$("#legend-wrapper").jScrollPane();
   // }
 });

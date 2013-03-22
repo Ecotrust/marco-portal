@@ -1,0 +1,155 @@
+    
+    <div style="height: 100%; overflow: hidden;">
+        
+        <!-- Data Panel (left panel) -->
+        <div class="frame tabs" style="border-radius: 0px;">
+            <div class="sidebar-nav">
+                <!-- tab controls -->
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active" data-tab="data">
+                        <a href="#data" data-toggle="tab" id="dataTab" style="border-radius: 0px;">Data</a>
+                    </li>
+                    <li data-tab="active" >
+                        <a href="#active" data-toggle="tab" id="activeTab">Active  
+                            <span data-bind="visible: activeLayers().length > 0">
+                                (<span  data-bind="text: activeLayers().length">0</span>)
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+                <!-- tab body -->
+                <div id="myTabContent" class="tab-content">
+                
+                    <!-- DATA TAB -->
+                    <div class="tab-pane active in fade" id="data">
+                        <div class="row-fluid">
+                            <div class="span12 ">
+                                <form class="form-search" data-bind="submit: layerSearch">
+                                    <div class="span12">
+                                        <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis;" placeholder="Search">
+                                        
+                                        <a class="btn">
+                                            <i class="icon-remove icon-large"></i> 
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row-fluid" style="margin-top: 20px">
+                                <div class="span12 accordion-wrapper">
+                                    <!-- data accordion -->
+                                    <div id="data-accordion">
+                                        <div class="accordion" data-bind="foreach: themes">
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading" data-bind="click: setOpenTheme, css: { 'active': isOpenTheme() }">
+                                                    <div>
+                                                        <a class="accordion-toggle"> <!--event: {'hover': showDescription}-->
+                                                            <span data-bind="text: name">Themes</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
+                                                    <div class="accordion-inner">
+                                                        <ul  class="unstyled" data-bind="foreach: layers ">
+                                                            <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 }">
+                                                                <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }, attr: {name: name}">
+                                                                    
+                                                                    <a class="btn btn-layer" style="border-left-width: 1px; width: 80%;" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                                        <div style="font-weight: normal">
+                                                                            <span style="padding-left: 2px;" data-bind="text: name"></span>
+                                                                            <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
+                                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                                        </div>
+                                                                    </a>
+
+                                                                    <!-- ko if: subLayers.length > 0 -->
+                                                                    <!-- ko if: !isCheckBoxLayer() -->
+                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                        <li data-bind="foreach: subLayers">
+                                                                            <a data-bind="click: toggleActive">
+                                                                                <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }"> > </span>
+                                                                                <!--<span style="margin-left: -10px" data-bind="style: {visibility: active() ? 'visible': 'hidden' }">
+                                                                                    <i class="icon-ok-circle"></i>
+                                                                                </span>-->
+                                                                                <span data-bind="text: name"></span>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <!-- /ko -->
+                                                                    <!-- ko if: isCheckBoxLayer() -->
+                                                                    <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                        <li data-bind="foreach: subLayers">
+                                                                            <a data-bind="click: toggleActive">
+                                                                                <span style="margin-left: -10px">
+                                                                                    <i class="icon-check" data-bind="style: {display: active() ? 'inline': 'none' }"></i>
+                                                                                    <i style="opacity: .4" class="icon-check-empty" data-bind="style: {display: ! active() ? 'inline': 'none' }"></i>
+                                                                                </span>
+                                                                                <span data-bind="text: name"></span>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <!-- /ko -->
+                                                                    <!-- /ko -->
+                                                                </div>
+                                                            </li>  
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /data-accordion -->
+                                </div>
+                            </div>
+                            <!-- /span -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- END DATA TAB -->
+                    <!-- ACTIVE TAB -->
+                    <div class="tab-pane fade" id="active">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div data-bind="visible: activeLayers().length === 0">
+                                    <div style="padding: 10px;">
+                                        <p>
+                                            You currently have no activated data layers. 
+                                        </p>
+                                        <p>
+                                            Data layers that are activated in the Data panel will appear in this Active panel.
+                                        </p>
+                                        <p>
+                                            Data layers in the Active panel can be adjusted in terms of their transparency and their ordering on the map.
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="unstyled list" data-bind="sortable: { data: activeLayers, options: {  } }">
+                                    <li>
+                                        <div class="btn-group">
+                                            <button class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive()}"><i class="icon-info-sign icon-large"></i></button>
+                                            <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
+                                                <div data-bind="text: name"></div>
+                                                <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                    <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                </span>
+                                                <span ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></span>
+                                            </a>
+                                            <a class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust icon-large"></i></a>
+                                            <button class="btn" data-bind="click: toggleActive">
+                                                <i class="icon-remove">
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ACTIVE TAB -->
+                </div>
+            </div>
+        </div>
+        <!-- /Data Panel -->
+    </div>
+

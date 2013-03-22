@@ -25,6 +25,10 @@ def show_embedded_map(request, template='map.html'):
     context = {'MEDIA_URL': settings.MEDIA_URL}
     return render_to_response(template, RequestContext(request, context)) 
     
+def show_mobile_map(request, template='mobile-map.html'):
+    context = {'MEDIA_URL': settings.MEDIA_URL}
+    return render_to_response(template, RequestContext(request, context)) 
+    
 def get_sharing_groups(request):
     from madrona.features import user_sharing_groups
     from functools import cmp_to_key
