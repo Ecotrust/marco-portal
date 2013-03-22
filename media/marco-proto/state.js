@@ -109,6 +109,11 @@ app.loadCompressedState = function(state) {
             });
         } 
     }
+    
+    if (app.embeddedMap) {
+        state.tab = "data";
+    }
+    
     // active tab -- the following prevents theme and data layers from loading in either tab (not sure why...disbling for now)
     // it appears the dataTab show in state.themes above was causing the problem...?
     // timeout worked, but then realized that removing datatab show from above worked as well...

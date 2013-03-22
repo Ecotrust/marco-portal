@@ -16,10 +16,6 @@
         <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">        
-        <!-- Set Apple icons for when prototype is saved to home screen -->
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{MEDIA_URL}}/marco-proto/assets/ratchet/touch-icons/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{MEDIA_URL}}/marco-proto/assets/ratchet/touch-icons/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{MEDIA_URL}}/marco-proto/assets/ratchet/touch-icons/apple-touch-icon-57x57.png">
         <!-- Include the compiled Ratchet CSS -->
         <link rel="stylesheet" href="{{MEDIA_URL}}/marco-proto/assets/ratchet/ratchet.css">
         <!-- END RATCHET -->
@@ -139,21 +135,21 @@
 
         <!-- Make sure all your bars are the first things in your <body> -->
         <header class="bar-title">
-            <a id="mobile-data-button" class="button pull-left" href="#">
+            <a id="mobile-data-button" class="button pull-left">
                 Data
                 <span class="count" data-bind="text: activeLayers().length"></span>
             </a>
-            <a id="mobile-map-left-button" class="button pull-left" href="#" style="display: none">
+            <a id="mobile-map-left-button" class="button pull-left" style="display: none">
                 Map
             </a>
             <h1 class="title">
                 <img id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo-transparent.png"/>
             </h1>
-            <a id="mobile-legend-button" class="button pull-right" href="#">
+            <a id="mobile-legend-button" class="button pull-right">
                 Legend
                 <span class="count" data-bind="text: activeLegendLayers().length"></span>
             </a>
-            <a id="mobile-map-right-button" class="button pull-right" href="#" style="display: none">
+            <a id="mobile-map-right-button" class="button pull-right" style="display: none">
                 Map
             </a>
         </header>
