@@ -311,6 +311,15 @@ app.init = function () {
         app.viewModel.updateMarker();
         //app.viewModel.updateMarker();
     });
+          
+    //place the marker on click events
+    app.map.events.register("touchstart", app.map , function(e){
+        app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
+        app.marker.map = app.map;
+        app.marker.display(false);
+        app.viewModel.updateMarker();
+        //app.viewModel.updateMarker();
+    });
     
     app.map.removeLayerByName = function(layerName) {
         for (var i=0; i<app.map.layers.length; i++) {
