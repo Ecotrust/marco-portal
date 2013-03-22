@@ -243,7 +243,11 @@ app.init = function () {
             app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
         app.viewModel.updateMarker();
-        app.marker.display(true);
+        setTimeout( function() {
+            if (app.marker) {
+                app.marker.display(true);   
+            }
+        }, 100);
     }; //end utfGridClickHandling
       
     app.map.events.register("featureclick", null, function(e) {
@@ -309,16 +313,16 @@ app.init = function () {
         app.marker.map = app.map;
         app.marker.display(false);
         app.viewModel.updateMarker();
-        //app.viewModel.updateMarker();
     });
           
     //place the marker on click events
     app.map.events.register("touchstart", app.map , function(e){
-        app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
-        app.marker.map = app.map;
-        app.marker.display(false);
-        app.viewModel.updateMarker();
-        //app.viewModel.updateMarker();
+        setTimeout( function() {
+            app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
+            app.marker.map = app.map;
+            app.marker.display(false);
+            app.viewModel.updateMarker();
+        }, 50);
     });
     
     app.map.removeLayerByName = function(layerName) {
