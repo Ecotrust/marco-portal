@@ -1,5 +1,5 @@
     
-    <div style="height: 100%; overflow: hidden; padding-top: 11px;">
+    <div style="height: 100%; overflow: hidden;">
         
         <!-- Data Panel (left panel) -->
         <div class="frame tabs" style="border-radius: 0px;">
@@ -28,7 +28,7 @@
                             <div class="span12 ">
                                 <form class="form-search" data-bind="submit: layerSearch">
                                     <div class="span12">
-                                        <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis;" placeholder="Search">
+                                        <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis; height: 100%;" placeholder="Search">
                                         
                                         <a class="btn">
                                             <i class="icon-remove icon-large"></i> 
@@ -54,7 +54,7 @@
                                                             <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 }">
                                                                 <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }, attr: {name: name}">
                                                                     
-                                                                    <a class="btn btn-layer" style="border-left-width: 1px; width: 80%;" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                                    <a class="btn btn-layer" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgba(0,0,0,0.15); width: 80%;" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                         <div style="font-weight: normal">
                                                                             <span style="padding-left: 2px;" data-bind="text: name"></span>
                                                                             <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
@@ -122,9 +122,9 @@
                                     </div>
                                 </div>
                                 <ul class="unstyled list" data-bind="sortable: { data: activeLayers, options: {  } }">
-                                    <li>
+                                    <li style="border: 0px; padding: 0px; width: 100%;">
                                         <div class="btn-group">
-                                            <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
+                                            <a class="btn btn-layer" style="display: inline-block; width: 80%;" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                 <div data-bind="text: name"></div>
                                                 <span rel="tooltip" data-bind="attr: {title: sharedBy}">
                                                     <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
