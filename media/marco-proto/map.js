@@ -318,7 +318,9 @@ app.init = function () {
     //place the marker on click events
     app.map.events.register("touchstart", app.map , function(e){
         setTimeout( function() {
-            app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
+            var touchX = e.changedTouches[0].clientX,
+                touchY = e.changedTouches[0].clientY;
+            app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx({x: touchX, y: touchY}), app.markers.icon);
             app.marker.map = app.map;
             app.marker.display(false);
             app.viewModel.updateMarker();
