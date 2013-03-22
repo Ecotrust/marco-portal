@@ -853,8 +853,11 @@ function viewModel() {
         app.markers.clearMarkers();
     };
     
-    self.updateMarker = function() {
+    self.updateMarker = function(lonlat) {
         app.markers.clearMarkers();
+        app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
+        app.marker.map = app.map;
+        app.marker.display(true);
         if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);

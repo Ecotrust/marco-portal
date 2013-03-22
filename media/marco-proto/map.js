@@ -149,12 +149,12 @@ app.init = function () {
         //events: {fallThrough: true},
         handlerMode: 'click',
         callback: function(infoLookup, lonlat, xy) {   
-            app.map.utfGridClickHandling(infoLookup);
+            app.map.utfGridClickHandling(infoLookup, lonlat, xy);
         }
     });
     map.addControl(map.UTFControl);    
     
-    app.map.utfGridClickHandling = function(infoLookup) {
+    app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
         var clickAttributes = [],
             date = new Date(),
             newTime = date.getTime();
@@ -242,15 +242,22 @@ app.init = function () {
             $.extend(app.map.clickOutput.attributes, clickAttributes);
             app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
-        app.viewModel.updateMarker();
+        /*app.viewModel.updateMarker();
         setTimeout( function() {
             if (app.marker) {
+                console.log(lonlat);
+                console.log(xy);
                 app.marker.display(true);   
             }
-        }, 100);
+        }, 100);*/
+        app.viewModel.updateMarker(lonlat);
+        /*app.markers.clearMarkers();
+        app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
+        app.marker.map = app.map;
+        app.marker.display(true); */
     }; //end utfGridClickHandling
       
-    app.map.events.register("featureclick", null, function(e) {
+    app.map.events.register("featureclick", null, function(e, test) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         if (layer) {
             var date = new Date();
@@ -283,7 +290,7 @@ app.init = function () {
         } 
         app.map.clickOutput.attributes[title] = text;
         app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-        //app.viewModel.updateMarker();
+        //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
         //the following delay is so that the "click" handler below gets activated (and the marker is created) before the marker is updated here
         setTimeout( function() {
             if (app.marker) {
@@ -306,25 +313,15 @@ app.init = function () {
     //var icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.markers.icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.map.addLayer(app.markers);
-              
+      
+    
     //place the marker on click events
     app.map.events.register("click", app.map , function(e){
-        app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
+        /*app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
         app.marker.map = app.map;
         app.marker.display(false);
-        app.viewModel.updateMarker();
-    });
-          
-    //place the marker on click events
-    app.map.events.register("touchstart", app.map , function(e){
-        setTimeout( function() {
-            var touchX = e.changedTouches[0].clientX,
-                touchY = e.changedTouches[0].clientY;
-            app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx({x: touchX, y: touchY}), app.markers.icon);
-            app.marker.map = app.map;
-            app.marker.display(false);
-            app.viewModel.updateMarker();
-        }, 50);
+        app.viewModel.updateMarker();*/
+        app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
     });
     
     app.map.removeLayerByName = function(layerName) {
