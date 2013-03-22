@@ -4,8 +4,8 @@ import os
 
 project = '/usr/local/apps/marco-portal/marco'
 ve ='/usr/local/apps/marco-portal/marco-env'
-vepath = os.path.join(ve, 'lib/python2.7/site-packages')
-local_path = os.path.join('/usr/local/lib/python2.7/site-packages')
+vepath = os.path.join(ve,'lib/python2.6/site-packages')
+local_path = os.path.join('/usr/local/lib/python2.6/site-packages')
 
 prev_sys_path = list(sys.path)
 # add the site-packages of our virtualenv as a site dir
