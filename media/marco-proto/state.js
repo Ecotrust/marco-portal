@@ -110,7 +110,8 @@ app.loadCompressedState = function(state) {
         } 
     }
     
-    if (app.embeddedMap) {
+    //if (app.embeddedMap) {
+    if ( $(window).width() < 768 ) {
         state.tab = "data";
     }
     
