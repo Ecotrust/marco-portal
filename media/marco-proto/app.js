@@ -8,7 +8,7 @@ app.onResize = function(percent) {
   // when fullscreen be odd?
   if (height) {
     //if (!app.embeddedMap) {
-    if (width > 767) {
+    if ( width > 767 && !app.embeddedMap ) {
         $("#map").height(height);
         $("#map-wrapper").height(height);
         $(".tabs").height(height);
@@ -76,10 +76,7 @@ app.viewModel.loadLayersFromServer().done(function() {
     source: app.typeAheadSource
   });
 
-  // if (! ($.browser.msie && $.browser.version < 9)) {
-  // if ( ! app.embeddedMap ) {
-  if ( $(window).width() > 767 ) {
-    //console.log('not embedded map');
+  if ( ! ($.browser.msie && $.browser.version < 9) && ! app.embeddedMap ) {
     $("#data-accordion").jScrollPane();
   }
     //$("#legend-wrapper").jScrollPane();

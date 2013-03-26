@@ -170,7 +170,7 @@
                 <div class="carousel-inner" style="height: 100%; overflow: hidden;">
                     
                     <!-- SUBLAYER MENU PANEL -->
-                    <div class="item" style="height: 100%; overflow: hidden;">
+                    <div class="item" style="height: 100%; overflow: auto;">
                         {% include "mobile-sublayer-menu.html" %}
                     </div>
                     
@@ -324,6 +324,10 @@
             
             $('#mobile-data-button').click( function() {
                 $('.carousel').carousel('prev');
+                var api = $("#data-accordion").jScrollPane({}).data('jsp');
+                if ( api ) {
+                    api.destroy();
+                }
                 $('#mobile-data-button').hide();
                 $('#mobile-legend-button').hide();
                 $('#mobile-map-right-button').show();
@@ -331,6 +335,10 @@
                         
             $('#mobile-legend-button').click( function() {
                 $('.carousel').carousel('next');
+                var api = $("#legend-wrapper").jScrollPane({}).data('jsp');
+                if ( api ) {
+                    api.destroy();
+                }
                 $('#mobile-data-button').hide();
                 $('#mobile-legend-button').hide();
                 $('#mobile-map-left-button').show();

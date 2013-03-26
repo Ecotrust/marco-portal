@@ -1033,7 +1033,6 @@ function viewModel() {
     self.updateScrollBars = function() {
     
         if ( ! app.embeddedMap ) {
-            //console.log('not embedded map');
             var dataScrollpane = $('#data-accordion').data('jsp');
             if (dataScrollpane === undefined) {
                 $('#data-accordion').jScrollPane();
