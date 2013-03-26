@@ -76,6 +76,7 @@ app.viewModel.loadLayersFromServer().done(function() {
 
   // if (! ($.browser.msie && $.browser.version < 9)) {
   if ( ! app.embeddedMap ) {
+    //console.log('not embedded map');
     $("#data-accordion").jScrollPane();
   }
     //$("#legend-wrapper").jScrollPane();

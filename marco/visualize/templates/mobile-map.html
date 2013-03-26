@@ -152,6 +152,10 @@
             <a id="mobile-map-right-button" class="button pull-right" style="display: none">
                 Map
             </a>
+            <a id="mobile-data-right-button" class="button pull-right" style="display: none">
+                Data
+                <span class="count" data-bind="text: activeLayers().length"></span>
+            </a>
         </header>
 
         <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
@@ -164,6 +168,11 @@
             <div id="myCarousel" class="carousel slide" style="height: 100%;">
                 <!-- Carousel items -->
                 <div class="carousel-inner" style="height: 100%; overflow: hidden;">
+                    
+                    <!-- SUBLAYER MENU PANEL -->
+                    <div class="item" style="height: 100%; overflow: hidden;">
+                        {% include "mobile-sublayer-menu.html" %}
+                    </div>
                     
                     <!-- DATA PANEL -->
                     <div class="item" style="height: 100%; overflow: hidden;">
@@ -340,6 +349,13 @@
                 $('#mobile-legend-button').show();
                 $('#mobile-map-right-button').hide();
             });
+            
+            $('#mobile-data-right-button').click( function() {
+                $('.carousel').carousel('next');
+                $('#mobile-data-right-button').hide();
+                $('#mobile-map-right-button').show();
+            });
+            
         
         </script>
     

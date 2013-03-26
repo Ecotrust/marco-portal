@@ -365,9 +365,16 @@ function layerModel(options, parent) {
     self.toggleActive = function(self, event) {
         var layer = this;
 
+        // save a ref to the active layer for editing,etc
+        app.viewModel.activeLayer(layer);
         //handle possible dropdown/sublayer behavior
         if (layer.subLayers.length) {
-            if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
+            app.viewModel.activeParentLayer(layer);
+            if ( app.embeddedMap ) { // if data viewer is mobile app
+                $('.carousel').carousel('prev');
+                $('#mobile-data-right-button').show();
+                $('#mobile-map-right-button').hide(); 
+            } else if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
                 if (!layer.showSublayers()) {
                     //show drop-down menu
                     layer.showSublayers(true);
@@ -394,10 +401,6 @@ function layerModel(options, parent) {
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
         app.viewModel.error(null);
-
-        // save a ref to the active layer for editing,etc
-        // still using this?
-        app.viewModel.activeLayer(layer);
 
         if (layer.active()) { // if layer is active
             layer.deactivateLayer();
@@ -790,6 +793,7 @@ function viewModel() {
 
     // last clicked layer for editing, etc
     self.activeLayer = ko.observable();
+    self.activeParentLayer = ko.observable();
 
     // determines visibility of description overlay
     self.showDescription = ko.observable();
@@ -1029,6 +1033,7 @@ function viewModel() {
     self.updateScrollBars = function() {
     
         if ( ! app.embeddedMap ) {
+            //console.log('not embedded map');
             var dataScrollpane = $('#data-accordion').data('jsp');
             if (dataScrollpane === undefined) {
                 $('#data-accordion').jScrollPane();
