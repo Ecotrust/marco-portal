@@ -215,12 +215,12 @@
                                             </li>
                                             <li>
                                                 {% if layer.description_link %}
-                                                <span class="btn layer-name catalog-tooltip" rel="popover" 
+                                                <button class="btn layer-name catalog-tooltip" rel="popover" 
                                                     data-name="{{layer.name}}" 
                                                     data-thumbnail="{{layer.thumbnail}}"
                                                     data-placement="bottom"
                                                     data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">Description
-                                                </span>
+                                                </button>
                                                 <!--<a class="btn" href="{{layer.description_link}}">
                                                     {% flatblock "data_catalog_factsheet_link" %}
                                                 </a>-->
