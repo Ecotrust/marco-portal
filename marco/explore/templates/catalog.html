@@ -219,7 +219,8 @@
                                                     data-name="{{layer.name}}" 
                                                     data-thumbnail="{{layer.thumbnail}}"
                                                     data-placement="bottom"
-                                                    data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">Description
+                                                    data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">
+                                                    {% flatblock "data_catalog_factsheet_link" %}
                                                 </button>
                                                 <!--<a class="btn" href="{{layer.description_link}}">
                                                     {% flatblock "data_catalog_factsheet_link" %}
@@ -342,7 +343,6 @@
         $('.catalog-tooltip').click(function(e) {
             if ( $('.popover').is(':visible') ) {
                 $('.popover').hide();
-                return false;
             }
         });
         
