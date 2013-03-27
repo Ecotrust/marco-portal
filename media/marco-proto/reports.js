@@ -21,7 +21,9 @@ function reportsModel(options) {
         for (var i=0; i<selections.length; i++) {
             //if ( selections[i].active() ) {
                 var vals = selections[i].scenarioReportValues[key];
-                data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
+                if (vals) {
+                    data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
+                }
             //}
         }
         return data;
@@ -85,6 +87,37 @@ function reportsModel(options) {
         //self.createChart(options);
         self.reportOptions = windReportOptions;
         self.createChart(windReportOptions);
+    };
+    
+    self.showSubstationReport = function() {
+        var awcReportOptions = {
+            'title': { 
+                text: 'Distance to Coastal Substation' 
+            },
+            'yAxis': {
+                title: {
+                    text: 'Distance in miles'
+                },
+                min: 0,
+                max: 100
+            },
+            'tooltip': {
+                valueSuffix: 'miles',
+                formatter: function() {
+                    return  'Distance to Coastal Substation: ' +
+                            this.point.low + ' - ' +
+                            this.point.high + ' miles' +
+                            '<br/>Average Distance: ' + 
+                            this.point.avg + ' miles'; 
+              }
+            },
+            'seriesName': 'Distance to Coastal Substation',
+            'seriesStub': 'distance-to-substation'
+        };
+        //var options = $.extend({}, self.reportOptions, awcReportOptions);
+        //self.createChart(options);
+        self.reportOptions = awcReportOptions;
+        self.createChart(awcReportOptions);
     };
     
     self.showAWCReport = function() {
@@ -222,6 +255,7 @@ function reportsModel(options) {
             self.noActiveCollections(false);
             self.showingReport(true);
         } else {
+            $('#comparison-report-flash-instructions').effect("highlight", {}, 1000);
             self.noActiveCollections(true);
             return;
         }

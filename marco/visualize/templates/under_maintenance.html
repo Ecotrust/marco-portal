@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load url from future %}
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            MARCO Portal
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Le styles -->
+        <link href="{{MEDIA_URL}}/marco/css/bootstrap.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco/css/marco_style.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/scalebar-thin.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/style.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/pageguide.css" rel="stylesheet">
+
+        <link href="{{MEDIA_URL}}/marco/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco-proto/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}marco/css/jquery.jscrollpane.css" rel="stylesheet">
+        <!--<link href="{{MEDIA_URL}}/marco-proto/assets/css/jScrollPane.css" rel="stylesheet">-->
+        <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css"
+        type="text/css" media="all" />-->
+        <link rel="shortcut icon" href="{{MEDIA_URL}}marco/ico/favicon.ico">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <link href="{{MEDIA_URL}}/marco/css/marco_style.ie.css" rel="stylesheet">
+            <style>
+                    #feedback-tab {
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1.836909530733566e-16, M12=-1, M21=1, M22=-1.836909530733566e-16, SizingMethod='auto expand')";
+                        left: 0px;
+
+                        /* IE6 and 7 */ 
+                        filter: progid:DXImageTransform.Microsoft.Matrix(
+                                 M11=-1.836909530733566e-16,
+                                 M12=-1,
+                                 M21=1,
+                                 M22=-1.836909530733566e-16,
+                                 SizingMethod='auto expand');
+
+                      }
+            </style>
+            <script src="{{MEDIA_URL}}marco/js/respond.min.js"></script>
+        <![endif]-->
+        <!-- Le fav and touch icons -->
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/font-awesome-ie7.css">
+        <![endif]-->
+
+        <style>
+        .navbar .nav > li:hover > a, .navbar .nav > li.active > a, .navbar .nav > li:hover > a:visited {
+            height: 30px;
+           
+        }
+        .navbar .nav > li > a {
+            height: 25px;
+        }
+
+        </style>
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="{{MEDIA_URL}}/marco-proto/assets/ico/apple-touch-icon-57-precomposed.png">
+        
+        <!-- Google Analytics -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-35841423-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        
+        
+    </head>
+    
+    <body>
+        
+        <header role="banner">
+            <div class="navbar navbar-fixed-top" style="height: 82px;">
+                <div class="navbar-inner">
+                    <div class="container-fluid" style="margin-left: 40px;">
+                        <div class="row-fluid">
+                            <div class="span5">
+                                <a href="/portal">
+                                    <img style="height: 77px;" src="{{MEDIA_URL}}marco/img/marco-logo.png"/>
+                                </a>
+                                <h3 class="pull-right" data-bind="visible: mapTitle, text: mapTitle"></h3>
+                            </div>
+                            <div class="span7">
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header> <!-- end header -->
+        
+        <div style="margin-left: 60px; padding-top: 20px;">
+            <p>We're Sorry. </p>
+            <p>The MARCO site is temporarily down for maintenance. </p>
+            <p>We will be back up and running shortly. </p>
+        </div>
+       
+    </body>
+
+</html>

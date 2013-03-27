@@ -41,19 +41,11 @@
 <!-- HELP MODAL -->
 
 <div id="help-modal" class="modal hide fade">
-    <div class="modal-header">
+    <div class="modal-header" style="min-height: 20px;">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Help</h3>
     </div>
     <div class="modal-body" style="text-align: center">  
       <div class="row-fluid">
-        <div class="span5" data-bind="css: {span5: !hideTours(), span12: hideTours()}">
-            <h4>Contact Us</h4>
-            <ul class="unstyled" style="margin-left: 1px">
-                <li>Email: <a href="#" data-toggle="modal" data-target="#feedback-modal" data-dismiss="modal">info@midatlanticocean.org</a></li>
-                <li>Phone: 732 263-5392</li>
-            </ul>
-        </div>
         <div class="span7" data-bind="style: {display: hideTours() ? 'none': 'block'}, css: {span7: !hideTours()}">
             <h4>Tour the MARCO Marine Planner</h4>
             <div style="text-align: center">
@@ -63,6 +55,13 @@
                 <li><a href="#" data-dismiss="modal" data-bind="click: startActiveTour">Tour the Active Tab</a></li>
             </ul>
             </div>
+        </div>
+        <div class="span5" data-bind="css: {span5: !hideTours(), span12: hideTours()}">
+            <h4>Contact Us</h4>
+            <ul class="unstyled" style="margin-left: 1px">
+                <li>Email: <a href="#" data-toggle="modal" data-target="#feedback-modal" data-dismiss="modal">info@midatlanticocean.org</a></li>
+                <li>Phone: 732 263-5392</li>
+            </ul>
         </div>
       </div>
     </div>
@@ -117,7 +116,7 @@
     <div class="modal-body" style="height: 165px; overflow: hidden"> 
         <div class="row-fluid" style="padding-top: 5px">
             <div>
-                Paste Link in email or browser  
+                Share this map with others  
                 <span class="pull-right">
                     <label> 
                         <input class="short-url-checkbox" type="checkbox" data-bind="checked: shrinkURL" style="margin-top: 0px; margin-bottom: 3px"> 
@@ -129,14 +128,14 @@
                 <input id="short-url" type="text" style="width: 96%" data-bind="attr: {value: getURL()}"> 
             </div>
             <div style="padding-top: 12px; padding-bottom: 5px"> 
-                Paste HTML to embed in website 
+                Embed this map in your own webpage 
             </div> 
             <div> 
                 <input id="iframe-html" type="text" style="width: 96%" data-bind="attr: {value: getIFrameHTML}"> 
             </div> 
             <div style="margin-top: -4px"> 
                 <a href="#" data-bind="click: openIFrameExample"> 
-                    Customize and preview embedded map 
+                    Preview embedded map 
                 </a> 
             </div>
         </div>

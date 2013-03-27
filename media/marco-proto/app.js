@@ -6,13 +6,15 @@ app.onResize = function(percent) {
   var height = $(window).height() * (percent || 0.855);
   // when fullscreen be odd?
   if (height) {
-    $("#map").height(height);
-    $("#map-wrapper").height(height);
-    $(".tabs").height(height);
-    $("#legend-wrapper").height(height - 20);
-    $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
-    $("#designs-accordion").height(height - 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
-    $("#active").height(height + 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
+    if (!app.embeddedMap) {
+        $("#map").height(height);
+        $("#map-wrapper").height(height);
+        $(".tabs").height(height);
+        $("#legend-wrapper").height(height - 20);
+        $("#data-accordion").height(height - (($.browser.msie && $.browser.version < 9)? 130: 96));
+        $("#designs-accordion").height(height - 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
+        $("#active").height(height + 20 - (($.browser.msie && $.browser.version < 9)? 130: 96));
+    } 
     app.map.render('map');
   }
   

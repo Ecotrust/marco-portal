@@ -93,6 +93,10 @@ app.init = function () {
     map.events.register("zoomend", null, function () {
         if (map.zoomBox.active) {
             app.viewModel.deactivateZoomBox();
+        }   
+        if( map.getZoom() < 5)
+        {
+            map.zoomTo(5);
         }        
     });
 
@@ -151,13 +155,20 @@ app.init = function () {
     map.addControl(map.UTFControl);    
     
     app.map.utfGridClickHandling = function(infoLookup) {
+        var clickAttributes = [],
+            date = new Date(),
+            newTime = date.getTime();
+            
+        if (newTime - app.map.clickOutput.time > 500) {
+            app.map.clickOutput.attributes = {};
+            app.map.clickOutput.time = newTime;
+        } 
+        
         for (var idx in infoLookup) {
             $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
               if (potential_layer.type !== 'Vector') {
                 var new_attributes,
-                    info = infoLookup[idx],
-                    date = new Date(),
-                    newTime = date.getTime();
+                    info = infoLookup[idx];
                 if (info && info.data) { 
                     var newmsg = '',
                         hasAllAttributes = true,
@@ -222,21 +233,17 @@ app.init = function () {
                         } else if ( title === 'Wind Speed' ) {
                             text = app.viewModel.getWindSpeedAttributes(title, info.data);
                         }
-                        if (newTime - app.map.clickOutput.time > 500) {
-                            app.map.clickOutput.attributes = {};
-                            app.map.clickOutput.time = newTime;
-                            app.map.clickOutput.attributes[title] = text;
-                        } else {
-                            if ( text[0].data || text[0].display) {
-                                app.map.clickOutput.attributes[title] = text;
-                            }
-                        }
-                        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                        clickAttributes[title] = text;
+                        //app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
                     } 
                 } 
               }
             });
+            $.extend(app.map.clickOutput.attributes, clickAttributes);
+            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
+        app.viewModel.updateMarker();
+        app.marker.display(true);
     }; //end utfGridClickHandling
       
     app.map.events.register("featureclick", null, function(e) {
@@ -272,6 +279,13 @@ app.init = function () {
         } 
         app.map.clickOutput.attributes[title] = text;
         app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+        //app.viewModel.updateMarker();
+        //the following delay is so that the "click" handler below gets activated (and the marker is created) before the marker is updated here
+        setTimeout( function() {
+            if (app.marker) {
+                app.marker.display(true);   
+            }
+        }, 100);
     });
     
     app.map.events.register("nofeatureclick", null, function(e) {
@@ -293,8 +307,19 @@ app.init = function () {
     app.map.events.register("click", app.map , function(e){
         app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
         app.marker.map = app.map;
+        app.marker.display(false);
         app.viewModel.updateMarker();
+        //app.viewModel.updateMarker();
     });
+    
+    app.map.removeLayerByName = function(layerName) {
+        for (var i=0; i<app.map.layers.length; i++) {
+            if (app.map.layers[i].name === layerName) {
+                app.map.removeLayer(app.map.layers[i]);
+                i--;
+            }
+        }
+    };
     
 };
 
@@ -405,6 +430,14 @@ app.addVectorLayerToMap = function(layer) {
                 fillOpacity: fillOp,
                 externalGraphic: details.graphic 
             }; 
+            /*special case for Discharge Flow
+            if (layer.lookupField === "Flow") {
+                mylookup[details.value] = { 
+                    strokeColor: layer.color,
+                    pointRadius: details.value * 5
+                }; 
+                console.log(mylookup);
+            }*/
         });
         styleMap.addUniqueValueRules("default", layer.lookupField, mylookup);
         //styleMap.addUniqueValueRules("select", layer.lookupField, mylookup);
@@ -438,17 +471,28 @@ app.addUtfLayerToMap = function(layer) {
         useJSONP: false
     });
      
-    app.map.addLayer(layer.utfgrid);           
-    layer.layer = new OpenLayers.Layer.XYZ(
-        layer.name, 
-        layer.url,
-        $.extend({}, opts, 
-            {
-                sphericalMercator: true,
-                isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
-            }
-        )
-    );  
+    app.map.addLayer(layer.utfgrid);      
+    
+    if (layer.type === 'ArcRest') {
+        app.addArcRestLayerToMap(layer);
+    } else if (layer.type === 'XYZ') {
+        //maybe just call app.addXyzLayerToMap(layer)
+        app.addXyzLayerToMap(layer);
+        /*
+        layer.layer = new OpenLayers.Layer.XYZ(
+            layer.name, 
+            layer.url,
+            $.extend({}, opts, 
+                {
+                    sphericalMercator: true,
+                    isBaseLayer: false //previously set automatically when allOverlays was set to true, must now be set manually
+                }
+            )
+        );  
+        */
+    } else {
+        debugger;
+    }
 }
 
 app.setLayerVisibility = function(layer, visibility) {

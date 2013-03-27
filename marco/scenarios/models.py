@@ -55,6 +55,9 @@ class Scenario(Analysis):
     input_parameter_distance_to_awc = models.BooleanField(verbose_name='Distance to AWC Station')
     input_distance_to_awc = models.FloatField(verbose_name='Maximum Distance to AWC Station', null=True, blank=True)
     
+    input_parameter_distance_to_substation = models.BooleanField(verbose_name='Distance to Coastal Substation')
+    input_distance_to_substation = models.FloatField(verbose_name='Maximum Distance to Coastal Substation', null=True, blank=True)
+    
     input_parameter_wea = models.BooleanField(verbose_name='WEA Parameter')
     input_wea = models.ManyToManyField('WEA', null=True, blank=True)
     
@@ -65,6 +68,10 @@ class Scenario(Analysis):
     
     input_filter_distance_to_shipping = models.BooleanField(verbose_name='Distance to Shipping Lanes (Traffic Separation Zones)')
     input_distance_to_shipping = models.FloatField(verbose_name='Minimum Distance to Shipping Lanes (Traffic Separation Zones)', null=True, blank=True)
+    
+    #Security
+    
+    input_filter_uxo = models.BooleanField(verbose_name='Excluding Areas with UXO')
     
     #Descriptors (name field is inherited from Analysis)
     
@@ -94,6 +101,9 @@ class Scenario(Analysis):
         if self.input_parameter_distance_to_awc:
             distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
             attributes.append({'title': 'Max Distance to Proposed AWC Hub', 'data': distance_to_awc})
+        if self.input_parameter_distance_to_substation:
+            distance_to_substation = '%s miles' %format(self.input_distance_to_substation, 0)
+            attributes.append({'title': 'Max Distance to Coastal Substation', 'data': distance_to_substation})
         if self.input_filter_distance_to_shipping:
             miles_to_shipping = format(self.input_distance_to_shipping, 0)
             if miles_to_shipping == 1:
@@ -103,6 +113,8 @@ class Scenario(Analysis):
             attributes.append({'title': 'Minimum Distance to Shipping Lanes', 'data': distance_to_shipping})
         if self.input_filter_ais_density:
             attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
+        if self.input_filter_uxo:
+            attributes.append({'title': 'Excluding Areas with Unexploded Ordnances', 'data': ''})
         attributes.append({'title': 'Number of Leaseblocks', 'data': self.lease_blocks.count(',')+1})
         return { 'event': 'click', 'attributes': attributes }
     
@@ -147,12 +159,17 @@ class Scenario(Analysis):
             result = result.filter(wea_number__in=input_wea)
         if self.input_parameter_distance_to_awc:
             result = result.filter(awc_min_distance__lte=self.input_distance_to_awc)
+        if self.input_parameter_distance_to_substation:
+            result = result.filter(substation_min_distance__lte=self.input_distance_to_substation)
         #Shipping
         if self.input_filter_ais_density:
             result = result.filter(ais_mean_density__lte=1)
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
-         
+        #Security
+        if self.input_filter_uxo:
+            result = result.filter(uxo=0)
+            
         dissolved_geom = result[0].geometry
         for lb in result:
             try:
@@ -542,6 +559,13 @@ class LeaseBlock(models.Model):
     discharge_flow_mean_distance = models.FloatField(null=True, blank=True)
     dredge_site = models.IntegerField(null=True, blank=True)
     wpa = models.IntegerField(null=True, blank=True)
+    wpa_name = models.CharField(max_length=75, null=True, blank=True)
+    shipwreck_density = models.IntegerField(null=True, blank=True)
+    uxo = models.IntegerField(null=True, blank=True)
+    substation_min_distance = models.FloatField(null=True, blank=True)
+    substation_max_distance = models.FloatField(null=True, blank=True)
+    substation_mean_distance = models.FloatField(null=True, blank=True)
+    marco_region = models.IntegerField(null=True, blank=True)
     geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
     #geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
     objects = models.GeoManager()   
@@ -659,24 +683,17 @@ class LeaseBlockSelection(Analysis):
             avg_wind_speed_output = '%s m/s' %avg_wind_speed
             attributes.append({'title': 'Average Wind Speed', 'data': avg_wind_speed_output})
             report_values['wind-speed'] = {'min': min_wind_speed, 'max': max_wind_speed, 'avg': avg_wind_speed, 'selection_id': self.uid}
-            #get distance to shore range
-            min_distance = format(self.get_min_distance(leaseblocks), 0)
-            max_distance = format(self.get_max_distance(leaseblocks), 0)
-            distance_to_shore = '%s to %s miles' %(min_distance, max_distance)
-            attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
-            avg_distance = format(self.get_avg_distance(leaseblocks),1)
-            avg_distance_output = '%s miles' %avg_distance
-            attributes.append({'title': 'Average Distance to Shore', 'data': avg_distance_output})
-            report_values['distance-to-shore'] = {'min': min_distance, 'max': max_distance, 'avg': avg_distance, 'selection_id': self.uid}
-            #get depth range
-            min_depth = format(self.get_min_depth(leaseblocks), 0)
-            max_depth = format(self.get_max_depth(leaseblocks), 0)
-            depth_range = '%s to %s feet' %(min_depth, max_depth)
-            attributes.append({'title': 'Depth', 'data': depth_range})
-            avg_depth = format(self.get_avg_depth(leaseblocks), 0)
-            avg_depth_output = '%s feet' %avg_depth
-            attributes.append({'title': 'Average Depth', 'data': avg_depth_output})
-            report_values['depth'] = {'min': min_depth, 'max': max_depth, 'avg': avg_depth, 'selection_id': self.uid}
+            
+            #get distance to coastal substation
+            min_distance_to_substation = format(self.get_min_distance_to_substation(leaseblocks), 0)
+            max_distance_to_substation = format(self.get_max_distance_to_substation(leaseblocks), 0)
+            distance_to_substation_range = '%s to %s miles' %(min_distance_to_substation, max_distance_to_substation)
+            attributes.append({'title': 'Distance to Coastal Substation', 'data': distance_to_substation_range})
+            avg_distance_to_substation = format(self.get_avg_distance_to_substation(leaseblocks), 1)
+            avg_distance_to_substation_output = '%s miles' %avg_distance_to_substation
+            attributes.append({'title': 'Average Distance to Coastal Substation', 'data': avg_distance_to_substation_output})
+            report_values['distance-to-substation'] = {'min': min_distance_to_substation, 'max': max_distance_to_substation, 'avg': avg_distance_to_substation, 'selection_id': self.uid}
+                        
             #get distance to awc range
             min_distance_to_awc = format(self.get_min_distance_to_awc(leaseblocks), 0)
             max_distance_to_awc = format(self.get_max_distance_to_awc(leaseblocks), 0)
@@ -686,6 +703,7 @@ class LeaseBlockSelection(Analysis):
             avg_distance_to_awc_output = '%s miles' %avg_distance_to_awc
             attributes.append({'title': 'Average Distance to Proposed AWC Hub', 'data': avg_distance_to_awc_output})
             report_values['distance-to-awc'] = {'min': min_distance_to_awc, 'max': max_distance_to_awc, 'avg': avg_distance_to_awc, 'selection_id': self.uid}
+            
             #get distance to shipping lanes
             min_distance_to_shipping = format(self.get_min_distance_to_shipping(leaseblocks), 0)
             max_distance_to_shipping = format(self.get_max_distance_to_shipping(leaseblocks), 0)
@@ -693,8 +711,28 @@ class LeaseBlockSelection(Analysis):
             attributes.append({'title': 'Distance to Shipping Lanes', 'data': miles_to_shipping})
             avg_distance_to_shipping = format(self.get_avg_distance_to_shipping(leaseblocks),1)
             avg_distance_to_shipping_output = '%s miles' %avg_distance_to_shipping
-            attributes.append({'title': 'Average Distance', 'data': avg_distance_to_shipping_output})
+            attributes.append({'title': 'Average Distance to Shipping Lanes', 'data': avg_distance_to_shipping_output})
             report_values['distance-to-shipping'] = {'min': min_distance_to_shipping, 'max': max_distance_to_shipping, 'avg': avg_distance_to_shipping, 'selection_id': self.uid}
+            
+            #get distance to shore range
+            min_distance = format(self.get_min_distance(leaseblocks), 0)
+            max_distance = format(self.get_max_distance(leaseblocks), 0)
+            distance_to_shore = '%s to %s miles' %(min_distance, max_distance)
+            attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
+            avg_distance = format(self.get_avg_distance(leaseblocks),1)
+            avg_distance_output = '%s miles' %avg_distance
+            attributes.append({'title': 'Average Distance to Shore', 'data': avg_distance_output})
+            report_values['distance-to-shore'] = {'min': min_distance, 'max': max_distance, 'avg': avg_distance, 'selection_id': self.uid}
+            
+            #get depth range
+            min_depth = format(self.get_min_depth(leaseblocks), 0)
+            max_depth = format(self.get_max_depth(leaseblocks), 0)
+            depth_range = '%s to %s feet' %(min_depth, max_depth)
+            attributes.append({'title': 'Depth', 'data': depth_range})
+            avg_depth = format(self.get_avg_depth(leaseblocks), 0)
+            avg_depth_output = '%s feet' %avg_depth
+            attributes.append({'title': 'Average Depth', 'data': avg_depth_output})
+            report_values['depth'] = {'min': min_depth, 'max': max_depth, 'avg': avg_depth, 'selection_id': self.uid}
             '''
             if self.input_filter_ais_density:
                 attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
@@ -752,14 +790,16 @@ class LeaseBlockSelection(Analysis):
         else:
             return 0
     
-    def get_min_depth(self, leaseblocks): 
+    # note: accounting for the issue in which min_depth is actually a greater depth than max_depth 
+    def get_max_depth(self, leaseblocks): 
         min_depth = leaseblocks[0].min_depth
         for lb in leaseblocks:
             if lb.min_depth > min_depth:
                 min_depth = lb.min_depth
         return meters_to_feet(-min_depth)
     
-    def get_max_depth(self, leaseblocks):
+    # note: accounting for the issue in which max_depth is actually a lesser depth than min_depth
+    def get_min_depth(self, leaseblocks):
         max_depth = leaseblocks[0].max_depth
         for lb in leaseblocks:
             if lb.max_depth < max_depth:
@@ -772,6 +812,30 @@ class LeaseBlockSelection(Analysis):
             total += lb.avg_depth
         if total != 0:
             avg = meters_to_feet(-total / (len(leaseblocks)))
+            return avg
+        else:
+            return 0
+    
+    def get_min_distance_to_substation(self, leaseblocks): 
+        substation_min_distance = leaseblocks[0].substation_min_distance
+        for lb in leaseblocks:
+            if lb.substation_min_distance < substation_min_distance:
+                substation_min_distance = lb.substation_min_distance
+        return substation_min_distance
+    
+    def get_max_distance_to_substation(self, leaseblocks):
+        substation_max_distance = leaseblocks[0].substation_max_distance
+        for lb in leaseblocks:
+            if lb.substation_max_distance > substation_max_distance:
+                substation_max_distance = lb.substation_max_distance
+        return substation_max_distance
+          
+    def get_avg_distance_to_substation(self, leaseblocks):
+        total = 0
+        for lb in leaseblocks:
+            total += lb.substation_mean_distance
+        if total != 0:
+            avg = total / len(leaseblocks)
             return avg
         else:
             return 0

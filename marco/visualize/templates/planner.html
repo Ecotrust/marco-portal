@@ -118,11 +118,11 @@
                                     <!--<li class=""><a href="/portal">Return to Portal</a></li>-->
                                     <!--<li class=""><a href="">Help</a></li>-->
                                     <span class="user-btn">
-                                        <a id="help-button" class="btn" href="#help-modal" data-toggle="modal">Help</a>
+                                        <a id="help-button" class="btn" style="outline: none; margin-top: 10px;" href="#help-modal" data-toggle="modal">Help</a>
                                       
                                         {% if user.is_authenticated %}
                                         <span class="btn-group">
-                                          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                          <a class="btn dropdown-toggle" style="margin-top: 2px;" data-toggle="dropdown" href="#">
                                             <i class="icon-user"></i> 
                                             {{user.username}}
                                             <span class="caret"></span>
@@ -135,7 +135,7 @@
                                           </ul>
                                         </span>
                                         {% else %}
-                                        <a id="#sign-in-button" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a>                            
+                                        <a id="#sign-in-button" style="margin-top: 10px;" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a>                            
                                         {% endif %}
                                     </span>
                                 </div>
@@ -219,7 +219,7 @@
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                                 <div style="font-weight: normal">
-                                                                                    <span data-bind="text: name"></span>
+                                                                                    <span style="padding-left: 2px;" data-bind="text: name"></span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                                     <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
                                                                                     <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
@@ -300,6 +300,9 @@
                                                     <button class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive()}"><i class="icon-info-sign icon-large"></i></button>
                                                     <a class="btn btn-layer" data-bind="css: { 'active': visible() }, click: toggleVisible">
                                                         <div data-bind="text: name"></div>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
                                                         <span ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></span>
                                                     </a>
                                                     <a class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust icon-large"></i></a>
@@ -396,7 +399,7 @@
                                         </div>
                                     </div>
                                     <!-- Aggregated Attribution Overlay -->
-                                    <div data-bind="visible: featureAttribution">
+                                    <div data-bind="visible: showFeatureAttribution">
                                         <div id="aggregated-attribute-overlay" class="scrollpane" data-bind="visible: aggregatedAttributes, style: {width: aggregatedAttributesWidth}" style="display: none">
                                             <div id="aggregated-attribute-content" class="accordion">
                                                 <div data-bind="foreach: attributeLayers()">
@@ -669,6 +672,7 @@
         {% if user.is_authenticated and user|in_group:"Designers" %}
             <script src="{{MEDIA_URL}}/marco-proto/scenarios.js"></script>
             <script src="{{MEDIA_URL}}/marco-proto/reports.js"></script>
+            <script src="{{MEDIA_URL}}/marco-proto/drawing.js"></script>
         {% endif %}
         <script src="{{MEDIA_URL}}/marco-proto/server.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/printing.js"></script>

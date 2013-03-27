@@ -78,7 +78,12 @@ class ScenarioForm(FeatureForm):
     input_distance_to_awc = forms.FloatField(   min_value=1, max_value=30, initial=15,
                                                 widget=SliderWidget( min=1,max=30,step=1 ),
                                                 required=False)
-                                              
+                                        
+    input_parameter_distance_to_substation = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
+    input_distance_to_substation = forms.FloatField(    min_value=10, max_value=50, initial=30,
+                                                        widget=SliderWidget( min=10,max=50,step=1 ),
+                                                        required=False)
+                                           
     input_parameter_wea = forms.BooleanField( widget=CheckboxInput(attrs={'class': 'parameters'}), required=False )
     #input_parameter_wea_choice = forms.ChoiceField( widget=RadioSelect(attrs={'class': 'parameters'}), choices=WEA_CHOICES, required=False )
     input_wea = ModelMultipleChoiceField(   queryset=WEA.objects.all().order_by('wea_id'), 

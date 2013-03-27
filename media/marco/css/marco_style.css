@@ -666,6 +666,20 @@ img + h3 {
 	padding: 10px 0px 10px 0px;
 }
 
+#design-list .btn-layer > div {
+	display: inline-block;
+	line-height: 1;
+	padding-left: 3px;
+	margin-top: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    width: auto;
+	max-width: 72%;
+	/*height: inherit;*/
+    height: 16px;
+    vertical-align: middle;
+}
+
 #active ul li {
 	margin-bottom: 10px;
 }
@@ -685,7 +699,6 @@ img + h3 {
 
 }
 
-
 #active .btn-layer > div {
 	display: inline-block;
 	line-height: 1;
@@ -693,8 +706,11 @@ img + h3 {
 	margin-top: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	width: 72%;
-	height: inherit;
+	width: auto;
+    max-width: 72%;
+	/*height: inherit;*/
+    height: 16px;
+    vertical-align: middle;
 }
 
 #data-accordion li.layer {

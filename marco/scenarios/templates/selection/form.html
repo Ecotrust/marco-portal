@@ -40,8 +40,11 @@
 
             if (step == 1) {
                 $('#button_prev').hide();
+                $('#button_next').css('border-radius', '4px');
             } else {
                 $('#button_prev').show();
+                $('#button_next').css('border-top-right-radius', '4px');
+                $('#button_next').css('border-bottom-right-radius', '4px');
             }
 
             if (step == max_step) {
@@ -57,14 +60,32 @@
         $('#button_next').click( function() { wizard('next'); });
         wizard();
         
-                          
+        $('#id_name').keypress(function (e) {
+            if (e.which === 13) {
+                $('#selection-form .submit_button').click();
+                return false;
+            } else {
+                $('#invalid-name-message').hide();
+            }
+        });
+        /*
+        $('#selection-form .submit_button').click( function(e) {
+            var name = $('#id_name').val();
+            if ($.trim(name) !== "") {  
+                return true;
+            }
+            $('#invalid-name-message').show();
+            e.stopPropagation();
+            return false;
+        });
+        */               
     });
     
 </script>
 
 {% if form.media %} {{ form.media }} {% endif %}
 <h4>
-    Lease Block Collection
+    Lease Block Selection
 </h4>
 <form id="leaseblock-selection-form" action="{{action}}" method="post"> 
   {% for hidden in form.hidden_fields %}
@@ -99,7 +120,10 @@
     <div class="step3-inputs">
         <div class="step3-param">
             {{ form.name.errors }}
-            {{ form.name }}            
+            {{ form.name }}  
+            <div id="invalid-name-message" class="control-group error" style="display: none; margin-top: -10px; margin-left: -5px;">
+                <span class="help-inline">The <b>Name</b> field is required.</span>
+            </div>                    
         </div>
         <p class="instructions">Optionally, you may add a <b>Description</b> <!--and/or attach a file--> </p>
         <div class="step3-param">
