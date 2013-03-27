@@ -367,6 +367,7 @@ function layerModel(options, parent) {
 
         // save a ref to the active layer for editing,etc
         app.viewModel.activeLayer(layer);
+        
         //handle possible dropdown/sublayer behavior
         if (layer.subLayers.length) {
             app.viewModel.activeParentLayer(layer);
