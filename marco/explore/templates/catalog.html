@@ -339,9 +339,10 @@
             template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
         });
         
-        $('.catalog-tooltip').click(function() {
+        $('.catalog-tooltip').click(function(e) {
             if ( $('.popover').is(':visible') ) {
                 $('.popover').hide();
+                return false;
             }
         });
         
