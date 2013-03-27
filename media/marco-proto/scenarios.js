@@ -1543,7 +1543,9 @@ function scenariosModel(options) {
                     self.loadLeaseblockLayer();
                 }
             },
-            error: function (result) { //debugger; }
+            error: function (result) { 
+                //debugger; 
+            }
         });
     };    
 
@@ -1563,7 +1565,9 @@ function scenariosModel(options) {
                 self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
                 ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
             },
-            error: function (result) { //debugger; }
+            error: function (result) { 
+                //debugger; 
+            }
         });
     };   
 
@@ -1577,7 +1581,9 @@ function scenariosModel(options) {
                 ko.applyBindings(app.viewModel.scenarios.drawingFormModel, document.getElementById('drawing-form'));
                 //self.polygonFormModel.updateDesignScrollBar();
             },
-            error: function (result) { //debugger; }
+            error: function (result) { 
+                //debugger; 
+            }
         });
     }; 
 
