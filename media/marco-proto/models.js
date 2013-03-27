@@ -373,6 +373,10 @@ function layerModel(options, parent) {
             app.viewModel.activeParentLayer(layer);
             if ( app.embeddedMap ) { // if data viewer is mobile app
                 $('.carousel').carousel('prev');
+                var api = $("#sublayers-div").jScrollPane({}).data('jsp');
+                if ( api ) {
+                    api.destroy();
+                }
                 $('#mobile-data-right-button').show();
                 $('#mobile-map-right-button').hide(); 
             } else if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu

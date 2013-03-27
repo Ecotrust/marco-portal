@@ -2,7 +2,7 @@
 <div id="sublayers-template" style="height: 100%; overflow: auto;">
     <!-- ko if: $root.activeParentLayer() && $root.activeParentLayer().subLayers.length > 0 -->
     <!-- ko if: !$root.activeParentLayer().isCheckBoxLayer() -->
-    <div class="layer-menu unstyled">
+    <div id="sublayers-div" class="layer-menu unstyled">
         <h3 data-bind="text: $root.activeParentLayer().name" style="margin-left: 10px"></h3>
         <ul class="unstyled" data-bind="foreach: $root.activeParentLayer().subLayers">
             <li class="layer" style="width: 100%">
