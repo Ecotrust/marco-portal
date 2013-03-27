@@ -128,7 +128,7 @@
 				</div>
 			</div>
 		</header> <!-- end header -->
-	<div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">
+	<div id="feedback-tab" class="rounded hidden-phone" data-toggle="modal" data-target="#feedback-modal">
 	    feedback
 	</div>
 	<div id="feedback-modal" class="modal hide fade">
