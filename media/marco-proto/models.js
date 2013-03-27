@@ -406,6 +406,7 @@ function layerModel(options, parent) {
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
         app.viewModel.error(null);
+        app.viewModel.unloadedDesigns = [];
 
         if (layer.active()) { // if layer is active
             layer.deactivateLayer();

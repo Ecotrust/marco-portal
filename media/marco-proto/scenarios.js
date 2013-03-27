@@ -1026,6 +1026,12 @@ function scenarioModel(options) {
     
     self.toggleActive = function(self, event) {
         var scenario = this;
+        
+        // start saving restore state again and remove restore state message from map view
+        app.saveStateMode = true;
+        app.viewModel.error(null);
+        app.viewModel.unloadedDesigns = [];
+        
         //app.viewModel.activeLayer(layer);
         if (scenario.active()) { // if layer is active, then deactivate
             scenario.deactivateLayer();
@@ -1782,6 +1788,34 @@ function scenariosModel(options) {
         });
     };
     
+    // activate any lingering designs not shown during loadCompressedState
+    self.showUnloadedDesigns = function() {
+        var designs = app.viewModel.unloadedDesigns;
+        
+        if (designs && designs.length) {
+            for (x=0; x < designs.length; x=x+1) {
+                var id = designs[x].id,
+                    opacity = designs[x].opacity,
+                    isVisible = designs[x].isVisible;
+                    
+                if (app.viewModel.layerIndex[id]) {
+                    app.viewModel.layerIndex[id].activateLayer();
+                    app.viewModel.layerIndex[id].opacity(opacity);
+                    //must not be understanding something about js, but at the least the following seems to work now...
+                    if (isVisible || !isVisible) {
+                        if (isVisible !== 'true' && isVisible !== true) {
+                            app.viewModel.layerIndex[id].toggleVisible();
+                        }
+                    }
+                    
+                    $.each(app.viewModel.unloadedDesigns, function(i){
+                        if(app.viewModel.unloadedDesigns[i].id === id) app.viewModel.unloadedDesigns.splice(i,1);
+                    });
+                }
+            }
+        }
+    };
+    
     self.loadScenariosFromServer = function() {
         $.ajax({
             url: '/scenario/get_scenarios',
@@ -1790,6 +1824,7 @@ function scenariosModel(options) {
             success: function (scenarios) {
                 self.loadScenarios(scenarios);
                 self.scenariosLoaded = true;
+                self.showUnloadedDesigns();
             },
             error: function (result) {
                 //debugger;
@@ -1823,8 +1858,9 @@ function scenariosModel(options) {
             type: 'GET',
             dataType: 'json',
             success: function (selections) {
-                app.viewModel.scenarios.loadSelections(selections);
-                app.viewModel.scenarios.selectionsLoaded = true;
+                self.loadSelections(selections);
+                self.selectionsLoaded = true;
+                self.showUnloadedDesigns();
             },
             error: function (result) {
                 //debugger;
@@ -1857,8 +1893,9 @@ function scenariosModel(options) {
             type: 'GET',
             dataType: 'json',
             success: function (drawings) {
-                app.viewModel.scenarios.loadDrawings(drawings);
-                app.viewModel.scenarios.drawingsLoaded = true;
+                self.loadDrawings(drawings);
+                self.drawingsLoaded = true;
+                self.showUnloadedDesigns();
             },
             error: function (result) {
                 //debugger;

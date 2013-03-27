@@ -62,10 +62,12 @@ app.loadCompressedState = function(state) {
     });
     // turn on the layers that should be active
     if (state.dls) {
+        var unloadedDesigns = [];
         for (x=0; x < state.dls.length; x=x+3) {
             var id = state.dls[x+2],
                 opacity = state.dls[x+1],
                 isVisible = state.dls[x];
+                
             if (app.viewModel.layerIndex[id]) {
                 app.viewModel.layerIndex[id].activateLayer();
                 app.viewModel.layerIndex[id].opacity(opacity);
@@ -75,7 +77,13 @@ app.loadCompressedState = function(state) {
                         app.viewModel.layerIndex[id].toggleVisible();
                     }
                 }
+            } else {
+                unloadedDesigns.push({id: id, opacity: opacity, isVisible: isVisible});
             }
+       }
+       if ( unloadedDesigns.length ) {
+            app.viewModel.unloadedDesigns = unloadedDesigns;
+            $('#designsTab').tab('show'); //to activate the loading of designs
        }
     }
     
