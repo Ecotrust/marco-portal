@@ -22,7 +22,6 @@ app.onResize = function(percent) {
   
   app.viewModel.updateAllScrollBars();
   
-  var width = $(window).width();
   if (width < 946) {
     app.viewModel.hideTours(true);
   } else {
@@ -43,7 +42,7 @@ if (!Array.prototype.indexOf) {
              if (this[i] === obj) { return i; }
          }
          return -1;
-    }
+    };
  }
 
 
@@ -196,7 +195,7 @@ $(document).ready(function() {
     }
     app.viewModel.isFullScreen(true);
     // make map fullscreen
-    setTimeout( app.onResize(.99), 500);
+    setTimeout( app.onResize(0.99), 500);
   };
 
   BigScreen.onexit = function() {

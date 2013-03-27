@@ -177,7 +177,7 @@ app.printMode = function () {
 // also hide logo and rules
 app.borderLess = function () {
     $('body').addClass('borderless');
-}
+};
 
 // load state from fixture or server
 

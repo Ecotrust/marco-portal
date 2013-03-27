@@ -677,7 +677,7 @@ function selectionModel(options) {
                 //app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 
-                debugger; 
+                //debugger; 
             }
         });
     }; 
@@ -695,7 +695,7 @@ function selectionModel(options) {
                 app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -722,7 +722,7 @@ function selectionModel(options) {
             url: '/scenario/delete_design/' + selection.uid + '/',
             type: 'POST',
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -893,7 +893,7 @@ function IESelectionFormModel(options) {
                 app.map.addLayer(self.selectedLeaseBlocksLayer);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     });
@@ -1108,7 +1108,7 @@ function scenarioModel(options) {
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 
-                debugger; 
+                //debugger; 
             }
         });
     }; 
@@ -1126,7 +1126,7 @@ function scenarioModel(options) {
                 app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -1153,7 +1153,7 @@ function scenarioModel(options) {
             url: '/scenario/delete_design/' + scenario.uid + '/',
             type: 'POST',
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -1543,7 +1543,7 @@ function scenariosModel(options) {
                     self.loadLeaseblockLayer();
                 }
             },
-            error: function (result) { debugger; }
+            error: function (result) { //debugger; }
         });
     };    
 
@@ -1563,7 +1563,7 @@ function scenariosModel(options) {
                 self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
                 ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
             },
-            error: function (result) { debugger; }
+            error: function (result) { //debugger; }
         });
     };   
 
@@ -1577,7 +1577,7 @@ function scenariosModel(options) {
                 ko.applyBindings(app.viewModel.scenarios.drawingFormModel, document.getElementById('drawing-form'));
                 //self.polygonFormModel.updateDesignScrollBar();
             },
-            error: function (result) { debugger; }
+            error: function (result) { //debugger; }
         });
     }; 
 
@@ -1709,7 +1709,7 @@ function scenariosModel(options) {
                             }
                         },
                         error: function (result) {
-                            debugger;
+                            //debugger;
                         }
                     
                     });
@@ -1770,7 +1770,7 @@ function scenariosModel(options) {
                 
             },
             error: function(result) {
-                debugger;
+                //debugger;
                 app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
             }
         });
@@ -1786,7 +1786,7 @@ function scenariosModel(options) {
                 self.scenariosLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1821,7 +1821,7 @@ function scenariosModel(options) {
                 app.viewModel.scenarios.selectionsLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1855,7 +1855,7 @@ function scenariosModel(options) {
                 app.viewModel.scenarios.drawingsLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1926,7 +1926,7 @@ function scenariosModel(options) {
             type: 'POST',
             dataType: 'json',
             error: function(result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1960,7 +1960,7 @@ $('#designsTab').on('show', function (e) {
                 app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
         
@@ -1972,7 +1972,7 @@ $('#designsTab').on('show', function (e) {
                 app.viewModel.scenarios.sharingGroups(groups);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     }

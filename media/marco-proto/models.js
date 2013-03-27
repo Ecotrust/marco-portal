@@ -321,7 +321,7 @@ function layerModel(options, parent) {
         if (layer.utfgrid) {
             app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
         }
-    }
+    };
     
     self.setInvisible = function() {
         var layer = this;
@@ -351,7 +351,7 @@ function layerModel(options, parent) {
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
         }
-    }
+    };
 
     self.showSublayers = ko.observable(false);
 
@@ -686,10 +686,11 @@ function mapLinksModel() {
             urlOrigin = 'http://' + window.location.host;
         }
         var header = '<a href="/visualize"><img src="'+urlOrigin+'/media/marco/img/marco-logo_planner.jpg" style="border: 0px;"/></a>';
+        var iframeID = '';
         if (info === 'bookmark') {
-            var iframeID = '#bookmark-iframe-html';
+            iframeID = '#bookmark-iframe-html';
         } else {
-            var iframeID = '#iframe-html';
+            iframeID = '#iframe-html';
         }
         mapWindow.document.write('<html><body>' + $(iframeID)[0].value + '</body></html>');
         mapWindow.document.title = "Your MARCO Map!";
@@ -919,11 +920,11 @@ function viewModel() {
     // zoom with box
     self.zoomBoxIn = function (self, event) {
         var $button = $(event.target).closest('.btn');
-        self.zoomBox($button)
+        self.zoomBox($button);
     };
     self.zoomBoxOut = function (self, event) {
         var $button = $(event.target).closest('.btn');
-        self.zoomBox($button, true)
+        self.zoomBox($button, true);
     };
     self.zoomBox = function  ($button, out) {
         // out is a boolean to specify whether we are zooming in or out
@@ -1274,7 +1275,7 @@ function viewModel() {
     // get layer by id
     self.getLayerById = function(id) {
         for (var x=0; x<self.themes().length; x++) {
-            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return layer.id === id });
+            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return layer.id === id; });
             if (layer_list.length > 0) {
                 return layer_list[0];
             }
@@ -1426,7 +1427,7 @@ function viewModel() {
     
     self.stepTwoOfBasicTour = function() {
         $('.pageguide-fwd')[0].click();
-    }
+    };
     
     self.startDataTour = function() {
         //ensure the pageguide is closed 
@@ -1656,22 +1657,23 @@ function viewModel() {
         }
         
         if ('ST_LK_NUM' in data && data['ST_LK_NUM'] ) {
+            var season, species, sighting; 
             if ('GREEN_LK' in data && data['GREEN_LK']) {
-                var season = data['GREEN_LK'],
-                    species = 'Green Sea Turtle',
-                    sighting = species + ' (' + season + ') ';
+                season = data['GREEN_LK'];
+                species = 'Green Sea Turtle';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('LEATH_LK' in data && data['LEATH_LK']) {
-                var season = data['LEATH_LK'],
-                    species = 'Leatherback Sea Turtle',
-                    sighting = species + ' (' + season + ') ';
+                season = data['LEATH_LK'];
+                species = 'Leatherback Sea Turtle';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('LOGG_LK' in data && data['LOGG_LK']) {
-                var season = data['LOGG_LK'],
-                    species = 'Loggerhead Sea Turtle',
-                    sighting = species + ' (' + season + ') ';
+                season = data['LOGG_LK'];
+                species = 'Loggerhead Sea Turtle';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }
         }
@@ -1690,22 +1692,23 @@ function viewModel() {
             attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
         }
         if ('TOO_LK_NUM' in data && data['TOO_LK_NUM'] ) {
+            var season, species, sighting; 
             if ('SPERM_LK' in data && data['SPERM_LK']) {
-                var season = data['SPERM_LK'],
-                    species = 'Sperm Whale',
-                    sighting = species + ' (' + season + ') ';
+                season = data['SPERM_LK'];
+                species = 'Sperm Whale';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('BND_LK' in data && data['BND_LK']) {
-                var season = data['BND_LK'],
-                    species = 'Bottlenose Dolphin',
-                    sighting = species + ' (' + season + ') ';
+                season = data['BND_LK'];
+                species = 'Bottlenose Dolphin';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('STRIP_LK' in data && data['STRIP_LK']) {
-                var season = data['STRIP_LK'],
-                    species = 'Striped Dolphin',
-                    sighting = species + ' (' + season + ') ';
+                season = data['STRIP_LK'];
+                species = 'Striped Dolphin';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }
         }
@@ -1715,8 +1718,8 @@ function viewModel() {
     self.getWindSpeedAttributes = function (title, data) {
         attrs = [];
         if ('SPEED_90' in data) {
-            var min_speed = (parseFloat(data['SPEED_90'])-.125).toPrecision(3),
-                max_speed = (parseFloat(data['SPEED_90'])+.125).toPrecision(3);
+            var min_speed = (parseFloat(data['SPEED_90'])-0.125).toPrecision(3),
+                max_speed = (parseFloat(data['SPEED_90'])+0.125).toPrecision(3);
             attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_speed + ' to ' + max_speed + ' m/s'});
         } 
         return attrs;

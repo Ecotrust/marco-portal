@@ -282,14 +282,15 @@ app.init = function () {
                 text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
             
+            if (newTime - app.map.clickOutput.time > 300) {
+                app.map.clickOutput.attributes = {};
+                app.map.clickOutput.time = newTime;
+            } 
+            app.map.clickOutput.attributes[title] = text;
+            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+            
         }
         
-        if (newTime - app.map.clickOutput.time > 300) {
-            app.map.clickOutput.attributes = {};
-            app.map.clickOutput.time = newTime;
-        } 
-        app.map.clickOutput.attributes[title] = text;
-        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
         //the following delay is so that the "click" handler below gets activated (and the marker is created) before the marker is updated here
         setTimeout( function() {
@@ -503,9 +504,9 @@ app.addUtfLayerToMap = function(layer) {
         );  
         */
     } else {
-        debugger;
+        //debugger;
     }
-}
+};
 
 app.setLayerVisibility = function(layer, visibility) {
     // if layer is in openlayers, hide it
@@ -521,8 +522,8 @@ app.setLayerZIndex = function(layer, index) {
 
 app.reCenterMap = function () {
     app.map.setCenter(new OpenLayers.LonLat(app.state.x, app.state.y).transform(
-        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7)
-}
+        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7);
+};
 
 // block mousehweel when over overlay
 $("#overview-overlay-text").hover(
@@ -540,4 +541,4 @@ $("#overview-overlay-text").hover(
             controls[i].enableZoomWheel();
         }
     }
-)
+);

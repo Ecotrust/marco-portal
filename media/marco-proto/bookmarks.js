@@ -56,7 +56,7 @@ function bookmarkModel(options) {
     // get the url from a bookmark
     self.getBookmarkUrl = function() {
         var host = window.location.href.split('#')[0];
-        host = 'http://portal.midatlanticocean.org/visualize/'
+        host = 'http://portal.midatlanticocean.org/visualize/';
         return host + "#" + $.param(self.state);
     };
     
@@ -213,7 +213,7 @@ function bookmarksModel(options) {
                     self.updateBookmarkScrollBar();
                 },
                 error: function(result) { 
-                    debugger;
+                    //debugger;
                 } 
             });
         }
@@ -252,7 +252,7 @@ function bookmarksModel(options) {
                     self.updateBookmarkScrollBar();
                 },
                 error: function(result) { 
-                    debugger;
+                    //debugger;
                 } 
             });
         } else {
@@ -380,10 +380,10 @@ function bookmarksModel(options) {
             type: 'POST',
             dataType: 'json',
             success: function(result) {
-                debugger;
+                //debugger;
             },
             error: function(result) {
-                debugger;
+                //debugger;
             }
         });
     };
