@@ -996,6 +996,20 @@ function viewModel() {
         else return "Show Legend";
     });
 
+    // is the legend panel visible?
+    self.showEmbeddedLegend = ko.observable(false);
+    /*self.showEmbeddedLegend.subscribe(function (newVal) {
+        self.updateScrollBars();
+        if (self.printing.enabled()) {
+            self.printing.showLegend(newVal);
+        }
+    });*/
+
+    // toggle embedded legend (on embedded maps)
+    self.toggleEmbeddedLegend = function() {
+        self.showEmbeddedLegend( !self.showEmbeddedLegend() );
+    }
+    
     // toggle legend panel visibility
     self.toggleLegend = function() {
         self.showLegend(!self.showLegend());
