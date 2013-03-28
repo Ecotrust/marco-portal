@@ -868,7 +868,7 @@ function viewModel() {
         app.markers.clearMarkers();
         app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
         app.marker.map = app.map;
-        app.marker.display(true);
+        //app.marker.display(true);
         if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
@@ -1647,6 +1647,25 @@ function viewModel() {
     };
     self.turnOffUsernameError = function() {
         self.usernameError(false);
+    };
+    
+    self.getWindPlanningAreaAttributes = function (title, data) {
+        attrs = [];
+        if ('INFO' in data) {
+            var state = data.INFO,
+                first = state.indexOf("Call"),
+                second = state.indexOf("WEA"),
+                third = state.indexOf("RFI");
+            if (first !== -1) {
+                state = state.slice(0, first);
+            } else if (second !== -1) {
+                state = state.slice(0, second);
+            } else if (third !== -1) {
+                state = state.slice(0, third);
+            }
+            attrs.push({'display': '', 'data': state});
+        } 
+        return attrs;
     };
     
     self.getSeaTurtleAttributes = function (title, data) {

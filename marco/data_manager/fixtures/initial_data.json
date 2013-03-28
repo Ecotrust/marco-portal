@@ -1843,7 +1843,7 @@
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/wpas/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "",
@@ -1851,7 +1851,9 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                127
+            ],
             "learn_more": "",
             "data_overview": "",
             "slug_name": "wind-planning-areas",
@@ -1888,7 +1890,7 @@
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "",
+            "utfurl": "/media/data_manager/utfgrid/rec_fishing/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
             "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/Recreational_fishing_effort.html",
@@ -1896,7 +1898,9 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                128
+            ],
             "learn_more": "",
             "data_overview": "",
             "slug_name": "recreational-fishing",
@@ -1909,51 +1913,6 @@
             "data_notes": "",
             "name": "Recreational Fishing",
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 93,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "wind-energy-lease-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Wind Energy Lease Areas",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -1981,7 +1940,7 @@
             "utfurl": "/media/data_manager/utfgrid/shipwrecks/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ASD_OCS_Block_Density.html",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
@@ -2001,6 +1960,57 @@
             "data_notes": "",
             "name": "Shipwreck Density",
             "url": "http://s3.amazonaws.com/marco-public-2d/Conservation/ShipWreckBlockDensity/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 93,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/lease_areas/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                122,
+                124,
+                126,
+                123,
+                125
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "wind-energy-lease-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Wind Energy Lease Areas",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -4704,6 +4714,46 @@
         }
     },
     {
+        "pk": 122,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "State",
+            "display_name": "State",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 124,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Lease_Type",
+            "display_name": "Lease Type",
+            "precision": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 126,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Lease_Date",
+            "display_name": "Lease Date",
+            "precision": null,
+            "order": 5
+        }
+    },
+    {
+        "pk": 128,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "TOTAL_TRIP",
+            "display_name": "Trips",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
         "pk": 58,
         "model": "data_manager.attributeinfo",
         "fields": {
@@ -5031,6 +5081,36 @@
             "display_name": "Source Date",
             "precision": null,
             "order": 2
+        }
+    },
+    {
+        "pk": 123,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Company",
+            "display_name": "Company",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 125,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Lease_Term",
+            "display_name": "Lease Term",
+            "precision": null,
+            "order": 4
+        }
+    },
+    {
+        "pk": 127,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "INFO",
+            "display_name": "State",
+            "precision": null,
+            "order": 1
         }
     },
     {

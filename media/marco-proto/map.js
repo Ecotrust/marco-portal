@@ -225,6 +225,7 @@ app.init = function () {
                         var title = potential_layer.name,
                             text = attribute_objs;
                         if ( title === 'OCS Lease Blocks' ) {
+                            //title = 'OCS Lease Blocks -- DRAFT REPORT';
                             text = app.viewModel.getOCSAttributes(title, info.data);
                         } else if ( title === 'Sea Turtles' ) {
                             text = app.viewModel.getSeaTurtleAttributes(title, info.data);
@@ -232,6 +233,8 @@ app.init = function () {
                             text = app.viewModel.getToothedMammalAttributes(title, info.data);
                         } else if ( title === 'Wind Speed' ) {
                             text = app.viewModel.getWindSpeedAttributes(title, info.data);
+                        } else if ( title === 'Wind Planning Areas' ) {
+                            text = app.viewModel.getWindPlanningAreaAttributes(title, info.data);
                         }
                         clickAttributes[title] = text;
                         //app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
@@ -251,6 +254,7 @@ app.init = function () {
             }
         }, 100);*/
         app.viewModel.updateMarker(lonlat);
+        app.marker.display(true); 
         /*app.markers.clearMarkers();
         app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
         app.marker.map = app.map;
@@ -323,6 +327,9 @@ app.init = function () {
         app.marker.display(false);
         app.viewModel.updateMarker();*/
         app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
+        //the following is in place to prevent flash of marker appearing on what is essentially no feature click
+        //display is set to true in the featureclick and utfgridclick handlers
+        app.marker.display(false);
     });
     
     app.map.removeLayerByName = function(layerName) {
