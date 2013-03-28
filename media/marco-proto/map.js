@@ -328,7 +328,7 @@ app.init = function () {
         app.viewModel.updateMarker();*/
         app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
         //the following is in place to prevent flash of marker appearing on what is essentially no feature click
-        //display is set to true in the featureclick and utfgridclick handlers
+        //display is set to true in the featureclick and utfgridclick handlers (when there is actually a hit)
         app.marker.display(false);
     });
     
