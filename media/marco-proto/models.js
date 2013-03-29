@@ -1084,8 +1084,11 @@ function viewModel() {
             });
         }
         //$(elem).mCustomScrollbar("update");
-        $(elem).mCustomScrollbar("scrollTo", "top"); 
-        setTimeout( function() { $(elem).mCustomScrollbar("update"); }, 500);
+        //$(elem).mCustomScrollbar("scrollTo", "top"); 
+        setTimeout( function() { 
+            $(elem).mCustomScrollbar("update"); 
+            $(elem).mCustomScrollbar("scrollTo", "top"); 
+        }, 500);
     };
     
     // close layer description
@@ -1842,7 +1845,8 @@ function viewModel() {
                 stateName = 'Rhode Island / Massachusetts';
             }
             //if ( data['WEA2_NAME'].replace(/\s+/g, '') !== "" ) {
-            attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
+            //TAKING THIS OUT TEMPORARILY UNTIL WE HAVE UPDATED THE DATA SUMMARY FOR WPAS AND LEASE AREAS
+            //attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
             //}
         }
         
