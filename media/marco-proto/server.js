@@ -60,7 +60,10 @@ app.viewModel.loadLayers = function(data) {
     })();
     
     //re-initialise the legend scrollbar 
-    $('#legend-content').jScrollPane(); 
+    //if ( ! app.embeddedMap ) {
+    if ( $(window).width() > 767 && !app.embeddedMap ) {
+        $('#legend-content').jScrollPane(); 
+    }
 
 };
 app.viewModel.loadLayersFromFixture = function() {

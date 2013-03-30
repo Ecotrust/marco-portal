@@ -38,7 +38,7 @@ var defaultGuide = {
       arrow: {offsetX: -95, offsetY: 10}
     }
   ]
-}
+};
 
 var defaultGuideOverrides = {
   events: {
@@ -112,7 +112,7 @@ var defaultGuideOverrides = {
       }
     }
   }
-}
+};
 
 /* THE DATA PANEL PAGE GUIDE */
 
@@ -151,7 +151,7 @@ var dataGuide = {
       arrow: {offsetX: 10, offsetY: 0}
     }
   ]
-}
+};
 
 var dataGuideOverrides = {
   events: {
@@ -215,7 +215,7 @@ var dataGuideOverrides = {
       }
     }
   }
-}
+};
 
 /* THE ACTIVE PANEL PAGE GUIDE */
 
@@ -242,7 +242,7 @@ var activeGuide = {
       arrow: {offsetX: 120, offsetY: 0}
     }
   ]
-}
+};
 
 var activeGuideOverrides = {
   events: {
@@ -267,7 +267,7 @@ var activeGuideOverrides = {
       }
     }
   }
-}
+};
 
 app.pageguide.defaultOpenStuff = function() {
     app.pageguide.tourIsActive = true;  
@@ -275,7 +275,7 @@ app.pageguide.defaultOpenStuff = function() {
     
     //increase the z-value of SimpleLayerSwitcher so it falls on top of the pageguide icon
     $('#SimpleLayerSwitcher_30').css('z-index', 1100);
-}
+};
 app.pageguide.defaultCloseStuff = function() {
     app.viewModel.closeDescription();
     //if ( ! app.viewModel.showOverview() ) {
@@ -301,7 +301,7 @@ app.pageguide.defaultCloseStuff = function() {
     app.pageguide.tourIsActive = false;
       
     $.pageguide(defaultGuide, defaultGuideOverrides);
-}
+};
 
 $(function() {
   // Load the default guide!  

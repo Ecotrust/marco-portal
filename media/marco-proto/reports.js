@@ -56,7 +56,7 @@ function reportsModel(options) {
     
     self.hideReport = function() {
         self.showingReport(false);
-    }
+    };
         
     self.showWindReport = function() {
         var windReportOptions = {
@@ -345,7 +345,7 @@ $('#reportsTab').on('show', function (e) {
                 app.viewModel.scenarios.scenariosLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
         
@@ -359,9 +359,9 @@ $('#reportsTab').on('show', function (e) {
                 app.viewModel.scenarios.selectionsLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
-        })
+        });
 
         // load the leaseblocks
         $.ajax({
@@ -372,8 +372,8 @@ $('#reportsTab').on('show', function (e) {
                 app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
-        })
+        });
     }
 });

@@ -1,0 +1,25 @@
+
+<div style="height: 100%; overflow: auto;">
+    <div id="legend">
+        <div id="legend-wrapper" style="height: 100%; border-radius: 0px; border: 0px;">
+            <div id="legend-header">
+                <span style="text-transform: uppercase;">
+                    Legends (<span data-bind="text: activeLegendLayers().length"></span>)
+                </span>
+            </div>
+            <div id="legend-content" style="height: 100%; width: 100%">
+                <div data-bind="foreach: activeLegendLayers">
+                    <div style="padding-bottom: 10px;">
+                        <span class="pagination-centered legend-title" data-bind="html: legendTitle ? legendTitle : name"></span>
+                        <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="visible: legendSubTitle, html: legendSubTitle"></p>
+                        <span data-bind="if: legend">
+                            <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
+                                <img data-bind="attr: { src: legend }" />
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

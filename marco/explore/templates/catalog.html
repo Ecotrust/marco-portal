@@ -50,7 +50,7 @@
                     {{ theme_dict.theme.display_name }} Data Layers
                 </span>
             </h4>
-	        <div>
+	        <div class="hidden-phone">
 	            <div>
 	                <table class="table table-striped table-condensed">
 	                	<tbody>
@@ -85,21 +85,6 @@
                                                 </span>
                                                 {% endif %}
                                             </li>
-                                            <!--
-                                            <li>
-                                                {% if layer.map_tiles %}
-                                                <a href="{{layer.map_tiles}}" target="_blank">
-                                                    <span rel="tooltip" title="{% flatblock "data_catalog_maptiles_link_tooltip" %}">
-                                                        {% flatblock "data_catalog_maptiles_link" %}
-                                                    </span>
-                                                </a>
-                                                {% else %}
-                                                <span class="link-not-available">
-                                                    {% flatblock "data_catalog_maptiles_link" %}
-                                                </span>
-                                                {% endif %}
-                                            </li>
-                                            -->
                                             <li>
                                                 {% if layer.kml %}
                                                 <a href="{{layer.kml}}" target="_blank">
@@ -189,6 +174,87 @@
 	                </table>
 	           	</div>
 	        </div>
+            
+            
+            <!-- FOR SMART PHONES -->
+	        <div class="visible-phone">
+	            <div>
+	                <table class="table table-striped table-condensed">
+	                	<tbody>
+	                		<!-- foreach layer -->
+                            {% if not theme_dict.layers %}
+                                <p>coming soon...</p>
+                            {% else %}
+                            {% for layer in theme_dict.layers %}
+                                {% if layer.is_parent %}
+                                {% else %}
+                                <tr>
+                                    <td>
+                                        <div id="{{layer.slug}}" style="position:relative; top:-200px;"></div>
+                                        <!--<span class="layer-name catalog-tooltip" rel="popover" 
+                                            data-name="{{layer.name}}" 
+                                            data-thumbnail="{{layer.thumbnail}}"
+                                            data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">{{layer.name}}
+                                        </span>-->
+                                        <span>{{layer.name}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="catalog-links" style="text-align: right; padding-right: 50px;">
+                                        <ul class="unstyled btn-group">
+                                            <li>
+                                                {% if layer.bookmark_link %}
+                                                <a class="btn" href="{{layer.bookmark_link}}" target="_blank">
+                                                        {% flatblock "data_catalog_view_link" %}
+                                                </a>
+                                                {% else %}
+                                                <a class="btn disabled" href="{{layer.bookmark_link}}" target="_blank">
+                                                        {% flatblock "data_catalog_view_link" %}
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if layer.description_link %}
+                                                <button class="btn layer-name catalog-tooltip" rel="popover" 
+                                                    data-name="{{layer.name}}" 
+                                                    data-thumbnail="{{layer.thumbnail}}"
+                                                    data-placement="bottom"
+                                                    data-content="{% if layer.tooltip %} {{layer.tooltip}} {% endif %}">
+                                                    {% flatblock "data_catalog_factsheet_link" %}
+                                                </button>
+                                                <!--<a class="btn" href="{{layer.description_link}}">
+                                                    {% flatblock "data_catalog_factsheet_link" %}
+                                                </a>-->
+                                                {% else %}
+                                                <a class="btn disabled" href="{{layer.description_link}}">
+                                                    {% flatblock "data_catalog_factsheet_link" %}
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if layer.source_link %}
+                                                <a class="btn" href="{{layer.source_link}}" target="_blank">
+                                                    {% flatblock "data_catalog_source_link" %}
+                                                </a>
+                                                {% else %}
+                                                <a class="btn disabled" href="{{layer.source_link}}" target="_blank">
+                                                    {% flatblock "data_catalog_source_link" %}
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor layers %}
+                            {% endif %}
+	                		<!-- end foreach layer -->
+	                	</tbody>
+	                </table>
+	           	</div>
+	        </div>
+            
+            
 	    </div>
 	</div>
 </div>
@@ -272,6 +338,12 @@
         //overriding the template here to remove empty space for title
         $('.layer-name').popover({
             template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
+        });
+        
+        $('.catalog-tooltip').click(function(e) {
+            if ( $('.popover').is(':visible') ) {
+                $('.popover').hide();
+            }
         });
         
     });
