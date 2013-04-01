@@ -1229,9 +1229,7 @@
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [
-                55
-            ],
+            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -1798,7 +1796,7 @@
             "utfurl": "/media/data_manager/utfgrid/wpas/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/BOEM_Wind_Planning_Areas_01_17_2013_convertFGDC.html",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
@@ -1807,7 +1805,7 @@
                 127
             ],
             "learn_more": "",
-            "data_overview": "",
+            "data_overview": "This data set represents the most recent changes for the Wind Development Planning Areas in the Atlantic.  Wind Planning Areas in this dataset represent up to seven different types of announcements within the US Federal Register (e.g. Call Area, Wind Energy Area, Request for Interest, Proposed Sale Notice Area) that can be used to show the current status of an area that is being considered for Wind Power Development.",
             "slug_name": "boem-wind-planning-areas",
             "is_sublayer": false,
             "lookup_field": "",
@@ -1821,6 +1819,55 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 91,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-73.98&y=39.13&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=91&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=4&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nefsc.noaa.gov/ ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/rec_fishing/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/Recreational_fishing_effort.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                128
+            ],
+            "learn_more": "",
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data for Recreational Party and Charter Boat Fishing that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). ",
+            "slug_name": "party-charter-boat",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "name": "Party & Charter Boat",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "Party & Charter Boat Trips (Total 2000-2009)",
+            "sublayers": [
+                55
+            ],
             "attribute_title": ""
         }
     },
@@ -1873,46 +1920,50 @@
         }
     },
     {
-        "pk": 91,
+        "pk": 93,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                4
+                3
             ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-73.98&y=39.13&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=91&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=4&tab=data&legends=false&layers=true",
+            "bookmark": "/visualize/#x=-72.83&y=39.37&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=93&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=false&layers=true",
             "vector_graphic": "",
             "kml": "",
             "source": "",
             "lookup_table": [],
             "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/rec_fishing/${z}/${x}/${y}.json",
+            "utfurl": "/media/data_manager/utfgrid/lease_areas/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/Recreational_fishing_effort.html",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/BOEM_Lease_Areas_11_13_12_convertFGDC.html",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [
-                128
+                122,
+                124,
+                126,
+                123,
+                125
             ],
             "learn_more": "",
-            "data_overview": "",
-            "slug_name": "recreational-fishing",
+            "data_overview": "These are blocks which have been leased by a company with the intent to build a wind energy facility.  No projects are in the development stage at this time;  permits may be issued for development provided further site assessment for each leased area. ",
+            "slug_name": "boem-active-renewable-energy-lease-areas",
             "is_sublayer": false,
             "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/legend.png",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/legend.png",
             "data_status": "",
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
-            "name": "Recreational Fishing",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/${z}/${x}/${y}.png",
+            "name": "BOEM Active Renewable Energy Lease Areas",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -1960,57 +2011,6 @@
             "data_notes": "",
             "name": "Shipwreck Density",
             "url": "http://s3.amazonaws.com/marco-public-2d/Conservation/ShipWreckBlockDensity/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 93,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-72.83&y=39.37&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=93&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=false&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "/media/data_manager/utfgrid/lease_areas/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                122,
-                124,
-                126,
-                123,
-                125
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "boem-active-renewable-energy-lease-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "BOEM Active Renewable Energy Lease Areas",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -3328,7 +3328,7 @@
         "pk": 55,
         "model": "data_manager.layer",
         "fields": {
-            "layer_type": "placeholder",
+            "layer_type": "radio",
             "fact_sheet": "",
             "themes": [
                 4
@@ -3366,7 +3366,7 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
-                56
+                91
             ],
             "attribute_title": ""
         }
@@ -4344,7 +4344,7 @@
             "data_status": "",
             "vector_fill": null,
             "data_source": "",
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "data_notes": "The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
             "name": "Commercial Fishing",
             "url": "",
             "arcgis_layers": "",
