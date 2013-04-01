@@ -1790,12 +1790,12 @@
             "bookmark": "/visualize/#x=-73.23&y=38.74&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=92&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=false&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
             "lookup_table": [],
             "shareable_url": true,
             "utfurl": "/media/data_manager/utfgrid/wpas/${z}/${x}/${y}.json",
             "thumbnail": "",
-            "data_download": "",
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Mapping_and_Data/Wind_Planning_Areas.zip",
             "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/BOEM_Wind_Planning_Areas_01_17_2013_convertFGDC.html",
             "opacity": 0.5,
             "vector_color": "",
@@ -1934,12 +1934,12 @@
             "bookmark": "/visualize/#x=-72.83&y=39.37&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=93&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=false&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
             "lookup_table": [],
             "shareable_url": true,
             "utfurl": "/media/data_manager/utfgrid/lease_areas/${z}/${x}/${y}.json",
             "thumbnail": "",
-            "data_download": "",
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Mapping_and_Data/boem_leasing_areas_shapefile.zip",
             "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/BOEM_Lease_Areas_11_13_12_convertFGDC.html",
             "opacity": 0.5,
             "vector_color": "",
@@ -3325,53 +3325,6 @@
         }
     },
     {
-        "pk": 55,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "radio",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Map layers illustrating recreational fishing areas are being developed in consultation with recreational fishery stakeholders, to be added to Marine Planner by mid to late 2013.",
-            "attribute_fields": [],
-            "learn_more": "/explore/needs#fishing",
-            "data_overview": "",
-            "slug_name": "recreational-fishing",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Recreational Fishing",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                91
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 26,
         "model": "data_manager.layer",
         "fields": {
@@ -3555,6 +3508,53 @@
             "legend_title": "",
             "sublayers": [
                 15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 55,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "radio",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "The Marine Planner\u2019s recreational fishing data is currently limited to a regional scale map layer showing party boat (also known as head boat) and charter boat fishing.  Additional higher resolution map layers showing areas for recreational fishing and other activities are being developed with input and guidance from recreational stakeholders and will be added to Marine Planner by mid to late 2013.",
+            "attribute_fields": [],
+            "learn_more": "/explore/needs#fishing",
+            "data_overview": "",
+            "slug_name": "recreational-fishing",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Recreational Fishing",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                91
             ],
             "attribute_title": ""
         }
