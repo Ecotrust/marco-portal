@@ -5,6 +5,7 @@ function layerModel(options, parent) {
     // properties
     self.id = options.id || null;
     self.name = options.name || null;
+    self.featureAttributionName = self.name;
     self.url = options.url || null;
     self.arcgislayers = options.arcgis_layers || 0;
     self.type = options.type || null;
@@ -29,6 +30,10 @@ function layerModel(options, parent) {
     
     self.sharedBy = ko.observable(false);
     self.shared = ko.observable(false);
+    
+    if (self.featureAttributionName === 'OCS Lease Blocks') {
+        self.featureAttributionName = 'OCS Lease Blocks -- DRAFT Report';
+    }
     
     // set target blank for all links
     if (options.description) {

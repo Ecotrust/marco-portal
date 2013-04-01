@@ -92,7 +92,7 @@ function reportsModel(options) {
     self.showSubstationReport = function() {
         var awcReportOptions = {
             'title': { 
-                text: 'Distance to Coastal Substation' 
+                text: 'Distance to Coastal Substations' 
             },
             'yAxis': {
                 title: {
@@ -259,6 +259,7 @@ function reportsModel(options) {
             self.noActiveCollections(true);
             return;
         }
+        var draftTitle = {text: options.title.text + ' -- DRAFT Report'};
         var chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'reports-container',
@@ -268,7 +269,7 @@ function reportsModel(options) {
             credits: {
                 enabled: false
             },
-            title: options.title,
+            title: draftTitle,
             subtitle: options.subtitle,
             xAxis: {
                 categories: self.getCollectionNames()
@@ -320,7 +321,7 @@ function reportsModel(options) {
             }
                            
         });
-        var width = 400,
+        var width = 385,
             height = 90 + app.viewModel.scenarios.activeSelections().length * 60;
         if (height > 500) { 
             height = 500;
