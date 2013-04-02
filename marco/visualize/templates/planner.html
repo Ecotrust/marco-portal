@@ -395,7 +395,7 @@
                                     <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                         <div data-bind="foreach: attributeLayers()">
                                             <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
-                                              <h4 data-bind="text: name"></h4>
+                                              <h4 data-bind="text: featureAttributionName"></h4>
                                               <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
                                                 <dt>
                                                     <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>

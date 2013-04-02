@@ -33,7 +33,9 @@ function layerModel(options, parent) {
     
     if (self.featureAttributionName === 'OCS Lease Blocks') {
         self.featureAttributionName = 'OCS Lease Blocks -- DRAFT Report';
-    }
+    } else if (self.featureAttributionName === 'Party & Charter Boat') {
+        self.featureAttributionName = 'Party & Charter Boat Trips';
+    } 
     
     // set target blank for all links
     if (options.description) {
@@ -1757,6 +1759,13 @@ function viewModel() {
                 max_speed = (parseFloat(data['SPEED_90'])+0.125).toPrecision(3);
             attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_speed + ' to ' + max_speed + ' m/s'});
         } 
+        return attrs;
+    };
+    
+    self.adjustPartyCharterAttributes = function (attrs) {
+        for (var x=0; x<attrs.length; x=x+1) {
+            attrs[x].display = 'Total Trips (2000-2009)';
+        }
         return attrs;
     };
     
