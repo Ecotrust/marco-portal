@@ -516,7 +516,7 @@ app.addUtfLayerToMap = function(layer) {
 };
 
 app.setLayerVisibility = function(layer, visibility) {
-    // if layer is in openlayers, hide it
+    // if layer is in openlayers, hide/show it
     if (layer.layer) {
         layer.layer.setVisibility(visibility);
     }
