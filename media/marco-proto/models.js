@@ -5,6 +5,7 @@ function layerModel(options, parent) {
     // properties
     self.id = options.id || null;
     self.name = options.name || null;
+    self.featureAttributionName = self.name;
     self.url = options.url || null;
     self.arcgislayers = options.arcgis_layers || 0;
     self.type = options.type || null;
@@ -29,6 +30,12 @@ function layerModel(options, parent) {
     
     self.sharedBy = ko.observable(false);
     self.shared = ko.observable(false);
+    
+    if (self.featureAttributionName === 'OCS Lease Blocks') {
+        self.featureAttributionName = 'OCS Lease Blocks -- DRAFT Report';
+    } else if (self.featureAttributionName === 'Party & Charter Boat') {
+        self.featureAttributionName = 'Party & Charter Boat Trips';
+    } 
     
     // set target blank for all links
     if (options.description) {
@@ -357,7 +364,9 @@ function layerModel(options, parent) {
 
     self.showSublayers.subscribe(function () {
         setTimeout(function () {
-            $('.layer').find('.open .layer-menu').jScrollPane();
+            if ( app.viewModel.activeLayer().subLayers.length > 1 ) {
+                $('.layer').find('.open .layer-menu').jScrollPane();
+            }
         });
     });
 
@@ -406,7 +415,7 @@ function layerModel(options, parent) {
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
         app.viewModel.error(null);
-        app.viewModel.unloadedDesigns = [];
+        //app.viewModel.unloadedDesigns = [];
 
         if (layer.active()) { // if layer is active
             layer.deactivateLayer();
@@ -868,7 +877,7 @@ function viewModel() {
         app.markers.clearMarkers();
         app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
         app.marker.map = app.map;
-        app.marker.display(true);
+        //app.marker.display(true);
         if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
@@ -1098,8 +1107,11 @@ function viewModel() {
             });
         }
         //$(elem).mCustomScrollbar("update");
-        $(elem).mCustomScrollbar("scrollTo", "top"); 
-        setTimeout( function() { $(elem).mCustomScrollbar("update"); }, 500);
+        //$(elem).mCustomScrollbar("scrollTo", "top"); 
+        setTimeout( function() { 
+            $(elem).mCustomScrollbar("update"); 
+            $(elem).mCustomScrollbar("scrollTo", "top"); 
+        }, 500);
     };
     
     // close layer description
@@ -1663,6 +1675,25 @@ function viewModel() {
         self.usernameError(false);
     };
     
+    self.getWindPlanningAreaAttributes = function (title, data) {
+        attrs = [];
+        if ('INFO' in data) {
+            var state = data.INFO,
+                first = state.indexOf("Call"),
+                second = state.indexOf("WEA"),
+                third = state.indexOf("RFI");
+            if (first !== -1) {
+                state = state.slice(0, first);
+            } else if (second !== -1) {
+                state = state.slice(0, second);
+            } else if (third !== -1) {
+                state = state.slice(0, third);
+            }
+            attrs.push({'display': '', 'data': state});
+        } 
+        return attrs;
+    };
+    
     self.getSeaTurtleAttributes = function (title, data) {
         attrs = [];
         if ('ST_LK_NUM' in data && data['ST_LK_NUM']) {
@@ -1742,6 +1773,13 @@ function viewModel() {
                 max_speed = (parseFloat(data['SPEED_90'])+0.125).toPrecision(3);
             attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_speed + ' to ' + max_speed + ' m/s'});
         } 
+        return attrs;
+    };
+    
+    self.adjustPartyCharterAttributes = function (attrs) {
+        for (var x=0; x<attrs.length; x=x+1) {
+            attrs[x].display = 'Total Trips (2000-2009)';
+        }
         return attrs;
     };
     
@@ -1837,7 +1875,8 @@ function viewModel() {
                 stateName = 'Rhode Island / Massachusetts';
             }
             //if ( data['WEA2_NAME'].replace(/\s+/g, '') !== "" ) {
-            attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
+            //TAKING THIS OUT TEMPORARILY UNTIL WE HAVE UPDATED THE DATA SUMMARY FOR WPAS AND LEASE AREAS
+            //attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
             //}
         }
         
