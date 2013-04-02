@@ -34,11 +34,14 @@ app.viewModel.loadLayers = function(data) {
                 };
             } else { //if the layer has sublayers
 				$.each(layer.subLayers, function(i, subLayer) {
-					var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ')';
-					self.layerSearchIndex[searchTerm] = {
-						layer: subLayer,
-						theme: theme
-					};
+					//var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ')';
+                    var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ' / ' + subLayer.parent.name + ')';
+					if (subLayer.name !== 'Data Under Development') {
+                        self.layerSearchIndex[searchTerm] = {
+                            layer: subLayer,
+                            theme: theme
+                        };
+                    }
 				});  
                 layer.subLayers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
 			} 
