@@ -1776,6 +1776,51 @@
         }
     },
     {
+        "pk": 94,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/PrincipalPorts.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/PrincipalPorts.htm",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Principal Ports are politically defined by port limits or US Army Corps of Engineers (USACE) projects. These data exclude non-USACE projects that are not authorized for publication. The determination for the published Principal Ports is based upon the total tonnage for the port for the particular year; therefore the top 150 list can vary from year to year. The Principal Port file contains USACE port codes, names, and commodity tonnage summaries (total tons, domestic, foreign, imports and exports). Original source file compiled in 2010, verified in 2012.",
+            "slug_name": "principal-ports",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortsPrincipal/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Principal Ports",
+            "url": "http://www.csc.noaa.gov/ArcGIS_QA/rest/services/MMC/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "4",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 92,
         "model": "data_manager.layer",
         "fields": {
