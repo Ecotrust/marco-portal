@@ -1295,7 +1295,7 @@
             "bookmark": "/visualize/#x=-72.76&y=39.04&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=86&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.epa.gov/",
             "lookup_table": [
                 13,
                 14,
@@ -1551,7 +1551,7 @@
             "bookmark": "/visualize/#x=-72.65&y=38.96&z=7&dls%5B%5D=true&dls%5B%5D=1&dls%5B%5D=87&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "http://www.epa.gov/reg3esd1/",
+            "source": "http://www.epa.gov/",
             "lookup_table": [],
             "shareable_url": true,
             "utfurl": "",
