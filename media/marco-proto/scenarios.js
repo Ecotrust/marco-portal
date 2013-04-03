@@ -1289,8 +1289,7 @@ function scenariosModel(options) {
     self.sharingLayer = ko.observable();
     self.showSharingModal = function(scenario) {
         self.sharingLayer(scenario);
-        self.sharingLayer().temporarilySelectedGroups.removeAll();
-        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups());
+        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups().slice(0));
         $('#share-modal').modal('show');
     };
     
@@ -1311,7 +1310,6 @@ function scenariosModel(options) {
     self.toggleGroup = function(obj) {
         var groupName = obj.group_name,
             indexOf = self.sharingLayer().temporarilySelectedGroups.indexOf(groupName);
-    
         if ( indexOf === -1 ) {  //add group to list
             self.sharingLayer().temporarilySelectedGroups.push(groupName);
         } else { //remove group from list
@@ -1968,9 +1966,13 @@ function scenariosModel(options) {
         self.leaseblockList = ocsblocks;
     };  
     
+    self.cancelShare = function() {
+        self.sharingLayer().temporarilySelectedGroups.removeAll();
+    };
+    
     //SHARING DESIGNS
     self.submitShare = function() {
-        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups());
+        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups().slice(0));
         var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
         $.ajax( {
             url: '/scenario/share_design',
