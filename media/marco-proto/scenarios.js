@@ -1048,6 +1048,12 @@ function scenarioModel(options) {
         if (scenario.isDrawingModel ) {
             
         } else if ( scenario.isSelectionModel ) {
+            for (var i=0; i < app.viewModel.scenarios.activeSelections().length; i=i+1) {
+                if(app.viewModel.scenarios.activeSelections()[i].id === scenario.id) { 
+                    app.viewModel.scenarios.activeSelections().splice(i,1);
+                    i = i-1;
+                }
+            }
             app.viewModel.scenarios.activeSelections().push(scenario);
         }
     };
