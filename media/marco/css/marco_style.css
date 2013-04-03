@@ -46,7 +46,9 @@ li a {
 	margin-right: auto;
 	background:url(../img/ajax-loader.gif) no-repeat center center;
 }
-
+.jspHorizontalBar { 
+    display: none !important; 
+}
 .jspVerticalBar {
 	width: 10px !important;
 }
