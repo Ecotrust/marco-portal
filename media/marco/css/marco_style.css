@@ -46,7 +46,9 @@ li a {
 	margin-right: auto;
 	background:url(../img/ajax-loader.gif) no-repeat center center;
 }
-
+.jspHorizontalBar { 
+    display: none !important; 
+}
 .jspVerticalBar {
 	width: 10px !important;
 }
@@ -86,7 +88,7 @@ li a {
 
 .navbar .dropdown-menu {
     min-width: 50px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .navbar .nav > li > a {
