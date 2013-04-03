@@ -1797,7 +1797,7 @@
             "shareable_url": true,
             "utfurl": "/media/data_manager/utfgrid/uxo/${z}/${x}/${y}.json",
             "thumbnail": "",
-            "data_download": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/UnexplodedOrdnances.zip",
             "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/UnexplodedOrdnances.htm",
             "opacity": 0.5,
             "vector_color": "",
