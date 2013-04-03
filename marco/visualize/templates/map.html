@@ -126,11 +126,12 @@
             #embedded-legend-button {
                 position: absolute;
                 top: 12px;
-                right: 48px;
+                right: 12px;
                 z-index: 800;             
             }
             #embedded-legend {
                 position: absolute;
+                max-width: 30%;
                 top: 42px;
                 right: 13px;
                 padding: 5px;
@@ -187,7 +188,7 @@
                                                         <div data-bind="visible: $root.aggregatedAttributes()[name]">
                                                             <div class="accordion-heading" data-bind="click: toggleLayerAttribution">
                                                                 <a class="accordion-toggle">
-                                                                    <h4 data-bind="text: name"></h4>
+                                                                    <h4 data-bind="text: featureAttributionName"></h4>
                                                                 </a>
                                                             </div>
                                                             <div class="accordion-body collapse in" data-bind="attr: { id: $root.convertToSlug(name) }" >
