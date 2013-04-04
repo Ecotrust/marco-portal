@@ -32,7 +32,7 @@ Template Name: Homepage
   	    		  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/artificial_reef.jpg"/>
   	    		  	    	<div class="attrib">
   	      	    			     <i class="icon-map-marker icon-white"></i><p></p>
-  	    		  	    		<p class="text" style="display: none; top: 32px; left: -193px;">Photo © Michael Eversmier</p>
+  	    		  	    		<p class="text" style="display: none; top: 32px; left: -193px;">Photo © Nick Caloyianis Productions</p>
   	    		  	    	</div>
   	    		  	    	<div class="caption">
   	    		  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
