@@ -1074,13 +1074,15 @@ function scenarioModel(options) {
         app.setLayerVisibility(scenario, false);
         app.viewModel.activeLayers.remove(scenario);
         
+        app.viewModel.removeFromAggregatedAttributes(scenario.name);
+        /*    
         //remove the key/value pair from aggregatedAttributes
         delete app.viewModel.aggregatedAttributes()[scenario.name];
         //if there are no more attributes left to display, then remove the overlay altogether
         if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
             app.viewModel.aggregatedAttributes(false);
         }
-    
+        */
     };
     
     self.editScenario = function() {
@@ -1178,8 +1180,11 @@ function scenarioModel(options) {
         var scenario = this;
         
         if (scenario.visible()) { //make invisible
-            scenario.visible(false)
-            app.setLayerVisibility(scenario, false)
+            scenario.visible(false);
+            app.setLayerVisibility(scenario, false);
+            
+            app.viewModel.removeFromAggregatedAttributes(scenario.name);
+            
         } else { //make visible
             scenario.visible(true);
             app.setLayerVisibility(scenario, true);
