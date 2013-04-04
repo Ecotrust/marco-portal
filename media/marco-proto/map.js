@@ -233,7 +233,7 @@ app.init = function () {
                             text = app.viewModel.getToothedMammalAttributes(title, info.data);
                         } else if ( title === 'Wind Speed' ) {
                             text = app.viewModel.getWindSpeedAttributes(title, info.data);
-                        } else if ( title === 'Wind Planning Areas' ) {
+                        } else if ( title === 'BOEM Wind Planning Areas' ) {
                             text = app.viewModel.getWindPlanningAreaAttributes(title, info.data);
                         } else if ( title === 'Party & Charter Boat' ) {
                             text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
