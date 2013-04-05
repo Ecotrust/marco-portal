@@ -807,7 +807,7 @@ class LeaseBlockSelection(Analysis):
     def get_max_depth(self, leaseblocks): 
         min_depth = leaseblocks[0].min_depth
         for lb in leaseblocks:
-            if lb.min_depth > min_depth:
+            if lb.min_depth < min_depth:
                 min_depth = lb.min_depth
         return meters_to_feet(-min_depth)
     
@@ -815,7 +815,7 @@ class LeaseBlockSelection(Analysis):
     def get_min_depth(self, leaseblocks):
         max_depth = leaseblocks[0].max_depth
         for lb in leaseblocks:
-            if lb.max_depth < max_depth:
+            if lb.max_depth > max_depth:
                 max_depth = lb.max_depth
         return meters_to_feet(-max_depth)
           
