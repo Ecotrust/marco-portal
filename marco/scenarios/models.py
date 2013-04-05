@@ -675,12 +675,21 @@ class LeaseBlockSelection(Analysis):
         leaseblocks = LeaseBlock.objects.filter(prot_numb__in=self.leaseblock_ids.split(','))
         if (len(leaseblocks) > 0): 
             #get wind speed range
-            min_wind_speed = format(self.get_min_wind_speed(leaseblocks),3)
-            max_wind_speed = format(self.get_max_wind_speed(leaseblocks),3)
-            wind_speed_range = '%s to %s m/s' %(min_wind_speed, max_wind_speed)
+            try:
+                min_wind_speed = format(self.get_min_wind_speed(leaseblocks),3)
+                max_wind_speed = format(self.get_max_wind_speed(leaseblocks),3)
+                wind_speed_range = '%s to %s m/s' %(min_wind_speed, max_wind_speed)
+            except:
+                min_wind_speed = 'Unknown'
+                max_wind_speed = 'Unknown'
+                wind_speed_range = 'Unknown'
             attributes.append({'title': 'Average Wind Speed Range', 'data': wind_speed_range})
-            avg_wind_speed = format(self.get_avg_wind_speed(leaseblocks),3)
-            avg_wind_speed_output = '%s m/s' %avg_wind_speed
+            try:
+                avg_wind_speed = format(self.get_avg_wind_speed(leaseblocks),3)
+                avg_wind_speed_output = '%s m/s' %avg_wind_speed
+            except:
+                avg_wind_speed = 'Unknown'
+                avg_wind_speed_output = 'Unknown'
             attributes.append({'title': 'Average Wind Speed', 'data': avg_wind_speed_output})
             report_values['wind-speed'] = {'min': min_wind_speed, 'max': max_wind_speed, 'avg': avg_wind_speed, 'selection_id': self.uid}
             
@@ -728,9 +737,13 @@ class LeaseBlockSelection(Analysis):
             min_depth = format(self.get_min_depth(leaseblocks), 0)
             max_depth = format(self.get_max_depth(leaseblocks), 0)
             depth_range = '%s to %s feet' %(min_depth, max_depth)
+            if min_depth == 0 or max_depth == 0:
+                depth_range = 'Unknown'
             attributes.append({'title': 'Depth', 'data': depth_range})
             avg_depth = format(self.get_avg_depth(leaseblocks), 0)
             avg_depth_output = '%s feet' %avg_depth
+            if avg_depth == 0:
+                avg_depth_output = 'Unknown'
             attributes.append({'title': 'Average Depth', 'data': avg_depth_output})
             report_values['depth'] = {'min': min_depth, 'max': max_depth, 'avg': avg_depth, 'selection_id': self.uid}
             '''
@@ -794,7 +807,7 @@ class LeaseBlockSelection(Analysis):
     def get_max_depth(self, leaseblocks): 
         min_depth = leaseblocks[0].min_depth
         for lb in leaseblocks:
-            if lb.min_depth > min_depth:
+            if lb.min_depth < min_depth:
                 min_depth = lb.min_depth
         return meters_to_feet(-min_depth)
     
@@ -802,7 +815,7 @@ class LeaseBlockSelection(Analysis):
     def get_min_depth(self, leaseblocks):
         max_depth = leaseblocks[0].max_depth
         for lb in leaseblocks:
-            if lb.max_depth < max_depth:
+            if lb.max_depth > max_depth:
                 max_depth = lb.max_depth
         return meters_to_feet(-max_depth)
           

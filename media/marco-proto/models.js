@@ -1682,13 +1682,13 @@ function viewModel() {
                 first = state.indexOf("Call"),
                 second = state.indexOf("WEA"),
                 third = state.indexOf("RFI");
-            if (first !== -1) {
+            /*if (first !== -1) {
                 state = state.slice(0, first);
             } else if (second !== -1) {
                 state = state.slice(0, second);
             } else if (third !== -1) {
                 state = state.slice(0, third);
-            }
+            }*/
             attrs.push({'display': '', 'data': state});
         } 
         return attrs;

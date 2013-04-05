@@ -1048,6 +1048,12 @@ function scenarioModel(options) {
         if (scenario.isDrawingModel ) {
             
         } else if ( scenario.isSelectionModel ) {
+            for (var i=0; i < app.viewModel.scenarios.activeSelections().length; i=i+1) {
+                if(app.viewModel.scenarios.activeSelections()[i].id === scenario.id) { 
+                    app.viewModel.scenarios.activeSelections().splice(i,1);
+                    i = i-1;
+                }
+            }
             app.viewModel.scenarios.activeSelections().push(scenario);
         }
     };
@@ -1068,13 +1074,15 @@ function scenarioModel(options) {
         app.setLayerVisibility(scenario, false);
         app.viewModel.activeLayers.remove(scenario);
         
+        app.viewModel.removeFromAggregatedAttributes(scenario.name);
+        /*    
         //remove the key/value pair from aggregatedAttributes
         delete app.viewModel.aggregatedAttributes()[scenario.name];
         //if there are no more attributes left to display, then remove the overlay altogether
         if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
             app.viewModel.aggregatedAttributes(false);
         }
-    
+        */
     };
     
     self.editScenario = function() {
@@ -1172,8 +1180,11 @@ function scenarioModel(options) {
         var scenario = this;
         
         if (scenario.visible()) { //make invisible
-            scenario.visible(false)
-            app.setLayerVisibility(scenario, false)
+            scenario.visible(false);
+            app.setLayerVisibility(scenario, false);
+            
+            app.viewModel.removeFromAggregatedAttributes(scenario.name);
+            
         } else { //make visible
             scenario.visible(true);
             app.setLayerVisibility(scenario, true);
@@ -1289,8 +1300,7 @@ function scenariosModel(options) {
     self.sharingLayer = ko.observable();
     self.showSharingModal = function(scenario) {
         self.sharingLayer(scenario);
-        self.sharingLayer().temporarilySelectedGroups.removeAll();
-        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups());
+        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups().slice(0));
         $('#share-modal').modal('show');
     };
     
@@ -1311,7 +1321,6 @@ function scenariosModel(options) {
     self.toggleGroup = function(obj) {
         var groupName = obj.group_name,
             indexOf = self.sharingLayer().temporarilySelectedGroups.indexOf(groupName);
-    
         if ( indexOf === -1 ) {  //add group to list
             self.sharingLayer().temporarilySelectedGroups.push(groupName);
         } else { //remove group from list
@@ -1968,9 +1977,13 @@ function scenariosModel(options) {
         self.leaseblockList = ocsblocks;
     };  
     
+    self.cancelShare = function() {
+        self.sharingLayer().temporarilySelectedGroups.removeAll();
+    };
+    
     //SHARING DESIGNS
     self.submitShare = function() {
-        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups());
+        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups().slice(0));
         var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
         $.ajax( {
             url: '/scenario/share_design',
