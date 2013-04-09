@@ -1,6 +1,9 @@
 from django.db import models
-from utils import get_domain
+from django.conf import settings
+from django.contrib.gis.db import models
 from django.template.defaultfilters import slugify
+from data_manager.models import Layer
+from utils import get_domain
 #from sorl.thumbnail import ImageField
 
 class Topic(models.Model):
@@ -8,7 +11,7 @@ class Topic(models.Model):
     display_name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     views = models.ManyToManyField("MapView", blank=True, null=True)
-    layers = models.ManyToManyField("Layer", blank=True, null=True)
+    layers = models.ManyToManyField(Layer, blank=True, null=True)
 
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -27,6 +30,7 @@ class Topic(models.Model):
     
 class MapView(models.Model):
     name = models.CharField(max_length=100)
+    display_name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     url_hash = models.CharField(max_length=2050)    
     
