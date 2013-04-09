@@ -6,6 +6,12 @@ from utils import get_domain
 import settings
 
 
+def topic_page(request, theme_name=None, template='topic_page.html'):
+    theme = get_object_or_404(Theme, name = theme_name)
+    theme.layers = theme.layer_set.all().order_by('name')
+    context = {'theme': theme, 'domain': get_domain(8000), 'domain8010': get_domain()}
+    return render_to_response(template, RequestContext(request, context)) 
+
 def learn_page(request, theme_name=None, template='theme_page.html'):
     theme = get_object_or_404(Theme, name = theme_name)
     theme.layers = theme.layer_set.all().order_by('name')
