@@ -21,7 +21,7 @@
                         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
                         <title>
                         </title>
-                        <meta name="viewport" content="initial-scale=1.0">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <!-- media-queries.js (fallback) -->
                         <!--[if lt IE 9]>
                             </script>
@@ -83,7 +83,7 @@
                                     <div class="row-fluid">
                                         <div class="span4">
                                             <a href="/portal">
-                                                <img src="/portal/wp-content/themes/marco/img/marco-logo.gif"/>
+                                                <img src="{{MEDIA_URL}}marco/img/marco-logo.gif"/>
                                             </a>
                                         </div>
                                         <div class="span8">
@@ -119,6 +119,8 @@
                                 </div>
                             </div>
                         </header>
+                        <!-- end header -->
+                        
                         <div id="feedback-tab" class="rounded hidden-phone" data-toggle="modal" data-target="#feedback-modal">
                             feedback
                         </div>
@@ -155,108 +157,92 @@
                             </div>
                           </form>
                         </div>
-                        <!-- end header -->
+                        <!-- end feedback -->
+                        
                         <div class="container">
                             <div id="content" class="row-fluid">
-                                <div id="main" class="span10" role="main">
+                                <div class="sidebar span3" role="complementary">
+                                    <div id="sidebar-nav">
+                                        <div>
+                                            <h3>
+                                                <a href="{{domain8010}}/portal/learn">Learn</a>
+                                            </h3>
+                                            <ul>
+                                                <li {% if topic.name == 'sediment_management' %}class="active"{% endif %}>
+                                                    <a href="{{domain}}/learn/topic/sediment_management">Sediment Management</a>
+                                                </li>
+                                                <li {% if topic.name == 'habitat_conservation' %}class="active"{% endif %}>
+                                                    <a href="{{domain}}/learn/topic/habitat_conservation">Habitat Conservation</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>
+                                                <a href="{{domain8010}}/portal/explore">Explore</a>
+                                            </h3>
+
+                                            <ul>
+                                                {% load flatblock_tags %}
+                                                <li {% if request.path == '/explore/catalog' %}class="active"{% endif %}><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
+                                                <li {% if request.path == '/explore/needs' %}class="active"{% endif %}><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="recent-posts-3" class="widget widget_recent_entries">
+                                            <h3 class="widgettitle">
+                                                <a href="{{domain8010}}/portal/visualize">Visualize</a>
+                                            </h3>
+                                            <ul>
+                                                <li><a href="/visualize" target="_blank">Marine Planner</a></li>
+                                                <li><a href="{{domain8010}}/portal/visualize#cartography">Cartography</a></li>
+                                                <li><a href="{{domain8010}}/portal/visualize#collaboration">Collaboration</a></li>
+                                                <li><a href="{{domain8010}}/portal/visualize#interactivity">Interactivity</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="main" class="span9" role="main">
                                     {% block  main %}{% endblock %}
                                 </div>
-                                    <div class="sidebar span2" role="complementary">
-                                        <div id="sidebar-nav">
-                                            <div>
-                                                <h3>
-                                                    <a href="{{domain8010}}/portal/learn">Learn</a>
-                                                </h3>
-                                                <ul>
-                                                    <li {% if theme.name == 'administrative' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/administrative">Administrative</a>
-                                                    </li>
-                                                    <li {% if theme.name == 'fishing' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/fishing">Fishing</a>
-                                                    </li>
-                                                    <li {% if theme.name == 'conservation' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/conservation">Marine Life</a>
-                                                    </li>
-                                                    <li {% if theme.name == 'maritime-industries' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/maritime-industries">Maritime</a>
-                                                    </li>
-                                                    <li {% if theme.name == 'recreation' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/recreation">Recreation</a>
-                                                    </li>
-                                                    <li {% if theme.name == 'energy' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/energy">Renewable Energy</a>
-                                                    </li>
-                                                    <li {% if theme.name == 'security' %}class="active"{% endif %}>
-                                                        <a href="{{domain}}/learn/security">Security</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h3>
-                                                    <a href="{{domain8010}}/portal/explore">Explore</a>
-                                                </h3>
-
-                                                <ul>
-                                                    {% load flatblock_tags %}
-                                                    <li {% if request.path == '/explore/catalog' %}class="active"{% endif %}><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
-                                                    <li {% if request.path == '/explore/needs' %}class="active"{% endif %}><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
-                                                </ul>
-                                            </div>
-                                            <div id="recent-posts-3" class="widget widget_recent_entries">
-                                                <h3 class="widgettitle">
-                                                    <a href="{{domain8010}}/portal/visualize">Visualize</a>
-                                                </h3>
-                                                <ul>
-                                                    <li><a href="/visualize" target="_blank">Marine Planner</a></li>
-                                                    <li><a href="{{domain8010}}/portal/visualize#cartography">Cartography</a></li>
-                                                    <li><a href="{{domain8010}}/portal/visualize#collaboration">Collaboration</a></li>
-                                                    <li><a href="{{domain8010}}/portal/visualize#interactivity">Interactivity</a></li>
-                                                </ul>
-                                            </div>
-                                            {% block sidebar %}
-                                            {% endblock sidebar %}
-                                        </div>
+                            </div>
+                            <!-- end #content -->
+                            <hr>
+                            
+                            <footer>
+                              <div class="row">
+                                <div class="span7 social">
+                                  <h5>Contact Us</h5>
+                                    <a href="mailto:portal@midatlanticocean.org" data-toggle="modal" data-target="#feedback-modal">portal@midatlanticocean.org</a><br>
+                                    732-263-5392
+                                  <p></p>
+                                </div>
+                                <div class="span3 social">
+                                    <div class="pull-right">
+                                        <h5>connect with us</h5>              
+                                        <p class="pull-right">
+                                            <a href="/portal/feed/"><i class="icon-rss icon-large"></i></a>
+                                            <a href="https://twitter.com/PortalMARCO"><i class="icon-twitter icon-large"></i></a>
+                                        </p>
+                                        <!-- <a href=""><i class="icon-linkedin icon-large"></i></a>
+                                        <a href=""><i class="icon-google-plus icon-large"></i></a> -->
                                     </div>
                                 </div>
-                                <!-- end #content -->
-                                <hr>
+                                <div class="span2">
+                                </div>
+                              </div>
+                            </footer>
                                 
-                                <footer>
-                                  <div class="row">
-                                    <div class="span7 social">
-                                      <h5>Contact Us</h5>
-                                        <a href="mailto:portal@midatlanticocean.org" data-toggle="modal" data-target="#feedback-modal">portal@midatlanticocean.org</a><br>
-                                        732-263-5392
-                                      <p></p>
-                                    </div>
-                                    <div class="span3 social">
-                                        <div class="pull-right">
-                                            <h5>connect with us</h5>              
-                                            <p class="pull-right">
-                                                <a href="/portal/feed/"><i class="icon-rss icon-large"></i></a>
-                                                <a href="https://twitter.com/PortalMARCO"><i class="icon-twitter icon-large"></i></a>
-                                            </p>
-                                            <!-- <a href=""><i class="icon-linkedin icon-large"></i></a>
-                                            <a href=""><i class="icon-google-plus icon-large"></i></a> -->
-                                        </div>
-                                    </div>
-                                    <div class="span2">
-                                    </div>
-                                  </div>
-                                </footer>
-                                
-                            </div>
-                            <!-- end #container -->
-                            <!-- scripts are now optimized via Modernizr.load -->\
-                            <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
-                            <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery-ui.js"></script>
-                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-transition.js"></script>
-                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-typeahead.js"></script>   
-                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
-                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
-                            <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
-                            <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
-                            <script>
+                        </div>
+                        <!-- end #container -->
+                        <!-- scripts are now optimized via Modernizr.load -->\
+                        <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
+                        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery-ui.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-transition.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-typeahead.js"></script>   
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
+                        <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
+                        <script>
                             if (!Array.prototype.indexOf) {
 
                             
@@ -309,20 +295,20 @@
                             }
 
 
-                            </script>
-                            <!-- Google Analytics -->
-                            <script type="text/javascript">
-                              var _gaq = _gaq || [];
-                              _gaq.push(['_setAccount', 'UA-35841423-1']);
-                              _gaq.push(['_trackPageview']);
+                        </script>
+                        <!-- Google Analytics -->
+                        <script type="text/javascript">
+                          var _gaq = _gaq || [];
+                          _gaq.push(['_setAccount', 'UA-35841423-1']);
+                          _gaq.push(['_trackPageview']);
 
-                              (function() {
-                                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                              })();
-                            </script>
-                            {% block javascript %}
-                            {% endblock %}
+                          (function() {
+                            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                          })();
+                        </script>
+                        {% block javascript %}
+                        {% endblock %}
                     </body>
                     </html>

@@ -32,8 +32,11 @@ class MapView(models.Model):
     name = models.CharField(max_length=100)
     display_name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
-    url_hash = models.CharField(max_length=2050)    
+    url_hash = models.CharField(max_length=2050, blank=True, null=True)    
     
+    def __unicode__(self):
+        return unicode('%s' % (self.name))
+
     @property
     def link_to_planner(self):
         return 'http://portal.midatlanticocean.org/planner/#' + url_hash

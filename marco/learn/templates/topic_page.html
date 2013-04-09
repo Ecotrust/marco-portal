@@ -2,101 +2,85 @@
 {% block main %}
 <div class="row-fluid">
 	<div class="span12">
-		<div class="theme image">
-			{% if theme.header_image %}
-				<img src="{{theme.header_image}}"/>
-			{% else %}
-				<img src="http://placehold.it/1250x350">
-			{% endif %}
-			<div class="caption">
-				{{ theme.display_name }}
-			</div>
-			{% if theme.header_attrib %}
-			<div class="attrib">
-				<i class="icon-map-marker icon-white"></i>
-				<p class="text">{{ theme.header_attrib }}</p>
-			</div>
-			{% endif %}
-		</div>
-		<br/>
-		<p>{{ theme.overview|safe }}</p>
-		{% for layer in theme.layers %}
-            {% if layer.is_parent %}
-            {% else %}
-			{% if layer.layer_type != "placeholder"  %}
-                <a class="anchor-tag" name={{layer.slug}} style="position:relative; display: block; top:-100px;">&nbsp;</a>
-                <div class="clearfix layer">
-                    <h4>
-                        {{ layer.name }}	
-                    </h4>
-                    <div class="row-fluid overview">
-                        <div class="span10">
-                        {% if layer.data_overview_text %}
-                            <p>{{ layer.data_overview_text }}</p>
-                        {% endif %}
+        <h3>{{ topic.display_name }}</h3>
+		<div class="split-column">{{ topic.description|safe }}</div>
+        
+        <div id="map-view-pane" class="row-fluid">
+            <div id="map-view-list" class="span4">
+                {% for view in views %}
+                    <div class="accordion" id="{{view.name}}">
+                      <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#{{view.name}}" href="#{{view.name}}-description">
+                            <h5>{{ view.display_name }}</h5>
+                          </a>
                         </div>
-                        <div class="span2">
-                            <a class="btn pull-right" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
-                            <a class="btn pull-right" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
+                      </div>                      
+                    </div>
+                    <div id="{{view.name}}-description" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                        {{ view.description }}
                         </div>
                     </div>
-                    {% if layer.data_source_text or layer.data_notes_text %}
-                    <div class="well">
-                        {% if layer.data_source_text %}
-                        <div><strong>Source: </strong>{{ layer.data_source_text }}</div>
-                        {% endif %}
-                        {% if layer.data_notes_text %}
-                        <div><strong>Notes: </strong>{{ layer.data_notes_text|safe }}</div>
-                        {% endif %}
-                    </div>
-                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="map-view" class="span7">
+                <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                src="{{domain}}/embed/map/#x=-78.27&y=33.73&z=9&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=92&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&themes%5Bids%5D%5B%5D=7&themes%5Bids%5D%5B%5D=3&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true">
+                </iframe>
+            </div>
+            <div class="span1">
+            </div>
+        </div>
+        
+        
+        <h4>Related Datasets</h4>
+		{% for layer in layers %}
+            <div class="row-fluid">
+                <div class="span4">
+                    {{ layer.name }}	
                 </div>
-			<br/>
-			{% endif %}
-            {% endif %}
+                <div class="span4">
+                    View in Marine Planner
+                </div>
+                <div class="span4">
+                    View in Data Catalog
+                <!--    
+                    <a class="btn pull-right" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
+                    <a class="btn pull-right" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
+                -->
+                </div>
+            </div>
 		{% endfor %}
 	</div>
 </div>
 <!-- endforeach theme -->
 
-{% endblock %}
-{% block sidebar %}
-	<div class="row-fluid feature-story">
-	    <div class="span12">
-	        {% if theme.feature_image %}
-	            <img src="{{theme.feature_image}}">
-	        {% endif %}
-	        {% if theme.feature_excerpt %}
-	            <p>{{ theme.feature_excerpt }}</p>                      
-	        {% endif %}
-	        {% if theme.feature_link %}
-	        <div>
-	            <a href="" class="pull-right"><em>read more...</em></a>
-	        </div>
-	        {% endif %}
-	    </div>
-	</div>
-	<div class="row-fluid">
-		{% if theme.factsheet_thumb  %}
-		<div class="span12 factsheet" >
-			{% if theme.factsheet_link  %}
-				<a href="{{ theme.factsheet_link }}"><img src="{{ theme.factsheet_thumb }}"/>
-				<p class="pull-right">
-					<a href="{{ theme.factsheet_link }}">download pdf...</a>
-				</p>
-			{% else %}
-				<img src="{{ theme.factsheet_thumb }}"/>
-			{% endif %}
-		</div>
-		{% endif %}
-	</div>
-{% endblock sidebar %}
+<style type="text/css">
+.split-column {
+    -moz-column-count: 2; /* Firefox */
+    -webkit-column-count: 2; /* Safari and Chrome */
+    column-count: 2;
+}
+#map-view-pane {
+    margin: 20px 0px;
+}
+#map-view-list {
+    height: 400px;
+}
+#map-view-list .accordion {
+    margin-bottom: 0px;
+}
+#map-view-list .accordion-group {
+    border: 0px;
+}
+#map-view-list .accordion-toggle {
+    padding: 0px;
+}
+#map-view {
+    height: 400px;
+}
+</style>
 
 
-{% block javascript %}
-<script>
-$(document).ready(function () {
-	$('[rel=tooltip]').tooltip();
-});
-</script>
 {% endblock %}
