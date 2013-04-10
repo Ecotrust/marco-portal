@@ -1,0 +1,88 @@
+[
+    {
+        "pk": 2,
+        "model": "learn.topic",
+        "fields": {
+            "layers": [
+                7,
+                92,
+                84
+            ],
+            "views": [
+                4,
+                5
+            ],
+            "display_name": "Habitat Conservation",
+            "name": "habitat_conservation",
+            "description": "The southeastern United States is known for having dolphins and alligators.  Please do not feed the animals."
+        }
+    },
+    {
+        "pk": 1,
+        "model": "learn.topic",
+        "fields": {
+            "layers": [
+                89,
+                94
+            ],
+            "views": [
+                1,
+                2,
+                3
+            ],
+            "display_name": "Sediment Management",
+            "name": "sediment_management",
+            "description": "The southeastern United States is known for having well maintained, broad sandy beaches. Tourists travel from all of the country, and the world to enjoy our coast and all that it has to offer. Additionally, each of the four GSAA states have busy ports that are frequently in need of expansion in order to keep pace with the changing maritime industry. "
+        }
+    },
+    {
+        "pk": 1,
+        "model": "learn.mapview",
+        "fields": {
+            "url_hash": null,
+            "display_name": "Myrtle Beach",
+            "name": "myrtle_beach",
+            "description": "Mrtyle Beach is undergoing a number of activities for sediment management. Notice on the map how historic dredge areas overlap with sea turtle habitat"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "learn.mapview",
+        "fields": {
+            "url_hash": "x=-80.77&y=30.30&z=8&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=94&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=89&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
+            "display_name": "Jacksonville",
+            "name": "jacksonville",
+            "description": "Jacksonville is a great place to take your college age kids for spring break.  "
+        }
+    },
+    {
+        "pk": 3,
+        "model": "learn.mapview",
+        "fields": {
+            "url_hash": "x=-79.84&y=32.72&z=10&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=94&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=89&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
+            "display_name": "Charleston Harbor",
+            "name": "charleston_harbor",
+            "description": "Charleston Harbor has dolphins!"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "learn.mapview",
+        "fields": {
+            "url_hash": "x=-75.51&y=36.02&z=9&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=92&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&themes%5Bids%5D%5B%5D=7&themes%5Bids%5D%5B%5D=3&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
+            "display_name": "Nags Head",
+            "name": "nags_head",
+            "description": "Nags Head and the Outerbanks has great surfing and wild horses!"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "learn.mapview",
+        "fields": {
+            "url_hash": "x=-78.27&y=33.73&z=9&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=92&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&themes%5Bids%5D%5B%5D=7&themes%5Bids%5D%5B%5D=3&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
+            "display_name": "Myrtle Beach",
+            "name": "myrtle_beach_habitat",
+            "description": "Myrtle Beach has great habitats!"
+        }
+    }
+]
