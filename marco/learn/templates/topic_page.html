@@ -41,10 +41,14 @@
                     {{ layer.name }}	
                 </div>
                 <div class="span4">
+                    <a href="{{ layer.bookmark }}" target="_blank">
                     View in Marine Planner
+                    </a>
                 </div>
                 <div class="span4">
+                    <a href="/explore/catalog#{{ layer.slug }}" target="_blank">
                     View in Data Catalog
+                    </a>
                 <!--    
                     <a class="btn pull-right" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
                     <a class="btn pull-right" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
