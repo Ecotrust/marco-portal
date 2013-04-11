@@ -236,12 +236,17 @@
                         <!-- scripts are now optimized via Modernizr.load -->\
                         <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
                         <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery-ui.js"></script>
+                        <script src="{{MEDIA_URL}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
                         <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-transition.js"></script>
                         <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-typeahead.js"></script>   
                         <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
                         <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
                         <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
-                        <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script>  
+                        <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script> 
+                        <script src="{{MEDIA_URL}}/marco-proto/topics.js"></script>
+                        <script>
+                            ko.applyBindings(new topicsModel(), document.getElementById('topic-page'));
+                        </script>
                         <script>
                             if (!Array.prototype.indexOf) {
 

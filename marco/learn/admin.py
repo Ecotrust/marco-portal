@@ -7,9 +7,9 @@ class TopicAdmin(admin.ModelAdmin):
     ordering = ('display_name',)
 
 class MapViewAdmin(admin.ModelAdmin):
-    list_display = ('display_name', 'name', 'url_hash')
-    search_fields = ['display_name', 'name']
-    ordering = ('display_name',)
+    list_display = ('display_name', 'topic', 'ordering', 'name', 'url_hash')
+    search_fields = ['display_name', 'name', 'topic']
+    ordering = ('topic', 'ordering', 'display_name')
 
 admin.site.register(Topic, TopicAdmin)
 admin.site.register(MapView, MapViewAdmin)

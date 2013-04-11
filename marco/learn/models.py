@@ -10,29 +10,27 @@ class Topic(models.Model):
     name = models.CharField(max_length=100)
     display_name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
-    views = models.ManyToManyField("MapView", blank=True, null=True)
+    #views = models.ManyToManyField("MapView", blank=True, null=True)
     layers = models.ManyToManyField(Layer, blank=True, null=True)
 
     def __unicode__(self):
         return unicode('%s' % (self.name))
 
     @property
-    def toDict(self):
-        layers = [layer.id for layer in self.layer_set.filter(is_sublayer=False).exclude(layer_type='placeholder')]
-        themes_dict = {
-            'id': self.id,
-            'display_name': self.display_name,
-            'learn_link': self.learn_link,
-            'layers': layers,
-            'description': self.description
+    def viewsDict(self):
+        views = [view.name for view in self.views.all().order_by('ordering','name')]
+        topic_dict = {
+            'views': views
         }
-        return themes_dict
+        return topic_dict
     
 class MapView(models.Model):
     name = models.CharField(max_length=100)
     display_name = models.CharField(max_length=100)
+    topic = models.ForeignKey('Topic', blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    url_hash = models.CharField(max_length=2050, blank=True, null=True)    
+    url_hash = models.CharField(max_length=2050, blank=True, null=True)   
+    ordering = models.IntegerField(null=True, blank=True)
     
     def __unicode__(self):
         return unicode('%s' % (self.name))
@@ -41,6 +39,5 @@ class MapView(models.Model):
     def link_to_planner(self):
         return 'http://portal.midatlanticocean.org/planner/#' + url_hash
         
-    
     
     
