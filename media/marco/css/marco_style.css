@@ -1115,6 +1115,12 @@ body.borderless #map-wrapper {
 	.navbar .nav > li > a {
 		width: 70px;
 	}
+    .navbar-fixed-top {
+        position: fixed;
+    }
+    .navbar-inner {
+        padding: 0px 20px !important;
+    }
 	.nav-collapse form {
 		width: 100%;
 	}
@@ -1159,6 +1165,14 @@ body.borderless #map-wrapper {
 	body {
 		margin-top: 0px;
 	}
+
+    .navbar-fixed-top {
+        position: fixed;
+    }
+    
+    .navbar-inner {
+        padding: 0px 20px !important;
+    }
 
 	.nav-collapse {
 		width: 100%;
