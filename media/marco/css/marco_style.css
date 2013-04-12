@@ -1109,6 +1109,11 @@ body.borderless #map-wrapper {
 	border: 0px;
 }
 
+.split-column {
+    -moz-column-count: 2; /* Firefox */
+    -webkit-column-count: 2; /* Safari and Chrome */
+    column-count: 2;
+}
 
 
 @media (max-width: 767px) {
@@ -1131,6 +1136,9 @@ body.borderless #map-wrapper {
 	body {
 		margin-top: 0px;
 	}
+    #content {
+        margin-top: 120px;
+    }
 	#sidebar-nav {
 		position: relative;
 		top: 0px;
@@ -1157,6 +1165,11 @@ body.borderless #map-wrapper {
 	  width: 72%;
 	  font-size: 12px;
 	}
+    .split-column {
+        -moz-column-count: 1; /* Firefox */
+        -webkit-column-count: 1; /* Safari and Chrome */
+        column-count: 1;
+    }
 
 }
 
