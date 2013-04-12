@@ -124,6 +124,8 @@
                 width: 20%;
             }
             #embedded-legend-button {
+                background: rgba(0, 60, 136, 0.5);
+                color: white;
                 position: absolute;
                 top: 12px;
                 right: 12px;
@@ -132,12 +134,23 @@
             #embedded-legend {
                 position: absolute;
                 max-width: 30%;
+                min-width: 200px; 
+                max-height: 80%;
                 top: 42px;
                 right: 13px;
-                padding: 5px;
+                padding: 10px;
                 background-color: white;
-                border-radius: 4px;
+                border-radius: 5px;
                 z-index: 800;             
+            }
+            .jspVerticalBar {
+                right: 21px;
+            }
+            .olControlZoomIn {
+                padding: 1px !important;
+            }
+            .olControlZoomOut {
+                padding: 1px !important;
             }
         </style>
         
@@ -213,8 +226,8 @@
                                     </div>
                                                                     
                                     <!--Hide/Show Legends Button-->
-                                    <a id="embedded-legend-button" class="btn" data-bind="click: toggleEmbeddedLegend">
-                                        <i class="icon-list-ul icon-large"></i> 
+                                    <a id="embedded-legend-button" class="btn" data-bind="click: toggleEmbeddedLegend, visible: activeLegendLayers().length > 0">
+                                        <!--<i class="icon-list-ul icon-large"></i> -->
                                         <span>Legend</span>
                                         <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
                                     </a>
@@ -222,7 +235,7 @@
                                     <!-- Legend -->
                                     <div id="embedded-legend" data-bind="visible: showEmbeddedLegend()">
                                         <div id="embedded-legend-wrapper">
-                                            <div id="legend-content">
+                                            <div id="embedded-legend-content">
                                                 <div data-bind="foreach: activeLegendLayers">
                                                 <!--<div data-bind="foreach: { data: activeLegendLayers, afterRender: updateScrollBars }">-->
                                                     <div style="padding-bottom: 10px;">
