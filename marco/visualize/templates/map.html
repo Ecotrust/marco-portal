@@ -174,7 +174,7 @@
                                     <div id="map" style="height: 100%; border-radius: 0px;"></div>
                                     
                                     <!-- commenting out the following until a transparent background is generated for the marco logo -->
-                                    <a data-bind="attr: { href: mapLinks.getPortalURL() }" target="_blank">
+                                    <a data-bind="visible: showLogo, attr: { href: mapLinks.getPortalURL() }" target="_blank">
                                         <img id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo-transparent.png"/>
                                     </a>
                                         

@@ -912,6 +912,11 @@ function viewModel() {
         self.error(null);
     };
     
+    self.showLogo = ko.observable(true);
+    self.hideLogo = function() {
+        self.showLogo(false);
+    };
+    
     self.isFullScreen = ko.observable(false);
     
     self.fullScreenWithLayers = function() {
