@@ -1126,6 +1126,9 @@ body.borderless #map-wrapper {
     .navbar-inner {
         padding: 0px 20px !important;
     }
+    .btn-navbar {
+        margin-top: -40px !important;
+    }
 	.nav-collapse form {
 		width: 100%;
 	}
@@ -1141,7 +1144,7 @@ body.borderless #map-wrapper {
     }
 	#sidebar-nav {
 		position: relative;
-		top: 0px;
+		top: 10px;
 	}
 	.nav-collapse {
 		width: 100%;
