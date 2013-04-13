@@ -1229,9 +1229,7 @@
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [
-                55
-            ],
+            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -1297,7 +1295,7 @@
             "bookmark": "/visualize/#x=-72.76&y=39.04&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=86&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.epa.gov/",
             "lookup_table": [
                 13,
                 14,
@@ -1315,7 +1313,7 @@
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/OffshoreDischargeLocations_MARCO.htm",
             "opacity": 0.5,
             "vector_color": "#333333",
             "attribute_event": "click",
@@ -1501,7 +1499,7 @@
             "bookmark": "/visualize/#location%5Bx%5D=-74.19255957976071&location%5By%5D=38.8306639766425&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=65&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://atlanticwindconnection.com/",
             "lookup_table": [
                 12,
                 11
@@ -1539,51 +1537,6 @@
         }
     },
     {
-        "pk": 84,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#x=-72.38&y=38.59&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
-            "slug_name": "dod-wind-stipulation-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Marine Cadastre",
-            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
-            "name": "DoD Wind Stipulation Areas",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
-            "arcgis_layers": "28",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 87,
         "model": "data_manager.layer",
         "fields": {
@@ -1598,13 +1551,13 @@
             "bookmark": "/visualize/#x=-72.65&y=38.96&z=7&dls%5B%5D=true&dls%5B%5D=1&dls%5B%5D=87&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=1&tab=data&legends=true&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "http://www.epa.gov/reg3esd1/",
+            "source": "http://www.epa.gov/",
             "lookup_table": [],
             "shareable_url": true,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/Region2_3_midAtl_OffshoreDredgeDisposal_Metadata.htm",
             "opacity": 1.0,
             "vector_color": "#D7C1F7",
             "attribute_event": "click",
@@ -1778,6 +1731,53 @@
         }
     },
     {
+        "pk": 92,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-73.23&y=38.74&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=92&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/wpas/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Mapping_and_Data/Wind_Planning_Areas.zip",
+            "metadata": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                127
+            ],
+            "learn_more": "",
+            "data_overview": "This data set represents the most recent changes for the Wind Development Planning Areas in the Atlantic.  Wind Planning Areas in this dataset represent up to seven different types of announcements within the US Federal Register (e.g. Call Area, Wind Energy Area, Request for Interest, Proposed Sale Notice Area) that can be used to show the current status of an area that is being considered for Wind Power Development.",
+            "slug_name": "boem-wind-planning-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA_2013_01_17/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "BOEM Wind Planning Areas",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA_2013_01_17/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 89,
         "model": "data_manager.layer",
         "fields": {
@@ -1792,13 +1792,13 @@
             "bookmark": "/visualize/#x=-73.40&y=38.89&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=89&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.marinecadastre.gov",
             "lookup_table": [],
             "shareable_url": true,
             "utfurl": "/media/data_manager/utfgrid/uxo/${z}/${x}/${y}.json",
             "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/UnexplodedOrdnances.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/UnexplodedOrdnances.htm",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
@@ -1826,6 +1826,106 @@
         }
     },
     {
+        "pk": 91,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-73.98&y=39.13&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=91&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=4&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nefsc.noaa.gov/ ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/rec_fishing/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/Recreational_fishing_effort.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                128
+            ],
+            "learn_more": "",
+            "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data for Recreational Party and Charter Boat Fishing that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). ",
+            "slug_name": "party-charter-boat",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "name": "Party & Charter Boat",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "Party & Charter Boat Trips (Total 2000-2009)",
+            "sublayers": [
+                55
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 93,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-72.83&y=39.37&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=93&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "/media/data_manager/utfgrid/lease_areas/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Mapping_and_Data/boem_leasing_areas_shapefile.zip",
+            "metadata": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                122,
+                124,
+                126,
+                123,
+                125
+            ],
+            "learn_more": "",
+            "data_overview": "These are blocks which have been leased by a company with the intent to build a wind energy facility.  No projects are in the development stage at this time;  permits may be issued for development provided further site assessment for each leased area. ",
+            "slug_name": "boem-active-renewable-energy-lease-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "BOEM Active Renewable Energy Lease Areas",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 90,
         "model": "data_manager.layer",
         "fields": {
@@ -1846,16 +1946,16 @@
             "utfurl": "/media/data_manager/utfgrid/shipwrecks/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ASD_OCS_Block_Density.html",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
-            "description": "",
+            "description": "Known shipwrecks. These areas may be used in recreational pursuits for scuba diving, fishing, archaeology, historical study, and recovery of materials.",
             "attribute_fields": [
                 115
             ],
             "learn_more": "",
-            "data_overview": "Known shipwrecks. These areas may be used in recreational pursuits for scuba diving, fishing, archaeology, historical study, and recovery of materials.",
+            "data_overview": "Density map of reported shipwrecks illustrating the prevalence of potential historic period archaeological sites on the Atlantic OCS. Because this information was compiled using sources that have unreliable location information, this data does not represent a complete record of potential archaeological sites within a particular geographic area and is not intended for decision-making or planning purposes.",
             "slug_name": "shipwreck-density",
             "is_sublayer": false,
             "lookup_field": "",
@@ -1926,6 +2026,51 @@
             "name": "Coldwater Corals",
             "url": "/media/data_manager/geojson/Corals.json",
             "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 94,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "Total Commodity Tonnage by millions of tons",
+            "bookmark": "/visualize/#x=-74.63&y=39.11&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=94&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/PrincipalPorts.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/PrincipalPorts.htm",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Principal Ports are politically defined by port limits or US Army Corps of Engineers (USACE) projects. These data exclude non-USACE projects that are not authorized for publication. The determination for the published Principal Ports is based upon the total tonnage for the port for the particular year; therefore the top 150 list can vary from year to year. The Principal Port file contains USACE port codes, names, and commodity tonnage summaries (total tons, domestic, foreign, imports and exports). Original source file compiled in 2010, verified in 2012.",
+            "slug_name": "principal-ports",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortsPrincipal/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Principal Ports",
+            "url": "http://www.csc.noaa.gov/ArcGIS_QA/rest/services/MMC/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "4",
             "legend_title": "",
             "sublayers": [],
             "attribute_title": ""
@@ -2416,6 +2561,51 @@
         }
     },
     {
+        "pk": 59,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                5
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-75.64907199740345&location%5By%5D=37.86135171984251&location%5Bzoom%5D=8&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/24",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Areas with naval or military presence. Caution should be used if navigating near these areas.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Areas with naval or military presence. Caution should be used if navigating near these areas.",
+            "slug_name": "danger-zones-restricted-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Department of Defense, U.S. Navy",
+            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
+            "name": "Danger Zones & Restricted Areas",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "24",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 46,
         "model": "data_manager.layer",
         "fields": {
@@ -2610,51 +2800,6 @@
         }
     },
     {
-        "pk": 59,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "fact_sheet": "",
-            "themes": [
-                5
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-75.64907199740345&location%5By%5D=37.86135171984251&location%5Bzoom%5D=8&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Areas with naval or military presence. Caution should be used if navigating near these areas.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Areas with naval or military presence. Caution should be used if navigating near these areas.",
-            "slug_name": "danger-zones-restricted-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "Department of Defense, U.S. Navy",
-            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
-            "name": "Danger Zones & Restricted Areas",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
-            "arcgis_layers": "24",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 71,
         "model": "data_manager.layer",
         "fields": {
@@ -2753,53 +2898,6 @@
         }
     },
     {
-        "pk": 8,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-73.22576270476023&location%5By%5D=39.06136488007781&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Smart_from_the_Start/Atlantic_OCS_Wind_Energy_Areas_shapefile_07_18_11.ZIP",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/WPA_June2012_Dissolve.html",
-            "opacity": 0.8,
-            "vector_color": "#e66101",
-            "attribute_event": "mouseover",
-            "description": "This data set identfies Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development.",
-            "attribute_fields": [
-                1
-            ],
-            "learn_more": "",
-            "data_overview": "The Department of the Interior's \"Smart from the Start\" initiative calls for the identification of Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments.",
-            "slug_name": "wind-planning-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA/legend.png",
-            "data_status": "Available",
-            "vector_fill": null,
-            "data_source": "BOEM",
-            "data_notes": "The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.",
-            "name": "Wind Planning Areas",
-            "url": "/media/data_manager/geojson/WindPlanningAreas.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 37,
         "model": "data_manager.layer",
         "fields": {
@@ -2894,6 +2992,53 @@
             "sublayers": [
                 21
             ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 8,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "placeholder",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-73.22576270476023&location%5By%5D=39.06136488007781&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=8&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=3&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Smart_from_the_Start/Atlantic_OCS_Wind_Energy_Areas_shapefile_07_18_11.ZIP",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/WPA_June2012_Dissolve.html",
+            "opacity": 0.8,
+            "vector_color": "#e66101",
+            "attribute_event": "mouseover",
+            "description": "This data set identfies Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development.",
+            "attribute_fields": [
+                1
+            ],
+            "learn_more": "",
+            "data_overview": "The Department of the Interior's \"Smart from the Start\" initiative calls for the identification of Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments.",
+            "slug_name": "wind-planning-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA/legend.png",
+            "data_status": "Available",
+            "vector_fill": null,
+            "data_source": "BOEM",
+            "data_notes": "The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.",
+            "name": "Wind Planning Areas",
+            "url": "/media/data_manager/geojson/WindPlanningAreas.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -3180,53 +3325,6 @@
         }
     },
     {
-        "pk": 55,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "radio",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Map layers illustrating recreational fishing areas are being developed in consultation with recreational fishery stakeholders, to be added to Marine Planner by mid to late 2013.",
-            "attribute_fields": [],
-            "learn_more": "/explore/needs#fishing",
-            "data_overview": "",
-            "slug_name": "recreational",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Recreational",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                56
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 26,
         "model": "data_manager.layer",
         "fields": {
@@ -3410,6 +3508,53 @@
             "legend_title": "",
             "sublayers": [
                 15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 55,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "radio",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nefsc.noaa.gov/ ",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/Recreational_fishing_effort.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "The Marine Planner\u2019s recreational fishing data is currently limited to a regional scale map layer showing party boat (also known as head boat) and charter boat fishing.  Additional higher resolution map layers showing areas for recreational fishing and other activities are being developed with input and guidance from recreational stakeholders and will be added to Marine Planner by mid to late 2013.",
+            "attribute_fields": [],
+            "learn_more": "/explore/needs#fishing",
+            "data_overview": "",
+            "slug_name": "recreational-fishing",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Recreational Fishing",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                91
             ],
             "attribute_title": ""
         }
@@ -4192,15 +4337,15 @@
             "attribute_fields": [],
             "learn_more": "",
             "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). ",
-            "slug_name": "commercial",
+            "slug_name": "commercial-fishing",
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
             "data_status": "",
             "vector_fill": null,
             "data_source": "",
-            "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
-            "name": "Commercial",
+            "data_notes": "The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
+            "name": "Commercial Fishing",
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
@@ -4215,6 +4360,51 @@
                 69,
                 12
             ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 84,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#x=-72.38&y=38.59&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/28",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
+            "slug_name": "dod-wind-stipulation-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "Marine Cadastre",
+            "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
+            "name": "DoD Wind Stipulation Areas",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "28",
+            "legend_title": "",
+            "sublayers": [],
             "attribute_title": ""
         }
     },
@@ -4569,6 +4759,46 @@
         }
     },
     {
+        "pk": 122,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "State",
+            "display_name": "State",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 124,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Lease_Type",
+            "display_name": "Lease Type",
+            "precision": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 126,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Lease_Date",
+            "display_name": "Lease Date",
+            "precision": null,
+            "order": 5
+        }
+    },
+    {
+        "pk": 128,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "TOTAL_TRIP",
+            "display_name": "Trips",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
         "pk": 58,
         "model": "data_manager.attributeinfo",
         "fields": {
@@ -4896,6 +5126,36 @@
             "display_name": "Source Date",
             "precision": null,
             "order": 2
+        }
+    },
+    {
+        "pk": 123,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Company",
+            "display_name": "Company",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 125,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Lease_Term",
+            "display_name": "Lease Term",
+            "precision": null,
+            "order": 4
+        }
+    },
+    {
+        "pk": 127,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "INFO",
+            "display_name": "State",
+            "precision": null,
+            "order": 1
         }
     },
     {

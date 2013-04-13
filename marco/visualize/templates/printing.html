@@ -64,7 +64,6 @@
                                     <label class="radio control-label">
                                         <input type="radio" name="paperSize"  value='A3' data-bind="checked: paperSize">A3 (420mm x 297mm)
                                     </label>
-                                </select>
                             </fieldset>
                         </div>
                     </div>
@@ -101,7 +100,7 @@
                 <a data-bind="attr: {href: thumbnail }" target="_blank"><img class="thumb" data-bind="attr: {src: thumbnail}"/></a>
             </div>
         </div>
-        <div class="row-fluid" class="results" data-bind="visible: showSpinner">
+        <div class="row-fluid results" data-bind="visible: showSpinner">
             
             <div class="span12 loading">
                 <strong><img src="{{MEDIA_URL}}marco/img/ajax-loader.gif"/> <span data-bind="text: jobStatus"></span></strong>
@@ -140,7 +139,7 @@
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal">Close</a>
-            <button type="submit" class="btn btn-primary">Send</a>
+            <button type="submit" class="btn btn-primary">Send</button>
         </div>
     </form>
 </div>

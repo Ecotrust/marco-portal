@@ -4,7 +4,8 @@
 			  <div class="row">
 			    <div class="span9 social">
 			      <h5>Contact Us</h5>
-			      	<a href="" data-toggle="modal" data-target="#feedback-modal">info@midatlanticocean.org</a><br/>
+
+			      	<a href="mailto:portal@midatlanticocean.org" data-toggle="modal" data-target="#feedback-modal">portal@midatlanticocean.org</a><br/>
 			      	732-263-5392
 			      </p>
 			    </div>
@@ -77,6 +78,20 @@
 
 		});
 		</script>
+
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-35841423-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+		
 		<!--[if lt IE 7 ]>
   			<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
   			<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>

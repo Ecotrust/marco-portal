@@ -13,7 +13,6 @@ Template Name: Homepage
 			  		<div class="showcase">
 				  	  <div class="carousel-inner">
 				  	    <div class="item active">
-
 				  	    	<img class="span12" src="<?php echo get_template_directory_uri(); ?>/img/map-depth.jpg"/>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
@@ -29,8 +28,32 @@ Template Name: Homepage
 				  	    	</div>
 				  	    	
 				  	    </div>
+  	    		  	    <div class="item">
+  	    		  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/artificial_reef.jpg"/>
+  	    		  	    	<div class="attrib">
+  	      	    			     <i class="icon-map-marker icon-white"></i><p></p>
+  	    		  	    		<p class="text" style="display: none; top: 32px; left: -193px;">Photo © Nick Caloyianis Productions</p>
+  	    		  	    	</div>
+  	    		  	    	<div class="caption">
+  	    		  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
+  	    		  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
+  	    		  	    	</div>
+  	    		  	    	
+  	    		  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/wave.jpg"/>
+				  	    	<div class="caption">
+				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
+				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
+				  	    	</div>
+				  	    	
+				  	    </div>
+				  	    <div class="item">
+				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/bottom.jpg"/>
+				  	    	<div class="attrib">
+		  	    			     <i class="icon-map-marker icon-white"></i><p></p>
+				  	    		<p class="text" style="display: none; top: 32px; left: -193px;">Photo © Michael Eversmier</p>
+				  	    	</div>
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
@@ -42,8 +65,7 @@ Template Name: Homepage
 				  	    	<div class="caption">
 				  	    	  <h2>Resources for Mid-Atlantic <strong>ocean planning</strong></h2>
 				  	    	  <p class="pull-right"><a target="_blank" href="/planner">Launch Marine Planner &gt;</a></p>
-				  	    	</div>
-				  	    	
+				  	    	</div>  	
 				  	    </div>
 				  	    <div class="item">
 				  	    	<img class="span12" src="<?php echo  get_bloginfo('wpurl'); ?>/assets/img/carousel/loaders.jpg"/>

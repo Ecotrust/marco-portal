@@ -68,7 +68,6 @@
         
         <!-- Google Analytics -->
         <script type="text/javascript">
-
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-35841423-1']);
           _gaq.push(['_trackPageview']);
@@ -78,8 +77,17 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
-
         </script>
+        
+        <!-- Check for Mobile Client -->
+        <script type="text/javascript">
+            var width = window.innerWidth;
+            if (width < 768) {
+                //window.location.href = "/mobile/mobile";
+                window.location.pathname = "/mobile/mobile/";
+            }
+        </script>
+        
         
         
     </head>
@@ -118,11 +126,12 @@
                                     <!--<li class=""><a href="/portal">Return to Portal</a></li>-->
                                     <!--<li class=""><a href="">Help</a></li>-->
                                     <span class="user-btn">
-                                        <a id="help-button" class="btn" style="outline: none; margin-top: 10px;" href="#help-modal" data-toggle="modal">Help</a>
-                                      
+                                        <span class="btn-group">
+                                          <a id="help-button" class="btn" style="outline: none; margin-top: 10px;" href="#help-modal" data-toggle="modal">Help</a>
+                                        </span>
                                         {% if user.is_authenticated %}
                                         <span class="btn-group">
-                                          <a class="btn dropdown-toggle" style="margin-top: 2px;" data-toggle="dropdown" href="#">
+                                          <a class="btn dropdown-toggle" style="margin-top: 10px;" data-toggle="dropdown" href="#">
                                             <i class="icon-user"></i> 
                                             {{user.username}}
                                             <span class="caret"></span>
@@ -135,7 +144,9 @@
                                           </ul>
                                         </span>
                                         {% else %}
-                                        <a id="#sign-in-button" style="margin-top: 10px;" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a>                            
+                                        <span class="btn-group">
+                                          <a id="#sign-in-button" style="margin-top: 10px;" class="btn" href="#sign-in-modal" data-toggle="modal">Sign In / Register</a> 
+                                        </span>                           
                                         {% endif %}
                                     </span>
                                 </div>
@@ -225,7 +236,6 @@
                                                                                     <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
                                                                                 </div>
                                                                             </a>
-
                                                                             <!-- ko if: subLayers.length > 0 -->
                                                                             <!-- ko if: !isCheckBoxLayer() -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
@@ -388,7 +398,7 @@
                                     <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                         <div data-bind="foreach: attributeLayers()">
                                             <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
-                                              <h4 data-bind="text: name"></h4>
+                                              <h4 data-bind="text: featureAttributionName"></h4>
                                               <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
                                                 <dt>
                                                     <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
@@ -407,7 +417,7 @@
                                                         <div data-bind="visible: $root.aggregatedAttributes()[name]">
                                                             <div class="accordion-heading" data-bind="click: toggleLayerAttribution">
                                                                 <a class="accordion-toggle">
-                                                                    <h4 data-bind="text: name"></h4>
+                                                                    <h4 data-bind="text: featureAttributionName"></h4>
                                                                 </a>
                                                             </div>
                                                             <div class="accordion-body collapse in" data-bind="attr: { id: $root.convertToSlug(name) }" >

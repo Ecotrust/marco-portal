@@ -59,7 +59,7 @@
         <div class="span5" data-bind="css: {span5: !hideTours(), span12: hideTours()}">
             <h4>Contact Us</h4>
             <ul class="unstyled" style="margin-left: 1px">
-                <li>Email: <a href="#" data-toggle="modal" data-target="#feedback-modal" data-dismiss="modal">info@midatlanticocean.org</a></li>
+                <li>Email: <a href="#" data-toggle="modal" data-target="#feedback-modal" data-dismiss="modal">portal@midatlanticocean.org</a></li>
                 <li>Phone: 732 263-5392</li>
             </ul>
         </div>
@@ -82,13 +82,13 @@
             <h4 class="sharing-header">Share my design with the following:</h4>
             <ul class="unstyled" id="sharing-groups" style="margin-left: 1px; height: 165px; outline: none;">
                 <span data-bind="foreach: sharingGroups">
-                    <li>
-                        <div style="text-align: left; margin-left: 50px;">
+                    <li data-bind="click: $parent.toggleGroup">
+                        <div style="text-align: left; margin-left: 50px; cursor: pointer;">
                             <div>
                                 <!--<input type="checkbox" style="margin-top: 0px; margin-bottom: 2px; margin-right: 3px;">-->
-                                <i class="check icon-large icon-check" data-bind="visible: $parent.groupIsSelected(group_name), click: $parent.toggleGroup"></i>
-                                <i class="check icon-large icon-check-empty" data-bind="visible: !$parent.groupIsSelected(group_name), click: $parent.toggleGroup"></i>
-                                <span data-bind="text: group_name, click: $parent.toggleGroup"></span> 
+                                <i class="check icon-large icon-check" data-bind="visible: $parent.groupIsSelected(group_name)"></i>
+                                <i class="check icon-large icon-check-empty" data-bind="visible: !$parent.groupIsSelected(group_name)"></i>
+                                <span data-bind="text: group_name"></span> 
                                 <a class="group-members-popover" rel="popover" data-bind="attr: {'data-content': $parent.groupMembers(group_name)}" data-original-title="Members"> 
                                     <i class="icon-group"> </i>
                                 </a>
@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button href="#" class="btn" data-dismiss="modal">Cancel</button>
+        <button href="#" class="btn" data-bind="click: cancelShare" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn-submit btn" data-bind="click: submitShare" data-dismiss="modal">Share</button>
     </div>
 </div>

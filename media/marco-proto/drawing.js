@@ -40,7 +40,7 @@ function drawingModel(options) {
                 app.viewModel.scenarios.drawingFormModel.startEdit();
             },
             error: function (result) { 
-                debugger; 
+                //debugger; 
             }
         });
     }; 
@@ -58,10 +58,10 @@ function drawingModel(options) {
                 app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
-        })
-    }
+        });
+    };
     self.deleteDrawing = function() {
         var drawing = this;
         
@@ -81,9 +81,9 @@ function drawingModel(options) {
             url: '/drawing/delete_design/' + drawing.uid + '/',
             type: 'POST',
             error: function (result) {
-                debugger;
+                //debugger;
             }
-        })
+        });
     };
 }
 
@@ -177,4 +177,4 @@ function polygonFormModel(options) {
     };
     
     return self;
-}; // end polygonFormModel
+} // end polygonFormModel

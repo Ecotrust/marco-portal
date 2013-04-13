@@ -189,7 +189,7 @@
 
 i.check {
   position: absolute;
-  right: 12px;
+  right: 15px;
   top: 8px;
 }
 
@@ -426,7 +426,7 @@ a.disabled-link:hover {
 
 #overview-overlay-header .dropdown-toggle {
   color: white;
-  background-color: rgb(60, 110, 160);
+  background-color: rgba(60, 110, 160, .5);
   background-image: none;
   font-size: 16px;
   font-weight: bold;
@@ -434,7 +434,7 @@ a.disabled-link:hover {
 }
 
 #overview-overlay-dropdown {
-  background-color: rgb(60, 110, 160) !important;
+  background-color: rgba(60, 110, 160, .9) !important;
   height: 100px;
   width: 100%;
   overflow: auto;

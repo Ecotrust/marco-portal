@@ -5,6 +5,7 @@ function layerModel(options, parent) {
     // properties
     self.id = options.id || null;
     self.name = options.name || null;
+    self.featureAttributionName = self.name;
     self.url = options.url || null;
     self.arcgislayers = options.arcgis_layers || 0;
     self.type = options.type || null;
@@ -29,6 +30,12 @@ function layerModel(options, parent) {
     
     self.sharedBy = ko.observable(false);
     self.shared = ko.observable(false);
+    
+    if (self.featureAttributionName === 'OCS Lease Blocks') {
+        self.featureAttributionName = 'OCS Lease Blocks -- DRAFT Report';
+    } else if (self.featureAttributionName === 'Party & Charter Boat') {
+        self.featureAttributionName = 'Party & Charter Boat Trips';
+    } 
     
     // set target blank for all links
     if (options.description) {
@@ -321,7 +328,7 @@ function layerModel(options, parent) {
         if (layer.utfgrid) {
             app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
         }
-    }
+    };
     
     self.setInvisible = function() {
         var layer = this;
@@ -351,13 +358,15 @@ function layerModel(options, parent) {
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
             app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
         }
-    }
+    };
 
     self.showSublayers = ko.observable(false);
 
     self.showSublayers.subscribe(function () {
         setTimeout(function () {
-            $('.layer').find('.open .layer-menu').jScrollPane();
+            if ( app.viewModel.activeLayer().subLayers.length > 1 ) {
+                $('.layer').find('.open .layer-menu').jScrollPane();
+            }
         });
     });
 
@@ -365,9 +374,21 @@ function layerModel(options, parent) {
     self.toggleActive = function(self, event) {
         var layer = this;
 
+        // save a ref to the active layer for editing,etc
+        app.viewModel.activeLayer(layer);
+        
         //handle possible dropdown/sublayer behavior
         if (layer.subLayers.length) {
-            if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
+            app.viewModel.activeParentLayer(layer);
+            if ( app.embeddedMap ) { // if data viewer is mobile app
+                $('.carousel').carousel('prev');
+                var api = $("#sublayers-div").jScrollPane({}).data('jsp');
+                if ( api ) {
+                    api.destroy();
+                }
+                $('#mobile-data-right-button').show();
+                $('#mobile-map-right-button').hide(); 
+            } else if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
                 if (!layer.showSublayers()) {
                     //show drop-down menu
                     layer.showSublayers(true);
@@ -394,10 +415,7 @@ function layerModel(options, parent) {
         // start saving restore state again and remove restore state message from map view
         app.saveStateMode = true;
         app.viewModel.error(null);
-
-        // save a ref to the active layer for editing,etc
-        // still using this?
-        app.viewModel.activeLayer(layer);
+        //app.viewModel.unloadedDesigns = [];
 
         if (layer.active()) { // if layer is active
             layer.deactivateLayer();
@@ -683,10 +701,11 @@ function mapLinksModel() {
             urlOrigin = 'http://' + window.location.host;
         }
         var header = '<a href="/visualize"><img src="'+urlOrigin+'/media/marco/img/marco-logo_planner.jpg" style="border: 0px;"/></a>';
+        var iframeID = '';
         if (info === 'bookmark') {
-            var iframeID = '#bookmark-iframe-html';
+            iframeID = '#bookmark-iframe-html';
         } else {
-            var iframeID = '#iframe-html';
+            iframeID = '#iframe-html';
         }
         mapWindow.document.write('<html><body>' + $(iframeID)[0].value + '</body></html>');
         mapWindow.document.title = "Your MARCO Map!";
@@ -790,6 +809,7 @@ function viewModel() {
 
     // last clicked layer for editing, etc
     self.activeLayer = ko.observable();
+    self.activeParentLayer = ko.observable();
 
     // determines visibility of description overlay
     self.showDescription = ko.observable();
@@ -853,8 +873,11 @@ function viewModel() {
         app.markers.clearMarkers();
     };
     
-    self.updateMarker = function() {
+    self.updateMarker = function(lonlat) {
         app.markers.clearMarkers();
+        app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
+        app.marker.map = app.map;
+        //app.marker.display(true);
         if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
             app.markers.addMarker(app.marker);
             app.map.setLayerIndex(app.markers, 99);
@@ -912,11 +935,11 @@ function viewModel() {
     // zoom with box
     self.zoomBoxIn = function (self, event) {
         var $button = $(event.target).closest('.btn');
-        self.zoomBox($button)
+        self.zoomBox($button);
     };
     self.zoomBoxOut = function (self, event) {
         var $button = $(event.target).closest('.btn');
-        self.zoomBox($button, true)
+        self.zoomBox($button, true);
     };
     self.zoomBox = function  ($button, out) {
         // out is a boolean to specify whether we are zooming in or out
@@ -1025,25 +1048,26 @@ function viewModel() {
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
     
-        var dataScrollpane = $('#data-accordion').data('jsp');
-        if (dataScrollpane === undefined) {
-            $('#data-accordion').jScrollPane();
-        } else {
-            dataScrollpane.reinitialise();
-        }
-        
-        var activeScrollpane = $('#active').data('jsp');
-        if (activeScrollpane === undefined) {
-            $('#active').jScrollPane();
-        } else {
-            activeScrollpane.reinitialise();
-        }
-        
-        var legendScrollpane = $('#legend-content').data('jsp');
-        if (legendScrollpane === undefined) {
-            $('#legend-content').jScrollPane();
-        } else {
-            setTimeout(function() {legendScrollpane.reinitialise();},100);
+        if ( ! app.embeddedMap ) {
+            var dataScrollpane = $('#data-accordion').data('jsp');
+            if (dataScrollpane === undefined) {
+                $('#data-accordion').jScrollPane();
+            } else {
+                dataScrollpane.reinitialise();
+            }
+            
+            var activeScrollpane = $('#active').data('jsp');
+            if (activeScrollpane === undefined) {
+                $('#active').jScrollPane();
+            } else {
+                activeScrollpane.reinitialise();
+            }
+            var legendScrollpane = $('#legend-content').data('jsp');
+            if (legendScrollpane === undefined) {
+                $('#legend-content').jScrollPane();
+            } else {
+                setTimeout(function() {legendScrollpane.reinitialise();},100);
+            }
         }
         
     };
@@ -1069,8 +1093,11 @@ function viewModel() {
             });
         }
         //$(elem).mCustomScrollbar("update");
-        $(elem).mCustomScrollbar("scrollTo", "top"); 
-        setTimeout( function() { $(elem).mCustomScrollbar("update"); }, 500);
+        //$(elem).mCustomScrollbar("scrollTo", "top"); 
+        setTimeout( function() { 
+            $(elem).mCustomScrollbar("update"); 
+            $(elem).mCustomScrollbar("scrollTo", "top"); 
+        }, 500);
     };
     
     // close layer description
@@ -1266,7 +1293,7 @@ function viewModel() {
     // get layer by id
     self.getLayerById = function(id) {
         for (var x=0; x<self.themes().length; x++) {
-            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return layer.id === id });
+            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return layer.id === id; });
             if (layer_list.length > 0) {
                 return layer_list[0];
             }
@@ -1418,7 +1445,7 @@ function viewModel() {
     
     self.stepTwoOfBasicTour = function() {
         $('.pageguide-fwd')[0].click();
-    }
+    };
     
     self.startDataTour = function() {
         //ensure the pageguide is closed 
@@ -1634,6 +1661,25 @@ function viewModel() {
         self.usernameError(false);
     };
     
+    self.getWindPlanningAreaAttributes = function (title, data) {
+        attrs = [];
+        if ('INFO' in data) {
+            var state = data.INFO,
+                first = state.indexOf("Call"),
+                second = state.indexOf("WEA"),
+                third = state.indexOf("RFI");
+            /*if (first !== -1) {
+                state = state.slice(0, first);
+            } else if (second !== -1) {
+                state = state.slice(0, second);
+            } else if (third !== -1) {
+                state = state.slice(0, third);
+            }*/
+            attrs.push({'display': '', 'data': state});
+        } 
+        return attrs;
+    };
+    
     self.getSeaTurtleAttributes = function (title, data) {
         attrs = [];
         if ('ST_LK_NUM' in data && data['ST_LK_NUM']) {
@@ -1648,22 +1694,23 @@ function viewModel() {
         }
         
         if ('ST_LK_NUM' in data && data['ST_LK_NUM'] ) {
+            var season, species, sighting; 
             if ('GREEN_LK' in data && data['GREEN_LK']) {
-                var season = data['GREEN_LK'],
-                    species = 'Green Sea Turtle',
-                    sighting = species + ' (' + season + ') ';
+                season = data['GREEN_LK'];
+                species = 'Green Sea Turtle';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('LEATH_LK' in data && data['LEATH_LK']) {
-                var season = data['LEATH_LK'],
-                    species = 'Leatherback Sea Turtle',
-                    sighting = species + ' (' + season + ') ';
+                season = data['LEATH_LK'];
+                species = 'Leatherback Sea Turtle';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('LOGG_LK' in data && data['LOGG_LK']) {
-                var season = data['LOGG_LK'],
-                    species = 'Loggerhead Sea Turtle',
-                    sighting = species + ' (' + season + ') ';
+                season = data['LOGG_LK'];
+                species = 'Loggerhead Sea Turtle';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }
         }
@@ -1682,22 +1729,23 @@ function viewModel() {
             attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
         }
         if ('TOO_LK_NUM' in data && data['TOO_LK_NUM'] ) {
+            var season, species, sighting; 
             if ('SPERM_LK' in data && data['SPERM_LK']) {
-                var season = data['SPERM_LK'],
-                    species = 'Sperm Whale',
-                    sighting = species + ' (' + season + ') ';
+                season = data['SPERM_LK'];
+                species = 'Sperm Whale';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('BND_LK' in data && data['BND_LK']) {
-                var season = data['BND_LK'],
-                    species = 'Bottlenose Dolphin',
-                    sighting = species + ' (' + season + ') ';
+                season = data['BND_LK'];
+                species = 'Bottlenose Dolphin';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }  
             if ('STRIP_LK' in data && data['STRIP_LK']) {
-                var season = data['STRIP_LK'],
-                    species = 'Striped Dolphin',
-                    sighting = species + ' (' + season + ') ';
+                season = data['STRIP_LK'];
+                species = 'Striped Dolphin';
+                sighting = species + ' (' + season + ') ';
                 attrs.push({'display': '', 'data': sighting});
             }
         }
@@ -1707,10 +1755,17 @@ function viewModel() {
     self.getWindSpeedAttributes = function (title, data) {
         attrs = [];
         if ('SPEED_90' in data) {
-            var min_speed = (parseFloat(data['SPEED_90'])-.125).toPrecision(3),
-                max_speed = (parseFloat(data['SPEED_90'])+.125).toPrecision(3);
+            var min_speed = (parseFloat(data['SPEED_90'])-0.125).toPrecision(3),
+                max_speed = (parseFloat(data['SPEED_90'])+0.125).toPrecision(3);
             attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_speed + ' to ' + max_speed + ' m/s'});
         } 
+        return attrs;
+    };
+    
+    self.adjustPartyCharterAttributes = function (attrs) {
+        for (var x=0; x<attrs.length; x=x+1) {
+            attrs[x].display = 'Total Trips (2000-2009)';
+        }
         return attrs;
     };
     
@@ -1806,7 +1861,8 @@ function viewModel() {
                 stateName = 'Rhode Island / Massachusetts';
             }
             //if ( data['WEA2_NAME'].replace(/\s+/g, '') !== "" ) {
-            attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
+            //TAKING THIS OUT TEMPORARILY UNTIL WE HAVE UPDATED THE DATA SUMMARY FOR WPAS AND LEASE AREAS
+            //attrs.push({'display': 'Within the ' + stateName + ' WPA', 'data': null});
             //}
         }
         

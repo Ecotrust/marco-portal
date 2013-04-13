@@ -677,7 +677,7 @@ function selectionModel(options) {
                 //app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 
-                debugger; 
+                //debugger; 
             }
         });
     }; 
@@ -695,7 +695,7 @@ function selectionModel(options) {
                 app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -722,7 +722,7 @@ function selectionModel(options) {
             url: '/scenario/delete_design/' + selection.uid + '/',
             type: 'POST',
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -893,7 +893,7 @@ function IESelectionFormModel(options) {
                 app.map.addLayer(self.selectedLeaseBlocksLayer);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     });
@@ -948,6 +948,7 @@ function scenarioModel(options) {
     self.id = options.uid || null;
     self.uid = options.uid || null;
     self.name = options.name;
+    self.featureAttributionName = self.name + ' -- DRAFT Report';
     self.description = options.description;
     self.shared = ko.observable();
     self.sharedByName = options.sharedByName || null;
@@ -1026,6 +1027,12 @@ function scenarioModel(options) {
     
     self.toggleActive = function(self, event) {
         var scenario = this;
+        
+        // start saving restore state again and remove restore state message from map view
+        app.saveStateMode = true;
+        app.viewModel.error(null);
+        //app.viewModel.unloadedDesigns = [];
+        
         //app.viewModel.activeLayer(layer);
         if (scenario.active()) { // if layer is active, then deactivate
             scenario.deactivateLayer();
@@ -1041,6 +1048,12 @@ function scenarioModel(options) {
         if (scenario.isDrawingModel ) {
             
         } else if ( scenario.isSelectionModel ) {
+            for (var i=0; i < app.viewModel.scenarios.activeSelections().length; i=i+1) {
+                if(app.viewModel.scenarios.activeSelections()[i].id === scenario.id) { 
+                    app.viewModel.scenarios.activeSelections().splice(i,1);
+                    i = i-1;
+                }
+            }
             app.viewModel.scenarios.activeSelections().push(scenario);
         }
     };
@@ -1061,13 +1074,15 @@ function scenarioModel(options) {
         app.setLayerVisibility(scenario, false);
         app.viewModel.activeLayers.remove(scenario);
         
+        app.viewModel.removeFromAggregatedAttributes(scenario.name);
+        /*    
         //remove the key/value pair from aggregatedAttributes
         delete app.viewModel.aggregatedAttributes()[scenario.name];
         //if there are no more attributes left to display, then remove the overlay altogether
         if ($.isEmptyObject(app.viewModel.aggregatedAttributes())) {
             app.viewModel.aggregatedAttributes(false);
         }
-    
+        */
     };
     
     self.editScenario = function() {
@@ -1108,7 +1123,7 @@ function scenarioModel(options) {
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
             error: function (result) { 
-                debugger; 
+                //debugger; 
             }
         });
     }; 
@@ -1126,7 +1141,7 @@ function scenarioModel(options) {
                 app.viewModel.scenarios.addScenarioToMap(null, {uid: data[0].uid});
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -1153,7 +1168,7 @@ function scenarioModel(options) {
             url: '/scenario/delete_design/' + scenario.uid + '/',
             type: 'POST',
             error: function (result) {
-                debugger;
+                //debugger;
             }
         })
     };
@@ -1165,8 +1180,11 @@ function scenarioModel(options) {
         var scenario = this;
         
         if (scenario.visible()) { //make invisible
-            scenario.visible(false)
-            app.setLayerVisibility(scenario, false)
+            scenario.visible(false);
+            app.setLayerVisibility(scenario, false);
+            
+            app.viewModel.removeFromAggregatedAttributes(scenario.name);
+            
         } else { //make visible
             scenario.visible(true);
             app.setLayerVisibility(scenario, true);
@@ -1282,8 +1300,7 @@ function scenariosModel(options) {
     self.sharingLayer = ko.observable();
     self.showSharingModal = function(scenario) {
         self.sharingLayer(scenario);
-        self.sharingLayer().temporarilySelectedGroups.removeAll();
-        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups());
+        self.sharingLayer().temporarilySelectedGroups(self.sharingLayer().selectedGroups().slice(0));
         $('#share-modal').modal('show');
     };
     
@@ -1304,7 +1321,6 @@ function scenariosModel(options) {
     self.toggleGroup = function(obj) {
         var groupName = obj.group_name,
             indexOf = self.sharingLayer().temporarilySelectedGroups.indexOf(groupName);
-    
         if ( indexOf === -1 ) {  //add group to list
             self.sharingLayer().temporarilySelectedGroups.push(groupName);
         } else { //remove group from list
@@ -1543,7 +1559,9 @@ function scenariosModel(options) {
                     self.loadLeaseblockLayer();
                 }
             },
-            error: function (result) { debugger; }
+            error: function (result) { 
+                //debugger; 
+            }
         });
     };    
 
@@ -1563,7 +1581,9 @@ function scenariosModel(options) {
                 self.selectionFormModel = new IESelectionFormModel(); //new selectionFormModel();
                 ko.applyBindings(self.selectionFormModel, document.getElementById('selection-form'));
             },
-            error: function (result) { debugger; }
+            error: function (result) { 
+                //debugger; 
+            }
         });
     };   
 
@@ -1577,7 +1597,9 @@ function scenariosModel(options) {
                 ko.applyBindings(app.viewModel.scenarios.drawingFormModel, document.getElementById('drawing-form'));
                 //self.polygonFormModel.updateDesignScrollBar();
             },
-            error: function (result) { debugger; }
+            error: function (result) { 
+                //debugger; 
+            }
         });
     }; 
 
@@ -1709,7 +1731,7 @@ function scenariosModel(options) {
                             }
                         },
                         error: function (result) {
-                            debugger;
+                            //debugger;
                         }
                     
                     });
@@ -1770,10 +1792,46 @@ function scenariosModel(options) {
                 
             },
             error: function(result) {
-                debugger;
+                //debugger;
                 app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
             }
         });
+    };
+    
+    // activate any lingering designs not shown during loadCompressedState
+    self.showUnloadedDesigns = function() {
+        var designs = app.viewModel.unloadedDesigns;
+        
+        if (designs && designs.length) {
+            for (var x=0; x < designs.length; x=x+1) {
+                var id = designs[x].id,
+                    opacity = designs[x].opacity,
+                    isVisible = designs[x].isVisible;
+                //debugger;    
+                if (app.viewModel.layerIndex[id]) {
+                    app.viewModel.layerIndex[id].opacity(opacity);
+                    //the following delay might help solve what appears to be a race condition 
+                    //that prevents the design in the layer list from displaying the checked box icon after loading
+                    setTimeout( function() {app.viewModel.layerIndex[id].activateLayer();}, 100);
+                    //must not be understanding something about js, but at the least the following seems to work now...
+                    //if (isVisible || !isVisible) {
+                        //if (isVisible !== 'true' && isVisible !== true) {
+                            //app.viewModel.layerIndex[id].toggleVisible();
+                        //}
+                    //}
+                    
+                    //replacing the following $.each with a for loop in an attempt to fix an occasional (non-lethal) error
+                    //in which the splice seemed to get ahead of the loop
+                    //$.each(app.viewModel.unloadedDesigns, function(i){
+                    for (var i=0; i < app.viewModel.unloadedDesigns.length; i=i+1) {
+                        if(app.viewModel.unloadedDesigns[i].id === id) { 
+                            app.viewModel.unloadedDesigns.splice(i,1);
+                            i = i-1;
+                        }
+                    }
+                }
+            }
+        }
     };
     
     self.loadScenariosFromServer = function() {
@@ -1784,9 +1842,10 @@ function scenariosModel(options) {
             success: function (scenarios) {
                 self.loadScenarios(scenarios);
                 self.scenariosLoaded = true;
+                self.showUnloadedDesigns();
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1817,11 +1876,12 @@ function scenariosModel(options) {
             type: 'GET',
             dataType: 'json',
             success: function (selections) {
-                app.viewModel.scenarios.loadSelections(selections);
-                app.viewModel.scenarios.selectionsLoaded = true;
+                self.loadSelections(selections);
+                self.selectionsLoaded = true;
+                self.showUnloadedDesigns();
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1851,11 +1911,12 @@ function scenariosModel(options) {
             type: 'GET',
             dataType: 'json',
             success: function (drawings) {
-                app.viewModel.scenarios.loadDrawings(drawings);
-                app.viewModel.scenarios.drawingsLoaded = true;
+                self.loadDrawings(drawings);
+                self.drawingsLoaded = true;
+                self.showUnloadedDesigns();
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1916,9 +1977,13 @@ function scenariosModel(options) {
         self.leaseblockList = ocsblocks;
     };  
     
+    self.cancelShare = function() {
+        self.sharingLayer().temporarilySelectedGroups.removeAll();
+    };
+    
     //SHARING DESIGNS
     self.submitShare = function() {
-        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups());
+        self.sharingLayer().selectedGroups(self.sharingLayer().temporarilySelectedGroups().slice(0));
         var data = { 'scenario': self.sharingLayer().uid, 'groups': self.sharingLayer().selectedGroups() };
         $.ajax( {
             url: '/scenario/share_design',
@@ -1926,7 +1991,7 @@ function scenariosModel(options) {
             type: 'POST',
             dataType: 'json',
             error: function(result) {
-                debugger;
+                //debugger;
             }
         });
     };
@@ -1960,7 +2025,7 @@ $('#designsTab').on('show', function (e) {
                 app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
         
@@ -1972,7 +2037,7 @@ $('#designsTab').on('show', function (e) {
                 app.viewModel.scenarios.sharingGroups(groups);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
     }

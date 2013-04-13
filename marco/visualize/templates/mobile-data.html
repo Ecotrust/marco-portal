@@ -1,0 +1,125 @@
+    
+    <div style="height: 100%; overflow: auto;">
+        
+        <!-- Data Panel (left panel) -->
+        <div class="frame tabs" style="border-radius: 0px;">
+            <div class="sidebar-nav">
+                <!-- tab controls -->
+                <ul id="myTab" class="nav nav-tabs" style="margin-bottom: 0px;">
+                    <li class="active" data-tab="data">
+                        <a href="#data" data-toggle="tab" id="dataTab" style="border-radius: 0px;">Data</a>
+                    </li>
+                    <li data-tab="active" >
+                        <a href="#active" data-toggle="tab" id="activeTab">Active  
+                            <span data-bind="visible: activeLayers().length > 0">
+                                (<span  data-bind="text: activeLayers().length">0</span>)
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+                <!-- tab body -->
+                <div id="myTabContent" class="tab-content">
+                
+                    <!-- DATA TAB -->
+                    <div class="tab-pane active in fade" id="data">
+                        <div class="row-fluid">
+                            <div class="span12" style="padding-bottom: 20px; padding-top: 23px;">
+                                <form class="form-search" data-bind="submit: layerSearch" style="margin-bottom: 0px; padding-bottom: 0px;">
+                                    <div class="span12">
+                                        <input type="text" class="search-box" data-provide="typeahead" data-bind="value: searchTerm, event: { keyup: keySearch }" style="overflow: hidden; text-overflow: ellipsis; height: 100%;" placeholder="Search">
+                                        
+                                        <a class="btn">
+                                            <i class="icon-remove icon-large"></i> 
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12 accordion-wrapper">
+                                    <!-- data accordion -->
+                                    <div id="data-accordion">
+                                        <div class="accordion" data-bind="foreach: themes">
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading" data-bind="click: setOpenTheme, css: { 'active': isOpenTheme() }">
+                                                    <div>
+                                                        <a class="accordion-toggle"> <!--event: {'hover': showDescription}-->
+                                                            <span data-bind="text: name">Themes</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-body collapse" data-bind="css: { 'in': isOpenTheme() }">
+                                                    <div class="accordion-inner">
+                                                        <ul  class="unstyled" data-bind="foreach: layers ">
+                                                            <li class="layer" data-bind="css: { nosublayers: subLayers.length === 0 }">
+                                                                <div class="btn-group btn-group-layer" data-bind="css: {'open': showSublayers() }, attr: {name: name}">
+                                                                    
+                                                                    <a class="btn btn-layer" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgba(0,0,0,0.15); width: 80%;" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                                        <div style="font-weight: normal">
+                                                                            <span style="padding-left: 2px;" data-bind="text: name"></span>
+                                                                            <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
+                                                                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                                        </div>
+                                                                    </a>
+                                                                    
+                                                                </div>
+                                                            </li>  
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /data-accordion -->
+                                </div>
+                            </div>
+                            <!-- /span -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                    <!-- END DATA TAB -->
+                    <!-- ACTIVE TAB -->
+                    <div class="tab-pane fade" id="active">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div data-bind="visible: activeLayers().length === 0">
+                                    <div style="padding: 10px; margin-top: 10px;">
+                                        <p>
+                                            You currently have no activated data layers. 
+                                        </p>
+                                        <p>
+                                            Data layers that are activated in the Data panel will appear in this Active panel.
+                                        </p>
+                                        <p>
+                                            Data layers in the Active panel can be adjusted in terms of their visibility and their ordering on the map.
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="unstyled list" data-bind="sortable: { data: activeLayers, options: {  } }">
+                                    <li style="margin: 0px 0px; border: 0px; padding: 5px 0px; width: 100%;">
+                                        <div class="btn-group">
+                                            <a class="btn btn-layer" style="display: inline-block; width: 80%;" data-bind="css: { 'active': visible() }, click: toggleVisible">
+                                                <div data-bind="text: name"></div>
+                                                <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                    <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                </span>
+                                                <span ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></span>
+                                            </a>
+                                            <a class="btn" data-bind="click: toggleActive">
+                                                <i class="icon-remove">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ACTIVE TAB -->
+                </div>
+            </div>
+        </div>
+        <!-- /Data Panel -->
+    </div>
+

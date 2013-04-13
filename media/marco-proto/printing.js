@@ -8,43 +8,43 @@
 		self.$popover = $('#printing-popover');
 		// show print dialog
 		self.showPrintDialog = function (vm, event) {
-		    var width = $("#map-panel").width() + $("#legend:visible").width();
+            var width = $("#map-panel").width() + $("#legend:visible").width();
 
-		    self.$button = $(event.target).closest('.btn');
+            self.$button = $(event.target).closest('.btn');
 
-		    // adjust the width depending on legend visibility
-		    if ($("#legend").is(":visible")) {
-		    	width = width + 60;
-		    } else {
-		    	width = width + 40;
-		    }
+            // adjust the width depending on legend visibility
+            if ($("#legend").is(":visible")) {
+                width = width + 60;
+            } else {
+                width = width + 40;
+            }
 
-		    self.isGoogle(/Google/.test(app.map.baseLayer.name));
+            self.isGoogle(/Google/.test(app.map.baseLayer.name));
 
-		    // set some default options
-		    self.shotHeight($(document).height());
-		    self.shotWidth(width);
-		    self.mapHeight($(document).height());
+            // set some default options
+            self.shotHeight($(document).height());
+            self.shotWidth(width);
+            self.mapHeight($(document).height());
 
-		    self.mapWidth(width);
-		    self.thumbnail(false);
-		    self.showLegend(app.viewModel.showLegend() || false);
-		    self.ratio = self.shotHeight() / self.shotWidth();
+            self.mapWidth(width);
+            self.thumbnail(false);
+            self.showLegend(app.viewModel.showLegend() || false);
+            self.ratio = self.shotHeight() / self.shotWidth();
 
-		    if (self.$popover.is(":visible")) {
-		        self.$popover.hide();
-		    } else {
-		        // hide the popover if already visible
-		        self.jobStatus("Waiting for print/export to complete");
-		        self.showSpinner(true);
-		        self.thumbnail(false);
-		        self.$popover.show().draggable().position({
-		            "my": "right top",
-		            "at": "left middle",
-		            "of": self.$button,
-		            offset: "0px -30px"
-		        });
-		    }
+            if (self.$popover.is(":visible")) {
+                self.$popover.hide();
+            } else {
+                // hide the popover if already visible
+                self.jobStatus("Waiting for print/export to complete");
+                self.showSpinner(true);
+                self.thumbnail(false);
+                self.$popover.show().draggable().position({
+                    "my": "right top",
+                    "at": "left middle",
+                    "of": self.$button,
+                    offset: "0px -30px"
+                });
+            }
 		};
 
 		// print server is enabled, don't show button without it
@@ -66,7 +66,7 @@
 
 		// dpi settings for phantomjs
 		self.dpiWidth = 101.981;
-    	self.dpiHeight = 110.007;
+        self.dpiHeight = 110.007;
 
 		// working dimensions of map for rendering purposes
 		self.mapHeight = ko.observable();
@@ -130,12 +130,12 @@
 		});
 
 		self.units.subscribe(function (units) {
-			var steps = units === 'inches' ? .1 : 1;
+			var steps = units === 'inches' ? 0.1 : 1;
 			// save the old value and adjust the steps
 			$('.ui-spinner-input').each(function (i, input) {
 				var $input = $(input), val = $input.val();
 				console.log(val);
-				$input.spinner('option', { 'step': steps})
+				$input.spinner('option', { 'step': steps});
 				$input.val(val);
 			});
 		});
@@ -165,7 +165,7 @@
 					self.title(self.oldTitle);
 				}
 			}
-		})
+		});
 
 		// print button in result dialog
 		self.print = function () {

@@ -100,11 +100,12 @@
 					    </div>
 					    <div class="span7">
 					       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-					      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					      <!-- REMOVING THE FOLLOWING UNTIL WE FIND A SOLUTION -->
+                          <!--<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 					     	 <span class="icon-bar"></span>
 					      	 <span class="icon-bar"></span>
 					      	 <span class="icon-bar"></span>
-					      </a>
+					      </a>-->
 					      <div class="nav-collapse">
 					      	<div>
 						        <form class="form-search pull-right" action="<?php echo home_url( '/' ); ?>" method="get">
@@ -127,7 +128,7 @@
 				</div>
 			</div>
 		</header> <!-- end header -->
-	<div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">
+	<div id="feedback-tab" class="rounded hidden-phone" data-toggle="modal" data-target="#feedback-modal">
 	    feedback
 	</div>
 	<div id="feedback-modal" class="modal hide fade">

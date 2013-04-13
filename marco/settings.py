@@ -46,9 +46,9 @@ GEOMETRY_CLIENT_SRID = 3857 #for latlon
 GEOJSON_SRID = 3857
 
 APP_NAME = "MARCO Mid-Atlantic Ocean Data Portal"
-FEEDBACK_RECIPIENT = "MARCO Portal Team <info@midatlanticocean.org>"
-HELP_EMAIL = "info@midatlanticocean.org"
-DEFAULT_FROM_EMAIL = "MARCO Portal Team <info@midatlanticocean.org>"
+FEEDBACK_RECIPIENT = "MARCO Portal Team <portal@midatlanticocean.org>"
+HELP_EMAIL = "portal@midatlanticocean.org"
+DEFAULT_FROM_EMAIL = "MARCO Portal Team <portal@midatlanticocean.org>"
 
 # url for socket.io printing
 #SOCKET_URL = 'http://dev.marco.marineplanning.org:8080'

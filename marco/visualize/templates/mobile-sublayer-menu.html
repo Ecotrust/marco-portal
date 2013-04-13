@@ -1,0 +1,41 @@
+
+<div id="sublayers-template" style="height: 100%;">
+    <!-- ko if: $root.activeParentLayer() && $root.activeParentLayer().subLayers.length > 0 -->
+    <!-- ko if: !$root.activeParentLayer().isCheckBoxLayer() -->
+    <div id="sublayers-div" class="layer-menu unstyled">
+        <h3 data-bind="text: $root.activeParentLayer().name" style="margin-left: 10px"></h3>
+        <ul class="unstyled" data-bind="foreach: $root.activeParentLayer().subLayers">
+            <li class="layer" style="width: 100%">
+                <div class="btn-group btn-group-layer" style="margin: 5px 10px; width: 100%" data-bind="attr: {name: name}">
+                    <a class="btn btn-layer" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: rgba(0,0,0,0.15); width: 100%;" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                        <div style="font-weight: normal; overflow: hidden; text-overflow: ellipsis; width: 96%">
+                            <span data-bind="text: name"></span>
+                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $root.activeParentLayer().isCheckBoxLayer() -->
+    <div class="layer-menu unstyled">
+        <h3 data-bind="text: $root.activeParentLayer().name" style="margin-left: 10px"></h3>
+        <ul class="unstyled" data-bind="foreach: $root.activeParentLayer().subLayers">
+            <li class="layer" style="width: 100%">
+                <div class="btn-group btn-group-layer" style="margin: 5px 10px; width: 100%" data-bind="attr: {name: name}">
+                    <a class="btn btn-layer" style="text-align: left; border-left-width: 1px; border-left-style: solid; border-left-color: rgba(0,0,0,0.15); width: 100%;" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                        <div style="font-weight: normal; overflow: hidden; text-overflow: ellipsis; width: 96%">
+                            <span data-bind="text: name"></span>
+                            <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>

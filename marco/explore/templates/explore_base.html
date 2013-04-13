@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                         </header>
-                        <div id="feedback-tab" class="rounded" data-toggle="modal" data-target="#feedback-modal">
+                        <div id="feedback-tab" class="rounded hidden-phone" data-toggle="modal" data-target="#feedback-modal">
                             feedback
                         </div>
                         <div id="feedback-modal" class="modal hide fade">
@@ -225,7 +225,7 @@
                                   <div class="row">
                                     <div class="span7 social">
                                       <h5>Contact Us</h5>
-                                        <a href="" data-toggle="modal" data-target="#feedback-modal">info@midatlanticocean.org</a><br>
+                                        <a href="mailto:portal@midatlanticocean.org" data-toggle="modal" data-target="#feedback-modal">portal@midatlanticocean.org</a><br>
                                         732-263-5392
                                       <p></p>
                                     </div>
@@ -301,8 +301,26 @@
                                 $(event.target).find('.text').hide();
                             }
                            );
+                           
+                            var width = window.innerWidth;
+                            if (width < 768) {
+                                var body = document.getElementsByTagName("body")[0];
+                                body.style.marginTop='0px';
+                            }
 
 
+                            </script>
+                            <!-- Google Analytics -->
+                            <script type="text/javascript">
+                              var _gaq = _gaq || [];
+                              _gaq.push(['_setAccount', 'UA-35841423-1']);
+                              _gaq.push(['_trackPageview']);
+
+                              (function() {
+                                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                              })();
                             </script>
                             {% block javascript %}
                             {% endblock %}

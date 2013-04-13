@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^get_sharing_groups$', get_sharing_groups),
     url(r'share_bookmark$', share_bookmark),
     (r'^map', show_embedded_map),
+    (r'^mobile', show_mobile_map),
     (r'', show_planner),
 )

@@ -149,12 +149,12 @@ app.init = function () {
         //events: {fallThrough: true},
         handlerMode: 'click',
         callback: function(infoLookup, lonlat, xy) {   
-            app.map.utfGridClickHandling(infoLookup);
+            app.map.utfGridClickHandling(infoLookup, lonlat, xy);
         }
     });
     map.addControl(map.UTFControl);    
     
-    app.map.utfGridClickHandling = function(infoLookup) {
+    app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
         var clickAttributes = [],
             date = new Date(),
             newTime = date.getTime();
@@ -225,6 +225,7 @@ app.init = function () {
                         var title = potential_layer.name,
                             text = attribute_objs;
                         if ( title === 'OCS Lease Blocks' ) {
+                            //title = 'OCS Lease Blocks -- DRAFT REPORT';
                             text = app.viewModel.getOCSAttributes(title, info.data);
                         } else if ( title === 'Sea Turtles' ) {
                             text = app.viewModel.getSeaTurtleAttributes(title, info.data);
@@ -232,6 +233,10 @@ app.init = function () {
                             text = app.viewModel.getToothedMammalAttributes(title, info.data);
                         } else if ( title === 'Wind Speed' ) {
                             text = app.viewModel.getWindSpeedAttributes(title, info.data);
+                        } else if ( title === 'BOEM Wind Planning Areas' ) {
+                            text = app.viewModel.getWindPlanningAreaAttributes(title, info.data);
+                        } else if ( title === 'Party & Charter Boat' ) {
+                            text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
                         }
                         clickAttributes[title] = text;
                         //app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
@@ -242,11 +247,23 @@ app.init = function () {
             $.extend(app.map.clickOutput.attributes, clickAttributes);
             app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
-        app.viewModel.updateMarker();
-        app.marker.display(true);
+        /*app.viewModel.updateMarker();
+        setTimeout( function() {
+            if (app.marker) {
+                console.log(lonlat);
+                console.log(xy);
+                app.marker.display(true);   
+            }
+        }, 100);*/
+        app.viewModel.updateMarker(lonlat);
+        app.marker.display(true); 
+        /*app.markers.clearMarkers();
+        app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
+        app.marker.map = app.map;
+        app.marker.display(true); */
     }; //end utfGridClickHandling
       
-    app.map.events.register("featureclick", null, function(e) {
+    app.map.events.register("featureclick", null, function(e, test) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         if (layer) {
             var date = new Date();
@@ -271,15 +288,16 @@ app.init = function () {
                 text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
             
+            if (newTime - app.map.clickOutput.time > 300) {
+                app.map.clickOutput.attributes = {};
+                app.map.clickOutput.time = newTime;
+            } 
+            app.map.clickOutput.attributes[title] = text;
+            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+            
         }
         
-        if (newTime - app.map.clickOutput.time > 300) {
-            app.map.clickOutput.attributes = {};
-            app.map.clickOutput.time = newTime;
-        } 
-        app.map.clickOutput.attributes[title] = text;
-        app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-        //app.viewModel.updateMarker();
+        //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
         //the following delay is so that the "click" handler below gets activated (and the marker is created) before the marker is updated here
         setTimeout( function() {
             if (app.marker) {
@@ -302,14 +320,18 @@ app.init = function () {
     //var icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.markers.icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.map.addLayer(app.markers);
-              
+      
+    
     //place the marker on click events
     app.map.events.register("click", app.map , function(e){
-        app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
+        /*app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
         app.marker.map = app.map;
         app.marker.display(false);
-        app.viewModel.updateMarker();
-        //app.viewModel.updateMarker();
+        app.viewModel.updateMarker();*/
+        app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
+        //the following is in place to prevent flash of marker appearing on what is essentially no feature click
+        //display is set to true in the featureclick and utfgridclick handlers (when there is actually a hit)
+        app.marker.display(false);
     });
     
     app.map.removeLayerByName = function(layerName) {
@@ -491,12 +513,12 @@ app.addUtfLayerToMap = function(layer) {
         );  
         */
     } else {
-        debugger;
+        //debugger;
     }
-}
+};
 
 app.setLayerVisibility = function(layer, visibility) {
-    // if layer is in openlayers, hide it
+    // if layer is in openlayers, hide/show it
     if (layer.layer) {
         layer.layer.setVisibility(visibility);
     }
@@ -509,8 +531,8 @@ app.setLayerZIndex = function(layer, index) {
 
 app.reCenterMap = function () {
     app.map.setCenter(new OpenLayers.LonLat(app.state.x, app.state.y).transform(
-        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7)
-}
+        new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")), 7);
+};
 
 // block mousehweel when over overlay
 $("#overview-overlay-text").hover(
@@ -528,4 +550,4 @@ $("#overview-overlay-text").hover(
             controls[i].enableZoomWheel();
         }
     }
-)
+);

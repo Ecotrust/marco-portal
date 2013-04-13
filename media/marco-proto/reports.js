@@ -56,7 +56,7 @@ function reportsModel(options) {
     
     self.hideReport = function() {
         self.showingReport(false);
-    }
+    };
         
     self.showWindReport = function() {
         var windReportOptions = {
@@ -92,7 +92,7 @@ function reportsModel(options) {
     self.showSubstationReport = function() {
         var awcReportOptions = {
             'title': { 
-                text: 'Distance to Coastal Substation' 
+                text: 'Distance to Coastal Substations' 
             },
             'yAxis': {
                 title: {
@@ -259,6 +259,7 @@ function reportsModel(options) {
             self.noActiveCollections(true);
             return;
         }
+        var draftTitle = {text: options.title.text + ' -- DRAFT Report'};
         var chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'reports-container',
@@ -268,7 +269,7 @@ function reportsModel(options) {
             credits: {
                 enabled: false
             },
-            title: options.title,
+            title: draftTitle,
             subtitle: options.subtitle,
             xAxis: {
                 categories: self.getCollectionNames()
@@ -320,7 +321,7 @@ function reportsModel(options) {
             }
                            
         });
-        var width = 400,
+        var width = 385,
             height = 90 + app.viewModel.scenarios.activeSelections().length * 60;
         if (height > 500) { 
             height = 500;
@@ -345,7 +346,7 @@ $('#reportsTab').on('show', function (e) {
                 app.viewModel.scenarios.scenariosLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
         });
         
@@ -359,9 +360,9 @@ $('#reportsTab').on('show', function (e) {
                 app.viewModel.scenarios.selectionsLoaded = true;
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
-        })
+        });
 
         // load the leaseblocks
         $.ajax({
@@ -372,8 +373,8 @@ $('#reportsTab').on('show', function (e) {
                 app.viewModel.scenarios.loadLeaseblocks(ocsblocks);
             },
             error: function (result) {
-                debugger;
+                //debugger;
             }
-        })
+        });
     }
 });
