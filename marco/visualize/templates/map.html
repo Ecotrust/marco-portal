@@ -156,6 +156,10 @@
             .olControlZoomOut {
                 padding: 1px !important;
             }
+            .olControlAttribution {
+                left: 10px !important;
+                bottom: 5px !important;
+            }
         </style>
         
         
@@ -274,7 +278,9 @@
         <!--<link rel="stylesheet" type="text/css" href="http://www.transportparadise.co.uk/layerswitcher/layerswitcher.css" />
         <link rel="stylesheet" type="text/css" src="{{MEDIA_URL}}/marco-proto/assets/css/simplelayerswitcher.css" />-->
         <script src="{{MEDIA_URL}}/marco/js/jquery.js"></script>
-        <script src="{{MEDIA_URL}}/marco/js/bootstrap.min.js"></script>
+        <script src="{{MEDIA_URL}}/marco/js/bootstrap.min.js"></script>  
+        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
+        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
         <script src="{{MEDIA_URL}}/marco/js/amplify.min.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery.ba-bbq.js"></script>
         <script src="{{MEDIA_URL}}/marco/js/jquery-ui-1.9.1.custom.js"></script>
@@ -320,6 +326,20 @@
                     }
                 }, 500);
             });
+            
+            $(document).ready( function() {
+                app.map.getLayersByName('ESRI Ocean')[0]['attribution'] = "Basemap Attribution";
+                $('.olControlAttribution').text("Basemap Attribution");
+                $('.olControlAttribution').width("112px");
+                $('.olControlAttribution').attr('rel',"tooltip");
+                //$('.olControlAttribution').attr('title',"The Ocean Basemap was created with data from the General Bathymetric Chart of the Oceans (GEBCO), IHO-IOC GEBCO Gazetteer of Undersea Feature Names, NOAA, Seafloor Mapping Lab of the California State University Monterey Bay, National Geographic, DeLorme, and Esri.");
+                $('.olControlAttribution').attr('title',"The ESRI Ocean Basemap was was built using data provided by ESRI, GEBCO, NOAA, Canadian Hydrographic Service (CHS), California State University at Monterey Bay (CSUMB), National Geographic, DeLorme, and NAVTEQ.");
+            });
+            
+            $(function () { 
+                //$("#test-popover").popover({trigger: 'hover'});  
+                $(".olControlAttribution").tooltip({trigger: 'hover'});  
+            });  
         
         </script>
         
