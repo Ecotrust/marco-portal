@@ -1,0 +1,100 @@
+<!doctype html>
+<!--[if IEMobile 7 ]>
+    <html dir="ltr" lang="en-US" class="no-js iem7">
+    <![endif]-->
+    <!--[if lt IE 7 ]>
+        <html dir="ltr" lang="en-US" class="no-js ie6">
+        <![endif]-->
+        <!--[if IE 7 ]>
+            <html dir="ltr" lang="en-US" class="no-js ie7">
+            <![endif]-->
+            <!--[if IE 8 ]>
+                <html dir="ltr" lang="en-US" class="no-js ie8">
+                <![endif]-->
+                <!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]>
+                    <!-->
+                    <html dir="ltr" lang="en-US" class="no-js">
+                    <!--<![endif]-->
+                    
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                        <title>
+                        </title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <!-- media-queries.js (fallback) -->
+                        <!--[if lt IE 9]>
+                            </script>
+                            <style>
+                            #feedback-tab {
+                                -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1.836909530733566e-16, M12=-1, M21=1, M22=-1.836909530733566e-16, SizingMethod='auto expand')";
+                                left: 0px;
+                                /* IE6 and 7 */ 
+                                filter: progid:DXImageTransform.Microsoft.Matrix(
+                                         M11=-1.836909530733566e-16,
+                                         M12=-1,
+                                         M21=1,
+                                         M22=-1.836909530733566e-16,
+                                         SizingMethod='auto expand');
+
+                              }
+                            </style>
+                            <script src="{{MEDIA_URL}}marco/js/respond.min.js"></script>
+                        <![endif]-->
+                        <!-- html5.js -->
+                        <!--[if lt IE 9]>
+                            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+                            </script>
+                        <![endif]-->
+                        <!--[if IE]>
+                                <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.ie.css">
+                        <![endif]-->        
+                        
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap.css">
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco-proto/assets/css/bootstrap-responsive.css">
+
+                        <!-- marco stylesheet -->
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.css">
+                        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css">
+                        <link rel="shortcut icon" href="{{MEDIA_URL}}marco/ico/favicon.ico">
+                        <style>
+                            .navbar .nav > li a {
+                                height: 45px;
+                                padding-top: 30px;
+                            }
+                        </style>
+                        <!--[if IE 7]>
+                          <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/font-awesome-ie7.css">
+                        <![endif]-->
+
+                    </head>
+                    
+                    <body class="blog">
+                        
+                        <div class="container">
+                            <div id="content" class="row-fluid">
+                                <div id="main" class="span12" role="main">
+                                    {% block  main %}{% endblock %}
+                                </div>
+                            </div>
+                            <!-- end #content -->
+                            
+                                
+                        </div>
+                        <!-- end #container -->
+                        <!-- scripts are now optimized via Modernizr.load -->\
+                        <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
+                        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery-ui.js"></script>
+                        <script src="{{MEDIA_URL}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-transition.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tab.js"></script>   
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
+                        <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script> 
+                        <script src="{{MEDIA_URL}}/marco-proto/topics.js"></script>
+                        
+                        {% block javascript %}
+                        {% endblock %}
+                    </body>
+                    </html>

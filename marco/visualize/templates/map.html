@@ -136,6 +136,7 @@
                 max-width: 30%;
                 min-width: 200px; 
                 max-height: 80%;
+                min-height: 75px;
                 top: 42px;
                 right: 13px;
                 padding: 10px;
@@ -226,7 +227,7 @@
                                     </div>
                                                                     
                                     <!--Hide/Show Legends Button-->
-                                    <a id="embedded-legend-button" class="btn" data-bind="click: toggleEmbeddedLegend, visible: activeLegendLayers().length > 0">
+                                    <a id="embedded-legend-button" class="btn" data-bind="click: toggleEmbeddedLegend, visible: activeLegendLayers().length > 0 && app.viewModel.showLegend()">
                                         <!--<i class="icon-list-ul icon-large"></i> -->
                                         <span>Legend</span>
                                         <span data-bind="visible: hasActiveLegends() > 0"> (<span data-bind="text: activeLegendLayers().length"></span>) </span>
