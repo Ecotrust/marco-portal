@@ -893,6 +893,53 @@
         }
     },
     {
+        "pk": 95,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": false,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                23
+            ],
+            "learn_more": "",
+            "data_overview": "These areas have no relation to actual Coral Protection Alternatives.  \r\nThey are for testing purposes only. ",
+            "slug_name": "coral-protection-mockups",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": 0.3,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Coral Protection Mockups",
+            "url": "/media/data_manager/geojson/CoralProtectionMockups.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 78,
         "model": "data_manager.layer",
         "fields": {

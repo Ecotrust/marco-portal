@@ -432,6 +432,14 @@ app.addVectorLayerToMap = function(layer) {
         graphicHeight: 8,
         graphicOpacity: layer.defaultOpacity
     });
+    if (layer.name === 'Coral Protection Mockups') {
+        /*styleMap.styles['default']['defaultStyle']['label'] = '${NAME}';
+        styleMap.styles['default']['defaultStyle']['fontColor'] = "red";
+        styleMap.styles['default']['defaultStyle']['fontSize'] = "14px";
+        styleMap.styles['default']['defaultStyle']['labelAlign'] = "cm";
+        styleMap.styles['default']['defaultStyle']['labelOutlineColor'] = "white";
+        styleMap.styles['default']['defaultStyle']['labelOutlineWidth'] = 3;*/
+    }
     if (layer.lookupField) {
         var mylookup = {};
         $.each(layer.lookupDetails, function(index, details) {    
