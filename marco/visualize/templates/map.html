@@ -122,6 +122,7 @@
                 left: 53px;
                 z-index: 800;
                 width: 20%;
+                background: transparent;
             }
             #embedded-legend-button {
                 background: rgba(0, 60, 136, 0.5);
@@ -136,7 +137,6 @@
                 max-width: 30%;
                 min-width: 200px; 
                 max-height: 80%;
-                min-height: 75px;
                 top: 42px;
                 right: 13px;
                 padding: 10px;
@@ -146,6 +146,9 @@
             }
             .jspVerticalBar {
                 right: 21px;
+            }
+            .olControlZoom {
+                background: transparent !important;
             }
             .olControlZoomIn {
                 padding: 1px !important;
@@ -176,7 +179,7 @@
                                     
                                     <!-- commenting out the following until a transparent background is generated for the marco logo -->
                                     <a data-bind="visible: showLogo, attr: { href: mapLinks.getPortalURL() }" target="_blank">
-                                        <img id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo-transparent.png"/>
+                                        <img class="btn" id="embedded-marco-logo" src="{{MEDIA_URL}}marco/img/marco-logo-transparent.png"/>
                                     </a>
                                         
                                     <!-- Aggregated Attribution Overlay Test (might still be referenced within the js) -->

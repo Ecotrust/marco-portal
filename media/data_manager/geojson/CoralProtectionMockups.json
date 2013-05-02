@@ -20,7 +20,7 @@
             "GLOBALID":"{0DE622FA-5E3D-4BF6-9BF5-CA15B31ADA35}",
             "OBJECTID":1,
             "CORAL_PROB":"High",
-            "NAME":"Coldwater Protection Alternative A",
+            "NAME":"Coldwater Protection Alternative #1",
             "SHAPE_Area":134160165.75491
         }
     },
@@ -36,7 +36,7 @@
             "GLOBALID":"{D658E66E-2192-417E-8FCA-137F1F150072}",
             "OBJECTID":4,
             "CORAL_PROB":"High",
-            "NAME":"Coldwater Protection Alternative B",
+            "NAME":"Coldwater Protection Alternative #2",
             "SHAPE_Area":175648992.131605
         }
     },
@@ -52,7 +52,7 @@
             "GLOBALID":"{1364B95B-1423-40CA-8126-C211D3C8F056}",
             "OBJECTID":20,
             "CORAL_PROB":"Low",
-            "NAME":"Coldwater Protection Alternative C",
+            "NAME":"Coldwater Protection Alternative #3",
             "SHAPE_Area":303983315.981244
         }
     },
@@ -68,7 +68,7 @@
             "GLOBALID":"{AFEB9DCF-6341-47BA-AF26-DA2BAA04E0EB}",
             "OBJECTID":15,
             "CORAL_PROB":"High",
-            "NAME":"Coldwater Protection Alternative D",
+            "NAME":"Coldwater Protection Alternative #4",
             "SHAPE_Area":514813499.029526
         }
     },
@@ -84,7 +84,7 @@
             "GLOBALID":"{C7207B2B-DB26-4AB0-A994-615C09F5570C}",
             "OBJECTID":17,
             "CORAL_PROB":"High",
-            "NAME":"Coldwater Protection Alternative E",
+            "NAME":"Coldwater Protection Alternative #5",
             "SHAPE_Area":252675938.078099
         }
     }
