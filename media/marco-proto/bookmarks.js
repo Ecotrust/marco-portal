@@ -57,7 +57,8 @@ function bookmarkModel(options) {
     self.getBookmarkUrl = function() {
         var host = window.location.href.split('#')[0];
         host = 'http://portal.midatlanticocean.org/visualize/';
-        return host + "#" + $.param(self.state);
+        //return host + "#" + $.param(self.state);
+        return host + "#" + self.state;
     };
     
     return self;

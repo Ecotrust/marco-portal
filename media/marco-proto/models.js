@@ -679,7 +679,8 @@ function mapLinksModel() {
         //app.updateURL();
         //urlHash = app.viewModel.currentURL().replace('visualize/', '')
         if ( bookmarkState ) {
-            urlHash = '#'+$.param(bookmarkState);
+            //urlHash = '#'+$.param(bookmarkState);
+            urlHash = '#' + bookmarkState;
         }
         if ( !urlOrigin ) {
             urlOrigin = 'http://' + window.location.host;
