@@ -780,6 +780,7 @@ function viewModel() {
     // toggle layer panel visibility
     self.toggleLayers = function() {
         self.showLayers(!self.showLayers());
+        self.updateScrollBars();
         app.map.render('map');
         if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
         app.updateUrl();
