@@ -203,6 +203,8 @@ function bookmarksModel(options) {
     };
     
     self.removeBookmark = function(bookmark) {
+        self.bookmarksList.remove(bookmark);
+        
         //if the user is logged in, ajax call to add bookmark to server 
         if (app.is_authenticated) { 
             $.ajax({ 
@@ -217,13 +219,11 @@ function bookmarksModel(options) {
                     //debugger;
                 } 
             });
+        } else {
+            // store the bookmarks locally
+            self.storeBookmarks();
         }
         
-        self.bookmarksList.remove(bookmark);
-        //$('#bookmark-popover').hide();
-        
-        // store the bookmarks locally
-        self.storeBookmarks();
     };
 
     // handle the bookmark submit
@@ -258,12 +258,12 @@ function bookmarksModel(options) {
             });
         } else {
             self.bookmarksList.unshift(bookmark);
+            // store the bookmarks locally
+            self.storeBookmarks();
         }
         //$('#bookmark-popover').hide();
         self.newBookmarkName('');
         
-        // store the bookmarks locally
-        self.storeBookmarks();
     };
     
     // get bookmark sharing groups for this user
@@ -342,7 +342,7 @@ function bookmarksModel(options) {
                     }
                     if (blist.length > 0) {
                         self.bookmarksList(blist);
-                        self.storeBookmarks();
+                        //self.storeBookmarks();
                     }
                 },
                 error: function(result) { 
