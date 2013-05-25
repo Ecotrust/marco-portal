@@ -744,6 +744,9 @@ function selectionFormModel(options) {
     self.IE = false;    
     
     self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    if (self.leaseBlockLayer.active()) {
+        self.leaseBlockLayerWasActive = true;
+    }
     self.leaseBlockLayer.activateLayer();
     self.leaseBlockLayer.setVisible();
     
@@ -939,6 +942,9 @@ function IESelectionFormModel(options) {
     self.IE = true;
     
     self.leaseBlockLayer = app.viewModel.getLayerById(6);
+    if (self.leaseBlockLayer.active()) {
+        self.leaseBlockLayerWasActive = true;
+    }
     self.leaseBlockLayer.activateLayer();
     self.leaseBlockLayer.setVisible();
     
@@ -1628,6 +1634,9 @@ function scenariosModel(options) {
             if (self.selectionFormModel.navigationControl) {
                 self.selectionFormModel.navigationControl.activate();
             }
+        }
+        if ( ! self.selectionFormModel.leaseBlockLayerWasActive ) {
+            self.selectionFormModel.leaseBlockLayer.deactivateLayer();
         }
         delete self.selectionFormModel;
         app.viewModel.enableFeatureAttribution();
