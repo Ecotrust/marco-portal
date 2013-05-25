@@ -670,7 +670,7 @@ function selectionModel(options) {
             success: function(data) {
                 app.viewModel.scenarios.scenarioForm(true);
                 $('#scenario-form').html(data);
-                if ($.browser.msie) {
+                if ($.browser.msie && $.browser.version < 9) {
                     app.viewModel.scenarios.selectionFormModel = new IESelectionFormModel();
                 } else {
                     app.viewModel.scenarios.selectionFormModel = new selectionFormModel(); 
@@ -1680,7 +1680,7 @@ function scenariosModel(options) {
             success: function(data) {
                 self.selectionForm(true);
                 $('#selection-form').html(data);
-                if ($.browser.msie) {
+                if ($.browser.msie && $.browser.version < 9) {
                     self.selectionFormModel = new IESelectionFormModel(); 
                 } else {
                     self.selectionFormModel = new selectionFormModel(); 
