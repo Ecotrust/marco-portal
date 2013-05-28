@@ -57,8 +57,8 @@ function bookmarkModel(options) {
     self.getBookmarkUrl = function() {
         var host = window.location.href.split('#')[0];
         host = 'http://portal.midatlanticocean.org/visualize/';
-        //return host + "#" + $.param(self.state);
-        return host + "#" + self.state;
+        return host + "#" + $.param(self.state);
+        //return host + "#" + self.state;
     };
     
     return self;
@@ -171,7 +171,7 @@ function bookmarksModel(options) {
     };
     
     self.setBookmarkIFrameHTML = function() {
-        var bookmarkState = self.sharingBookmark().state;
+        var bookmarkState = $.param(self.sharingBookmark().state);
         $('#bookmark-iframe-html')[0].value = app.viewModel.mapLinks.getIFrameHTML(bookmarkState);
         
         /*var urlOrigin = window.location.origin,
