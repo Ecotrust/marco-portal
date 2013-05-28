@@ -219,10 +219,10 @@ function bookmarksModel(options) {
                     //debugger;
                 } 
             });
-        } else {
-            // store the bookmarks locally
-            self.storeBookmarks();
-        }
+        } 
+        
+        // store the bookmarks locally
+        self.storeBookmarks();        
         
     };
 
