@@ -707,6 +707,55 @@
         }
     },
     {
+        "pk": 68,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=68&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                70
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "gill-nets",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "National Marine Fisheries Service",
+            "data_notes": "",
+            "name": "Gill Nets",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                15
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 10,
         "model": "data_manager.layer",
         "fields": {
@@ -1126,55 +1175,6 @@
         }
     },
     {
-        "pk": 68,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=68&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                70
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "gill-nets",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "National Marine Fisheries Service",
-            "data_notes": "",
-            "name": "Gill Nets",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 21,
         "model": "data_manager.layer",
         "fields": {
@@ -1216,26 +1216,26 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
-                35,
-                36,
-                37,
-                38,
-                39,
-                40,
-                41,
-                42,
+                45,
+                50,
+                46,
                 43,
                 44,
-                45,
-                46,
+                37,
+                40,
+                27,
                 47,
                 48,
-                49,
-                50,
-                51,
                 29,
-                27,
-                28
+                28,
+                39,
+                35,
+                42,
+                51,
+                49,
+                41,
+                36,
+                38
             ],
             "attribute_title": ""
         }
@@ -1535,6 +1535,58 @@
         }
     },
     {
+        "pk": 64,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [
+                8,
+                10,
+                9,
+                7
+            ],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                29
+            ],
+            "learn_more": "",
+            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
+            "slug_name": "shipping-lanes",
+            "is_sublayer": false,
+            "lookup_field": "Type",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "NOAA Coastal Services Center via MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Shipping Lanes",
+            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 33,
         "model": "data_manager.layer",
         "fields": {
@@ -1776,54 +1828,51 @@
         }
     },
     {
-        "pk": 64,
+        "pk": 43,
         "model": "data_manager.layer",
         "fields": {
-            "layer_type": "Vector",
+            "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                8
+                2
             ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "bookmark": "",
             "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [
-                8,
-                10,
-                9,
-                7
-            ],
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Winter.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
             "shareable_url": true,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
-            "opacity": 0.8,
+            "metadata": "",
+            "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
-            "description": "",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
             "attribute_fields": [
-                29
+                87
             ],
             "learn_more": "",
-            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
-            "slug_name": "shipping-lanes",
-            "is_sublayer": false,
-            "lookup_field": "Type",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
+            "data_overview": "",
+            "slug_name": "right-whales-winter",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "NOAA Coastal Services Center via MarineCadastre.gov",
+            "data_source": "",
             "data_notes": "",
-            "name": "Shipping Lanes",
-            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
+            "name": "Right Whales (Winter)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
+            "sublayers": [
+                21
+            ],
             "attribute_title": ""
         }
     },
@@ -2129,47 +2178,51 @@
         }
     },
     {
-        "pk": 94,
+        "pk": 71,
         "model": "data_manager.layer",
         "fields": {
-            "layer_type": "ArcRest",
+            "layer_type": "XYZ",
             "fact_sheet": "",
             "themes": [
-                8
+                4
             ],
             "compress_display": false,
             "map_tiles": "",
-            "legend_subtitle": "Total Commodity Tonnage by millions of tons",
-            "bookmark": "/visualize/#x=-74.63&y=39.11&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=94&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&tab=data&legends=false&layers=true",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=71&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
             "vector_graphic": "",
             "kml": "",
-            "source": "http://www.marinecadastre.gov",
+            "source": "",
             "lookup_table": [],
             "shareable_url": true,
             "utfurl": "",
             "thumbnail": "",
-            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/PrincipalPorts.zip",
-            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/PrincipalPorts.htm",
+            "data_download": "",
+            "metadata": "",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                73
+            ],
             "learn_more": "",
-            "data_overview": "Principal Ports are politically defined by port limits or US Army Corps of Engineers (USACE) projects. These data exclude non-USACE projects that are not authorized for publication. The determination for the published Principal Ports is based upon the total tonnage for the port for the particular year; therefore the top 150 list can vary from year to year. The Principal Port file contains USACE port codes, names, and commodity tonnage summaries (total tons, domestic, foreign, imports and exports). Original source file compiled in 2010, verified in 2012.",
-            "slug_name": "principal-ports",
-            "is_sublayer": false,
+            "data_overview": "",
+            "slug_name": "other-dredges",
+            "is_sublayer": true,
             "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortsPrincipal/legend.png",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
             "data_status": "",
             "vector_fill": null,
-            "data_source": "",
+            "data_source": "National Marine Fisheries Service",
             "data_notes": "",
-            "name": "Principal Ports",
-            "url": "http://www.csc.noaa.gov/ArcGIS_QA/rest/services/MMC/MultipurposeMarineCadastre/MapServer/export",
-            "arcgis_layers": "4",
+            "name": "Other Dredges",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
+            "sublayers": [
+                15
+            ],
             "attribute_title": ""
         }
     },
@@ -2414,6 +2467,104 @@
             "data_notes": "",
             "name": "Sei Whales (Summer)",
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesSummer/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                21
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 44,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
+            "attribute_fields": [
+                89
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "sei-whales-spring",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Sei Whales (Spring)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                21
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 35,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Winter.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
+            "attribute_fields": [
+                79
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "fin-whales-winter",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Fin Whales (Winter)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
@@ -2797,153 +2948,6 @@
         }
     },
     {
-        "pk": 43,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Winter.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                87
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "right-whales-winter",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Right Whales (Winter)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesWinter/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 71,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-68.34243155121692&location%5By%5D=39.90504412476266&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=71&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                73
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "other-dredges",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "National Marine Fisheries Service",
-            "data_notes": "",
-            "name": "Other Dredges",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/OtherDredges/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 44,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                89
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "sei-whales-spring",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Sei Whales (Spring)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/SeiWhalesFall/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 37,
         "model": "data_manager.layer",
         "fields": {
@@ -3270,6 +3274,100 @@
             "data_notes": "Unofficial boundary for Regional Ocean Councils which are state and federal partnerships with the goal of engaging in regional protection and balanced use of ocean and coastal resources.",
             "name": "Regional Ocean Partnerships",
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 39,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Winter.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
+            "attribute_fields": [
+                83
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "humpback-whales-winter",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Humpback Whales (Winter)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                21
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 63,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "placeholder",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": null,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#97e600",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": null,
+            "data_overview": "",
+            "slug_name": "awc-routes",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "AWC Routes",
+            "url": "/media/data_manager/geojson/AWCRoutes.json",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
@@ -3742,149 +3840,6 @@
             "data_notes": "",
             "name": "Fin Whales (Summer)",
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesSummer/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 39,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Winter.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                83
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "humpback-whales-winter",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Humpback Whales (Winter)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesWinter/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 63,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "placeholder",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": null,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#97e600",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": null,
-            "data_overview": "",
-            "slug_name": "awc-routes",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "AWC Routes",
-            "url": "/media/data_manager/geojson/AWCRoutes.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 35,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Winter.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                79
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "fin-whales-winter",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Fin Whales (Winter)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesWinter/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
@@ -4395,14 +4350,14 @@
             "legend_title": "",
             "sublayers": [
                 11,
+                12,
                 14,
-                72,
-                68,
                 73,
-                70,
+                72,
                 71,
-                69,
-                12
+                70,
+                68,
+                69
             ],
             "attribute_title": ""
         }
@@ -4447,6 +4402,51 @@
             "name": "Offshore Wind Compatibility Assessments",
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
             "arcgis_layers": "28",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 94,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "Total Commodity Tonnage by millions of tons",
+            "bookmark": "/visualize/#x=-74.63&y=39.11&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=94&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=8&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/PrincipalPorts.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/PrincipalPorts.htm",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Principal Ports are politically defined by port limits or US Army Corps of Engineers (USACE) projects. These data exclude non-USACE projects that are not authorized for publication. The determination for the published Principal Ports is based upon the total tonnage for the port for the particular year; therefore the top 150 list can vary from year to year. The Principal Port file contains USACE port codes, names, and commodity tonnage summaries (total tons, domestic, foreign, imports and exports). Original source file compiled in 2010, verified in 2012.",
+            "slug_name": "principal-ports",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortsPrincipal/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Principal Ports",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "4",
             "legend_title": "",
             "sublayers": [],
             "attribute_title": ""
