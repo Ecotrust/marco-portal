@@ -290,7 +290,11 @@
             });
         });
         $('.layer-search').find('input').typeahead( {
-            source: layers.sort()
+            source: layers.sort(),
+            updater: function (item) {
+                search(item);
+                return item;
+            }
         });
         $('.layer-search').submit(function (event) {
             event.preventDefault();
