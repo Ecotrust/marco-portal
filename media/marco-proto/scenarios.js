@@ -1909,34 +1909,26 @@ function scenariosModel(options) {
         var designs = app.viewModel.unloadedDesigns;
         
         if (designs && designs.length) {
-            for (var x=0; x < designs.length; x=x+1) {
-                var id = designs[x].id,
-                    opacity = designs[x].opacity,
-                    isVisible = designs[x].isVisible;
-                //debugger;    
-                if (app.viewModel.layerIndex[id]) {
-                    app.viewModel.layerIndex[id].opacity(opacity);
-                    //the following delay might help solve what appears to be a race condition 
-                    //that prevents the design in the layer list from displaying the checked box icon after loading
-                    setTimeout( function() {app.viewModel.layerIndex[id].activateLayer();}, 200);
-                    //must not be understanding something about js, but at the least the following seems to work now...
-                    //if (isVisible || !isVisible) {
-                        //if (isVisible !== 'true' && isVisible !== true) {
-                            //app.viewModel.layerIndex[id].toggleVisible();
-                        //}
-                    //}
-                    
-                    //replacing the following $.each with a for loop in an attempt to fix an occasional (non-lethal) error
-                    //in which the splice seemed to get ahead of the loop
-                    //$.each(app.viewModel.unloadedDesigns, function(i){
-                    for (var i=0; i < app.viewModel.unloadedDesigns.length; i=i+1) {
-                        if(app.viewModel.unloadedDesigns[i].id === id) { 
-                            app.viewModel.unloadedDesigns.splice(i,1);
-                            i = i-1;
+            //the following delay might help solve what appears to be a race condition 
+            //that prevents the design in the layer list from displaying the checked box icon after loadin
+            setTimeout( function() {
+                for (var x=0; x < designs.length; x=x+1) {
+                    var id = designs[x].id,
+                        opacity = designs[x].opacity,
+                        isVisible = designs[x].isVisible;
+                        
+                    if (app.viewModel.layerIndex[id]) {
+                        app.viewModel.layerIndex[id].opacity(opacity);g
+                        app.viewModel.layerIndex[id].activateLayer();
+                        for (var i=0; i < app.viewModel.unloadedDesigns.length; i=i+1) {
+                            if(app.viewModel.unloadedDesigns[i].id === id) { 
+                                app.viewModel.unloadedDesigns.splice(i,1);
+                                i = i-1;
+                            }
                         }
                     }
                 }
-            }
+            }, 400);
         }
     };
     
