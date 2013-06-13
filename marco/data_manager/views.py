@@ -7,7 +7,7 @@ from django.views.decorators.cache import cache_page
 from models import *
 
 
-@cache_page(60 * 60 * 24, key_prefix="data_manager_get_json")
+#@cache_page(60 * 60 * 24, key_prefix="data_manager_get_json")
 def get_json(request):
     json = {
         "state": { "activeLayers": [] },

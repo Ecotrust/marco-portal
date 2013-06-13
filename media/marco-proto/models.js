@@ -778,7 +778,9 @@ function viewModel() {
         self.showLayers(!self.showLayers());
         self.updateScrollBars();
         app.map.render('map');
-        if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
+        if (self.showLayers()) {
+            app.map.render('map'); //doing this again seems to prevent the vector wandering effect
+        }
         app.updateUrl();
         //if toggling layers during default pageguide, then correct step 4 position
         //self.correctTourPosition();
@@ -1090,6 +1092,9 @@ function viewModel() {
                 $('#legend-content').jScrollPane();
             } else {
                 setTimeout(function() {legendScrollpane.reinitialise();},100);
+            }
+            if (app.viewModel.scenarios) {
+                app.viewModel.scenarios.updateDesignsScrollBar();
             }
         }
         
