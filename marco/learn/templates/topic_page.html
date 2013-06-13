@@ -1,0 +1,98 @@
+{% extends 'topics_base.html' %} 
+{% block main %}
+<div id="topic-page" class="row-fluid">
+	<div class="span12">
+        <h3>{{ topic.display_name }}</h3>
+		<div class="split-column" style="width: 90%">{{ topic.description|safe }}</div>
+        
+        <div id="map-view-pane" class="row-fluid">
+            <div id="map-view-list" class="span4">
+                {% for view in views %}
+                    <div id="{{view.name}}" data-bind="click: function(data, event) { toggleMapView(data, event, '{{view.url_hash}}') }" class="accordion">
+                      <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#{{view.name}}" href="#{{view.name}}-description">
+                            <h5>{{ view.display_name }}</h5>
+                          </a>
+                        </div>
+                      </div>                      
+                    </div>
+                    <div id="{{view.name}}-description" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                        {{ view.description }}
+                        <div>
+                            <a href="{{domain}}/planner/#{{view.url_hash}}" target="_blank">
+                                View in Marine Planner
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="map-view" class="span7">
+                {% for view in views %}
+                    <iframe id="{{view.name}}-iframe" class="map-view-iframe" data-bind="visible: false, attr: { src: '{{domain}}/embed/map/#{{view.url_hash}}&logo=false' }" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                {% endfor %}
+            </div>
+            <div class="span1">
+            </div>
+        </div>
+        
+        
+        <h4>Related Datasets</h4>
+		{% for layer in layers %}
+            <div class="row-fluid">
+                <div class="span4">
+                    {{ layer.name }}	
+                </div>
+                <div class="span4">
+                    <a href="{{ layer.bookmark }}" target="_blank">
+                    View in Marine Planner
+                    </a>
+                </div>
+                <div class="span4">
+                    <a href="/explore/catalog#{{ layer.slug }}" target="_blank">
+                    View in Data Catalog
+                    </a>
+                </div>
+            </div>
+		{% endfor %}
+	</div>
+</div>
+<!-- endforeach theme -->
+
+
+<script type="text/javascript" charset="utf-8">
+    window.onload = function() {
+        $('#map-view-list .accordion-body').first().collapse('show');
+        $('#map-view .map-view-iframe').first().show();
+    };
+    
+    //madrona.onShow(function(){
+        //activeMapView( {{view.0.name}} );
+    //});
+</script>
+
+<style type="text/css">
+#map-view-pane {
+    margin: 20px 0px;
+}
+#map-view-list {
+}
+#map-view-list .accordion {
+    margin-bottom: 0px;
+}
+#map-view-list .accordion-group {
+    border: 0px;
+}
+#map-view-list .accordion-toggle {
+    padding: 0px;
+    text-decoration: none;
+}
+#map-view {
+    height: 400px;
+}
+</style>
+
+
+{% endblock %}

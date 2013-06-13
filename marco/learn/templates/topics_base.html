@@ -1,0 +1,316 @@
+<!doctype html>
+<!--[if IEMobile 7 ]>
+    <html dir="ltr" lang="en-US" class="no-js iem7">
+    <![endif]-->
+    <!--[if lt IE 7 ]>
+        <html dir="ltr" lang="en-US" class="no-js ie6">
+        <![endif]-->
+        <!--[if IE 7 ]>
+            <html dir="ltr" lang="en-US" class="no-js ie7">
+            <![endif]-->
+            <!--[if IE 8 ]>
+                <html dir="ltr" lang="en-US" class="no-js ie8">
+                <![endif]-->
+                <!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]>
+                    <!-->
+                    <html dir="ltr" lang="en-US" class="no-js">
+                    <!--<![endif]-->
+                    
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                        <title>
+                        </title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <!-- media-queries.js (fallback) -->
+                        <!--[if lt IE 9]>
+                            </script>
+                            <style>
+                            #feedback-tab {
+                                -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1.836909530733566e-16, M12=-1, M21=1, M22=-1.836909530733566e-16, SizingMethod='auto expand')";
+                                left: 0px;
+                                /* IE6 and 7 */ 
+                                filter: progid:DXImageTransform.Microsoft.Matrix(
+                                         M11=-1.836909530733566e-16,
+                                         M12=-1,
+                                         M21=1,
+                                         M22=-1.836909530733566e-16,
+                                         SizingMethod='auto expand');
+
+                              }
+                            </style>
+                            <script src="{{MEDIA_URL}}marco/js/respond.min.js"></script>
+                        <![endif]-->
+                        <!-- html5.js -->
+                        <!--[if lt IE 9]>
+                            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+                            </script>
+                        <![endif]-->
+                        <!--[if IE]>
+                                <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.ie.css">
+                        <![endif]-->        
+                        
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap.css">
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/bootstrap-responsive.css">
+
+                        <!-- marco stylesheet -->
+                        <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/marco_style.css">
+                        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css">
+                        <link rel="shortcut icon" href="{{MEDIA_URL}}marco/ico/favicon.ico">
+                        <style>
+                            body {
+                                margin-top: 110px;
+                            }
+                            .navbar .nav > li a {
+                                height: 45px;
+                                padding-top: 30px;
+                            }
+                        </style>
+                        <!--[if IE 7]>
+                          <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/font-awesome-ie7.css">
+                        <![endif]-->
+
+                    </head>
+                    
+                    <body class="blog">
+                        <header role="banner">
+                            <div class="navbar navbar-fixed-top">
+                                <div class="navbar-inner">
+                                <div class="container">
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <a href="/portal">
+                                                <img src="{{MEDIA_URL}}marco/img/marco-logo.gif"/>
+                                            </a>
+                                        </div>
+                                        <div class="span8">
+                                             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                                 <span class="icon-bar"></span>
+                                                 <span class="icon-bar"></span>
+                                                 <span class="icon-bar"></span>
+                                             </a>
+                                              
+                                            <div class="pull-right nav-collapse">
+                                                <ul class="nav">
+                                                    <li>
+                                                        <a a href="/portal/news">News</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="/portal/about">About the&nbsp;Portal</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://www.midatlanticocean.org/">Visit MARCO</a>
+                                                    </li>
+                                                </ul>
+                                                <form class="form-search pull-right" action="/portal/" method="get">
+                                                    <input type="text" class="search-box" name="s" id="search" placeholder="search">
+                                                    <a class="btn">
+                                                        <i class="icon-remove"></i> 
+                                                    </a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!--/.nav-collapse -->
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- end header -->
+                        
+                        <div id="feedback-tab" class="rounded hidden-phone" data-toggle="modal" data-target="#feedback-modal">
+                            feedback
+                        </div>
+                        <div id="feedback-modal" class="modal hide fade">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Feedback</h3>
+                            </div>
+                            <form class="form-horizontal" id="feedback-form">
+                            <div class="modal-body">        
+                                <div class="control-group">
+                                  <label class="control-label" for="name">Full Name</label>
+                                  <div class="controls">
+                                    <input class="input-xlarge" type="text" name="name" placeholder="Full Name" required>
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="email">Email Address</label>
+                                  <div class="controls">
+                                    <input class="input-xlarge" type="email" name="email" placeholder="Email Address" required>
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="comment">Comment</label>
+                                  <div class="controls">
+                                      <textarea class="input-xlarge" rows="3" name="comment" required></textarea>
+                                  </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button href="#" class="btn" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Send Feedback</button>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- end feedback -->
+                        
+                        <div class="container">
+                            <div id="content" class="row-fluid">
+                                <div id="main" class="span9 pull-right" role="main">
+                                    {% block  main %}{% endblock %}
+                                </div>
+                                <div class="sidebar span3" role="complementary">
+                                    <div id="sidebar-nav">
+                                        <div>
+                                            <h3>
+                                                <a href="{{domain8010}}/portal/learn">Learn</a>
+                                            </h3>
+                                            <ul>
+                                                <li {% if topic.name == 'sediment_management' %}class="active"{% endif %}>
+                                                    <a href="{{domain}}/learn/topic/sediment_management">Sediment Management</a>
+                                                </li>
+                                                <li {% if topic.name == 'habitat_conservation' %}class="active"{% endif %}>
+                                                    <a href="{{domain}}/learn/topic/habitat_conservation">Habitat Conservation</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>
+                                                <a href="{{domain8010}}/portal/explore">Explore</a>
+                                            </h3>
+
+                                            <ul>
+                                                {% load flatblock_tags %}
+                                                <li {% if request.path == '/explore/catalog' %}class="active"{% endif %}><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
+                                                <li {% if request.path == '/explore/needs' %}class="active"{% endif %}><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="recent-posts-3" class="widget widget_recent_entries">
+                                            <h3 class="widgettitle">
+                                                <a href="{{domain8010}}/portal/visualize">Visualize</a>
+                                            </h3>
+                                            <ul>
+                                                <li><a href="/visualize" target="_blank">Marine Planner</a></li>
+                                                <li><a href="{{domain8010}}/portal/visualize#cartography">Cartography</a></li>
+                                                <li><a href="{{domain8010}}/portal/visualize#collaboration">Collaboration</a></li>
+                                                <li><a href="{{domain8010}}/portal/visualize#interactivity">Interactivity</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end #content -->
+                            <hr>
+                            
+                            <footer>
+                              <div class="row">
+                                <div class="span7 social">
+                                  <h5>Contact Us</h5>
+                                    <a href="mailto:portal@midatlanticocean.org" data-toggle="modal" data-target="#feedback-modal">portal@midatlanticocean.org</a><br>
+                                    732-263-5392
+                                  <p></p>
+                                </div>
+                                <div class="span3 social">
+                                    <div class="pull-right">
+                                        <h5>connect with us</h5>              
+                                        <p class="pull-right">
+                                            <a href="/portal/feed/"><i class="icon-rss icon-large"></i></a>
+                                            <a href="https://twitter.com/PortalMARCO"><i class="icon-twitter icon-large"></i></a>
+                                        </p>
+                                        <!-- <a href=""><i class="icon-linkedin icon-large"></i></a>
+                                        <a href=""><i class="icon-google-plus icon-large"></i></a> -->
+                                    </div>
+                                </div>
+                                <div class="span2">
+                                </div>
+                              </div>
+                            </footer>
+                                
+                        </div>
+                        <!-- end #container -->
+                        <!-- scripts are now optimized via Modernizr.load -->\
+                        <script src="{{MEDIA_URL}}marco/js/jquery.js"></script>  
+                        <script src="{{MEDIA_URL}}/marco-proto/assets/js/jquery-ui.js"></script>
+                        <script src="{{MEDIA_URL}}/marco-proto/assets/js/knockout-2.1.0.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-transition.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-typeahead.js"></script>   
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-tooltip.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-popover.js"></script>
+                        <script src="{{MEDIA_URL}}marco-proto/assets/js/bootstrap-modal.js"></script>
+                        <script src="{{MEDIA_URL}}marco/js/bootstrap-collapse.js"></script> 
+                        <script src="{{MEDIA_URL}}/marco-proto/topics.js"></script>
+                        <script>
+                            ko.applyBindings(new topicsModel(), document.getElementById('topic-page'));
+                        </script>
+                        <script>
+                            if (!Array.prototype.indexOf) {
+
+                            
+                                Array.prototype.indexOf = function(obj, start) {
+                                     for (var i = (start || 0), j = this.length; i < j; i++) {
+                                         if (this[i] === obj) { return i; }
+                                     }
+                                     return -1;
+                                }
+                             }
+
+                            // handle the search clear buttons
+                            $('.form-search').find('.btn').on('click', function(event) {
+                               $(event.target).closest('form').find('input').val(null).focus();
+                            });
+                           $('#feedback-form').on('submit', function (event) {
+                             var feedback = {}, $form = $(this);
+                             event.preventDefault();
+                              $(this).find('input, textarea').each(function (i, input) {
+                                 var $input = $(input);
+                                 feedback[$input.attr('name')] = $input.val();
+                              });
+                                  feedback.url = window.location.href;
+                              $.post('/feedback/send', feedback, function () {
+                                 $form.closest('.modal').modal('hide')
+                              });
+                              $form.closest('.modal').modal('hide')
+                           });
+                           $('.attrib').hover(
+                            function (event) {
+                                var $target = $(event.target), 
+                                    $text = $target.find('.text');
+                                $text.show().position({
+                                    of: $target,
+                                    my: "right top",
+                                    at: "left bottom",
+                                    offset: "2px"
+                                });
+                                    
+                            },
+                            function (event) {
+                                $(event.target).find('.text').hide();
+                            }
+                           );
+                           
+                            var width = window.innerWidth;
+                            if (width < 768) {
+                                var body = document.getElementsByTagName("body")[0];
+                                body.style.marginTop='0px';
+                            }
+
+
+                        </script>
+                        <!-- Google Analytics -->
+                        <script type="text/javascript">
+                          var _gaq = _gaq || [];
+                          _gaq.push(['_setAccount', 'UA-35841423-1']);
+                          _gaq.push(['_trackPageview']);
+
+                          (function() {
+                            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                          })();
+                        </script>
+                        {% block javascript %}
+                        {% endblock %}
+                    </body>
+                    </html>

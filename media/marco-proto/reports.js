@@ -4,12 +4,13 @@ function reportsModel(options) {
     
     self.getCollectionNames = function() {
         var names = [];
-        //var selections = app.viewModel.scenarios.selectionList();
-        var selections = app.viewModel.scenarios.activeSelections();
+        
+        //maintains the order presented under the Selections accordion
+        var selections = app.viewModel.scenarios.selectionList();
         for (var i=0; i<selections.length; i++) {
-            //if ( selections[i].active() ) {
+            if ( selections[i].active() ) {
                 names.push(selections[i].name);
-            //}
+            }
         }
         return names;
     };
@@ -17,14 +18,15 @@ function reportsModel(options) {
     self.getSeriesData = function(key) {
         var data = [];
         //var selections = app.viewModel.scenarios.selectionList();
-        var selections = app.viewModel.scenarios.activeSelections();
+        //var selections = app.viewModel.scenarios.activeSelections();
+        var selections = app.viewModel.scenarios.selectionList();
         for (var i=0; i<selections.length; i++) {
-            //if ( selections[i].active() ) {
+            if ( selections[i].active() ) {
                 var vals = selections[i].scenarioReportValues[key];
                 if (vals) {
                     data.push({'low': vals.min, 'high': vals.max, 'avg': vals.avg, 'id': vals.selection_id});
                 }
-            //}
+            }
         }
         return data;
     };
@@ -161,7 +163,7 @@ function reportsModel(options) {
                     text: 'Distance in miles'
                 },
                 min: 0,
-                max: 50
+                max: 65
             },
             'tooltip': {
                 valueSuffix: 'miles',
@@ -192,7 +194,7 @@ function reportsModel(options) {
                     text: 'Depth in feet'
                 },
                 min: 0,
-                max: 200
+                max: 300
             },
             'tooltip': {
                 valueSuffix: 'feet',

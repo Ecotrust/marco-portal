@@ -14,6 +14,7 @@ app.getState = function () {
         x: center.lon.toFixed(2),
         y: center.lat.toFixed(2), 
         z: app.map.getZoom(),
+        logo: app.viewModel.showLogo(),
         dls: layers.reverse(),
         basemap: app.map.baseLayer.name,
         themes: {ids: app.viewModel.getOpenThemeIDs()},
@@ -85,6 +86,10 @@ app.loadCompressedState = function(state) {
             app.viewModel.unloadedDesigns = unloadedDesigns;
             $('#designsTab').tab('show'); //to activate the loading of designs
        }
+    }
+    
+    if (state.logo === 'false') {
+        app.viewModel.hideLogo();
     }
     
     if (state.print === 'true') {

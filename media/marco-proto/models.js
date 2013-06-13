@@ -673,13 +673,10 @@ function mapLinksModel() {
     self.getIFrameHTML = function(bookmarkState) {
         var urlOrigin = window.location.origin,
             urlHash = window.location.hash;
-        //console.log(urlOrigin);
-        //console.log(urlHash);
-        //console.log(app.viewModel.currentURL());
-        //app.updateURL();
-        //urlHash = app.viewModel.currentURL().replace('visualize/', '')
+            
         if ( bookmarkState ) {
-            urlHash = '#'+$.param(bookmarkState);
+            //urlHash = '#'+$.param(bookmarkState);
+            urlHash = '#' + bookmarkState;
         }
         if ( !urlOrigin ) {
             urlOrigin = 'http://' + window.location.host;
@@ -779,6 +776,7 @@ function viewModel() {
     // toggle layer panel visibility
     self.toggleLayers = function() {
         self.showLayers(!self.showLayers());
+        self.updateScrollBars();
         app.map.render('map');
         if (self.showLayers()) app.map.render('map'); //doing this again seems to prevent the vector wandering effect
         app.updateUrl();
@@ -912,6 +910,11 @@ function viewModel() {
         self.error(null);
     };
     
+    self.showLogo = ko.observable(true);
+    self.hideLogo = function() {
+        self.showLogo(false);
+    };
+    
     self.isFullScreen = ko.observable(false);
     
     self.fullScreenWithLayers = function() {
@@ -1005,6 +1008,26 @@ function viewModel() {
         else return "Show Legend";
     });
 
+    // is the legend panel visible?
+    self.showEmbeddedLegend = ko.observable(false);
+    /*self.showEmbeddedLegend.subscribe(function (newVal) {
+        self.updateScrollBars();
+        if (self.printing.enabled()) {
+            self.printing.showLegend(newVal);
+        }
+    });*/
+
+    // toggle embedded legend (on embedded maps)
+    self.toggleEmbeddedLegend = function() {
+        self.showEmbeddedLegend( !self.showEmbeddedLegend() );
+        var legendScrollpane = $('#embedded-legend').data('jsp');
+        if (legendScrollpane === undefined) {
+            $('#embedded-legend').jScrollPane();
+        } else {
+            legendScrollpane.reinitialise();
+        }
+    };
+    
     // toggle legend panel visibility
     self.toggleLegend = function() {
         self.showLegend(!self.showLegend());

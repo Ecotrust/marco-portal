@@ -30,14 +30,10 @@ function bookmarkModel(options) {
     } 
     self.temporarilySelectedGroups = ko.observableArray();
     
-    // name of the bookmark
-    //self.name = ko.observable();
-    //self.state = ko.observable();
-
     // load state from bookmark
     self.loadBookmark = function() {
         app.saveStateMode = false;
-        app.loadState(self.state);
+        app.loadState(self.getBookmarkState());
 
         app.viewModel.bookmarks.activeBookmark(self.name);
 
@@ -57,7 +53,16 @@ function bookmarkModel(options) {
     self.getBookmarkUrl = function() {
         var host = window.location.href.split('#')[0];
         host = 'http://portal.midatlanticocean.org/visualize/';
-        return host + "#" + $.param(self.state);
+        return host + "#" + self.getBookmarkHash();
+        //return host + "#" + self.state;
+    };
+    
+    self.getBookmarkState = function() {
+        return self.state;
+    };
+    
+    self.getBookmarkHash = function() {
+        return $.param(self.getBookmarkState());
     };
     
     return self;
@@ -170,7 +175,7 @@ function bookmarksModel(options) {
     };
     
     self.setBookmarkIFrameHTML = function() {
-        var bookmarkState = self.sharingBookmark().state;
+        var bookmarkState = self.sharingBookmark().getBookmarkHash();
         $('#bookmark-iframe-html')[0].value = app.viewModel.mapLinks.getIFrameHTML(bookmarkState);
         
         /*var urlOrigin = window.location.origin,
@@ -202,11 +207,13 @@ function bookmarksModel(options) {
     };
     
     self.removeBookmark = function(bookmark) {
+        self.bookmarksList.remove(bookmark);
+        
         //if the user is logged in, ajax call to add bookmark to server 
         if (app.is_authenticated) { 
             $.ajax({ 
                 url: '/visualize/remove_bookmark', 
-                data: { name: bookmark.name, hash: $.param(bookmark.state), uid: bookmark.uid }, 
+                data: { name: bookmark.name, hash: bookmark.getBookmarkHash(), uid: bookmark.uid }, 
                 type: 'POST',
                 dataType: 'json',
                 success: function() {
@@ -216,13 +223,11 @@ function bookmarksModel(options) {
                     //debugger;
                 } 
             });
-        }
-        
-        self.bookmarksList.remove(bookmark);
-        //$('#bookmark-popover').hide();
+        } 
         
         // store the bookmarks locally
-        self.storeBookmarks();
+        self.storeBookmarks();        
+        
     };
 
     // handle the bookmark submit
@@ -257,12 +262,12 @@ function bookmarksModel(options) {
             });
         } else {
             self.bookmarksList.unshift(bookmark);
+            // store the bookmarks locally
+            self.storeBookmarks();
         }
         //$('#bookmark-popover').hide();
         self.newBookmarkName('');
         
-        // store the bookmarks locally
-        self.storeBookmarks();
     };
     
     // get bookmark sharing groups for this user
@@ -310,7 +315,7 @@ function bookmarksModel(options) {
             for (var i=0; i < existingBookmarks.length; i++) {
                 local_bookmarks.push( {
                     'name': existingBookmarks[i].name,
-                    'hash': $.param(existingBookmarks[i].state),
+                    'hash': existingBookmarks[i].hash,
                     'sharing_groups': existingBookmarks[i].sharingGroups
                 });
             }
@@ -341,7 +346,7 @@ function bookmarksModel(options) {
                     }
                     if (blist.length > 0) {
                         self.bookmarksList(blist);
-                        self.storeBookmarks();
+                        //self.storeBookmarks();
                     }
                 },
                 error: function(result) { 
@@ -349,7 +354,7 @@ function bookmarksModel(options) {
                         for (var i=0; i < existingBookmarks.length; i++) {
                             self.bookmarksList.push( new bookmarkModel( {
                                 name: existingBookmarks[i].name,
-                                state: $.param(existingBookmarks[i].state),
+                                state: existingBookmarks[i].state,
                                 sharing_groups: existingBookmarks[i].sharingGroups
                             }));
                         }
@@ -361,7 +366,7 @@ function bookmarksModel(options) {
             for (var i=0; i < existingBookmarks.length; i++) {
                 self.bookmarksList.push( new bookmarkModel( {
                     name: existingBookmarks[i].name,
-                    state: $.param(existingBookmarks[i].state),
+                    state: existingBookmarks[i].state,
                     sharing_groups: existingBookmarks[i].sharingGroups
                 }));
             }
