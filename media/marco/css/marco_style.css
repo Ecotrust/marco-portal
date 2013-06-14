@@ -675,7 +675,7 @@ img + h3 {
 	margin-top: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
-    width: auto;
+    /*width: auto;*/
 	max-width: 72%;
 	/*height: inherit;*/
     height: 16px;

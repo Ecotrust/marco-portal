@@ -129,7 +129,7 @@ var SimpleLayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
             this.layer.setVisibility(!this.layer.getVisibility());
         }
         OpenLayers.Event.stop(e);
-        $('#SimpleLayerSwitcher_30').hide();
+        $('#SimpleLayerSwitcher_28').hide();
         $('#basemaps').show();
     },
 

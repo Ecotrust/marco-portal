@@ -1918,7 +1918,7 @@ function scenariosModel(options) {
                         isVisible = designs[x].isVisible;
                         
                     if (app.viewModel.layerIndex[id]) {
-                        app.viewModel.layerIndex[id].opacity(opacity);g
+                        app.viewModel.layerIndex[id].opacity(opacity);
                         app.viewModel.layerIndex[id].activateLayer();
                         for (var i=0; i < app.viewModel.unloadedDesigns.length; i=i+1) {
                             if(app.viewModel.unloadedDesigns[i].id === id) { 
