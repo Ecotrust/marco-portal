@@ -401,6 +401,83 @@ app.addWmsLayerToMap = function(layer) {
 };
 
 app.addArcRestLayerToMap = function(layer) {
+    var identifyUrl = layer.url.replace('export', layer.arcgislayers + '/query');
+    
+    layer.arcIdentifyControl = new OpenLayers.Control.ArcGisRestIdentify(
+    {
+        eventListeners: {
+            //the handler for the return click data
+            resultarrived : function(responseText, xy) {
+                var clickAttributes = [],
+                    jsonFormat = new OpenLayers.Format.JSON(),
+                    returnJSON = jsonFormat.read(responseText.text);
+                
+                if(returnJSON['features'] && returnJSON['features'].length) { 
+                    var attributeObjs = [];
+                    
+                    $.each(returnJSON['features'], function(index, feature) {
+                        if(index == 0) {
+                            var attributeList = feature['attributes'];
+                            
+                            if('fields' in returnJSON) {
+                                if (layer.attributes.length) {
+                                    for (var i=0; i<layer.attributes.length; i+=1) {
+                                        if (attributeList[layer.attributes[i].field]) {
+                                            var data = attributeList[layer.attributes[i].field],
+                                                field_obj = app.utils.getObjectFromList(returnJSON['fields'], 'name', layer.attributes[i].field);
+                                            if (field_obj && field_obj.type === 'esriFieldTypeDate') {
+                                                data = new Date(data).toDateString();
+                                            } else if (app.utils.isNumber(data)) {
+                                                data = app.utils.formatNumber(data);
+                                            } 
+                                            if (app.utils.trim(data) !== "") {
+                                                attributeObjs.push({
+                                                    'display': layer.attributes[i].display, 
+                                                    'data': data
+                                                });
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    $.each(returnJSON['fields'], function(fieldNdx, field) {
+                                        if (field.name.indexOf('OBJECTID') === -1) {
+                                            var data = attributeList[field.name]
+                                            if (field.type === 'esriFieldTypeDate') {
+                                                data = new Date(data).toDateString();
+                                            } else if (app.utils.isNumber(data)) {
+                                                data = app.utils.formatNumber(data);
+                                            } 
+                                            if (app.utils.trim(data) !== "") {
+                                                attributeObjs.push({
+                                                    'display': field.alias,
+                                                    'data': data
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                            return;
+                        }
+                    });
+                }
+                
+                if (attributeObjs && attributeObjs.length) {
+                    clickAttributes[layer.name] = attributeObjs;
+                    $.extend(app.map.clickOutput.attributes, clickAttributes);
+                    app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                    app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(responseText.xy));
+                }
+            }
+        },
+        url : identifyUrl,
+        layerid : layer.arcgislayers,
+        sr : 3857,
+        clickTolerance: 2,
+        outFields: '*'
+    });
+    app.map.addControl(layer.arcIdentifyControl);
+
     layer.layer = new OpenLayers.Layer.ArcGIS93Rest(
         layer.name, 
         layer.url,

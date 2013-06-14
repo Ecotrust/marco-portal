@@ -60,7 +60,6 @@ function layerModel(options, parent) {
                                 self.legend['elements'].push({'swatch': swatchURL, 'label': label});
                                 //console.log(self.legend);
                             });
-                            debugger;
                         }
                     });
                     //reset visibility (to reset activeLegendLayers)
