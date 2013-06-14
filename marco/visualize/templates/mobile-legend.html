@@ -13,8 +13,18 @@
                         <span class="pagination-centered legend-title" data-bind="html: legendTitle ? legendTitle : name"></span>
                         <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="visible: legendSubTitle, html: legendSubTitle"></p>
                         <span data-bind="if: legend">
-                            <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
-                                <img data-bind="attr: { src: legend }" />
+                            <div data-bind="if: legend['elements']">
+                                <div data-bind="foreach: legend['elements']">
+                                    <div>
+                                        <img data-bind="attr: {src: swatch}" />
+                                        <span data-bind="text: label" style="font-size: 11px; font-weight: bold;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-bind="if: !legend['elements']">
+                                <div data-bind="css: { 'in': legendVisibility }" style="padding-top: 5px;">
+                                    <img data-bind="attr: { src: legend }" />
+                                </div>
                             </div>
                         </span>
                     </div>
