@@ -102,6 +102,18 @@ function layerModel(options, parent) {
         self.overview = null;
     }
     
+    // if no description is provided, try using the web services description
+    if ( !self.overview && self.url && (self.arcgislayers !== -1) ) {
+        $.ajax({
+            dataType: "jsonp",
+            url: self.url.replace('/export', '/'+self.arcgislayers) + '?f=pjson',
+            type: 'GET',
+            success: function(data) {
+                self.overview = data['description'];
+            }
+        });
+    }
+        
     // set data source and data notes text 
     self.data_source = options.data_source || null;
     if (! self.data_source && parent && parent.data_source) {
