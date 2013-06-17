@@ -43,11 +43,11 @@
             <div class="row-fluid">
                 <div class="span12 factsheet">
                     <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf">
-                        <img src="/media/marco/img/themes/sheets/MARCO_factsheet_portal_F.png">
+                        <img src="/media/marco/img/themes/sheets/MARCO_factsheet_portal_F.png" style="border: 1px solid #ccc;">
                     </a>
                     <p class="pull-right">
                         <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf"></a>
-                        <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf">download pdf...</a>
+                        <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf" style="margin-top: 5px; margin-right: 5px; color: #2d8998;">download pdf...</a>
                     </p>
                 </div>
             </div>
