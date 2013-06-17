@@ -36,10 +36,15 @@
                 <li><a href="<?php echo get_bloginfo('wpurl'); ?>/visualize#interactivity">Interactivity</a></li>
             </ul>
 		</ul>
+        <div class="row-fluid feature-story">
+            <div class="span12"></div>
+        </div>
         <?php if ($post->post_name == 'about') { ?>
             <div class="row-fluid">
                 <div class="span12 factsheet">
-                    <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf"><img src="/media/marco/img/themes/sheets/MARCO_factsheet_portal_F.png"></a>
+                    <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf">
+                        <img src="/media/marco/img/themes/sheets/MARCO_factsheet_portal_F.png">
+                    </a>
                     <p class="pull-right">
                         <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf"></a>
                         <a href="/media/marco/factsheets/MARCO_factsheet_portal_F.pdf">download pdf...</a>
