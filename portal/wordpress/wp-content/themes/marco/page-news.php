@@ -21,6 +21,9 @@ Template Name: News
 
 							  <div class="span4">
 							  <?php
+                              #THE FOLLOWING WAS IN MASTER
+                              #COMMENTING OUT BECAUSE I THINK NEXT-RELEASE BRANCH HAS THE CODE WE WANT
+							  #$args = sprintf('category_slug=%s&numberposts=1', "Data-Updates");
 							  $args = sprintf('category_name=%s&numberposts=1', "data-updates");
 							  $lastposts = get_posts($args);
 							  foreach($lastposts as $post) : setup_postdata($post); ?>
