@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^embed/', include('visualize.urls')),
     (r'^mobile/', include('visualize.urls')),
     (r'^feedback/', include('feedback.urls')),
+    (r'^proxy/', include('proxy.urls')),
     (r'^$', redirect_to, {'url': '/portal/'}),
     (r'', include('madrona.common.urls')),
 )

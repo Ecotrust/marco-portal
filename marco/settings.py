@@ -39,6 +39,7 @@ INSTALLED_APPS += ( 'clipping',
                     'feedback',
                     'django.contrib.humanize',
                     'flatblocks',
+                    'proxy',
                     'marco_profile' )
 
 GEOMETRY_DB_SRID = 99996

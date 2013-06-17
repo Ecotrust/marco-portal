@@ -1216,20 +1216,20 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
+                43,
                 45,
+                44,
+                35,
                 50,
                 46,
-                43,
-                44,
                 37,
                 40,
                 27,
                 47,
+                39,
                 48,
                 29,
                 28,
-                39,
-                35,
                 42,
                 51,
                 49,
@@ -2574,6 +2574,55 @@
         }
     },
     {
+        "pk": 37,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
+            "attribute_fields": [
+                81
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "humpback-whales-spring",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Humpback Whales (Spring)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                21
+            ],
+            "attribute_title": ""
+        }
+    },
+    {
         "pk": 16,
         "model": "data_manager.layer",
         "fields": {
@@ -2943,55 +2992,6 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 37,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                81
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "humpback-whales-spring",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Humpback Whales (Spring)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/HumpbackWhalesSpring/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
             ],
             "attribute_title": ""
         }
@@ -3371,6 +3371,55 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 42,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "fact_sheet": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
+            "attribute_fields": [
+                86
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "right-whales-summer",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Right Whales (Summer)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                21
+            ],
             "attribute_title": ""
         }
     },
@@ -3840,55 +3889,6 @@
             "data_notes": "",
             "name": "Fin Whales (Summer)",
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/FinWhalesSummer/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                21
-            ],
-            "attribute_title": ""
-        }
-    },
-    {
-        "pk": 42,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "fact_sheet": "",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "shareable_url": true,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This geospatial data set, obtained from the United States Navy, includes point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.",
-            "attribute_fields": [
-                86
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "right-whales-summer",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Right Whales (Summer)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/NARWhalesSummer/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
@@ -4446,6 +4446,54 @@
             "data_notes": "",
             "name": "Principal Ports",
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/export",
+            "arcgis_layers": "4",
+            "legend_title": "",
+            "sublayers": [],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 96,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "shareable_url": true,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                130,
+                129
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "offshore-wind-energy-depth-zones",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Offshore Wind Energy Depth Zones",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
             "arcgis_layers": "4",
             "legend_title": "",
             "sublayers": [],
@@ -5730,6 +5778,26 @@
             "display_name": "Slope",
             "precision": null,
             "order": 7
+        }
+    },
+    {
+        "pk": 130,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "depth",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 129,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Contour",
+            "display_name": "Contour",
+            "precision": null,
+            "order": 2
         }
     },
     {

@@ -213,6 +213,11 @@ function layerModel(options, parent) {
             self.deactivateSublayer();
         } 
         
+        //de-activate arcIdentifyControl (if applicable)
+        if (layer.arcIdentifyControl) {
+            layer.arcIdentifyControl.deactivate();
+        }
+        
         layer.layer = null;
 
     };
@@ -303,6 +308,11 @@ function layerModel(options, parent) {
             //add utfgrid if applicable
             if (layer.utfgrid) {
                 self.activateUtfGridLayer();
+            }
+            
+            //activate arcIdentifyControl (if applicable)
+            if (layer.arcIdentifyControl) {
+                layer.arcIdentifyControl.activate();
             }
 
         }

@@ -155,14 +155,7 @@ app.init = function () {
     map.addControl(map.UTFControl);    
     
     app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
-        var clickAttributes = [],
-            date = new Date(),
-            newTime = date.getTime();
-            
-        if (newTime - app.map.clickOutput.time > 500) {
-            app.map.clickOutput.attributes = {};
-            app.map.clickOutput.time = newTime;
-        } 
+        var clickAttributes = [];
         
         for (var idx in infoLookup) {
             $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
@@ -247,27 +240,14 @@ app.init = function () {
             $.extend(app.map.clickOutput.attributes, clickAttributes);
             app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
         }
-        /*app.viewModel.updateMarker();
-        setTimeout( function() {
-            if (app.marker) {
-                console.log(lonlat);
-                console.log(xy);
-                app.marker.display(true);   
-            }
-        }, 100);*/
         app.viewModel.updateMarker(lonlat);
-        app.marker.display(true); 
-        /*app.markers.clearMarkers();
-        app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
-        app.marker.map = app.map;
-        app.marker.display(true); */
+        //app.marker.display(true); 
+        
     }; //end utfGridClickHandling
       
     app.map.events.register("featureclick", null, function(e, test) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         if (layer) {
-            var date = new Date();
-            var newTime = date.getTime();
             var text = [],
                 title = layer.name;
             
@@ -284,54 +264,36 @@ app.init = function () {
                         text.push({'display': attrs[i].display, 'data': e.feature.data[attrs[i].field]});
                     }
                 }
-            } else if ( app.viewModel.isSelectedLeaseBlock(layer.name) ) {
-                text = app.viewModel.getOCSAttributes(title, e.feature.attributes);
             }
             
-            if (newTime - app.map.clickOutput.time > 300) {
-                app.map.clickOutput.attributes = {};
-                app.map.clickOutput.time = newTime;
-            } 
-            app.map.clickOutput.attributes[title] = text;
-            app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+            // the following delay prevents the #map click-event-attributes-clearing from taking place after this has occurred
+            setTimeout( function() {
+                app.map.clickOutput.attributes[title] = text;
+                app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                if (app.marker) {
+                    app.marker.display(true);
+                }
+            }, 100);
             
         }
         
-        //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
-        //the following delay is so that the "click" handler below gets activated (and the marker is created) before the marker is updated here
-        setTimeout( function() {
-            if (app.marker) {
-                app.marker.display(true);   
-            }
-        }, 100);
-    });
-    
-    app.map.events.register("nofeatureclick", null, function(e) {
-        var date = new Date();
-        var newTime = date.getTime();
-        if (newTime - app.map.clickOutput.time > 300) {
-            app.viewModel.closeAttribution();
-        } 
     });
     
     app.markers = new OpenLayers.Layer.Markers( "Markers" );
     var size = new OpenLayers.Size(16,25);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    //var icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.markers.icon = new OpenLayers.Icon('/media/marco-proto/assets/img/red-pin.png', size, offset);
     app.map.addLayer(app.markers);
       
     
+    //no longer needed?
+    //replaced with #map mouseup and move events in app.js?
     //place the marker on click events
     app.map.events.register("click", app.map , function(e){
-        /*app.marker = new OpenLayers.Marker(app.map.getLonLatFromViewPortPx(e.xy), app.markers.icon);
-        app.marker.map = app.map;
-        app.marker.display(false);
-        app.viewModel.updateMarker();*/
-        app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
+        //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
         //the following is in place to prevent flash of marker appearing on what is essentially no feature click
         //display is set to true in the featureclick and utfgridclick handlers (when there is actually a hit)
-        app.marker.display(false);
+        //app.marker.display(false);
     });
     
     app.map.removeLayerByName = function(layerName) {
@@ -342,6 +304,37 @@ app.init = function () {
             }
         }
     };
+    
+    app.utils = {};
+    app.utils.isNumber = function(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    app.utils.numberWithCommas = function(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    app.utils.isInteger = function(n) {
+        return app.utils.isNumber(n) && (Math.floor(n) === n);
+    }
+    app.utils.formatNumber = function(n) {
+        var number = Number(n);
+        if (app.utils.isInteger(number)) {
+            var preciseNumber = number.toFixed(0);
+        } else {
+            var preciseNumber = number.toFixed(1);
+        }
+        return app.utils.numberWithCommas(preciseNumber);
+    }
+    app.utils.trim = function(str) {
+        return str.replace(/^\s+|\s+$/g,'');
+    }
+    app.utils.getObjectFromList = function(list, field, value) {
+        for (var i=0; i<list.length; i+=1) {
+            if (list[i][field] === value) {
+                return list[i];
+            }
+        }
+        return undefined;
+    }
     
 };
 
@@ -379,7 +372,6 @@ app.addXyzLayerToMap = function(layer) {
         
     // adding layer to the map for the first time		
     layer.layer = new OpenLayers.Layer.XYZ(layer.name, 
-        //layer.type === 'XYZ' ? layer.url : layer.url + '.png', 
         layer.url,
         $.extend({}, opts, 
             {
@@ -411,7 +403,7 @@ app.addArcRestLayerToMap = function(layer) {
                 var clickAttributes = [],
                     jsonFormat = new OpenLayers.Format.JSON(),
                     returnJSON = jsonFormat.read(responseText.text);
-                
+                    
                 if(returnJSON['features'] && returnJSON['features'].length) { 
                     var attributeObjs = [];
                     
