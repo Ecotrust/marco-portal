@@ -29098,8 +29098,10 @@ OpenLayers.Control.ArcGisRestIdentify = OpenLayers.Class(OpenLayers.Control, {
         },
         
         doQuery: function(e){
-          this.events.triggerEvent("arcfeaturequery",{});
-          this.request(e.xy);
+          var makeRequest = this.events.triggerEvent("arcfeaturequery",{});
+          if (makeRequest !== false) {
+            this.request(e.xy);
+          }
         }
 });
 /* ======================================================================

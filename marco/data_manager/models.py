@@ -91,6 +91,7 @@ class Layer(models.Model):
         ('click', 'click'),
         ('mouseover', 'mouseover')
     )
+    attributes_from_web_services = models.BooleanField(default=False)
     attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     compress_display = models.BooleanField(default=False)
@@ -248,6 +249,7 @@ class Layer(models.Model):
                 'source': layer.source_link,
                 'tiles': layer.tiles_link,
                 'learn_link': layer.learn_link,
+                'attributes_from_web_services': self.attributes_from_web_services,
                 'attributes': layer.serialize_attributes,
                 'lookups': layer.serialize_lookups,
                 'color': layer.vector_color,
@@ -278,6 +280,7 @@ class Layer(models.Model):
             'source': self.source_link,
             'tiles': self.tiles_link,
             'learn_link': self.learn_link,
+            'attributes_from_web_services': self.attributes_from_web_services,
             'attributes': self.serialize_attributes,
             'lookups': self.serialize_lookups,
             'color': self.vector_color,

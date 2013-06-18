@@ -295,6 +295,9 @@ app.init = function () {
         //the following is in place to prevent flash of marker appearing on what is essentially no feature click
         //display is set to true in the featureclick and utfgridclick handlers (when there is actually a hit)
         //app.marker.display(false);
+        
+        //the following ensures that the location of the marker is not displaced while waiting for web services
+        app.map.clickLocation = app.map.getLonLatFromViewPortPx(e.xy);
     });
     
     app.map.removeLayerByName = function(layerName) {
@@ -399,8 +402,14 @@ app.addArcRestLayerToMap = function(layer) {
     layer.arcIdentifyControl = new OpenLayers.Control.ArcGisRestIdentify(
     {
         eventListeners: {
+            arcfeaturequery: function() {
+                //if ( ! layer.attributesFromWebServices || layer.utfurl ) {
+                if ( layer.utfurl || layer.name === 'Offshore Wind Compatibility Assessments' ) {
+                    return false;
+                }
+            },
             //the handler for the return click data
-            resultarrived : function(responseText, xy) {
+            resultarrived : function(responseText) {
                 var clickAttributes = [],
                     jsonFormat = new OpenLayers.Format.JSON(),
                     returnJSON = jsonFormat.read(responseText.text);
@@ -423,7 +432,7 @@ app.addArcRestLayerToMap = function(layer) {
                                             } else if (app.utils.isNumber(data)) {
                                                 data = app.utils.formatNumber(data);
                                             } 
-                                            if (app.utils.trim(data) !== "") {
+                                            if (data && app.utils.trim(data) !== "") {
                                                 attributeObjs.push({
                                                     'display': layer.attributes[i].display, 
                                                     'data': data
@@ -433,14 +442,14 @@ app.addArcRestLayerToMap = function(layer) {
                                     }
                                 } else {
                                     $.each(returnJSON['fields'], function(fieldNdx, field) {
-                                        if (field.name.indexOf('OBJECTID') === -1) {
+                                        if (field.name.indexOf('OBJECTID') === -1 && field.name.indexOf('CFR_id') === -1) {
                                             var data = attributeList[field.name]
                                             if (field.type === 'esriFieldTypeDate') {
                                                 data = new Date(data).toDateString();
                                             } else if (app.utils.isNumber(data)) {
                                                 data = app.utils.formatNumber(data);
                                             } 
-                                            if (app.utils.trim(data) !== "") {
+                                            if (data && app.utils.trim(data) !== "") {
                                                 attributeObjs.push({
                                                     'display': field.alias,
                                                     'data': data
@@ -459,7 +468,9 @@ app.addArcRestLayerToMap = function(layer) {
                     clickAttributes[layer.name] = attributeObjs;
                     $.extend(app.map.clickOutput.attributes, clickAttributes);
                     app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                    app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(responseText.xy));
+                    //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(responseText.xy));
+                    //the following ensures that the location of the marker has not been displaced while waiting for web services
+                    app.viewModel.updateMarker(app.map.clickLocation);
                 }
             }
         },
