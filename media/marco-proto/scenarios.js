@@ -497,12 +497,12 @@ function scenarioFormModel(options) {
                     new OpenLayers.Filter.Comparison({ // if DEPTHM_MAX >= self.filters['min_distance']
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
                         property: "DEPTH_MEAN", 
-                        value: (-self.filters['min_depth'] * .3048)
+                        value: (-self.filters['min_depth'])
                     }),
                     new OpenLayers.Filter.Comparison({ // if DEPTHM_MIN <= self.filters['max_distance']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
                         property: "DEPTH_MEAN", 
-                        value: (-self.filters['max_depth'] * .3048)
+                        value: (-self.filters['max_depth'])
                     })
                 );
             }
@@ -628,6 +628,24 @@ function scenarioFormModel(options) {
             self.awcLayer.hideDescription(self.awcLayer);
         } else {
             self.awcLayer.showDescription(self.awcLayer);
+        }
+        return true;
+    };
+    
+    self.depthZonesLayer = app.viewModel.getLayerById(96);
+    self.toggleDepthZonesLayer = function(formModel, event) {
+        if ( self.depthZonesLayer.active() ) {
+            self.depthZonesLayer.deactivateLayer();
+        } else {
+            self.depthZonesLayer.activateLayer();
+        }
+        return true;
+    };
+    self.toggleDepthZonesDescription = function(formModel) {
+        if ( self.depthZonesLayer.infoActive() ) {
+            self.depthZonesLayer.hideDescription(self.depthZonesLayer);
+        } else {
+            self.depthZonesLayer.showDescription(self.depthZonesLayer);
         }
         return true;
     };

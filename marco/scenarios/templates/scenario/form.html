@@ -440,13 +440,28 @@
                 </div>
                 <div id="depth_widget" class="inputfield accordion-body collapse" data-bind="css: {'in': depthRangeParameter()}">
                     <div class="accordion-inner">
-                        <span>
-                            {{ form.input_min_depth }}            
-                            to
-                            {{ form.input_max_depth }} feet
-                        </span>
-                        {{ form.input_depth }}  
-                        {{ form.input_depth.errors }}
+                        <div>
+                            <span>
+                                {{ form.input_min_depth }}            
+                                to
+                                {{ form.input_max_depth }} meters
+                            </span>
+                            {{ form.input_depth }}  
+                            {{ form.input_depth.errors }}
+                        </div>
+                        <div class="btn-group btn-group-layer show-layer-btn-group">
+                            <a class="btn btn-info-sign" style="height: 16px; line-height: 16px" data-bind="click: toggleDepthZonesDescription, css: { 'active': depthZonesLayer.infoActive() }">
+                                <i class="icon-info-sign icon-large"></i>
+                            </a>
+
+                            <a class="btn btn-layer show-layer-btn" style="height: 16px; line-height: 16px" data-bind="css: { 'active': depthZonesLayer.active(), 'not-active': ! depthZonesLayer.active() }, click: toggleDepthZonesLayer">
+                                <div style="font-weight: normal">
+                                    <span>Show Depth Zones</span>
+                                    <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: depthZonesLayer.active() && depthZonesLayer.visible()"></i>
+                                    <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: depthZonesLayer.active() && ! depthZonesLayer.visible()"></i>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

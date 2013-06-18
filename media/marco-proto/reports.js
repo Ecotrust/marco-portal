@@ -191,19 +191,19 @@ function reportsModel(options) {
             },
             'yAxis': {
                 title: {
-                    text: 'Depth in feet'
+                    text: 'Depth in meters'
                 },
                 min: 0,
-                max: 300
+                max: 100
             },
             'tooltip': {
-                valueSuffix: 'feet',
+                valueSuffix: 'meters',
                 formatter: function() {
                     return  'Depth Range: ' +
                             this.point.low + ' - ' +
-                            this.point.high + ' feet' +
+                            this.point.high + ' meters' +
                             '<br/>Average Depth: ' + 
-                            this.point.avg + ' feet'; 
+                            this.point.avg + ' meters'; 
               }
             },
             'seriesName': 'Depth Range',

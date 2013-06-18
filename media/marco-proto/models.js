@@ -1983,9 +1983,9 @@ function viewModel() {
         if ('DEPTHM_MIN' in data && 'DEPTHM_MAX' in data) {
             if ( data['DEPTHM_MIN'] ) {
                 //convert depth values to positive feet values (from negative meter values)
-                var max_depth = (-data['DEPTHM_MAX'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-                    min_depth = (-data['DEPTHM_MIN'] * 3.2808399).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' feet'});
+                var max_depth = (-data['DEPTHM_MAX']).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    min_depth = (-data['DEPTHM_MIN']).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                attrs.push({'display': 'Depth Range', 'data': max_depth + ' to ' + min_depth + ' meters'});
             } else {
                 attrs.push({'display': 'Depth Range', 'data': 'Unknown'});
             }

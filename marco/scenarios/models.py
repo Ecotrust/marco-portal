@@ -96,7 +96,7 @@ class Scenario(Analysis):
             distance_to_shore = '%s - %s miles' %(format(self.input_min_distance_to_shore, 0), format(self.input_max_distance_to_shore, 0))
             attributes.append({'title': 'Distance to Shore', 'data': distance_to_shore})
         if self.input_parameter_depth:
-            depth_range = '%s - %s feet' %(format(self.input_min_depth, 0), format(self.input_max_depth, 0))
+            depth_range = '%s - %s meters' %(format(self.input_min_depth, 0), format(self.input_max_depth, 0))
             attributes.append({'title': 'Depth Range', 'data': depth_range})
         if self.input_parameter_distance_to_awc:
             distance_to_awc = '%s miles' %format(self.input_distance_to_awc, 0)
@@ -137,8 +137,8 @@ class Scenario(Analysis):
             result = result.filter(avg_distance__gte=self.input_min_distance_to_shore, avg_distance__lte=self.input_max_distance_to_shore)
         if self.input_parameter_depth:
             #note:  converting input to negative values and converted to meters (to match db)
-            input_min_depth = feet_to_meters(-self.input_min_depth, 3)
-            input_max_depth = feet_to_meters(-self.input_max_depth, 3)
+            input_min_depth = -self.input_min_depth
+            input_max_depth = -self.input_max_depth
             #result = result.filter(min_depth__lte=input_min_depth, max_depth__gte=input_max_depth)
             result = result.filter(avg_depth__lte=input_min_depth, avg_depth__gte=input_max_depth)
             result = result.filter(avg_depth__lt=0) #not sure this is doing anything, but do want to ensure 'no data' values are not included
@@ -615,9 +615,9 @@ class LeaseBlock(models.Model):
     @property
     def depth_range_output(self):
         if self.min_depth == self.max_depth:
-            return "%s feet" %format(meters_to_feet(-self.min_depth),0)
+            return "%s meters" %format(-self.min_depth,0)
         else:
-            return "%s - %s feet" %( format(meters_to_feet(-self.min_depth),0), format(meters_to_feet(-self.max_depth),0) )     
+            return "%s - %s meters" %( format(-self.min_depth,0), format(-self.max_depth,0) )     
         
     @property 
     def kml_done(self):
@@ -736,12 +736,12 @@ class LeaseBlockSelection(Analysis):
             #get depth range
             min_depth = format(self.get_min_depth(leaseblocks), 0)
             max_depth = format(self.get_max_depth(leaseblocks), 0)
-            depth_range = '%s to %s feet' %(min_depth, max_depth)
+            depth_range = '%s to %s meters' %(min_depth, max_depth)
             if min_depth == 0 or max_depth == 0:
                 depth_range = 'Unknown'
             attributes.append({'title': 'Depth', 'data': depth_range})
             avg_depth = format(self.get_avg_depth(leaseblocks), 0)
-            avg_depth_output = '%s feet' %avg_depth
+            avg_depth_output = '%s meters' %avg_depth
             if avg_depth == 0:
                 avg_depth_output = 'Unknown'
             attributes.append({'title': 'Average Depth', 'data': avg_depth_output})
@@ -809,7 +809,7 @@ class LeaseBlockSelection(Analysis):
         for lb in leaseblocks:
             if lb.min_depth < min_depth:
                 min_depth = lb.min_depth
-        return meters_to_feet(-min_depth)
+        return -min_depth
     
     # note: accounting for the issue in which max_depth is actually a lesser depth than min_depth
     def get_min_depth(self, leaseblocks):
@@ -817,14 +817,14 @@ class LeaseBlockSelection(Analysis):
         for lb in leaseblocks:
             if lb.max_depth > max_depth:
                 max_depth = lb.max_depth
-        return meters_to_feet(-max_depth)
+        return -max_depth
           
     def get_avg_depth(self, leaseblocks):
         total = 0
         for lb in leaseblocks:
             total += lb.avg_depth
         if total != 0:
-            avg = meters_to_feet(-total / (len(leaseblocks)))
+            avg = -total / (len(leaseblocks))
             return avg
         else:
             return 0
