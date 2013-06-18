@@ -935,13 +935,16 @@ function viewModel() {
     };
     
     self.updateMarker = function(lonlat) {
-        app.markers.clearMarkers();
-        app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
-        app.marker.map = app.map;
-        //app.marker.display(true);
-        if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
-            app.markers.addMarker(app.marker);
-            app.map.setLayerIndex(app.markers, 99);
+        //at some point this function is being called without an appropriate lonlat object...
+        if (lonlat.lon && lonlat.lat) {
+            app.markers.clearMarkers();
+            app.marker = new OpenLayers.Marker(lonlat, app.markers.icon);
+            app.marker.map = app.map;
+            //app.marker.display(true);
+            if (app.marker && !$.isEmptyObject(self.aggregatedAttributes()) && self.featureAttribution()) {
+                app.markers.addMarker(app.marker);
+                app.map.setLayerIndex(app.markers, 99);
+            }
         }
     };
     

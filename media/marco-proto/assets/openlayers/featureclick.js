@@ -101,7 +101,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             feature = features[i];
             layer = feature.layer;
             clicked[layer.id] = true;
-            more = this.triggerEvent("featureclick", {feature: feature});
+            more = this.triggerEvent("featureclick", {feature: feature, event: evt});
             if (more === false) {
                 break;
             }

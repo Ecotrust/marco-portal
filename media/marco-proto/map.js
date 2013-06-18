@@ -270,9 +270,10 @@ app.init = function () {
             setTimeout( function() {
                 app.map.clickOutput.attributes[title] = text;
                 app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                if (app.marker) {
-                    app.marker.display(true);
-                }
+                app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
+                // if (app.marker) {
+                    // app.marker.display(true);
+                // }
             }, 100);
             
         }
