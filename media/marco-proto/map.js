@@ -404,7 +404,7 @@ app.addArcRestLayerToMap = function(layer) {
         eventListeners: {
             arcfeaturequery: function() {
                 //if ( ! layer.attributesFromWebServices || layer.utfurl ) {
-                if ( layer.utfurl || layer.name === 'Offshore Wind Compatibility Assessments' ) {
+                if ( layer.utfurl ) { // || layer.name === 'Offshore Wind Compatibility Assessments' ) {
                     return false;
                 }
             },
