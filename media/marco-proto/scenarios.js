@@ -1411,6 +1411,7 @@ function scenariosModel(options) {
     self.errorMessage = ko.observable(false);
     
     self.sharingGroups = ko.observableArray();
+    self.hasSharingGroups = ko.observable(false);
     
     self.sharingLayer = ko.observable();
     self.showSharingModal = function(scenario) {
@@ -2151,6 +2152,9 @@ $('#designsTab').on('show', function (e) {
             dataType: 'json',
             success: function (groups) {
                 app.viewModel.scenarios.sharingGroups(groups);
+                if (groups.length) {
+                    app.viewModel.scenarios.hasSharingGroups(true);
+                }
             },
             error: function (result) {
                 //debugger;

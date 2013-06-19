@@ -164,8 +164,7 @@
             <div class="row-fluid" id="fullscreen">
                 
                 <!-- Data Panel (left panel) -->
-                {% load in_group %}
-                {% if user.is_authenticated and user|in_group:"Designers" %}
+                {% if user.is_authenticated %}
                 <div class="span5 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data-authenticated': isFullScreen()}">
                 {% else %}
                 <div class="span4 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data': isFullScreen()}">
@@ -176,7 +175,7 @@
                             <li class="active" data-tab="data">
                                 <a href="#data" data-toggle="tab" id="dataTab">Data</a>
                             </li>
-                            {% if user.is_authenticated and user|in_group:"Designers" %}
+                            {% if user.is_authenticated %}
                             <li data-tab="designs" >
                                 <a href="#designs" data-toggle="tab" id="designsTab">Designs</a>
                             </li>
@@ -282,7 +281,7 @@
                             <!-- END DATA TAB -->
                             
                             <!-- DESIGNS TAB -->
-                            {% if user.is_authenticated and user|in_group:"Designers" %}
+                            {% if user.is_authenticated %}
                               {% include "scenarios.html" %}
                             {% endif %}
                             <!-- END DESIGNS TAB -->
@@ -333,7 +332,7 @@
                 <!-- /Data Panel -->
                 
                 <!-- Map Panel (center panel) -->
-                {% if user.is_authenticated and user|in_group:"Designers" %}
+                {% if user.is_authenticated %}
                 <div id="map-panel" data-bind="css: { 'fullscreen-map': isFullScreen() && !showLayers() && !showLegend(), 'fullscreen-with-layers-authenticated': isFullScreen() && showLayers() && !showLegend(), 'fullscreen-with-legend': isFullScreen() && !showLayers() && showLegend(), 'fullscreen-with-legend-and-layers': isFullScreen() && showLayers() && showLegend(), 'shift-left': ! showLayers(), span12: !showLayers() && !showLegend(), span9: !showLayers() && showLegend(), span7: showLayers() && !showLegend(), span4: showLayers() && showLegend() }">       
                 {% else %}
                 <div id="map-panel" data-bind="css: { 'fullscreen-map': isFullScreen() && !showLayers() && !showLegend(), 'fullscreen-with-layers': isFullScreen() && showLayers() && !showLegend(), 'fullscreen-with-legend': isFullScreen() && !showLayers() && showLegend(), 'fullscreen-with-legend-and-layers': isFullScreen() && showLayers() && showLegend(), 'shift-left': ! showLayers(), span12: !showLayers() && !showLegend(), span9: !showLayers() && showLegend(), span8: showLayers() && !showLegend(), span5: showLayers() && showLegend() }">       
@@ -691,7 +690,7 @@
         <script src="{{MEDIA_URL}}/marco-proto/state.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/models.js"></script>
         <script src="{{MEDIA_URL}}/marco-proto/bookmarks.js"></script>
-        {% if user.is_authenticated and user|in_group:"Designers" %}
+        {% if user.is_authenticated %}
             <script src="{{MEDIA_URL}}/marco-proto/scenarios.js"></script>
             <script src="{{MEDIA_URL}}/marco-proto/reports.js"></script>
             <script src="{{MEDIA_URL}}/marco-proto/drawing.js"></script>
