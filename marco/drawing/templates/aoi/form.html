@@ -108,10 +108,16 @@
             <a class="btn" style="margin-top: 10px" data-bind="click: startSketch, css: { disabled: isDrawing() }">
                 <span>Draw Shape</span>
             </a>
-            <p id="double-click-instructions" class="instructions">
-                Click on the map to add the points that make up your polygon. 
-                Double-click to finish drawing.
-            </p>
+        </div>
+        <div data-bind="visible: isDrawing()" style="padding-top: 20px" >
+            <div class="well">
+                <div>
+                    Click on the map to add the points that make up your polygon.
+                </div>
+                <div id="double-click-instructions" style="padding-top: 10px">
+                    Double-click to finish drawing.
+                </div>
+            </div>
         </div>
         <div data-bind="visible: showEdit()">
             <p class="instructions">Click <b>Next</b> if you are satisfied with your shape.</p>
@@ -194,7 +200,7 @@ div .step {
     margin-bottom: 8px;
     background-color: white; 
     background-repeat: no-repeat;
-    min-height: 54px;
+    min-height: 240px;
 }
 span.form-image { float: left; margin-left: -66px; }
 span.form-image > img { width:46px; height:46px; }
