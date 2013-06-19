@@ -13,8 +13,9 @@
 
         function validate(step) {            
             if (step == 1) {
-                if (app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocksLayer &&
-                    app.viewModel.scenarios.selectionFormModel.selectedLeaseBlocksLayer.features.length ) {
+                if (app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer &&
+                    app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer &&
+                    app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer.selectedFeatures.length ) {
                     app.viewModel.scenarios.selectionFormModel.disableSelectionProcess();
                     return true;
                 }
@@ -111,6 +112,17 @@
             Show OCS Lease Blocks</input>
         </label>
     </div>
+    <div style="padding-top: 20px" >
+        <div data-bind="visible: selectingLeaseBlocks()" class="well">
+            <div>
+                Click individual lease blocks to select or deselect.
+            </div>
+            <div style="padding-top: 10px">
+                Alternatively, hold the left mouse button down while dragging over the lease blocks you wish to select.
+            </div>
+        </div>
+    </div>
+    
     <div id="step1_inputs"></div>
   </div>
 
