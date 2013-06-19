@@ -16,8 +16,17 @@
                 if (app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer &&
                     app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer &&
                     app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer.selectedFeatures.length ) {
+                    //end selection process
                     app.viewModel.scenarios.selectionFormModel.disableSelectionProcess();
+                    //toggle off lease block layer
+                    if (app.viewModel.scenarios.selectionFormModel.leaseBlockLayer.active()) {
+                        app.viewModel.scenarios.selectionFormModel.leaseBlockLayer.deactivateLayer();
+                    }
                     return true;
+                } else if (app.viewModel.scenarios.selectionFormModel.selectingLeaseBlocks()) {
+                    $('#selection-instructions').effect("highlight", {}, 1000);
+                } else {
+                    $('#click-to-select').effect("highlight", {}, 1000);
                 }
                 return false;
             } 
@@ -33,6 +42,7 @@
                 step += 1;
             } else if (step > 1 && action == 'prev') {
                 step -= 1;
+                app.viewModel.scenarios.selectionFormModel.leaseBlockLayer.activateLayer();
             }
             $('div.step').each(function(index) {
                 $(this).hide();
@@ -99,7 +109,7 @@
   
   <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 2 </i></p>
-    <p class="instructions">Click the button below to begin selecting your Lease Blocks from the map on the right.</p>
+    <p id="click-to-select" class="instructions">Click the button below to begin selecting your Lease Blocks from the map on the right.</p>
     <a class="btn" style="margin-top: 10px" data-bind="click: toggleSelectionProcess">
         <span data-bind="text: selectingLeaseBlocks() ? 'Complete Selection' : 'Select Lease Blocks'"></span>
     </a>
@@ -114,16 +124,16 @@
     </div>
     <div style="padding-top: 20px" >
         <div data-bind="visible: selectingLeaseBlocks()" class="well">
-            <div>
-                Click individual lease blocks to select or deselect.
+            <div id="selection-instructions">
+                <div>
+                    Click individual lease blocks to select or deselect.
+                </div>
+                <div style="padding-top: 10px">
+                    Alternatively, hold the left mouse button down while dragging over the lease blocks you wish to select.
+                </div>
             </div>
             <div style="padding-top: 10px">
-                Alternatively, hold the left mouse button down while dragging over the lease blocks you wish to select.
-            </div>
-            <div style="padding-top: 10px">
-                NOTE:   Map Pan and Zoom are disabled during the selection process.  
-                        To Pan or Zoom the map, click <b>Complete Selection</b>.  
-                        To further adjust your selections, simply click <b>Select Lease Blocks</b> again.
+                NOTE:   Map Pan and Zoom are disabled during the selection process. 
             </div>
         </div>
     </div>
