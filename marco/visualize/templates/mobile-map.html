@@ -194,9 +194,9 @@
                                                 
                                                 <div id="aggregated-attribute-overlay-test" style="position: absolute; visibility: hidden; height: auto; width: auto">
                                                     <div data-bind="foreach: attributeLayers()">
-                                                        <div data-bind="css: {display: $root.aggregatedAttributes()[name] ? 'block' : 'none'}">
+                                                        <div data-bind="css: {display: $root.aggregatedAttributes()[featureAttributionName] ? 'block' : 'none'}">
                                                           <h4 data-bind="text: featureAttributionName"></h4>
-                                                          <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
+                                                          <dl data-bind="foreach: { data: $root.aggregatedAttributes()[featureAttributionName], afterAdd:$root.updateMarker }">
                                                             <dt>
                                                                 <span data-bind="text: display"></span><span data-bind="visible: display && data ? true : data===0">:</span>
                                                                 <span style="font-weight: normal" data-bind="text: data"></span>
@@ -211,15 +211,15 @@
                                                         <div id="aggregated-attribute-content" class="accordion">
                                                             <div data-bind="foreach: attributeLayers()">
                                                                 <div class="accordion-group">
-                                                                    <div data-bind="visible: $root.aggregatedAttributes()[name]">
+                                                                    <div data-bind="visible: $root.aggregatedAttributes()[featureAttributionName]">
                                                                         <div class="accordion-heading" data-bind="click: toggleLayerAttribution">
                                                                             <a class="accordion-toggle">
-                                                                                <h4 data-bind="text: name"></h4>
+                                                                                <h4 data-bind="text: featureAttributionName"></h4>
                                                                             </a>
                                                                         </div>
                                                                         <div class="accordion-body collapse in" style="background-color: inherit; width: 95%; color: white;" data-bind="attr: { id: $root.convertToSlug(name) }" >
                                                                             <div class="accordion-inner" style="border-left: 0px; margin-left: 1px;">
-                                                                                <dl data-bind="foreach: { data: $root.aggregatedAttributes()[name], afterAdd:$root.updateMarker }">
+                                                                                <dl data-bind="foreach: { data: $root.aggregatedAttributes()[featureAttributionName], afterAdd:$root.updateMarker }">
                                                                                     <dt>
                                                                                         <!-- ko if: $data.hasOwnProperty("tab") --> 
                                                                                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 

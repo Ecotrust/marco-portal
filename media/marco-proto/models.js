@@ -36,7 +36,11 @@ function layerModel(options, parent) {
         self.featureAttributionName = 'OCS Lease Blocks -- DRAFT Report';
     } else if (self.featureAttributionName === 'Party & Charter Boat') {
         self.featureAttributionName = 'Party & Charter Boat Trips';
-    } 
+    } else if (self.featureAttributionName === 'Benthic Habitats (North)' ) {
+        self.featureAttributionName = 'Benthic Habitats';
+    } else if (self.featureAttributionName === 'Benthic Habitats (South)' ) {
+        self.featureAttributionName = 'Benthic Habitats';
+    }
     
     
     // if legend is not provided, try using legend from web services 
@@ -822,7 +826,10 @@ function viewModel() {
         }
         
         $.each(self.visibleLayers(), function(index, layer) {
-            attributeLayersList.push(layer);
+            //special case for Benthic habitats -- make sure it doesn't exist already so it doesn't produce 2 attribute outputs when both layers are active
+            if ( ! app.utils.getObjectFromList(attributeLayersList, 'featureAttributionName', 'Benthic Habitats') ) {
+                attributeLayersList.push(layer);
+            }
         });
         self.attributeLayers(attributeLayersList);
     };

@@ -215,9 +215,9 @@ app.init = function () {
                                 }
                             }
                         });
-                        var title = potential_layer.name,
+                        var title = potential_layer.featureAttributionName,
                             text = attribute_objs;
-                        if ( title === 'OCS Lease Blocks' ) {
+                        if ( title === 'OCS Lease Blocks -- DRAFT REPORT' ) {
                             //title = 'OCS Lease Blocks -- DRAFT REPORT';
                             text = app.viewModel.getOCSAttributes(title, info.data);
                         } else if ( title === 'Sea Turtles' ) {
@@ -228,8 +228,10 @@ app.init = function () {
                             text = app.viewModel.getWindSpeedAttributes(title, info.data);
                         } else if ( title === 'BOEM Wind Planning Areas' ) {
                             text = app.viewModel.getWindPlanningAreaAttributes(title, info.data);
-                        } else if ( title === 'Party & Charter Boat' ) {
+                        } else if ( title === 'Party & Charter Boat Trips' ) {
                             text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
+                        } else if ( title === 'Benthic Habitats (North)' || title === 'Benthic Habitats (South)' ) {
+                            title = 'Benthic Habitats';
                         }
                         clickAttributes[title] = text;
                         //app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
@@ -249,7 +251,7 @@ app.init = function () {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         if (layer) {
             var text = [],
-                title = layer.name;
+                title = layer.featureAttributionName;
             
             if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
                 var attrs = layer.scenarioAttributes;
@@ -268,7 +270,7 @@ app.init = function () {
             
             // the following delay prevents the #map click-event-attributes-clearing from taking place after this has occurred
             setTimeout( function() {
-                app.map.clickOutput.attributes[title] = text;
+                app.map.clickOutput.attributes[layer.featureAttributionName] = text;
                 app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
                 app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
                 // if (app.marker) {
@@ -465,7 +467,7 @@ app.addArcRestLayerToMap = function(layer) {
                 }
                 
                 if (attributeObjs && attributeObjs.length) {
-                    clickAttributes[layer.name] = attributeObjs;
+                    clickAttributes[layer.featureAttributionName] = attributeObjs;
                     $.extend(app.map.clickOutput.attributes, clickAttributes);
                     app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
                     //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(responseText.xy));
