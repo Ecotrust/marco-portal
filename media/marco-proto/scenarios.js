@@ -1617,7 +1617,7 @@ function scenariosModel(options) {
         
         //clean up drawing form
         if (self.drawingForm() || self.drawingFormModel) {
-            self.removeDrawingForm();
+            self.removeDrawingForm(obj);
         }
         
         //remove the key/value pair from aggregatedAttributes
@@ -1627,12 +1627,17 @@ function scenariosModel(options) {
         self.updateDesignsScrollBar();
     };
         
-    self.removeDrawingForm = function() {    
+    self.removeDrawingForm = function(obj) {    
         self.drawingFormModel.cleanUp();
         self.drawingForm(false);
         var drawingForm = document.getElementById('drawing-form');
         $(drawingForm).empty();
         ko.cleanNode(drawingForm);
+        //in case of canceled edit
+        if ( obj && obj.cancel && self.drawingFormModel.originalDrawing ) {
+            self.drawingFormModel.originalDrawing.deactivateLayer();
+            self.drawingFormModel.originalDrawing.activateLayer()
+        }
         delete self.drawingFormModel;
     };
     
@@ -1663,7 +1668,7 @@ function scenariosModel(options) {
                 self.selectionFormModel.leaseBlockLayer.deactivateLayer();
             }
         }
-        if ( (obj && obj.cancel) && ! self.selectionFormModel.selection.active() ) {
+        if ( (obj && obj.cancel) && self.selectionFormModel.selection && !self.selectionFormModel.selection.active() ) {
             self.selectionFormModel.selection.activateLayer()
         }
         delete self.selectionFormModel;

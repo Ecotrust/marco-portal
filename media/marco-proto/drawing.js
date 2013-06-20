@@ -26,6 +26,7 @@ function drawingModel(options) {
                 app.viewModel.scenarios.drawingFormModel = new polygonFormModel();
                 //app.viewModel.scenarios.drawingFormModel.replacePolygonLayer(self.drawing.layer);
                 var oldLayer = app.viewModel.scenarios.drawingFormModel.polygonLayer;
+                app.viewModel.scenarios.drawingFormModel.originalDrawing = self.drawing;
                 app.viewModel.scenarios.drawingFormModel.polygonLayer = self.drawing.layer;
                 //debugger;
                 
