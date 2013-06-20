@@ -3,7 +3,7 @@
     <form class="form-horizontal" id="thankyou-form">
 -->
 <!-- SIGN IN MODAL -->
-<div id="sign-in-modal" class="modal hide fade">
+<div id="sign-in-modal" class="modal hide fade" data-bind="with: app.viewModel">
     <!--<form class="form-horizontal" id="sign-in-form" action="/accounts/signin/" method="post">{% csrf_token %}-->
     <form id="sign-in-form" class="form-horizontal" action="/accounts/signin/" method="post" data-bind="submit: verifyLogin">{% csrf_token %}
         <div class="modal-header">
