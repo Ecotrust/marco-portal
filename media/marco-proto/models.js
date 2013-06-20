@@ -1761,7 +1761,7 @@ function viewModel() {
         self.usernameError(false);
     };
     
-    self.getWindPlanningAreaAttributes = function (title, data) {
+    self.getWindPlanningAreaAttributes = function (data) {
         attrs = [];
         if ('INFO' in data) {
             var state = data.INFO,
@@ -1780,7 +1780,7 @@ function viewModel() {
         return attrs;
     };
     
-    self.getSeaTurtleAttributes = function (title, data) {
+    self.getSeaTurtleAttributes = function (data) {
         attrs = [];
         if ('ST_LK_NUM' in data && data['ST_LK_NUM']) {
             //attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
@@ -1817,7 +1817,7 @@ function viewModel() {
         return attrs;
     };
     
-    self.getToothedMammalAttributes = function (title, data) {
+    self.getToothedMammalAttributes = function (data) {
         attrs = [];
         if ('TOO_LK_NUM' in data && data['TOO_LK_NUM']) {
             if (data['TOO_LK_NUM'] === 99) {
@@ -1852,7 +1852,7 @@ function viewModel() {
         return attrs;
     };
     
-    self.getWindSpeedAttributes = function (title, data) {
+    self.getWindSpeedAttributes = function (data) {
         attrs = [];
         if ('SPEED_90' in data) {
             var min_speed = (parseFloat(data['SPEED_90'])-0.125).toPrecision(3),
@@ -1887,7 +1887,7 @@ function viewModel() {
         return false;
     };
     
-    self.getOCSAttributes = function (title, data) {
+    self.getOCSAttributes = function (data) {
         attrs = [];
         if ('BLOCK_LAB' in data) {
             attrs.push({'display': 'OCS Block Number', 'data': data['BLOCK_LAB']});

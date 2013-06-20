@@ -217,18 +217,18 @@ app.init = function () {
                         });
                         var title = potential_layer.featureAttributionName,
                             text = attribute_objs;
-                        if ( title === 'OCS Lease Blocks -- DRAFT REPORT' ) {
+                        if ( potential_layer.name === 'OCS Lease Blocks' ) {
                             //title = 'OCS Lease Blocks -- DRAFT REPORT';
-                            text = app.viewModel.getOCSAttributes(title, info.data);
-                        } else if ( title === 'Sea Turtles' ) {
-                            text = app.viewModel.getSeaTurtleAttributes(title, info.data);
-                        } else if ( title === 'Toothed Mammals (All Seasons)' ) {
-                            text = app.viewModel.getToothedMammalAttributes(title, info.data);
-                        } else if ( title === 'Wind Speed' ) {
-                            text = app.viewModel.getWindSpeedAttributes(title, info.data);
-                        } else if ( title === 'BOEM Wind Planning Areas' ) {
-                            text = app.viewModel.getWindPlanningAreaAttributes(title, info.data);
-                        } else if ( title === 'Party & Charter Boat Trips' ) {
+                            text = app.viewModel.getOCSAttributes(info.data);
+                        } else if ( potential_layer.name === 'Sea Turtles' ) {
+                            text = app.viewModel.getSeaTurtleAttributes(info.data);
+                        } else if ( potential_layer.name === 'Toothed Mammals (All Seasons)' ) {
+                            text = app.viewModel.getToothedMammalAttributes(info.data);
+                        } else if ( potential_layer.name === 'Wind Speed' ) {
+                            text = app.viewModel.getWindSpeedAttributes(info.data);
+                        } else if ( potential_layer.name === 'BOEM Wind Planning Areas' ) {
+                            text = app.viewModel.getWindPlanningAreaAttributes(info.data);
+                        } else if ( potential_layer.name === 'Party & Charter Boat' ) {
                             text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
                         } else if ( title === 'Benthic Habitats (North)' || title === 'Benthic Habitats (South)' ) {
                             title = 'Benthic Habitats';

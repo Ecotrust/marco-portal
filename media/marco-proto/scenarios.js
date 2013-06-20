@@ -1873,6 +1873,7 @@ function scenariosModel(options) {
                         } else {
                             self.drawingList.push(scenario);
                         }
+                        self.drawingList.sort(self.alphabetizeByName);
                     } else if ( isSelectionModel ) {
                         var previousSelection = ko.utils.arrayFirst(self.selectionList(), function(oldSelection) {
                             return oldSelection.uid === scenario.uid;
@@ -1883,6 +1884,7 @@ function scenariosModel(options) {
                             self.selectionList.push(scenario);
                         }
                         self.activeSelections().push(scenario);
+                        self.selectionList.sort(self.alphabetizeByName);
                     } else {
                         var previousScenario = ko.utils.arrayFirst(self.scenarioList(), function(oldScenario) {
                             return oldScenario.uid === scenario.uid;
@@ -1892,6 +1894,7 @@ function scenariosModel(options) {
                         } else {
                             self.scenarioList.push(scenario);
                         }
+                        self.scenarioList.sort(self.alphabetizeByName);
                     }
                     
                     //self.scenarioForm(false);
@@ -1921,6 +1924,17 @@ function scenariosModel(options) {
                 app.viewModel.scenarios.errorMessage(result.responseText.split('\n\n')[0]);
             }
         });
+    }; // end addScenarioToMap
+    
+    self.alphabetizeByName = function(a, b) {
+        var name1 = a.name.toLowerCase(),
+            name2 = b.name.toLowerCase();
+        if (name1 < name2) {
+            return -1;
+        } else if (name1 > name2) {
+            return 1;
+        }
+        return 0;
     };
     
     // activate any lingering designs not shown during loadCompressedState
@@ -1985,6 +1999,7 @@ function scenariosModel(options) {
             self.scenarioList.push(scenarioViewModel);
             app.viewModel.layerIndex[scenario.uid] = scenarioViewModel;
         });
+        self.scenarioList.sort(self.alphabetizeByName);
     };
     
     self.loadSelectionsFromServer = function() {
@@ -2020,6 +2035,7 @@ function scenariosModel(options) {
             self.selectionList.push(selectionViewModel);
             app.viewModel.layerIndex[selection.uid] = selectionViewModel;
         });
+        self.selectionList.sort(self.alphabetizeByName);
     };
     
     self.loadDrawingsFromServer = function() {
@@ -2055,6 +2071,7 @@ function scenariosModel(options) {
             self.drawingList.push(drawingViewModel);
             app.viewModel.layerIndex[drawing.uid] = drawingViewModel;
         });
+        self.drawingList.sort(self.alphabetizeByName);
     };
     
     self.loadLeaseblockLayer = function() {

@@ -13,9 +13,8 @@
 
         function validate(step) {            
             if (step == 1) {
-                if (app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer &&
-                    app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer &&
-                    app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer.selectedFeatures.length ) {
+                if ( app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer &&
+                     app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer.selectedFeatures.length ) {
                     //end selection process
                     app.viewModel.scenarios.selectionFormModel.disableSelectionProcess();
                     //toggle off lease block layer
@@ -23,10 +22,13 @@
                         app.viewModel.scenarios.selectionFormModel.leaseBlockLayer.deactivateLayer();
                     }
                     return true;
-                } else if (app.viewModel.scenarios.selectionFormModel.selectingLeaseBlocks()) {
+                } else if ( app.viewModel.scenarios.selectionFormModel.edit &&
+                            ! app.viewModel.scenarios.selectionFormModel.leaseBlockSelectionLayer.layer ) {
+                    return true;
+                } else if ( app.viewModel.scenarios.selectionFormModel.selectingLeaseBlocks() ) {
                     $('#selection-instructions').effect("highlight", {}, 1000);
                 } else {
-                    $('#click-to-select').effect("highlight", {}, 1000);
+                    $('#click-button-to-select').effect("highlight", {}, 1000);
                 }
                 return false;
             } 
@@ -73,7 +75,7 @@
         
         $('#id_name').keypress(function (e) {
             if (e.which === 13) {
-                $('#selection-form .submit_button').click();
+                $('#scenario-form .submit_button').click();
                 return false;
             } else {
                 $('#invalid-name-message').hide();
@@ -109,7 +111,7 @@
   
   <div id="step1" class="step">
     <p class="step-text"><i>Step 1 of 2 </i></p>
-    <p id="click-to-select" class="instructions">Click the button below to begin selecting your Lease Blocks from the map on the right.</p>
+    <p id="click-button-to-select" class="instructions">Click the button below to begin selecting your Lease Blocks from the map on the right.</p>
     <a class="btn" style="margin-top: 10px" data-bind="click: toggleSelectionProcess">
         <span data-bind="text: selectingLeaseBlocks() ? 'Complete Selection' : 'Select Lease Blocks'"></span>
     </a>
