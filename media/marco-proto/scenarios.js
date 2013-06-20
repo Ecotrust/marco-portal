@@ -13,7 +13,7 @@ var madrona = {
         });
         
         $form.closest('.panel').on('click', '.cancel_button', function(e) {
-            app.viewModel.scenarios.reset();
+            app.viewModel.scenarios.reset({cancel: true});
         });
 
         $form.closest('.panel').on('click', '.submit_button', function(e) {
@@ -686,14 +686,14 @@ function selectionModel(options) {
         return $.ajax({
             url: '/features/leaseblockselection/' + selection.uid + '/form/', 
             success: function(data) {
-                app.viewModel.scenarios.scenarioForm(true);
-                $('#scenario-form').html(data);
+                app.viewModel.scenarios.selectionForm(true);
+                $('#selection-form').html(data);
                 if ($.browser.msie && $.browser.version < 9) {
                     app.viewModel.scenarios.selectionFormModel = new IESelectionFormModel();
                 } else {
                     app.viewModel.scenarios.selectionFormModel = new selectionFormModel(); 
                 }
-                ko.applyBindings(app.viewModel.scenarios.selectionFormModel, document.getElementById('scenario-form'));
+                ko.applyBindings(app.viewModel.scenarios.selectionFormModel, document.getElementById('selection-form'));
                 //particular for paintbrush selection form
                 app.viewModel.scenarios.selectionFormModel.edit = true;
                 app.viewModel.scenarios.selectionFormModel.selection = selection;
@@ -764,9 +764,13 @@ function selectionFormModel(options) {
     self.leaseBlockLayer = app.viewModel.getLayerById(6);
     if (self.leaseBlockLayer.active()) {
         self.leaseBlockLayerWasActive = true;
+        if ( !self.leaseBlockLayer.visible() ) {
+            self.leaseBlockLayer.setVisible();
+        }
+    } else {
+        self.leaseBlockLayer.activateLayer();
     }
-    self.leaseBlockLayer.activateLayer();
-    self.leaseBlockLayer.setVisible();
+    
     
     self.leaseBlockSelectionLayer = new layerModel({
         name: 'Selectable OCS Lease Blocks Layer',
@@ -1597,7 +1601,7 @@ function scenariosModel(options) {
     } 
     
     //restores state of Designs tab to the initial list of designs
-    self.reset = function () {
+    self.reset = function (obj) {
         self.loadingMessage(false);
         self.errorMessage(false);
         
@@ -1608,7 +1612,7 @@ function scenariosModel(options) {
         
         //clean up selection form
         if (self.selectionForm() || self.selectionFormModel) {
-            self.removeSelectionForm();
+            self.removeSelectionForm(obj);
         }
         
         //clean up drawing form
@@ -1632,7 +1636,7 @@ function scenariosModel(options) {
         delete self.drawingFormModel;
     };
     
-    self.removeSelectionForm = function() {
+    self.removeSelectionForm = function(obj) {
         self.selectionForm(false);
         var selectionForm = document.getElementById('selection-form');
         $(selectionForm).empty();
@@ -1655,7 +1659,12 @@ function scenariosModel(options) {
             }
         }
         if ( ! self.selectionFormModel.leaseBlockLayerWasActive ) {
-            self.selectionFormModel.leaseBlockLayer.deactivateLayer();
+            if ( self.selectionFormModel.leaseBlockLayer.active() ) {
+                self.selectionFormModel.leaseBlockLayer.deactivateLayer();
+            }
+        }
+        if ( (obj && obj.cancel) && ! self.selectionFormModel.selection.active() ) {
+            self.selectionFormModel.selection.activateLayer()
         }
         delete self.selectionFormModel;
         app.viewModel.enableFeatureAttribution();

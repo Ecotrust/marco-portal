@@ -389,9 +389,9 @@ function layerModel(options, parent) {
             layer.parent.visible(true);
         }
         app.setLayerVisibility(layer, true);
-
+        
         //add utfgrid if applicable
-        if (layer.utfgrid) {
+        if (layer.utfgrid && !layer.utfgrid.visibility) {
             app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
         }
     };
