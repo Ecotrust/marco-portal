@@ -1619,6 +1619,31 @@ function viewModel() {
         app.pageguide.togglingTours = false;
     };
     
+    self.startDesignsTour = function() {
+        if ( $.pageguide('isOpen') ) { // activated when 'tour' is clicked
+            // close the pageguide
+            app.pageguide.togglingTours = true;
+            $.pageguide('close');
+        } else {
+            //save state
+            app.pageguide.state = app.getState();
+            app.saveStateMode = false;   
+        }
+        
+        //show the designs panel
+        $('#designsTab').tab('show');
+        
+        //ensure pageguide is managing the default guide
+        $.pageguide(designsGuide, designsGuideOverrides);
+        
+        //adding delay to ensure the message will load 
+        setTimeout( function() { $.pageguide('open'); }, 700 );
+        //$('#help-tab').click();
+        
+        app.pageguide.togglingTours = false;
+    };
+    
+    
     //if toggling legend or layers panel during default pageguide, then correct step 4 position
     self.correctTourPosition = function() {
         if ( $.pageguide('isOpen') ) {

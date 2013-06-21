@@ -31,12 +31,12 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" style="min-width: 115px;">
+                            <li id="create-new-drawing"><a data-bind="click: createPolygonDesign" style="padding-left: 15px">Drawing</a></li>
+                            <li id="create-new-selection"><a data-bind="click: createSelectionDesign" style="padding-left: 15px">Lease Block Collection</a></li>
                             {% load in_group %}
                             {% if user|in_group:"Designers" %}
-                            <li><a data-bind="click: createWindScenario" style="padding-left: 15px">Siting</a></li>
+                            <li><a data-bind="click: createWindScenario" style="padding-left: 15px">Wind Energy Siting</a></li>
                             {% endif %}
-                            <li><a data-bind="click: createSelectionDesign" style="padding-left: 15px">Selection</a></li>
-                            <li><a data-bind="click: createPolygonDesign" style="padding-left: 15px">Drawing</a></li>
                             <!--
                             <li class="dropdown-submenu">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sketch of the Sea</a>
@@ -55,8 +55,138 @@
             
             <div id="design-list" class="row-fluid">
                 <div id="designs-accordion" class="designs">
-                    <div class="accordion" style="padding-bottom: 110px">
-                    
+                    <div class="accordion" style="padding-bottom: 110px">                    
+                        
+                        <!-- DRAWINGS -->
+                        <div>
+                            <div class="accordion-group">
+                                <div class="collections-header">
+                                    <div id="drawings-header" class="accordion-heading" data-bind="click: toggleDrawingsOpen, css: { 'active': isDrawingsOpen() }">
+                                        <div>
+                                            <a class="accordion-toggle">
+                                                <!--<span>Sketches of the Sea</span>-->
+                                                <span>Drawings</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isDrawingsOpen() }">
+                                    <div class="accordion-inner">
+                                    
+                                        <div data-bind="visible: !drawingList().length" style="font-weight: normal">
+                                            <div style="padding: 10px;">
+                                                <p>
+                                                    You currently have no Drawings. 
+                                                </p>
+                                                <p>
+                                                    Choose 'Drawing' from the '<b>Create New</b>' menu above to create a Drawing.
+                                                </p>
+                                                <p>
+                                                    Note:  You may, at any time, edit, share, or remove any of the drawings that you have created.  
+                                                    Any drawings shared with you can be copied so that they too can be edited, shared, or removed.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    
+                                        <ul class="unstyled list" data-bind="foreach: drawingList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div data-bind="text: name"></div>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
+                                                        <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editDrawing">Edit</a></li>
+                                                        <li><a id="share-option" data-bind="visible: ! shared() && $parent.hasSharingGroups, click: $parent.showSharingModal">Share</a></li>
+                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteDrawing">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopyDrawing">Create Copy</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end drawings -->
+                        
+                        <!-- LEASE BLOCK COLLECTIONS -->
+                        <div>
+                            <div class="accordion-group">
+                                <div class="collections-header">
+                                    <div id="lease-block-collections-header" class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
+                                        <div>
+                                            <a class="accordion-toggle">
+                                                <!--<span>Lease Block Collections</span>-->
+                                                <span>Lease Block Collections</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
+                                    <div class="accordion-inner">
+                                    
+                                        <div data-bind="visible: !selectionList().length" style="font-weight: normal">
+                                            <div style="padding: 10px;">
+                                                <p>
+                                                    You currently have no Lease Block Collections. 
+                                                </p>
+                                                <p>
+                                                    Choose 'Selection' from the '<b>Create New</b>' menu above to create a Lease Block Selection.
+                                                </p>
+                                                <p>
+                                                    Note:  You may, at any time, edit, share, or remove any of the collections that you have created.  
+                                                    Any collections shared with you can be copied so that they too can be edited, shared, or removed.
+                                                </p>
+                                            </div>
+                                        </div>                                   
+                                    
+                                        <ul class="unstyled list" data-bind="foreach: selectionList ">
+                                            <li class="layer">
+                                                <div class="btn-group btn-group-layer">
+                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                        <i class="icon-info-sign icon-large"></i>
+                                                    </a>
+                                                    <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div data-bind="text: name"></div>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
+                                                        <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
+                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
+                                                    </a>
+                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a data-bind="visible: ! shared(), click: editSelection">Edit</a></li>
+                                                        <li><a id="share-option" data-bind="visible: ! shared() && $parent.hasSharingGroups, click: $parent.showSharingModal">Share</a></li>
+                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a data-bind="visible: ! shared(), click: deleteSelection">Delete</a></li>
+                                                        <li><a data-bind="visible: shared, click: createCopySelection">Create Copy</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>  
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end collections -->
+                        
                         <!-- WIND ENERGY SITINGS -->
                         {% if user|in_group:"Designers" %}
                         <div>
@@ -124,135 +254,6 @@
                         {% endif %}
                         <!-- end wind sitings -->
                         
-                        <!-- LEASE BLOCK COLLECTIONS -->
-                        <div>
-                            <div class="accordion-group">
-                                <div class="collections-header">
-                                    <div id="lease-block-collections-header" class="accordion-heading" data-bind="click: toggleCollectionsOpen, css: { 'active': isCollectionsOpen() }">
-                                        <div>
-                                            <a class="accordion-toggle">
-                                                <!--<span>Lease Block Collections</span>-->
-                                                <span>Selections</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-body collapse" data-bind="css: { 'in': isCollectionsOpen() }">
-                                    <div class="accordion-inner">
-                                    
-                                        <div data-bind="visible: !selectionList().length" style="font-weight: normal">
-                                            <div style="padding: 10px;">
-                                                <p>
-                                                    You currently have no Lease Block Selections. 
-                                                </p>
-                                                <p>
-                                                    Choose 'Selection' from the '<b>Create New</b>' menu above to create a Lease Block Selection.
-                                                </p>
-                                                <p>
-                                                    Note:  You may, at any time, edit, share, or remove any of the selections that you have created.  
-                                                    Any selections shared with you can be copied so that they too can be edited, shared, or removed.
-                                                </p>
-                                            </div>
-                                        </div>                                   
-                                    
-                                        <ul class="unstyled list" data-bind="foreach: selectionList ">
-                                            <li class="layer">
-                                                <div class="btn-group btn-group-layer">
-                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
-                                                        <i class="icon-info-sign icon-large"></i>
-                                                    </a>
-                                                    <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
-                                                        <div data-bind="text: name"></div>
-                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
-                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
-                                                        </span>
-                                                        <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
-                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
-                                                    </a>
-                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
-                                                        <span class="caret"></span>
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a data-bind="visible: ! shared(), click: editSelection">Edit</a></li>
-                                                        <li><a id="share-option" data-bind="visible: ! shared() && $parent.hasSharingGroups, click: $parent.showSharingModal">Share</a></li>
-                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a data-bind="visible: ! shared(), click: deleteSelection">Delete</a></li>
-                                                        <li><a data-bind="visible: shared, click: createCopySelection">Create Copy</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>  
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end collections -->
-                        
-                        <!-- DRAWINGS -->
-                        <div>
-                            <div class="accordion-group">
-                                <div class="collections-header">
-                                    <div id="drawings-header" class="accordion-heading" data-bind="click: toggleDrawingsOpen, css: { 'active': isDrawingsOpen() }">
-                                        <div>
-                                            <a class="accordion-toggle">
-                                                <!--<span>Sketches of the Sea</span>-->
-                                                <span>Drawings</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-body collapse" data-bind="css: { 'in': isDrawingsOpen() }">
-                                    <div class="accordion-inner">
-                                    
-                                        <div data-bind="visible: !drawingList().length" style="font-weight: normal">
-                                            <div style="padding: 10px;">
-                                                <p>
-                                                    You currently have no Drawings. 
-                                                </p>
-                                                <p>
-                                                    Choose 'Drawing' from the '<b>Create New</b>' menu above to create a Drawing.
-                                                </p>
-                                                <p>
-                                                    Note:  You may, at any time, edit, share, or remove any of the drawings that you have created.  
-                                                    Any drawings shared with you can be copied so that they too can be edited, shared, or removed.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    
-                                        <ul class="unstyled list" data-bind="foreach: drawingList ">
-                                            <li class="layer">
-                                                <div class="btn-group btn-group-layer">
-                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
-                                                        <i class="icon-info-sign icon-large"></i>
-                                                    </a>
-                                                    <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
-                                                        <div data-bind="text: name"></div>
-                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
-                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
-                                                        </span>
-                                                        <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
-                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
-                                                    </a>
-                                                    <a class="btn btn-group dropdown-toggle" data-toggle="dropdown" href="#">
-                                                        <span class="caret"></span>
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a data-bind="visible: ! shared(), click: editDrawing">Edit</a></li>
-                                                        <li><a id="share-option" data-bind="visible: ! shared() && $parent.hasSharingGroups, click: $parent.showSharingModal">Share</a></li>
-                                                        <li><a data-bind="click: $parent.zoomToScenario">Zoom To</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a data-bind="visible: ! shared(), click: deleteDrawing">Delete</a></li>
-                                                        <li><a data-bind="visible: shared, click: createCopyDrawing">Create Copy</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>  
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end drawings -->
                     </div>
                 </div>
             </div>   

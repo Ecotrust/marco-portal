@@ -888,7 +888,6 @@ function selectionFormModel(options) {
                     var id = self.leaseBlockSelectionLayer.layer.features[i].data['PROT_NUMB'];
                     for (var j=0; j<self.selectedLeaseBlocks().length; j+=1) {
                         if (id === self.selectedLeaseBlocks()[j]) {
-                            console.log('true');
                             self.leaseBlockSelectionLayerClickControl.select(self.leaseBlockSelectionLayer.layer.features[i]);
                         }
                     }

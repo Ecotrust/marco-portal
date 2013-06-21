@@ -77,6 +77,7 @@ var defaultGuideOverrides = {
   step: {
     events: {
       select: function() {
+        $('#pageGuideMessage').height(150);
         if ($(this).data('idx') === 0) {
             app.viewModel.showLayers(true);
             $('#dataTab').tab('show');
@@ -104,11 +105,12 @@ var defaultGuideOverrides = {
         } else if ($(this).data('idx') === 2) {
             app.viewModel.showLayers(true);
             $('#activeTab').tab('show');
-        } else {
+        } else if ($(this).data('idx') === 4) {
             //app.viewModel.showLayers(true);
             //$('#dataTab').tab('show');
             //$('#basemaps').addClass('open');
-        }
+            $('#pageGuideMessage').height(200);
+        } 
       }
     }
   }
@@ -156,7 +158,7 @@ var dataGuide = {
 var dataGuideOverrides = {
   events: {
     open: function () {
-      app.pageguide.defaultOpenStuff();
+        app.pageguide.defaultOpenStuff();
     },
     close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
       app.pageguide.defaultCloseStuff();
@@ -168,11 +170,11 @@ var dataGuideOverrides = {
         if ($(this).data('idx') === 0) {
             app.viewModel.closeDescription();
             app.viewModel.deactivateAllLayers();
-            $('#pageGuideMessage').height(150);
+            $('#pageGuideMessage').height(130);
         } else if ($(this).data('idx') === 1) {
             app.viewModel.closeDescription();
             app.viewModel.deactivateAllLayers();
-            $('#pageGuideMessage').height(150);
+            $('#pageGuideMessage').height(130);
         } else if ($(this).data('idx') === 2) {
             //alert("Step 2");
             app.viewModel.closeDescription();
@@ -180,7 +182,7 @@ var dataGuideOverrides = {
             app.viewModel.closeAllThemes();
             app.viewModel.themes()[0].setOpenTheme();
             //$('#pageGuideMessage').css //can we adjust the height of the tour background as well as that of the description overlay?
-            $('#pageGuideMessage').height(150);
+            $('#pageGuideMessage').height(75);
         } else if ($(this).data('idx') === 3) {
             //alert("Step 3");
             app.viewModel.closeDescription();
@@ -200,7 +202,7 @@ var dataGuideOverrides = {
                     });
                 }
             }
-            $('#pageGuideMessage').height(150);
+            $('#pageGuideMessage').height(75);
         } else if ($(this).data('idx') === 4) {
             $('#pageGuideMessage').height(75);
             for (var i=0; i < app.viewModel.themes()[0].layers().length; i++) {
@@ -210,7 +212,7 @@ var dataGuideOverrides = {
                 }
             }
             //app.viewModel.themes()[0].layers()[3].showDescription(app.viewModel.themes()[0].layers()[3]);
-            $('#overview-overlay').height(236);
+            $('#overview-overlay').height(246);
         }
       }
     }
@@ -258,16 +260,101 @@ var activeGuideOverrides = {
       select: function() {
         if ($(this).data('idx') === 0) {
             $('#activeTab').tab('show');
+            $('#pageGuideMessage').height(130);
         } else if ($(this).data('idx') === 1) {
             $('#activeTab').tab('show');
             $('.opacity-button:first').click();
+            $('#pageGuideMessage').height(130);
         } else if ($(this).data('idx') === 2) {
             $('#activeTab').tab('show');
+            $('#pageGuideMessage').height(150);
         }
       }
     }
   }
 };
+
+/* THE DESIGNS PANEL PAGE GUIDE */
+
+var designsGuide = {
+  id: 'designs-guide',
+  title: 'Designs Guide',
+  steps: [
+    {
+      target: '#designsTab',
+      content: $('#help-text-designs-tour-designsTab').html(),
+      direction: 'top',
+      arrow: {offsetX: 50, offsetY: 0}
+    },
+    {
+      target: '#create-new-button',
+      content: $('#help-text-designs-tour-createNew').html(),
+      direction: 'right',
+      arrow: {offsetX: 10, offsetY: 0}
+    },
+    {
+      target: '#lease-block-collections-header',
+      content: $('#help-text-designs-tour-leaseBlockCollections').html(),
+      direction: 'right',
+      arrow: {offsetX: -120, offsetY: 20}
+    },
+    {
+      target: '#view-reports-button',
+      content: $('#help-text-designs-tour-viewReports').html(),
+      direction: 'top',
+      arrow: {offsetX: 50, offsetY: 0}
+    }
+  ]
+};
+
+var designsGuideOverrides = {
+  events: {
+    open: function () {
+        app.pageguide.defaultOpenStuff();
+    },
+    close: function () { // activated regardless of whether the 'tour' was clicked  or the 'close' was clicked?
+      app.pageguide.defaultCloseStuff();
+    }
+  },
+  step: {
+    events: {
+      select: function() {
+        if ($(this).data('idx') === 0) {
+            if ( $('#create-new-design').hasClass('open') ) {
+                $('#create-new-button').dropdown('toggle');
+            }
+            app.viewModel.scenarios.toggleDrawingsOpen('close');
+            app.viewModel.scenarios.toggleCollectionsOpen('close');
+            $('#pageGuideMessage').height(130);
+        } else if ($(this).data('idx') === 1) {
+            if ( ! $('#create-new-design').hasClass('open') ) {
+                $('#create-new-button').dropdown('toggle');
+            }
+            app.viewModel.scenarios.toggleDrawingsOpen('close');
+            app.viewModel.scenarios.toggleCollectionsOpen('close');
+            $('#pageGuideMessage').height(130);
+        } else if ($(this).data('idx') === 2) {
+            if ( $('#create-new-design').hasClass('open') ) {
+                $('#create-new-button').dropdown('toggle');
+            }
+            app.viewModel.scenarios.toggleDrawingsOpen('close');
+            app.viewModel.scenarios.toggleCollectionsOpen('open');
+            $('#pageGuideMessage').height(130);
+        } else if ($(this).data('idx') === 3) {
+            if ( $('#create-new-design').hasClass('open') ) {
+                $('#create-new-button').dropdown('toggle');
+            }
+            app.viewModel.scenarios.toggleDrawingsOpen('close');
+            app.viewModel.scenarios.toggleCollectionsOpen('close');
+            $('#pageGuideMessage').height(130);
+        } 
+      }
+    }
+  }
+};
+
+
+
 
 app.pageguide.defaultOpenStuff = function() {
     app.pageguide.tourIsActive = true;  
@@ -276,6 +363,7 @@ app.pageguide.defaultOpenStuff = function() {
     //increase the z-value of SimpleLayerSwitcher so it falls on top of the pageguide icon
     $('#SimpleLayerSwitcher_28').css('z-index', 1100);
 };
+
 app.pageguide.defaultCloseStuff = function() {
     app.viewModel.closeDescription();
     //if ( ! app.viewModel.showOverview() ) {

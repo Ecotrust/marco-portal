@@ -53,6 +53,9 @@
                 <li><a href="#" data-dismiss="modal" data-bind="click: startDefaultTour">Tour the Basics</a></li>
                 <li><a href="#" data-dismiss="modal" data-bind="click: startDataTour">Tour the Data Tab</a></li>
                 <li><a href="#" data-dismiss="modal" data-bind="click: startActiveTour">Tour the Active Tab</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#" data-dismiss="modal" data-bind="click: startDesignsTour">Tour the Designs Tab</a></li>
+                {% endif %}
             </ul>
             </div>
         </div>
