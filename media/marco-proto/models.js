@@ -29,7 +29,10 @@ function layerModel(options, parent) {
     self.opacity = ko.observable(self.defaultOpacity);
     self.graphic = options.graphic || null;
     
+    //these are necessary to prevent knockout errors when offering non-designs in Active panel
     self.sharedBy = ko.observable(false);
+    self.sharedWith = ko.observable(false);
+    self.selectedGroups = ko.observableArray();
     self.shared = ko.observable(false);
     
     if (self.featureAttributionName === 'OCS Lease Blocks') {
@@ -1169,6 +1172,7 @@ function viewModel() {
                 app.viewModel.scenarios.updateDesignsScrollBar();
             }
         }
+        $('.jspScrollable').css("outline", "none");
         
     };
 
