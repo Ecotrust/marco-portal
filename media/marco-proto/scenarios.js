@@ -1001,10 +1001,10 @@ function IESelectionFormModel(options) {
                 );
                 
                 //assign leaseblock ids to hidden leaseblock ids form field
-                $('#id_leaseblock_ids').val(self.selectedLeaseBlocks().join(","))
+                $('#id_leaseblock_ids').val(self.selectedLeaseBlocks().join(","));
                 
                 layer.addFeatures(new OpenLayers.Format.GeoJSON().read(feature));
-                self.selectedLeaseBlocksLayer = layer
+                self.selectedLeaseBlocksLayer = layer;
                 app.map.addLayer(self.selectedLeaseBlocksLayer);
             },
             error: function (result) {
@@ -1121,16 +1121,12 @@ function scenarioModel(options) {
     
     //self.overview = self.description || 'no description was provided';
     self.constructInfoText = function() {
-        var attrs = self.scenarioAttributes;
+        var attrs = self.scenarioAttributes,
+            output = '';
         if (self.description && self.description !== '') {
-            var output = self.description + '\n\n';
-        } else {
-            var output = '';
-        }
+            output = self.description + '\n\n';
+        } 
         for (var i=0; i< attrs.length; i++) {
-            //if (attrs[i].tab){
-            //    output += '     ';
-            //}
             output += attrs[i].title + ': ' + attrs[i].data + '\n';
         }
         return output;
@@ -1275,7 +1271,7 @@ function scenarioModel(options) {
             error: function (result) {
                 //debugger;
             }
-        })
+        });
     };
         
     self.deleteScenario = function() {
@@ -1302,7 +1298,7 @@ function scenarioModel(options) {
             error: function (result) {
                 //debugger;
             }
-        })
+        });
     };
     
     self.visible = ko.observable(false);  
@@ -1466,7 +1462,7 @@ function scenariosModel(options) {
             var groupID = '#' + self.sharingGroups()[i].group_slug;
             $(groupID).collapse( { toggle: false } );
         }
-    }
+    };
     
     //TODO:  Fix the problem in which the first group toggled open will not toggle open again, once it's closed
     self.lastMembersClickTime = 0;
@@ -1522,7 +1518,7 @@ function scenariosModel(options) {
         } else {
             self.addScenarioToMap(scenario, {zoomTo: true});
         }
-    }
+    };
     
     self.updateSharingScrollBar = function(groupID) {
         var sharingScrollpane = $('#sharing-groups').data('jsp');
@@ -1566,7 +1562,7 @@ function scenariosModel(options) {
             }
         }
         self.updateDesignsScrollBar();
-    }        
+    };       
     self.isCollectionsOpen = ko.observable(false);
     self.toggleCollectionsOpen = function(force) {
         // ensure designs tab is activated
@@ -1584,7 +1580,7 @@ function scenariosModel(options) {
             }
         }
         self.updateDesignsScrollBar();
-    }           
+    };           
     self.isDrawingsOpen = ko.observable(false);
     self.toggleDrawingsOpen = function(force) {
         // ensure designs tab is activated
@@ -1602,7 +1598,7 @@ function scenariosModel(options) {
             }
         }
         self.updateDesignsScrollBar();
-    }      
+    };      
     
     self.updateDesignsScrollBar = function() {
         var designsScrollpane = $('#designs-accordion').data('jsp');
@@ -1611,7 +1607,7 @@ function scenariosModel(options) {
         } else {
             designsScrollpane.reinitialise();
         }
-    } 
+    }; 
     
     //restores state of Designs tab to the initial list of designs
     self.reset = function (obj) {
@@ -1649,7 +1645,7 @@ function scenariosModel(options) {
         //in case of canceled edit
         if ( obj && obj.cancel && self.drawingFormModel.originalDrawing ) {
             self.drawingFormModel.originalDrawing.deactivateLayer();
-            self.drawingFormModel.originalDrawing.activateLayer()
+            self.drawingFormModel.originalDrawing.activateLayer();
         }
         delete self.drawingFormModel;
     };
@@ -1682,7 +1678,7 @@ function scenariosModel(options) {
             }
         }
         if ( (obj && obj.cancel) && self.selectionFormModel.selection && !self.selectionFormModel.selection.active() ) {
-            self.selectionFormModel.selection.activateLayer()
+            self.selectionFormModel.selection.activateLayer();
         }
         delete self.selectionFormModel;
         app.viewModel.enableFeatureAttribution();
@@ -1938,7 +1934,7 @@ function scenariosModel(options) {
                 }
                 app.map.addLayer(scenario.layer); 
                 //add scenario to Active tab    
-                app.viewModel.activeLayers.remove(function(item) { return item.uid === scenario.uid } );
+                app.viewModel.activeLayers.remove(function(item) { return item.uid === scenario.uid; } );
                 app.viewModel.activeLayers.unshift(scenario);
                 
                 if (zoomTo) {
