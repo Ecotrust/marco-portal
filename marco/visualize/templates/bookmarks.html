@@ -24,12 +24,12 @@
                             <td style="padding-right: 0px; width: 80px">
                                 <div class="btn-group" style="text-align: center">
                                     {% if user.is_authenticated %}
-                                    <a class="btn btn-mini tweet-trash" data-bind="click: showSharingModal, visible: !shared()">
-                                        <span rel="tooltip" title="Share"><i class="icon-group icon-medium"></i></span>
+                                    <a class="btn btn-mini tweet-trash" data-bind="visible: ! shared() && $parent.sharingGroups().length, click: showSharingModal">
+                                        <span rel="tooltip" title="Share bookmark with other MARCO users"><i class="icon-group icon-medium"></i></span>
                                     </a>
                                     {% endif %}
                                     <a class="btn btn-mini tweet-trash"  href="#bookmark-map-links-modal" data-toggle="modal" data-bind="click: $parent.resetBookmarkMapLinks, visible: !shared()">
-                                        <span rel="tooltip" title="Map Links"><i class="icon-link icon-medium"></i></span>
+                                        <span rel="tooltip" title="Export URL or embedded map"><i class="icon-link icon-medium"></i></span>
                                     </a>
                                 </div>
                             </td>
