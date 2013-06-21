@@ -82,7 +82,7 @@
     </div>
     <div class="modal-body" style="height: 200px; text-align: center; overflow: hidden;">  
         <div class="row-fluid">
-            <h4 class="sharing-header">Share my design with the following:</h4>
+            <h4 class="sharing-header">Share my design with the following group(s):</h4>
             <ul class="unstyled" id="sharing-groups" style="margin-left: 1px; height: 165px; outline: none;">
                 <span data-bind="foreach: sharingGroups">
                     <li data-bind="click: $parent.toggleGroup">
@@ -92,7 +92,7 @@
                                 <i class="check icon-large icon-check" data-bind="visible: $parent.groupIsSelected(group_name)"></i>
                                 <i class="check icon-large icon-check-empty" data-bind="visible: !$parent.groupIsSelected(group_name)"></i>
                                 <span data-bind="text: group_name"></span> 
-                                <a class="group-members-popover" rel="popover" data-bind="attr: {'data-content': $parent.groupMembers(group_name)}" data-original-title="Members"> 
+                                <a class="group-members-popover" rel="popover" data-bind="attr: {'data-content': $parent.groupMembers(group_name), 'data-original-title': group_name}"> 
                                     <i class="icon-group"> </i>
                                 </a>
                             </div>

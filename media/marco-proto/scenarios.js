@@ -1086,6 +1086,20 @@ function scenarioModel(options) {
     if (options.sharingGroups && options.sharingGroups.length) {
         self.selectedGroups(options.sharingGroups);
     } 
+    self.sharedWith = ko.observable();
+    self.updateSharedWith = function() {
+        if (self.selectedGroups().length) {
+            var groupNames = "Shared with " + self.selectedGroups()[0];
+            for(var i=1; i<self.selectedGroups().length; i+=1) {
+                groupNames += ", " + self.selectedGroups()[i];
+            }
+            self.sharedWith(groupNames);
+        }
+    };
+    self.updateSharedWith();
+    self.selectedGroups.subscribe( function() {
+        self.updateSharedWith();
+    });
     self.temporarilySelectedGroups = ko.observableArray();
     
     self.attributes = [];

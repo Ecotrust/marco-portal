@@ -97,7 +97,10 @@
                                                     <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                         <div data-bind="text: name"></div>
                                                         <span rel="tooltip" data-bind="attr: {title: sharedBy}">
-                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            <i class="icon-signin" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedWith}">
+                                                            <i class="icon-signout" data-bind="visible: selectedGroups().length" style="padding-left: 10px"></i>
                                                         </span>
                                                         <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
                                                         <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
@@ -162,7 +165,10 @@
                                                     <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                         <div data-bind="text: name"></div>
                                                         <span rel="tooltip" data-bind="attr: {title: sharedBy}">
-                                                            <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                            <i class="icon-signin" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedWith}">
+                                                            <i class="icon-signout" data-bind="visible: selectedGroups().length" style="padding-left: 10px"></i>
                                                         </span>
                                                         <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
                                                         <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
@@ -193,8 +199,7 @@
                             <div class="accordion-group">
                                 <div class="accordion-heading" data-bind="click: toggleScenariosOpen, css: { 'active': isScenariosOpen() }">
                                     <a class="accordion-toggle">
-                                        <!--<span>Wind Energy Sitings</span>-->
-                                        <span>Sitings</span>
+                                        <span>Wind Energy Sitings</span>
                                     </a>
                                 </div>
                                 <div class="accordion-body collapse" data-bind="css: { 'in': isScenariosOpen() }">
@@ -221,15 +226,16 @@
                                                     <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
                                                         <i class="icon-info-sign icon-large"></i>
                                                     </a>
-                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
-                                                        <div style="font-weight: normal">
-                                                            <span data-bind="text: name"></span>
-                                                            <span rel="tooltip" data-bind="attr: {title: sharedBy}">
-                                                                <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
-                                                            </span>
-                                                            <i class="check icon-large icon-check" data-bind="visible: visible()"></i>
-                                                            <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
-                                                        </div>
+                                                    <a style="font-weight: normal" class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                        <div data-bind="text: name"></div>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedBy}">
+                                                            <i class="icon-signin" data-bind="visible: shared" style="padding-left: 10px"></i>
+                                                        </span>
+                                                        <span rel="tooltip" data-bind="attr: {title: sharedWith}">
+                                                            <i class="icon-signout" data-bind="visible: selectedGroups().length" style="padding-left: 10px"></i>
+                                                        </span>
+                                                        <i class="check icon-large icon-check" data-bind="visible: visible()"></i>
+                                                        <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
                                                     </a>
                                                     <a class="btn btn-group dropdown-toggle"data-toggle="dropdown" href="#">
                                                         <span class="caret"></span>
