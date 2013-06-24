@@ -205,7 +205,7 @@ class Layer(models.Model):
         elif self.parent.description and self.parent.description.strip() != '':
             return self.parent.description
         else:
-            return None
+            return self.data_overview_text
             
     @property
     def is_shareable(self):
