@@ -194,10 +194,25 @@ app.borderLess = function () {
 
 app.loadState = function(state) {
     var loadTimer;
+    
+    // if the request is to load and display a single, named layer
+    var slug = Object.keys(state)[0],
+        layer = app.viewModel.getLayerBySlug(slug);
+    if (layer) {
+        app.loadCompressedState(state);
+        //activate layer (/planner/#<layer-name>)
+        app.viewModel.layerIndex[layer.id].activateLayer();
+        //set open theme
+        layer.themes()[0].setOpenTheme();
+        return;
+    }
+    
+    // otherwise, if url is up to date
     if (state.z || state.login) {
         return app.loadCompressedState(state);
     }
-
+    // else load it up the old fashioned way...(might be ready to jettison this sometime soon...)
+    
     if (state.print === 'true') {
         app.printMode();
     }

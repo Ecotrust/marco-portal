@@ -145,8 +145,10 @@ class Layer(models.Model):
     def bookmark_link(self):
         if not self.bookmark and self.is_sublayer and self.parent.bookmark:
             return self.parent.bookmark.replace('<layer_id>', str(self.id))
-        else:
-            return self.bookmark
+        if not self.bookmark:
+            domain = get_domain(8000)
+            return '%s/planner/#%s' %(domain, self.slug)
+        return self.bookmark
     
     @property
     def data_download_link(self):

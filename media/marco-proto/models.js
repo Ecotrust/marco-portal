@@ -1405,6 +1405,16 @@ function viewModel() {
         return false;
     };
 
+    self.getLayerBySlug = function(slug) {
+        for (var x=0; x<self.themes().length; x++) {
+            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return self.convertToSlug(layer.name) === slug; });
+            if (layer_list.length > 0) {
+                return layer_list[0];
+            }
+        }
+        return false;
+    };
+
     // handle the search form
     self.searchTerm = ko.observable();
     self.layerSearch = function() {
