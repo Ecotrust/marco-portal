@@ -3658,55 +3658,6 @@
         }
     },
     {
-        "pk": 96,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "fact_sheet": "",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                130,
-                129
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "offshore-wind-energy-depth-zones",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "data_status": "",
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Offshore Wind Energy Depth Zones",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
-            "arcgis_layers": "4",
-            "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
-        }
-    },
-    {
         "pk": 94,
         "model": "data_manager.layer",
         "fields": {
@@ -3797,6 +3748,55 @@
             "sublayers": [
                 66
             ],
+            "attribute_title": ""
+        }
+    },
+    {
+        "pk": 96,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "fact_sheet": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://marinecadastre.gov/",
+            "lookup_table": [],
+            "shareable_url": true,
+            "attributes_from_web_services": false,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/OffshoreWindTechnologyDepthZones.zip",
+            "metadata": "",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                130,
+                129
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "offshore-wind-energy-depth-zones",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "data_status": "",
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Offshore Wind Energy Depth Zones",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
+            "arcgis_layers": "4",
+            "legend_title": "",
+            "sublayers": [],
             "attribute_title": ""
         }
     },
