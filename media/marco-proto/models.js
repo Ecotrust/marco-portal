@@ -11,15 +11,12 @@ function layerModel(options, parent) {
     self.type = options.type || null;
     self.utfurl = options.utfurl || false;
     self.legend = options.legend || false;
-    self.learn_link = options.learn_link || null;
     self.legendVisibility = ko.observable(false);
     self.legendTitle = options.legend_title || false;
     self.legendSubTitle = options.legend_subtitle || false;
     self.themes = ko.observableArray();
-    //self.attributeTitle = options.attributes ? options.attributes.title : self.name;
     self.attributes = options.attributes ? options.attributes.attributes : [];
     self.compress_attributes = options.attributes ? options.attributes.compress_attributes : false;
-    self.attributesFromWebServices = options.attributes_from_web_services ? options.attributes_from_web_services : false
     self.attributeEvent = options.attributes ? options.attributes.event : [];
     self.lookupField = options.lookups ? options.lookups.field : null;
     self.lookupDetails = options.lookups ? options.lookups.details : [];

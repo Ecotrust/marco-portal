@@ -71,7 +71,6 @@ class Layer(models.Model):
     
     #data description (updated fact sheet) (now the Learn pages)
     data_overview = models.TextField(blank=True, null=True)
-    data_status = models.CharField(max_length=255, blank=True, null=True)
     data_source = models.CharField(max_length=255, blank=True, null=True)
     data_notes = models.TextField(blank=True, null=True)
     
@@ -82,7 +81,6 @@ class Layer(models.Model):
     data_download = models.CharField(max_length=255, blank=True, null=True)
     learn_more = models.CharField(max_length=255, blank=True, null=True)
     metadata = models.CharField(max_length=255, blank=True, null=True)
-    fact_sheet = models.CharField(max_length=255, blank=True, null=True)
     source = models.CharField(max_length=255, blank=True, null=True)
     thumbnail = models.URLField(max_length=255, blank=True, null=True)
     
@@ -91,8 +89,6 @@ class Layer(models.Model):
         ('click', 'click'),
         ('mouseover', 'mouseover')
     )
-    attributes_from_web_services = models.BooleanField(default=False)
-    attribute_title = models.CharField(max_length=255, blank=True, null=True)
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     compress_display = models.BooleanField(default=False)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
@@ -175,15 +171,7 @@ class Layer(models.Model):
         if not self.source and self.is_sublayer:
             return self.parent.source
         else:
-            return self.source
-        
-    @property
-    def learn_link(self):
-        if self.learn_more:
-            return self.learn_more
-        else:
-            theme = self.themes.all()[0]  
-            return "%s#%s" %(theme.learn_link, self.slug)
+            return self.source        
         
     @property
     def description_link(self):
@@ -217,8 +205,7 @@ class Layer(models.Model):
             
     @property
     def serialize_attributes(self):
-        return {'title': self.attribute_title, 
-                'compress_attributes': self.compress_display,
+        return {'compress_attributes': self.compress_display,
                 'event': self.attribute_event,
                 'attributes': [{'display': attr.display_name, 'field': attr.field_name, 'precision': attr.precision} for attr in self.attribute_fields.all().order_by('order')]}
     
@@ -250,8 +237,6 @@ class Layer(models.Model):
                 'metadata': layer.metadata_link,
                 'source': layer.source_link,
                 'tiles': layer.tiles_link,
-                'learn_link': layer.learn_link,
-                'attributes_from_web_services': self.attributes_from_web_services,
                 'attributes': layer.serialize_attributes,
                 'lookups': layer.serialize_lookups,
                 'color': layer.vector_color,
@@ -281,8 +266,6 @@ class Layer(models.Model):
             'metadata': self.metadata_link,
             'source': self.source_link,
             'tiles': self.tiles_link,
-            'learn_link': self.learn_link,
-            'attributes_from_web_services': self.attributes_from_web_services,
             'attributes': self.serialize_attributes,
             'lookups': self.serialize_lookups,
             'color': self.vector_color,

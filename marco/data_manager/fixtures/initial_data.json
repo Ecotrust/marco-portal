@@ -130,7 +130,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -142,8 +141,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
             "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Administrative-Boundaries/Index.aspx ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -159,7 +156,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Bureau of Ocean Energy Management",
             "data_notes": "",
@@ -167,8 +164,7 @@
             "url": "/media/data_manager/geojson/OCSAdminBoundaries.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -176,7 +172,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -188,8 +183,6 @@
             "kml": "",
             "source": "http://pubs.usgs.gov/dds/dds68/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/slr_vulnerability/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "http://pubs.usgs.gov/dds/dds68/data/atlantic/",
@@ -213,7 +206,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "U.S. Geological Survey",
             "data_notes": "These data were created to be used for planning purposes only. They are designed to give a broad overview of vulnerability to sea level rise at a National scale.",
@@ -221,8 +214,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SLRVulnerability/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -230,7 +222,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -242,8 +233,6 @@
             "kml": "",
             "source": "http://www.csc.noaa.gov/digitalcoast/data/shipping ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -259,7 +248,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipTrafficSeparationZones/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA",
             "data_notes": "NOAA ENC Direct to GIS data is not intended for navigational purposes. This data is provided for use in GIS software packages for coastal planning and research.",
@@ -267,8 +256,7 @@
             "url": "/media/data_manager/geojson/ShipTrafficSeparationZones.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -276,7 +264,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -288,8 +275,6 @@
             "kml": "",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -307,7 +292,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/AllGearTypes/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -317,8 +302,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -326,7 +310,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -338,8 +321,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Summer_Flounder_Landings_Files/Fishing_Effort_Summer_Flounder_Landings.kmz",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/summer_flounder/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
@@ -357,7 +338,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/SummerFlounderLandings/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -367,8 +348,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -376,7 +356,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -388,8 +367,6 @@
             "kml": "",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/toothed_turtles/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "none",
@@ -411,7 +388,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -419,8 +396,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -428,7 +404,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -440,8 +415,6 @@
             "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz",
             "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_SLA(3).aspx",
@@ -457,7 +430,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_1_StateSeawardBoundary/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch",
             "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are not an official record for the exact Submerged Lands Act Boundary.",
@@ -467,8 +440,7 @@
             "legend_title": "",
             "sublayers": [
                 80
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -476,7 +448,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -488,8 +459,6 @@
             "kml": "",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/sne_benhab/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip",
@@ -513,7 +482,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "USGS, NOAA; analysis by TNC",
             "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
@@ -521,8 +490,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsSouthernNE/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -530,7 +498,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -542,8 +509,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -561,7 +526,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/GillNets/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -571,8 +536,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -580,7 +544,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -592,8 +555,6 @@
             "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml",
             "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip",
@@ -609,7 +570,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "USGS, NOAA; analysis by TNC",
             "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.",
@@ -617,8 +578,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Commercial Shipping Density",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -626,7 +586,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 7
             ],
@@ -638,8 +597,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -655,7 +612,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -665,8 +622,7 @@
             "legend_title": "",
             "sublayers": [
                 67
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -674,7 +630,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -686,8 +641,6 @@
             "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz",
             "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip",
@@ -703,7 +656,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_4_ContiguousZone/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA Office of Coast Survey",
             "data_notes": "These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.",
@@ -713,8 +666,7 @@
             "legend_title": "",
             "sublayers": [
                 80
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -722,7 +674,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -734,8 +685,6 @@
             "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz",
             "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip",
@@ -751,7 +700,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_5_ExclusiveEconomicZone/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA Office of Coast Survey",
             "data_notes": "These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.",
@@ -761,8 +710,7 @@
             "legend_title": "",
             "sublayers": [
                 80
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -770,7 +718,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -782,8 +729,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -801,7 +746,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -811,8 +756,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -820,7 +764,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -832,8 +775,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -849,7 +790,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -857,8 +798,7 @@
             "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/export",
             "arcgis_layers": "10",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -866,7 +806,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -878,8 +817,6 @@
             "kml": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Endangered_Whales.zip",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/endangered_whales/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Endangered_Whales.zip",
@@ -895,7 +832,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "US Navy, NOAA; analysis by TNC",
             "data_notes": "Sightings data obtained from the U.S. Navy were taken from NMFS-NEFSC Aerial Surveys, NMFS-NEFSC Shipboard Surveys, and the North Atlantic Right Whale Consortium database. The validity of sightings was carefully screened and verified by United States Navy contractors before inclusion in the model. Invalid records were not included in the analysis. Sightings for each ten minute square were divided by the effort for each ten minute square to calculate Sightings Per Unit Effort (SPUE).  SPUE was calculated for each species, for each season, and for each ten minute square.",
@@ -924,8 +861,7 @@
                 41,
                 36,
                 38
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -933,7 +869,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -945,8 +880,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -962,7 +895,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -970,8 +903,7 @@
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/CommercialVesselDensityOctober2009-2010/MapServer/export",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -979,7 +911,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -991,8 +922,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1008,7 +937,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -1016,8 +945,7 @@
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1025,7 +953,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -1037,8 +964,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/WindSpeed/geviewer.kml",
             "source": "http://www.nrel.gov/gis/data_wind.html",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/windspeed90m/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "http://www.nrel.gov/gis/cfm/data/GIS_Data_Technology_Specific/United_States/Wind/High_Resolution/Atlantic_Coast_90m_Windspeed_Offshore_Wind_High_Resolution.zip",
@@ -1056,7 +981,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed2013/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Renewable Energy Laboratory",
             "data_notes": "This layer represents an estimate of offshore annual average wind speeds and is based primarily on data extrapolated from onshore wind data, which is a source of uncertainty in the dataset. For more information visit nrel.gov and search for Technical Report TP-500-45889.",
@@ -1064,8 +989,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WindSpeed2013/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Wind Speed at 90m (m/s)",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1073,7 +997,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -1097,8 +1020,6 @@
                 22,
                 23
             ],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1117,7 +1038,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Outflow/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "EPA",
             "data_notes": "",
@@ -1125,8 +1046,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Outflow/${z}/${x}/${y}.png ",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1134,7 +1054,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -1146,8 +1065,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/OCS_Admin_Boundaries_Files/OCS_administrative_boundary.kmz",
             "source": "http://boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/ocs_blocks/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_BLKCLIP(3).aspx",
@@ -1170,7 +1087,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Bureau of Ocean Energy Management",
             "data_notes": "",
@@ -1178,8 +1095,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/OCSBlocks/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": "ID: "
+            "sublayers": []
         }
     },
     {
@@ -1187,7 +1103,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1199,8 +1114,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/SeabedForm/geviewer.kml",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/seabed_forms/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Seabed_Form.zip",
@@ -1218,7 +1131,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA; analysis by TNC",
             "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
@@ -1226,8 +1139,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeabedForm/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1235,7 +1147,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -1250,8 +1161,6 @@
                 12,
                 11
             ],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1271,7 +1180,7 @@
             "is_sublayer": false,
             "lookup_field": "TYPE",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Atlantic Wind Connection",
             "data_notes": "The Atlantic Wind Connection (AWC) is a proposed undersea transmission cable system that would bring power generated by Mid-Atlantic offshore wind turbines to shore. The private-sector project would span approximately 350 miles from northern New Jersey to southern Virginia and would be built in phases over a 10-year period.",
@@ -1279,8 +1188,7 @@
             "url": "/media/data_manager/geojson/AWCRoutesAndHubs.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1288,7 +1196,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -1300,8 +1207,6 @@
             "kml": "",
             "source": "http://www.epa.gov/",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1319,7 +1224,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DredgeDisposalOffshore/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": 0.7,
             "data_source": "EPA",
             "data_notes": "",
@@ -1327,8 +1232,7 @@
             "url": "/media/data_manager/geojson/DredgeDisposalOffshore.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": "Offshore Dredge Disposal Site"
+            "sublayers": []
         }
     },
     {
@@ -1336,7 +1240,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1348,8 +1251,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/GrainSize/geviewer.kml",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/sediment_grain_size/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Estimated_Sediment_Grain_Size_mm.zip",
@@ -1367,7 +1268,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "USGS; analysis by TNC",
             "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
@@ -1375,8 +1276,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SedimentGrainSize/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Sediment Grain Size (mm)",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1384,7 +1284,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1396,8 +1295,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Winter.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1415,7 +1312,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -1425,8 +1322,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1434,7 +1330,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -1446,8 +1341,6 @@
             "kml": "",
             "source": "http://www.marinecadastre.gov/default.aspx",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/coastalenergy/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/CoastalEnergyFacilities.zip",
@@ -1466,7 +1359,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/Facilities/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Marine Cadastre",
             "data_notes": "",
@@ -1474,8 +1367,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Energy/Facilities/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1483,7 +1375,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -1495,8 +1386,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1514,7 +1403,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -1524,8 +1413,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1533,7 +1421,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -1545,8 +1432,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1564,7 +1449,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -1574,8 +1459,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1583,7 +1467,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -1595,8 +1478,6 @@
             "kml": "",
             "source": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/wpas/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Mapping_and_Data/Wind_Planning_Areas.zip",
@@ -1614,7 +1495,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA_2013_01_17/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "BOEM",
             "data_notes": "",
@@ -1622,8 +1503,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA_2013_01_17/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1631,7 +1511,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1643,8 +1522,6 @@
             "kml": "",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/mab_benhab/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Benthic_Habitats.zip",
@@ -1668,7 +1545,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "USGS, NOAA; analysis by TNC",
             "data_notes": "This data product was created as part of the Northwest Atlantic Marine Ecoregional Assessment. The Nature Conservancy developed this science-based ecoregional assessment for the Northwest Atlantic Marine region (Bay of Fundy to Cape Hatteras, North Carolina). This assessment synthesizes information on oceanography, chemistry, geology, biology, and social science to inform decisions about coastal and marine ecosystems. The ten categories of targets identified as the primary structure for the marine ecoregional assessment are: coastal and estuarine habitats, benthic habitats, diadromous fish, demersal fish, pelagic fish, forage fish, nearshore shellfish, shorebirds and seabirds, marine mammals, and sea turtles. For more information and a detailed report, please visit http://nature.org/namera/.",
@@ -1676,8 +1553,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "<a href=\"https://s3.amazonaws.com/marco-public-2d/Conservation/BenthicHabitatsMidAtlantic/Benthic_Habitats_Legend.pdf\" target=\"_blank\">Benthic Habitats (Download)</a>",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1685,7 +1561,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -1697,8 +1572,6 @@
             "kml": "",
             "source": "http://www.boem.gov/",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/shipwrecks/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
@@ -1716,7 +1589,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ShipWreckBlockDensity/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "BOEM",
             "data_notes": "",
@@ -1724,8 +1597,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Conservation/ShipWreckBlockDensity/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -1733,7 +1605,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -1745,8 +1616,6 @@
             "kml": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/ATL_Layers/MapServer/kml/mapImage.kmz",
             "source": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/Atlantic.aspx",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_8G(3).aspx",
@@ -1762,7 +1631,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_2_RevenueSharingBoundary/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Bureau of Ocean Energy Management, Mapping and Boundary Branch",
             "data_notes": "Because GIS projection and topology functions can change or generalize coordinates, these GIS files are considered to be approximate and are not an official record for the exact Submerged Lands Act Boundary.",
@@ -1772,8 +1641,7 @@
             "legend_title": "",
             "sublayers": [
                 80
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1781,7 +1649,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1793,8 +1660,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1812,7 +1677,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -1822,8 +1687,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1831,7 +1695,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1843,8 +1706,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Spring.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1862,7 +1723,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -1872,8 +1733,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1881,7 +1741,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1893,8 +1752,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Winter.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1912,7 +1769,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -1922,8 +1779,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1931,7 +1787,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -1943,8 +1798,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Spring.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -1962,7 +1815,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -1972,8 +1825,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -1981,7 +1833,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -1993,8 +1844,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/MMS_Jurs_Files/MMS_Jurs.kmz",
             "source": "http://www.csc.noaa.gov/digitalcoast/data/marinejurisdictions ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip",
@@ -2010,7 +1859,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Bureau of Ocean Energy Management and NOAA Office of Coast Survey via Multipurpose Marine Cadastre",
             "data_notes": "This is a composite dataset that includes the state seaward boundary, revenue sharing boundary, territorial sea, contiguous zone and exclusive economic zone. The boundaries shown here should not be construed as legally binding.",
@@ -2018,8 +1867,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJurisdictions/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2027,7 +1875,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -2039,8 +1886,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Submarine_Cables_Files/Submarine_Cables.kmz",
             "source": "http://ocs-spatial.ncd.noaa.gov/viewer.htm ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2056,7 +1901,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/SubmarineCables/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA",
             "data_notes": "NOAA ENC Direct to GIS data is not intended for navigational purposes. This data is provided for use in GIS software packages for coastal planning and research.",
@@ -2064,8 +1909,7 @@
             "url": "/media/data_manager/geojson/SubmarineCablesNoDecimals.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2073,7 +1917,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2085,8 +1928,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Winter.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2104,7 +1945,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2114,8 +1955,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2123,7 +1963,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -2135,8 +1974,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Admin/Boundaries/BOEM_Protraction_Diagram_Files/BOEM_protraction_diagram.kmz",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/Oil-and-Gas-Energy-Program/Mapping-and-Data/ATL_PROTCLP(3).aspx",
@@ -2154,7 +1991,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2162,8 +1999,7 @@
             "url": "/media/data_manager/geojson/BOEMProtractionNoDecimals.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2171,7 +2007,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -2183,8 +2018,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2202,7 +2035,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/MidwaterTrawls/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -2212,8 +2045,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2221,7 +2053,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2233,8 +2064,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Fall.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2252,7 +2081,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2262,8 +2091,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2271,7 +2099,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -2283,8 +2110,6 @@
             "kml": "",
             "source": "http://boem.gov/Renewable-Energy-Program/Smart-from-the-Start/Index.aspx",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Smart_from_the_Start/Atlantic_OCS_Wind_Energy_Areas_shapefile_07_18_11.ZIP",
@@ -2302,7 +2127,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/WPA/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "BOEM",
             "data_notes": "The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.",
@@ -2310,8 +2135,7 @@
             "url": "/media/data_manager/geojson/WindPlanningAreas.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2319,7 +2143,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -2331,8 +2154,6 @@
             "kml": "",
             "source": "http://www.noaa.gov/",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
@@ -2348,7 +2169,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA; contours derived by TNC",
             "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
@@ -2356,8 +2177,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2365,7 +2185,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2377,8 +2196,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Spring.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2396,7 +2213,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2406,8 +2223,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2415,7 +2231,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2427,8 +2242,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sei_Whales_Fall.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2446,7 +2259,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2456,8 +2269,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2465,7 +2277,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -2477,8 +2288,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/HumanUse/Fishing_Effort/Fishing_Effort_Pelagic_Gear_Types_Files/Fishing_Effort_Pelagic_Gear_Types.kmz",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2494,7 +2303,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
@@ -2502,8 +2311,7 @@
             "url": "http://s3.amazonaws.com/marco-public-2d/Fishing/PelagicGearTypes/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2511,7 +2319,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2523,8 +2330,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Winter.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2542,7 +2347,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2552,8 +2357,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2561,7 +2365,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -2573,8 +2376,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2590,7 +2391,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2598,8 +2399,7 @@
             "url": "/media/data_manager/geojson/AWCRoutes.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2607,7 +2407,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2619,8 +2418,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Summer.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2638,7 +2435,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2648,8 +2445,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2657,7 +2453,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2669,8 +2464,6 @@
             "kml": "",
             "source": "http://www.habitat.noaa.gov/protection/efh/habitatmapper.html ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/EFH_Overlays.zip",
@@ -2686,7 +2479,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "The Nature Conservancy, NOAA",
             "data_notes": "This layer was developed for general visualization and informational purposes only and does not necessarily represent the most important habitats. Additionally, only certain species were included in this analysis; included species are those under Federal management for which spatial data exists. There are numerous managed species for which spatial data does not yet exist. See below for a list of the species considered.",
@@ -2694,8 +2487,7 @@
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2703,7 +2495,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2715,8 +2506,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Fall.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2734,7 +2523,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2744,8 +2533,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2753,7 +2541,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2765,8 +2552,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2782,7 +2567,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "New Jersey Department of Environmental Protection",
             "data_notes": "This data layer was created for use in the New Jersey Ocean/Wind Power Ecological Baseline Study. The overall goal of the study is to provide spatial and temporal data on species utilizing New Jersey offshore waters to assist in determining potential areas for wind power development. This layer represents a summary of all birds and all behaviors over the entire 2 year study. Data aggregated by month, season and species are also available. Additional modeling of avian densities was also done and is included in the overall environmental sensitivity index.",
@@ -2790,8 +2575,7 @@
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2799,7 +2583,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2811,8 +2594,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2828,7 +2609,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2836,8 +2617,7 @@
             "url": "/media/data_manager/geojson/CanyonsTest.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2845,7 +2625,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -2857,8 +2636,6 @@
             "kml": "",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2874,7 +2651,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2884,8 +2661,7 @@
             "legend_title": "",
             "sublayers": [
                 91
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2893,7 +2669,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -2905,8 +2680,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2924,7 +2697,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2932,8 +2705,7 @@
             "url": "/media/data_manager/geojson/ocs.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -2941,7 +2713,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -2953,8 +2724,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Fall.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -2972,7 +2741,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -2982,8 +2751,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -2991,7 +2759,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3003,8 +2770,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Fin_Whales_Summer.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3022,7 +2787,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3032,8 +2797,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3041,7 +2805,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -3053,8 +2816,6 @@
             "kml": "",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3072,7 +2833,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/VTR/BottomTrawl/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -3082,8 +2843,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3091,7 +2851,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3103,8 +2862,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Winter.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3122,7 +2879,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3132,8 +2889,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3141,7 +2897,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3153,8 +2908,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Spring.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3172,7 +2925,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3182,8 +2935,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3191,7 +2943,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3203,8 +2954,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/EFH_Files/Essential_Fish_Habitat.kmz",
             "source": "http://www.habitat.noaa.gov/protection/efh/habitatmapper.html ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/efh_overlay/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/EFH_Overlays.zip",
@@ -3240,7 +2989,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA; analysis by TNC",
             "data_notes": "This layer was developed for general visualization and informational purposes only and does not necessarily represent the most important habitats. Additionally, only certain species were included in this analysis; included species are those under Federal management for which spatial data exists. There are numerous managed species for which spatial data does not yet exist. See below for a list of the species considered.",
@@ -3248,8 +2997,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/EssentialFishHabitat/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Essential Fish Habitats",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3257,7 +3005,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3269,8 +3016,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/NAR_Whales_Spring.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3288,7 +3033,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3298,8 +3043,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3307,7 +3051,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3319,8 +3062,6 @@
             "kml": "",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/toothed_turtles/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
@@ -3342,7 +3083,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA; analysis by TNC",
             "data_notes": "",
@@ -3350,8 +3091,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/SeaTurtles/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Sea Turtles",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3359,7 +3099,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3371,8 +3110,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Fall.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3390,7 +3127,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3400,8 +3137,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3409,7 +3145,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3421,8 +3156,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Humpback_Whales_Summer.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3440,7 +3173,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3450,8 +3183,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3459,7 +3191,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -3471,8 +3202,6 @@
             "kml": "",
             "source": "http://www.nefsc.noaa.gov/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/vtr_effort/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
@@ -3488,7 +3217,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
@@ -3506,8 +3235,7 @@
                 70,
                 12,
                 69
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3515,7 +3243,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3527,8 +3254,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Waterbird_Survey_files/Waterbird_Survey.kmz",
             "source": "http://www.fws.gov/chesapeakebay/ ",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/waterbird_survey/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/2001-2003_Waterbird_Survey.zip",
@@ -3549,7 +3274,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "U.S. Fish and Wildlife Service",
             "data_notes": "These data were created from only one study and only represent where birds were observed during that time period. In addition, this layer currently only shows data for all species grouped together. There may be cases where it would be better to consider individual species or smaller groupings of similar species.                            ",
@@ -3557,8 +3282,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/WaterBirdSurvey/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "Waterbird Survey <p style=\"margin: 0 0 3px; text-align: left\">(# birds per sq km)</p>",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3566,7 +3290,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -3578,8 +3301,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Endangered_Whales/Sperm_Whales_Summer.kmz",
             "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3597,7 +3318,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/EndangeredWhales/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3607,8 +3328,7 @@
             "legend_title": "",
             "sublayers": [
                 21
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3616,7 +3336,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "ArcRest",
-            "fact_sheet": "",
             "themes": [
                 5
             ],
@@ -3628,8 +3347,6 @@
             "kml": "",
             "source": "http://www.marinecadastre.gov",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3645,7 +3362,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Department of Defense, U.S. Navy",
             "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
@@ -3653,8 +3370,7 @@
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
             "arcgis_layers": "8",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3662,7 +3378,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "ArcRest",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -3674,8 +3389,6 @@
             "kml": "",
             "source": "http://www.marinecadastre.gov",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/PrincipalPorts.zip",
@@ -3691,7 +3404,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortsPrincipal/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3699,8 +3412,7 @@
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
             "arcgis_layers": "2",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3708,7 +3420,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
-            "fact_sheet": "",
             "themes": [
                 7
             ],
@@ -3720,8 +3431,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3737,7 +3446,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3747,8 +3456,7 @@
             "legend_title": "",
             "sublayers": [
                 66
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3756,7 +3464,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "ArcRest",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -3768,8 +3475,6 @@
             "kml": "",
             "source": "http://marinecadastre.gov/",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/OffshoreWindTechnologyDepthZones.zip",
@@ -3788,7 +3493,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3796,8 +3501,7 @@
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
             "arcgis_layers": "4",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3805,7 +3509,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "checkbox",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -3817,8 +3520,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3834,7 +3535,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3848,8 +3549,7 @@
                 78,
                 75,
                 76
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3857,7 +3557,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -3869,8 +3568,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -3886,7 +3583,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AWCHubsRoutes/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -3894,8 +3591,7 @@
             "url": "/media/data_manager/geojson/AWCHubs.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -3903,7 +3599,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -3915,8 +3610,6 @@
             "kml": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesKML.kmz",
             "source": "http://www.nauticalcharts.noaa.gov/csdl/mbound.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://ocs-gis.ncd.noaa.gov/maritime_boundaries/USMaritimeLimitsNBoundariesSHP.zip",
@@ -3932,7 +3625,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/MarineJuris_3_TerritorialSea/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA Office of Coast Survey",
             "data_notes": "These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts. ",
@@ -3942,8 +3635,7 @@
             "legend_title": "",
             "sublayers": [
                 80
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -3951,7 +3643,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -3963,8 +3654,6 @@
             "kml": "",
             "source": "http://www.nmfs.noaa.gov/",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/rec_fishing/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "",
@@ -3982,7 +3671,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/RecreationalFishing/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "The owner/operator of a vessel issued a federal fishery permit with FVTR requirements is required to submit FVTRs for each trip taken. The National Marine Fisheries Service requires this information for the conservation and management of marine fishery resources in accordance with the Magnuson-Stevens Fishery Conservation and Management Act. The data reported are used to develop, implement, and monitor fishery management strategies and for a variety of other uses. These data are sufficient for general planning purposes but errors in reporting or in transferring the paper reports to a digital format are not uncommon.",
@@ -3992,8 +3681,7 @@
             "legend_title": "Party & Charter Boat Trips (Total 2000-2009)",
             "sublayers": [
                 55
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -4001,7 +3689,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -4013,8 +3700,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -4030,7 +3715,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -4038,8 +3723,7 @@
             "url": "",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4047,7 +3731,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -4059,8 +3742,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": false,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -4078,7 +3759,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": false,
             "vector_fill": 0.3,
             "data_source": "",
             "data_notes": "",
@@ -4086,8 +3767,7 @@
             "url": "/media/data_manager/geojson/CoralProtectionMockups.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4095,7 +3775,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -4107,8 +3786,6 @@
             "kml": "",
             "source": "http://www.boem.gov/Renewable-Energy-Program/Mapping-and-Data/index.aspx",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "/media/data_manager/utfgrid/lease_areas/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Renewable_Energy_Program/Mapping_and_Data/boem_leasing_areas_shapefile.zip",
@@ -4130,7 +3807,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "BOEM",
             "data_notes": "",
@@ -4138,8 +3815,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMLeaseAreas/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4147,7 +3823,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -4159,8 +3834,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "http://www.boem.gov/uploadedFiles/BOEM/Oil_and_Gas_Energy_Program/Mapping_and_Data/Administrative_Boundaries/Atl_admn.zip",
@@ -4176,7 +3849,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "",
             "data_notes": "",
@@ -4184,8 +3857,7 @@
             "url": "http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer/export",
             "arcgis_layers": "5",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4193,7 +3865,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 1
             ],
@@ -4205,8 +3876,6 @@
             "kml": "",
             "source": "http://www.csc.noaa.gov/",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -4222,7 +3891,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA Coastal Services Center via MarineCadastre.gov",
             "data_notes": "Unofficial boundary for Regional Ocean Councils which are state and federal partnerships with the goal of engaging in regional protection and balanced use of ocean and coastal resources.",
@@ -4230,8 +3899,7 @@
             "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4239,7 +3907,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -4251,8 +3918,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz",
             "source": "http://www.nature.org/ourinitiatives/habitats/oceanscoasts/howwework/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/artificial_reefs.zip",
@@ -4270,7 +3935,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ArtificialReefs/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Compiled by TNC from various sources",
             "data_notes": "These data were compiled from various state sources. In Delaware, digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).",
@@ -4278,8 +3943,7 @@
             "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4287,7 +3951,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -4306,8 +3969,6 @@
                 5,
                 6
             ],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Cold_Water_Corals.zip",
@@ -4330,7 +3991,7 @@
             "is_sublayer": false,
             "lookup_field": "ORDER_",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA Deep Sea Coral Research and Technology Program",
             "data_notes": "These records were obtained from historical sources and are not confirmed or validated. Observations record only where surveys have been conducted. Absence of an observation should not be interpreted as absence of corals.",
@@ -4338,8 +3999,7 @@
             "url": "/media/data_manager/geojson/Corals.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4347,7 +4007,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 2
             ],
@@ -4359,8 +4018,6 @@
             "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz",
             "source": "http://www.nature.org/ourinitiatives/habitats/oceanscoasts/howwework/index.htm",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Major_Canyons.zip",
@@ -4380,7 +4037,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MajorCanyons/legend.png",
-            "data_status": "Available",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "The Nature Conservancy",
             "data_notes": "These data were primarily created to be used for cartographic purposes. There are many submarine canyons in addition to those included here \u2013 this layer was created in an attempt to show the \u201cmajor\u201d canyons on maps. ",
@@ -4388,8 +4045,7 @@
             "url": "/media/data_manager/geojson/MajorCanyons.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4397,7 +4053,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "fact_sheet": "",
             "themes": [
                 8
             ],
@@ -4414,8 +4069,6 @@
                 9,
                 7
             ],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -4433,7 +4086,7 @@
             "is_sublayer": false,
             "lookup_field": "Type",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "NOAA Coastal Services Center via MarineCadastre.gov",
             "data_notes": "",
@@ -4441,8 +4094,7 @@
             "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
             "arcgis_layers": "",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4450,7 +4102,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "fact_sheet": "",
             "themes": [
                 4
             ],
@@ -4462,8 +4113,6 @@
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -4481,7 +4130,7 @@
             "is_sublayer": true,
             "lookup_field": "",
             "legend": "http://s3.amazonaws.com/marco-public-2d/Fishing/VTR/LongLines/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "National Marine Fisheries Service",
             "data_notes": "",
@@ -4491,8 +4140,7 @@
             "legend_title": "",
             "sublayers": [
                 15
-            ],
-            "attribute_title": ""
+            ]
         }
     },
     {
@@ -4500,7 +4148,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "ArcRest",
-            "fact_sheet": "",
             "themes": [
                 3
             ],
@@ -4512,8 +4159,6 @@
             "kml": "",
             "source": "http://www.marinecadastre.gov",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "",
@@ -4531,7 +4176,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Marine Cadastre",
             "data_notes": "This layer is being consumed directly as a web mapping service from MarineCadastre.gov.",
@@ -4539,8 +4184,7 @@
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
             "arcgis_layers": "5",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
@@ -4548,7 +4192,6 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "ArcRest",
-            "fact_sheet": "",
             "themes": [
                 5
             ],
@@ -4560,8 +4203,6 @@
             "kml": "",
             "source": "http://www.marinecadastre.gov",
             "lookup_table": [],
-            "shareable_url": true,
-            "attributes_from_web_services": false,
             "utfurl": "",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/UnexplodedOrdnances.zip",
@@ -4580,7 +4221,7 @@
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/legend.png",
-            "data_status": "",
+            "shareable_url": true,
             "vector_fill": null,
             "data_source": "Marine Cadastre, NOAA and BOEM",
             "data_notes": "",
@@ -4588,8 +4229,7 @@
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
             "arcgis_layers": "9",
             "legend_title": "",
-            "sublayers": [],
-            "attribute_title": ""
+            "sublayers": []
         }
     },
     {
