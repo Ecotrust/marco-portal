@@ -261,7 +261,7 @@ function reportsModel(options) {
             self.noActiveCollections(true);
             return;
         }
-        var draftTitle = {text: options.title.text + ' -- DRAFT Report'};
+        var draftTitle = {text: options.title.text};
         var chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'reports-container',

@@ -218,7 +218,6 @@ app.init = function () {
                         var title = potential_layer.featureAttributionName,
                             text = attribute_objs;
                         if ( potential_layer.name === 'OCS Lease Blocks' ) {
-                            //title = 'OCS Lease Blocks -- DRAFT REPORT';
                             text = app.viewModel.getOCSAttributes(info.data);
                         } else if ( potential_layer.name === 'Sea Turtles' ) {
                             text = app.viewModel.getSeaTurtleAttributes(info.data);

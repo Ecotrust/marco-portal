@@ -33,7 +33,7 @@ function layerModel(options, parent) {
     self.shared = ko.observable(false);
     
     if (self.featureAttributionName === 'OCS Lease Blocks') {
-        self.featureAttributionName = 'OCS Lease Blocks -- DRAFT Report';
+        self.featureAttributionName = 'OCS Lease Blocks';
     } else if (self.featureAttributionName === 'Party & Charter Boat') {
         self.featureAttributionName = 'Party & Charter Boat Trips';
     } else if (self.featureAttributionName === 'Benthic Habitats (North)' ) {

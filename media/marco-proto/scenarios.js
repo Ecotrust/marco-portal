@@ -1063,7 +1063,7 @@ function scenarioModel(options) {
     self.id = options.uid || null;
     self.uid = options.uid || null;
     self.name = options.name;
-    self.featureAttributionName = self.name + ' -- DRAFT Report';
+    self.featureAttributionName = self.name;
     self.description = options.description;
     self.shared = ko.observable();
     self.sharedByName = options.sharedByName || null;
