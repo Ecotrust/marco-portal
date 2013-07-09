@@ -46,7 +46,14 @@
                     {% if layer.data_source_text or layer.data_notes_text %}
                     <div class="well">
                         {% if layer.data_source_text %}
-                        <div><strong>Source: </strong>{{ layer.data_source_text }}</div>
+                            <div>
+                                <strong>Source: </strong>
+                                {% if layer.source_link %}
+                                <a href="{{layer.source_link}}" target="_blank">{{ layer.data_source_text }}</a>
+                                {% else %}
+                                {{ layer.data_source_text }}
+                                {% endif %}
+                            </div>
                         {% endif %}
                         {% if layer.data_notes_text %}
                         <div><strong>Notes: </strong>{{ layer.data_notes_text|safe }}</div>

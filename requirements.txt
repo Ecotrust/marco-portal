@@ -1,4 +1,5 @@
 # pip requirements file for MARCO
+Distribute
 django==1.4
 madrona
 simplejson
