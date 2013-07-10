@@ -24,7 +24,8 @@
 		{% for layer in theme.layers %}
             {% if layer.is_parent %}
             {% else %}
-			{% if layer.layer_type != "placeholder"  %}
+			{% if layer.layer_type != "placeholder" %}
+            {% if not layer.is_sublayer or layer.parent.layer_type != "placeholder" %}
                 <a class="anchor-tag" name={{layer.slug}} style="position:relative; display: block; top:-100px;">&nbsp;</a>
                 <div class="clearfix layer">
                     <h4>
@@ -62,6 +63,7 @@
                     {% endif %}
                 </div>
 			<br/>
+			{% endif %}
 			{% endif %}
             {% endif %}
 		{% endfor %}

@@ -62,6 +62,7 @@
                             {% for layer in theme_dict.layers %}
                                 {% if layer.is_parent %}
                                 {% else %}
+                                {% if not layer.is_sublayer or layer.parent.layer_type != "placeholder" %}
                                 <tr>
                                     <td>
                                         <div id="{{layer.slug}}" style="position:relative; top:-200px;"></div>
@@ -168,6 +169,7 @@
                                     </td>
                                 </tr>
                                 {% endif %}
+                                {% endif %}
                             {% endfor layers %}
                             {% endif %}
 	                		<!-- end foreach layer -->
@@ -189,6 +191,7 @@
                             {% for layer in theme_dict.layers %}
                                 {% if layer.is_parent %}
                                 {% else %}
+                                {% if not layer.is_sublayer or layer.parent.layer_type != "placeholder" %}
                                 <tr>
                                     <td>
                                         <div id="{{layer.slug}}" style="position:relative; top:-200px;"></div>
@@ -246,6 +249,7 @@
                                         </ul>
                                     </td>
                                 </tr>
+                                {% endif %}
                                 {% endif %}
                             {% endfor layers %}
                             {% endif %}
