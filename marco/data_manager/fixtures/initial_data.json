@@ -4237,7 +4237,9 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "themes": [],
+            "themes": [
+                8
+            ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
@@ -4279,7 +4281,9 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "themes": [],
+            "themes": [
+                8
+            ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
@@ -4317,11 +4321,57 @@
         }
     },
     {
+        "pk": 102,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "passenger-vessels",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "http://s3.amazonaws.com/marco-public-2d/Shipping/AIS2011/PassengerVessels/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Passenger Vessels",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AIS2011/PassengerVessels/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                97
+            ]
+        }
+    },
+    {
         "pk": 100,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "themes": [],
+            "themes": [
+                8
+            ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
@@ -4363,7 +4413,9 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
-            "themes": [],
+            "themes": [
+                8
+            ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
@@ -4401,48 +4453,6 @@
         }
     },
     {
-        "pk": 102,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "passenger-vessels",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "http://s3.amazonaws.com/marco-public-2d/Shipping/AIS2011/PassengerVessels/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Passenger Vessels",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AIS2011/PassengerVessels/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                97
-            ]
-        }
-    },
-    {
         "pk": 97,
         "model": "data_manager.layer",
         "fields": {
@@ -4468,7 +4478,7 @@
             "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
             "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.",
+            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  These data layers are derived from archived 2011 AIS data and are intended to be used by the ocean planning community to better understand vessel traffic patterns. The density grids shown here depict the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters, though it should be noted that certain vessel types (i.e., fishing, military) are underrepresented. A track line was generated for each unique vessel from a \u201craw\u201d AIS point database and these track lines were then used to create density grids.",
             "slug_name": "ais-shipping-data-2011",
             "is_sublayer": false,
             "lookup_field": "",
@@ -4476,7 +4486,7 @@
             "shareable_url": true,
             "vector_fill": null,
             "data_source": "USGS, NOAA; analysis by TNC",
-            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.",
+            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into generalized density grids. These grids show a good overview of the density of most commercial shipping traffic but do not necessarily represent all shipping traffic at a fine level of detail.",
             "name": "AIS Shipping Data (2011)",
             "url": "",
             "arcgis_layers": "",
@@ -4484,9 +4494,9 @@
             "sublayers": [
                 98,
                 99,
+                102,
                 100,
-                101,
-                102
+                101
             ]
         }
     },
