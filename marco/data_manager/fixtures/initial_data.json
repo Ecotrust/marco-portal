@@ -176,54 +176,6 @@
         }
     },
     {
-        "pk": 61,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "# of species above avg.",
-            "bookmark": "/visualize/#x=-73.06&y=38.96&z=7&logo=true&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=61&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=2&tab=data&legends=false&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
-            "lookup_table": [],
-            "utfurl": "/media/data_manager/utfgrid/toothed_turtles/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "none",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MigratoryPortfolio.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Areas where sightings of sperm whale, bottlenose dolphin, or striped dolphin are common.",
-            "attribute_fields": [
-                106,
-                108,
-                105,
-                107,
-                109
-            ],
-            "learn_more": "",
-            "data_overview": "Areas where sightings per unit effort for sperm whale, bottlenose dolphin or striped dolphin were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.",
-            "slug_name": "toothed-mammals-all-seasons",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Toothed Mammals (All Seasons)",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 68,
         "model": "data_manager.layer",
         "fields": {
@@ -1287,51 +1239,6 @@
         }
     },
     {
-        "pk": 96,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://marinecadastre.gov/",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/OffshoreWindTechnologyDepthZones.zip",
-            "metadata": "",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                130,
-                129
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "offshore-wind-energy-depth-zones",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Offshore Wind Energy Depth Zones",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
-            "arcgis_layers": "4",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 6,
         "model": "data_manager.layer",
         "fields": {
@@ -2322,48 +2229,6 @@
         }
     },
     {
-        "pk": 57,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.noaa.gov/",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Depth contours at 20, 50, and 100 fathoms.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
-            "slug_name": "fathom-lines",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "NOAA; contours derived by TNC",
-            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
-            "name": "Fathom Lines",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 13,
         "model": "data_manager.layer",
         "fields": {
@@ -3113,48 +2978,6 @@
         }
     },
     {
-        "pk": 19,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                1
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-69.3363281249999&location%5By%5D=38.44879838898276&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=19&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.csc.noaa.gov/",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocean_councils.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.",
-            "slug_name": "regional-ocean-partnerships",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "Unofficial boundary for Regional Ocean Councils which are state and federal partnerships with the goal of engaging in regional protection and balanced use of ocean and coastal resources.",
-            "name": "Regional Ocean Partnerships",
-            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 80,
         "model": "data_manager.layer",
         "fields": {
@@ -3478,55 +3301,6 @@
             "sublayers": [
                 15
             ]
-        }
-    },
-    {
-        "pk": 64,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.csc.noaa.gov/",
-            "lookup_table": [
-                8,
-                10,
-                9,
-                7
-            ],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                29
-            ],
-            "learn_more": "",
-            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
-            "slug_name": "shipping-lanes",
-            "is_sublayer": false,
-            "lookup_field": "Type",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "",
-            "name": "Shipping Lanes",
-            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
         }
     },
     {
@@ -4498,6 +4272,232 @@
                 100,
                 101
             ]
+        }
+    },
+    {
+        "pk": 19,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                1
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-69.3363281249999&location%5By%5D=38.44879838898276&location%5Bzoom%5D=6&activeLayers%5B0%5D%5Bid%5D=19&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=1&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "www.marinecadastre.gov",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/ocean_councils.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.",
+            "slug_name": "regional-ocean-partnerships",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "Unofficial boundary for Regional Ocean Councils which are state and federal partnerships with the goal of engaging in regional protection and balanced use of ocean and coastal resources.",
+            "name": "Regional Ocean Partnerships",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Jurisdictions/RegionalOceanCouncilsBoundary/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 57,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.70418687760785&location%5By%5D=39.18920744498344&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=57&activeLayers%5B0%5D%5Bopacity%5D=0.58&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.ngdc.noaa.gov/mgg/bathymetry/relief.html",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/fathom_depth_lines.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/depth_lines.htm",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Depth contours at 20, 50, and 100 fathoms.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
+            "slug_name": "fathom-lines",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "NOAA; contours derived by TNC",
+            "data_notes": "These are lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
+            "name": "Fathom Lines",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Fishing/Fathoms/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 61,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "# of species above avg.",
+            "bookmark": "/visualize/#x=-73.06&y=38.96&z=7&logo=true&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=61&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=2&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nature.org/ourinitiatives/regions/northamerica/areas/easternusmarine/explore/index.htm",
+            "lookup_table": [],
+            "utfurl": "/media/data_manager/utfgrid/toothed_turtles/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "none",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/MigratoryPortfolio.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Areas where sightings of sperm whale, bottlenose dolphin, or striped dolphin are common.",
+            "attribute_fields": [
+                106,
+                108,
+                105,
+                107,
+                109
+            ],
+            "learn_more": "",
+            "data_overview": "Areas where sightings per unit effort for sperm whale, bottlenose dolphin or striped dolphin were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.",
+            "slug_name": "toothed-mammals-all-seasons",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "NOAA; analysis by TNC",
+            "data_notes": "",
+            "name": "Toothed Mammals (All Seasons)",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Conservation/MarineMammals/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 64,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "www.marinecadastre.gov",
+            "lookup_table": [
+                8,
+                10,
+                9,
+                7
+            ],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                29
+            ],
+            "learn_more": "",
+            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
+            "slug_name": "shipping-lanes",
+            "is_sublayer": false,
+            "lookup_field": "Type",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Shipping Lanes",
+            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 96,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://marinecadastre.gov/",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/OffshoreWindTechnologyDepthZones.zip",
+            "metadata": "",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                130,
+                129
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "offshore-wind-energy-depth-zones",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Offshore Wind Energy Depth Zones",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
+            "arcgis_layers": "4",
+            "legend_title": "",
+            "sublayers": []
         }
     },
     {
