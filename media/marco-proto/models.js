@@ -454,7 +454,7 @@ function layerModel(options, parent) {
                 }
                 $('#mobile-data-right-button').show();
                 $('#mobile-map-right-button').hide(); 
-            } else if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
+            } /*else if (!layer.activeSublayer()) { //if layer does not have an active sublayer, then show/hide drop down menu
                 if (!layer.showSublayers()) {
                     //show drop-down menu
                     layer.showSublayers(true);
@@ -473,6 +473,13 @@ function layerModel(options, parent) {
             } else {
                 //turn off layer
                 layer.deactivateLayer();
+                layer.showSublayers(false);
+            } */
+            if (!layer.showSublayers()) {
+                //show drop-down menu
+                layer.showSublayers(true);
+            } else {
+                //hide drop-down menu
                 layer.showSublayers(false);
             }
             return;
