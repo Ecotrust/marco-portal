@@ -4409,54 +4409,6 @@
         }
     },
     {
-        "pk": 97,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "placeholder",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data set is derived from archived 2011 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  These data layers are derived from archived 2011 AIS data and are intended to be used by the ocean planning community to better understand vessel traffic patterns. The density grids shown here depict the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters, though it should be noted that certain vessel types (i.e., fishing, military) are underrepresented. A track line was generated for each unique vessel from a \u201craw\u201d AIS point database and these track lines were then used to create density grids.",
-            "slug_name": "ais-shipping-data-2011",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "USGS, NOAA; analysis by TNC",
-            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into generalized density grids. These grids show a good overview of the density of most commercial shipping traffic but do not necessarily represent all shipping traffic at a fine level of detail.",
-            "name": "AIS Shipping Data (2011)",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                98,
-                99,
-                102,
-                100,
-                101
-            ]
-        }
-    },
-    {
         "pk": 7,
         "model": "data_manager.layer",
         "fields": {
@@ -4498,6 +4450,54 @@
             "arcgis_layers": "",
             "legend_title": "Wind Speed at 90m (m/s)",
             "sublayers": []
+        }
+    },
+    {
+        "pk": 97,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "placeholder",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS2011.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data set is derived from archived 2011 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  These data layers are derived from archived 2011 AIS data and are intended to be used by the ocean planning community to better understand vessel traffic patterns. The density grids shown here depict the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters, though it should be noted that certain vessel types (i.e., fishing, military) are underrepresented. A track line was generated for each unique vessel from a \u201craw\u201d AIS point database and these track lines were then used to create density grids.",
+            "slug_name": "ais-shipping-data-2011",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "USGS, NOAA; analysis by TNC",
+            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into generalized density grids. These grids show a good overview of the density of most commercial shipping traffic but do not necessarily represent all shipping traffic at a fine level of detail.",
+            "name": "AIS Shipping Data (2011)",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                98,
+                99,
+                102,
+                100,
+                101
+            ]
         }
     },
     {
