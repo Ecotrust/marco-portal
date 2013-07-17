@@ -19,6 +19,10 @@ def data_needs(request, template='needs.html'):
     context = {'themes': themes, 'theme_dict': theme_dict, 'ordered_themes': ordered_themes, 'domain': get_domain(8000), 'domain8010': get_domain()}
     return render_to_response(template, RequestContext(request, context)) 
     
+def external_resources(request, template='external_resources.html'):
+    context = {'domain': get_domain(8000), 'domain8010': get_domain()}
+    return render_to_response(template, RequestContext(request, context)) 
+    
 def add_ordered_needs_lists(themes_list):
     theme_dict = {}
     ordered_themes = []

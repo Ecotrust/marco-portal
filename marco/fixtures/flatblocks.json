@@ -178,5 +178,23 @@
             "header": "",
             "slug": "data_needs_intro"
         }
+    },
+    {
+        "pk": 21,
+        "model": "flatblocks.flatblock",
+        "fields": {
+            "content": "External Resources",
+            "header": "",
+            "slug": "external_resources_title"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "flatblocks.flatblock",
+        "fields": {
+            "content": "This page provides a directory of other selected data sources and mapping tools for ocean planning in the mid-Atlantic region. ",
+            "header": "",
+            "slug": "external_resources_intro"
+        }
     }
 ]

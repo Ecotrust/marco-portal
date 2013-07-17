@@ -1,0 +1,110 @@
+{% extends 'explore_base.html' %} 
+{% block  title %}MARCO Data Priorities{% endblock %}
+{% block main %}
+{% load flatblock_tags %}
+
+<div style="padding-bottom: 20px">
+    <h2>{% flatblock "external_resources_title" %}</h2>
+    {% flatblock "external_resources_intro" %}
+</div>
+
+<div id="maps-and-tools" class="accordion">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle no-decoration" data-toggle="collapse" data-parent="#maps-and-tools" href="#maps-and-tools-dropdown">
+                <h3>Maps and Tools</h3>
+            </a>
+        </div>
+        <div id="maps-and-tools-dropdown" class="accordion-body collapse">
+            <div class="accordion-inner borderless">
+                <h4>Regional</h4>
+                <ul>
+                    <li></li>
+                </ul>
+
+                <h4>National</h4>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle no-decoration" data-toggle="collapse" href="#web-mapping-services-dropdown">
+                <h3>Web Mapping Services</h3>
+            </a>
+        </div>
+        <div id="web-mapping-services-dropdown" class="accordion-body collapse">
+            <div class="accordion-inner borderless">
+                <h4>Federal</h4>
+                <ul>
+                    <li><a href="http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer" target="_blank">BOEM</a></li>
+                    <li><a href="http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/" target="_blank">MarineCadastre.gov</a></li>
+                </ul>
+
+                <h4>Non-Government</h4>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle no-decoration" data-toggle="collapse" href="#other-data-resources-dropdown">
+                <h3>Other Data Resources</h3>
+            </a>
+        </div>
+        <div id="other-data-resources-dropdown" class="accordion-body collapse">
+            <div class="accordion-inner borderless">
+                <h4>Federal</h4>
+                <ul>
+                    <li><a href="http://www.epa.gov/" target="_blank">EPA</a></li>
+                    <li><a href="http://www.boem.gov/" target="_blank">Bureau of Ocean Energy Management (BOEM)</a></li>
+                    <li><a href="http://www.marinecadastre.gov/default.aspx" target="_blank">MarineCadastre.gov</a></li>
+                    <li><a href="http://coralreef.noaa.gov/deepseacorals/noaasrole/research_technology/" target="_blank">NOAA Coral Reef Conservation Program</a></li>
+                    <li><a href="http://www.nmfs.noaa.gov/ " target="_blank">NOAA Fisheries</a></li>
+                    <li><a href="http://www.habitat.noaa.gov/protection/efh/habitatmapper.html" target="_blank">NOAA Habitat Conservation</a></li>
+                    <li><a href="http://www.nefsc.noaa.gov/ " target="_blank">NOAA Northeast Fisheries Science Center (NEFSC)</a></li>
+                    <li><a href="http://www.ngdc.noaa.gov/" target="_blank">NOAA National Geophysical Data Center (NGDC)</a></li>
+                    <li><a href=" http://www.nauticalcharts.noaa.gov/" target="_blank">NOAA Office of Coast Survey (OCS)</a></li>
+                    <li><a href="http://www.fws.gov/chesapeakebay/" target="_blank">US Fish & Wildlife Service</a></li>
+                    <li><a href="http://pubs.usgs.gov/dds/dds68/" target="_blank">USGS</a></li>
+                </ul>
+
+                <h4>Non-Government</h4>
+                <ul>
+                    <li><a href="http://atlanticwindconnection.com/" target="_blank">Atlantic Wind Connection</a></li>
+                    <li><a href="http://www.nrel.gov/gis/data_wind.html" target="_blank">National Renewable Energy Laboratory (NREL)</a></li>
+                    <li><a href="http://www.nature.org/" target="_blank">The Nature Conservancy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.borderless {
+    border: 0px;
+}
+.no-decoration {
+    text-decoration: none !important;
+}
+
+</style>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready( function() {
+});
+</script>
+{% endblock %}
