@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            MARCO Planning Tool
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Le styles -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css"
+        type="text/css" media="all" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+                                    
+            </script>
+        <![endif]-->
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Planning Tool</a>
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown">
+                          <i class="icon-user"></i> Username
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a data-bind="click: loadLayersFromFixture">Load Layers From Fixture</a>
+                            </li>
+                            <li>
+                                <a data-bind="click: loadLayersFromServer">Load Layers From Server</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#">Sign Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">Portal</a>
+                            </li>
+                            <li>
+                                <a href="#help">Help</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="primary-content">
+            <div class="row-fluid">
+                <div class="span4">
+                    <div class="well sidebar-nav">
+                        <!-- tab controls -->
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#data" data-toggle="tab" id="dataTab">Data</a>
+                            </li>
+                            <li>
+                                <a href="#designs" data-toggle="tab">Designs</a>
+                            </li>
+                            <li>
+                                <a href="#active" data-toggle="tab">Active  
+                                <span class="badge badge-inverse" data-bind="text: activeLayers().length">0</span></a>
+                            </li>
+                            
+                        </ul>
+                        <!-- tab body -->
+                        <div id="myTabContent" class="tab-content">
+                            <!-- data tab -->
+                            <div class="tab-pane fade active in" id="data">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <!-- data accordion -->
+                                        <div class="accordion" id="data-accordion" data-bind="foreach: themes">
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading">
+                                                    <div>
+                                                        <a class="accordion-toggle"  data-bind="click: setActiveTheme"><span data-bind="text: name">Themes</span></a>
+                                                      
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-body collapse" data-bind="css: { 'in': isActiveTheme() }">
+                                                    <div class="accordion-inner">
+                                                        <table class="table">
+                                                            <tbody data-bind="foreach: layers ">
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="btn-group btn-group-layer">
+                                                                            <button class="btn btn-layer" data-bind="css: { 'btn-success': active() }, click: toggleActive">
+                                                                                <i class="icon-align-justify">
+                                                                                </i>
+                                                                                <span data-bind="text: name">
+                                                                                </span>
+                                                                                <span data-bind="visible: activeSublayer">
+                                                                                    (
+                                                                                    <span data-bind="text: activeSublayer().name">
+                                                                                    </span>
+                                                                                    )
+                                                                                </span>
+                                                                                <i class="pull-right icon-large check" data-bind="css: { 'icon-check': active() }">
+                                                                                </i>
+                                                                            </button>
+                                                                            <!-- ko if: subLayers.length > 0 -->
+                                                                                <button class="btn dropdown-toggle" data-toggle="dropdown" >
+                                                                                    <span class="caret">
+                                                                                    </span>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
+                                                                                    <li data-bind="foreach: subLayers">
+                                                                                        <a data-bind="click: toggleActive">
+                                                                                            <span data-bind="style: {visibility: active() ? 'visible': 'hidden' }">• </span>
+                                                                                        <span data-bind="text: name"></span></a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            <!-- /ko -->
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /data-accordion -->
+                                    </div>
+                                    <!-- /span -->
+                                </div>
+                                <!-- /row -->
+                                <div class="row-fluid">
+                                    <div class="well">
+                                        <div class="span12">
+                                            <form class="form-search" data-bind="submit: layerSearch">
+                                                <input type="text" class="search-query" data-provide="typeahead" data-bind="value: searchTerm">
+                                                <button type="submit" class="btn">
+                                                    Search
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /data-tab -->
+                            <!-- design tab -->
+                            <div class="tab-pane fade" id="designs">
+                                <p>
+                                    designs
+                                </p>
+                            </div>
+                            <!-- /design-tab -->
+                            <!-- active layer tab -->
+                            <div class="tab-pane fade" id="active">
+                                <div data-bind="visible: activeLayers().length === 0">
+                                    <p>
+                                        No active layers.
+                                    </p>
+                                </div>
+                                <table class="table">
+                                    <tbody data-bind="sortable: { data: activeLayers, options: { forceHelperSize: true } }">
+                                        <tr>
+                                            <td>
+                                                <i class="icon-align-justify">
+                                                </i>
+                                                <span data-bind="text: fullName"></span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group pull-right">
+                                                    <button class="btn opacity-button" data-bind="click: $parent.showOpacity"><i class="icon-adjust"></i></button>
+                                                    <button class="btn" data-bind="click: raiseLayer, css: { disabled: isTopLayer($data) }">
+                                                        <i class="icon-circle-arrow-up">
+                                                        </i>
+                                                    </button>
+                                                    <button class="btn" data-bind="click: lowerLayer, css: { disabled: isBottomLayer($data) }">
+                                                        <i class="icon-circle-arrow-down">
+                                                        </i>
+                                                    </button>
+                                                    <button class="btn" data-bind="click: toggleActive">
+                                                        <i class="icon-remove">
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /active-tab -->
+                        </div>
+                    </div>
+                    <!--/.well -->
+                </div>
+                <!--/span-->
+                <div class="span8">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <!-- theme buttons -->
+                            <div>
+                                <div class="btn-group theme-buttons" data-bind="foreach: themes">
+                                    <button class="btn" data-bind="click: setActiveTheme, css: { 'btn-inverse': isActiveTheme() }">
+                                        <span data-bind="text: name">
+                                            Themes
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="row-fluid" data-bind="visible: showMapPanel">
+                        <div class="span12">
+                            <div class="row-fluid" >
+                                <div id="map-wrapper" class="span9" data-bind="css: { span9: showLegend(), span12: ! showLegend() }">
+                                  <div id="map"></div>
+                                  <div id="map-buttons">
+                                      <p><button class="btn pull-right" data-bind="click: toggleLegend, attr: {disabled: ! hasActiveLegends()}">
+                                          <span data-bind="visible: showLegend()">Hide Legend</span>
+                                          <span data-bind="visible: ! showLegend()">Show Legend</span>
+                                        </button></p>
+                                      <p><button id="bookmarks-button" class="btn pull-right" data-bind="click: showBookmarks">
+                                          <i class="icon-flag">
+                                          </i>
+                                          Bookmarks
+                                          <span data-bind="visible: bookmarks.bookmarksList().length > 0">
+                                              <span class="badge" data-bind="text: bookmarks.bookmarksList().length">
+                                              </span>
+                                          </span>
+                                      </button></p>
+                                      <p><button class="btn pull-right">
+                                          Coordinates &amp; Depth
+                                      </button></p>
+                                  </div>
+                                  <div id="error-overlay">
+                                        <div data-bind="visible: error() === 'restoreState'">
+                                            <div>
+                                                Bookmark restored.
+                                                <div class="pull-right">
+                                                    <button class="btn btn-mini" data-bind="click: clearError">
+                                                        Clear
+                                                    </button>
+                                                    <button class="btn btn-mini" data-bind="click: bookmarks.restoreState">
+                                                        Revert to previous?
+                                                    </button>
+                                                </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+                                <div data-bind="visible: showLegend()" class="span3">
+                                    <div id="legend-wrapper">
+                                        <div class="accordion" id="legend-accordion" data-bind="foreach: activeLayers">
+                                            <div data-bind="if: legend">
+                                                <div class="accordion-group">
+                                                    <div class="accordion-heading" data-bind="click: toggleLegendVisibility">
+                                                        <a class="accordion-toggle">
+                                                      <span data-bind="text: fullName"></span>
+                                                    </a>
+                                                    </div>
+                                                    <div class="accordion-body collapse" data-bind="css: { 'in': legendVisibility }">
+                                                        <div class="accordion-inner">
+                                                            <img data-bind="attr: { src: legend }" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <h3>
+                                    About This Map
+                                </h3>
+                            </div>
+                            <div class="span6">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <hr>
+            <footer>
+                <p>
+                    &copy; Company 2012
+                </p>
+            </footer>
+        </div>
+        <!--/.fluid-container-->
+        
+        <div style="display:none" id="opacity-popover" class="popover fade bottom in">
+            <div class="arrow">
+            </div>
+            <div class="popover-inner">
+                <div class="popover-content" data-bind="if: selectedLayer">
+                    <div class="slider" data-bind="jqSlider: selectedLayer().opacity, jqOptions: { min: 0, max: 1, step: .01, range: 'min' }"></div>                    
+                </div>
+            </div>
+        </div>
+        <div style="display:none" id="bookmark-popover" class="popover fade left in"
+        data-bind="with: bookmarks">
+            <div class="arrow">
+            </div>
+            <div class="popover-inner">
+                <h3 class="popover-title">
+                    Bookmarks
+                </h3>
+                <div class="popover-content">
+                    <p>
+                        <div>
+                            <div>
+                                <div>
+                                    <div id="bookmarks-table">
+                                        <table class="table table-condensed">
+                                            <tbody data-bind="foreach: bookmarksList">
+                                                <tr>
+                                                    <td>
+                                                        <span data-bind="click: $parent.loadBookmark">
+                                                        <a data-bind="text: name, attr: {href: $parent.getUrl($data)}">name</a>
+                                                        </span>
+                                                    </td>
+                                                    <td class="tweet-cell">
+                                                        <a href="https://twitter.com/share" class="twitter-share-button" data-bind="attr: {'data-url': $parent.getUrl($data)}"
+                                                        data-lang="en" data-size="medium" data-count="none">Tweet</a>
+                                                        <script>
+                                                            ! function(d, s, id) {
+                                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                                if (!d.getElementById(id)) {
+                                                                    js = d.createElement(s);
+                                                                    js.id = id;
+                                                                    js.src = "//platform.twitter.com/widgets.js";
+                                                                    fjs.parentNode.insertBefore(js, fjs);
+                                                                }
+                                                            }(document, "script", "twitter-wjs");
+                                                        </script>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-mini tweet-trash" data-bind="click: $parent.emailBookmark">
+                                                            <a data-bind="attr: {href: $parent.getEmailHref($data)}">
+                                                            <i class="icon-envelope">
+                                                            </i>
+                                                            </a>
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-mini tweet-trash" data-bind="click: $parent.removeBookmark">
+                                                            <i class="icon-trash">
+                                                            </i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p data-bind="visible: bookmarksList().length === 0">
+                                            Bookmarks save the map and active layers. You currently have no bookmarks.
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <h4>
+                                    Create new bookmark
+                                </h4>
+                                <form data-bind="submit: saveBookmark">
+                                    <input type="text" data-bind="value: bookmarkName" class="input">
+                                    <div class="pull-right">
+                                        <a data-bind="click: cancel" class="btn">cancel</a>
+                                        <button class="btn" type="submit">
+                                            save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Le javascript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+   
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+     -->
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/jquery.ba-bbq.js"></script>
+        <script src="assets/js/jquery-ui.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
+        <script src="assets/js/knockout-2.1.0.js"></script>
+        <script src="assets/js/knockout-bindings.js"></script>
+        <script src="assets/js/knockout.mapping-latest.js"></script>
+     <!-- <script src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>-->
+        <script src="assets/openlayers/OpenLayers.js"></script>
+        <script>
+            var app = {};
+        </script>
+        <script src="fixtures.js"></script>
+        <script src="map.js"></script>
+        <script src="state.js"></script>
+        <script src="models.js"></script>
+        <script src="server.js"></script>
+        <script src="app.js"></script>
+        <script>
+        !
+function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, "script", "twitter-wjs");
+        </script>
+    </body>
+
+</html>
