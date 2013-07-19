@@ -87,8 +87,8 @@ li a {
 }
 
 .navbar .dropdown-menu {
-    min-width: 50px;
-    margin-top: 20px;
+    min-width: 120px;
+    margin-top: 0px;
 }
 
 .navbar .nav > li > a {
@@ -368,7 +368,7 @@ input + i.icon-remove-sign {
 }
 
 #designs .btn-layer .icon-info-sign {
-  margin-left: -15px;
+    /*margin-left: -15px;*/
 }
 
 #wind-design-form {
@@ -647,11 +647,14 @@ img + h3 {
 .sidebar-nav .btn i, #active .btn i {
 	font-size: 13px;
 }
+.sidebar-nav .btn-group-layer {
+    width: 100%;
+}
 .sidebar-nav .btn-group-layer .btn-layer  {
-  width: 80%;
-  text-align: left;
-  overflow: hidden;
-  border-left: 0px;
+    width: 80%;
+    text-align: left;
+    overflow: hidden;
+    border-left: 0px;
 }
 .sidebar-nav .btn-group-layer .btn-layer div {
 	width: 96%;
@@ -688,9 +691,16 @@ img + h3 {
 #active .btn {
 	padding-left: 0px;
 }
+#active .btn-info-sign {
+    padding: 4px 8px;
+}
+#active .opacity-button {
+    padding: 4px 9px;
+}
 #active .btn:last-child {
-	padding-left: 5px;
-	padding-right: 5px;
+	/*padding-left: 5px;
+	padding-right: 5px;*/
+    padding: 4px 9px;
 }
 #active .btn-group {
 	width: 90%;
@@ -717,6 +727,10 @@ img + h3 {
 
 #data-accordion li.layer {
 	margin-bottom: 10px;
+}
+
+.layer .btn-info-sign {
+    padding: 4px 8px;
 }
 
 .theme .theme-context {
@@ -914,8 +928,10 @@ img + h3 {
 
 #basemaps:hover a,
 #basemaps.open a {
-    width: 120px;
-	
+    width: 125px;	
+}
+#basemaps .btn i {
+    display: inline-block;
 }
 #right-btns:hover a,
 #right-btns.open {
@@ -1141,8 +1157,15 @@ body.borderless #map-wrapper {
 		margin-left: 10px;
 	}
 	body {
-		margin-top: 0px;
+		margin-top: 80px;
 	}
+    #data-panel {
+        width: 100%;
+    }
+    #map-panel {
+        width: 100%;
+        margin: 10px 0px; 
+    }
     #content {
         margin-top: 120px;
     }
@@ -1170,7 +1193,7 @@ body.borderless #map-wrapper {
 	}
 	#data-accordion .btn-group-layer .btn-layer {
 	  width: 72%;
-	  font-size: 12px;
+	  font-size: 14px;
 	}
     .split-column {
         -moz-column-count: 1; /* Firefox */
@@ -1183,7 +1206,7 @@ body.borderless #map-wrapper {
 
 @media (min-width: 768px) and (max-width: 979px) {
 	body {
-		margin-top: 0px;
+		margin-top: 80px;
 	}
 
     .blog .navbar-fixed-top {
@@ -1216,7 +1239,7 @@ body.borderless #map-wrapper {
 	}
 	#active .btn-group .btn-layer {
 		width: 65%;
-		font-size: 12px;
+		font-size: 14px;
 	}
 	.form-search input {
 		width: 55%;
@@ -1224,7 +1247,7 @@ body.borderless #map-wrapper {
 	}
 	#data-accordion .btn-group-layer .btn-layer {
 	  width: 68%;
-	  font-size: 12px;
+	  font-size: 14px;
 	}
 
 }

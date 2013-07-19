@@ -12,6 +12,7 @@
         <meta name="author" content="">
         <!-- Le styles -->
         <link href="{{MEDIA_URL}}/marco/assets/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="{{MEDIA_URL}}/marco/assets/font/font-awesome.css" rel="stylesheet">
         <link href="{{MEDIA_URL}}/marco/assets/scalebar-thin.css" rel="stylesheet">
         <link href="{{MEDIA_URL}}/marco/css/marco_style.css" rel="stylesheet">
         <link href="{{MEDIA_URL}}/marco/css/style.css" rel="stylesheet">
@@ -43,11 +44,11 @@
 
                       }
             </style>
-            <script src="{{MEDIA_URL}}marco/js/respond.min.js"></script>
+            <script src="{{MEDIA_URL}}marco/assets/respond.min.js"></script>
         <![endif]-->
         <!-- Le fav and touch icons -->
         <!--[if IE 7]>
-          <link rel="stylesheet" href="{{MEDIA_URL}}marco/css/font-awesome-ie7.css">
+          <link rel="stylesheet" href="{{MEDIA_URL}}marco/assets/font/font-awesome-ie7.css">
         <![endif]-->
 
         <style>
@@ -136,10 +137,10 @@
                                             <span class="caret"></span>
                                           </a>
                                           <ul id="username" class="dropdown-menu">
-                                            <li><a href="#profile-modal" data-toggle="modal"><i class="icon-pencil"></i> Profile</a></li>
-                                            <li><a href="#reset-password-modal" data-toggle="modal"><i class="icon-lock"></i> Password</a></li>
+                                            <li><a href="#profile-modal" data-toggle="modal" style="padding-left: 10px"><i class="icon-pencil"></i> Profile</a></li>
+                                            <li><a href="#reset-password-modal" data-toggle="modal" style="padding-left: 10px"><i class="icon-lock"></i> Password</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="{% url 'user_signout' %}"><i class="i"></i>Log Out</a></li>
+                                            <li><a href="{% url 'user_signout' %}" style="padding-left: 15px"><i class="i"></i>Log Out</a></li>
                                           </ul>
                                         </span>
                                         {% else %}
@@ -164,9 +165,9 @@
                 
                 <!-- Data Panel (left panel) -->
                 {% if user.is_authenticated %}
-                <div class="span5 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data-authenticated': isFullScreen()}">
+                <div class="span5 frame tabs" id="data-panel" data-bind="visible: showLayers(), css: {'fullscreen-data-authenticated': isFullScreen()}">
                 {% else %}
-                <div class="span4 frame tabs" data-bind="visible: showLayers(), css: {'fullscreen-data': isFullScreen()}">
+                <div class="span4 frame tabs" id="data-panel" data-bind="visible: showLayers(), css: {'fullscreen-data': isFullScreen()}">
                 {% endif %}
                     <div class="sidebar-nav">
                         <!-- tab controls -->
@@ -228,7 +229,7 @@
 
                                                                             <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
                                                                                 <div style="font-weight: normal">
-                                                                                    <span style="padding-left: 2px;" data-bind="text: name"></span>
+                                                                                    <span style="padding-left: 5px;" data-bind="text: name"></span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
                                                                                     <i class="check icon-large icon-check" data-bind="visible: active() && visible()"></i>
                                                                                     <i class="check icon-large icon-check-empty" data-bind="visible: active() && ! visible()"></i>
@@ -252,7 +253,7 @@
                                                                             <!-- ko if: isCheckBoxLayer() -->
                                                                             <ul class="dropdown-menu layer-menu" data-bind="event: { mouseleave: closeMenu }">
                                                                                 <li data-bind="foreach: subLayers">
-                                                                                    <a data-bind="click: toggleActive">
+                                                                                    <a data-bind="click: toggleActive" style="padding-left: 15px">
                                                                                         <span style="margin-left: -10px">
                                                                                             <i class="icon-check" data-bind="style: {display: active() ? 'inline': 'none' }"></i>
                                                                                             <i style="opacity: .4" class="icon-check-empty" data-bind="style: {display: ! active() ? 'inline': 'none' }"></i>
@@ -376,17 +377,16 @@
                                               <i class="icon-link icon-large"></i>
                                               <span>Share this Map</span>
                                           </a>
+                                          <!-- Print Button -->
+                                          <a class="btn" id="btn-print" data-bind="click: printing.showPrintDialog, visible: printing.enabled">
+                                              <i class="icon-print icon-large"></i>
+                                              <span>Print/Export</span>
+                                          </a>
                                           <!--Fullscreen Button-->
                                           <a class="btn" id="btn-fullscreen">
                                               <i class="icon-fullscreen icon-large"></i>
                                               <span>Fullscreen</span>
                                           </a>
-                                          <!-- Print Button -->
-
-                                            <a class="btn" id="btn-print" data-bind="click: printing.showPrintDialog, visible: printing.enabled">
-                                                <i class="icon-print icon-large"></i>
-                                                <span>Print/Export</span>
-                                            </a>
                                         </div>
                                     </div>
                                     <div id="map-buttons">
