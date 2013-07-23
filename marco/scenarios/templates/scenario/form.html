@@ -14,6 +14,7 @@
         $('.inputfield').each(function() {
             $(this).hide();
         });
+        
         updateDesignScrollBar();
         
         function validate(step) {
@@ -205,7 +206,8 @@
             wizard();
         });
         
-        
+        //not sure this is used any more...
+        /*
         $('img.info').each( function() {
             var id = $(this).attr('id');
             var text = "none";
@@ -258,6 +260,7 @@
                 //$(this).qtip(my_configuration_object);
             }
         }); 
+        */
 
          
         if ($("input[type='color']").length) {
@@ -729,6 +732,7 @@
 #wind-design-form .show-layer-btn {
     height: 16px; 
     line-height: 16px;
+    padding-left: 15px;
 }
 #wind-design-form .show-layer-btn-group {
     width: 70%; 
@@ -761,6 +765,9 @@
 }
 #wind-design-form .inputfield {
     margin: 0px 20px;
+}
+#wind-design-form .btn-info-sign {
+    padding: 4px 8px;
 }
 .show-blocks-btn {
     margin-top: -10px;

@@ -1224,29 +1224,31 @@ function scenarioModel(options) {
                 app.viewModel.scenarios.scenarioFormModel = new scenarioFormModel();
                 ko.applyBindings(app.viewModel.scenarios.scenarioFormModel, document.getElementById('scenario-form'));
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
+                
                 if ($('#id_input_parameter_wind_speed').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(true);
+                    //app.viewModel.scenarios.scenarioFormModel.windSpeedParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleWindSpeedWidget();
                 } 
                 if ($('#id_input_parameter_depth').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.depthRangeParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleDepthWidget();
                 } 
                 if ($('#id_input_parameter_distance_to_shore').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.distanceToShoreParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleDistanceToShoreWidget();
                 } 
                 if ($('#id_input_parameter_distance_to_substation').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.distanceToSubstationParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleSubstationWidget();
                 } 
                 if ($('#id_input_parameter_distance_to_awc').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.distanceToAWCParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleAWCWidget();
                 } 
                 if ($('#id_input_filter_distance_to_shipping').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.distanceToShippingParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleShippingLanesWidget();
                 } 
                 if ($('#id_input_filter_ais_density').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.shipTrafficDensityParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleShipTrafficWidget();
                 } 
                 if ($('#id_input_filter_uxo').is(':checked')) {
-                    app.viewModel.scenarios.scenarioFormModel.uxoParameter(true);
+                    app.viewModel.scenarios.scenarioFormModel.toggleUXOWidget();
                 } 
                 app.viewModel.scenarios.scenarioFormModel.updateFiltersAndLeaseBlocks();
             },
