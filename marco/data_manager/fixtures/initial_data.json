@@ -3530,48 +3530,6 @@
         }
     },
     {
-        "pk": 10,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-73.07195411101019&location%5By%5D=39.3847817828661&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml",
-            "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
-            "lookup_table": [],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS_Trackline_Density.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.",
-            "slug_name": "ais-shipping-data",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "USGS, NOAA; analysis by TNC",
-            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.",
-            "name": "AIS Shipping Data",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "Commercial Shipping Density",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 78,
         "model": "data_manager.layer",
         "fields": {
@@ -4183,6 +4141,55 @@
         }
     },
     {
+        "pk": 64,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "placeholder",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [
+                8,
+                10,
+                9,
+                7
+            ],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                29
+            ],
+            "learn_more": "",
+            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
+            "slug_name": "shipping-lanes",
+            "is_sublayer": false,
+            "lookup_field": "Type",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Shipping Lanes",
+            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 57,
         "model": "data_manager.layer",
         "fields": {
@@ -4360,55 +4367,6 @@
         }
     },
     {
-        "pk": 64,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov",
-            "lookup_table": [
-                8,
-                10,
-                9,
-                7
-            ],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                29
-            ],
-            "learn_more": "",
-            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
-            "slug_name": "shipping-lanes",
-            "is_sublayer": false,
-            "lookup_field": "Type",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "",
-            "name": "Shipping Lanes",
-            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 7,
         "model": "data_manager.layer",
         "fields": {
@@ -4453,10 +4411,97 @@
         }
     },
     {
-        "pk": 97,
+        "pk": 103,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 1.0,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                135,
+                136
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "shipping-fairways-lanes-and-zones",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Shipping Fairways, Lanes, and Zones",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
+            "arcgis_layers": "5",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 10,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-73.07195411101019&location%5By%5D=39.3847817828661&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=10&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "https://s3.amazonaws.com/marco-public-kml/HumanUse/AISdata/geviewer.kml",
+            "source": "http://www.marinecadastre.gov/AIS/default.aspx ",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_Trackline_Density_2009.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS_Trackline_Density.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.",
+            "slug_name": "ais-shipping-data",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "USGS, NOAA; analysis by TNC",
+            "data_notes": "This is a simplified view of a very complex and detailed data set. Hundreds of millions of individual points were processed and condensed into a generalized density raster. This raster shows a good overview of the density of most commercial shipping traffic but does not necessarily represent all shipping traffic at a fine level of detail.",
+            "name": "AIS Shipping Data",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/AISDensity/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "Commercial Shipping Density",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 97,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "radio",
             "themes": [
                 8
             ],
@@ -5828,6 +5873,26 @@
             "display_name": "Sea Scallop",
             "precision": null,
             "order": 12
+        }
+    },
+    {
+        "pk": 135,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "classification",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 136,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "description",
+            "display_name": "Description",
+            "precision": null,
+            "order": 2
         }
     },
     {
