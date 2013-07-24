@@ -224,7 +224,8 @@
 				// extent pixel size in meters for world file
 				extent:  app.map.getExtent().toArray(),
 				pixelSize: app.map.getGeodesicPixelSize().w * 1000,
-				session: app.session  || null
+				session: app.session  || null,
+				domain: window.location.hostname
 
 			}, function (data) {
 				self.jobStatus("Job is Complete");

@@ -13,6 +13,7 @@ var args = {};
 , 'userAgent'
 , 'script'
 , 'session'
+, 'domain'
 
 ].forEach(function(name, i) {
   args[name] = system.args[i + 1] ;
@@ -37,7 +38,7 @@ if (args.session) {
   phantom.addCookie({
       'name'  : 'sessionid',
       'value' : args.session,
-      'domain': 'localhost'
+      'domain': args.domain
   });  
 }
 
