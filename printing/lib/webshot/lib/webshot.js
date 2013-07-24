@@ -82,6 +82,7 @@ function spawnPhantom(site, path, options, cb) {
   , options.userAgent
   , options.script
   , options.session
+  , options.domain
   ].map(function(arg) {
     return arg ? arg.toString(): null;
   });
