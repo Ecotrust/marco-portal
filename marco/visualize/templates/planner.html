@@ -687,7 +687,7 @@
             var app = {
                 socketUrl: "{{ SOCKET_URL }}"
             };
-            {% if user.is_authenticated %} app.is_authenticated = true; {% endif %}
+            {% if user.is_authenticated %} app.is_authenticated = true; app.session = "{{ session }}" {% endif %}
         </script>
 
         <script src="{{MEDIA_URL}}/marco-proto/fixtures.js"></script>

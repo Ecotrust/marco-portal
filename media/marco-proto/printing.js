@@ -223,7 +223,8 @@
 				paperSize: self.paperSize(),
 				// extent pixel size in meters for world file
 				extent:  app.map.getExtent().toArray(),
-				pixelSize: app.map.getGeodesicPixelSize().w * 1000
+				pixelSize: app.map.getGeodesicPixelSize().w * 1000,
+				session: app.session  || null
 
 			}, function (data) {
 				self.jobStatus("Job is Complete");

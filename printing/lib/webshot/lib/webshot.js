@@ -81,10 +81,10 @@ function spawnPhantom(site, path, options, cb) {
   , options.shotSize.height
   , options.userAgent
   , options.script
+  , options.session
   ].map(function(arg) {
-    return arg.toString();
+    return arg ? arg.toString(): null;
   });
-
   childProcess
     .spawn(options.phantomPath, phantomArgs)
     .on('exit', function(code) {
