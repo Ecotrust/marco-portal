@@ -1040,7 +1040,7 @@ img + h3 {
 
 
 #printing-popover {
-	width: 460px;
+	max-width: 460px;
 }
 #printing-popover .arrow {
 	display: none;
