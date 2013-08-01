@@ -67,6 +67,8 @@ io.sockets.on('connection', function(socket) {
       filename = ts + '-' + socket.id;
       options = {
         userAgent: data.userAgent,
+        session: data.session,
+        domain: data.domain,
         screenSize: {
           width: data.screenWidth,
           height: data.screenHeight

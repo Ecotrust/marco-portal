@@ -12,9 +12,11 @@ var args = {};
 , 'shotHeight'
 , 'userAgent'
 , 'script'
+, 'session'
+, 'domain'
 
 ].forEach(function(name, i) {
-  args[name] = system.args[i + 1];
+  args[name] = system.args[i + 1] ;
 });
 
 // Set the window size
@@ -32,7 +34,16 @@ if (args.userAgent) {
   page.settings.userAgent = args.userAgent;
 }
 
+if (args.session) {
+  phantom.addCookie({
+      'name'  : 'sessionid',
+      'value' : args.session,
+      'domain': args.domain
+  });  
+}
+
 page.open(args.site, function(status) {
+
 
   if (status === 'fail') {
     page.close();
@@ -91,6 +102,8 @@ page.open(args.site, function(status) {
   // Render, clean up, and exit
 
   setTimeout(function () {
+
+    
     page.render(args.path);
     page.close();
     phantom.exit(0);    
