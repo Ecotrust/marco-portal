@@ -202,6 +202,7 @@
                                                     {% load flatblock_tags %}
                                                     <li {% if request.path == '/explore/catalog' %}class="active"{% endif %}><a href="{{domain}}/explore/catalog">{% flatblock "data_catalog_title" %}</a></li>
                                                     <li {% if request.path == '/explore/needs' %}class="active"{% endif %}><a href="{{domain}}/explore/needs">{% flatblock "data_needs_title" %}</a></li>
+                                                    <li {% if request.path == '/explore/resources' %}class="active"{% endif %}><a href="{{domain}}/explore/resources">{% flatblock "external_resources_title" %}</a></li>
                                                 </ul>
                                             </div>
                                             <div id="recent-posts-3" class="widget widget_recent_entries">
