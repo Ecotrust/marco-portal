@@ -196,8 +196,15 @@ app.loadState = function(state) {
     var loadTimer;
     
     // if the request is to load and display a single, named layer
-    var slug = Object.keys(state)[0],
-        layer = app.viewModel.getLayerBySlug(slug);
+    for ( key in state ) {
+        if (state.hasOwnProperty(key)) { 
+            var slug = state[key];
+            var layer = app.viewModel.getLayerBySlug(slug);
+            break;
+        } 
+    }
+    //var slug = Object.keys(state)[0], //fails in IE
+    //    layer = app.viewModel.getLayerBySlug(slug);
     if (layer) {
         app.loadCompressedState(state);
         //activate layer (/planner/#<layer-name>)

@@ -974,7 +974,7 @@ img + h3 {
 .SimpleLayerSwitcher {
   position:absolute;
   top:12px;
-  right:146px;
+  right:150px;
   background-color:whiteSmoke;
   border:1px solid #ccc;
   border-radius:4px;
@@ -982,7 +982,8 @@ img + h3 {
   text-align: left;
   background: #130085; /* fallback for IE - IE6 requires background shorthand*/
   background: rgba(0, 60, 136, 0.5);
-  border-radius: 10px;
+  opacity: .8;
+  border-radius: 4px;
   display: none;
   overflow: hidden;
 }
