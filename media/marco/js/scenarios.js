@@ -650,7 +650,8 @@ function scenarioFormModel(options) {
         return true;
     };
     
-    self.shippingLanesLayer = app.viewModel.getLayerById(64);
+    self.shippingLanesLayer = app.viewModel.getLayerById(64); // original shipping lanes layer (geojson)
+    //self.shippingLanesLayer = app.viewModel.getLayerById(103); // mmc (wms) shipping lanes layer
     self.toggleShippingLanesLayer = function(formModel, event) {
         if ( self.shippingLanesLayer.active() ) {
             self.shippingLanesLayer.deactivateLayer();

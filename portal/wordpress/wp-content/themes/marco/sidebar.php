@@ -22,6 +22,7 @@
 		<ul class="unstyled">
 			<li><a href="/explore/catalog">Data Catalog</a></li>
 			<li><a href="/explore/needs">Data Priorities</a></li>
+			<li><a href="/explore/resources">External Resources</a></li>
 		</ul>
 		<?php if ($post->post_name == 'visualize') { ?>
 			<h3 class="active"><a href="<?php echo get_bloginfo('wpurl'); ?>/explore">Visualize</a></h3>

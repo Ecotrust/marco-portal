@@ -462,9 +462,12 @@ app.addArcRestLayerToMap = function(layer) {
                             }
                             return;
                         }
-                    });
+                    });  
+                    if ( layer.name === 'Aids to Navigation' ) {
+                        app.viewModel.adjustAidsToNavigationAttributes(attributeObjs);
+                    } 
                 }
-                
+                  
                 if (attributeObjs && attributeObjs.length) {
                     clickAttributes[layer.featureAttributionName] = attributeObjs;
                     $.extend(app.map.clickOutput.attributes, clickAttributes);

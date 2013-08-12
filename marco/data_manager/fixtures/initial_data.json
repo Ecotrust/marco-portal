@@ -4141,55 +4141,6 @@
         }
     },
     {
-        "pk": 64,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "placeholder",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov",
-            "lookup_table": [
-                8,
-                10,
-                9,
-                7
-            ],
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                29
-            ],
-            "learn_more": "",
-            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
-            "slug_name": "shipping-lanes",
-            "is_sublayer": false,
-            "lookup_field": "Type",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "",
-            "name": "Shipping Lanes",
-            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 57,
         "model": "data_manager.layer",
         "fields": {
@@ -4367,6 +4318,55 @@
         }
     },
     {
+        "pk": 64,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "/visualize/#location%5Bx%5D=-72.25896582976064&location%5By%5D=39.30831774017966&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=64&activeLayers%5B0%5D%5Bopacity%5D=0.8&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=8&activeTab%5Btab%5D=data&legends%5Bvisible%5D=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [
+                8,
+                10,
+                9,
+                7
+            ],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/shipping_metadata.html",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                29
+            ],
+            "learn_more": "",
+            "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
+            "slug_name": "shipping-lanes",
+            "is_sublayer": false,
+            "lookup_field": "Type",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/ShipFairwaysLanesZones/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Shipping Lanes",
+            "url": "/media/data_manager/geojson/ShippingFairwaysLanesZones.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 7,
         "model": "data_manager.layer",
         "fields": {
@@ -4414,7 +4414,7 @@
         "pk": 103,
         "model": "data_manager.layer",
         "fields": {
-            "layer_type": "ArcRest",
+            "layer_type": "placeholder",
             "themes": [
                 8
             ],
@@ -4515,7 +4515,7 @@
             "lookup_table": [],
             "utfurl": "",
             "thumbnail": "",
-            "data_download": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/AIS_2011_ShippingDensityGrids.zip",
             "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/AIS2011.html",
             "opacity": 0.5,
             "vector_color": "",
@@ -4543,6 +4543,100 @@
                 100,
                 101
             ]
+        }
+    },
+    {
+        "pk": 104,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/AidsToNavigation.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/AidstoNavigation.htm",
+            "opacity": 1.0,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                140,
+                141,
+                142,
+                144,
+                143
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "aids-to-navigation",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Aids to Navigation",
+            "url": "http://maps.csc.noaa.gov/arcgis/rest/services/MarineCadastre/NationalViewer/MapServer/export",
+            "arcgis_layers": "0",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 105,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/AnchorageAreas.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/AnchorageAreas.htm",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                137,
+                139,
+                138
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "anchorage-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Anchorage Areas",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
+            "arcgis_layers": "7",
+            "legend_title": "",
+            "sublayers": []
         }
     },
     {
@@ -5893,6 +5987,86 @@
             "display_name": "Description",
             "precision": null,
             "order": 2
+        }
+    },
+    {
+        "pk": 137,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "boundaryIdentifier",
+            "display_name": "Boundary Identifier",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 139,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "authority",
+            "display_name": "Authority",
+            "precision": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 138,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "boundaryClassifier",
+            "display_name": "Boundary Classifier",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 140,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "aidName",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 141,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "aidType",
+            "display_name": "Aid Type",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 142,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "characteristics",
+            "display_name": "Characteristics",
+            "precision": null,
+            "order": 3
+        }
+    },
+    {
+        "pk": 144,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "structureRemark",
+            "display_name": "Structure Remark",
+            "precision": null,
+            "order": 5
+        }
+    },
+    {
+        "pk": 143,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "dayNightBoth",
+            "display_name": "Day or Night",
+            "precision": null,
+            "order": 4
         }
     },
     {

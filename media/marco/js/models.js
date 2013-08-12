@@ -2154,6 +2154,17 @@ function viewModel() {
         
         return attrs;
     };
+    
+    self.adjustAidsToNavigationAttributes = function (attrObj) {
+        aidType = _.find(attrObj, function(obj) { return obj["display"] === 'Aid Type'; });
+        if ( aidType["data"] === "PA" ) {
+            aidType["data"] = "PA (Position Approximate)";
+        } else if (aidType["data"] === "PD" ) {
+            aidType["data"] = "PD (Position Doubtful)";
+        } else if (aidType["data"] === "FD" ) {
+            aidType["data"] = "FD (Undocumented)";
+        }
+    }
             
     return self;
 } //end viewModel

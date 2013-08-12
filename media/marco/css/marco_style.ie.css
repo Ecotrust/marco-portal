@@ -12,10 +12,22 @@ div.olControlZoom a {
     background-color: rgb(0, 109, 184) !important;
 }
 
+#basemaps {
+    top: 4px;
+    right: 18px;
+}
+#basemaps .btn-group-vertical {
+    width: 24px;
+}
+#basemaps .btn-group-vertical:hover {
+    width: 129px;
+}
 #basemaps a {
     background-color: rgb(0, 109, 184) !important;
 }
-
+.SimpleLayerSwitcher {
+    top: 9px;
+}
 .SimpleLayerSwitcher a {
     background-color: rgb(0, 109, 184) !important;
 }
@@ -32,13 +44,6 @@ div.olControlZoom a {
     margin-right: 5px;
 }
 
-#data-accordion i.icon-info-sign {
-	margin-left: -5px;
-}
-#data-accordion .btn-info-sign {
-	width: 5px;
-}
-
 #designs .btn-primary {
     background-color: rgb(0, 129, 204);
 }
@@ -47,29 +52,13 @@ div.olControlZoom a {
     padding-right: 3px;
 }
 
-#designs .btn-info-sign {
-    padding-right: 6px;
-	width: 12px;
-}
-
-#designs .icon-info-sign {
-    padding-left: 10px;
-}
-
 #active .btn {
     padding-right: 5px;
 }
 
-#active .icon-info-sign {
-    padding-left: 10px;
-}
-
-#active .icon-adjust {
-    padding-left: 10px;
-}
-
 #active .icon-remove {
     padding-left: 10px;
+    padding-right: 5px
 }
 
 .learn-page .image:hover .caption span {
@@ -111,8 +100,4 @@ div.olControlZoom a {
 	#map-panel {
 		margin-left: 0% !important;
 	}
-}
-
-#wind-design-form .accordion-toggle i.check {
-    margin-left: 10px;
 }
