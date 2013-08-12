@@ -21,6 +21,14 @@ require_once('library/shortcodes.php');
 // Admin Functions (commented out by default)
 // require_once('library/admin.php');         // custom admin functions
 
+
+function custom_excerpt_length( $length ) {
+  return 40;
+}
+
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
 // Custom Backend Footer
 function bones_custom_admin_footer() {
 	echo '<span id="footer-thankyou">Developed by Ecotrust, based on a theme by 320press</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';

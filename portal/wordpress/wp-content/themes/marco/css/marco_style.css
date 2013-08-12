@@ -274,7 +274,7 @@ hr {
 .news .bugs .wrapper {
 	padding: 5px 10px;
 	text-align: left;
-	min-height: 300px;
+	min-height: 200px;
 }
 
 .news .bugs .wrapper a:link {
