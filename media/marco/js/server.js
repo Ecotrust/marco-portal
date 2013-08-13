@@ -17,41 +17,54 @@ app.viewModel.loadLayers = function(data) {
 	});
 
 	// load themes
-	$.each(data.themes, function(i, themeFixture) {
-		var layers = [],
-			theme = new themeModel(themeFixture);
-		$.each(themeFixture.layers, function(j, layer_id) {
-			// create a layerModel and add it to the list of layers
-			var layer = self.layerIndex[layer_id],
-				searchTerm = layer.name + ' (' + themeFixture.display_name + ')';
-			layer.themes.push(theme);
-			theme.layers.push(layer);
-            
-			if (!layer.subLayers.length) { //if the layer does not have sublayers
-                self.layerSearchIndex[searchTerm] = {
-                    layer: layer,
-                    theme: theme
-                };
-            } else { //if the layer has sublayers
-				$.each(layer.subLayers, function(i, subLayer) {
-					//var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ')';
-                    var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ' / ' + subLayer.parent.name + ')';
-					if (subLayer.name !== 'Data Under Development') {
-                        self.layerSearchIndex[searchTerm] = {
-                            layer: subLayer,
-                            theme: theme
-                        };
-                    }
-				});  
-                layer.subLayers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
-			} 
+    $.each(data.themes, function(i, themeFixture) {
+        var layers = [],
+            theme = new themeModel(themeFixture);
+        if (theme.is_visible) {
+            $.each(themeFixture.layers, function(j, layer_id) {
+                // create a layerModel and add it to the list of layers
+                var layer = self.layerIndex[layer_id],
+                    searchTerm = layer.name + ' (' + themeFixture.display_name + ')';
+                layer.themes.push(theme);
+                theme.layers.push(layer);
+                
+                if (!layer.subLayers.length) { //if the layer does not have sublayers
+                    self.layerSearchIndex[searchTerm] = {
+                        layer: layer,
+                        theme: theme
+                    };
+                } else { //if the layer has sublayers
+                    $.each(layer.subLayers, function(i, subLayer) {
+                        //var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ')';
+                        var searchTerm = subLayer.name + ' (' + themeFixture.display_name + ' / ' + subLayer.parent.name + ')';
+                        if (subLayer.name !== 'Data Under Development') {
+                            self.layerSearchIndex[searchTerm] = {
+                                layer: subLayer,
+                                theme: theme
+                            };
+                        }
+                    });  
+                    layer.subLayers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
+                } 
 
-		});
-        //sort by name
-        theme.layers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
-        
-		self.themes.push(theme);
-	});
+            });
+            //sort by name
+            theme.layers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
+            
+            self.themes.push(theme);
+        } else {
+            $.each(themeFixture.layers, function(j, layer_id) {
+                var layer = self.layerIndex[layer_id];
+                layer.themes.push(theme);
+                theme.layers.push(layer);
+            });
+            //sort by name
+            theme.layers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );
+            
+            self.hiddenThemes.push(theme);
+        }
+    });
+    
 	app.typeAheadSource = (function () {
             var keys = [];
             for (var searchTerm in app.viewModel.layerSearchIndex) {
@@ -66,7 +79,7 @@ app.viewModel.loadLayers = function(data) {
     //if ( ! app.embeddedMap ) {
     if ( $(window).width() > 767 && !app.embeddedMap ) {
         $('#legend-content').jScrollPane(); 
-    }
+    } 
 
 };
 app.viewModel.loadLayersFromFixture = function() {

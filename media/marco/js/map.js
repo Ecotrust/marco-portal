@@ -251,7 +251,7 @@ app.init = function () {
         if (layer) {
             var text = [],
                 title = layer.featureAttributionName;
-            
+                
             if ( layer.scenarioAttributes && layer.scenarioAttributes.length ) {
                 var attrs = layer.scenarioAttributes;
                 for (var i=0; i<attrs.length; i++) {
@@ -269,9 +269,11 @@ app.init = function () {
             
             // the following delay prevents the #map click-event-attributes-clearing from taking place after this has occurred
             setTimeout( function() {
-                app.map.clickOutput.attributes[layer.featureAttributionName] = text;
-                app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
+                if (text.length) {
+                    app.map.clickOutput.attributes[layer.featureAttributionName] = text;
+                    app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                    app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
+                }
                 // if (app.marker) {
                     // app.marker.display(true);
                 // }
@@ -340,6 +342,15 @@ app.init = function () {
         }
         return undefined;
     }
+    
+    setTimeout( function() {
+        if (app.mafmc) {
+            map.removeLayer(openStreetMap);
+            map.removeLayer(googleStreet);
+            map.removeLayer(googleTerrain);
+            map.removeLayer(googleSatellite);
+        } 
+    }, 1000);
     
 };
 
@@ -501,22 +512,44 @@ app.addArcRestLayerToMap = function(layer) {
 };
 
 app.addVectorLayerToMap = function(layer) {
-    var styleMap = new OpenLayers.StyleMap( {
-        fillColor: layer.color,
-        fillOpacity: layer.fillOpacity,
-        //strokeDashStyle: "dash",
-        //strokeOpacity: 1,
-        strokeColor: layer.color,
-        strokeOpacity: layer.defaultOpacity,
-        //strokeLinecap: "square",
-        //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
-        //title: 'testing'
-        pointRadius: 2,
-        externalGraphic: layer.graphic,
-        graphicWidth: 8,
-        graphicHeight: 8,
-        graphicOpacity: layer.defaultOpacity
-    });
+    if (layer.annotated) {
+        var styleMap = new OpenLayers.StyleMap( {
+            label: "${NAME}",
+            fontColor: "#333",
+            fontSize: "12px",
+            fillColor: layer.color,
+            fillOpacity: layer.fillOpacity,
+            //strokeDashStyle: "dash",
+            //strokeOpacity: 1,
+            strokeColor: layer.color,
+            strokeOpacity: layer.defaultOpacity,
+            //strokeLinecap: "square",
+            //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+            //title: 'testing'
+            pointRadius: 2,
+            externalGraphic: layer.graphic,
+            graphicWidth: 8,
+            graphicHeight: 8,
+            graphicOpacity: layer.defaultOpacity
+        });
+    } else {
+        var styleMap = new OpenLayers.StyleMap( {
+            fillColor: layer.color,
+            fillOpacity: layer.fillOpacity,
+            //strokeDashStyle: "dash",
+            //strokeOpacity: 1,
+            strokeColor: layer.outline_color,
+            strokeOpacity: layer.outline_opacity,
+            //strokeLinecap: "square",
+            //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
+            //title: 'testing'
+            pointRadius: 2,
+            externalGraphic: layer.graphic,
+            graphicWidth: 8,
+            graphicHeight: 8,
+            graphicOpacity: layer.defaultOpacity
+        });
+    }
     if (layer.name === 'Coral Protection Mockups') {
         /*styleMap.styles['default']['defaultStyle']['label'] = '${NAME}';
         styleMap.styles['default']['defaultStyle']['fontColor'] = "red";
@@ -568,7 +601,10 @@ app.addVectorLayerToMap = function(layer) {
                 format: new OpenLayers.Format.GeoJSON()
             }),
             styleMap: styleMap,                    
-            layerModel: layer
+            layerModel: layer,
+            // set minZoom to 8 for annotated layers, set minZoom to some much smaller zoom level for non-annotated layers
+            scales: layer.annotated ? [2000000, 1] : [90000000, 1], 
+            units: layer.annotated ? 'm' : 'm'
         }
     );
 

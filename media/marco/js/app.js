@@ -133,6 +133,11 @@ $(document).ready(function() {
     app.viewModel.updateAllScrollBars();
     setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
   });
+  if ( $('#legendTab') ) {
+      $('#legendTab[data-toggle="tab"]').on('shown', function(e) {
+        app.viewModel.updateScrollBars();
+      });
+  }
   
   //the following appears to handle the bookmark sharing, while the earlier popover activation handles the design sharing
   setTimeout(function() {$('.group-members-popover').popover({html: true, trigger: 'hover'});}, 2000); 
@@ -248,14 +253,14 @@ $(document).ready(function() {
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_28').mouseleave( function() {
     $('#SimpleLayerSwitcher_28').hide();
-    if (!app.pageguide.preventBasemapsClose) {
+    if (app.mafmc || !app.pageguide.preventBasemapsClose) {
         $('#basemaps').removeClass('open');
     }
   });
   
   //hide basemaps drop-down on mouseout
   $('#SimpleLayerSwitcher_28').mousedown( function() {
-    if (!app.pageguide.preventBasemapsClose) {
+    if (app.mafmc || !app.pageguide.preventBasemapsClose) {
         $('#basemaps').removeClass('open');
     }
   });

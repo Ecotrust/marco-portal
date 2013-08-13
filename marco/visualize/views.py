@@ -27,6 +27,10 @@ def show_embedded_map(request, template='map.html'):
     context = {'MEDIA_URL': settings.MEDIA_URL}
     return render_to_response(template, RequestContext(request, context)) 
     
+def show_mafmc_map(request, template='mafmc.html'):
+    context = {'MEDIA_URL': settings.MEDIA_URL}
+    return render_to_response(template, RequestContext(request, context)) 
+    
 def show_mobile_map(request, template='mobile-map.html'):
     context = {'MEDIA_URL': settings.MEDIA_URL}
     return render_to_response(template, RequestContext(request, context)) 

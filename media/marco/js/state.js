@@ -72,7 +72,7 @@ app.loadCompressedState = function(state) {
             if (app.viewModel.layerIndex[id]) {
                 app.viewModel.layerIndex[id].activateLayer();
                 app.viewModel.layerIndex[id].opacity(opacity);
-                //must not be understanding something about js, but at the least the following seems to work now...
+                //obviously not understanding something here...
                 if (isVisible || !isVisible) {
                     if (isVisible !== 'true' && isVisible !== true) {
                         app.viewModel.layerIndex[id].toggleVisible();

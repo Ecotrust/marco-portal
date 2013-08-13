@@ -21,10 +21,17 @@ function layerModel(options, parent) {
     self.lookupField = options.lookups ? options.lookups.field : null;
     self.lookupDetails = options.lookups ? options.lookups.details : [];
     self.color = options.color || "#ee9900";
+    self.outline_color = options.outline_color || self.color;
     self.fillOpacity = options.fill_opacity || 0.0;
-    self.defaultOpacity = options.opacity || 0.5;
+    if ( options.opacity === 0 ) {
+        self.defaultOpacity = options.opacity;
+    } else {
+        self.defaultOpacity = options.opacity || 0.5;
+    }
     self.opacity = ko.observable(self.defaultOpacity);
+    self.outline_opacity = options.outline_opacity || self.defaultOpacity;
     self.graphic = options.graphic || null;
+    self.annotated = options.annotated || false;
     
     //these are necessary to prevent knockout errors when offering non-designs in Active panel
     self.sharedBy = ko.observable(false);
@@ -529,6 +536,25 @@ function layerModel(options, parent) {
     self.isBottomLayer = function(layer) {
         return app.viewModel.activeLayers.indexOf(layer) === app.viewModel.activeLayers().length - 1;
     };
+      
+    self.showingLegendDetails = ko.observable(true);
+    self.toggleLegendDetails = function() {
+        var legendID = '#' + app.viewModel.convertToSlug(self.name) + '-legend-content';
+        if ( self.showingLegendDetails() ) {
+            self.showingLegendDetails(false);
+            $(legendID).css('display', 'none');
+            //$(legendID).collapse('hide');
+            //$(legendID).slideUp(200);
+            //setTimeout( function() { $(legendID).css('display', 'none'); }, 300 );
+        } else {
+            self.showingLegendDetails(true);
+            $(legendID).css('display', 'block');
+            //$(legendID).collapse('show');
+            //$(legendID).slideDown(200);
+        }
+        //update scrollbar
+        setTimeout( function() { app.viewModel.updateScrollBars(); }, 200 );
+    };      
     
     self.showingLayerAttribution = ko.observable(true);
     self.toggleLayerAttribution = function() {
@@ -633,6 +659,7 @@ function themeModel(options) {
     self.id = options.id;
     self.description = options.description;
     self.learn_link = options.learn_link;
+    self.is_visible = options.is_visible;
 
     // array of layers
     self.layers = ko.observableArray();
@@ -882,6 +909,7 @@ function viewModel() {
 
     // list of theme models
     self.themes = ko.observableArray();
+    self.hiddenThemes = ko.observableArray();
 
     // last clicked layer for editing, etc
     self.activeLayer = ko.observable();
@@ -963,6 +991,34 @@ function viewModel() {
         }
     };
     
+    
+    // minimize data panel
+    self.minimized = false;
+    self.minimizeLayerSwitcher = function() {
+        if ( !self.minimized ) {
+            $('#mafmc-layer-switcher').animate( {height: '55px'}, 400 );
+            $('#mafmc-legend').hide();
+            $('#mafmc-tabs').hide();
+            $('#mafmc-active-content').hide();
+            $('#mafmc-layer-list').hide();
+            // $('#myTabContent').hide();
+        } else {
+            $('#mafmc-layer-switcher').animate( {height: '350px'}, 400 );
+            setTimeout( function() {
+                $('#mafmc-legend').show();
+                $('#mafmc-tabs').show();
+                $('#mafmc-active-content').show();
+                $('#mafmc-layer-list').show();
+                // $('#myTabContent').show();
+            }, 200);
+            setTimeout( function() {
+                self.updateAllScrollBars();
+            }, 400);
+        }
+        self.minimized = !self.minimized;
+    };
+    
+    
     /*
     self.getAttributeHTML = function() {
         var html = "";
@@ -1014,6 +1070,13 @@ function viewModel() {
         } else {
             $layerSwitcher.show();
         }
+    };
+    self.showMAFMCBasemaps = function(self) {
+        var $layerSwitcher = $('#SimpleLayerSwitcher_28');
+        $layerSwitcher.css({ "top": "38px", "right": "12px", "width": "138px" });
+        setTimeout( function() {
+            $layerSwitcher.slideDown(150);
+        }, 250);
     };
 
     // zoom with box
@@ -1152,7 +1215,7 @@ function viewModel() {
     //update jScrollPane scrollbar
     self.updateScrollBars = function() {
     
-        if ( ! app.embeddedMap ) {
+        if ( app.mafmc || !app.embeddedMap ) {
             var dataScrollpane = $('#data-accordion').data('jsp');
             if (dataScrollpane === undefined) {
                 $('#data-accordion').jScrollPane();
@@ -1166,11 +1229,33 @@ function viewModel() {
             } else {
                 activeScrollpane.reinitialise();
             }
+            if ($('#mafmc-active-content')) {
+                var mafmcActiveScrollpane = $('#mafmc-active-content').data('jsp');
+                if (mafmcActiveScrollpane === undefined) {
+                    $('#mafmc-active-content').jScrollPane();
+                } else {
+                    setTimeout(function() {
+                        mafmcActiveScrollpane.reinitialise();
+                        $('.jspScrollable').css("outline", "none"); 
+                    },100);
+                }
+            }
             var legendScrollpane = $('#legend-content').data('jsp');
             if (legendScrollpane === undefined) {
                 $('#legend-content').jScrollPane();
             } else {
                 setTimeout(function() {legendScrollpane.reinitialise();},100);
+            }
+            if ($('#mafmc-legend')) {
+                var mafmcLegendScrollpane = $('#mafmc-legend').data('jsp');
+                if (mafmcLegendScrollpane === undefined) {
+                    $('#mafmc-legend').jScrollPane();
+                } else {
+                    setTimeout(function() {
+                        mafmcLegendScrollpane.reinitialise();
+                        $('.jspScrollable').css("outline", "none"); 
+                    },100);
+                }
             }
             if (app.viewModel.scenarios) {
                 app.viewModel.scenarios.updateDesignsScrollBar();

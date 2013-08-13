@@ -6,6 +6,7 @@ from django.template.defaultfilters import slugify
 class Theme(models.Model):
     display_name = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
+    visible = models.BooleanField(default=True)
     header_image = models.CharField(max_length=255, blank=True, null=True)
     header_attrib = models.CharField(max_length=255, blank=True, null=True)
     overview = models.TextField(blank=True, null=True)
@@ -37,6 +38,7 @@ class Theme(models.Model):
             'id': self.id,
             'display_name': self.display_name,
             'learn_link': self.learn_link,
+            'is_visible': self.visible,
             'layers': layers,
             'description': self.description
         }
@@ -94,6 +96,9 @@ class Layer(models.Model):
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
     lookup_field = models.CharField(max_length=255, blank=True, null=True)
     lookup_table = models.ManyToManyField('LookupInfo', blank=True, null=True)
+    is_annotated = models.BooleanField(default=False)
+    vector_outline_color = models.CharField(max_length=7, blank=True, null=True)
+    vector_outline_opacity = models.FloatField(blank=True, null=True)
     vector_color = models.CharField(max_length=7, blank=True, null=True)
     vector_fill = models.FloatField(blank=True, null=True)
     vector_graphic = models.CharField(max_length=255, blank=True, null=True)
@@ -239,10 +244,13 @@ class Layer(models.Model):
                 'tiles': layer.tiles_link,
                 'attributes': layer.serialize_attributes,
                 'lookups': layer.serialize_lookups,
+                'outline_color': layer.vector_outline_color,
+                'outline_opacity': layer.vector_outline_opacity,
                 'color': layer.vector_color,
                 'fill_opacity': layer.vector_fill,
                 'graphic': layer.vector_graphic,
-                'opacity': layer.opacity
+                'opacity': layer.opacity,
+                'annotated': layer.is_annotated
             } 
             for layer in self.sublayers.all()
         ]
@@ -268,10 +276,13 @@ class Layer(models.Model):
             'tiles': self.tiles_link,
             'attributes': self.serialize_attributes,
             'lookups': self.serialize_lookups,
+            'outline_color': self.vector_outline_color,
+            'outline_opacity': self.vector_outline_opacity,
             'color': self.vector_color,
             'fill_opacity': self.vector_fill,
             'graphic': self.vector_graphic,
-            'opacity': self.opacity
+            'opacity': self.opacity,
+            'annotated': self.is_annotated
         }
         return layers_dict
         
