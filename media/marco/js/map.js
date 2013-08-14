@@ -97,7 +97,8 @@ app.init = function () {
         if( map.getZoom() < 5)
         {
             map.zoomTo(5);
-        }        
+        }  
+        app.viewModel.zoomLevel(map.getZoom());
     });
 
     // map.addControl(new OpenLayers.Control.MousePosition({
@@ -604,7 +605,7 @@ app.addVectorLayerToMap = function(layer) {
             layerModel: layer,
             // set minZoom to 8 for annotated layers, set minZoom to some much smaller zoom level for non-annotated layers
             scales: layer.annotated ? [2000000, 1] : [90000000, 1], 
-            units: layer.annotated ? 'm' : 'm'
+            units: 'm'
         }
     );
 

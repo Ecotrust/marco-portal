@@ -991,6 +991,8 @@ function viewModel() {
         }
     };
     
+    self.zoomLevel = ko.observable(false);
+    
     
     // minimize data panel
     self.minimized = false;

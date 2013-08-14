@@ -1,0 +1,5 @@
+{"name":"Mey_Lind_Hank_straight","type":"FeatureCollection"
+,"crs":{"type":"name","properties":{"name":"EPSG:3857"}}
+,"features":[
+{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-8133147.19374705,4689374.48146633],[-8063957.29867696,4751674.39177423],[-8036458.79584717,4720178.6170654],[-8103480.63803765,4655846.9806153],[-8129880.81191514,4684655.37108108],[-8133147.19374705,4689374.48146633]]]},"properties":{"Area":2445.32006835938,"FID":0,"Type":"C1-C2","Label_Lon":-72.408019,"Shape_Leng":219924.561956,"OBJECTID":16,"Label_Lat":39.000033,"Name":"Mey-Lindenkohl Slope","Shape_Area":2727549763.25}}
+]}
