@@ -1048,51 +1048,6 @@
         }
     },
     {
-        "pk": 121,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                9
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "/media/data_manager/utfgrid/coldwater_corals/corals/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "corals",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/CoralTilesNew/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Corals",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Conservation/CoralTilesNew/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 95,
         "model": "data_manager.layer",
         "fields": {
@@ -1374,6 +1329,51 @@
             "data_notes": "",
             "name": "AWC Hubs",
             "url": "/media/data_manager/geojson/AWCHubs.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 121,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                9
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/corals_mafmc/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "corals",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/CoralTilesNew/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Corals",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Conservation/CoralTilesNew/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
@@ -6204,6 +6204,46 @@
         }
     },
     {
+        "pk": 147,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "CITATION",
+            "display_name": "Citation 1",
+            "precision": null,
+            "order": 5
+        }
+    },
+    {
+        "pk": 150,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "ORDER_",
+            "display_name": "Order",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 148,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "CITATION_2",
+            "display_name": "Citation 2",
+            "precision": null,
+            "order": 6
+        }
+    },
+    {
+        "pk": 151,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "SUBORDER",
+            "display_name": "Suborder",
+            "precision": null,
+            "order": 3
+        }
+    },
+    {
         "pk": 40,
         "model": "data_manager.attributeinfo",
         "fields": {
@@ -7481,6 +7521,26 @@
             "display_name": "",
             "precision": null,
             "order": 1
+        }
+    },
+    {
+        "pk": 149,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "SCIENTIFIC",
+            "display_name": "Species",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 152,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "FAMILY",
+            "display_name": "Family",
+            "precision": null,
+            "order": 4
         }
     },
     {
