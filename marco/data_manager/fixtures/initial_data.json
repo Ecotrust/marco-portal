@@ -1361,7 +1361,14 @@
             "vector_color": "",
             "attribute_event": "click",
             "description": "",
-            "attribute_fields": [],
+            "attribute_fields": [
+                147,
+                150,
+                148,
+                151,
+                149,
+                152
+            ],
             "learn_more": "",
             "data_overview": "",
             "slug_name": "corals",
