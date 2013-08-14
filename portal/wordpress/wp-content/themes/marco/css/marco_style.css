@@ -245,6 +245,7 @@ hr {
 	border-radius: 10px;
 	behavior: url(/portal/assets/PIE.htc);
 
+
 }
 .bugs .wrapper:hover,
 .bugs .wrapper:hover h3 {
@@ -274,7 +275,7 @@ hr {
 .news .bugs .wrapper {
 	padding: 5px 10px;
 	text-align: left;
-	min-height: 300px;
+	min-height: 150px;
 }
 
 .news .bugs .wrapper a:link {
@@ -326,7 +327,7 @@ hr {
 	margin-left: 10px;
 	margin-right: 10px;
 	text-align: left;
-	height: 150px;
+	min-height: 100px;
 }
 
 
