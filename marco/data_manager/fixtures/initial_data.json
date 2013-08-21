@@ -57,25 +57,6 @@
         }
     },
     {
-        "pk": 12,
-        "model": "data_manager.theme",
-        "fields": {
-            "factsheet_link": "",
-            "feature_link": "",
-            "header_attrib": "",
-            "display_name": "Industry Alternatives",
-            "name": "industry-alternatives",
-            "overview": "",
-            "feature_image": "",
-            "thumbnail": "",
-            "visible": false,
-            "factsheet_thumb": "",
-            "feature_excerpt": "",
-            "header_image": "",
-            "description": ""
-        }
-    },
-    {
         "pk": 2,
         "model": "data_manager.theme",
         "fields": {
@@ -209,51 +190,6 @@
         }
     },
     {
-        "pk": 118,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                12
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#C4F0CC",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "hank-ml-depth",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLDepth.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Hank ML Depth",
-            "url": "/media/data_manager/geojson/IAHankMLDepth.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 108,
         "model": "data_manager.layer",
         "fields": {
@@ -351,7 +287,6 @@
         "fields": {
             "layer_type": "Vector",
             "themes": [
-                9,
                 2
             ],
             "compress_display": false,
@@ -532,6 +467,51 @@
             "sublayers": [
                 80
             ]
+        }
+    },
+    {
+        "pk": 118,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "themes": [
+                10
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#C4F0CC",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "hank-ml-depth-option",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLDepth.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Hank ML Depth Option",
+            "url": "/media/data_manager/geojson/IAHankMLDepth.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
         }
     },
     {
@@ -3959,7 +3939,7 @@
         "fields": {
             "layer_type": "Vector",
             "themes": [
-                12
+                10
             ],
             "compress_display": false,
             "map_tiles": "",
@@ -3983,7 +3963,7 @@
             "attribute_fields": [],
             "learn_more": "",
             "data_overview": "",
-            "slug_name": "hank-baltimore",
+            "slug_name": "hank-baltimore-option",
             "is_sublayer": false,
             "lookup_field": "",
             "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankBaltimore.png",
@@ -3991,7 +3971,7 @@
             "vector_fill": 0.8,
             "data_source": "",
             "data_notes": "",
-            "name": "Hank Baltimore",
+            "name": "Hank Baltimore Option",
             "url": "/media/data_manager/geojson/IAHankBaltimore.json",
             "arcgis_layers": "",
             "legend_title": "",
@@ -4366,6 +4346,51 @@
             "name": "Offshore Wind Compatibility Assessments",
             "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
             "arcgis_layers": "5",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 119,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "themes": [
+                10
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#C5F7E5",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "hank-ml-straight-option",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLStraight.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Hank ML Straight Option",
+            "url": "/media/data_manager/geojson/IAHankMLStraight.json",
+            "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
         }
@@ -4753,51 +4778,6 @@
         }
     },
     {
-        "pk": 119,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                12
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#C5F7E5",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "hank-ml-straight",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLStraight.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Hank ML Straight",
-            "url": "/media/data_manager/geojson/IAHankMLStraight.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 124,
         "model": "data_manager.layer",
         "fields": {
@@ -4842,51 +4822,6 @@
             "sublayers": [
                 127
             ]
-        }
-    },
-    {
-        "pk": 120,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                12
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#D5CEF0",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "hank-norfolk",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankNorfolk.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Hank Norfolk",
-            "url": "/media/data_manager/geojson/IAHankNorfolk.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
         }
     },
     {
@@ -5175,6 +5110,51 @@
             "sublayers": [
                 21
             ]
+        }
+    },
+    {
+        "pk": 120,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "themes": [
+                10
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#D5CEF0",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "hank-norfolk-option",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankNorfolk.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Hank Norfolk Option",
+            "url": "/media/data_manager/geojson/IAHankNorfolk.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
         }
     },
     {

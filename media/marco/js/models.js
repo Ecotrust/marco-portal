@@ -349,7 +349,12 @@ function layerModel(options, parent) {
         app.addLayerToMap(layer);
 
         //now that we now longer use the selectfeature control we can simply do the following 
-        app.viewModel.activeLayers.unshift(layer);
+        //if (app.map.getLayersByName('Canyon Labels').length > 0) {
+        if (app.viewModel.activeLayers().length > 0 && app.viewModel.activeLayers()[0].name === 'Canyon Labels') {
+            app.viewModel.activeLayers.splice(1, 0, layer);
+        } else {
+            app.viewModel.activeLayers.unshift(layer);
+        }
 
         // set the active flag
         layer.active(true);
