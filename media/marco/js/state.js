@@ -15,6 +15,7 @@ app.getState = function () {
         y: center.lat.toFixed(2), 
         z: app.map.getZoom(),
         logo: app.viewModel.showLogo(),
+        controls: app.viewModel.showZoomControls(),
         dls: layers.reverse(),
         basemap: app.map.baseLayer.name,
         themes: {ids: app.viewModel.getOpenThemeIDs()},
@@ -90,6 +91,10 @@ app.loadCompressedState = function(state) {
     
     if (state.logo === 'false') {
         app.viewModel.hideLogo();
+    }
+    
+    if (state.controls === 'false') {
+        app.viewModel.hideZoomControls();
     }
     
     if (state.print === 'true') {

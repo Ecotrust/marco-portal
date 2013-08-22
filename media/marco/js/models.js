@@ -1058,6 +1058,17 @@ function viewModel() {
     self.hideLogo = function() {
         self.showLogo(false);
     };
+    self.showZoomControls = ko.observable(true);
+    self.hideZoomControls = function() {
+        self.showZoomControls(false);
+    };
+    self.showZoomControls.subscribe(function (newVal) {
+        if (newVal === false) {
+            $('.olControlZoom').css('display', 'none');
+        } else {
+            $('.olControlZoom').css('display', '');
+        }
+    });
     
     self.isFullScreen = ko.observable(false);
     
