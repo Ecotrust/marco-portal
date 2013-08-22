@@ -105,7 +105,18 @@ app.loadCompressedState = function(state) {
     }
 
     if (state.basemap) {
-        app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
+        if (state.basemap.toLowerCase() === 'tilestream') {
+            tilestream = new OpenLayers.Layer.OSM("TileStream", "http://tilestream.apps.ecotrust.org/v2/magrish/${z}/${x}/${y}.png", {
+                sphericalMercator: true,
+                isBaseLayer: true,
+                numZoomLevels: 8,
+                attribution: ''
+            });
+            app.map.addLayers([tilestream]);
+            app.map.setBaseLayer(tilestream);
+        } else {
+            app.map.setBaseLayer(app.map.getLayersByName(state.basemap)[0]);
+        }
     }
 
     app.establishLayerLoadState();
