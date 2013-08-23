@@ -18,26 +18,45 @@
         <div id="map-resources-dropdown" class="accordion-body collapse">
             <div class="accordion-inner borderless">
                 <h4>Global</h4>
-                <ul>
-                    <li><a href="http://www.iobis.org" target="_blank">Ocean Biogeographic Information System</a></li>
-                </ul>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.iobis.org" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/Ocean Biogeographic.png" title="OBIS"></a></span>
+                    <span class="text-link"><a href="http://www.iobis.org" target="_blank">Ocean Biogeographic Information System</a> allows users to search marine species datasets from all of the world's oceans.</span>
+                </div>
                 <h4>Federal</h4>
-                <ul>
-                    <li><a href="http://www.marinecadastre.gov/default.aspx" target="_blank">MarineCadastre.gov</a></li>
-                    <li><a href="http://csc.noaa.gov/digitalcoast/dataregistry/" target="_blank">NOAA Digital Coast</a></li>
-                    <li><a href="http://www.data.gov/ocean/community/ocean" target="_blank">National Ocean Council - Data.gov</a></li>
-                </ul>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.marinecadastre.gov/default.aspx" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/Marine Cadastre.png" title="MarineCadastre.gov"></a></span>
+                    <span class="text-link"><a href="http://www.marinecadastre.gov/default.aspx" target="_blank">MarineCadastre.gov</a> is an integrated mraine information system that provides authoritative and regularly updated ocean information.</span>
+                </div>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://csc.noaa.gov/digitalcoast/dataregistry/" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/NOAA Digital Coast.png" title="NOAA Digital Coast"></a></span>
+                    <span class="text-link">Dive into the <a href="http://csc.noaa.gov/digitalcoast/dataregistry/" target="_blank">NOAA Digital Coast</a> to get the data, tools, and training communities need to address coastal issues.</span>
+                </div>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.data.gov/ocean/community/ocean" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/National Oceans Council.png" title="Data.gov"></a></span>
+                    <span class="text-link">Visit the <a href="http://www.data.gov/ocean/community/ocean" target="_blank">National Ocean Council - Data.gov</a> portal for data, information, and decision tools to support people engaged in regional marine planning for the future use of the ocean, our coasts, and the Great Lakes.</span>
+                </div>
                 <h4>Regional</h4>
-                <ul>
-                    <li><a href="http://www.macoora.org/" target="_blank">Mid-Atlantic Coastal Ocean Observing Regional Association (MACOORA)</a></li>
-                    <li><a href="http://northeastoceanviewer.org" target="_blank">Northeast Ocean Data Portal</a></li>
-                </ul>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.macoora.org/" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/MARACOOS 1.png" title="MARACOOS"></a></span>
+                    <span class="text-link"><a href="http://www.macoora.org/" target="_blank">Mid-Atlantic Regional Association Coastal Ocean Observing System (MARACOOS)</a> covers the region from Cape Cod, MA to Cape Hatteras, NC for U.S. IOOS.</span>
+                </div>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://northeastoceanviewer.org" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/Northeast Ocean 1.png" title="NROC"></a></span>
+                    <span class="text-link"><a href="http://northeastoceanviewer.org" target="_blank">Northeast Ocean Data Portal</a> provides maps and data for ocean planning in the northeastern U.S.</span>
+                </div>
                 <h4>State</h4>
-                <ul>
-                    <li><a href="http://www.dnr.state.md.us/ccp/coastalatlas/ocean.asp" target="_blank">Maryland Coastal Atlas: Ocean</a></li>
-                    <li><a href="http://www.nyoglatlas.org/" target="_blank">New York Ocean and Great Lakes Atlas</a></li>
-                    <li><a href="http://www.coastalgems.org/" target="_blank">Virginia Coastal Geospatial and Educational Mapping System (GEMS)</a></li>
-                </ul>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.dnr.state.md.us/ccp/coastalatlas/ocean.asp" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/Maryland 1.png" title="Maryland Coastal Atlas"></a></span>
+                    <span class="text-link"><a href="http://www.dnr.state.md.us/ccp/coastalatlas/ocean.asp" target="_blank">Maryland Coastal Atlas: Ocean</a> mapping tool allows users to view ocean data and access to tools to understand and balance multiple ocean uses.</span>
+                </div>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.nyoglatlas.org/" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/New York.png" title="New York Ocean and Great Lakes Atlas"></a></span>
+                    <span class="text-link"><a href="http://www.nyoglatlas.org/" target="_blank">New York Ocean and Great Lakes Atlas</a> was created to help the public easily access an extensive catalog of data, ranging from social to economic to environmental information.</span>
+                </div>
+                <div class="map-resource-item">
+                    <span class="img-link"><a href="http://www.coastalgems.org/" target="_blank"><img src="{{MEDIA_URL}}marco/img/external_resources/Virginia Coast.png" title="GEMS"></a></span>
+                    <span class="text-link"><a href="http://www.coastalgems.org/" target="_blank">Virginia Coastal Geospatial and Educational Mapping System (GEMS)</a> is a gateway to Virginia's coastal resource data and maps.</span>
+                </div>
             </div>
         </div>
     </div>
@@ -112,6 +131,24 @@
 }
 .no-decoration {
     text-decoration: none !important;
+}
+#map-resources-dropdown .map-resource-item {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    position: relative;
+    height: 80px;
+}
+#map-resources-dropdown .img-link {
+    display: inline-block;
+    position: absolute;
+}
+#map-resources-dropdown .img-link:hover {
+    text-decoration: none;
+}
+#map-resources-dropdown .text-link {
+    display: inline-block;
+    margin-left: 10px;
+    padding-left: 150px;
 }
 
 </style>
