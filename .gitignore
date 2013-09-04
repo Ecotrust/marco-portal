@@ -32,3 +32,20 @@ portal/wordpress/wp-config.php
 printing/shots/*
 
 /media/data_manager/utfgrid
+portal/.DS_Store
+
+media/.DS_Store
+
+.DS_Store
+
+marco/data_manager/fixtures/datadump-2013-08-31.json
+
+marco/data_manager/fixtures/datadump-2013-09-03.json
+
+marco/scenarios/fixtures/OCSBlocks20130319.json
+
+marco/scenarios/fixtures/scenarios_dump_2013_09_04.json
+
+media/data_manager/geojson/OCSBlocks20130319.json
+
+marco/data_manager/fixtures/datadump-2013-09-04.json

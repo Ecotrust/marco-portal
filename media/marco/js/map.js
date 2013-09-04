@@ -99,6 +99,23 @@ app.init = function () {
             map.zoomTo(5);
         }  
         app.viewModel.zoomLevel(map.getZoom());
+        /*if ( app.viewModel.activeLayers().length ) {
+            $.each(app.viewModel.activeLayers(), function(index, layer) {
+                if (layer.name === 'Aids to Navigation') {
+                    var zoom = map.getZoom();
+                    if (zoom < 10) {
+                        layer.legend = layer.legend.substring(0, layer.legend.lastIndexOf('/')+1) + 'legend_1_Level0_9.png'
+                    } else if (zoom === 10) {
+                        layer.legend = layer.legend.substring(0, layer.legend.lastIndexOf('/')+1) + 'legend_2_Level10.png'
+                    } else if (zoom === 11) {
+                        layer.legend = layer.legend.substring(0, layer.legend.lastIndexOf('/')+1) + 'legend_3_Level11.png'
+                    } else {
+                        layer.legend = layer.legend.substring(0, layer.legend.lastIndexOf('/')+1) + 'legend_4_Level12_13.png'
+                    }
+                }
+            });
+
+        }*/
     });
 
     // map.addControl(new OpenLayers.Control.MousePosition({

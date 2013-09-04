@@ -525,10 +525,10 @@
                         {{ form.input_filter_distance_to_shipping }}  
                         <i class="check icon-large icon-check" data-bind="visible: distanceToShippingParameter()"></i>
                         <i class="check icon-large icon-check-empty"></i>
-                        <span class="parameter-label" style="margin-left: 5px">Distance to Shipping Lanes </span> 
+                        <span class="parameter-label" style="margin-left: 5px">Distance to Ship Routing Measures </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_lanes" class="info" />-->
                         <i class="info-icon icon-info-sign" rel="popover" 
-                            data-content="Shipping lanes are designated traffic areas providing access routes for vessels proceeding to and from U.S. ports."
+                            data-content="Ship Routing Measures are designated traffic areas providing access routes for vessels proceeding to and from U.S. ports."
                             data-placement="right"
                             data-container="body">
                         </i>
@@ -553,7 +553,7 @@
 
                             <a class="btn btn-layer show-layer-btn" data-bind="css: { 'active': shippingLanesLayer.active(), 'not-active': ! shippingLanesLayer.active() }, click: toggleShippingLanesLayer">
                                 <div style="font-weight: normal">
-                                    <span>Show Shipping Lanes Data</span>
+                                    <span>Show Ship Routing Measures Data</span>
                                     <i class="check icon-large icon-check" style="top: 8px" data-bind="visible: shippingLanesLayer.active() && shippingLanesLayer.visible()"></i>
                                     <i class="check icon-large icon-check-empty" style="top: 8px" data-bind="visible: shippingLanesLayer.active() && ! shippingLanesLayer.visible()"></i>
                                 </div>
@@ -573,7 +573,7 @@
                         <span class="parameter-label" style="margin-left: 5px">Exclude Areas with High Ship Traffic </span> 
                         <!--<img src="/media/marco/img/info.png" id="info_ais" class="info" />-->
                         <i class="info-icon icon-info-sign" rel="popover" 
-                            data-content="Areas outside of shipping lanes for which AIS data indicate higher ship traffic can be excluded."
+                            data-content="Areas outside of ship routing measures for which AIS data indicate higher ship traffic can be excluded."
                             data-placement="right"
                             data-container="body">
                         </i>

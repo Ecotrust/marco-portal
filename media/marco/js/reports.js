@@ -218,7 +218,7 @@ function reportsModel(options) {
     self.showShippingReport = function() {
         var shippingOptions = {
             'title': { 
-                text: 'Distance to Shipping Lanes' 
+                text: 'Distance to Ship Routing Measures' 
             },
             'yAxis': {
                 title: {
@@ -237,7 +237,7 @@ function reportsModel(options) {
                             this.point.avg + ' miles'; 
               }
             },
-            'seriesName': 'Distance to Shipping Lanes',
+            'seriesName': 'Distance to Ship Routing Measures',
             'seriesStub': 'distance-to-shipping'
         };
         //var options = $.extend({}, self.reportOptions, shippingOptions);

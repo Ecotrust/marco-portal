@@ -942,6 +942,15 @@ function viewModel() {
     // descriptive text below the map 
     self.activeInfoLayer = ko.observable(false);
     self.activeInfoSublayer = ko.observable(false);
+    self.activeInfoSelector = ko.observable(false);
+    self.activeInfoLayer.subscribe( function() {
+        if ( self.activeInfoLayer() && self.activeInfoLayer().subLayers && self.activeInfoLayer().subLayers.length > 0 ) {
+            self.activeInfoSelector(true);
+        } else {
+            self.activeInfoSelector(false);
+        }
+    });
+
 
     // attribute data
     self.aggregatedAttributes = ko.observable(false);
@@ -2114,7 +2123,7 @@ function viewModel() {
         
         //Distance to Shipping Lanes
         if ('TRAFFCMIN' in data && 'TRAFFCMAX' in data) {
-            attrs.push({'display': 'Distance to Shipping Lanes', 'data': data['TRAFFCMIN'].toFixed(0) + ' to ' + data['TRAFFCMAX'].toFixed(0) + ' miles'});
+            attrs.push({'display': 'Distance to Ship Routing Measures', 'data': data['TRAFFCMIN'].toFixed(0) + ' to ' + data['TRAFFCMAX'].toFixed(0) + ' miles'});
         }
         
         //Traffic Density (High/Low)

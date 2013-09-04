@@ -66,8 +66,8 @@ class Scenario(Analysis):
     input_filter_ais_density = models.BooleanField(verbose_name='Excluding Areas with AIS Density >= 1')
     #input_ais_density = models.FloatField(verbose_name='Mean AIS Density', null=True, blank=True)    
     
-    input_filter_distance_to_shipping = models.BooleanField(verbose_name='Distance to Shipping Lanes (Traffic Separation Zones)')
-    input_distance_to_shipping = models.FloatField(verbose_name='Minimum Distance to Shipping Lanes (Traffic Separation Zones)', null=True, blank=True)
+    input_filter_distance_to_shipping = models.BooleanField(verbose_name='Distance to Ship Routing Measures')
+    input_distance_to_shipping = models.FloatField(verbose_name='Minimum Distance to Ship Routing Measures', null=True, blank=True)
     
     #Security
     
@@ -110,7 +110,7 @@ class Scenario(Analysis):
                 distance_to_shipping = '%s mile' %miles_to_shipping
             else:
                 distance_to_shipping = '%s miles' %miles_to_shipping
-            attributes.append({'title': 'Minimum Distance to Shipping Lanes', 'data': distance_to_shipping})
+            attributes.append({'title': 'Minimum Distance to Ship Routing Measures', 'data': distance_to_shipping})
         if self.input_filter_ais_density:
             attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
         if self.input_filter_uxo:
@@ -717,10 +717,10 @@ class LeaseBlockSelection(Analysis):
             min_distance_to_shipping = format(self.get_min_distance_to_shipping(leaseblocks), 0)
             max_distance_to_shipping = format(self.get_max_distance_to_shipping(leaseblocks), 0)
             miles_to_shipping = '%s to %s miles' %(min_distance_to_shipping, max_distance_to_shipping)
-            attributes.append({'title': 'Distance to Shipping Lanes', 'data': miles_to_shipping})
+            attributes.append({'title': 'Distance to Ship Routing Measures', 'data': miles_to_shipping})
             avg_distance_to_shipping = format(self.get_avg_distance_to_shipping(leaseblocks),1)
             avg_distance_to_shipping_output = '%s miles' %avg_distance_to_shipping
-            attributes.append({'title': 'Average Distance to Shipping Lanes', 'data': avg_distance_to_shipping_output})
+            attributes.append({'title': 'Average Distance to Ship Routing Measures', 'data': avg_distance_to_shipping_output})
             report_values['distance-to-shipping'] = {'min': min_distance_to_shipping, 'max': max_distance_to_shipping, 'avg': avg_distance_to_shipping, 'selection_id': self.uid}
             
             #get distance to shore range

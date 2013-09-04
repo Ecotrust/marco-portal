@@ -448,7 +448,7 @@ a.disabled-link:hover {
 
 #overview-overlay-header .dropdown-toggle {
   color: white;
-  background-color: rgba(60, 110, 160, .5);
+  background-color: rgba(60, 110, 160, .2);
   background-image: none;
   font-size: 16px;
   font-weight: bold;
