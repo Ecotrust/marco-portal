@@ -49,3 +49,5 @@ marco/scenarios/fixtures/scenarios_dump_2013_09_04.json
 media/data_manager/geojson/OCSBlocks20130319.json
 
 marco/data_manager/fixtures/datadump-2013-09-04.json
+
+marco/data_manager/fixtures/initial_data.json
