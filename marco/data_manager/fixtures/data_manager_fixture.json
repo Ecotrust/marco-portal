@@ -2337,53 +2337,6 @@
         }
     },
     {
-        "pk": 125,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "port-ownership",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Ownership",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                129
-            ]
-        }
-    },
-    {
         "pk": 36,
         "model": "data_manager.layer",
         "fields": {
@@ -2675,6 +2628,57 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
+        }
+    },
+    {
+        "pk": 125,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/port_polygons/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                156,
+                159,
+                158
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "port-ownership",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Ownership",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                129
+            ]
         }
     },
     {
@@ -4556,101 +4560,6 @@
         }
     },
     {
-        "pk": 123,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "port-commodity",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Commodity",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                129
-            ]
-        }
-    },
-    {
-        "pk": 129,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "radio",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/port_polygons_metadata.html",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "These polygons are based on points extracted from the Port Facility database maintained by the US Army Corps of Engineers Navigation Data Center. This database contains a list of all facility types (dock, anchorage, etc.) that may be reported as the origin or destination of commercial waterborne vessel moves. Data included is for all facility types that were available for use during the previous two years. For the purposes of the MARCO portal, The Nature Conservancy and Rutgers University filtered the nationwide database to include only those facilities relevant to the four major Mid-Atlantic ports of Virginia, Baltimore, Philadelphia and New York/New Jersey. Facilities that serve primarily fishing boats or recreational craft were also excluded, as were points in open water. The resulting points were then used to select tax parcels from individual cities and counties where those parcels intersected the points. In the case of the ports of Virginia and Baltimore, boundaries of public terminals were received from those respective port authorities and incorporated directly. All data in the Philadelphia area was incorporated directly from the Philly Freight Finder data developed by the Delaware Valley Regional Planning Commission. Attributes were added for ownership type (public, private or military) and general commodity category.",
-            "slug_name": "port-facilities-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Facilities (Areas)",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                123,
-                125
-            ]
-        }
-    },
-    {
         "pk": 39,
         "model": "data_manager.layer",
         "fields": {
@@ -4892,6 +4801,104 @@
         }
     },
     {
+        "pk": 129,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "radio",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/port_polygons_metadata.html",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "learn_more": "",
+            "data_overview": "These areas primarily include tax parcels that overlap port facility points extracted from a database maintained by the US Army Corps of Engineers Navigation Data Center. Public terminal boundaries in Virginia and Baltimore were received directly from those respective port authorities. All areas in the vicinity of Philadelphia were incorporated directly from Philly Freight Finder. Information on ownership and commodities is also included.",
+            "slug_name": "port-facilities-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Facilities (Areas)",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                125,
+                123
+            ]
+        }
+    },
+    {
+        "pk": 123,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/port_polygons/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                159,
+                155
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "port-commodity",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Commodity",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                129
+            ]
+        }
+    },
+    {
         "pk": 107,
         "model": "data_manager.layer",
         "fields": {
@@ -5126,51 +5133,6 @@
         }
     },
     {
-        "pk": 122,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/NorthAtlanticMaintainedChannelsMetadata.docx",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Maintained channels are areas designated as navigable channels, maintained by the US Army Corps of Engineers.  In the MARCO Portal, these data are displayed in three depth classes:  0-35', 35-45', and >45'.  These data were derived from NOAA Electronic Navigation Charts (ENC) and translated and stored in a geodatabase by NOAA Coastal Services Center for the purposes of regional ocean planning. ",
-            "slug_name": "maintained-channels",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Maintained Channels",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 106,
         "model": "data_manager.layer",
         "fields": {
@@ -5212,6 +5174,54 @@
             "data_notes": "",
             "name": "N. Atlantic Right Whale SMAs",
             "url": "/media/data_manager/geojson/NorthAtlanticRightWhale_SMA.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 122,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/channels/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/MaintainedChannels.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/NorthAtlanticMaintainedChannelsMetadata.docx",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                153,
+                154
+            ],
+            "learn_more": "",
+            "data_overview": "Maintained channels are areas designated as navigable channels, maintained by the US Army Corps of Engineers.  In the MARCO Portal, these data are displayed in three depth classes:  0-35', 35-45', and >45'.  These data were derived from NOAA Electronic Navigation Charts (ENC) and translated and stored in a geodatabase by NOAA Coastal Services Center for the purposes of regional ocean planning. ",
+            "slug_name": "maintained-channels",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Maintained Channels",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
@@ -5336,7 +5346,7 @@
             "description": "",
             "attribute_fields": [],
             "learn_more": "",
-            "data_overview": "These points were extracted from the Port Facility database maintained by the US Army Corps of Engineers Navigation Data Center. This database contains a list of all facility types (dock, anchorage, etc.) that may be reported as the origin or destination of commercial waterborne vessel moves. Data included is for all facility types that were available for use during the previous two years. For the purposes of the MARCO portal, The Nature Conservancy and Rutgers University filtered the nationwide database to include only those facilities relevant to the four major Mid-Atlantic ports of Virginia, Baltimore, Philadelphia and New York/New Jersey. Facilities that serve primarily fishing boats or recreational craft were also excluded, as were points in open water. Attributes were added for ownership type (public, private or military) and general commodity category.",
+            "data_overview": "This is a subset of the Port Facility database maintained by the US Army Corps of Engineers Navigation Data Center. This database contains all facility types that may be reported as the origin or destination of commercial waterborne vessel moves. Only those facilities relevant to the four major Mid-Atlantic ports of Virginia, Baltimore, Philadelphia and New York/New Jersey are included here. Information on ownership and commodities is also included.",
             "slug_name": "port-facilities-points",
             "is_sublayer": false,
             "lookup_field": "",
@@ -5698,100 +5708,6 @@
         }
     },
     {
-        "pk": 124,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "port-commodity-points",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsCommodityTiles/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Commodity (Points)",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsCommodityTiles/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                127
-            ]
-        }
-    },
-    {
-        "pk": 126,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "port-ownership-points",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsOwnershipTiles/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Ownership (Points)",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsOwnershipTiles/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                127
-            ]
-        }
-    },
-    {
         "pk": 120,
         "model": "data_manager.layer",
         "fields": {
@@ -5834,6 +5750,106 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
+        }
+    },
+    {
+        "pk": 126,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/port_points/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                156,
+                160
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "port-ownership-points",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsOwnershipTiles/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Ownership (Points)",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsOwnershipTiles/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                127
+            ]
+        }
+    },
+    {
+        "pk": 124,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/port_points/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                157,
+                161
+            ],
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "port-commodity-points",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsCommodityTiles/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Commodity (Points)",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPointsCommodityTiles/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                127
+            ]
         }
     },
     {
@@ -7459,6 +7475,66 @@
         }
     },
     {
+        "pk": 153,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "location",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 156,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Ownership",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 159,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Owner",
+            "display_name": "",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 157,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Commodity_",
+            "display_name": "",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 160,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "COMMODITIE",
+            "display_name": "",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 154,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "minimumDep",
+            "display_name": "Minimum Depth",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
         "pk": 59,
         "model": "data_manager.attributeinfo",
         "fields": {
@@ -7636,6 +7712,36 @@
             "display_name": "Family",
             "precision": null,
             "order": 4
+        }
+    },
+    {
+        "pk": 155,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Commodity_",
+            "display_name": "Commodity",
+            "precision": null,
+            "order": 1
+        }
+    },
+    {
+        "pk": 158,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Port_Compl",
+            "display_name": "",
+            "precision": null,
+            "order": 2
+        }
+    },
+    {
+        "pk": 161,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "COMMODITIE",
+            "display_name": "",
+            "precision": null,
+            "order": 2
         }
     },
     {

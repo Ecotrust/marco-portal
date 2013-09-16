@@ -403,7 +403,7 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, true);
         
         //add utfgrid if applicable
-        if (layer.utfgrid && !layer.utfgrid.visibility) {
+        if (layer.utfgrid && app.map.UTFControl.layers.indexOf(layer.utfgrid) === -1) {
             app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
         }
     };
@@ -2040,6 +2040,70 @@ function viewModel() {
             return true;
         }
         return false;
+    };
+
+
+    self.getChannelAttributes = function (data) {
+        attrs = [];
+        if ('location' in data) {
+            attrs.push({'display': '', 'data': data['location']});
+        } 
+        if ('minimumDep' in data) {
+            attrs.push({'display': 'Minimum Depth', 'data': data['minimumDep'] + ' meters'});
+        }
+        return attrs;
+    };
+
+    self.getPortOwnershipAttributes = function (data) {
+        attrs = [];
+        if ('Ownership' in data) {
+            attrs.push({'display': '', 'data': data['Ownership']});
+        }
+        return attrs;
+    };
+
+    self.getPortCommodityAttributes = function (data) {
+        attrs = [];
+        if ('Commodity_' in data) {
+            var commodity = 'Unknown';
+            switch (data['Commodity_']) {
+                case 0: 
+                    commodity = 'Not applicable';
+                    break;
+                case 10:
+                    commodity = 'Coal';
+                    break;
+                case 20:
+                    commodity = 'Petroleum & petroleum products';
+                    break;
+                case 30:
+                    commodity = 'Chemicals & related products';
+                    break;
+                case 40:
+                    commodity = 'Crude materials, inedible, except fuels';
+                    break;
+                case 50:
+                    commodity = 'Primary manufactured goods';
+                    break;
+                case 60:
+                    commodity = 'Food & farm products';
+                    break;
+                case 70:
+                    commodity = 'All manufactured equipment and machinery';
+                    break;
+                case 80:
+                    commodity = 'Waste material; garbage, landfill, sewage sludge & waste water';
+                    break;
+                case 91:
+                    commodity = 'Multi-commodities';
+                    break;
+                case 99:
+                    commodity = 'Unknown';
+                    break;
+            }
+            attrs.push({'display': '', 'data': commodity});
+        }
+        return attrs;
     };
     
     self.getOCSAttributes = function (data) {

@@ -180,6 +180,7 @@ app.init = function () {
               if (potential_layer.type !== 'Vector') {
                 var new_attributes,
                     info = infoLookup[idx];
+                //debugger;
                 if (info && info.data) { 
                     var newmsg = '',
                         hasAllAttributes = true,
@@ -187,11 +188,15 @@ app.init = function () {
                     // if info.data has all the attributes we're looking for
                     // we'll accept this layer as the attribution layer 
                     //if ( ! potential_layer.attributes.length ) {
-                    hasAllAttributes = false;
+                    if (potential_layer.attributes.length) {
+                        hasAllAttributes = true;
+                    } else {
+                        hasAllAttributes = false;
+                    }
                     //}
                     $.each(potential_layer.attributes, function (attr_index, attr_obj) {
-                        if ( attr_obj.field in info.data ) {
-                            hasAllAttributes = true;
+                        if ( !(attr_obj.field in info.data) ) {
+                            hasAllAttributes = false;
                         }
                     });
                     if ( !hasAllAttributes && potential_layer.parent) {
@@ -210,6 +215,7 @@ app.init = function () {
                     } else if (parentHasAllAttributes) {
                         new_attributes = potential_layer.parent.attributes;
                     }
+
                     if (new_attributes) { 
                         var attribute_objs = [];
                         $.each(new_attributes, function(index, obj) {
@@ -247,6 +253,16 @@ app.init = function () {
                             text = app.viewModel.getWindPlanningAreaAttributes(info.data);
                         } else if ( potential_layer.name === 'Party & Charter Boat' ) {
                             text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
+                        } else if ( potential_layer.name === 'Port Commodity (Points)' ) { 
+                            text = app.viewModel.getPortCommodityAttributes(info.data);                             
+                        } else if ( potential_layer.name === 'Port Commodity' ) { 
+                            text = app.viewModel.getPortCommodityAttributes(info.data);                             
+                        } else if ( potential_layer.name === 'Port Ownership (Points)' ) { 
+                            text = app.viewModel.getPortOwnershipAttributes(info.data);                             
+                        } else if ( potential_layer.name === 'Port Ownership' ) { 
+                            text = app.viewModel.getPortOwnershipAttributes(info.data);                             
+                        } else if ( potential_layer.name === 'Maintained Channels') {
+                            text = app.viewModel.getChannelAttributes(info.data);
                         } else if ( title === 'Benthic Habitats (North)' || title === 'Benthic Habitats (South)' ) {
                             title = 'Benthic Habitats';
                         }

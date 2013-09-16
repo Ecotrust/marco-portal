@@ -173,6 +173,9 @@
   bottom: 0px;
   left: 3px;
 }
+#map .olControlScaleBarNumbersBox {
+    height: 14px;
+}
 
 #legend-accordion .accordion-toggle {
     font-size: 12px;
