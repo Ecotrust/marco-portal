@@ -41,7 +41,7 @@
                         </div>
                         <div class="span2">
                             <a class="btn pull-right" href="/explore/catalog#{{ layer.slug }}" rel="tooltip" data-placement="bottom" data-original-title="Explore the data in the catalog."><img src="{{MEDIA_URL}}marco/ico/explore.png"/></a>
-                            <a class="btn pull-right" href="{{ layer.bookmark }}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
+                            <a class="btn pull-right" href="{{ layer.bookmark_link}}" rel="tooltip" data-placement="bottom" data-original-title="Visualize the data in the planner."><img src="{{MEDIA_URL}}marco/ico/visualize.png"/></a>
                         </div>
                     </div>
                     {% if layer.data_source_text or layer.data_notes_text %}

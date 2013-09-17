@@ -51,3 +51,7 @@ media/data_manager/geojson/OCSBlocks20130319.json
 marco/data_manager/fixtures/datadump-2013-09-04.json
 
 marco/data_manager/fixtures/initial_data.json
+
+media/data_manager/geojson/Corals.json
+
+marco/data_manager/fixtures/initial_data_orig.json
