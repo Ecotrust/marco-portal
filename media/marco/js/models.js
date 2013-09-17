@@ -1523,9 +1523,21 @@ function viewModel() {
 
     self.getLayerBySlug = function(slug) {
         for (var x=0; x<self.themes().length; x++) {
-            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { return self.convertToSlug(layer.name) === slug; });
+            var layer_list = $.grep(self.themes()[x].layers(), function(layer) { 
+                return self.convertToSlug(layer.name) === slug; 
+            });
             if (layer_list.length > 0) {
                 return layer_list[0];
+            }
+        }
+        for (var x=0; x<self.themes().length; x++) {
+            for (var y=0; y<self.themes()[x].layers().length; y++) {
+                var sublayer_list = $.grep(self.themes()[x].layers()[y].subLayers, function(sublayer) {
+                    return self.convertToSlug(sublayer.name) === slug;
+                });
+                if (sublayer_list.length > 0) {
+                    return sublayer_list[0];
+                }
             }
         }
         return false;
