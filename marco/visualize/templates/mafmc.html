@@ -100,7 +100,7 @@
                 background-color: white;
                 /*opacity: .9;*/
                 border: 1px solid #ccc;
-                border-radius: 10px;
+                border-radius: 4px;
                 z-index: 750;
             }
             #mafmc-layer-switcher .btn-group-layer {
@@ -142,6 +142,17 @@
             #mafmc-layer-list li {
                 margin-bottom: 5px;
             }
+            #mafmc-layer-list .layer .btn-info-sign {
+                border: 0px;
+                background-image: none;
+                -webkit-box-shadow: none;
+            }
+            #mafmc-layer-list .layer .btn-layer {
+                width: 225px; 
+                border: 0px; 
+                -webkit-box-shadow: none; 
+                background-image: none;
+            }
             .mafmc-theme-name-div {
                 margin-bottom: 5px;
             }
@@ -172,7 +183,7 @@
                 top: inherit;
                 width: 302px !important;
                 height: 100px;
-                border-radius: 10px;
+                border-radius: 4px;
                 z-index: 950; 
                 font-size: 12px;
                 color: inherit;
@@ -197,10 +208,10 @@
             #aggregated-attribute-overlay .accordion-toggle h4 {
                 color: #2d8998 !important;
             }
-            #aggregated-attribute-overlay #aggregated-attribute-content {
-                border-radius: 10px;
+            #aggregated-attribute-content {
+                border-radius: 4px;
                 max-width: 500px;
-                background-color: rgba(255,255,255, 1);
+                background-color: rgba(255,255,255, 1) !important;
                 bottom: 19px;
                 height: 100px;
                 border: 1px solid #ccc;
@@ -217,6 +228,36 @@
                 left: 494px;
                 opacity: .7;
                 text-transform: uppercase;
+            }
+            #overview-overlay {
+                position: absolute;
+                left: 12px;
+                bottom: 12px;
+                top: inherit;
+                min-width: 302px;
+                width: 500px;
+                height: 120px !important;
+                border-radius: 4px;
+                z-index: 950; 
+                font-size: 12px;
+                color: inherit;
+                background-color: rgba(255,255,255, 1);
+                border: 1px solid #ccc;
+            }
+            #overview-overlay-content {
+                border-radius: 4px;
+                max-width: 500px;
+                color: rgb(51, 51, 51);
+                background-color: rgba(255,255,255, 1);
+                bottom: 19px;
+                height: 100px;
+                border: 0px;
+            }
+            #overview-overlay-text {
+                height: 40px !important;
+            }
+            #overview-overlay .title {
+                font-weight: normal;
             }
             .olControlScaleBarWrapper {
                 display: none;
@@ -340,6 +381,102 @@
                                             <span id="close-attribute-overlay" class="pull-right"><a href="#" style="position: absolute; top: 10px; right: 10px; opacity: .6;" class="btn btn-mini close" data-bind="click: closeAttribution"> x </a> </span>
                                         </div>
                                     </div>
+
+                                    <!-- Description Overlay  -->
+                                    <div id ="description-overlay" style="display: none" data-bind="visible: showDescription() && !showOverview()" >
+                                        <div>
+                                            <span class="title" data-bind="text: activeInfoLayer().name"></span> -- 
+                                            <span class="text" data-bind="text: activeInfoLayer().description"></span>
+                                            <div class="pull-right"><a class="btn btn-mini" data-bind="click: expandDescription, text: 'Show More...'"></a></div>
+                                        </div>
+                                        <div>
+                                            <a href="#" style="margin-left: 10px; opacity: .6;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> 
+                                        </div>
+                                    </div> 
+                                    
+                                    <div id="overview-overlay" style="display: none" data-bind="visible: showOverview()" >
+                                        <div id="overview-overlay-content">
+                                            <div id="overview-overlay-header" >
+                                                <span class="btn-group" data-bind="visible: activeInfoSelector()">
+                                                    <a id="overview-dropdown-button" class="btn dropdown-toggle" href="#" name="description-dropdown" data-bind="click: activateOverviewDropdown">
+                                                        <span data-bind="text: activeInfoSublayer().name ? activeInfoSublayer().name : activeInfoLayer().name"></span>
+                                                        <span class="caret"></span>
+                                                    </a>
+                                                    <ul id="overview-overlay-dropdown" class="dropdown-menu">
+                                                        <li>
+                                                            <a data-bind="click: activeInfoLayer().toggleSublayerDescription">
+                                                                <span data-bind="text: activeInfoLayer().name"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li data-bind="foreach: activeInfoLayer().subLayers">
+                                                            <a data-bind="click: toggleSublayerDescription">
+                                                                <span data-bind="text: name"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                                <span class="title" data-bind="text: activeInfoLayer().name, visible: !activeInfoSelector()"></span> 
+                                                <!--<span class="caret" style="display:none" data-bind="visible: activeInfoLayer().subLayers"></span>-->
+                                                <span><a href="#" style="margin-left: 10px; opacity: .8;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> </span>
+                                            </div>
+                                            <div id="overview-overlay-text" style="margin-top: 5px"> 
+                                                <span class="text" data-bind="text: getOverviewText()" style="white-space: pre-wrap"></span>
+                                                <div class="notes">
+                                                    <div data-bind="visible: activeInfoSublayer() ? activeInfoSublayer().data_source : activeInfoLayer().data_source">
+                                                        Source: 
+                                                        <span data-bind="text: activeInfoSublayer() ? activeInfoSublayer().data_source : activeInfoLayer().data_source"></span>
+                                                    </div>
+                                                    <div style="margin-top: 5px" data-bind="visible: activeInfoSublayer() ? activeInfoSublayer().data_notes : activeInfoLayer().data_notes">
+                                                        Notes: 
+                                                        <span data-bind="text: activeInfoSublayer() ? activeInfoSublayer().data_notes : activeInfoLayer().data_notes"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            {% load flatblock_tags %}
+                                            <div id="overview-overlay-links">
+                                              <span>
+                                                <div class="text" style="margin-top: 5px">
+                                                    <span>
+                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeKmlLink() }, attr: { href: activeKmlLink() }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_kml_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_kml_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span>
+                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeDataLink() }, attr: { href: activeDataLink() }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_data_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_data_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span>
+                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeMetadataLink() }, attr: { href: activeMetadataLink() }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_metadata_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_metadata_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span>
+                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeSourceLink() }, attr: { href: activeSourceLink() }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_source_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_source_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span>
+                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeTilesLink() }, attr: { href: activeTilesLink() }" target="_blank">
+                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_tiles_link_tooltip' %}">
+                                                                {% flatblock "data_catalog_tiles_link" %}
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                              </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     
                                     <!-- Layer Switcher -->
                                     <div id="mafmc-layer-switcher">
@@ -391,7 +528,10 @@
                                                                         <ul  class="unstyled" data-bind="foreach: layers ">
                                                                             <li class="layer"  style="margin-bottom: 5px;" data-bind="css: { nosublayers: subLayers.length === 0 }">
                                                                                 <div class="btn-group btn-group-layer" data-bind="attr: {name: name}">
-                                                                                    <a class="btn btn-layer" style="width: 250px; border: 0px; -webkit-box-shadow: none; background-image: none;" data-bind="css: { 'active': active(), 'not-active': ! active(), 'disabled': annotated && app.viewModel.zoomLevel() < 8 }, click: toggleActive">
+                                                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                                                        <i class="icon-info-sign icon-large"></i>
+                                                                                    </a>
+                                                                                    <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active(), 'disabled': annotated && app.viewModel.zoomLevel() < 8 }, click: toggleActive">
                                                                                         <div class="mafmc-layer-name-div" style="font-weight: normal">                                                                
                                                                                             <span style="padding-left: 2px;" data-bind="text: name"></span>
                                                                                             <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
