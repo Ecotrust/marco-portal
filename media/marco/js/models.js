@@ -2202,16 +2202,6 @@ function viewModel() {
             attrs.push({'display': 'Distance to Ship Routing Measures', 'data': data['TRAFFCMIN'].toFixed(0) + ' to ' + data['TRAFFCMAX'].toFixed(0) + ' miles'});
         }
         
-        //Traffic Density (High/Low)
-        if ('AIS7_MEAN' in data) {
-            if ( data['AIS7_MEAN'] < 1 ) {
-                var rank = 'Low';
-            } else {
-                var rank = 'High';
-            }
-            attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
-        }
-        
         //Distance to Shore
         if ('MI_MIN' in data && 'MI_MAX' in data) {
             attrs.push({'display': 'Distance to Shore', 'data': data['MI_MIN'].toFixed(0) + ' to ' + data['MI_MAX'].toFixed(0) + ' miles'});
@@ -2339,6 +2329,76 @@ function viewModel() {
                 attrs.push({'display': 'Known to contain Unexploded Ordnance(s)', 'data': ''});
             }
         }
+
+        //Traffic Density (High/Moderate/Low)
+        if ('PCTALL_LO' in data && data['PCTALL_LO'] !== 999) {
+            attrs.push({'display': 'Ship Traffic Density (All Vessels)', 'data': ''});
+            if (data['PCTALL_LO'] > 0) {
+                attrs.push({'tab': true, 'display': 'Low Traffic', 'data': data['PCTALL_LO'] + '%'});
+            }
+            if (data['PCTALL_ME'] > 0) {
+                attrs.push({'tab': true, 'display': 'Moderate Traffic', 'data': data['PCTALL_ME'] + '%'});
+            }
+            if (data['PCTALL_HI'] > 0) {
+                attrs.push({'tab': true, 'display': 'High Traffic', 'data': data['PCTALL_HI'] + '%'});
+            }
+        }
+        if ('PCTCAR_LO' in data && data['PCTCAR_LO'] !== 999) {
+            attrs.push({'display': 'Ship Traffic Density (Cargo Vessels)', 'data': ''});
+            if (data['PCTCAR_LO'] > 0) {
+                attrs.push({'tab': true, 'display': 'Low Traffic', 'data': data['PCTCAR_LO'] + '%'});
+            }
+            if (data['PCTCAR_ME'] > 0) {
+                attrs.push({'tab': true, 'display': 'Moderate Traffic', 'data': data['PCTCAR_ME'] + '%'});
+            }
+            if (data['PCTCAR_HI'] > 0) {
+                attrs.push({'tab': true, 'display': 'High Traffic', 'data': data['PCTCAR_HI'] + '%'});
+            }
+        }
+        if ('PCTPAS_LO' in data && data['PCTPAS_LO'] !== 999) {
+            attrs.push({'display': 'Ship Traffic Density (Passenger Vessels)', 'data': ''});
+            if (data['PCTPAS_LO'] > 0) {
+                attrs.push({'tab': true, 'display': 'Low Traffic', 'data': data['PCTPAS_LO'] + '%'});
+            }
+            if (data['PCTPAS_ME'] > 0) {
+                attrs.push({'tab': true, 'display': 'Moderate Traffic', 'data': data['PCTPAS_ME'] + '%'});
+            }
+            if (data['PCTPAS_HI'] > 0) {
+                attrs.push({'tab': true, 'display': 'High Traffic', 'data': data['PCTPAS_HI'] + '%'});
+            }
+        }
+        if ('PCTTAN_LO' in data && data['PCTTAN_LO'] !== 999) {
+            attrs.push({'display': 'Ship Traffic Density (Tanker Vessels)', 'data': ''});
+            if (data['PCTTAN_LO'] > 0) {
+                attrs.push({'tab': true, 'display': 'Low Traffic', 'data': data['PCTTAN_LO'] + '%'});
+            }
+            if (data['PCTTAN_ME'] > 0) {
+                attrs.push({'tab': true, 'display': 'Moderate Traffic', 'data': data['PCTTAN_ME'] + '%'});
+            }
+            if (data['PCTTAN_HI'] > 0) {
+                attrs.push({'tab': true, 'display': 'High Traffic', 'data': data['PCTTAN_HI'] + '%'});
+            }
+        }
+        if ('PCTTUG_LO' in data && data['PCTTUG_LO'] !== 999) {
+            attrs.push({'display': 'Ship Traffic Density (Tug/Tow Vessels)', 'data': ''});
+            if (data['PCTTUG_LO'] > 0) {
+                attrs.push({'tab': true, 'display': 'Low Traffic', 'data': data['PCTTUG_LO'] + '%'});
+            }
+            if (data['PCTTUG_ME'] > 0) {
+                attrs.push({'tab': true, 'display': 'Moderate Traffic', 'data': data['PCTTUG_ME'] + '%'});
+            }
+            if (data['PCTTUG_HI'] > 0) {
+                attrs.push({'tab': true, 'display': 'High Traffic', 'data': data['PCTTUG_HI'] + '%'});
+            }
+        }
+        // if ('AIS7_MEAN' in data) {
+        //     if ( data['AIS7_MEAN'] < 1 ) {
+        //         var rank = 'Low';
+        //     } else {
+        //         var rank = 'High';
+        //     }
+        //     attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
+        // }
         
         return attrs;
     };

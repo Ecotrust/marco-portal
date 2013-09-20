@@ -112,7 +112,7 @@ class Scenario(Analysis):
                 distance_to_shipping = '%s miles' %miles_to_shipping
             attributes.append({'title': 'Minimum Distance to Ship Routing Measures', 'data': distance_to_shipping})
         if self.input_filter_ais_density:
-            attributes.append({'title': 'Excluding Areas with High Ship Traffic', 'data': ''})
+            attributes.append({'title': 'Excluding Areas with Moderate or High Ship Traffic', 'data': ''})
         if self.input_filter_uxo:
             attributes.append({'title': 'Excluding Areas with Unexploded Ordnances', 'data': ''})
         attributes.append({'title': 'Number of Leaseblocks', 'data': self.lease_blocks.count(',')+1})
@@ -163,7 +163,7 @@ class Scenario(Analysis):
             result = result.filter(substation_min_distance__lte=self.input_distance_to_substation)
         #Shipping
         if self.input_filter_ais_density:
-            result = result.filter(ais_mean_density__lte=1)
+            result = result.filter(ais_all_vessels_maj__lte=1)
         if self.input_filter_distance_to_shipping:
             result = result.filter(tsz_min_distance__gte=self.input_distance_to_shipping)
         #Security
@@ -506,31 +506,59 @@ class LeaseBlock(models.Model):
     prot_aprv = models.CharField(max_length=11, null=True, blank=True)
     block_number = models.CharField(max_length=6, null=True, blank=True)
     prot_numb = models.CharField(max_length=15, null=True, blank=True)
+    
     min_depth = models.FloatField()
     max_depth = models.FloatField()
     avg_depth = models.FloatField()
+    
     min_wind_speed = models.FloatField()
     max_wind_speed = models.FloatField()
+    
     majority_sediment = models.CharField(max_length=35, null=True, blank=True)  #LeaseBlock Update: might change back to IntegerField 
     variety_sediment = models.IntegerField()
+    
     majority_seabed = models.CharField(max_length=35, null=True, blank=True) #LeaseBlock Update: might change back to IntegerField 
     variety_seabed = models.IntegerField(null=True, blank=True)
+    
     min_distance = models.FloatField(null=True, blank=True)
     max_distance = models.FloatField(null=True, blank=True)
     avg_distance = models.FloatField(null=True, blank=True)
+    
     awc_min_distance = models.FloatField(null=True, blank=True)
     awc_max_distance = models.FloatField(null=True, blank=True)
     awc_avg_distance = models.FloatField(null=True, blank=True)
+    
     wea_number = models.IntegerField(null=True, blank=True)
     wea_name = models.CharField(max_length=10, null=True, blank=True)
-    ais_min_density = models.FloatField(null=True, blank=True)
-    ais_max_density = models.FloatField(null=True, blank=True)
-    ais_mean_density = models.FloatField(null=True, blank=True)
+
+    ais_all_vessels_maj = models.IntegerField(null=True, blank=True)
+    ais_all_vessels_low = models.FloatField(null=True, blank=True)
+    ais_all_vessels_medium = models.FloatField(null=True, blank=True)
+    ais_all_vessels_high = models.FloatField(null=True, blank=True)
+    ais_cargo_vessels_maj = models.IntegerField(null=True, blank=True)
+    ais_cargo_vessels_low = models.FloatField(null=True, blank=True)
+    ais_cargo_vessels_medium = models.FloatField(null=True, blank=True)
+    ais_cargo_vessels_high = models.FloatField(null=True, blank=True)
+    ais_passenger_vessels_maj = models.IntegerField(null=True, blank=True)
+    ais_passenger_vessels_low = models.FloatField(null=True, blank=True)
+    ais_passenger_vessels_medium = models.FloatField(null=True, blank=True)
+    ais_passenger_vessels_high = models.FloatField(null=True, blank=True)
+    ais_tanker_vessels_maj = models.IntegerField(null=True, blank=True)
+    ais_tanker_vessels_low = models.FloatField(null=True, blank=True)
+    ais_tanker_vessels_medium = models.FloatField(null=True, blank=True)
+    ais_tanker_vessels_high = models.FloatField(null=True, blank=True)
+    ais_tugtow_vessels_maj = models.IntegerField(null=True, blank=True)
+    ais_tugtow_vessels_low = models.FloatField(null=True, blank=True)
+    ais_tugtow_vessels_medium = models.FloatField(null=True, blank=True)
+    ais_tugtow_vessels_high = models.FloatField(null=True, blank=True)
+    
     min_wind_speed_rev = models.FloatField(null=True, blank=True)
     max_wind_speed_rev = models.FloatField(null=True, blank=True)
+    
     tsz_min_distance = models.FloatField(null=True, blank=True)
     tsz_max_distance = models.FloatField(null=True, blank=True)
     tsz_mean_distance = models.FloatField(null=True, blank=True)
+    
     lace_coral_count = models.IntegerField(null=True, blank=True)
     lace_coral_name = models.CharField(max_length=50, null=True, blank=True)
     black_coral_count = models.IntegerField(null=True, blank=True)
@@ -543,6 +571,7 @@ class LeaseBlock(models.Model):
     sea_pen_name = models.CharField(max_length=50, null=True, blank=True)
     hard_coral_count = models.IntegerField(null=True, blank=True)
     hard_coral_name = models.CharField(max_length=50, null=True, blank=True)
+    
     seabed_depression = models.FloatField(null=True, blank=True)
     seabed_low_slope = models.FloatField(null=True, blank=True)
     seabed_steep = models.FloatField(null=True, blank=True)
@@ -551,21 +580,29 @@ class LeaseBlock(models.Model):
     seabed_high_flat = models.FloatField(null=True, blank=True)
     seabed_high_slope = models.FloatField(null=True, blank=True)
     seabed_total = models.FloatField(null=True, blank=True)
+    
     discharge_min_distance = models.FloatField(null=True, blank=True)
     discharge_max_distance = models.FloatField(null=True, blank=True)
     discharge_mean_distance = models.FloatField(null=True, blank=True)
     discharge_flow_min_distance = models.FloatField(null=True, blank=True)
     discharge_flow_max_distance = models.FloatField(null=True, blank=True)
     discharge_flow_mean_distance = models.FloatField(null=True, blank=True)
+    
     dredge_site = models.IntegerField(null=True, blank=True)
+    
     wpa = models.IntegerField(null=True, blank=True)
     wpa_name = models.CharField(max_length=75, null=True, blank=True)
+    
     shipwreck_density = models.IntegerField(null=True, blank=True)
+    
     uxo = models.IntegerField(null=True, blank=True)
+    
     substation_min_distance = models.FloatField(null=True, blank=True)
     substation_max_distance = models.FloatField(null=True, blank=True)
     substation_mean_distance = models.FloatField(null=True, blank=True)
+    
     marco_region = models.IntegerField(null=True, blank=True)
+    
     geometry = models.MultiPolygonField(srid=settings.GEOMETRY_DB_SRID, null=True, blank=True, verbose_name="Lease Block Geometry")
     #geometry_client = models.MultiPolygonField(srid=settings.GEOMETRY_CLIENT_SRID, null=True, blank=True, verbose_name="Lease Block Client Geometry")
     objects = models.GeoManager()   
@@ -607,10 +644,10 @@ class LeaseBlock(models.Model):
      
     @property
     def ais_density(self):
-        if self.ais_mean_density <= 1:
+        if self.ais_all_vessels_maj <= 1:
             return 'Low'
         else:
-            return 'High'
+            return 'Moderate/High'
      
     @property
     def depth_range_output(self):

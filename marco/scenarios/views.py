@@ -239,7 +239,7 @@ def get_leaseblocks(request):
             #'ais_density': ocs_block.ais_density,
             #'ais_min_density': ocs_block.ais_min_density,
             #'ais_max_density': ocs_block.ais_max_density,
-            'ais_mean_density': ocs_block.ais_mean_density,
+            'ais_mean_density': ocs_block.ais_all_vessels_maj,
             #'min_distance': ocs_block.min_distance,
             #'max_distance': ocs_block.max_distance,
             'avg_distance': ocs_block.avg_distance,

@@ -533,7 +533,7 @@ function scenarioFormModel(options) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if TRSEP_MIN >= self.filters['tsz']
                         type: OpenLayers.Filter.Comparison.GREATER_THAN_OR_EQUAL_TO,
-                        property: "TRSEP_MIN", 
+                        property: "TRAFFCMIN", 
                         value: self.filters['tsz']
                     })
                 );
@@ -542,8 +542,8 @@ function scenarioFormModel(options) {
                 filter.filters.push(
                     new OpenLayers.Filter.Comparison({ // if AIS7_MEAN <= 1
                         type: OpenLayers.Filter.Comparison.LESS_THAN_OR_EQUAL_TO,
-                        property: "AIS7_MEAN", 
-                        value: 1
+                        property: "ALLVES_MAJ", 
+                        value: "1"
                     })
                 );
             }
@@ -560,6 +560,7 @@ function scenarioFormModel(options) {
                 filter: filter, 
                 symbolizer: { strokeColor: '#fff' } 
             });
+            //console.log(blockLayer);
             
             self.showLeaseblockLayer(blockLayer);
         }
@@ -776,7 +777,7 @@ function selectionFormModel(options) {
     self.leaseBlockSelectionLayer = new layerModel({
         name: 'Selectable OCS Lease Blocks Layer',
         type: 'Vector',
-        url: '/media/data_manager/geojson/OCSBlocks20130319.json',
+        url: '/media/data_manager/geojson/OCSBlocks20130919.json',
         opacity: .5
     });
     
@@ -2110,7 +2111,7 @@ function scenariosModel(options) {
                 strategies: [new OpenLayers.Strategy.Fixed()],
                 protocol: new OpenLayers.Protocol.HTTP({
                     //url: '/media/data_manager/geojson/LeaseBlockWindSpeedOnlySimplifiedNoDecimal.json',
-                    url: '/media/data_manager/geojson/OCSBlocks20130319.json',
+                    url: '/media/data_manager/geojson/OCSBlocks20130920.json',
                     format: new OpenLayers.Format.GeoJSON()
                 }),
                 //styleMap: new OpenLayers.StyleMap( { 
