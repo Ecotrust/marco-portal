@@ -7,7 +7,7 @@ import settings
 
 
 def data_catalog(request, template='catalog.html'):
-    themes = Theme.objects.all().order_by('display_name')
+    themes = Theme.objects.filter(visible=True).order_by('display_name')
     themes_with_links = add_learn_links(themes)
     add_ordered_layers_lists(themes_with_links)
     context = {'themes': themes_with_links, 'domain': get_domain(8000), 'domain8010': get_domain()}
