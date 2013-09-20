@@ -67,3 +67,7 @@ media/data_manager/geojson/OCSBlocks20130919.json
 media/data_manager/geojson/OCSBlocks20130920.json
 
 marco/scenarios/fixtures/leaseblock_dump_20130919.json
+
+marco/data_manager/fixtures/data_manager_fixture_prev.json
+
+marco/data_manager/fixtures/datadump-2013-09-20.json
