@@ -777,7 +777,7 @@ function selectionFormModel(options) {
     self.leaseBlockSelectionLayer = new layerModel({
         name: 'Selectable OCS Lease Blocks Layer',
         type: 'Vector',
-        url: '/media/data_manager/geojson/OCSBlocks20130919.json',
+        url: '/media/data_manager/geojson/OCSBlocks20130920.json',
         opacity: .5
     });
     
