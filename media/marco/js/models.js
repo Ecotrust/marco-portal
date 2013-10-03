@@ -32,6 +32,9 @@ function layerModel(options, parent) {
     self.outline_opacity = options.outline_opacity || self.defaultOpacity;
     self.graphic = options.graphic || null;
     self.annotated = options.annotated || false;
+
+    self.isDisabled = options.is_disabled || false;
+    self.disabledMessage = options.disabled_message || 'This layer is temporarily unavailable';
     
     //these are necessary to prevent knockout errors when offering non-designs in Active panel
     self.sharedBy = ko.observable(false);
@@ -320,7 +323,7 @@ function layerModel(options, parent) {
     self.activateLayer = function() {
         var layer = this;
 
-        if (!layer.active() && layer.type !== 'placeholder') {
+        if (!layer.active() && layer.type !== 'placeholder' && !layer.isDisabled) {
         
             self.activateBaseLayer();
 

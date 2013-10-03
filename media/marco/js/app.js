@@ -157,6 +157,19 @@ $(document).ready(function() {
   })
   */
 
+  setTimeout(function() {
+    $('.disabled').popover({
+      trigger: 'hover',
+      template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
+    });
+  }, 2000);
+
+  $(document).keypress("n", function(e) {
+      if (e.shiftKey && e.altKey) { 
+          app.map.addLayer(nauticalCharts);
+      }
+  });
+
   app.fullscreen = {};
   // fullscreen stuff
   // for security reasons, this event listener must be bound directly

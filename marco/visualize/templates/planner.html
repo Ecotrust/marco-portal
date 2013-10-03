@@ -227,7 +227,7 @@
                                                                                 <i class="icon-info-sign icon-large"></i>
                                                                             </a>
 
-                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active() }, click: toggleActive">
+                                                                            <a class="btn btn-layer" data-bind="css: { 'active': active(), 'not-active': ! active(), 'disabled': isDisabled }, click: toggleActive, attr: { 'data-content': disabledMessage }" rel="popover" data-placement="right" data-container="body">
                                                                                 <div style="font-weight: normal">
                                                                                     <span style="padding-left: 5px;" data-bind="text: name"></span>
                                                                                     <span class="caret" style="display:none" data-bind="visible: subLayers.length > 0"></span>
