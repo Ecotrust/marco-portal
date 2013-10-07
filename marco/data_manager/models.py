@@ -63,6 +63,8 @@ class Layer(models.Model):
     sublayers = models.ManyToManyField('self', blank=True, null=True)
     themes = models.ManyToManyField("Theme", blank=True, null=True)
     is_sublayer = models.BooleanField(default=False)
+    is_disabled = models.BooleanField(default=False)
+    disabled_message = models.CharField(max_length=255, blank=True, null=True)
     legend = models.CharField(max_length=255, blank=True, null=True)
     legend_title = models.CharField(max_length=255, blank=True, null=True)
     legend_subtitle = models.CharField(max_length=255, blank=True, null=True)
@@ -250,7 +252,9 @@ class Layer(models.Model):
                 'fill_opacity': layer.vector_fill,
                 'graphic': layer.vector_graphic,
                 'opacity': layer.opacity,
-                'annotated': layer.is_annotated
+                'annotated': layer.is_annotated,
+                'is_disabled': layer.is_disabled,
+                'disabled_message': layer.disabled_message
             } 
             for layer in self.sublayers.all()
         ]
@@ -282,7 +286,9 @@ class Layer(models.Model):
             'fill_opacity': self.vector_fill,
             'graphic': self.vector_graphic,
             'opacity': self.opacity,
-            'annotated': self.is_annotated
+            'annotated': self.is_annotated,
+            'is_disabled': self.is_disabled,
+            'disabled_message': self.disabled_message
         }
         return layers_dict
         

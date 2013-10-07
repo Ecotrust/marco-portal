@@ -214,7 +214,7 @@ app.loadState = function(state) {
     // if the request is to load and display a single, named layer
     for ( key in state ) {
         if (state.hasOwnProperty(key)) { 
-            var slug = state[key];
+            var slug = key;
             var layer = app.viewModel.getLayerBySlug(slug);
             break;
         } 
@@ -226,7 +226,14 @@ app.loadState = function(state) {
         //activate layer (/planner/#<layer-name>)
         app.viewModel.layerIndex[layer.id].activateLayer();
         //set open theme
-        layer.themes()[0].setOpenTheme();
+        
+        var theme = layer.themes()[0];
+        if (theme) {
+            layer.themes()[0].setOpenTheme();    
+        } else {
+            layer.parent.themes()[0].setOpenTheme();
+        }
+        
         return;
     }
     
@@ -296,11 +303,11 @@ app.loadState = function(state) {
         app.viewModel.showLegend(false);
     }
 
-    if (state.layers && state.layers === 'true') {
-        app.viewModel.showLayers(true);
-    } else {
+    if (state.layers && state.layers === 'false') {
         app.viewModel.showLayers(false);
         app.map.render('map');
+    } else {
+        app.viewModel.showLayers(true);
     }
 
     // map title for print view

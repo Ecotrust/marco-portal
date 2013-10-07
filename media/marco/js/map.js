@@ -54,18 +54,39 @@ app.init = function () {
         type: "AerialWithLabels"
     });*/
     
-    nauticalCharts = new OpenLayers.Layer.WMS("Nautical Charts", "http://egisws02.nos.noaa.gov/ArcGIS/services/RNC/NOAA_RNC/ImageServer/WMSServer", 
+    // nauticalCharts = new OpenLayers.Layer.WMS("Nautical Charts", "http://egisws02.nos.noaa.gov/ArcGIS/services/RNC/NOAA_RNC/ImageServer/WMSServer", 
+    //     {
+    //         layers: 'null'
+    //     },
+    //     {
+    //         isBaseLayer: true,
+    //         numZoomLevels: 13,
+    //         projection: "EPSG:3857"
+    //     }
+    // );
+    nauticalCharts = new OpenLayers.Layer.TMS("Nautical Charts", ["http://c3429629.r29.cf0.rackcdn.com/stache/NETiles_layer/"],
         {
-            layers: 'null'
-        },
-        {
-            isBaseLayer: true,
-            numZoomLevels: 13,
-            projection: "EPSG:3857"
+            buffer: 1,
+            'isBaseLayer': true,
+            'sphericalMercator': true,
+            getURL: function (bounds) {
+                var z = map.getZoom();
+                var url = this.url;
+                var path = 'blank.png' ;
+                if ( z <= 13 && z >= 0 ) {
+                    var res = map.getResolution();
+                    var x = Math.round((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
+                    var y = Math.round((this.maxExtent.top - bounds.top) / (res * this.tileSize.h));
+                    var limit = Math.pow(2, z);
+                    var path = (z) + "/" + x + "/" + y + ".png";
+                }
+                tilepath = url + path;
+                return url + path;
+            }
         }
-    );
+    );               
     
-    map.addLayers([esriOcean, openStreetMap, googleStreet, googleTerrain, googleSatellite, nauticalCharts]);
+    map.addLayers([esriOcean, openStreetMap, googleStreet, googleTerrain, googleSatellite/*, nauticalCharts*/]);
     
     //map.addLayers([esriOcean]);
     esriOcean.setZIndex(100);
@@ -98,6 +119,10 @@ app.init = function () {
         {
             map.zoomTo(5);
         }  
+        if (map.getZoom() > 13)
+        {
+            map.zoomTo(13);
+        }
         app.viewModel.zoomLevel(map.getZoom());
         /*if ( app.viewModel.activeLayers().length ) {
             $.each(app.viewModel.activeLayers(), function(index, layer) {
