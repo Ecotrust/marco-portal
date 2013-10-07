@@ -32,6 +32,35 @@ function layerModel(options, parent) {
     self.outline_opacity = options.outline_opacity || self.defaultOpacity;
     self.graphic = options.graphic || null;
     self.annotated = options.annotated || false;
+
+    self.isDisabled = ko.observable(false);
+    if (options.is_disabled) {
+        self.isDisabled(options.is_disabled);
+    }
+    self.disabledMessage = ko.observable(false);
+    if (options.disabled_message) {
+        self.disabledMessage(options.disabled_message);
+    } 
+    if (self.annotated && app.viewModel.zoomLevel() < 8) {
+        self.isDisabled(true);
+        self.disabledMessage(options.disabled_message);
+    } 
+    //seems like a lot of work to enable/disable popover based on zoom level...
+    app.viewModel.zoomLevel.subscribe( function() {
+        $('.disabled').popover('disable');
+        if (self.annotated && app.viewModel.zoomLevel() < 8) {
+            self.isDisabled(true);
+            self.disabledMessage(options.disabled_message);        
+        } else if (self.annotated && app.viewModel.zoomLevel() >= 8) {
+            self.isDisabled(false);
+            self.disabledMessage(false);
+        }
+        $('.disabled').popover('enable');
+        $('.disabled').popover({
+          trigger: 'hover',
+          template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
+        });
+    });
     
     //these are necessary to prevent knockout errors when offering non-designs in Active panel
     self.sharedBy = ko.observable(false);
@@ -320,7 +349,11 @@ function layerModel(options, parent) {
     self.activateLayer = function() {
         var layer = this;
 
+<<<<<<< Updated upstream
         if (!layer.active() && layer.type !== 'placeholder') {
+=======
+        if (!layer.active() && layer.type !== 'placeholder' && !layer.isDisabled()) {
+>>>>>>> Stashed changes
         
             self.activateBaseLayer();
 
