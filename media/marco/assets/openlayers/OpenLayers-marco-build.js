@@ -31450,6 +31450,396 @@ OpenLayers.Filter = OpenLayers.Class({
     CLASS_NAME: "OpenLayers.Filter"
 });
 /* ======================================================================
+    OpenLayers/Format/WKT.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+/**
+ * @requires OpenLayers/Format.js
+ * @requires OpenLayers/Feature/Vector.js
+ */
+
+/**
+ * Class: OpenLayers.Format.WKT
+ * Class for reading and writing Well-Known Text.  Create a new instance
+ * with the <OpenLayers.Format.WKT> constructor.
+ * 
+ * Inherits from:
+ *  - <OpenLayers.Format>
+ */
+OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
+    
+    /**
+     * Constructor: OpenLayers.Format.WKT
+     * Create a new parser for WKT
+     *
+     * Parameters:
+     * options - {Object} An optional object whose properties will be set on
+     *           this instance
+     *
+     * Returns:
+     * {<OpenLayers.Format.WKT>} A new WKT parser.
+     */
+    initialize: function(options) {
+        this.regExes = {
+            'typeStr': /^\s*(\w+)\s*\(\s*(.*)\s*\)\s*$/,
+            'spaces': /\s+/,
+            'parenComma': /\)\s*,\s*\(/,
+            'doubleParenComma': /\)\s*\)\s*,\s*\(\s*\(/,  // can't use {2} here
+            'trimParens': /^\s*\(?(.*?)\)?\s*$/
+        };
+        OpenLayers.Format.prototype.initialize.apply(this, [options]);
+    },
+
+    /**
+     * Method: read
+     * Deserialize a WKT string and return a vector feature or an
+     * array of vector features.  Supports WKT for POINT, MULTIPOINT,
+     * LINESTRING, MULTILINESTRING, POLYGON, MULTIPOLYGON, and
+     * GEOMETRYCOLLECTION.
+     *
+     * Parameters:
+     * wkt - {String} A WKT string
+     *
+     * Returns:
+     * {<OpenLayers.Feature.Vector>|Array} A feature or array of features for
+     * GEOMETRYCOLLECTION WKT.
+     */
+    read: function(wkt) {
+        var features, type, str;
+        wkt = wkt.replace(/[\n\r]/g, " ");
+        var matches = this.regExes.typeStr.exec(wkt);
+        if(matches) {
+            type = matches[1].toLowerCase();
+            str = matches[2];
+            if(this.parse[type]) {
+                features = this.parse[type].apply(this, [str]);
+            }
+            if (this.internalProjection && this.externalProjection) {
+                if (features && 
+                    features.CLASS_NAME == "OpenLayers.Feature.Vector") {
+                    features.geometry.transform(this.externalProjection,
+                                                this.internalProjection);
+                } else if (features &&
+                           type != "geometrycollection" &&
+                           typeof features == "object") {
+                    for (var i=0, len=features.length; i<len; i++) {
+                        var component = features[i];
+                        component.geometry.transform(this.externalProjection,
+                                                     this.internalProjection);
+                    }
+                }
+            }
+        }    
+        return features;
+    },
+
+    /**
+     * Method: write
+     * Serialize a feature or array of features into a WKT string.
+     *
+     * Parameters:
+     * features - {<OpenLayers.Feature.Vector>|Array} A feature or array of
+     *            features
+     *
+     * Returns:
+     * {String} The WKT string representation of the input geometries
+     */
+    write: function(features) {
+        var collection, geometry, type, data, isCollection;
+        if (features.constructor == Array) {
+            collection = features;
+            isCollection = true;
+        } else {
+            collection = [features];
+            isCollection = false;
+        }
+        var pieces = [];
+        if (isCollection) {
+            pieces.push('GEOMETRYCOLLECTION(');
+        }
+        for (var i=0, len=collection.length; i<len; ++i) {
+            if (isCollection && i>0) {
+                pieces.push(',');
+            }
+            geometry = collection[i].geometry;
+            pieces.push(this.extractGeometry(geometry));
+        }
+        if (isCollection) {
+            pieces.push(')');
+        }
+        return pieces.join('');
+    },
+
+    /**
+     * Method: extractGeometry
+     * Entry point to construct the WKT for a single Geometry object.
+     *
+     * Parameters:
+     * geometry - {<OpenLayers.Geometry.Geometry>}
+     *
+     * Returns:
+     * {String} A WKT string of representing the geometry
+     */
+    extractGeometry: function(geometry) {
+        var type = geometry.CLASS_NAME.split('.')[2].toLowerCase();
+        if (!this.extract[type]) {
+            return null;
+        }
+        if (this.internalProjection && this.externalProjection) {
+            geometry = geometry.clone();
+            geometry.transform(this.internalProjection, this.externalProjection);
+        }                       
+        var wktType = type == 'collection' ? 'GEOMETRYCOLLECTION' : type.toUpperCase();
+        var data = wktType + '(' + this.extract[type].apply(this, [geometry]) + ')';
+        return data;
+    },
+    
+    /**
+     * Object with properties corresponding to the geometry types.
+     * Property values are functions that do the actual data extraction.
+     */
+    extract: {
+        /**
+         * Return a space delimited string of point coordinates.
+         * @param {OpenLayers.Geometry.Point} point
+         * @returns {String} A string of coordinates representing the point
+         */
+        'point': function(point) {
+            return point.x + ' ' + point.y;
+        },
+
+        /**
+         * Return a comma delimited string of point coordinates from a multipoint.
+         * @param {OpenLayers.Geometry.MultiPoint} multipoint
+         * @returns {String} A string of point coordinate strings representing
+         *                  the multipoint
+         */
+        'multipoint': function(multipoint) {
+            var array = [];
+            for(var i=0, len=multipoint.components.length; i<len; ++i) {
+                array.push('(' +
+                           this.extract.point.apply(this, [multipoint.components[i]]) +
+                           ')');
+            }
+            return array.join(',');
+        },
+        
+        /**
+         * Return a comma delimited string of point coordinates from a line.
+         * @param {OpenLayers.Geometry.LineString} linestring
+         * @returns {String} A string of point coordinate strings representing
+         *                  the linestring
+         */
+        'linestring': function(linestring) {
+            var array = [];
+            for(var i=0, len=linestring.components.length; i<len; ++i) {
+                array.push(this.extract.point.apply(this, [linestring.components[i]]));
+            }
+            return array.join(',');
+        },
+
+        /**
+         * Return a comma delimited string of linestring strings from a multilinestring.
+         * @param {OpenLayers.Geometry.MultiLineString} multilinestring
+         * @returns {String} A string of of linestring strings representing
+         *                  the multilinestring
+         */
+        'multilinestring': function(multilinestring) {
+            var array = [];
+            for(var i=0, len=multilinestring.components.length; i<len; ++i) {
+                array.push('(' +
+                           this.extract.linestring.apply(this, [multilinestring.components[i]]) +
+                           ')');
+            }
+            return array.join(',');
+        },
+        
+        /**
+         * Return a comma delimited string of linear ring arrays from a polygon.
+         * @param {OpenLayers.Geometry.Polygon} polygon
+         * @returns {String} An array of linear ring arrays representing the polygon
+         */
+        'polygon': function(polygon) {
+            var array = [];
+            for(var i=0, len=polygon.components.length; i<len; ++i) {
+                array.push('(' +
+                           this.extract.linestring.apply(this, [polygon.components[i]]) +
+                           ')');
+            }
+            return array.join(',');
+        },
+
+        /**
+         * Return an array of polygon arrays from a multipolygon.
+         * @param {OpenLayers.Geometry.MultiPolygon} multipolygon
+         * @returns {String} An array of polygon arrays representing
+         *                  the multipolygon
+         */
+        'multipolygon': function(multipolygon) {
+            var array = [];
+            for(var i=0, len=multipolygon.components.length; i<len; ++i) {
+                array.push('(' +
+                           this.extract.polygon.apply(this, [multipolygon.components[i]]) +
+                           ')');
+            }
+            return array.join(',');
+        },
+
+        /**
+         * Return the WKT portion between 'GEOMETRYCOLLECTION(' and ')' for an <OpenLayers.Geometry.Collection>
+         * @param {OpenLayers.Geometry.Collection} collection
+         * @returns {String} internal WKT representation of the collection
+         */
+        'collection': function(collection) {
+            var array = [];
+            for(var i=0, len=collection.components.length; i<len; ++i) {
+                array.push(this.extractGeometry.apply(this, [collection.components[i]]));
+            }
+            return array.join(',');
+        }
+
+    },
+
+    /**
+     * Object with properties corresponding to the geometry types.
+     * Property values are functions that do the actual parsing.
+     */
+    parse: {
+        /**
+         * Return point feature given a point WKT fragment.
+         * @param {String} str A WKT fragment representing the point
+         * @returns {OpenLayers.Feature.Vector} A point feature
+         * @private
+         */
+        'point': function(str) {
+            var coords = OpenLayers.String.trim(str).split(this.regExes.spaces);
+            return new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.Point(coords[0], coords[1])
+            );
+        },
+
+        /**
+         * Return a multipoint feature given a multipoint WKT fragment.
+         * @param {String} str A WKT fragment representing the multipoint
+         * @returns {OpenLayers.Feature.Vector} A multipoint feature
+         * @private
+         */
+        'multipoint': function(str) {
+            var point;
+            var points = OpenLayers.String.trim(str).split(',');
+            var components = [];
+            for(var i=0, len=points.length; i<len; ++i) {
+                point = points[i].replace(this.regExes.trimParens, '$1');
+                components.push(this.parse.point.apply(this, [point]).geometry);
+            }
+            return new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.MultiPoint(components)
+            );
+        },
+        
+        /**
+         * Return a linestring feature given a linestring WKT fragment.
+         * @param {String} str A WKT fragment representing the linestring
+         * @returns {OpenLayers.Feature.Vector} A linestring feature
+         * @private
+         */
+        'linestring': function(str) {
+            var points = OpenLayers.String.trim(str).split(',');
+            var components = [];
+            for(var i=0, len=points.length; i<len; ++i) {
+                components.push(this.parse.point.apply(this, [points[i]]).geometry);
+            }
+            return new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.LineString(components)
+            );
+        },
+
+        /**
+         * Return a multilinestring feature given a multilinestring WKT fragment.
+         * @param {String} str A WKT fragment representing the multilinestring
+         * @returns {OpenLayers.Feature.Vector} A multilinestring feature
+         * @private
+         */
+        'multilinestring': function(str) {
+            var line;
+            var lines = OpenLayers.String.trim(str).split(this.regExes.parenComma);
+            var components = [];
+            for(var i=0, len=lines.length; i<len; ++i) {
+                line = lines[i].replace(this.regExes.trimParens, '$1');
+                components.push(this.parse.linestring.apply(this, [line]).geometry);
+            }
+            return new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.MultiLineString(components)
+            );
+        },
+        
+        /**
+         * Return a polygon feature given a polygon WKT fragment.
+         * @param {String} str A WKT fragment representing the polygon
+         * @returns {OpenLayers.Feature.Vector} A polygon feature
+         * @private
+         */
+        'polygon': function(str) {
+            var ring, linestring, linearring;
+            var rings = OpenLayers.String.trim(str).split(this.regExes.parenComma);
+            var components = [];
+            for(var i=0, len=rings.length; i<len; ++i) {
+                ring = rings[i].replace(this.regExes.trimParens, '$1');
+                linestring = this.parse.linestring.apply(this, [ring]).geometry;
+                linearring = new OpenLayers.Geometry.LinearRing(linestring.components);
+                components.push(linearring);
+            }
+            return new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.Polygon(components)
+            );
+        },
+
+        /**
+         * Return a multipolygon feature given a multipolygon WKT fragment.
+         * @param {String} str A WKT fragment representing the multipolygon
+         * @returns {OpenLayers.Feature.Vector} A multipolygon feature
+         * @private
+         */
+        'multipolygon': function(str) {
+            var polygon;
+            var polygons = OpenLayers.String.trim(str).split(this.regExes.doubleParenComma);
+            var components = [];
+            for(var i=0, len=polygons.length; i<len; ++i) {
+                polygon = polygons[i].replace(this.regExes.trimParens, '$1');
+                components.push(this.parse.polygon.apply(this, [polygon]).geometry);
+            }
+            return new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.MultiPolygon(components)
+            );
+        },
+
+        /**
+         * Return an array of features given a geometrycollection WKT fragment.
+         * @param {String} str A WKT fragment representing the geometrycollection
+         * @returns {Array} An array of OpenLayers.Feature.Vector
+         * @private
+         */
+        'geometrycollection': function(str) {
+            // separate components of the collection with |
+            str = str.replace(/,\s*([A-Za-z])/g, '|$1');
+            var wktArray = OpenLayers.String.trim(str).split('|');
+            var components = [];
+            for(var i=0, len=wktArray.length; i<len; ++i) {
+                components.push(OpenLayers.Format.WKT.prototype.read.apply(this,[wktArray[i]]));
+            }
+            return components;
+        }
+
+    },
+
+    CLASS_NAME: "OpenLayers.Format.WKT" 
+});     
+/* ======================================================================
     OpenLayers/Filter/Logical.js
    ====================================================================== */
 
@@ -34925,7 +35315,7 @@ OpenLayers.Marker.defaultIcon = function() {
     
 
 /* ======================================================================
-    OpenLayers/Format/WKT.js
+    OpenLayers/Popup.js
    ====================================================================== */
 
 /* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
@@ -34934,386 +35324,1614 @@ OpenLayers.Marker.defaultIcon = function() {
  * full text of the license. */
 
 /**
- * @requires OpenLayers/Format.js
- * @requires OpenLayers/Feature/Vector.js
+ * @requires OpenLayers/BaseTypes/Class.js
+ */
+
+
+/**
+ * Class: OpenLayers.Popup
+ * A popup is a small div that can opened and closed on the map.
+ * Typically opened in response to clicking on a marker.  
+ * See <OpenLayers.Marker>.  Popup's don't require their own
+ * layer and are added the the map using the <OpenLayers.Map.addPopup>
+ * method.
+ *
+ * Example:
+ * (code)
+ * popup = new OpenLayers.Popup("chicken", 
+ *                    new OpenLayers.LonLat(5,40),
+ *                    new OpenLayers.Size(200,200),
+ *                    "example popup",
+ *                    true);
+ *       
+ * map.addPopup(popup);
+ * (end)
+ */
+OpenLayers.Popup = OpenLayers.Class({
+
+    /** 
+     * Property: events  
+     * {<OpenLayers.Events>} custom event manager 
+     */
+    events: null,
+    
+    /** Property: id
+     * {String} the unique identifier assigned to this popup.
+     */
+    id: "",
+
+    /** 
+     * Property: lonlat 
+     * {<OpenLayers.LonLat>} the position of this popup on the map
+     */
+    lonlat: null,
+
+    /** 
+     * Property: div 
+     * {DOMElement} the div that contains this popup.
+     */
+    div: null,
+
+    /** 
+     * Property: contentSize 
+     * {<OpenLayers.Size>} the width and height of the content.
+     */
+    contentSize: null,    
+
+    /** 
+     * Property: size 
+     * {<OpenLayers.Size>} the width and height of the popup.
+     */
+    size: null,    
+
+    /** 
+     * Property: contentHTML 
+     * {String} An HTML string for this popup to display.
+     */
+    contentHTML: null,
+    
+    /** 
+     * Property: backgroundColor 
+     * {String} the background color used by the popup.
+     */
+    backgroundColor: "",
+    
+    /** 
+     * Property: opacity 
+     * {float} the opacity of this popup (between 0.0 and 1.0)
+     */
+    opacity: "",
+
+    /** 
+     * Property: border 
+     * {String} the border size of the popup.  (eg 2px)
+     */
+    border: "",
+    
+    /** 
+     * Property: contentDiv 
+     * {DOMElement} a reference to the element that holds the content of
+     *              the div.
+     */
+    contentDiv: null,
+    
+    /** 
+     * Property: groupDiv 
+     * {DOMElement} First and only child of 'div'. The group Div contains the
+     *     'contentDiv' and the 'closeDiv'.
+     */
+    groupDiv: null,
+
+    /** 
+     * Property: closeDiv
+     * {DOMElement} the optional closer image
+     */
+    closeDiv: null,
+
+    /** 
+     * APIProperty: autoSize
+     * {Boolean} Resize the popup to auto-fit the contents.
+     *     Default is false.
+     */
+    autoSize: false,
+
+    /**
+     * APIProperty: minSize
+     * {<OpenLayers.Size>} Minimum size allowed for the popup's contents.
+     */
+    minSize: null,
+
+    /**
+     * APIProperty: maxSize
+     * {<OpenLayers.Size>} Maximum size allowed for the popup's contents.
+     */
+    maxSize: null,
+
+    /** 
+     * Property: displayClass
+     * {String} The CSS class of the popup.
+     */
+    displayClass: "olPopup",
+
+    /** 
+     * Property: contentDisplayClass
+     * {String} The CSS class of the popup content div.
+     */
+    contentDisplayClass: "olPopupContent",
+
+    /** 
+     * Property: padding 
+     * {int or <OpenLayers.Bounds>} An extra opportunity to specify internal 
+     *     padding of the content div inside the popup. This was originally
+     *     confused with the css padding as specified in style.css's 
+     *     'olPopupContent' class. We would like to get rid of this altogether,
+     *     except that it does come in handy for the framed and anchoredbubble
+     *     popups, who need to maintain yet another barrier between their 
+     *     content and the outer border of the popup itself. 
+     * 
+     *     Note that in order to not break API, we must continue to support 
+     *     this property being set as an integer. Really, though, we'd like to 
+     *     have this specified as a Bounds object so that user can specify
+     *     distinct left, top, right, bottom paddings. With the 3.0 release
+     *     we can make this only a bounds.
+     */
+    padding: 0,
+
+    /** 
+     * Property: disableFirefoxOverflowHack
+     * {Boolean} The hack for overflow in Firefox causes all elements 
+     *     to be re-drawn, which causes Flash elements to be 
+     *     re-initialized, which is troublesome.
+     *     With this property the hack can be disabled.
+     */
+    disableFirefoxOverflowHack: false,
+
+    /**
+     * Method: fixPadding
+     * To be removed in 3.0, this function merely helps us to deal with the 
+     *     case where the user may have set an integer value for padding, 
+     *     instead of an <OpenLayers.Bounds> object.
+     */
+    fixPadding: function() {
+        if (typeof this.padding == "number") {
+            this.padding = new OpenLayers.Bounds(
+                this.padding, this.padding, this.padding, this.padding
+            );
+        }
+    },
+
+    /**
+     * APIProperty: panMapIfOutOfView
+     * {Boolean} When drawn, pan map such that the entire popup is visible in
+     *     the current viewport (if necessary).
+     *     Default is false.
+     */
+    panMapIfOutOfView: false,
+    
+    /**
+     * APIProperty: keepInMap 
+     * {Boolean} If panMapIfOutOfView is false, and this property is true, 
+     *     contrain the popup such that it always fits in the available map
+     *     space. By default, this is not set on the base class. If you are
+     *     creating popups that are near map edges and not allowing pannning,
+     *     and especially if you have a popup which has a
+     *     fixedRelativePosition, setting this to false may be a smart thing to
+     *     do. Subclasses may want to override this setting.
+     *   
+     *     Default is false.
+     */
+    keepInMap: false,
+
+    /**
+     * APIProperty: closeOnMove
+     * {Boolean} When map pans, close the popup.
+     *     Default is false.
+     */
+    closeOnMove: false,
+    
+    /** 
+     * Property: map 
+     * {<OpenLayers.Map>} this gets set in Map.js when the popup is added to the map
+     */
+    map: null,
+
+    /** 
+    * Constructor: OpenLayers.Popup
+    * Create a popup.
+    * 
+    * Parameters: 
+    * id - {String} a unqiue identifier for this popup.  If null is passed
+    *               an identifier will be automatically generated. 
+    * lonlat - {<OpenLayers.LonLat>}  The position on the map the popup will
+    *                                 be shown.
+    * contentSize - {<OpenLayers.Size>} The size of the content.
+    * contentHTML - {String}          An HTML string to display inside the   
+    *                                 popup.
+    * closeBox - {Boolean}            Whether to display a close box inside
+    *                                 the popup.
+    * closeBoxCallback - {Function}   Function to be called on closeBox click.
+    */
+    initialize:function(id, lonlat, contentSize, contentHTML, closeBox, closeBoxCallback) {
+        if (id == null) {
+            id = OpenLayers.Util.createUniqueID(this.CLASS_NAME + "_");
+        }
+
+        this.id = id;
+        this.lonlat = lonlat;
+
+        this.contentSize = (contentSize != null) ? contentSize 
+                                  : new OpenLayers.Size(
+                                                   OpenLayers.Popup.WIDTH,
+                                                   OpenLayers.Popup.HEIGHT);
+        if (contentHTML != null) { 
+             this.contentHTML = contentHTML;
+        }
+        this.backgroundColor = OpenLayers.Popup.COLOR;
+        this.opacity = OpenLayers.Popup.OPACITY;
+        this.border = OpenLayers.Popup.BORDER;
+
+        this.div = OpenLayers.Util.createDiv(this.id, null, null, 
+                                             null, null, null, "hidden");
+        this.div.className = this.displayClass;
+        
+        var groupDivId = this.id + "_GroupDiv";
+        this.groupDiv = OpenLayers.Util.createDiv(groupDivId, null, null, 
+                                                    null, "relative", null,
+                                                    "hidden");
+
+        var id = this.div.id + "_contentDiv";
+        this.contentDiv = OpenLayers.Util.createDiv(id, null, this.contentSize.clone(), 
+                                                    null, "relative");
+        this.contentDiv.className = this.contentDisplayClass;
+        this.groupDiv.appendChild(this.contentDiv);
+        this.div.appendChild(this.groupDiv);
+
+        if (closeBox) {
+            this.addCloseBox(closeBoxCallback);
+        } 
+
+        this.registerEvents();
+    },
+
+    /** 
+     * Method: destroy
+     * nullify references to prevent circular references and memory leaks
+     */
+    destroy: function() {
+
+        this.id = null;
+        this.lonlat = null;
+        this.size = null;
+        this.contentHTML = null;
+        
+        this.backgroundColor = null;
+        this.opacity = null;
+        this.border = null;
+        
+        if (this.closeOnMove && this.map) {
+            this.map.events.unregister("movestart", this, this.hide);
+        }
+
+        this.events.destroy();
+        this.events = null;
+        
+        if (this.closeDiv) {
+            OpenLayers.Event.stopObservingElement(this.closeDiv); 
+            this.groupDiv.removeChild(this.closeDiv);
+        }
+        this.closeDiv = null;
+        
+        this.div.removeChild(this.groupDiv);
+        this.groupDiv = null;
+
+        if (this.map != null) {
+            this.map.removePopup(this);
+        }
+        this.map = null;
+        this.div = null;
+        
+        this.autoSize = null;
+        this.minSize = null;
+        this.maxSize = null;
+        this.padding = null;
+        this.panMapIfOutOfView = null;
+    },
+
+    /** 
+    * Method: draw
+    * Constructs the elements that make up the popup.
+    *
+    * Parameters:
+    * px - {<OpenLayers.Pixel>} the position the popup in pixels.
+    * 
+    * Returns:
+    * {DOMElement} Reference to a div that contains the drawn popup
+    */
+    draw: function(px) {
+        if (px == null) {
+            if ((this.lonlat != null) && (this.map != null)) {
+                px = this.map.getLayerPxFromLonLat(this.lonlat);
+            }
+        }
+
+        // this assumes that this.map already exists, which is okay because 
+        // this.draw is only called once the popup has been added to the map.
+        if (this.closeOnMove) {
+            this.map.events.register("movestart", this, this.hide);
+        }
+        
+        //listen to movestart, moveend to disable overflow (FF bug)
+        if (!this.disableFirefoxOverflowHack && OpenLayers.BROWSER_NAME == 'firefox') {
+            this.map.events.register("movestart", this, function() {
+                var style = document.defaultView.getComputedStyle(
+                    this.contentDiv, null
+                );
+                var currentOverflow = style.getPropertyValue("overflow");
+                if (currentOverflow != "hidden") {
+                    this.contentDiv._oldOverflow = currentOverflow;
+                    this.contentDiv.style.overflow = "hidden";
+                }
+            });
+            this.map.events.register("moveend", this, function() {
+                var oldOverflow = this.contentDiv._oldOverflow;
+                if (oldOverflow) {
+                    this.contentDiv.style.overflow = oldOverflow;
+                    this.contentDiv._oldOverflow = null;
+                }
+            });
+        }
+
+        this.moveTo(px);
+        if (!this.autoSize && !this.size) {
+            this.setSize(this.contentSize);
+        }
+        this.setBackgroundColor();
+        this.setOpacity();
+        this.setBorder();
+        this.setContentHTML();
+        
+        if (this.panMapIfOutOfView) {
+            this.panIntoView();
+        }    
+
+        return this.div;
+    },
+
+    /** 
+     * Method: updatePosition
+     * if the popup has a lonlat and its map members set, 
+     * then have it move itself to its proper position
+     */
+    updatePosition: function() {
+        if ((this.lonlat) && (this.map)) {
+            var px = this.map.getLayerPxFromLonLat(this.lonlat);
+            if (px) {
+                this.moveTo(px);           
+            }    
+        }
+    },
+
+    /**
+     * Method: moveTo
+     * 
+     * Parameters:
+     * px - {<OpenLayers.Pixel>} the top and left position of the popup div. 
+     */
+    moveTo: function(px) {
+        if ((px != null) && (this.div != null)) {
+            this.div.style.left = px.x + "px";
+            this.div.style.top = px.y + "px";
+        }
+    },
+
+    /**
+     * Method: visible
+     *
+     * Returns:      
+     * {Boolean} Boolean indicating whether or not the popup is visible
+     */
+    visible: function() {
+        return OpenLayers.Element.visible(this.div);
+    },
+
+    /**
+     * Method: toggle
+     * Toggles visibility of the popup.
+     */
+    toggle: function() {
+        if (this.visible()) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    },
+
+    /**
+     * Method: show
+     * Makes the popup visible.
+     */
+    show: function() {
+        this.div.style.display = '';
+
+        if (this.panMapIfOutOfView) {
+            this.panIntoView();
+        }    
+    },
+
+    /**
+     * Method: hide
+     * Makes the popup invisible.
+     */
+    hide: function() {
+        this.div.style.display = 'none';
+    },
+
+    /**
+     * Method: setSize
+     * Used to adjust the size of the popup. 
+     *
+     * Parameters:
+     * contentSize - {<OpenLayers.Size>} the new size for the popup's 
+     *     contents div (in pixels).
+     */
+    setSize:function(contentSize) { 
+        this.size = contentSize.clone(); 
+        
+        // if our contentDiv has a css 'padding' set on it by a stylesheet, we 
+        //  must add that to the desired "size". 
+        var contentDivPadding = this.getContentDivPadding();
+        var wPadding = contentDivPadding.left + contentDivPadding.right;
+        var hPadding = contentDivPadding.top + contentDivPadding.bottom;
+
+        // take into account the popup's 'padding' property
+        this.fixPadding();
+        wPadding += this.padding.left + this.padding.right;
+        hPadding += this.padding.top + this.padding.bottom;
+
+        // make extra space for the close div
+        if (this.closeDiv) {
+            var closeDivWidth = parseInt(this.closeDiv.style.width);
+            wPadding += closeDivWidth + contentDivPadding.right;
+        }
+
+        //increase size of the main popup div to take into account the 
+        // users's desired padding and close div.        
+        this.size.w += wPadding;
+        this.size.h += hPadding;
+
+        //now if our browser is IE, we need to actually make the contents 
+        // div itself bigger to take its own padding into effect. this makes 
+        // me want to shoot someone, but so it goes.
+        if (OpenLayers.BROWSER_NAME == "msie") {
+            this.contentSize.w += 
+                contentDivPadding.left + contentDivPadding.right;
+            this.contentSize.h += 
+                contentDivPadding.bottom + contentDivPadding.top;
+        }
+
+        if (this.div != null) {
+            this.div.style.width = this.size.w + "px";
+            this.div.style.height = this.size.h + "px";
+        }
+        if (this.contentDiv != null){
+            this.contentDiv.style.width = contentSize.w + "px";
+            this.contentDiv.style.height = contentSize.h + "px";
+        }
+    },  
+
+    /**
+     * APIMethod: updateSize
+     * Auto size the popup so that it precisely fits its contents (as 
+     *     determined by this.contentDiv.innerHTML). Popup size will, of
+     *     course, be limited by the available space on the current map
+     */
+    updateSize: function() {
+        
+        // determine actual render dimensions of the contents by putting its
+        // contents into a fake contentDiv (for the CSS) and then measuring it
+        var preparedHTML = "<div class='" + this.contentDisplayClass+ "'>" + 
+            this.contentDiv.innerHTML + 
+            "</div>";
+ 
+        var containerElement = (this.map) ? this.map.div : document.body;
+        var realSize = OpenLayers.Util.getRenderedDimensions(
+            preparedHTML, null, {
+                displayClass: this.displayClass,
+                containerElement: containerElement
+            }
+        );
+
+        // is the "real" size of the div is safe to display in our map?
+        var safeSize = this.getSafeContentSize(realSize);
+
+        var newSize = null;
+        if (safeSize.equals(realSize)) {
+            //real size of content is small enough to fit on the map, 
+            // so we use real size.
+            newSize = realSize;
+
+        } else {
+
+            // make a new 'size' object with the clipped dimensions 
+            // set or null if not clipped.
+            var fixedSize = {
+                w: (safeSize.w < realSize.w) ? safeSize.w : null,
+                h: (safeSize.h < realSize.h) ? safeSize.h : null
+            };
+        
+            if (fixedSize.w && fixedSize.h) {
+                //content is too big in both directions, so we will use 
+                // max popup size (safeSize), knowing well that it will 
+                // overflow both ways.                
+                newSize = safeSize;
+            } else {
+                //content is clipped in only one direction, so we need to 
+                // run getRenderedDimensions() again with a fixed dimension
+                var clippedSize = OpenLayers.Util.getRenderedDimensions(
+                    preparedHTML, fixedSize, {
+                        displayClass: this.contentDisplayClass,
+                        containerElement: containerElement
+                    }
+                );
+                
+                //if the clipped size is still the same as the safeSize, 
+                // that means that our content must be fixed in the 
+                // offending direction. If overflow is 'auto', this means 
+                // we are going to have a scrollbar for sure, so we must 
+                // adjust for that.
+                //
+                var currentOverflow = OpenLayers.Element.getStyle(
+                    this.contentDiv, "overflow"
+                );
+                if ( (currentOverflow != "hidden") && 
+                     (clippedSize.equals(safeSize)) ) {
+                    var scrollBar = OpenLayers.Util.getScrollbarWidth();
+                    if (fixedSize.w) {
+                        clippedSize.h += scrollBar;
+                    } else {
+                        clippedSize.w += scrollBar;
+                    }
+                }
+                
+                newSize = this.getSafeContentSize(clippedSize);
+            }
+        }                        
+        this.setSize(newSize);     
+    },    
+
+    /**
+     * Method: setBackgroundColor
+     * Sets the background color of the popup.
+     *
+     * Parameters:
+     * color - {String} the background color.  eg "#FFBBBB"
+     */
+    setBackgroundColor:function(color) { 
+        if (color != undefined) {
+            this.backgroundColor = color; 
+        }
+        
+        if (this.div != null) {
+            this.div.style.backgroundColor = this.backgroundColor;
+        }
+    },  
+    
+    /**
+     * Method: setOpacity
+     * Sets the opacity of the popup.
+     * 
+     * Parameters:
+     * opacity - {float} A value between 0.0 (transparent) and 1.0 (solid).   
+     */
+    setOpacity:function(opacity) { 
+        if (opacity != undefined) {
+            this.opacity = opacity; 
+        }
+        
+        if (this.div != null) {
+            // for Mozilla and Safari
+            this.div.style.opacity = this.opacity;
+
+            // for IE
+            this.div.style.filter = 'alpha(opacity=' + this.opacity*100 + ')';
+        }
+    },  
+    
+    /**
+     * Method: setBorder
+     * Sets the border style of the popup.
+     *
+     * Parameters:
+     * border - {String} The border style value. eg 2px 
+     */
+    setBorder:function(border) { 
+        if (border != undefined) {
+            this.border = border;
+        }
+        
+        if (this.div != null) {
+            this.div.style.border = this.border;
+        }
+    },      
+    
+    /**
+     * Method: setContentHTML
+     * Allows the user to set the HTML content of the popup.
+     *
+     * Parameters:
+     * contentHTML - {String} HTML for the div.
+     */
+    setContentHTML:function(contentHTML) {
+
+        if (contentHTML != null) {
+            this.contentHTML = contentHTML;
+        }
+       
+        if ((this.contentDiv != null) && 
+            (this.contentHTML != null) &&
+            (this.contentHTML != this.contentDiv.innerHTML)) {
+       
+            this.contentDiv.innerHTML = this.contentHTML;
+       
+            if (this.autoSize) {
+                
+                //if popup has images, listen for when they finish
+                // loading and resize accordingly
+                this.registerImageListeners();
+
+                //auto size the popup to its current contents
+                this.updateSize();
+            }
+        }    
+
+    },
+    
+    /**
+     * Method: registerImageListeners
+     * Called when an image contained by the popup loaded. this function
+     *     updates the popup size, then unregisters the image load listener.
+     */   
+    registerImageListeners: function() { 
+
+        // As the images load, this function will call updateSize() to 
+        // resize the popup to fit the content div (which presumably is now
+        // bigger than when the image was not loaded).
+        // 
+        // If the 'panMapIfOutOfView' property is set, we will pan the newly
+        // resized popup back into view.
+        // 
+        // Note that this function, when called, will have 'popup' and 
+        // 'img' properties in the context.
+        //
+        var onImgLoad = function() {
+            if (this.popup.id === null) { // this.popup has been destroyed!
+                return;
+            }
+            this.popup.updateSize();
+     
+            if ( this.popup.visible() && this.popup.panMapIfOutOfView ) {
+                this.popup.panIntoView();
+            }
+
+            OpenLayers.Event.stopObserving(
+                this.img, "load", this.img._onImageLoad
+            );
+    
+        };
+
+        //cycle through the images and if their size is 0x0, that means that 
+        // they haven't been loaded yet, so we attach the listener, which 
+        // will fire when the images finish loading and will resize the 
+        // popup accordingly to its new size.
+        var images = this.contentDiv.getElementsByTagName("img");
+        for (var i = 0, len = images.length; i < len; i++) {
+            var img = images[i];
+            if (img.width == 0 || img.height == 0) {
+
+                var context = {
+                    'popup': this,
+                    'img': img
+                };
+
+                //expando this function to the image itself before registering
+                // it. This way we can easily and properly unregister it.
+                img._onImgLoad = OpenLayers.Function.bind(onImgLoad, context);
+
+                OpenLayers.Event.observe(img, 'load', img._onImgLoad);
+            }    
+        } 
+    },
+
+    /**
+     * APIMethod: getSafeContentSize
+     * 
+     * Parameters:
+     * size - {<OpenLayers.Size>} Desired size to make the popup.
+     * 
+     * Returns:
+     * {<OpenLayers.Size>} A size to make the popup which is neither smaller
+     *     than the specified minimum size, nor bigger than the maximum 
+     *     size (which is calculated relative to the size of the viewport).
+     */
+    getSafeContentSize: function(size) {
+
+        var safeContentSize = size.clone();
+
+        // if our contentDiv has a css 'padding' set on it by a stylesheet, we 
+        //  must add that to the desired "size". 
+        var contentDivPadding = this.getContentDivPadding();
+        var wPadding = contentDivPadding.left + contentDivPadding.right;
+        var hPadding = contentDivPadding.top + contentDivPadding.bottom;
+
+        // take into account the popup's 'padding' property
+        this.fixPadding();
+        wPadding += this.padding.left + this.padding.right;
+        hPadding += this.padding.top + this.padding.bottom;
+
+        if (this.closeDiv) {
+            var closeDivWidth = parseInt(this.closeDiv.style.width);
+            wPadding += closeDivWidth + contentDivPadding.right;
+        }
+
+        // prevent the popup from being smaller than a specified minimal size
+        if (this.minSize) {
+            safeContentSize.w = Math.max(safeContentSize.w, 
+                (this.minSize.w - wPadding));
+            safeContentSize.h = Math.max(safeContentSize.h, 
+                (this.minSize.h - hPadding));
+        }
+
+        // prevent the popup from being bigger than a specified maximum size
+        if (this.maxSize) {
+            safeContentSize.w = Math.min(safeContentSize.w, 
+                (this.maxSize.w - wPadding));
+            safeContentSize.h = Math.min(safeContentSize.h, 
+                (this.maxSize.h - hPadding));
+        }
+        
+        //make sure the desired size to set doesn't result in a popup that 
+        // is bigger than the map's viewport.
+        //
+        if (this.map && this.map.size) {
+            
+            var extraX = 0, extraY = 0;
+            if (this.keepInMap && !this.panMapIfOutOfView) {
+                var px = this.map.getPixelFromLonLat(this.lonlat);
+                switch (this.relativePosition) {
+                    case "tr":
+                        extraX = px.x;
+                        extraY = this.map.size.h - px.y;
+                        break;
+                    case "tl":
+                        extraX = this.map.size.w - px.x;
+                        extraY = this.map.size.h - px.y;
+                        break;
+                    case "bl":
+                        extraX = this.map.size.w - px.x;
+                        extraY = px.y;
+                        break;
+                    case "br":
+                        extraX = px.x;
+                        extraY = px.y;
+                        break;
+                    default:    
+                        extraX = px.x;
+                        extraY = this.map.size.h - px.y;
+                        break;
+                }
+            }    
+          
+            var maxY = this.map.size.h - 
+                this.map.paddingForPopups.top - 
+                this.map.paddingForPopups.bottom - 
+                hPadding - extraY;
+            
+            var maxX = this.map.size.w - 
+                this.map.paddingForPopups.left - 
+                this.map.paddingForPopups.right - 
+                wPadding - extraX;
+            
+            safeContentSize.w = Math.min(safeContentSize.w, maxX);
+            safeContentSize.h = Math.min(safeContentSize.h, maxY);
+        }
+        
+        return safeContentSize;
+    },
+    
+    /**
+     * Method: getContentDivPadding
+     * Glorious, oh glorious hack in order to determine the css 'padding' of 
+     *     the contentDiv. IE/Opera return null here unless we actually add the 
+     *     popup's main 'div' element (which contains contentDiv) to the DOM. 
+     *     So we make it invisible and then add it to the document temporarily. 
+     *
+     *     Once we've taken the padding readings we need, we then remove it 
+     *     from the DOM (it will actually get added to the DOM in 
+     *     Map.js's addPopup)
+     *
+     * Returns:
+     * {<OpenLayers.Bounds>}
+     */
+    getContentDivPadding: function() {
+
+        //use cached value if we have it
+        var contentDivPadding = this._contentDivPadding;
+        if (!contentDivPadding) {
+
+            if (this.div.parentNode == null) {
+                //make the div invisible and add it to the page        
+                this.div.style.display = "none";
+                document.body.appendChild(this.div);
+            }
+                    
+            //read the padding settings from css, put them in an OL.Bounds        
+            contentDivPadding = new OpenLayers.Bounds(
+                OpenLayers.Element.getStyle(this.contentDiv, "padding-left"),
+                OpenLayers.Element.getStyle(this.contentDiv, "padding-bottom"),
+                OpenLayers.Element.getStyle(this.contentDiv, "padding-right"),
+                OpenLayers.Element.getStyle(this.contentDiv, "padding-top")
+            );
+    
+            //cache the value
+            this._contentDivPadding = contentDivPadding;
+
+            if (this.div.parentNode == document.body) {
+                //remove the div from the page and make it visible again
+                document.body.removeChild(this.div);
+                this.div.style.display = "";
+            }
+        }
+        return contentDivPadding;
+    },
+
+    /**
+     * Method: addCloseBox
+     * 
+     * Parameters:
+     * callback - {Function} The callback to be called when the close button
+     *     is clicked.
+     */
+    addCloseBox: function(callback) {
+
+        this.closeDiv = OpenLayers.Util.createDiv(
+            this.id + "_close", null, {w: 17, h: 17}
+        );
+        this.closeDiv.className = "olPopupCloseBox"; 
+        
+        // use the content div's css padding to determine if we should
+        //  padd the close div
+        var contentDivPadding = this.getContentDivPadding();
+         
+        this.closeDiv.style.right = contentDivPadding.right + "px";
+        this.closeDiv.style.top = contentDivPadding.top + "px";
+        this.groupDiv.appendChild(this.closeDiv);
+
+        var closePopup = callback || function(e) {
+            this.hide();
+            OpenLayers.Event.stop(e);
+        };
+        OpenLayers.Event.observe(this.closeDiv, "touchend", 
+                OpenLayers.Function.bindAsEventListener(closePopup, this));
+        OpenLayers.Event.observe(this.closeDiv, "click", 
+                OpenLayers.Function.bindAsEventListener(closePopup, this));
+    },
+
+    /**
+     * Method: panIntoView
+     * Pans the map such that the popup is totaly viewable (if necessary)
+     */
+    panIntoView: function() {
+        
+        var mapSize = this.map.getSize();
+    
+        //start with the top left corner of the popup, in px, 
+        // relative to the viewport
+        var origTL = this.map.getViewPortPxFromLayerPx( new OpenLayers.Pixel(
+            parseInt(this.div.style.left),
+            parseInt(this.div.style.top)
+        ));
+        var newTL = origTL.clone();
+    
+        //new left (compare to margins, using this.size to calculate right)
+        if (origTL.x < this.map.paddingForPopups.left) {
+            newTL.x = this.map.paddingForPopups.left;
+        } else 
+        if ( (origTL.x + this.size.w) > (mapSize.w - this.map.paddingForPopups.right)) {
+            newTL.x = mapSize.w - this.map.paddingForPopups.right - this.size.w;
+        }
+        
+        //new top (compare to margins, using this.size to calculate bottom)
+        if (origTL.y < this.map.paddingForPopups.top) {
+            newTL.y = this.map.paddingForPopups.top;
+        } else 
+        if ( (origTL.y + this.size.h) > (mapSize.h - this.map.paddingForPopups.bottom)) {
+            newTL.y = mapSize.h - this.map.paddingForPopups.bottom - this.size.h;
+        }
+        
+        var dx = origTL.x - newTL.x;
+        var dy = origTL.y - newTL.y;
+        
+        this.map.pan(dx, dy);
+    },
+
+    /** 
+     * Method: registerEvents
+     * Registers events on the popup.
+     *
+     * Do this in a separate function so that subclasses can 
+     *   choose to override it if they wish to deal differently
+     *   with mouse events
+     * 
+     *   Note in the following handler functions that some special
+     *    care is needed to deal correctly with mousing and popups. 
+     *   
+     *   Because the user might select the zoom-rectangle option and
+     *    then drag it over a popup, we need a safe way to allow the
+     *    mousemove and mouseup events to pass through the popup when
+     *    they are initiated from outside. The same procedure is needed for
+     *    touchmove and touchend events.
+     * 
+     *   Otherwise, we want to essentially kill the event propagation
+     *    for all other events, though we have to do so carefully, 
+     *    without disabling basic html functionality, like clicking on 
+     *    hyperlinks or drag-selecting text.
+     */
+     registerEvents:function() {
+        this.events = new OpenLayers.Events(this, this.div, null, true);
+
+        function onTouchstart(evt) {
+            OpenLayers.Event.stop(evt, true);
+        }
+        this.events.on({
+            "mousedown": this.onmousedown,
+            "mousemove": this.onmousemove,
+            "mouseup": this.onmouseup,
+            "click": this.onclick,
+            "mouseout": this.onmouseout,
+            "dblclick": this.ondblclick,
+            "touchstart": onTouchstart,
+            scope: this
+        });
+        
+     },
+
+    /** 
+     * Method: onmousedown 
+     * When mouse goes down within the popup, make a note of
+     *   it locally, and then do not propagate the mousedown 
+     *   (but do so safely so that user can select text inside)
+     * 
+     * Parameters:
+     * evt - {Event} 
+     */
+    onmousedown: function (evt) {
+        this.mousedown = true;
+        OpenLayers.Event.stop(evt, true);
+    },
+
+    /** 
+     * Method: onmousemove
+     * If the drag was started within the popup, then 
+     *   do not propagate the mousemove (but do so safely
+     *   so that user can select text inside)
+     * 
+     * Parameters:
+     * evt - {Event} 
+     */
+    onmousemove: function (evt) {
+        if (this.mousedown) {
+            OpenLayers.Event.stop(evt, true);
+        }
+    },
+
+    /** 
+     * Method: onmouseup
+     * When mouse comes up within the popup, after going down 
+     *   in it, reset the flag, and then (once again) do not 
+     *   propagate the event, but do so safely so that user can 
+     *   select text inside
+     * 
+     * Parameters:
+     * evt - {Event} 
+     */
+    onmouseup: function (evt) {
+        if (this.mousedown) {
+            this.mousedown = false;
+            OpenLayers.Event.stop(evt, true);
+        }
+    },
+
+    /**
+     * Method: onclick
+     * Ignore clicks, but allowing default browser handling
+     * 
+     * Parameters:
+     * evt - {Event} 
+     */
+    onclick: function (evt) {
+        OpenLayers.Event.stop(evt, true);
+    },
+
+    /** 
+     * Method: onmouseout
+     * When mouse goes out of the popup set the flag to false so that
+     *   if they let go and then drag back in, we won't be confused.
+     * 
+     * Parameters:
+     * evt - {Event} 
+     */
+    onmouseout: function (evt) {
+        this.mousedown = false;
+    },
+    
+    /** 
+     * Method: ondblclick
+     * Ignore double-clicks, but allowing default browser handling
+     * 
+     * Parameters:
+     * evt - {Event} 
+     */
+    ondblclick: function (evt) {
+        OpenLayers.Event.stop(evt, true);
+    },
+
+    CLASS_NAME: "OpenLayers.Popup"
+});
+
+OpenLayers.Popup.WIDTH = 200;
+OpenLayers.Popup.HEIGHT = 200;
+OpenLayers.Popup.COLOR = "white";
+OpenLayers.Popup.OPACITY = 1;
+OpenLayers.Popup.BORDER = "0px";
+/* ======================================================================
+    OpenLayers/Popup/Anchored.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+
+/**
+ * @requires OpenLayers/Popup.js
  */
 
 /**
- * Class: OpenLayers.Format.WKT
- * Class for reading and writing Well-Known Text.  Create a new instance
- * with the <OpenLayers.Format.WKT> constructor.
+ * Class: OpenLayers.Popup.Anchored
  * 
  * Inherits from:
- *  - <OpenLayers.Format>
+ *  - <OpenLayers.Popup>
  */
-OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
+OpenLayers.Popup.Anchored = 
+  OpenLayers.Class(OpenLayers.Popup, {
+
+    /** 
+     * Property: relativePosition
+     * {String} Relative position of the popup ("br", "tr", "tl" or "bl").
+     */
+    relativePosition: null,
     
     /**
-     * Constructor: OpenLayers.Format.WKT
-     * Create a new parser for WKT
-     *
-     * Parameters:
-     * options - {Object} An optional object whose properties will be set on
-     *           this instance
-     *
-     * Returns:
-     * {<OpenLayers.Format.WKT>} A new WKT parser.
+     * APIProperty: keepInMap 
+     * {Boolean} If panMapIfOutOfView is false, and this property is true, 
+     *     contrain the popup such that it always fits in the available map
+     *     space. By default, this is set. If you are creating popups that are
+     *     near map edges and not allowing pannning, and especially if you have
+     *     a popup which has a fixedRelativePosition, setting this to false may
+     *     be a smart thing to do.
+     *   
+     *     For anchored popups, default is true, since subclasses will
+     *     usually want this functionality.
      */
-    initialize: function(options) {
-        this.regExes = {
-            'typeStr': /^\s*(\w+)\s*\(\s*(.*)\s*\)\s*$/,
-            'spaces': /\s+/,
-            'parenComma': /\)\s*,\s*\(/,
-            'doubleParenComma': /\)\s*\)\s*,\s*\(\s*\(/,  // can't use {2} here
-            'trimParens': /^\s*\(?(.*?)\)?\s*$/
-        };
-        OpenLayers.Format.prototype.initialize.apply(this, [options]);
+    keepInMap: true,
+
+    /**
+     * Property: anchor
+     * {Object} Object to which we'll anchor the popup. Must expose a 
+     *     'size' (<OpenLayers.Size>) and 'offset' (<OpenLayers.Pixel>).
+     */
+    anchor: null,
+
+    /** 
+    * Constructor: OpenLayers.Popup.Anchored
+    * 
+    * Parameters:
+    * id - {String}
+    * lonlat - {<OpenLayers.LonLat>}
+    * contentSize - {<OpenLayers.Size>}
+    * contentHTML - {String}
+    * anchor - {Object} Object which must expose a 'size' <OpenLayers.Size> 
+    *     and 'offset' <OpenLayers.Pixel> (generally an <OpenLayers.Icon>).
+    * closeBox - {Boolean}
+    * closeBoxCallback - {Function} Function to be called on closeBox click.
+    */
+    initialize:function(id, lonlat, contentSize, contentHTML, anchor, closeBox,
+                        closeBoxCallback) {
+        var newArguments = [
+            id, lonlat, contentSize, contentHTML, closeBox, closeBoxCallback
+        ];
+        OpenLayers.Popup.prototype.initialize.apply(this, newArguments);
+
+        this.anchor = (anchor != null) ? anchor 
+                                       : { size: new OpenLayers.Size(0,0),
+                                           offset: new OpenLayers.Pixel(0,0)};
     },
 
     /**
-     * Method: read
-     * Deserialize a WKT string and return a vector feature or an
-     * array of vector features.  Supports WKT for POINT, MULTIPOINT,
-     * LINESTRING, MULTILINESTRING, POLYGON, MULTIPOLYGON, and
-     * GEOMETRYCOLLECTION.
-     *
-     * Parameters:
-     * wkt - {String} A WKT string
-     *
-     * Returns:
-     * {<OpenLayers.Feature.Vector>|Array} A feature or array of features for
-     * GEOMETRYCOLLECTION WKT.
+     * APIMethod: destroy
      */
-    read: function(wkt) {
-        var features, type, str;
-        wkt = wkt.replace(/[\n\r]/g, " ");
-        var matches = this.regExes.typeStr.exec(wkt);
-        if(matches) {
-            type = matches[1].toLowerCase();
-            str = matches[2];
-            if(this.parse[type]) {
-                features = this.parse[type].apply(this, [str]);
-            }
-            if (this.internalProjection && this.externalProjection) {
-                if (features && 
-                    features.CLASS_NAME == "OpenLayers.Feature.Vector") {
-                    features.geometry.transform(this.externalProjection,
-                                                this.internalProjection);
-                } else if (features &&
-                           type != "geometrycollection" &&
-                           typeof features == "object") {
-                    for (var i=0, len=features.length; i<len; i++) {
-                        var component = features[i];
-                        component.geometry.transform(this.externalProjection,
-                                                     this.internalProjection);
-                    }
-                }
-            }
-        }    
-        return features;
+    destroy: function() {
+        this.anchor = null;
+        this.relativePosition = null;
+        
+        OpenLayers.Popup.prototype.destroy.apply(this, arguments);        
     },
 
     /**
-     * Method: write
-     * Serialize a feature or array of features into a WKT string.
-     *
-     * Parameters:
-     * features - {<OpenLayers.Feature.Vector>|Array} A feature or array of
-     *            features
-     *
-     * Returns:
-     * {String} The WKT string representation of the input geometries
+     * APIMethod: show
+     * Overridden from Popup since user might hide popup and then show() it 
+     *     in a new location (meaning we might want to update the relative
+     *     position on the show)
      */
-    write: function(features) {
-        var collection, geometry, type, data, isCollection;
-        if (features.constructor == Array) {
-            collection = features;
-            isCollection = true;
-        } else {
-            collection = [features];
-            isCollection = false;
-        }
-        var pieces = [];
-        if (isCollection) {
-            pieces.push('GEOMETRYCOLLECTION(');
-        }
-        for (var i=0, len=collection.length; i<len; ++i) {
-            if (isCollection && i>0) {
-                pieces.push(',');
-            }
-            geometry = collection[i].geometry;
-            pieces.push(this.extractGeometry(geometry));
-        }
-        if (isCollection) {
-            pieces.push(')');
-        }
-        return pieces.join('');
+    show: function() {
+        this.updatePosition();
+        OpenLayers.Popup.prototype.show.apply(this, arguments);
     },
 
     /**
-     * Method: extractGeometry
-     * Entry point to construct the WKT for a single Geometry object.
-     *
+     * Method: moveTo
+     * Since the popup is moving to a new px, it might need also to be moved
+     *     relative to where the marker is. We first calculate the new 
+     *     relativePosition, and then we calculate the new px where we will 
+     *     put the popup, based on the new relative position. 
+     * 
+     *     If the relativePosition has changed, we must also call 
+     *     updateRelativePosition() to make any visual changes to the popup 
+     *     which are associated with putting it in a new relativePosition.
+     * 
      * Parameters:
-     * geometry - {<OpenLayers.Geometry.Geometry>}
-     *
-     * Returns:
-     * {String} A WKT string of representing the geometry
+     * px - {<OpenLayers.Pixel>}
      */
-    extractGeometry: function(geometry) {
-        var type = geometry.CLASS_NAME.split('.')[2].toLowerCase();
-        if (!this.extract[type]) {
-            return null;
+    moveTo: function(px) {
+        var oldRelativePosition = this.relativePosition;
+        this.relativePosition = this.calculateRelativePosition(px);
+        
+        var newPx = this.calculateNewPx(px);
+        
+        var newArguments = new Array(newPx);        
+        OpenLayers.Popup.prototype.moveTo.apply(this, newArguments);
+        
+        //if this move has caused the popup to change its relative position, 
+        // we need to make the appropriate cosmetic changes.
+        if (this.relativePosition != oldRelativePosition) {
+            this.updateRelativePosition();
         }
-        if (this.internalProjection && this.externalProjection) {
-            geometry = geometry.clone();
-            geometry.transform(this.internalProjection, this.externalProjection);
-        }                       
-        var wktType = type == 'collection' ? 'GEOMETRYCOLLECTION' : type.toUpperCase();
-        var data = wktType + '(' + this.extract[type].apply(this, [geometry]) + ')';
-        return data;
     },
+
+    /**
+     * APIMethod: setSize
+     * 
+     * Parameters:
+     * contentSize - {<OpenLayers.Size>} the new size for the popup's 
+     *     contents div (in pixels).
+     */
+    setSize:function(contentSize) { 
+        OpenLayers.Popup.prototype.setSize.apply(this, arguments);
+
+        if ((this.lonlat) && (this.map)) {
+            var px = this.map.getLayerPxFromLonLat(this.lonlat);
+            this.moveTo(px);
+        }
+    },  
     
-    /**
-     * Object with properties corresponding to the geometry types.
-     * Property values are functions that do the actual data extraction.
+    /** 
+     * Method: calculateRelativePosition
+     * 
+     * Parameters:
+     * px - {<OpenLayers.Pixel>}
+     * 
+     * Returns:
+     * {String} The relative position ("br" "tr" "tl" "bl") at which the popup
+     *     should be placed.
      */
-    extract: {
-        /**
-         * Return a space delimited string of point coordinates.
-         * @param {OpenLayers.Geometry.Point} point
-         * @returns {String} A string of coordinates representing the point
-         */
-        'point': function(point) {
-            return point.x + ' ' + point.y;
-        },
-
-        /**
-         * Return a comma delimited string of point coordinates from a multipoint.
-         * @param {OpenLayers.Geometry.MultiPoint} multipoint
-         * @returns {String} A string of point coordinate strings representing
-         *                  the multipoint
-         */
-        'multipoint': function(multipoint) {
-            var array = [];
-            for(var i=0, len=multipoint.components.length; i<len; ++i) {
-                array.push('(' +
-                           this.extract.point.apply(this, [multipoint.components[i]]) +
-                           ')');
-            }
-            return array.join(',');
-        },
+    calculateRelativePosition:function(px) {
+        var lonlat = this.map.getLonLatFromLayerPx(px);        
         
-        /**
-         * Return a comma delimited string of point coordinates from a line.
-         * @param {OpenLayers.Geometry.LineString} linestring
-         * @returns {String} A string of point coordinate strings representing
-         *                  the linestring
-         */
-        'linestring': function(linestring) {
-            var array = [];
-            for(var i=0, len=linestring.components.length; i<len; ++i) {
-                array.push(this.extract.point.apply(this, [linestring.components[i]]));
-            }
-            return array.join(',');
-        },
-
-        /**
-         * Return a comma delimited string of linestring strings from a multilinestring.
-         * @param {OpenLayers.Geometry.MultiLineString} multilinestring
-         * @returns {String} A string of of linestring strings representing
-         *                  the multilinestring
-         */
-        'multilinestring': function(multilinestring) {
-            var array = [];
-            for(var i=0, len=multilinestring.components.length; i<len; ++i) {
-                array.push('(' +
-                           this.extract.linestring.apply(this, [multilinestring.components[i]]) +
-                           ')');
-            }
-            return array.join(',');
-        },
+        var extent = this.map.getExtent();
+        var quadrant = extent.determineQuadrant(lonlat);
         
-        /**
-         * Return a comma delimited string of linear ring arrays from a polygon.
-         * @param {OpenLayers.Geometry.Polygon} polygon
-         * @returns {String} An array of linear ring arrays representing the polygon
-         */
-        'polygon': function(polygon) {
-            var array = [];
-            for(var i=0, len=polygon.components.length; i<len; ++i) {
-                array.push('(' +
-                           this.extract.linestring.apply(this, [polygon.components[i]]) +
-                           ')');
-            }
-            return array.join(',');
-        },
+        return OpenLayers.Bounds.oppositeQuadrant(quadrant);
+    }, 
 
-        /**
-         * Return an array of polygon arrays from a multipolygon.
-         * @param {OpenLayers.Geometry.MultiPolygon} multipolygon
-         * @returns {String} An array of polygon arrays representing
-         *                  the multipolygon
-         */
-        'multipolygon': function(multipolygon) {
-            var array = [];
-            for(var i=0, len=multipolygon.components.length; i<len; ++i) {
-                array.push('(' +
-                           this.extract.polygon.apply(this, [multipolygon.components[i]]) +
-                           ')');
-            }
-            return array.join(',');
-        },
+    /**
+     * Method: updateRelativePosition
+     * The popup has been moved to a new relative location, so we may want to 
+     *     make some cosmetic adjustments to it. 
+     * 
+     *     Note that in the classic Anchored popup, there is nothing to do 
+     *     here, since the popup looks exactly the same in all four positions.
+     *     Subclasses such as Framed, however, will want to do something
+     *     special here.
+     */
+    updateRelativePosition: function() {
+        //to be overridden by subclasses
+    },
 
-        /**
-         * Return the WKT portion between 'GEOMETRYCOLLECTION(' and ')' for an <OpenLayers.Geometry.Collection>
-         * @param {OpenLayers.Geometry.Collection} collection
-         * @returns {String} internal WKT representation of the collection
-         */
-        'collection': function(collection) {
-            var array = [];
-            for(var i=0, len=collection.components.length; i<len; ++i) {
-                array.push(this.extractGeometry.apply(this, [collection.components[i]]));
-            }
-            return array.join(',');
+    /** 
+     * Method: calculateNewPx
+     * 
+     * Parameters:
+     * px - {<OpenLayers.Pixel>}
+     * 
+     * Returns:
+     * {<OpenLayers.Pixel>} The the new px position of the popup on the screen
+     *     relative to the passed-in px.
+     */
+    calculateNewPx:function(px) {
+        var newPx = px.offset(this.anchor.offset);
+        
+        //use contentSize if size is not already set
+        var size = this.size || this.contentSize;
+
+        var top = (this.relativePosition.charAt(0) == 't');
+        newPx.y += (top) ? -size.h : this.anchor.size.h;
+        
+        var left = (this.relativePosition.charAt(1) == 'l');
+        newPx.x += (left) ? -size.w : this.anchor.size.w;
+
+        return newPx;   
+    },
+
+    CLASS_NAME: "OpenLayers.Popup.Anchored"
+});
+/* ======================================================================
+    OpenLayers/Popup/Framed.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+/**
+ * @requires OpenLayers/Popup/Anchored.js
+ */
+
+/**
+ * Class: OpenLayers.Popup.Framed
+ * 
+ * Inherits from:
+ *  - <OpenLayers.Popup.Anchored>
+ */
+OpenLayers.Popup.Framed =
+  OpenLayers.Class(OpenLayers.Popup.Anchored, {
+
+    /**
+     * Property: imageSrc
+     * {String} location of the image to be used as the popup frame
+     */
+    imageSrc: null,
+
+    /**
+     * Property: imageSize
+     * {<OpenLayers.Size>} Size (measured in pixels) of the image located
+     *     by the 'imageSrc' property.
+     */
+    imageSize: null,
+
+    /**
+     * APIProperty: isAlphaImage
+     * {Boolean} The image has some alpha and thus needs to use the alpha 
+     *     image hack. Note that setting this to true will have no noticeable
+     *     effect in FF or IE7 browsers, but will all but crush the ie6 
+     *     browser. 
+     *     Default is false.
+     */
+    isAlphaImage: false,
+
+    /**
+     * Property: positionBlocks
+     * {Object} Hash of different position blocks (Object/Hashs). Each block 
+     *     will be keyed by a two-character 'relativePosition' 
+     *     code string (ie "tl", "tr", "bl", "br"). Block properties are 
+     *     'offset', 'padding' (self-explanatory), and finally the 'blocks'
+     *     parameter, which is an array of the block objects. 
+     * 
+     *     Each block object must have 'size', 'anchor', and 'position' 
+     *     properties.
+     * 
+     *     Note that positionBlocks should never be modified at runtime.
+     */
+    positionBlocks: null,
+
+    /**
+     * Property: blocks
+     * {Array[Object]} Array of objects, each of which is one "block" of the 
+     *     popup. Each block has a 'div' and an 'image' property, both of 
+     *     which are DOMElements, and the latter of which is appended to the 
+     *     former. These are reused as the popup goes changing positions for
+     *     great economy and elegance.
+     */
+    blocks: null,
+
+    /** 
+     * APIProperty: fixedRelativePosition
+     * {Boolean} We want the framed popup to work dynamically placed relative
+     *     to its anchor but also in just one fixed position. A well designed
+     *     framed popup will have the pixels and logic to display itself in 
+     *     any of the four relative positions, but (understandably), this will
+     *     not be the case for all of them. By setting this property to 'true', 
+     *     framed popup will not recalculate for the best placement each time
+     *     it's open, but will always open the same way. 
+     *     Note that if this is set to true, it is generally advisable to also
+     *     set the 'panIntoView' property to true so that the popup can be 
+     *     scrolled into view (since it will often be offscreen on open)
+     *     Default is false.
+     */
+    fixedRelativePosition: false,
+
+    /** 
+     * Constructor: OpenLayers.Popup.Framed
+     * 
+     * Parameters:
+     * id - {String}
+     * lonlat - {<OpenLayers.LonLat>}
+     * contentSize - {<OpenLayers.Size>}
+     * contentHTML - {String}
+     * anchor - {Object} Object to which we'll anchor the popup. Must expose 
+     *     a 'size' (<OpenLayers.Size>) and 'offset' (<OpenLayers.Pixel>) 
+     *     (Note that this is generally an <OpenLayers.Icon>).
+     * closeBox - {Boolean}
+     * closeBoxCallback - {Function} Function to be called on closeBox click.
+     */
+    initialize:function(id, lonlat, contentSize, contentHTML, anchor, closeBox, 
+                        closeBoxCallback) {
+
+        OpenLayers.Popup.Anchored.prototype.initialize.apply(this, arguments);
+
+        if (this.fixedRelativePosition) {
+            //based on our decided relativePostion, set the current padding
+            // this keeps us from getting into trouble 
+            this.updateRelativePosition();
+            
+            //make calculateRelativePosition always return the specified
+            // fixed position.
+            this.calculateRelativePosition = function(px) {
+                return this.relativePosition;
+            };
         }
 
+        this.contentDiv.style.position = "absolute";
+        this.contentDiv.style.zIndex = 1;
+
+        if (closeBox) {
+            this.closeDiv.style.zIndex = 1;
+        }
+
+        this.groupDiv.style.position = "absolute";
+        this.groupDiv.style.top = "0px";
+        this.groupDiv.style.left = "0px";
+        this.groupDiv.style.height = "100%";
+        this.groupDiv.style.width = "100%";
+    },
+
+    /** 
+     * APIMethod: destroy
+     */
+    destroy: function() {
+        this.imageSrc = null;
+        this.imageSize = null;
+        this.isAlphaImage = null;
+
+        this.fixedRelativePosition = false;
+        this.positionBlocks = null;
+
+        //remove our blocks
+        for(var i = 0; i < this.blocks.length; i++) {
+            var block = this.blocks[i];
+
+            if (block.image) {
+                block.div.removeChild(block.image);
+            }
+            block.image = null;
+
+            if (block.div) {
+                this.groupDiv.removeChild(block.div);
+            }
+            block.div = null;
+        }
+        this.blocks = null;
+
+        OpenLayers.Popup.Anchored.prototype.destroy.apply(this, arguments);
     },
 
     /**
-     * Object with properties corresponding to the geometry types.
-     * Property values are functions that do the actual parsing.
+     * APIMethod: setBackgroundColor
      */
-    parse: {
-        /**
-         * Return point feature given a point WKT fragment.
-         * @param {String} str A WKT fragment representing the point
-         * @returns {OpenLayers.Feature.Vector} A point feature
-         * @private
-         */
-        'point': function(str) {
-            var coords = OpenLayers.String.trim(str).split(this.regExes.spaces);
-            return new OpenLayers.Feature.Vector(
-                new OpenLayers.Geometry.Point(coords[0], coords[1])
-            );
-        },
-
-        /**
-         * Return a multipoint feature given a multipoint WKT fragment.
-         * @param {String} str A WKT fragment representing the multipoint
-         * @returns {OpenLayers.Feature.Vector} A multipoint feature
-         * @private
-         */
-        'multipoint': function(str) {
-            var point;
-            var points = OpenLayers.String.trim(str).split(',');
-            var components = [];
-            for(var i=0, len=points.length; i<len; ++i) {
-                point = points[i].replace(this.regExes.trimParens, '$1');
-                components.push(this.parse.point.apply(this, [point]).geometry);
-            }
-            return new OpenLayers.Feature.Vector(
-                new OpenLayers.Geometry.MultiPoint(components)
-            );
-        },
-        
-        /**
-         * Return a linestring feature given a linestring WKT fragment.
-         * @param {String} str A WKT fragment representing the linestring
-         * @returns {OpenLayers.Feature.Vector} A linestring feature
-         * @private
-         */
-        'linestring': function(str) {
-            var points = OpenLayers.String.trim(str).split(',');
-            var components = [];
-            for(var i=0, len=points.length; i<len; ++i) {
-                components.push(this.parse.point.apply(this, [points[i]]).geometry);
-            }
-            return new OpenLayers.Feature.Vector(
-                new OpenLayers.Geometry.LineString(components)
-            );
-        },
-
-        /**
-         * Return a multilinestring feature given a multilinestring WKT fragment.
-         * @param {String} str A WKT fragment representing the multilinestring
-         * @returns {OpenLayers.Feature.Vector} A multilinestring feature
-         * @private
-         */
-        'multilinestring': function(str) {
-            var line;
-            var lines = OpenLayers.String.trim(str).split(this.regExes.parenComma);
-            var components = [];
-            for(var i=0, len=lines.length; i<len; ++i) {
-                line = lines[i].replace(this.regExes.trimParens, '$1');
-                components.push(this.parse.linestring.apply(this, [line]).geometry);
-            }
-            return new OpenLayers.Feature.Vector(
-                new OpenLayers.Geometry.MultiLineString(components)
-            );
-        },
-        
-        /**
-         * Return a polygon feature given a polygon WKT fragment.
-         * @param {String} str A WKT fragment representing the polygon
-         * @returns {OpenLayers.Feature.Vector} A polygon feature
-         * @private
-         */
-        'polygon': function(str) {
-            var ring, linestring, linearring;
-            var rings = OpenLayers.String.trim(str).split(this.regExes.parenComma);
-            var components = [];
-            for(var i=0, len=rings.length; i<len; ++i) {
-                ring = rings[i].replace(this.regExes.trimParens, '$1');
-                linestring = this.parse.linestring.apply(this, [ring]).geometry;
-                linearring = new OpenLayers.Geometry.LinearRing(linestring.components);
-                components.push(linearring);
-            }
-            return new OpenLayers.Feature.Vector(
-                new OpenLayers.Geometry.Polygon(components)
-            );
-        },
-
-        /**
-         * Return a multipolygon feature given a multipolygon WKT fragment.
-         * @param {String} str A WKT fragment representing the multipolygon
-         * @returns {OpenLayers.Feature.Vector} A multipolygon feature
-         * @private
-         */
-        'multipolygon': function(str) {
-            var polygon;
-            var polygons = OpenLayers.String.trim(str).split(this.regExes.doubleParenComma);
-            var components = [];
-            for(var i=0, len=polygons.length; i<len; ++i) {
-                polygon = polygons[i].replace(this.regExes.trimParens, '$1');
-                components.push(this.parse.polygon.apply(this, [polygon]).geometry);
-            }
-            return new OpenLayers.Feature.Vector(
-                new OpenLayers.Geometry.MultiPolygon(components)
-            );
-        },
-
-        /**
-         * Return an array of features given a geometrycollection WKT fragment.
-         * @param {String} str A WKT fragment representing the geometrycollection
-         * @returns {Array} An array of OpenLayers.Feature.Vector
-         * @private
-         */
-        'geometrycollection': function(str) {
-            // separate components of the collection with |
-            str = str.replace(/,\s*([A-Za-z])/g, '|$1');
-            var wktArray = OpenLayers.String.trim(str).split('|');
-            var components = [];
-            for(var i=0, len=wktArray.length; i<len; ++i) {
-                components.push(OpenLayers.Format.WKT.prototype.read.apply(this,[wktArray[i]]));
-            }
-            return components;
-        }
-
+    setBackgroundColor:function(color) {
+        //does nothing since the framed popup's entire scheme is based on a 
+        // an image -- changing the background color makes no sense. 
     },
 
-    CLASS_NAME: "OpenLayers.Format.WKT" 
-});     
+    /**
+     * APIMethod: setBorder
+     */
+    setBorder:function() {
+        //does nothing since the framed popup's entire scheme is based on a 
+        // an image -- changing the popup's border makes no sense. 
+    },
+
+    /**
+     * Method: setOpacity
+     * Sets the opacity of the popup.
+     * 
+     * Parameters:
+     * opacity - {float} A value between 0.0 (transparent) and 1.0 (solid).   
+     */
+    setOpacity:function(opacity) {
+        //does nothing since we suppose that we'll never apply an opacity
+        // to a framed popup
+    },
+
+    /**
+     * APIMethod: setSize
+     * Overridden here, because we need to update the blocks whenever the size
+     *     of the popup has changed.
+     * 
+     * Parameters:
+     * contentSize - {<OpenLayers.Size>} the new size for the popup's 
+     *     contents div (in pixels).
+     */
+    setSize:function(contentSize) { 
+        OpenLayers.Popup.Anchored.prototype.setSize.apply(this, arguments);
+
+        this.updateBlocks();
+    },
+
+    /**
+     * Method: updateRelativePosition
+     * When the relative position changes, we need to set the new padding 
+     *     BBOX on the popup, reposition the close div, and update the blocks.
+     */
+    updateRelativePosition: function() {
+
+        //update the padding
+        this.padding = this.positionBlocks[this.relativePosition].padding;
+
+        //update the position of our close box to new padding
+        if (this.closeDiv) {
+            // use the content div's css padding to determine if we should
+            //  padd the close div
+            var contentDivPadding = this.getContentDivPadding();
+
+            this.closeDiv.style.right = contentDivPadding.right + 
+                                        this.padding.right + "px";
+            this.closeDiv.style.top = contentDivPadding.top + 
+                                      this.padding.top + "px";
+        }
+
+        this.updateBlocks();
+    },
+
+    /** 
+     * Method: calculateNewPx
+     * Besides the standard offset as determined by the Anchored class, our 
+     *     Framed popups have a special 'offset' property for each of their 
+     *     positions, which is used to offset the popup relative to its anchor.
+     * 
+     * Parameters:
+     * px - {<OpenLayers.Pixel>}
+     * 
+     * Returns:
+     * {<OpenLayers.Pixel>} The the new px position of the popup on the screen
+     *     relative to the passed-in px.
+     */
+    calculateNewPx:function(px) {
+        var newPx = OpenLayers.Popup.Anchored.prototype.calculateNewPx.apply(
+            this, arguments
+        );
+
+        newPx = newPx.offset(this.positionBlocks[this.relativePosition].offset);
+
+        return newPx;
+    },
+
+    /**
+     * Method: createBlocks
+     */
+    createBlocks: function() {
+        this.blocks = [];
+
+        //since all positions contain the same number of blocks, we can 
+        // just pick the first position and use its blocks array to create
+        // our blocks array
+        var firstPosition = null;
+        for(var key in this.positionBlocks) {
+            firstPosition = key;
+            break;
+        }
+        
+        var position = this.positionBlocks[firstPosition];
+        for (var i = 0; i < position.blocks.length; i++) {
+
+            var block = {};
+            this.blocks.push(block);
+
+            var divId = this.id + '_FrameDecorationDiv_' + i;
+            block.div = OpenLayers.Util.createDiv(divId, 
+                null, null, null, "absolute", null, "hidden", null
+            );
+
+            var imgId = this.id + '_FrameDecorationImg_' + i;
+            var imageCreator = 
+                (this.isAlphaImage) ? OpenLayers.Util.createAlphaImageDiv
+                                    : OpenLayers.Util.createImage;
+
+            block.image = imageCreator(imgId, 
+                null, this.imageSize, this.imageSrc, 
+                "absolute", null, null, null
+            );
+
+            block.div.appendChild(block.image);
+            this.groupDiv.appendChild(block.div);
+        }
+    },
+
+    /**
+     * Method: updateBlocks
+     * Internal method, called on initialize and when the popup's relative
+     *     position has changed. This function takes care of re-positioning
+     *     the popup's blocks in their appropropriate places.
+     */
+    updateBlocks: function() {
+        if (!this.blocks) {
+            this.createBlocks();
+        }
+        
+        if (this.size && this.relativePosition) {
+            var position = this.positionBlocks[this.relativePosition];
+            for (var i = 0; i < position.blocks.length; i++) {
+    
+                var positionBlock = position.blocks[i];
+                var block = this.blocks[i];
+    
+                // adjust sizes
+                var l = positionBlock.anchor.left;
+                var b = positionBlock.anchor.bottom;
+                var r = positionBlock.anchor.right;
+                var t = positionBlock.anchor.top;
+    
+                //note that we use the isNaN() test here because if the 
+                // size object is initialized with a "auto" parameter, the 
+                // size constructor calls parseFloat() on the string, 
+                // which will turn it into NaN
+                //
+                var w = (isNaN(positionBlock.size.w)) ? this.size.w - (r + l) 
+                                                      : positionBlock.size.w;
+    
+                var h = (isNaN(positionBlock.size.h)) ? this.size.h - (b + t) 
+                                                      : positionBlock.size.h;
+    
+                block.div.style.width = (w < 0 ? 0 : w) + 'px';
+                block.div.style.height = (h < 0 ? 0 : h) + 'px';
+    
+                block.div.style.left = (l != null) ? l + 'px' : '';
+                block.div.style.bottom = (b != null) ? b + 'px' : '';
+                block.div.style.right = (r != null) ? r + 'px' : '';            
+                block.div.style.top = (t != null) ? t + 'px' : '';
+    
+                block.image.style.left = positionBlock.position.x + 'px';
+                block.image.style.top = positionBlock.position.y + 'px';
+            }
+    
+            this.contentDiv.style.left = this.padding.left + "px";
+            this.contentDiv.style.top = this.padding.top + "px";
+        }
+    },
+
+    CLASS_NAME: "OpenLayers.Popup.Framed"
+});
 /* ======================================================================
     OpenLayers/Format/GeoJSON.js
    ====================================================================== */
@@ -37196,6 +38814,237 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
     },
 
     CLASS_NAME: "OpenLayers.Control.DrawFeature"
+});
+/* ======================================================================
+    OpenLayers/Popup/FramedCloud.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+/**
+ * @requires OpenLayers/Popup/Framed.js
+ * @requires OpenLayers/Util.js
+ * @requires OpenLayers/BaseTypes/Bounds.js
+ * @requires OpenLayers/BaseTypes/Pixel.js
+ * @requires OpenLayers/BaseTypes/Size.js
+ */
+
+/**
+ * Class: OpenLayers.Popup.FramedCloud
+ * 
+ * Inherits from: 
+ *  - <OpenLayers.Popup.Framed>
+ */
+OpenLayers.Popup.FramedCloud = 
+  OpenLayers.Class(OpenLayers.Popup.Framed, {
+
+    /** 
+     * Property: contentDisplayClass
+     * {String} The CSS class of the popup content div.
+     */
+    contentDisplayClass: "olFramedCloudPopupContent",
+
+    /**
+     * APIProperty: autoSize
+     * {Boolean} Framed Cloud is autosizing by default.
+     */
+    autoSize: true,
+
+    /**
+     * APIProperty: panMapIfOutOfView
+     * {Boolean} Framed Cloud does pan into view by default.
+     */
+    panMapIfOutOfView: true,
+
+    /**
+     * APIProperty: imageSize
+     * {<OpenLayers.Size>}
+     */
+    imageSize: new OpenLayers.Size(1276, 736),
+
+    /**
+     * APIProperty: isAlphaImage
+     * {Boolean} The FramedCloud does not use an alpha image (in honor of the 
+     *     good ie6 folk out there)
+     */
+    isAlphaImage: false,
+
+    /** 
+     * APIProperty: fixedRelativePosition
+     * {Boolean} The Framed Cloud popup works in just one fixed position.
+     */
+    fixedRelativePosition: false,
+
+    /**
+     * Property: positionBlocks
+     * {Object} Hash of differen position blocks, keyed by relativePosition
+     *     two-character code string (ie "tl", "tr", "bl", "br")
+     */
+    positionBlocks: {
+        "tl": {
+            'offset': new OpenLayers.Pixel(44, 0),
+            'padding': new OpenLayers.Bounds(8, 40, 8, 9),
+            'blocks': [
+                { // top-left
+                    size: new OpenLayers.Size('auto', 'auto'),
+                    anchor: new OpenLayers.Bounds(0, 51, 22, 0),
+                    position: new OpenLayers.Pixel(0, 0)
+                },
+                { //top-right
+                    size: new OpenLayers.Size(22, 'auto'),
+                    anchor: new OpenLayers.Bounds(null, 50, 0, 0),
+                    position: new OpenLayers.Pixel(-1238, 0)
+                },
+                { //bottom-left
+                    size: new OpenLayers.Size('auto', 19),
+                    anchor: new OpenLayers.Bounds(0, 32, 22, null),
+                    position: new OpenLayers.Pixel(0, -631)
+                },
+                { //bottom-right
+                    size: new OpenLayers.Size(22, 18),
+                    anchor: new OpenLayers.Bounds(null, 32, 0, null),
+                    position: new OpenLayers.Pixel(-1238, -632)
+                },
+                { // stem
+                    size: new OpenLayers.Size(81, 35),
+                    anchor: new OpenLayers.Bounds(null, 0, 0, null),
+                    position: new OpenLayers.Pixel(0, -688)
+                }
+            ]
+        },
+        "tr": {
+            'offset': new OpenLayers.Pixel(-45, 0),
+            'padding': new OpenLayers.Bounds(8, 40, 8, 9),
+            'blocks': [
+                { // top-left
+                    size: new OpenLayers.Size('auto', 'auto'),
+                    anchor: new OpenLayers.Bounds(0, 51, 22, 0),
+                    position: new OpenLayers.Pixel(0, 0)
+                },
+                { //top-right
+                    size: new OpenLayers.Size(22, 'auto'),
+                    anchor: new OpenLayers.Bounds(null, 50, 0, 0),
+                    position: new OpenLayers.Pixel(-1238, 0)
+                },
+                { //bottom-left
+                    size: new OpenLayers.Size('auto', 19),
+                    anchor: new OpenLayers.Bounds(0, 32, 22, null),
+                    position: new OpenLayers.Pixel(0, -631)
+                },
+                { //bottom-right
+                    size: new OpenLayers.Size(22, 19),
+                    anchor: new OpenLayers.Bounds(null, 32, 0, null),
+                    position: new OpenLayers.Pixel(-1238, -631)
+                },
+                { // stem
+                    size: new OpenLayers.Size(81, 35),
+                    anchor: new OpenLayers.Bounds(0, 0, null, null),
+                    position: new OpenLayers.Pixel(-215, -687)
+                }
+            ]
+        },
+        "bl": {
+            'offset': new OpenLayers.Pixel(45, 0),
+            'padding': new OpenLayers.Bounds(8, 9, 8, 40),
+            'blocks': [
+                { // top-left
+                    size: new OpenLayers.Size('auto', 'auto'),
+                    anchor: new OpenLayers.Bounds(0, 21, 22, 32),
+                    position: new OpenLayers.Pixel(0, 0)
+                },
+                { //top-right
+                    size: new OpenLayers.Size(22, 'auto'),
+                    anchor: new OpenLayers.Bounds(null, 21, 0, 32),
+                    position: new OpenLayers.Pixel(-1238, 0)
+                },
+                { //bottom-left
+                    size: new OpenLayers.Size('auto', 21),
+                    anchor: new OpenLayers.Bounds(0, 0, 22, null),
+                    position: new OpenLayers.Pixel(0, -629)
+                },
+                { //bottom-right
+                    size: new OpenLayers.Size(22, 21),
+                    anchor: new OpenLayers.Bounds(null, 0, 0, null),
+                    position: new OpenLayers.Pixel(-1238, -629)
+                },
+                { // stem
+                    size: new OpenLayers.Size(81, 33),
+                    anchor: new OpenLayers.Bounds(null, null, 0, 0),
+                    position: new OpenLayers.Pixel(-101, -674)
+                }
+            ]
+        },
+        "br": {
+            'offset': new OpenLayers.Pixel(-44, 0),
+            'padding': new OpenLayers.Bounds(8, 9, 8, 40),
+            'blocks': [
+                { // top-left
+                    size: new OpenLayers.Size('auto', 'auto'),
+                    anchor: new OpenLayers.Bounds(0, 21, 22, 32),
+                    position: new OpenLayers.Pixel(0, 0)
+                },
+                { //top-right
+                    size: new OpenLayers.Size(22, 'auto'),
+                    anchor: new OpenLayers.Bounds(null, 21, 0, 32),
+                    position: new OpenLayers.Pixel(-1238, 0)
+                },
+                { //bottom-left
+                    size: new OpenLayers.Size('auto', 21),
+                    anchor: new OpenLayers.Bounds(0, 0, 22, null),
+                    position: new OpenLayers.Pixel(0, -629)
+                },
+                { //bottom-right
+                    size: new OpenLayers.Size(22, 21),
+                    anchor: new OpenLayers.Bounds(null, 0, 0, null),
+                    position: new OpenLayers.Pixel(-1238, -629)
+                },
+                { // stem
+                    size: new OpenLayers.Size(81, 33),
+                    anchor: new OpenLayers.Bounds(0, null, null, 0),
+                    position: new OpenLayers.Pixel(-311, -674)
+                }
+            ]
+        }
+    },
+
+    /**
+     * APIProperty: minSize
+     * {<OpenLayers.Size>}
+     */
+    minSize: new OpenLayers.Size(105, 10),
+
+    /**
+     * APIProperty: maxSize
+     * {<OpenLayers.Size>}
+     */
+    maxSize: new OpenLayers.Size(1200, 660),
+
+    /** 
+     * Constructor: OpenLayers.Popup.FramedCloud
+     * 
+     * Parameters:
+     * id - {String}
+     * lonlat - {<OpenLayers.LonLat>}
+     * contentSize - {<OpenLayers.Size>}
+     * contentHTML - {String}
+     * anchor - {Object} Object to which we'll anchor the popup. Must expose 
+     *     a 'size' (<OpenLayers.Size>) and 'offset' (<OpenLayers.Pixel>) 
+     *     (Note that this is generally an <OpenLayers.Icon>).
+     * closeBox - {Boolean}
+     * closeBoxCallback - {Function} Function to be called on closeBox click.
+     */
+    initialize:function(id, lonlat, contentSize, contentHTML, anchor, closeBox, 
+                        closeBoxCallback) {
+
+        this.imageSrc = OpenLayers.Util.getImageLocation('cloud-popup-relative.png');
+        OpenLayers.Popup.Framed.prototype.initialize.apply(this, arguments);
+        this.contentDiv.className = this.contentDisplayClass;
+    },
+
+    CLASS_NAME: "OpenLayers.Popup.FramedCloud"
 });
 /* ======================================================================
     OpenLayers/Rule.js

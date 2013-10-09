@@ -56,17 +56,17 @@ class Layer(models.Model):
     )
     name = models.CharField(max_length=100)
     slug_name = models.CharField(max_length=100, blank=True, null=True)
-    layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
+    layer_type = models.CharField(max_length=50, choices=TYPE_CHOICES, help_text='use placeholder to temporarily remove layer from TOC')
     url = models.CharField(max_length=255, blank=True, null=True)
-    shareable_url = models.BooleanField(default=True)
-    arcgis_layers = models.CharField(max_length=255, blank=True, null=True)
+    shareable_url = models.BooleanField(default=True, help_text='Indicates whether the data layer (e.g. map tiles) can be shared with others (through the Map Tiles Link)')
+    arcgis_layers = models.CharField(max_length=255, blank=True, null=True, help_text='comma separated list of arcgis layer IDs')
     sublayers = models.ManyToManyField('self', blank=True, null=True)
     themes = models.ManyToManyField("Theme", blank=True, null=True)
     is_sublayer = models.BooleanField(default=False)
-    is_disabled = models.BooleanField(default=False)
+    is_disabled = models.BooleanField(default=False, help_text='when disabled, the layer will still appear in the TOC, only disabled')
     disabled_message = models.CharField(max_length=255, blank=True, null=True)
-    legend = models.CharField(max_length=255, blank=True, null=True)
-    legend_title = models.CharField(max_length=255, blank=True, null=True)
+    legend = models.CharField(max_length=255, blank=True, null=True, help_text='URL or path to the legend image file')
+    legend_title = models.CharField(max_length=255, blank=True, null=True, help_text='alternative to using the layer name')
     legend_subtitle = models.CharField(max_length=255, blank=True, null=True)
     utfurl = models.CharField(max_length=255, blank=True, null=True)
     
@@ -79,14 +79,14 @@ class Layer(models.Model):
     data_notes = models.TextField(blank=True, null=True)
     
     #data catalog links    
-    bookmark = models.CharField(max_length=755, blank=True, null=True)
-    map_tiles = models.CharField(max_length=255, blank=True, null=True)
-    kml = models.CharField(max_length=255, blank=True, null=True)
-    data_download = models.CharField(max_length=255, blank=True, null=True)
-    learn_more = models.CharField(max_length=255, blank=True, null=True)
-    metadata = models.CharField(max_length=255, blank=True, null=True)
-    source = models.CharField(max_length=255, blank=True, null=True)
-    thumbnail = models.URLField(max_length=255, blank=True, null=True)
+    bookmark = models.CharField(max_length=755, blank=True, null=True, help_text='link to view data layer in the planner')
+    kml = models.CharField(max_length=255, blank=True, null=True, help_text='link to download the KML')
+    data_download = models.CharField(max_length=255, blank=True, null=True, help_text='link to download the data')
+    learn_more = models.CharField(max_length=255, blank=True, null=True, help_text='link to view description in the Learn section')
+    metadata = models.CharField(max_length=255, blank=True, null=True, help_text='link to view/download the metadata')
+    source = models.CharField(max_length=255, blank=True, null=True, help_text='link back to the data source')
+    map_tiles = models.CharField(max_length=255, blank=True, null=True, help_text='internal link to a page that details how others might consume the data')
+    thumbnail = models.URLField(max_length=255, blank=True, null=True, help_text='not sure we are using this any longer...')
     
     #geojson javascript attribution
     EVENT_CHOICES = (
@@ -96,6 +96,7 @@ class Layer(models.Model):
     attribute_fields = models.ManyToManyField('AttributeInfo', blank=True, null=True)
     compress_display = models.BooleanField(default=False)
     attribute_event = models.CharField(max_length=35, choices=EVENT_CHOICES, default='click')
+    mouseover_field = models.CharField(max_length=75, blank=True, null=True, help_text='feature level attribute used in mouseover display')
     lookup_field = models.CharField(max_length=255, blank=True, null=True)
     lookup_table = models.ManyToManyField('LookupInfo', blank=True, null=True)
     is_annotated = models.BooleanField(default=False)
@@ -214,7 +215,8 @@ class Layer(models.Model):
     def serialize_attributes(self):
         return {'compress_attributes': self.compress_display,
                 'event': self.attribute_event,
-                'attributes': [{'display': attr.display_name, 'field': attr.field_name, 'precision': attr.precision} for attr in self.attribute_fields.all().order_by('order')]}
+                'attributes': [{'display': attr.display_name, 'field': attr.field_name, 'precision': attr.precision} for attr in self.attribute_fields.all().order_by('order')],
+                'mouseover_attribute': self.mouseover_field }
     
     @property
     def serialize_lookups(self):

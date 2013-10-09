@@ -18,6 +18,7 @@ function layerModel(options, parent) {
     self.attributes = options.attributes ? options.attributes.attributes : [];
     self.compress_attributes = options.attributes ? options.attributes.compress_attributes : false;
     self.attributeEvent = options.attributes ? options.attributes.event : [];
+    self.mouseoverAttribute = options.attributes ? options.attributes.mouseover_attribute : false;
     self.lookupField = options.lookups ? options.lookups.field : null;
     self.lookupDetails = options.lookups ? options.lookups.details : [];
     self.color = options.color || "#ee9900";
@@ -41,25 +42,24 @@ function layerModel(options, parent) {
     if (options.disabled_message) {
         self.disabledMessage(options.disabled_message);
     } 
-    if (self.annotated && app.viewModel.zoomLevel() < 8) {
+    if (self.annotated && app.viewModel.zoomLevel() < 9) {
         self.isDisabled(true);
         self.disabledMessage(options.disabled_message);
     } 
-    //seems like a lot of work to enable/disable popover based on zoom level...
     app.viewModel.zoomLevel.subscribe( function() {
-        $('.disabled').popover('disable');
-        if (self.annotated && app.viewModel.zoomLevel() < 8) {
+        if (self.annotated && app.viewModel.zoomLevel() < 9) {
             self.isDisabled(true);
-            self.disabledMessage(options.disabled_message);        
-        } else if (self.annotated && app.viewModel.zoomLevel() >= 8) {
+            self.disabledMessage(options.disabled_message); 
+            $('.annotated.disabled').popover({
+                delay: {'show': 500},
+                trigger: 'hover'//,
+                //template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
+            });
+        } else if (self.annotated && app.viewModel.zoomLevel() >= 9) {
             self.isDisabled(false);
             self.disabledMessage(false);
+            $('.annotated').popover('destroy');
         }
-        $('.disabled').popover('enable');
-        $('.disabled').popover({
-          trigger: 'hover',
-          template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
-        });
     });
     
     //these are necessary to prevent knockout errors when offering non-designs in Active panel
@@ -1620,7 +1620,7 @@ function viewModel() {
         
         // update the url hash
         app.updateUrl();
-
+        
     });
     
     self.deactivateAllLayers = function() {

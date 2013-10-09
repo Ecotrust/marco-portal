@@ -183,10 +183,10 @@ app.init = function () {
     
     app.map.attributes = [];
     //app.map.clickOutput = { time: 0, attributes: [] };
-    app.map.clickOutput = { time: 0, attributes: {} };
-    
+    app.map.clickOutput = { time: 0, attributes: {} };        
+
     //UTF Attribution
-    map.UTFControl = new OpenLayers.Control.UTFGrid({
+    app.map.UTFControl = new OpenLayers.Control.UTFGrid({
         //attributes: layer.attributes,
         layers: [],
         //events: {fallThrough: true},
@@ -195,7 +195,7 @@ app.init = function () {
             app.map.utfGridClickHandling(infoLookup, lonlat, xy);
         }
     });
-    map.addControl(map.UTFControl);    
+    map.addControl(app.map.UTFControl);    
     
     app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
         var clickAttributes = [];
@@ -342,6 +342,82 @@ app.init = function () {
         
     });
     
+    //mouseover events
+    app.map.events.register("featureover", null, function(e, test) {
+        var feature = e.feature,
+            layerModel = e.feature.layer.layerModel;
+
+        if (layerModel.attributeEvent === 'mouseover') {
+                if (app.map.popups.length) {
+
+                    if ( feature.layer.getZIndex() >= app.map.currentPopupFeature.layer.getZIndex() ) {
+                        app.map.currentPopupFeature.popup.hide();
+                        app.map.createPopup(feature);
+                        app.map.currentPopupFeature = feature;
+                    } else {
+                        app.map.createPopup(feature);
+                        feature.popup.hide();
+                    }
+
+                } else {
+                    app.map.createPopup(feature);
+                    app.map.currentPopupFeature = feature;
+                }
+        }
+        
+    });
+
+    //mouseout events
+    app.map.events.register("featureout", null, function(e, test) {
+        var feature = e.feature,
+            layerModel = e.feature.layer.layerModel;
+
+        if (layerModel.attributeEvent === 'mouseover') {
+            //app.map.destroyPopup(feature);
+            app.map.removePopup(feature.popup);
+            if (app.map.popups.length && !app.map.anyVisiblePopups()) {
+                var hiddenPopup = app.map.popups[app.map.popups.length-1];
+                hiddenPopup.show();
+                app.map.currentPopupFeature = hiddenPopup.feature;
+            }
+        }
+        
+    });
+
+    app.map.createPopup = function(feature) {
+        var mouseoverAttribute = feature.layer.layerModel.mouseoverAttribute,
+            attributeValue = mouseoverAttribute ? feature.attributes[mouseoverAttribute] : feature.layer.layerModel.name;
+        console.log(attributeValue);
+        var popup = new OpenLayers.Popup.FramedCloud(
+            "",
+            feature.geometry.getBounds().getCenterLonLat(),
+            new OpenLayers.Size(100,100),
+            "<div>" + attributeValue + "</div>",
+            null,
+            false,
+            null
+        );
+        popup.feature = feature;
+        feature.popup = popup;
+        app.map.addPopup(popup);
+    };
+
+    app.map.anyVisiblePopups = function() {
+        for (var i=0; i<app.map.popups.length; i+=1) {
+            if (app.map.popups[0].visible()) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    // app.map.destroyPopup = function(feature) {
+    //     // remove tooltip
+    //     app.map.removePopup(feature.popup);
+    //     //feature.popup.destroy();
+    //     //feature.popup=null;
+    // }
+    
     app.markers = new OpenLayers.Layer.Markers( "Markers" );
     var size = new OpenLayers.Size(16,25);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
@@ -410,7 +486,7 @@ app.init = function () {
             map.removeLayer(googleSatellite);
         } 
     }, 1000);
-    
+
 };
 
 app.addLayerToMap = function(layer) {
@@ -661,8 +737,8 @@ app.addVectorLayerToMap = function(layer) {
             }),
             styleMap: styleMap,                    
             layerModel: layer,
-            // set minZoom to 8 for annotated layers, set minZoom to some much smaller zoom level for non-annotated layers
-            scales: layer.annotated ? [2000000, 1] : [90000000, 1], 
+            // set minZoom to 9 for annotated layers, set minZoom to some much smaller zoom level for non-annotated layers
+            scales: layer.annotated ? [1000000, 1] : [90000000, 1], 
             units: 'm'
         }
     );

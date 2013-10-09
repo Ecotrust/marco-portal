@@ -159,8 +159,9 @@ $(document).ready(function() {
 
   setTimeout(function() {
     $('.disabled').popover({
+      delay: {'show': 200},
       trigger: 'hover',
-      template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
+      //template: '<div class="popover layer-popover"><div class="arrow"></div><div class="popover-inner layer-tooltip"><div class="popover-content"><p></p></div></div></div>'
     });
   }, 2000);
 
