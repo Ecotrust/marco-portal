@@ -386,11 +386,15 @@ app.init = function () {
 
     app.map.createPopup = function(feature) {
         var mouseoverAttribute = feature.layer.layerModel.mouseoverAttribute,
-            attributeValue = mouseoverAttribute ? feature.attributes[mouseoverAttribute] : feature.layer.layerModel.name;
-        console.log(attributeValue);
+            attributeValue = mouseoverAttribute ? feature.attributes[mouseoverAttribute] : feature.layer.layerModel.name,
+            location = feature.geometry.getBounds().getCenterLonLat();
+        
+        if ( ! app.map.getExtent().containsLonLat(location) ) {
+            location = app.map.center;
+        }
         var popup = new OpenLayers.Popup.FramedCloud(
             "",
-            feature.geometry.getBounds().getCenterLonLat(),
+            location,
             new OpenLayers.Size(100,100),
             "<div>" + attributeValue + "</div>",
             null,
