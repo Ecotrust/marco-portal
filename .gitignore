@@ -80,6 +80,7 @@ media/marco/assets/openlayers/lib/*
 
 media/marco/assets/openlayers/tools/*
 
+media/marco/assets/openlayers/v2.13.1/*
 
 media/marco/assets/openlayers/OpenLayers-marco-build_orig.js
 
@@ -88,3 +89,5 @@ media/marco/assets/openlayers/OpenLayers-marco-min_orig.js
 marco/data_manager/fixtures/data_manager_fixture_prev_prev.json
 
 marco/data_manager/fixtures/datadump-2013-10-09.json
+
+media/marco/assets/openlayers/OpenLayers-marco-build-213.js
