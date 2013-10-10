@@ -209,57 +209,12 @@
         }
     },
     {
-        "pk": 109,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                10
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#15C8FB",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                146
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "coral-zones-inferred",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_DiscreteCoralZonesInferred.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Coral Zones Inferred",
-            "url": "/media/data_manager/geojson/DiscreteCoralZonesInferred.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 34,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -283,6 +238,7 @@
             "attribute_event": "click",
             "description": "These data represent cables that have been laid underwater or buried beneath the seabed. This layer was created to allow for visualization, querying and downloading of NOAA\u2019s Electronic Navigational Charts. \r\n",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "These data represent cables that have been laid underwater or buried beneath the seabed. This layer was created to allow for visualization, querying and downloading of NOAA\u2019s Electronic Navigational Charts. \r\n",
             "slug_name": "submarine-cables",
@@ -305,6 +261,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -328,6 +286,7 @@
             "attribute_event": "click",
             "description": "This layer represents areas of high avian density that were identified based on a ranking procedure, in which the individual grid boxes with non-zero densities were ranked in the order of highest to lowest total density, and those grid boxes that rank in the top 20 percent of all non-zero-density grid boxes were designated as high-density grid boxes.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": null,
             "data_overview": "This layer represents areas of high avian density that were identified based on a ranking procedure, in which the individual grid boxes with non-zero densities (i.e., those grid boxes with at least one bird sighting) were ranked in the order of highest to lowest total density, and those grid boxes that rank in the top 20 percent of all non-zero-density grid boxes were designated as high-density grid boxes (i.e., regions of high avian density). This is based on observations recorded from offshore ship surveys conducted between January 2008 and December 2009.",
             "slug_name": "important-bird-habitats",
@@ -350,6 +309,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -375,6 +336,7 @@
             "attribute_fields": [
                 93
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sperm-whales-spring",
@@ -399,6 +361,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -424,6 +388,7 @@
             "attribute_fields": [
                 94
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sperm-whales-summer",
@@ -444,10 +409,112 @@
         }
     },
     {
+        "pk": 66,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
+            "themes": [
+                7
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": null,
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "data-under-development",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Data Under Development",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                67
+            ]
+        }
+    },
+    {
+        "pk": 105,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "disabled_message": "Data temporarily unavailable due to federal government shutdown",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/AnchorageAreas.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/AnchorageAreas.htm",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                138
+            ],
+            "is_disabled": true,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "anchorage-grounds",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Anchorage Grounds",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
+            "arcgis_layers": "7",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 121,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": null,
             "themes": [
                 9
             ],
@@ -478,8 +545,9 @@
                 149,
                 152
             ],
+            "is_disabled": false,
             "learn_more": "",
-            "data_overview": "",
+            "data_overview": "Areas where Coldwater Corals have been detected.",
             "slug_name": "corals",
             "is_sublayer": false,
             "lookup_field": "",
@@ -496,10 +564,62 @@
         }
     },
     {
+        "pk": 109,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "Name",
+            "themes": [
+                10
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#15C8FB",
+            "attribute_event": "mouseover",
+            "description": "",
+            "attribute_fields": [
+                146
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "coral-zones-inferred",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_DiscreteCoralZonesInferred.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Coral Zones Inferred",
+            "url": "/media/data_manager/geojson/DiscreteCoralZonesInferred.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 108,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "Name",
             "themes": [
                 10
             ],
@@ -520,11 +640,12 @@
             "metadata": "",
             "opacity": 0.5,
             "vector_color": "",
-            "attribute_event": "click",
+            "attribute_event": "mouseover",
             "description": "",
             "attribute_fields": [
                 146
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "coral-zones-boundary",
@@ -543,149 +664,12 @@
         }
     },
     {
-        "pk": 59,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "themes": [
-                5
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "/visualize/#location%5Bx%5D=-75.64907199740345&location%5By%5D=37.86135171984251&location%5Bzoom%5D=8&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/24",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "Areas with naval or military presence as outlined by the Code of Federal Regulations (CFR) and the Raster Navigational Charts (RNC). Caution should be used if navigating near these areas.",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "Areas with naval or military presence as outlined by the Code of Federal Regulations (CFR) and the Raster Navigational Charts (RNC). Caution should be used if navigating near these areas.",
-            "slug_name": "danger-zones-restricted-areas",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "Department of Defense, U.S. Navy",
-            "data_notes": "",
-            "name": "Danger Zones & Restricted Areas",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
-            "arcgis_layers": "8",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
-        "pk": 66,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "placeholder",
-            "themes": [
-                7
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "data-under-development",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Data Under Development",
-            "url": "",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                67
-            ]
-        }
-    },
-    {
-        "pk": 105,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/AnchorageAreas.zip",
-            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/AnchorageAreas.htm",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                138
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "anchorage-grounds",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "",
-            "name": "Anchorage Grounds",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
-            "arcgis_layers": "7",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 33,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -711,6 +695,7 @@
             "attribute_fields": [
                 4
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Seabed forms classify seafloor topography into discrete units. Derived from The Nature Conservancy's digital bathymetry, seabed forms can be described by a combination of just two variables: seabed position and slope. Seabed position (also referred to as topographic position or slope position) describes the topography of the area surrounding a particular cell. We based our seabed position calculations on Fels and Zobel's (1995) method, which evaluates the elevation differences between the model cell and the surrounding cells within a specified distance.",
             "slug_name": "seabed-forms",
@@ -733,6 +718,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -758,6 +745,7 @@
             "attribute_fields": [
                 111
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Areas where dredge material has been or is currently being dumped. Dredging is an underwater excavation activity to gather bottom sediments. A disposal site is a permitted area where dredge operations can dispose of the excavated sediments. Polygons represent dredge disposal locations in Region 2 and Region 3 which were merged into one layer for this map. ",
             "slug_name": "offshore-dredge-disposal",
@@ -776,57 +764,12 @@
         }
     },
     {
-        "pk": 111,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                10
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#DEE0E2",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                146
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "coral-zones-unobserved",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_DiscreteCoralZonesUnobserved.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Coral Zones Unobserved",
-            "url": "/media/data_manager/geojson/DiscreteCoralZonesUnobserved.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 92,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -852,6 +795,7 @@
             "attribute_fields": [
                 127
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This data set represents the most recent changes for the Wind Development Planning Areas in the Atlantic.  Wind Planning Areas in this dataset represent up to seven different types of announcements within the US Federal Register (e.g. Call Area, Wind Energy Area, Request for Interest, Proposed Sale Notice Area) that can be used to show the current status of an area that is being considered for Wind Power Development.",
             "slug_name": "boem-wind-planning-areas",
@@ -874,6 +818,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -900,6 +846,7 @@
                 116,
                 117
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Electricity-generating facilities along the Mid-Atlantic coast. Parameters such as fuel source of the facility may be useful in ocean planning. The presence of a facility may indicate that certain power transmission infrastructure exists nearby. Absence of a facility or lack of sufficient capacity at a facility in a given area may also be an important characteristic in future energy planning processes.",
             "slug_name": "coastal-energy-facilities",
@@ -922,6 +869,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -947,6 +896,7 @@
             "attribute_fields": [
                 6
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This layer was created from interpolation of usSEABED point data. usSEABED's averaged grain-size for each sample produced a robust interpretation of sediment texture, showing local variation as well as large-scale patterns. The point samples were interpolated using the Kriging interpolation method in ArcGIS to create surfaces representing the area between sample points at a cell size of 500 meters. These data were created to be used for planning purposes only at an ecoregional scale. The source sediment data were point data that in some cases is very widely spaced. We classified grain-size according to organisms' preferences, and assigned names to these classes based on the Wentworth (1922) scheme. ",
             "slug_name": "sediment-grain-size",
@@ -965,10 +915,62 @@
         }
     },
     {
+        "pk": 111,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "Name",
+            "themes": [
+                10
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#DEE0E2",
+            "attribute_event": "mouseover",
+            "description": "",
+            "attribute_fields": [
+                146
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "coral-zones-unobserved",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_DiscreteCoralZonesUnobserved.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Coral Zones Unobserved",
+            "url": "/media/data_manager/geojson/DiscreteCoralZonesUnobserved.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 90,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -994,6 +996,7 @@
             "attribute_fields": [
                 115
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Density map of reported shipwrecks illustrating the prevalence of potential historic period archaeological sites on the Atlantic OCS. Because this information was compiled using sources that have unreliable location information, this data does not represent a complete record of potential archaeological sites within a particular geographic area and is not intended for decision-making or planning purposes.",
             "slug_name": "shipwreck-density",
@@ -1016,6 +1019,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1041,6 +1046,7 @@
             "attribute_fields": [
                 90
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sei-whales-summer",
@@ -1065,6 +1071,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1090,6 +1098,7 @@
             "attribute_fields": [
                 79
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "fin-whales-winter",
@@ -1114,6 +1123,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -1137,6 +1148,7 @@
             "attribute_event": "click",
             "description": "The Marine Planner\u2019s recreational fishing data is currently limited to a regional scale map layer showing party boat (also known as head boat) and charter boat fishing.  Additional higher resolution map layers showing areas for recreational fishing and other activities are being developed with input and guidance from recreational stakeholders and will be added to Marine Planner by mid to late 2013.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "/explore/needs#fishing",
             "data_overview": "",
             "slug_name": "recreational-fishing",
@@ -1161,6 +1173,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -1186,6 +1200,7 @@
             "attribute_fields": [
                 128
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data for Recreational Party and Charter Boat Fishing that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). ",
             "slug_name": "party-charter-boat",
@@ -1210,6 +1225,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -1233,6 +1250,7 @@
             "attribute_event": "click",
             "description": "Standardized compilation of published marine boundaries.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "The Marine Jurisdiction data set is a standardized compilation of published marine boundaries from the NOAA Office of Coast Survey and the Bureau of Ocean Energy Management.",
             "slug_name": "marine-jurisdictions-orig",
@@ -1255,6 +1273,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1280,6 +1300,7 @@
             "attribute_fields": [
                 84
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "right-whales-fall",
@@ -1304,6 +1325,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1329,6 +1352,7 @@
             "attribute_fields": [
                 92
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sperm-whales-fall",
@@ -1353,6 +1377,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -1378,6 +1404,7 @@
             "attribute_fields": [
                 1
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "The Department of the Interior's \"Smart from the Start\" initiative calls for the identification of Wind Planning Areas (WPA) on the Outer Continental Shelf (OCS) off the Atlantic coast. WPAs are offshore locations that appear most suitable for wind energy development. Data has been and will continue to be collected for these high priority areas to inform government and industry assessments and planning, allowing a more efficient process for permitting and siting responsible development. Requests for Interest (RFIs) and Calls for Information have been or will be issued for these new WEAs to support lease sale environmental assessments.",
             "slug_name": "wind-planning-areas",
@@ -1400,6 +1427,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1423,6 +1452,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "marine-mammal-migration-paths",
@@ -1445,6 +1475,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1470,6 +1502,7 @@
             "attribute_fields": [
                 91
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sei-whales-winter",
@@ -1494,6 +1527,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -1523,6 +1558,7 @@
                 123,
                 125
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "These are blocks which have been leased by a company with the intent to build a wind energy facility.  No projects are in the development stage at this time;  permits may be issued for development provided further site assessment for each leased area. ",
             "slug_name": "boem-active-renewable-energy-lease-areas",
@@ -1545,6 +1581,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -1568,6 +1606,7 @@
             "attribute_event": "click",
             "description": "Pelagic gear fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS). ",
             "slug_name": "pelagic-gear-types",
@@ -1590,6 +1629,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1613,6 +1654,7 @@
             "attribute_event": "click",
             "description": "Areas necessary for spawning, breeding, feeding, or growth to maturity of key fish species, including: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": null,
             "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.",
             "slug_name": "efh-overlays",
@@ -1635,6 +1677,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1660,6 +1704,7 @@
             "attribute_fields": [
                 76
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "fin-whales-fall",
@@ -1684,6 +1729,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -1709,6 +1756,7 @@
             "attribute_fields": [
                 69
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).",
             "slug_name": "bottom-trawl",
@@ -1733,6 +1781,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1776,6 +1826,7 @@
                 56,
                 39
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Essential Fish Habitat (EFH) is defined as those waters and substrate necessary to fish for spawning, breeding, feeding, or growth to maturity (16 U.S.C. 1802(10)). Waters include aquatic areas and their associated physical, chemical, and biological properties that are used by fish and may include aquatic areas historically used by fish where appropriate; substrate includes sediment, hard bottom, structures underlying the waters, and associated biological communities; necessary means the habitat required to support a sustainable fishery and the managed species' contribution to a healthy ecosystem; and spawning, breeding, feeding, or growth to maturity covers a species' full life cycle.\r\n\r\nThis particular layer represents an overlay of EFH polygons for numerous species. The Nature Conservancy obtained individual EFH layers from NOAA. The data presented here do not represent EFH for individual species but rather the number of overlapping EFH in any given location. \r\n\r\nThe following species are included in the overlay: American Plaice, Atlantic Halibut, Atlantic Herring, Haddock, Monkfish, Ocean Pout, Offshore Hake, Pollock, Redfish, Red Hake, Sea Scallop, Silver Hake, Tilefish, White Hake, Windowpane Flounder, Winter Flounder, Witch Flounder, and Yellowtail Flounder.",
             "slug_name": "essential-fish-habitat",
@@ -1798,6 +1849,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1827,6 +1880,7 @@
                 101,
                 103
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Areas where sightings per unit effort for loggerhead, leatherback and green sea turtles were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.",
             "slug_name": "sea-turtles",
@@ -1849,6 +1903,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 11
             ],
@@ -1872,6 +1928,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "300-meters",
@@ -1894,6 +1951,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -1919,6 +1978,7 @@
             "attribute_fields": [
                 82
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "humpback-whales-summer",
@@ -1943,6 +2003,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -1966,6 +2028,7 @@
             "attribute_event": "click",
             "description": "Fishing effort (average number of trips) of federally permitted commercial fishing vessels (2000-2009).",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from data received from the National Marine Fisheries Service (NMFS). ",
             "slug_name": "commercial-fishing",
@@ -1998,6 +2061,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -2023,6 +2088,7 @@
             "attribute_fields": [
                 23
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "These areas have no relation to actual Coral Protection Alternatives.  \r\nThey are for testing purposes only. ",
             "slug_name": "coral-protection-mockups",
@@ -2045,6 +2111,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -2070,6 +2138,7 @@
             "attribute_fields": [
                 3
             ],
+            "is_disabled": false,
             "learn_more": null,
             "data_overview": "",
             "slug_name": "protraction-boundaries",
@@ -2092,6 +2161,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -2117,6 +2188,7 @@
             "attribute_fields": [
                 95
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sperm-whales-winter",
@@ -2141,6 +2213,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -2169,6 +2243,7 @@
                 37,
                 35
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This data layer contains waterbird density blocks extracted from the Minerals Management Service's Mid-Atlantic Waterbird Data Beta Version 1.0. This application is based on their Marine Mammal and Seabird Computer Database Analysis System (MMS-CDAS). The origin of the underlying data is a U.S. Fish & Wildlife Service aerial survey conducted between December 2001 and March 2003.\r\n\r\nAll waterbird species in the USFWS database from winter surveys only were exported to density blocks. Information in the MMS application suggests the winter surveys only are valid for calculating densities because they were flown on specific transects. The spatial extent of the database (and thus of this data set) is from the Virginia/North Carolina border to the Hudson Canyon (including Delaware Bay and the lowest part of Chesapeake Bay).",
             "slug_name": "waterbird-survey",
@@ -2191,6 +2266,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "checkbox",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -2214,6 +2291,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Federally - and internationally - recognized political, legal, and resource management boundaries. \r\n\r\nSubmerged Lands Act Boundary \u2013 also known as the state seaward boundary, this line serves to distinguish state and federal jurisdictions (3 nautical miles seaward from mean low low water [MLLW]).\r\n\r\n8g Revenue Sharing Line (Limit of OCSLA '8(g)' zone) \u2013 area where revenues from energy resources are shared by federal and coastal state governments (extends seaward 3 nautical miles from Submerged Lands Act Boundary).\r\n\r\nTerritorial Sea Boundary (12NM Territorial Sea) \u2013 region of U.S. sovereignty (extends from MLLW to 12 nautical miles from shore).\r\n\r\nContiguous Zone Boundary (24NM Territorial Sea) \u2013 area of limited control in preventing or punishing infringement of customs or laws (extends from MLLW to 24 nautical miles from shore; alternately extends seaward 12 nautical miles from Territorial Sea Boundary).\r\n\r\nExclusive Economic Zone (200NM EEZ and Maritime Boundaries) \u2013 area of sole rights for resource use, research, and protection (extends from Territorial Sea Boundary to 200 nautical miles from shore).",
             "slug_name": "marine-jurisdictions",
@@ -2242,6 +2320,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -2267,6 +2347,7 @@
             "attribute_fields": [
                 67
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Annual average wind speeds are closely related to the available energy at a particular location. In these data, wind speeds are categorized by their value at a height of 90 meters above the surface. The data were created by the National Renewable Energy Laboratory (NREL) and AWS Truepower. Wind speed data for all of the MARCO states was created as part of onshore wind mapping projects. Speed data was extrapolated to 50 nautical miles offshore by NREL. The 90 m wind speed was calculated by a linear interpolation between 70 m and 100 m wind speeds. ",
             "slug_name": "wind-speed",
@@ -2289,6 +2370,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -2314,6 +2397,7 @@
             "attribute_fields": [
                 80
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "humpback-whales-fall",
@@ -2338,6 +2422,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 9
             ],
@@ -2361,6 +2447,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "tilefish-closure-areas",
@@ -2379,57 +2466,12 @@
         }
     },
     {
-        "pk": 20,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                4
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "/visualize/#location%5Bx%5D=-74.2584775485093&location%5By%5D=39.035768529899336&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=20&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz",
-            "source": "http://www.nature.org/ourinitiatives/habitats/oceanscoasts/howwework/index.htm",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/artificial_reefs.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/artificial_reefs.htm",
-            "opacity": 1.0,
-            "vector_color": "#0070FF",
-            "attribute_event": "mouseover",
-            "description": "This dataset shows general polygon locations of Mid-Atlantic artificial reefs. ",
-            "attribute_fields": [
-                23
-            ],
-            "learn_more": "",
-            "data_overview": "These are polygon locations of Mid-Atlantic artificial reefs. These data usually represent general polygons within which artificial reef material has been deposited--the entirety of each polygon is not necessarily all artificial reef. ",
-            "slug_name": "artificial-reefs",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ArtificialReefs/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "Compiled by TNC from various sources",
-            "data_notes": "These data were compiled from various state sources. In Delaware, digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).",
-            "name": "Artificial Reefs",
-            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 58,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -2467,6 +2509,7 @@
                 20,
                 9
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Areas where coldwater corals are present.",
             "slug_name": "coldwater-corals",
@@ -2485,59 +2528,12 @@
         }
     },
     {
-        "pk": 31,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                2
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "/visualize/#location%5Bx%5D=-73.11589942350956&location%5By%5D=39.31256793719878&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=31&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
-            "vector_graphic": "",
-            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz",
-            "source": "http://www.nature.org/ourinitiatives/habitats/oceanscoasts/howwework/index.htm",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Major_Canyons.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/canyons.html",
-            "opacity": 1.0,
-            "vector_color": "#A90303",
-            "attribute_event": "mouseover",
-            "description": "This data layer represents major canyons of the Mid-Atlantic Coast, and the approximate boundaries were digitized on-screen over a raster bathymetry layer.",
-            "attribute_fields": [
-                2,
-                11,
-                12
-            ],
-            "learn_more": "",
-            "data_overview": "This data layer represents major canyons of the Mid-Atlantic Coast. Approximate boundaries were digitized on-screen over a raster bathymetry layer. Canyon names come from NOAA charts and other various sources. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries.",
-            "slug_name": "submarine-canyons",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MajorCanyons/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "The Nature Conservancy",
-            "data_notes": "These data were primarily created to be used for cartographic purposes. There are many submarine canyons in addition to those included here \u2013 this layer was created in an attempt to show the \u201cmajor\u201d canyons on maps. ",
-            "name": "Submarine Canyons",
-            "url": "/media/data_manager/geojson/MajorCanyons.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 18,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -2561,6 +2557,7 @@
             "attribute_event": "click",
             "description": "Administrative boundaries extending from the Submerged Lands Act boundary seaward to the US Outer Continental Shelf.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS.  They are not meant to depict areas offshore as pertaining to or controlled by any particular state.",
             "slug_name": "federal-ocs-administrative-boundaries",
@@ -2583,6 +2580,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -2610,6 +2609,7 @@
                 159,
                 158
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "port-ownership",
@@ -2634,6 +2634,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -2657,6 +2659,7 @@
             "attribute_event": "click",
             "description": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Each coastal State may claim a territorial sea that extends seaward up to 12 nautical miles from its baselines. The coastal State exercises sovereignty over its territorial sea, the air space above it, and the seabed and subsoil beneath it.",
             "slug_name": "12nm-territorial-sea",
@@ -2681,6 +2684,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -2712,6 +2717,7 @@
                 64,
                 65
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "The goal of this project is to provide a preliminary overview of the relative susceptibility of the Nation's coast to sea-level rise through the use of a coastal vulnerability index (CVI). This initial classification is based upon the variables geomorphology, regional coastal slope, tide range, wave height, relative sea-level rise and shoreline erosion and accretion rates. The combination of these variables and their association to each other furnish a broad overview of regions where physical changes are likely to occur due to sea-level rise.\r\n\r\nThe purpose of this data layer is to allow the user to view both the coastal vulnerability index (CVI) and the data from which the CVI is calculated (tides, wave height, relative sea-level rise, coastal slope, geomorphology, and shoreline erosion and accretion rate) for the U.S. Atlantic Coast. The CVI provides insight into the relative potential for coastal change due to future sea-level rise.",
             "slug_name": "sea-level-rise-vulnerability",
@@ -2734,6 +2740,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -2757,6 +2765,7 @@
             "attribute_event": "click",
             "description": "This data set represents ship traffic separation zones, which separate the lanes in which ships proceed in opposite or nearly opposite directions or separate traffic lanes designated for particular classes of ships proceeding in the same direction. ",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": null,
             "data_overview": "This represents ship traffic separation zones, which separate the lanes in which ships proceed in opposite or nearly opposite directions or separate traffic lanes designated for particular classes of ships proceeding in the same direction. ",
             "slug_name": "ship-traffic-separation-zones",
@@ -2779,6 +2788,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -2804,6 +2815,7 @@
             "attribute_fields": [
                 68
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This is an extract of Fishing Vessel Trip Report (FVTR) data that The Nature Conservancy compiled from raw data received from the National Marine Fisheries Service (NMFS).",
             "slug_name": "all-gear-types",
@@ -2828,6 +2840,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -2851,6 +2865,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": null,
             "data_overview": "",
             "slug_name": "awc-routes",
@@ -2873,6 +2888,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -2898,6 +2915,7 @@
             "attribute_fields": [
                 110
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Fishing effort (days fished) and landings compiled by ten-minute square (areas that are 10 minutes of longitude by 10 minutes of latitude) for a 10-year period (2000-2009). The fishing effort data are broken down by various gear types. In the MARCO portal the data are displayed for a sum of all gear types, for a sum of all bottom contacting mobile gear (mostly dredges and bottom trawls) and for a sum of pelagic gear types.",
             "slug_name": "summer-flounder-landings",
@@ -2922,6 +2940,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -2945,6 +2965,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "federal-arcerest-ocs-administrative-boundaries",
@@ -2967,6 +2988,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -2990,6 +3013,7 @@
             "attribute_event": "click",
             "description": "The SLA boundary defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands.  In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "The Submerged Lands Act (SLA) boundary line (also known as State Seaward Boundary or Fed State Boundary) defines the seaward limit of a state's submerged lands and the landward boundary of federally managed OCS lands. In the BOEM Atlantic Region it is projected 3 nautical miles offshore from the baseline.",
             "slug_name": "submerged-lands-act-boundary",
@@ -3014,6 +3038,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -3037,6 +3063,7 @@
             "attribute_event": "click",
             "description": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Each coastal State may claim an Exclusive Economic Zone (EEZ) beyond and adjacent to its territorial sea that extends seaward up to 200 nautical miles from its baselines (or out to a maritime boundary with another coastal State).",
             "slug_name": "200nm-eez-and-maritime-boundaries",
@@ -3061,6 +3088,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -3092,6 +3121,7 @@
                 24,
                 25
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.",
             "slug_name": "benthic-habitats-north",
@@ -3114,6 +3144,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -3137,6 +3169,7 @@
             "attribute_event": "click",
             "description": "This data set, obtained from the United States Navy, include point shapefiles of valid sightings for numerous marine mammal and turtle species, and pre-calculated effort grids for each season.\r\n",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Sightings per unit effort aggregated to 10-minute squares.",
             "slug_name": "marine-mammals",
@@ -3176,57 +3209,12 @@
         }
     },
     {
-        "pk": 84,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "/visualize/#x=-72.38&y=38.59&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/28",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                131
-            ],
-            "learn_more": "",
-            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
-            "slug_name": "offshore-wind-compatibility-assessments",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "",
-            "name": "Offshore Wind Compatibility Assessments",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
-            "arcgis_layers": "5",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 72,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -3252,6 +3240,7 @@
             "attribute_fields": [
                 74
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "other-gear",
@@ -3272,58 +3261,12 @@
         }
     },
     {
-        "pk": 89,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "themes": [
-                5
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "/visualize/#x=-73.40&y=38.89&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=89&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://www.marinecadastre.gov",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/UnexplodedOrdnances.zip",
-            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/UnexplodedOrdnances.htm",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                121,
-                132
-            ],
-            "learn_more": "",
-            "data_overview": "Known areas of explosive weapons (e.g., bombs, mines, and shells) that did not explode when they were employed and may still pose a risk of detonation years after being used or discarded.",
-            "slug_name": "unexploded-ordnances",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov, NOAA and BOEM",
-            "data_notes": "This is NOT a complete collection of unexploded ordnances on the seafloor, nor are the locations to be considered exact. The presence and locations of the unexploded ordnances have been derived from graphical representations recorded on NOAA Raster Navigation Charts. These data are intended for coastal and ocean planning, not for navigation.",
-            "name": "Unexploded Ordnances",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
-            "arcgis_layers": "9",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 27,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -3349,6 +3292,7 @@
             "attribute_fields": [
                 77
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "fin-whales-spring",
@@ -3373,6 +3317,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -3396,6 +3342,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "tanker-vessels",
@@ -3420,6 +3367,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -3443,6 +3392,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "tug-tow-vessels",
@@ -3467,6 +3417,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -3496,6 +3448,7 @@
                 107,
                 109
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Areas where sightings per unit effort for sperm whale, bottlenose dolphin or striped dolphin were two or more standard deviations higher than the regional average. For these species, 'regional' includes the Mid-Atlantic, Southern New England and the Gulf of Maine.",
             "slug_name": "toothed-mammals-all-seasons",
@@ -3518,6 +3471,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -3541,6 +3496,7 @@
             "attribute_event": "click",
             "description": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Boundaries of Regional Councils on the Ocean that exist in the Atlantic Ocean.",
             "slug_name": "regional-ocean-partnerships",
@@ -3563,6 +3519,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -3588,6 +3546,7 @@
             "attribute_fields": [
                 58
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "ocs-test",
@@ -3610,6 +3569,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -3635,6 +3596,7 @@
             "attribute_fields": [
                 78
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "fin-whales-summer",
@@ -3659,6 +3621,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -3682,6 +3646,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "commercial-vessel-density",
@@ -3704,6 +3669,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -3727,6 +3694,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "all-vessels",
@@ -3751,6 +3719,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -3774,6 +3744,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "cargo-vessels",
@@ -3798,6 +3769,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -3824,6 +3797,7 @@
                 135,
                 136
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "shipping-fairways-lanes-and-zones",
@@ -3846,6 +3820,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -3871,6 +3847,7 @@
             "attribute_fields": [
                 81
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "humpback-whales-spring",
@@ -3895,6 +3872,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -3918,6 +3897,7 @@
             "attribute_event": "click",
             "description": "Each coastal State may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Each coastal State may claim a contiguous zone adjacent to and beyond its territorial sea that extends seaward up to 24 nautical miles from its baselines. In its contiguous zone, a coastal State may exercise the control necessary to prevent the infringement of its customs, fiscal, immigration or sanitary laws and regulations within its territory or territorial sea, and punish infringement of those laws and regulations committed within its territory or territorial sea.",
             "slug_name": "24nm-territorial-sea",
@@ -3942,6 +3922,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -3972,6 +3954,7 @@
                 30,
                 31
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Routes and hubs planned for the Atlantic Wind Connection (AWC), a proposed undersea transmission cable system that would bring power generated by Mid-Atlantic offshore wind turbines to shore. The private-sector project would span approximately 350 miles from northern New Jersey to southern Virginia and would be built in phases over a 10-year period.",
             "slug_name": "awc-routes-hubs",
@@ -3994,6 +3977,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -4019,6 +4004,7 @@
             "attribute_fields": [
                 87
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "right-whales-winter",
@@ -4043,6 +4029,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -4068,6 +4056,7 @@
             "attribute_fields": [
                 73
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "other-dredges",
@@ -4092,6 +4081,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 7
             ],
@@ -4115,6 +4106,7 @@
             "attribute_event": "click",
             "description": "We are currently developing data related to Recreational Boating Activities as well as Areas for Non-Fishing, Non-Boating Recreational Use.  ",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "/explore/needs#recreation",
             "data_overview": "",
             "slug_name": "recreation-data-layers",
@@ -4135,57 +4127,12 @@
         }
     },
     {
-        "pk": 110,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                10
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#61FC14",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                146
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "coral-zones-observed",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_DiscreteCoralZonesObserved.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Coral Zones Observed",
-            "url": "/media/data_manager/geojson/DiscreteCoralZonesObserved.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 44,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -4211,6 +4158,7 @@
             "attribute_fields": [
                 89
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sei-whales-spring",
@@ -4235,6 +4183,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 3
             ],
@@ -4258,6 +4208,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": null,
             "data_overview": "",
             "slug_name": "awc-hubs",
@@ -4280,6 +4231,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 11
             ],
@@ -4303,6 +4256,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "500-meters",
@@ -4321,55 +4275,12 @@
         }
     },
     {
-        "pk": 118,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                12
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#C4F0CC",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "alt-ml-depth-option",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLDepth.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Alt ML Depth Option",
-            "url": "/media/data_manager/geojson/IAHankMLDepth.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 57,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -4393,6 +4304,7 @@
             "attribute_event": "click",
             "description": "Depth contours at 20, 50, and 100 fathoms.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Lines of varying depths provided primarily for general reference. The depths selected are those that may be familiar to fisherman and others who navigate offshore waters.",
             "slug_name": "fathom-lines",
@@ -4411,58 +4323,12 @@
         }
     },
     {
-        "pk": 96,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "ArcRest",
-            "themes": [
-                3
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "http://marinecadastre.gov/",
-            "lookup_table": [],
-            "vector_outline_color": null,
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/OffshoreWindTechnologyDepthZones.zip",
-            "metadata": "",
-            "opacity": 0.8,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                130,
-                129
-            ],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "offshore-wind-energy-depth-zones",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "MarineCadastre.gov",
-            "data_notes": "",
-            "name": "Offshore Wind Energy Depth Zones",
-            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
-            "arcgis_layers": "4",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 70,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -4488,6 +4354,7 @@
             "attribute_fields": [
                 72
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "midwater-trawls",
@@ -4512,6 +4379,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -4537,6 +4406,7 @@
             "attribute_fields": [
                 83
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "humpback-whales-winter",
@@ -4561,6 +4431,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -4586,6 +4458,7 @@
             "attribute_fields": [
                 86
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "right-whales-summer",
@@ -4610,6 +4483,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -4635,6 +4510,7 @@
             "attribute_fields": [
                 85
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "right-whales-spring",
@@ -4655,10 +4531,110 @@
         }
     },
     {
+        "pk": 118,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                12
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#C4F0CC",
+            "attribute_event": "mouseover",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "alt-ml-depth-option",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLDepth.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Alt ML Depth Option",
+            "url": "/media/data_manager/geojson/IAHankMLDepth.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 110,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "Name",
+            "themes": [
+                10
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#61FC14",
+            "attribute_event": "mouseover",
+            "description": "",
+            "attribute_fields": [
+                146
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "coral-zones-observed",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_DiscreteCoralZonesObserved.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Coral Zones Observed",
+            "url": "/media/data_manager/geojson/DiscreteCoralZonesObserved.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 69,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -4684,6 +4660,7 @@
             "attribute_fields": [
                 71
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "long-lines",
@@ -4708,6 +4685,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -4731,6 +4710,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "These areas primarily include tax parcels that overlap port facility points extracted from a database maintained by the US Army Corps of Engineers Navigation Data Center. Public terminal boundaries in Virginia and Baltimore were received directly from those respective port authorities. All areas in the vicinity of Philadelphia were incorporated directly from Philly Freight Finder. Information on ownership and commodities is also included.",
             "slug_name": "port-facilities-areas",
@@ -4756,6 +4736,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -4782,6 +4764,7 @@
                 159,
                 155
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "port-commodity",
@@ -4802,100 +4785,12 @@
         }
     },
     {
-        "pk": 119,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                12
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#C5F7E5",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "alt-ml-straight-option",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLStraight.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Alt ML Straight Option",
-            "url": "/media/data_manager/geojson/IAHankMLStraight.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
-        "pk": 107,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                9
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": true,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.0,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "canyon-labels",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Canyon Labels",
-            "url": "/media/data_manager/geojson/MajorCanyons.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 64,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -4926,6 +4821,7 @@
             "attribute_fields": [
                 29
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Various shipping zones delineating the activities of and regulations for marine vessel traffic.  Traffic lanes define specific traffic flow, while traffic separation zones assist opposing streams of marine traffic.  Precautionary areas represent areas where ships must navigate with caution, and shipping safety fairways designate where artificial structures are prohibited.  ",
             "slug_name": "routing-measures",
@@ -4948,6 +4844,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -4977,6 +4875,7 @@
                 99,
                 59
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "These boundaries were created for BOEM administrative purposes only, such as delineating BOEM planning areas or determining shared state revenue sharing within the 3 nautical mile zone seaward of the SLA boundary, known as the Revenue Sharing Boundary. They were created using the equidistant principle used to divide offshore areas between countries as defined within the UNCLOS. They are not meant to depict areas offshore as pertaining to or controlled by any particular state.",
             "slug_name": "ocs-lease-blocks",
@@ -4999,6 +4898,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -5022,6 +4923,7 @@
             "attribute_event": "click",
             "description": "The revenue sharing boundary provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "The revenue sharing boundary was established under Section 8(g) of the Outer Continental Shelf Lands Act.  It provides for eligible states to claim a percentage of the share of oil, gas, or wind energy revenues when a federal lease is within three miles of the Submerged Lands Act (SLA) boundary.",
             "slug_name": "limit-of-ocsla-8g-zone",
@@ -5046,6 +4948,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5069,6 +4973,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Principal Ports are politically defined by port limits or US Army Corps of Engineers (USACE) projects. These data exclude non-USACE projects that are not authorized for publication. The determination for the published Principal Ports is based upon the total tonnage for the port for the particular year; therefore the top 150 list can vary from year to year. The Principal Port file contains USACE port codes, names, and commodity tonnage summaries (total tons, domestic, foreign, imports and exports). Original source file compiled in 2010, verified in 2012.",
             "slug_name": "principal-ports",
@@ -5091,6 +4996,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 11
             ],
@@ -5114,6 +5021,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "200-meters",
@@ -5132,47 +5040,48 @@
         }
     },
     {
-        "pk": 106,
+        "pk": 119,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "",
             "themes": [
-                8
+                12
             ],
             "compress_display": false,
             "map_tiles": "",
             "legend_subtitle": "",
-            "vector_outline_opacity": 0.5,
+            "vector_outline_opacity": 0.8,
             "is_annotated": false,
             "bookmark": "",
             "vector_graphic": "",
             "kml": "",
             "source": "",
             "lookup_table": [],
-            "vector_outline_color": "#2C2525",
+            "vector_outline_color": "#727371",
             "utfurl": "",
             "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/NorthAtlanticRightWhales_SMA.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/SMA_all_po.html",
+            "data_download": "",
+            "metadata": "",
             "opacity": 0.5,
-            "vector_color": "#21BFEC",
-            "attribute_event": "click",
+            "vector_color": "#C5F7E5",
+            "attribute_event": "mouseover",
             "description": "",
-            "attribute_fields": [
-                145
-            ],
+            "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
-            "data_overview": "These data represent Seasonal Management Area locations where regulations implement speed restrictions in shipping areas at certain times of the year along the coast of the U.S. Atlantic seaboard. The purpose of the regulations is to reduce the likelihood of deaths and serious injuries to endangered North Atlantic right whales that result from collisions with ships as designated by 73 FR 60173, October 10, 2008, Rules and Regulations.",
-            "slug_name": "n-atlantic-right-whale-smas",
+            "data_overview": "",
+            "slug_name": "alt-ml-straight-option",
             "is_sublayer": false,
             "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/NorthAtlanticRightWhale_SMA/legend.png",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankMLStraight.png",
             "shareable_url": true,
-            "vector_fill": 0.5,
+            "vector_fill": 0.8,
             "data_source": "",
             "data_notes": "",
-            "name": "N. Atlantic Right Whale SMAs",
-            "url": "/media/data_manager/geojson/NorthAtlanticRightWhale_SMA.json",
+            "name": "Alt ML Straight Option",
+            "url": "/media/data_manager/geojson/IAHankMLStraight.json",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
@@ -5183,6 +5092,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5200,7 +5111,7 @@
             "utfurl": "/media/data_manager/utfgrid/channels/${z}/${x}/${y}.json",
             "thumbnail": "",
             "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/MaintainedChannels.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/NorthAtlanticMaintainedChannelsMetadata.docx",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/pdf/NorthAtlanticMaintainedChannelsMetadata.pdf",
             "opacity": 0.5,
             "vector_color": "",
             "attribute_event": "click",
@@ -5209,6 +5120,7 @@
                 153,
                 154
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Maintained channels are areas designated as navigable channels, maintained by the US Army Corps of Engineers.  In the MARCO Portal, these data are displayed in three depth classes:  0-35', 35-45', and >45'.  These data were derived from NOAA Electronic Navigation Charts (ENC) and translated and stored in a geodatabase by NOAA Coastal Services Center for the purposes of regional ocean planning. ",
             "slug_name": "maintained-channels",
@@ -5227,10 +5139,62 @@
         }
     },
     {
+        "pk": 106,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": null,
+            "mouseover_field": null,
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.5,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nmfs.noaa.gov/pr/shipstrike/",
+            "lookup_table": [],
+            "vector_outline_color": "#2C2525",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/NorthAtlanticRightWhales_SMA.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/SMA_all_po.html",
+            "opacity": 0.5,
+            "vector_color": "#21BFEC",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                145
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "These data represent Seasonal Management Area locations where regulations implement speed restrictions in shipping areas at certain times of the year along the coast of the U.S. Atlantic seaboard. The purpose of the regulations is to reduce the likelihood of deaths and serious injuries to endangered North Atlantic right whales that result from collisions with ships as designated by 73 FR 60173, October 10, 2008, Rules and Regulations.",
+            "slug_name": "n-atlantic-right-whale-smas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/NorthAtlanticRightWhale_SMA/legend.png",
+            "shareable_url": true,
+            "vector_fill": 0.5,
+            "data_source": "",
+            "data_notes": "",
+            "name": "N. Atlantic Right Whale SMAs",
+            "url": "/media/data_manager/geojson/NorthAtlanticRightWhale_SMA.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
         "pk": 128,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5254,6 +5218,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Structures intended to assist a navigator to determine position or safe course, or to warn of dangers or obstructions to navigation. This dataset includes lights, signals, buoys, day beacons, and other aids to navigation.  These data are intended for coastal and ocean use planning. Not for navigation.  The aids to navigation database is maintained by the US Coast Guard and is the basis from which NOAA Coastal Services Center created a geospatial database for display on MarineCadastre.gov. ",
             "slug_name": "aids-to-navigation",
@@ -5276,6 +5241,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 11
             ],
@@ -5299,6 +5266,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "400-meters",
@@ -5321,6 +5289,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5332,7 +5302,7 @@
             "bookmark": "",
             "vector_graphic": "",
             "kml": "",
-            "source": "",
+            "source": "http://www.navigationdatacenter.us/ports/ports.asp",
             "lookup_table": [],
             "vector_outline_color": "",
             "utfurl": "",
@@ -5344,6 +5314,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "This is a subset of the Port Facility database maintained by the US Army Corps of Engineers Navigation Data Center. This database contains all facility types that may be reported as the origin or destination of commercial waterborne vessel moves. Only those facilities relevant to the four major Mid-Atlantic ports of Virginia, Baltimore, Philadelphia and New York/New Jersey are included here. Information on ownership and commodities is also included.",
             "slug_name": "port-facilities-points",
@@ -5365,55 +5336,12 @@
         }
     },
     {
-        "pk": 117,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "Vector",
-            "themes": [
-                12
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": 0.8,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "#727371",
-            "utfurl": "",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "#D5F9C2",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [],
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "alt-baltimore-option",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankBaltimore.png",
-            "shareable_url": true,
-            "vector_fill": 0.8,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Alt Baltimore Option",
-            "url": "/media/data_manager/geojson/IAHankBaltimore.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
         "pk": 102,
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5437,6 +5365,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "passenger-vessels",
@@ -5461,6 +5390,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5490,6 +5421,7 @@
                 144,
                 143
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "aids-to-navigation-orig",
@@ -5512,6 +5444,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -5537,6 +5471,7 @@
             "attribute_fields": [
                 75
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "pots-traps",
@@ -5561,6 +5496,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5599,6 +5536,7 @@
                 118,
                 119
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Locations and flow attribute of discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments, and industries in the coastal drainage basin. Only offshore locations are included; inland source facilities were excluded. EPA flow data marked by facility are attributed to the federal and state offshore point data.",
             "slug_name": "offshore-discharge-flow",
@@ -5621,6 +5559,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -5644,6 +5584,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "data-under-development",
@@ -5666,6 +5607,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -5689,6 +5632,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "canyons-test",
@@ -5711,6 +5655,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5737,6 +5683,7 @@
                 156,
                 160
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "port-ownership-points",
@@ -5761,6 +5708,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -5787,6 +5736,7 @@
                 157,
                 161
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "port-commodity-points",
@@ -5811,6 +5761,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "",
             "themes": [
                 12
             ],
@@ -5831,9 +5783,10 @@
             "metadata": "",
             "opacity": 0.5,
             "vector_color": "#D5CEF0",
-            "attribute_event": "click",
+            "attribute_event": "mouseover",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "alt-norfolk-option",
@@ -5856,6 +5809,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -5887,6 +5842,7 @@
                 8,
                 25
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Benthic habitats are based on Ecological Marine Units (EMUs), which represent the three-way combination of depth, sediment grain size and seabed forms based on the ecological thresholds revealed by the organism relationships. Benthic habitats are combinations of EMUs considered with their species assemblages. Thresholds were created by classifying grab samples into organism groups based on similarities in the composition and abundance of the benthic species using hierarchical cluster analysis. To perform this analysis, each grab sample was classified to an organism group, then overlaid on standardized base maps of depth, sediment grain size and seabed forms, and attributed with the information taken from the classified data. Regression trees were built individually for each physical variable to identify critical thresholds that separated sets of organism groups from each other. Regression trees were also built using all variables collectively to identify which variables were driving the organism differences. Each analysis was performed separately by ecological subregion after data exploration revealed that the relationships between genera and physical factors differed markedly among subregions.",
             "slug_name": "benthic-habitats-south",
@@ -5909,6 +5865,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 4
             ],
@@ -5934,6 +5892,7 @@
             "attribute_fields": [
                 70
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "gill-nets",
@@ -5958,6 +5917,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 1
             ],
@@ -5981,6 +5942,7 @@
             "attribute_event": "click",
             "description": "",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "outer-continental-shelf-lease-blocks",
@@ -6003,6 +5965,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "XYZ",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 2
             ],
@@ -6028,6 +5992,7 @@
             "attribute_fields": [
                 88
             ],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "",
             "slug_name": "sei-whales-fall",
@@ -6052,6 +6017,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "placeholder",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -6075,6 +6042,7 @@
             "attribute_event": "click",
             "description": "This data set is derived from archived 2009 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  This data set is derived from archived 2009 AIS data and is intended to be used by the ocean planning community to better understand vessel traffic patterns.\r\n\r\nThe AIS Vessel Trackline Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The density grid was created using tracklines that were generated from a 2009 AIS Database using a custom built trackline tool. Vessel tracklines were created separately for each month using the file geodatabases for UTM zones 18 and 19. A unique density grid was created for each combination of month and UTM zone. These grids were then summed together and clipped to the Mid-Atlantic region. To simplify display in on-line data viewers, the summed floating point grid was reclassified into 7 discrete classes using increments of 1/2 standard deviations from the mean density value from 1/2 to 3 standard deviations.",
             "slug_name": "ais-shipping-data",
@@ -6097,6 +6065,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "radio",
+            "disabled_message": null,
+            "mouseover_field": null,
             "themes": [
                 8
             ],
@@ -6120,6 +6090,7 @@
             "attribute_event": "click",
             "description": "This data set is derived from archived 2011 Automatic Identification System (AIS) data, and the Density grid depicts the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters. The data set is intended to be used by the ocean planning community to better understand vessel traffic patterns.",
             "attribute_fields": [],
+            "is_disabled": false,
             "learn_more": "",
             "data_overview": "Automatic Identification System (AIS) data are collected by the U.S. Coast Guard using automated two-way radio transmissions to track real-time vessel information such as ship identity, purpose, course, and speed, primarily in coastal U.S. waters.  These data layers are derived from archived 2011 AIS data and are intended to be used by the ocean planning community to better understand vessel traffic patterns. The density grids shown here depict the concentration of a majority of commercial shipping traffic within U.S. coastal and offshore waters, though it should be noted that certain vessel types (i.e., fishing, military) are underrepresented. A track line was generated for each unique vessel from a \u201craw\u201d AIS point database and these track lines were then used to create density grids.",
             "slug_name": "ais-shipping-data-2011",
@@ -6140,6 +6111,656 @@
                 98,
                 99,
                 102
+            ]
+        }
+    },
+    {
+        "pk": 107,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "Zoom In to enable Canyon Labels",
+            "mouseover_field": null,
+            "themes": [
+                9
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": true,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.0,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "canyon-labels",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Canyon Labels",
+            "url": "/media/data_manager/geojson/MajorCanyonsLabels.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 130,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": null,
+            "themes": [
+                9
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#8100AF",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#E6BDFF",
+            "attribute_event": "mouseover",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "scup-closure-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_ScupFishClosureAreas.png",
+            "shareable_url": false,
+            "vector_fill": 0.5,
+            "data_source": "",
+            "data_notes": "",
+            "name": "SCUP Closure Areas",
+            "url": "/media/data_manager/geojson/ScupClosureAreas.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 132,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "extent-of-atlantic-geologic-plays",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/AtlGeologicPlays/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Extent of Atlantic Geologic Plays",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/AtlGeologicPlays/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                134
+            ]
+        }
+    },
+    {
+        "pk": 117,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                12
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": 0.8,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "#727371",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "#D5F9C2",
+            "attribute_event": "mouseover",
+            "description": "",
+            "attribute_fields": [
+                162
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "alt-baltimore-option",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/Corals/legend_IAHankBaltimore.png",
+            "shareable_url": true,
+            "vector_fill": 0.8,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Alt Baltimore Option",
+            "url": "/media/data_manager/geojson/IAHankBaltimore.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 133,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "geological-geophysical-peis-area-of-interest",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/GGPEISAOI/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Geological & Geophysical PEIS Area of Interest",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/GGPEISAOI/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                134
+            ]
+        }
+    },
+    {
+        "pk": 134,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "checkbox",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "oil-gas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Oil & Gas",
+            "url": "",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                131,
+                132,
+                133
+            ]
+        }
+    },
+    {
+        "pk": 59,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "disabled_message": "Data temporarily unavailable due to federal government shutdown",
+            "mouseover_field": "",
+            "themes": [
+                5
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "/visualize/#location%5Bx%5D=-75.64907199740345&location%5By%5D=37.86135171984251&location%5Bzoom%5D=8&activeLayers%5B0%5D%5Bid%5D=59&activeLayers%5B0%5D%5Bopacity%5D=0.5&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=5&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/24",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "Areas with naval or military presence as outlined by the Code of Federal Regulations (CFR) and the Raster Navigational Charts (RNC). Caution should be used if navigating near these areas.",
+            "attribute_fields": [],
+            "is_disabled": true,
+            "learn_more": "",
+            "data_overview": "Areas with naval or military presence as outlined by the Code of Federal Regulations (CFR) and the Raster Navigational Charts (RNC). Caution should be used if navigating near these areas.",
+            "slug_name": "danger-zones-restricted-areas",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Security/DangerZonesRestrictedAreas/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "Department of Defense, U.S. Navy",
+            "data_notes": "",
+            "name": "Danger Zones & Restricted Areas",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
+            "arcgis_layers": "8",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 84,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "disabled_message": "Data temporarily unavailable due to federal government shutdown",
+            "mouseover_field": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "/visualize/#x=-72.38&y=38.59&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=84&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=3&tab=data&legends=true&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/28",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                131
+            ],
+            "is_disabled": true,
+            "learn_more": "",
+            "data_overview": "This data set shows the results of a Department of Defense assessment of the compatibility of offshore wind development with military assets and activities. These data should not be used to infer compatibility or conflict between military assets or activities with any use other than offshore wind. The data set contains 4 categories of OCS lease blocks: No Restrictions - No significant conflicts were identified. Site Specific Stipulations - Potential conflicts exist and may require site specific mitigation measures. Recommended Wind Exclusion - Significant conflicts were identified. Not Assessed - DoD only assesses specific lease blocks as requested by BOEM and the appropriate coastal state task force.",
+            "slug_name": "offshore-wind-compatibility-assessments",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/DoDWindStipulationAreas/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Offshore Wind Compatibility Assessments",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
+            "arcgis_layers": "5",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 96,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "disabled_message": "Data temporarily unavailable due to federal government shutdown",
+            "mouseover_field": "",
+            "themes": [
+                3
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://marinecadastre.gov/",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "ftp://ftp.csc.noaa.gov/pub/MSP/OffshoreWindTechnologyDepthZones.zip",
+            "metadata": "",
+            "opacity": 0.8,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                130,
+                129
+            ],
+            "is_disabled": true,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "offshore-wind-energy-depth-zones",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov",
+            "data_notes": "",
+            "name": "Offshore Wind Energy Depth Zones",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/OceanEnergy/MapServer/export",
+            "arcgis_layers": "4",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 89,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "ArcRest",
+            "disabled_message": "Data temporarily unavailable due to federal government shutdown",
+            "mouseover_field": "",
+            "themes": [
+                5
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "/visualize/#x=-73.40&y=38.89&z=7&dls%5B%5D=true&dls%5B%5D=0.5&dls%5B%5D=89&basemap=ESRI+Ocean&themes%5Bids%5D%5B%5D=5&tab=data&legends=false&layers=true",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.marinecadastre.gov",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/UnexplodedOrdnances.zip",
+            "metadata": "http://csc.noaa.gov/htdata/CMSP/Metadata/UnexplodedOrdnances.htm",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                121,
+                132
+            ],
+            "is_disabled": true,
+            "learn_more": "",
+            "data_overview": "Known areas of explosive weapons (e.g., bombs, mines, and shells) that did not explode when they were employed and may still pose a risk of detonation years after being used or discarded.",
+            "slug_name": "unexploded-ordnances",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/UnexplodedOrdnances/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "MarineCadastre.gov, NOAA and BOEM",
+            "data_notes": "This is NOT a complete collection of unexploded ordnances on the seafloor, nor are the locations to be considered exact. The presence and locations of the unexploded ordnances have been derived from graphical representations recorded on NOAA Raster Navigation Charts. These data are intended for coastal and ocean planning, not for navigation.",
+            "name": "Unexploded Ordnances",
+            "url": "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MarineCadastre/NavigationAndMarineTransportation/MapServer/export",
+            "arcgis_layers": "9",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 31,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                2
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "/visualize/#location%5Bx%5D=-73.11589942350956&location%5By%5D=39.31256793719878&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=31&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=2&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Geophysical/Major_Canyons_files/Major_Canyons.kmz",
+            "source": "http://www.nature.org/ourinitiatives/habitats/oceanscoasts/howwework/index.htm",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Marine_Life/Major_Canyons.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/canyons.html",
+            "opacity": 1.0,
+            "vector_color": "#A90303",
+            "attribute_event": "click",
+            "description": "This data layer represents major canyons of the Mid-Atlantic Coast, and the approximate boundaries were digitized on-screen over a raster bathymetry layer.",
+            "attribute_fields": [
+                2,
+                11,
+                12
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "This data layer represents major canyons of the Mid-Atlantic Coast. Approximate boundaries were digitized on-screen over a raster bathymetry layer. Canyon names come from NOAA charts and other various sources. These boundaries were created primarily for cartographic purposes and do not represent ecological boundaries.",
+            "slug_name": "submarine-canyons",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/MajorCanyons/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "The Nature Conservancy",
+            "data_notes": "These data were primarily created to be used for cartographic purposes. There are many submarine canyons in addition to those included here \u2013 this layer was created in an attempt to show the \u201cmajor\u201d canyons on maps. ",
+            "name": "Submarine Canyons",
+            "url": "/media/data_manager/geojson/MajorCanyons.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 20,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "Vector",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                4
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "/visualize/#location%5Bx%5D=-74.2584775485093&location%5By%5D=39.035768529899336&location%5Bzoom%5D=7&activeLayers%5B0%5D%5Bid%5D=20&activeLayers%5B0%5D%5Bopacity%5D=1&activeLayers%5B0%5D%5BisVisible%5D=true&basemap%5Bname%5D=ESRI+Ocean&openThemes%5Bids%5D%5B%5D=4&activeTab%5Btab%5D=data&legends%5Bvisible%5D=false",
+            "vector_graphic": "",
+            "kml": "https://d24dyyc6o1jlsa.cloudfront.net/Biological/Artificial_Reefs_Files/Artificial_Reefs.kmz",
+            "source": "http://www.nature.org/ourinitiatives/habitats/oceanscoasts/howwework/index.htm",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Fishing/artificial_reefs.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/html/artificial_reefs.htm",
+            "opacity": 1.0,
+            "vector_color": "#0070FF",
+            "attribute_event": "click",
+            "description": "This dataset shows general polygon locations of Mid-Atlantic artificial reefs. ",
+            "attribute_fields": [
+                23
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "These are polygon locations of Mid-Atlantic artificial reefs. These data usually represent general polygons within which artificial reef material has been deposited--the entirety of each polygon is not necessarily all artificial reef. ",
+            "slug_name": "artificial-reefs",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Conservation/ArtificialReefs/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "Compiled by TNC from various sources",
+            "data_notes": "These data were compiled from various state sources. In Delaware, digital data were received directly from a state agency. The Nature Conservancy compiled reef data from numerous sources in Maryland, including state agencies. For the remaining states, GIS data was created from lat/long coordinates of reef corners found on public web sites (i.e., New York DEC, New Jersey DEP, Virginia MRC).",
+            "name": "Artificial Reefs",
+            "url": "/media/data_manager/geojson/ArtificialReefsNoDecimals.json",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 131,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "boem-atlantic-planning-areas",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMAtlanticPlanningAreas/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "BOEM Atlantic Planning Areas",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Energy/BOEMAtlanticPlanningAreas/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                134
             ]
         }
     },
@@ -7501,6 +8122,16 @@
             "display_name": "",
             "precision": null,
             "order": 2
+        }
+    },
+    {
+        "pk": 162,
+        "model": "data_manager.attributeinfo",
+        "fields": {
+            "field_name": "Name",
+            "display_name": "",
+            "precision": null,
+            "order": 1
         }
     },
     {
