@@ -2422,8 +2422,8 @@
         "model": "data_manager.layer",
         "fields": {
             "layer_type": "Vector",
-            "disabled_message": null,
-            "mouseover_field": null,
+            "disabled_message": "",
+            "mouseover_field": "",
             "themes": [
                 9
             ],
@@ -2444,7 +2444,7 @@
             "metadata": "",
             "opacity": 0.5,
             "vector_color": "#E7C3FE",
-            "attribute_event": "click",
+            "attribute_event": "mouseover",
             "description": "",
             "attribute_fields": [],
             "is_disabled": false,
