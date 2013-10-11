@@ -198,7 +198,7 @@ app.init = function () {
     map.addControl(app.map.UTFControl);    
     
     app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
-        var clickAttributes = [];
+        var clickAttributes = {};
         
         for (var idx in infoLookup) {
             $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
@@ -297,8 +297,10 @@ app.init = function () {
                 } 
               }
             });
+            
             $.extend(app.map.clickOutput.attributes, clickAttributes);
             app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+            
         }
         app.viewModel.updateMarker(lonlat);
         //app.marker.display(true); 
@@ -340,7 +342,7 @@ app.init = function () {
             
         }
         
-    });
+    });//end featureclick event registration
     
     //mouseover events
     app.map.events.register("featureover", null, function(e, test) {
@@ -561,7 +563,7 @@ app.addArcRestLayerToMap = function(layer) {
             },
             //the handler for the return click data
             resultarrived : function(responseText) {
-                var clickAttributes = [],
+                var clickAttributes = {},
                     jsonFormat = new OpenLayers.Format.JSON(),
                     returnJSON = jsonFormat.read(responseText.text);
                     

@@ -1042,7 +1042,7 @@ function viewModel() {
     self.minimizeLayerSwitcher = function() {
         if ( !self.minimized ) {
             $('#mafmc-layer-switcher').animate( {height: '55px'}, 400 );
-            $('#mafmc-legend').hide();
+            $('#mafmc-tab-content').hide();
             $('#mafmc-tabs').hide();
             $('#mafmc-active-content').hide();
             $('#mafmc-layer-list').hide();
@@ -1050,10 +1050,10 @@ function viewModel() {
         } else {
             $('#mafmc-layer-switcher').animate( {height: '350px'}, 400 );
             setTimeout( function() {
-                $('#mafmc-legend').show();
                 $('#mafmc-tabs').show();
                 $('#mafmc-active-content').show();
                 $('#mafmc-layer-list').show();
+                $('#mafmc-tab-content').show();
                 // $('#myTabContent').show();
             }, 200);
             setTimeout( function() {
