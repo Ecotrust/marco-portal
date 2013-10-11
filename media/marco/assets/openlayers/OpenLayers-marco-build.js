@@ -26145,9 +26145,9 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
     initImage: function() {
         this.events.triggerEvent(this._loadEvent);
         var img = this.getImage();
-        if (this.url && img.getAttribute("src") == this.url) {
-            this.onImageLoad();
-        } else {
+        // if (this.url && img.getAttribute("src") == this.url) {
+        //     this.onImageLoad();
+        // } else {
             // We need to start with a blank image, to make sure that no
             // loading image placeholder and no old image is displayed when we
             // set the display style to "" in onImageLoad, which is called
@@ -26177,7 +26177,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
                 }
                 img.src = this.blankImageUrl;
             }
-        }
+        // }
     },
     
     /**
