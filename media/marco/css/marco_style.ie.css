@@ -87,6 +87,10 @@ div.olControlZoom a {
 	margin-top: 0px;
 }
 
+.olControlAttribution {
+    font-size: 12px !important;
+}
+
 #overview-overlay {
 	padding: 0px 10px 10px;
 }

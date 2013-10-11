@@ -653,7 +653,7 @@ app.addArcRestLayerToMap = function(layer) {
 };
 
 app.addVectorLayerToMap = function(layer) {
-    if (layer.annotated) {
+    if (layer.annotated) { // such as the canyon labels in the mafmc project
         var styleMap = new OpenLayers.StyleMap( {
             label: "${NAME}",
             fontColor: "#333",

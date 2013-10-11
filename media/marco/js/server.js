@@ -56,7 +56,11 @@ app.viewModel.loadLayers = function(data) {
             $.each(themeFixture.layers, function(j, layer_id) {
                 var layer = self.layerIndex[layer_id];
                 layer.themes.push(theme);
-                theme.layers.push(layer);
+                if (layer.name === 'Canyon Labels' && $.browser.msie && $.browser.version < 9.0) {
+                    //skip it
+                } else {
+                    theme.layers.push(layer);
+                }
             });
             //sort by name
             theme.layers.sort( function(a,b) { return a.name.toUpperCase().localeCompare(b.name.toUpperCase()); } );

@@ -172,6 +172,7 @@
 #map .olControlAttribution {
   bottom: 0px;
   left: 3px;
+  color: #555555 !important;
 }
 #map .olControlScaleBarNumbersBox {
     height: 14px;
