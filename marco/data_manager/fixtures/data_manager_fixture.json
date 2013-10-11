@@ -2576,60 +2576,6 @@
         }
     },
     {
-        "pk": 125,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "disabled_message": null,
-            "mouseover_field": null,
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "/media/data_manager/utfgrid/port_polygons/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                156,
-                159,
-                158
-            ],
-            "is_disabled": false,
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "port-ownership",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Ownership",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                129
-            ]
-        }
-    },
-    {
         "pk": 76,
         "model": "data_manager.layer",
         "fields": {
@@ -2733,6 +2679,60 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
+        }
+    },
+    {
+        "pk": 125,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/port_polygons/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                156,
+                159,
+                158
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "port-ownership",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTiles/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Ownership",
+            "url": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysOwnershipTilesNew/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                129
+            ]
         }
     },
     {
@@ -4726,61 +4726,8 @@
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": [
-                125,
-                123
-            ]
-        }
-    },
-    {
-        "pk": 123,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "disabled_message": null,
-            "mouseover_field": null,
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "/media/data_manager/utfgrid/port_polygons/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "",
-            "metadata": "",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                159,
-                155
-            ],
-            "is_disabled": false,
-            "learn_more": "",
-            "data_overview": "",
-            "slug_name": "port-commodity",
-            "is_sublayer": true,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Port Commodity",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/${z}/${x}/${y}.png",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": [
-                129
+                123,
+                125
             ]
         }
     },
@@ -5082,57 +5029,6 @@
             "data_notes": "",
             "name": "Alt ML Straight Option",
             "url": "/media/data_manager/geojson/IAHankMLStraight.json",
-            "arcgis_layers": "",
-            "legend_title": "",
-            "sublayers": []
-        }
-    },
-    {
-        "pk": 122,
-        "model": "data_manager.layer",
-        "fields": {
-            "layer_type": "XYZ",
-            "disabled_message": null,
-            "mouseover_field": null,
-            "themes": [
-                8
-            ],
-            "compress_display": false,
-            "map_tiles": "",
-            "legend_subtitle": "",
-            "vector_outline_opacity": null,
-            "is_annotated": false,
-            "bookmark": "",
-            "vector_graphic": "",
-            "kml": "",
-            "source": "",
-            "lookup_table": [],
-            "vector_outline_color": "",
-            "utfurl": "/media/data_manager/utfgrid/channels/${z}/${x}/${y}.json",
-            "thumbnail": "",
-            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/MaintainedChannels.zip",
-            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/pdf/NorthAtlanticMaintainedChannelsMetadata.pdf",
-            "opacity": 0.5,
-            "vector_color": "",
-            "attribute_event": "click",
-            "description": "",
-            "attribute_fields": [
-                153,
-                154
-            ],
-            "is_disabled": false,
-            "learn_more": "",
-            "data_overview": "Maintained channels are areas designated as navigable channels, maintained by the US Army Corps of Engineers.  In the MARCO Portal, these data are displayed in three depth classes:  0-35', 35-45', and >45'.  These data were derived from NOAA Electronic Navigation Charts (ENC) and translated and stored in a geodatabase by NOAA Coastal Services Center for the purposes of regional ocean planning. ",
-            "slug_name": "maintained-channels",
-            "is_sublayer": false,
-            "lookup_field": "",
-            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/legend.png",
-            "shareable_url": true,
-            "vector_fill": null,
-            "data_source": "",
-            "data_notes": "",
-            "name": "Maintained Channels",
-            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/${z}/${x}/${y}.png",
             "arcgis_layers": "",
             "legend_title": "",
             "sublayers": []
@@ -6761,6 +6657,110 @@
             "legend_title": "",
             "sublayers": [
                 134
+            ]
+        }
+    },
+    {
+        "pk": 122,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "http://www.nauticalcharts.noaa.gov/mcd/enc/",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/channels/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "https://s3.amazonaws.com/marco-public-2d/Zip_Files/Maritime/MaintainedChannels.zip",
+            "metadata": "https://s3.amazonaws.com/marco-public-2d/Metadata_files/pdf/NorthAtlanticMaintainedChannelsMetadata.pdf",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                153,
+                154
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "Maintained channels are areas designated as navigable channels, maintained by the US Army Corps of Engineers.  In the MARCO Portal, these data are displayed in three depth classes:  0-35', 35-45', and >45'.  These data were derived from NOAA Electronic Navigation Charts (ENC) and translated and stored in a geodatabase by NOAA Coastal Services Center for the purposes of regional ocean planning. ",
+            "slug_name": "maintained-channels",
+            "is_sublayer": false,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "NOAA ENCs",
+            "data_notes": "",
+            "name": "Maintained Channels",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/MaintainedChannels/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": []
+        }
+    },
+    {
+        "pk": 123,
+        "model": "data_manager.layer",
+        "fields": {
+            "layer_type": "XYZ",
+            "disabled_message": "",
+            "mouseover_field": "",
+            "themes": [
+                8
+            ],
+            "compress_display": false,
+            "map_tiles": "",
+            "legend_subtitle": "",
+            "vector_outline_opacity": null,
+            "is_annotated": false,
+            "bookmark": "",
+            "vector_graphic": "",
+            "kml": "",
+            "source": "",
+            "lookup_table": [],
+            "vector_outline_color": "",
+            "utfurl": "/media/data_manager/utfgrid/port_polygons/${z}/${x}/${y}.json",
+            "thumbnail": "",
+            "data_download": "",
+            "metadata": "",
+            "opacity": 0.5,
+            "vector_color": "",
+            "attribute_event": "click",
+            "description": "",
+            "attribute_fields": [
+                159,
+                155
+            ],
+            "is_disabled": false,
+            "learn_more": "",
+            "data_overview": "",
+            "slug_name": "port-commodity",
+            "is_sublayer": true,
+            "lookup_field": "",
+            "legend": "https://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTiles/legend.png",
+            "shareable_url": true,
+            "vector_fill": null,
+            "data_source": "",
+            "data_notes": "",
+            "name": "Port Commodity",
+            "url": "http://s3.amazonaws.com/marco-public-2d/Shipping/PortPolysCommodityTilesNew/${z}/${x}/${y}.png",
+            "arcgis_layers": "",
+            "legend_title": "",
+            "sublayers": [
+                129
             ]
         }
     },
@@ -8808,24 +8808,6 @@
         }
     },
     {
-        "pk": 13,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Data under development",
-            "archived": false,
-            "name": "Automatic Identification System (AIS) ship traffic",
-            "expected_date": "June 2013",
-            "notes": "",
-            "themes": [
-                8
-            ],
-            "source": "USCG & NOAA",
-            "contact": "The Nature Conservancy",
-            "contact_email": "",
-            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed. A preliminary AIS map layer has been added to the Portal as a placeholder; enhanced AIS map layers showing traffic patterns by vessel type and other attributes are under development by NOAA Coastal Services Center and others."
-        }
-    },
-    {
         "pk": 6,
         "model": "data_manager.dataneed",
         "fields": {
@@ -8952,21 +8934,21 @@
         }
     },
     {
-        "pk": 14,
+        "pk": 13,
         "model": "data_manager.dataneed",
         "fields": {
             "status": "Data under development",
-            "archived": false,
-            "name": "Port locations and attributes",
-            "expected_date": "Spring 2013",
-            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
+            "archived": true,
+            "name": "Automatic Identification System (AIS) ship traffic",
+            "expected_date": "June 2013",
+            "notes": "",
             "themes": [
                 8
             ],
-            "source": "ACOE; Individual ports",
+            "source": "USCG & NOAA",
             "contact": "The Nature Conservancy",
             "contact_email": "",
-            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
+            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed. A preliminary AIS map layer has been added to the Portal as a placeholder; enhanced AIS map layers showing traffic patterns by vessel type and other attributes are under development by NOAA Coastal Services Center and others."
         }
     },
     {
@@ -9039,6 +9021,24 @@
             "contact": "Center for Remote Sensing and Spatial Analysis, Rutgers University",
             "contact_email": "",
             "description": "Derived data products representing fishing effort by port and gear type."
+        }
+    },
+    {
+        "pk": 14,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Port locations and attributes",
+            "expected_date": "Spring 2013",
+            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
+            "themes": [
+                8
+            ],
+            "source": "ACOE; Individual ports",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
         }
     }
 ]
