@@ -254,6 +254,8 @@ function bookmarksModel(options) {
                         sharingGroups: bookmark[0].sharing_groups
                     });
                     self.bookmarksList.unshift(newBookmark);
+                    var bms = self.bookmarksList();
+                    self.bookmarksList(_.sortBy(bms, 'name'));
                     self.updateBookmarkScrollBar();
                 },
                 error: function(result) { 
@@ -262,6 +264,8 @@ function bookmarksModel(options) {
             });
         } else {
             self.bookmarksList.unshift(bookmark);
+            var bms = self.bookmarksList; 
+            self.bookmarksList(_.sortBy(bms, 'name'));
             // store the bookmarks locally
             self.storeBookmarks();
         }
@@ -345,7 +349,8 @@ function bookmarksModel(options) {
                         blist.push(bookmark);
                     }
                     if (blist.length > 0) {
-                        self.bookmarksList(blist);
+                        //self.bookmarksList(blist);
+                        self.bookmarksList(_.sortBy(blist, 'name'));
                         //self.storeBookmarks();
                     }
                 },

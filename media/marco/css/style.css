@@ -842,6 +842,7 @@ a.disabled-link:hover {
 #bookmark-popover {
   left: 550px;
   max-width: 400px !important;
+  min-width: 375px !important;
   z-index: 1030;
 }
 
