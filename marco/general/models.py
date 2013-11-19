@@ -4,6 +4,9 @@ from madrona.features.models import FeatureCollection
 from drawing.models import AOI, WindEnergySite
 from scenarios.models import Scenario
 
+from django.contrib.auth.models import User
+User._meta.ordering=["username"]
+
 @register
 class Folder(FeatureCollection):
     
