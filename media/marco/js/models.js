@@ -2090,7 +2090,9 @@ function viewModel() {
             attrs.push({'display': '', 'data': data['location']});
         } 
         if ('minimumDep' in data) {
-            attrs.push({'display': 'Minimum Depth', 'data': data['minimumDep'] + ' meters'});
+            var meters = data['minimumDep'],
+                feet =  new Number(meters * 3.28084).toPrecision(2);
+            attrs.push({'display': 'Minimum Depth', 'data': feet + ' feet'}); // + meters + ' meters)'});
         }
         return attrs;
     };
