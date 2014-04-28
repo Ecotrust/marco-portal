@@ -69,6 +69,7 @@ class AOI(PolygonFeature):
         from general.utils import format
         attributes = []
         attributes.append({'area': 'Area', 'data': '%s sq miles' %format(self.area_in_sq_miles, 1)})
+        attributes.append({'description': 'Description', 'data': self.description})
         return { 'event': 'click', 'attributes': attributes }
     
     @classmethod
