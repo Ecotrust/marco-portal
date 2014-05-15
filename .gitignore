@@ -79,3 +79,5 @@ media/marco/assets/openlayers/OpenLayers-marco-build-213.js
 media/wfs-test.html
 
 media/proxy.cgi
+
+marco/data_manager/fixtures/dataneeds.json
