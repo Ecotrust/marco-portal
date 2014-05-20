@@ -42,7 +42,7 @@
 		</ul>
         <div class="video-button">
             <h3>
-                <a href="http://vimeo.com/marcoportal" target="_blank"> Watch a Video <i class="icon-large icon-film" style="text-decoration: none"></i></a>
+                <a href="http://vimeo.com/marcoportal" target="_blank"> Watch Our Videos <i class="icon-large icon-film" style="text-decoration: none"></i></a>
             </h3>
         </div>
         <div class="row-fluid feature-story">
