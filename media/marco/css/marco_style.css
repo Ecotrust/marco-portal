@@ -1137,6 +1137,33 @@ body.borderless #map-wrapper {
 }
 
 
+.video-button a {
+    cursor: pointer;
+    /*text-decoration: none;*/
+}
+
+#video-modal {
+    float: none;
+    clear: both;
+    width: 50%;
+    left: 40%;
+    /*position: relative;*/
+    padding-bottom: 56.25px;
+    padding-top: 5px;
+    height: 0;
+}
+#video-modal .modal-body {
+    min-height: 400px;
+}
+#video-modal iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
 @media (max-width: 767px) {
 	.navbar .nav > li > a {
 		width: 70px;
