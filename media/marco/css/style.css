@@ -611,7 +611,7 @@ a.disabled-link:hover {
 
 #data-accordion .dropdown-menu {
   right: 26px;
-  max-height: 100px;
+  max-height: 115px;
   overflow-y: auto;
 }
 
