@@ -1275,7 +1275,13 @@ function viewModel() {
             var dataScrollpane = $('#data-accordion').data('jsp');
             if (dataScrollpane === undefined) {
                 $('#data-accordion').jScrollPane();
-            } else {               
+            } else {
+                if (app.mafmc) {
+                    var largishOpenThemes = _.reject(self.openThemes(), function(theme){ return theme.name === 'Discrete Zones'; });
+                    if (!largishOpenThemes.length) {
+                        dataScrollpane.scrollToY(0);
+                    }
+                }
                 dataScrollpane.reinitialise();
             }
             
