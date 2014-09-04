@@ -68,6 +68,11 @@ app.viewModel.loadLayers = function(data) {
             self.hiddenThemes.push(theme);
         }
     });
+
+    // move Advisor Proposed Boundaries from 1st postion to 3rd
+    var reorderedHiddenThemes = self.hiddenThemes();
+    reorderedHiddenThemes.splice(2, 0, reorderedHiddenThemes.splice(0, 1)[0]);
+    self.hiddenThemes(reorderedHiddenThemes);
     
 	app.typeAheadSource = (function () {
             var keys = [];
