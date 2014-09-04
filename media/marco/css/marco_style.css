@@ -972,7 +972,7 @@ img + h3 {
 	cursor: default;
 	pointer-events: none;
 	background: rgba(0,60,136,.2);
-	color: #BBB;
+	color: #BBB !important;
 }
 
 #map.zoomBox .olHandlerBoxZoomBox {
