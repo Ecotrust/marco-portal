@@ -110,18 +110,35 @@ app.init = function () {
 
     map.addControl(map.zoomBox);
 
+    map.minZoom = 5;
+    map.maxZoom = 12;
+
     // only allow onetime zooming with box
     map.events.register("zoomend", null, function () {
         if (map.zoomBox.active) {
             app.viewModel.deactivateZoomBox();
         }   
-        if( map.getZoom() < 5)
+        if (map.getZoom() == map.minZoom) {
+            $('.olControlZoomOut').addClass('disabled');
+        } else if (map.getZoom() == map.maxZoom) {
+            $('.olControlZoomIn').addClass('disabled');
+        } else {
+            var zoomIn = $('.olControlZoomIn');
+            if (zoomIn.hasClass('disabled')) {
+                zoomIn.removeClass('disabled');
+            }
+            var zoomOut = $('.olControlZoomOut');
+            if (zoomOut.hasClass('disabled')) {
+                zoomOut.removeClass('disabled');
+            }
+        }
+        if( map.getZoom() < map.minZoom)
         {
-            map.zoomTo(5);
+            map.zoomTo(map.minZoom);
         }  
-        if (map.getZoom() > 13)
+        if (map.getZoom() > map.maxZoom)
         {
-            map.zoomTo(13);
+            map.zoomTo(map.maxZoom);
         }
         app.viewModel.zoomLevel(map.getZoom());
         /*if ( app.viewModel.activeLayers().length ) {

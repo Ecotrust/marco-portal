@@ -968,6 +968,13 @@ img + h3 {
     width: 20px;
 }
 
+.olControlZoomIn.disabled, .olControlZoomOut.disabled{
+	cursor: default;
+	pointer-events: none;
+	background: rgba(0,60,136,.2);
+	color: #BBB;
+}
+
 #map.zoomBox .olHandlerBoxZoomBox {
 	border: 2px solid #2d8998;
 }
