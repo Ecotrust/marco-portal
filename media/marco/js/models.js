@@ -299,8 +299,8 @@ function layerModel(options, parent) {
     self.deactivateUtfGridLayer = function() {
         var layer = this;
         //NEED TO CHECK FOR PARENT LAYER HERE TOO...?
-        //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
-        app.map.UTFControl.layers.splice($.inArray(layer.utfgrid, app.map.UTFControl.layers), 1);
+        //the following removes this layers utfgrid from the UTFClickControl and prevents continued utf attribution on this layer
+        app.map.UTFClickControl.layers.splice($.inArray(layer.utfgrid, app.map.UTFClickControl.layers), 1);
         app.map.removeLayer(layer.utfgrid);
     };
 
@@ -408,7 +408,7 @@ function layerModel(options, parent) {
     self.activateUtfGridLayer = function() {
         var layer = this;
         
-        app.map.UTFControl.layers.unshift(layer.utfgrid);
+        app.map.UTFClickControl.layers.unshift(layer.utfgrid);
     };
 
     // bound to click handler for layer visibility switching in Active panel
@@ -432,8 +432,8 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, true);
         
         //add utfgrid if applicable
-        if (layer.utfgrid && app.map.UTFControl.layers.indexOf(layer.utfgrid) === -1) {
-            app.map.UTFControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
+        if (layer.utfgrid && app.map.UTFClickControl.layers.indexOf(layer.utfgrid) === -1) {
+            app.map.UTFClickControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
         }
     };
     
@@ -463,7 +463,7 @@ function layerModel(options, parent) {
         //remove related utfgrid layer
         if (layer.utfgrid) {
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
-            app.map.UTFControl.layers.splice($.inArray(this.utfgrid, app.map.UTFControl.layers), 1);
+            app.map.UTFClickControl.layers.splice($.inArray(this.utfgrid, app.map.UTFClickControl.layers), 1);
         }
     };
 
@@ -1275,7 +1275,7 @@ function viewModel() {
             var dataScrollpane = $('#data-accordion').data('jsp');
             if (dataScrollpane === undefined) {
                 $('#data-accordion').jScrollPane();
-            } else {
+            } else {               
                 dataScrollpane.reinitialise();
             }
             

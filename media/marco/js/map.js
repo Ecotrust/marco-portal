@@ -185,8 +185,8 @@ app.init = function () {
     //app.map.clickOutput = { time: 0, attributes: [] };
     app.map.clickOutput = { time: 0, attributes: {} };        
 
-    //UTF Attribution
-    app.map.UTFControl = new OpenLayers.Control.UTFGrid({
+    //UTF Click Attribution
+    app.map.UTFClickControl = new OpenLayers.Control.UTFGrid({
         //attributes: layer.attributes,
         layers: [],
         //events: {fallThrough: true},
@@ -195,8 +195,40 @@ app.init = function () {
             app.map.utfGridClickHandling(infoLookup, lonlat, xy);
         }
     });
-    map.addControl(app.map.UTFControl);    
+    map.addControl(app.map.UTFClickControl);    
+
+    /*** UTF MOUSE OVER EVENTS NOT YET FUNCTIONING ***/
+    //UTF Move Attribution
+    app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
+        //attributes: layer.attributes,
+        layers: [],
+        //events: {fallThrough: true},
+        handlerMode: 'move',
+        callback: function(infoLookup, lonlat, xy) {   
+            app.map.utfGridClickHandling(infoLookup, lonlat, xy);
+        }
+    });
+    map.addControl(app.map.UTFMoveControl);   
+
+    var utfPopup = document.getElementById("utf-popup");
+    app.map.utfGridMoveHandling = function(infoLookup, lonlat, pixel) {
+        for (var idx in infoLookup) {
+            $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
+                if (potential_layer.type !== 'Vector' && potential_layer.utfurl && potential_layer.attributeEvent === 'mouseover') {
+                    var attribute = potential_layer.attributes[0],
+                        info = infoLookup[idx];
+                    //debugger;
+                    if (info && info.data) { 
+                        utfPopup.innerHTML = "<div>" + info.data + "</div>";
+                        utfPopup.style.left = (pixel.x + 15) + "px";
+                        utfPopup.style.top = (pixel.y + 15) + "px";
+                    }
+                }
+            });
+        }
+    };
     
+    // UTF Click Event Handler
     app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
         var clickAttributes = {};
         
@@ -307,6 +339,7 @@ app.init = function () {
         
     }; //end utfGridClickHandling
       
+    // vector click events
     app.map.events.register("featureclick", null, function(e, test) {
         var layer = e.feature.layer.layerModel || e.feature.layer.scenarioModel;
         if (layer) {
@@ -350,23 +383,8 @@ app.init = function () {
             layerModel = e.feature.layer.layerModel;
 
         if (layerModel.attributeEvent === 'mouseover') {
-                if (app.map.popups.length) {
-
-                    if ( feature.layer.getZIndex() >= app.map.currentPopupFeature.layer.getZIndex() ) {
-                        app.map.currentPopupFeature.popup.hide();
-                        app.map.createPopup(feature);
-                        app.map.currentPopupFeature = feature;
-                    } else {
-                        app.map.createPopup(feature);
-                        feature.popup.hide();
-                    }
-
-                } else {
-                    app.map.createPopup(feature);
-                    app.map.currentPopupFeature = feature;
-                }
-        }
-        
+            app.map.activatePopup(feature);
+        }        
     });
 
     //mouseout events
@@ -375,16 +393,37 @@ app.init = function () {
             layerModel = e.feature.layer.layerModel;
 
         if (layerModel.attributeEvent === 'mouseover') {
-            //app.map.destroyPopup(feature);
-            app.map.removePopup(feature.popup);
-            if (app.map.popups.length && !app.map.anyVisiblePopups()) {
-                var hiddenPopup = app.map.popups[app.map.popups.length-1];
-                hiddenPopup.show();
-                app.map.currentPopupFeature = hiddenPopup.feature;
-            }
-        }
-        
+            app.map.deactivatePopup(feature);
+        }        
     });
+
+    app.map.activatePopup = function(feature) {
+        if (app.map.popups.length) {
+
+            if ( feature.layer.getZIndex() >= app.map.currentPopupFeature.layer.getZIndex() ) {
+                app.map.currentPopupFeature.popup.hide();
+                app.map.createPopup(feature);
+                app.map.currentPopupFeature = feature;
+            } else {
+                app.map.createPopup(feature);
+                feature.popup.hide();
+            }
+
+        } else {
+            app.map.createPopup(feature);
+            app.map.currentPopupFeature = feature;
+        }
+    };
+
+    app.map.deactivatePopup = function(feature) {
+        //app.map.destroyPopup(feature);
+        app.map.removePopup(feature.popup);
+        if (app.map.popups.length && !app.map.anyVisiblePopups()) {
+            var hiddenPopup = app.map.popups[app.map.popups.length-1];
+            hiddenPopup.show();
+            app.map.currentPopupFeature = hiddenPopup.feature;
+        }
+    };
 
     app.map.createPopup = function(feature) {
         var mouseoverAttribute = feature.layer.layerModel.mouseoverAttribute,
