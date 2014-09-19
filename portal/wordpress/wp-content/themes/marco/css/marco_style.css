@@ -330,6 +330,17 @@ hr {
 	min-height: 100px;
 }
 
+.home .news .bugs .wrapper p {
+	min-height: 0;
+}
+
+.home .bugs .wrapper {
+	min-height: 166px;
+}
+
+.home .news .bugs .wrapper {
+	min-height: 236px;
+}
 
 
 .wrapper #learn-img {

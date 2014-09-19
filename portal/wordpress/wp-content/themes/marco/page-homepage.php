@@ -6,7 +6,7 @@ Template Name: Homepage
 
 <?php get_header(); ?>
 	<div id="content" class="row">
-		<div id="main" class="span12" role="main">
+		<div id="main" class="span12 home" role="main">
 			<div class="row">
 			  <div class="span12">
 			  	<div id="marco-carousel" class="carousel slide carousel-fade">
@@ -90,8 +90,41 @@ Template Name: Homepage
 			</div>
 
 			<!-- Example mrow of columns -->
-			<div class="row bugs">
-			  <div class="span4">
+			<div class="row">
+				<div class="span8 bugs">
+					<a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">
+						<div class="wrapper row">
+							<div>
+								<div class="icon" id="visualize-img"></div>
+								<h3>Visualize</h3>
+								<p>Launch our Marine Planner mapping application along with other maps and tools</p>										
+							</div>
+
+						</div>
+					</a>
+				</div>
+				<div class="span4 news">
+					<div class="bugs">
+					 <?php
+					 $args = sprintf('category_name=%s&numberposts=1', "Featured");
+					 $lastposts = get_posts($args); 
+					 foreach($lastposts as $post) : setup_postdata($post); ?>
+					  	<div class="wrapper">
+					  		<div class="image">
+								<?php if ( has_post_thumbnail() ) {
+									the_post_thumbnail();
+								} ?>
+					  			<h2>Featured</h2>
+					  		</div>
+					  		<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>	
+					  		<?php the_excerpt(); ?>
+						</div>
+					  <?php endforeach; ?>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4 bugs">
 				<a href="<?php echo get_bloginfo('wpurl'); ?>/learn">
 					<div class="wrapper">
 					      <div class="icon" id="learn-img"></div>
@@ -100,7 +133,7 @@ Template Name: Homepage
 					</div>
 				</a>
 			  </div>
-			  <div class="span4">
+				<div class="span4 bugs">
 			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/explore">
 				    <div class="wrapper">
 						<div class="icon" id="explore-img"></div>				      
@@ -110,16 +143,28 @@ Template Name: Homepage
 				 </a>
 			 </div>
 			  <div class="span4">
-			  	<a href="<?php echo get_bloginfo('wpurl'); ?>/visualize">			  	
-				    <div class="wrapper">
-				    	<div class="icon" id="visualize-img"></div>
-				     	<h3>Visualize</h3>
-						<p>Launch our Marine Planner mapping application along with other maps and tools</p>
+					<div class="home-news-block">
+						<h3>News &amp; Events</h3>
+						<?php
+						$args = sprintf('category_name=%s&numberposts=1', "News");
+						$lastposts = get_posts($args); 
+						foreach($lastposts as $post) : setup_postdata($post); ?>
+							<div class="news-item">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								<?php the_excerpt(); ?>
+							</div>
+						<?php endforeach;
+						$args = sprintf('category_name=%s&numberposts=1', "Events");
+						$lastposts = get_posts($args); 
+						foreach($lastposts as $post) : setup_postdata($post); ?>
+							<div class="news-item">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								<?php the_excerpt(); ?>
+							</div>
+						<?php endforeach; ?>
 				    </div>
-				</a>
 			  </div>
 			</div>
-
 		</div> <!-- end #main -->
 
 	</div> <!-- end #content -->
