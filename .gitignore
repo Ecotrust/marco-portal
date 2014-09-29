@@ -83,3 +83,7 @@ media/proxy.cgi
 marco/data_manager/fixtures/dataneeds.json
 
 portal/wordpress/assets/pdfs/Spatial Data Evaluation and Criteria.pdf
+
+scripts/export_xls.py
+
+scripts/test.xls
