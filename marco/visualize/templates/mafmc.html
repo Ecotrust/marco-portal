@@ -150,6 +150,33 @@
                 background-image: none;
                 -webkit-box-shadow: none;
             }
+            #mafmc-active-content .btn-info-sign {
+                border: 0px;
+                padding: 4px 8px;
+                background-image: none;
+                -webkit-box-shadow: none;
+            }
+            #mafmc-active-content .btn-layer {
+                width: 175px; 
+                border: 0px; 
+                padding: 4px 8px;
+                text-align: left; 
+                -webkit-box-shadow: none; 
+                background-image: none;
+            }
+            #mafmc-active-content .opacity-button {
+                border: 0px; 
+                padding: 4px 8px;
+                -webkit-box-shadow: none; 
+                background-image: none; 
+                width: 15px;
+            }
+            #mafmc-active-content .deactivate-button {
+                border: 0px; 
+                padding: 4px 8px;
+                -webkit-box-shadow: none; 
+                background-image: none;
+            }
             #mafmc-layer-list .layer .btn-layer {
                 width: 225px; 
                 border: 0px; 
@@ -165,7 +192,7 @@
                 font-weight: bold;
             }
             .mafmc-layer-name-div {
-                width: 230px;
+                width: 200px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 text-align: left;
@@ -559,10 +586,10 @@
                                                                         <ul  class="unstyled" data-bind="foreach: layers ">
                                                                             <li class="layer"  style="margin-bottom: 5px;" data-bind="css: { nosublayers: subLayers.length === 0 }">
                                                                                 <div class="btn-group btn-group-layer" data-bind="attr: {name: name}">
-                                                                                    <!-- <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
                                                                                         <i class="icon-info-sign icon-large"></i>
-                                                                                    </a> -->
-                                                                                    <a class="btn btn-layer" style="width: 250px; border: 0px; -webkit-box-shadow: none; background-image: none;" data-bind="css: { 'active': active(), 'not-active': ! active(), 'disabled': isDisabled(), 'annotated': annotated }, attr: { 'data-content': disabledMessage() }, click: toggleActive" data-toggle="popover" data-placement="top">
+                                                                                    </a>
+                                                                                    <a class="btn btn-layer" style="width: 220px; border: 0px; -webkit-box-shadow: none; background-image: none;" data-bind="css: { 'active': active(), 'not-active': ! active(), 'disabled': isDisabled(), 'annotated': annotated }, attr: { 'data-content': disabledMessage() }, click: toggleActive" data-toggle="popover" data-placement="top">
                                                                                         <div class="mafmc-layer-name-div" style="font-weight: normal">                                                          
                                                                                             <!-- <i class="icon-info-sign" rel="popover" data-placement="right" data-container="body" data-bind="attr: {'data-content': overview, 'data-original-title': overview ? name : ''}, css: {'disabled': !overview}"></i> -->
                                                                                             <span style="padding-left: 2px;" data-bind="text: name"></span>
@@ -603,15 +630,18 @@
                                                         <ul class="unstyled list" style="margin-top: 5px; margin-left: 12px;" data-bind="sortable: { data: activeLayers, options: {  } }">
                                                             <li style="margin-bottom: 5px;">
                                                                 <div class="btn-group">
-                                                                    <a class="btn btn-layer" style="width: 185px; border: 0px; text-align: left; -webkit-box-shadow: none; background-image: none;" data-bind="css: { 'active': visible(), 'disabled': isDisabled() }, click: toggleVisible">
+                                                                    <a class="btn btn-info-sign" data-bind="click: toggleDescription, css: { 'active': infoActive() }">
+                                                                        <i class="icon-info-sign icon-large"></i>
+                                                                    </a>
+                                                                    <a class="btn btn-layer" style="" data-bind="css: { 'active': visible(), 'disabled': isDisabled() }, click: toggleVisible">
                                                                         <div data-bind="text: name" style="max-width: 145px; overflow: hidden; text-overflow: ellipsis; padding-left: 2px;"></div>
                                                                         <span rel="tooltip" data-bind="attr: {title: sharedBy}">
                                                                             <i class="icon-group" data-bind="visible: shared" style="padding-left: 10px"></i>
                                                                         </span>
                                                                         <span ><i class="icon-large check" data-bind="css: { 'icon-check': visible(), 'icon-check-empty': ! visible() }"></i></span>
                                                                     </a>
-                                                                    <a class="btn opacity-button" style="border: 0px; -webkit-box-shadow: none; background-image: none; width: 15px;" data-bind="click: $parent.showOpacity, css: {'disabled': isDisabled()}"><i class="icon-adjust icon-large"></i></a>
-                                                                    <button class="btn" style="border: 0px; -webkit-box-shadow: none; background-image: none;" data-bind="click: toggleActive, css: {'disabled': isDisabled()}">
+                                                                    <a class="btn opacity-button" style="" data-bind="click: $parent.showOpacity, css: {'disabled': isDisabled()}"><i class="icon-adjust icon-large"></i></a>
+                                                                    <button class="btn deactivate-button" style="" data-bind="click: toggleActive, css: {'disabled': isDisabled()}">
                                                                         <i class="icon-remove"></i>
                                                                     </button>
                                                                 </div>
