@@ -660,7 +660,9 @@
                                                         Activate data layers and their legends will appear here in the Legend tab.
                                                       </div>
                                                       <div data-bind="foreach: activeLegendLayers" style="height: 100%;">
-                                                        <div>
+                                                        <div style="padding-bottom: 10px">
+                                                            <span class="pagination-centered legend-title" data-bind="html: legendTitle ? legendTitle : name"></span>
+                                                            <p style="margin: 0px -5px 3px; text-align: left;font-size: 12px;" data-bind="visible: legendSubTitle, html: legendSubTitle"></p>
                                                             <span data-bind="if: legend">
                                                                 <div data-bind="if: legend['elements']">
                                                                     <div data-bind="foreach: legend['elements']">

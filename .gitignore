@@ -87,3 +87,5 @@ portal/wordpress/assets/pdfs/Spatial Data Evaluation and Criteria.pdf
 scripts/export_xls.py
 
 scripts/test.xls
+
+marco/data_manager/fixtures/data_manager_fixture_prev.json
