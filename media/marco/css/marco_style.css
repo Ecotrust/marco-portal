@@ -1224,7 +1224,7 @@ body.borderless #map-wrapper {
 		font-size: 18px !important;
 	}
 	.theme li {
-		padding-left: 0px;
+		padding-left: 10px;
 	}
 	#data-accordion .btn-group-layer .btn-layer {
 	  width: 72%;
