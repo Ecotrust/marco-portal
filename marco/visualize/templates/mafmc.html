@@ -209,10 +209,10 @@
             #aggregated-attribute-overlay {
                 position: absolute;
                 left: 12px;
-                bottom: 34px;
+                bottom: 51px;
                 top: inherit;
                 width: 302px !important;
-                height: 100px;
+                height: 130px;
                 border-radius: 4px;
                 z-index: 950; 
                 font-size: 12px;
@@ -243,7 +243,7 @@
                 max-width: 500px;
                 background-color: rgba(255,255,255, 1) !important;
                 bottom: 19px;
-                height: 100px;
+                height: 130px;
                 border: 1px solid #ccc;
             }
             #aggregated-attribute-content .mCustomScrollBox {
@@ -339,10 +339,15 @@
                 bottom: 5px !important;
             }
             #aggregated-attribute-overlay .mCSB_dragger_bar {
-                background: rgba(91, 91, 91, .9);
+                /*background: rgba(91, 91, 91, .9);*/
+                background: rgb(187, 187, 187);
             }
             #aggregated-attribute-overlay .mCSB_dragger_bar:hover {
-                background: rgba(91, 91, 91, .9);
+                /*background: rgba(91, 91, 91, .9);*/
+                background: rgb(171, 171, 171);
+            }
+            #mafmc-panel #aggregated-attribute-overlay .mCSB_draggerRail {
+                background-color: rgb(230, 230, 230);
             }
 
             .olPopup {
@@ -802,13 +807,7 @@
         
         <script type="text/javascript">
             $('#fullscreen').on('click', function() {
-                setTimeout(function() { 
-                    if ( $('#aggregated-attribute-overlay').is(":visible") ) {
-                        app.viewModel.hideMapAttribution(); 
-                    } else {
-                        app.viewModel.showMapAttribution(); 
-                    }
-                }, 500);
+                app.viewModel.showMapAttribution(); 
             });
             
             $(document).ready( function() {
