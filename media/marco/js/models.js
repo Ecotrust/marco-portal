@@ -1345,8 +1345,8 @@ function viewModel() {
         if (app.viewModel.scrollBarElements.indexOf(elem) == -1) {
             app.viewModel.scrollBarElements.push(elem);
             $(elem).mCustomScrollbar({
-                scrollInertia:250,
-                mouseWheel: 6
+                scrollInertia: 250,
+                mouseWheel: 2
             });
         }
         //$(elem).mCustomScrollbar("update");
@@ -1377,7 +1377,7 @@ function viewModel() {
                 app.viewModel.scrollBarElements.push('#overview-overlay-dropdown');
                 $('#overview-overlay-dropdown').mCustomScrollbar({
                     scrollInertia:250,
-                    mouseWheel: 6
+                    mouseWheel: 2
                 });
             }
             //debugger;

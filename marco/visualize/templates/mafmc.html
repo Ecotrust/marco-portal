@@ -259,14 +259,14 @@
                 opacity: .7;
                 text-transform: uppercase;
             }
-            #overview-overlay {
+            #mafmc-panel #overview-overlay {
                 position: absolute;
                 left: 12px;
-                bottom: 12px;
+                bottom: 30px;
                 top: inherit;
                 min-width: 302px;
                 width: 500px;
-                height: 120px !important;
+                height: 150px !important;
                 border-radius: 4px;
                 z-index: 950; 
                 font-size: 12px;
@@ -283,8 +283,17 @@
                 height: 100px;
                 border: 0px;
             }
-            #overview-overlay-text {
-                height: 40px !important;
+            #mafmc-panel #overview-overlay-text {
+                height: 70px;
+            }
+            #mafmc-panel #overview-overlay-text .mCSB_container {
+                background-color: rgb(230, 230, 230);
+            }
+            #mafmc-panel #overview-overlay-text .mCSB_dragger_bar {
+                background-color: rgb(187, 187, 187);
+            }
+            #mafmc-panel #overview-overlay-text .mCSB_draggerRail {
+                background-color: rgb(230, 230, 230);
             }
             #overview-overlay .title {
                 font-weight: normal;
@@ -326,7 +335,7 @@
                 padding: 1px !important;
             }
             .olControlAttribution {
-                left: 10px !important;
+                left: 13px !important;
                 bottom: 5px !important;
             }
             #aggregated-attribute-overlay .mCSB_dragger_bar {
@@ -495,13 +504,13 @@
                                             <div id="overview-overlay-links">
                                               <span>
                                                 <div class="text" style="margin-top: 5px">
-                                                    <span>
+                                                    <!-- <span>
                                                         <a class="btn btn-mini" data-bind="css: { disabled: ! activeKmlLink() }, attr: { href: activeKmlLink() }" target="_blank">
                                                             <span rel="tooltip" title="{% flatblock 'data_catalog_kml_link_tooltip' %}">
                                                                 {% flatblock "data_catalog_kml_link" %}
                                                             </span>
                                                         </a>
-                                                    </span>
+                                                    </span> -->
                                                     <span>
                                                         <a class="btn btn-mini" data-bind="css: { disabled: ! activeDataLink() }, attr: { href: activeDataLink() }" target="_blank">
                                                             <span rel="tooltip" title="{% flatblock 'data_catalog_data_link_tooltip' %}">
@@ -523,13 +532,13 @@
                                                             </span>
                                                         </a>
                                                     </span>
-                                                    <span>
+                                                    <!-- <span>
                                                         <a class="btn btn-mini" data-bind="css: { disabled: ! activeTilesLink() }, attr: { href: activeTilesLink() }" target="_blank">
                                                             <span rel="tooltip" title="{% flatblock 'data_catalog_tiles_link_tooltip' %}">
                                                                 {% flatblock "data_catalog_tiles_link" %}
                                                             </span>
                                                         </a>
-                                                    </span>
+                                                    </span> -->
                                                 </div>
                                               </span>
                                             </div>
