@@ -9920,6 +9920,24 @@
         }
     },
     {
+        "pk": 32,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Dat under development",
+            "archived": false,
+            "name": "Danger Zones and restricted Areas",
+            "expected_date": "Winter 2015",
+            "notes": "NOAA is creating a national geospatial database of the Danger Zones and Restricted Areas based on the most current Code of Federal Regulations for the Cadastre. ",
+            "themes": [
+                5
+            ],
+            "source": "NOAA is digitizing the areas as described in the Code of Federal Regulations ",
+            "contact": "NOAA Coastal Services Center",
+            "contact_email": "",
+            "description": "This fall, NOAA intends to release a revised version of Danger Zones and Restricted Areas based on the most current areas designated as such in the CFR. These areas are either high risk areas where hazardous operations occur on full time or intermittent basis or high security areas to protect Government property, usually for national security purposes, that are either closed to or restric public access."
+        }
+    },
+    {
         "pk": 14,
         "model": "data_manager.dataneed",
         "fields": {
@@ -9935,24 +9953,6 @@
             "contact": "The Nature Conservancy",
             "contact_email": "",
             "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
-        }
-    },
-    {
-        "pk": 29,
-        "model": "data_manager.dataneed",
-        "fields": {
-            "status": "Data under development",
-            "archived": false,
-            "name": "Department of Defense Operational Areas (OPAREAS) ",
-            "expected_date": "Fall 2015",
-            "notes": "U.S. Navy developing improved data that characterizes compatibility of human uses with military operational areas.  ",
-            "themes": [
-                5
-            ],
-            "source": "DOD Environmental Information Management System (EIMS)",
-            "contact": "U.S. Fleet Forces Command, U.S. Navy",
-            "contact_email": "",
-            "description": "Declassified military training, testing, and use areas; revision of current \"Danger Zones and Restricted Areas\" with subsections, attributes describing military activity taking place in each subsection, and metadata.  "
         }
     },
     {
@@ -10025,6 +10025,24 @@
             "contact": "The Nature Conservancy ",
             "contact_email": "",
             "description": "Population density distribution estimates (actual and modeled) and delineation of seasonal migratory pathways for sea turtles  through Mid-Atlantic.  "
+        }
+    },
+    {
+        "pk": 29,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Department of Defense Operational Areas (OPAREAS) ",
+            "expected_date": "Fall 2015",
+            "notes": "U.S. Navy developing improved data that characterizes compatibility of human uses with military operational areas.  ",
+            "themes": [
+                5
+            ],
+            "source": "DOD Environmental Information Management System (EIMS)",
+            "contact": "U.S. Fleet Forces Command, U.S. Navy",
+            "contact_email": "",
+            "description": "OPAREA is an area where DOD's Atlantic Fleet routinely conducts training exercises and system qualification tests via ships and aircrafts. Data under development will include general attributes about specific activities occurring in OPAREAS related to testing and training. "
         }
     }
 ]
