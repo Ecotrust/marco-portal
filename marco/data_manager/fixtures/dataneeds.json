@@ -1,0 +1,576 @@
+[
+    {
+        "pk": 30,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Seasonal/anomaly maps including surface/bottom temperatures, currents, wind speed, and shear stress",
+            "expected_date": "TBD",
+            "notes": "Oceanographic data products currently in development include sea surface temperature anomaly maps and surface currents.",
+            "themes": [
+                2
+            ],
+            "source": "Multiple sources including MARACOOS, UMASS Dartmouth, Rutgers, and NERACOOS",
+            "contact": "Rick Lathrop, Rutgers CRSSA; Jay Odell, TNC",
+            "contact_email": "",
+            "description": "Data needs include \"stand alone\" map layers for Portal display as well as spatial data inputs for models to support regional planning, e.g. pelagic habitat models."
+        }
+    },
+    {
+        "pk": 11,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Municipal and private discharge",
+            "expected_date": "Fall, 2012",
+            "notes": "In addition to point locations, effluent plume models would be useful for informing ocean planning efforts.",
+            "themes": [
+                1
+            ],
+            "source": "EPA",
+            "contact": "Rutgers CRSSA ",
+            "contact_email": "",
+            "description": "Discharge of effluent from waste water treatment plants receiving waste water from households, commercial establishments and industries in the coastal drainage basin."
+        }
+    },
+    {
+        "pk": 19,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Availability of suitable Mid-Atlantic specific models and model derived map layers is being evaluated.",
+            "archived": true,
+            "name": "Ocean model results",
+            "expected_date": "TBD",
+            "notes": "FVCOM can be used for all of the NROC area and the northern part of MARCO area; additional modeling may be needed for MARCO.",
+            "themes": [
+                2
+            ],
+            "source": "Potentially multiple sources including UMASS Dartmouth, Rutgers, Old Dominion University, MARACOOS and NERACOOS",
+            "contact": "Rutgers CRSSA, MARACOOS",
+            "contact_email": "",
+            "description": "For example, Finite Volume Coastal Ocean Model (FVCOM) is a coastal ocean circulation model developed by UMASSD-WHOI that includes information on current, wave regime, temperature, salinity and density."
+        }
+    },
+    {
+        "pk": 25,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Improved sediment and seafloor habitat maps, benthic resilence maps",
+            "expected_date": "Summer 2014",
+            "notes": "Two year project, all final products due 5/2015, sediment maps and other select products will be available sooner.",
+            "themes": [
+                2
+            ],
+            "source": "Umass/Dartmouth (SMAST)",
+            "contact": "Kevin Stokesbury, SMAST",
+            "contact_email": "",
+            "description": "Analysis of 10 years of video survey data and integration with FVCOM oceanography data to produce high resolution sediment, habitat, andforce stability regime maps."
+        }
+    },
+    {
+        "pk": 17,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate sampling of NCCOS models into Portal",
+            "archived": false,
+            "name": "Regional scale predictive distribution model for sea birds, sea ducks, and other bird species",
+            "expected_date": "June 2014",
+            "notes": "Several other survey and modeling efforts are under way; integration to create new spatial data for regional ocean planning will be provided by NROC project and may also be addressed through the Mid-Atlantic Regional Ocean Assessment.",
+            "themes": [
+                2
+            ],
+            "source": " Multiple sources including USGS and BOEM Compendium of Avian Information in U.S. Atlantic OCS",
+            "contact": "NOAA National Centers for Coastal Ocean Science",
+            "contact_email": "",
+            "description": "A high resolution, predictive model created using historic bird survey and oceanographic model data."
+        }
+    },
+    {
+        "pk": 31,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Analysis under development",
+            "archived": false,
+            "name": "Vessel traffic trends 2011-2013",
+            "expected_date": "Oct-14",
+            "notes": "Currently, Rutgers and TNC are working with the USCG and the USACE to develop a process to analyze multiple years of AIS data to detect signficiant changes in vessel utilization patterns and trends.  ",
+            "themes": [
+                8
+            ],
+            "source": "U.S. Coast Guard and NOAA Coastal Services Center",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Using three years (2011, 2012, 2013) of Automated Identification System (AIS) traffic density data, these derived data products will depict the shifts in maritime traffic by vessel type over time.  "
+        }
+    },
+    {
+        "pk": 24,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Cultural use areas",
+            "expected_date": "June 2013",
+            "notes": "Development and use of these data based on outcome of discussions between Tribal leaders and state and federal agency representatives.",
+            "themes": [
+                1
+            ],
+            "source": "Tribal leaders",
+            "contact": "MARCO",
+            "contact_email": "",
+            "description": "Areas significant to Tribal Nations and other cultures."
+        }
+    },
+    {
+        "pk": 16,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": true,
+            "name": "Coldwater coral predictive distribution model",
+            "expected_date": "Spring 2013",
+            "notes": "NCCOS and NEFSC working on a predictive model for the Mid-Atlantic.",
+            "themes": [
+                2
+            ],
+            "source": "Multiple sources ",
+            "contact": "NOAA Biogeography Branch  ",
+            "contact_email": "",
+            "description": "A high resolution, predictive model of coral habitat and distribution."
+        }
+    },
+    {
+        "pk": 18,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Bird Focus Area data developed;  awaiting authorization for posting on Portal. Bat data to be developed.  ",
+            "archived": false,
+            "name": "Important coastal bird and bat habitat",
+            "expected_date": "July 2014",
+            "notes": "TNC working with USFWS to ensure data is properly licensed before displaying and making available on Portal.  ",
+            "themes": [
+                2
+            ],
+            "source": "Atlantic Coast Joint Venture U.S. Fish and Wildlife Service",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Atlantic Coast Joint Venture habitat focus areas in the Mid-Atlantic Bird Conservation Region for landbirds, shorebirds, waterbirds, and waterfowl, respectively.  Bat habitat focus areas not yet established regionally.   "
+        }
+    },
+    {
+        "pk": 26,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development in disparate efforts; planning stages for data integration.",
+            "archived": false,
+            "name": "Nearshore benthic habitats",
+            "expected_date": "TBD",
+            "notes": "Several new survey efforts are underway or envisioned to support wind energy permitting and development processes; additional surveys to cover non-Wind Planning Areas and additional coordination and potential integration of parallel efforts needed.",
+            "themes": [
+                2
+            ],
+            "source": "Multiple efforts underway including MD CZM studies, NOAA HabCam, BOEM funded work by SMAST,  and historic and current investigations.",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Finer scale spatial data are needed to complement exising habitat models, especially for sensitive cold water coral patch communities and other sensitive or vulnerable habitat types."
+        }
+    },
+    {
+        "pk": 8,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Vessel Monitoring System (VMS) fishing data",
+            "expected_date": "December 2012",
+            "notes": "Data has been transferred from NMFS and will need to be processed to provide maximum utility in consideration of confidentiality requirements.",
+            "themes": [
+                4
+            ],
+            "source": "NOAA/ NMFS",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "VMS are required for many commercial fisheries to monitor the position, time at a position, course and speed of fishing vessels."
+        }
+    },
+    {
+        "pk": 7,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Vessel Trip Report (VTR)",
+            "expected_date": "Fall 2013",
+            "notes": "Regional scale VTR data aggregated to ten minute squares are currently displayed on the portal and are available upon request.  Finer resolution data linking fishing locations with communities are under development in consultation with fishing industry participants.  All fishery data will be depicted in consideration of confidentiality requirements established by NOAA-Fisheries.",
+            "themes": [
+                4
+            ],
+            "source": "NOAA/NMFS, analysis by Rutgers University",
+            "contact": "Center for Remote Sensing and Spatial Analysis, Rutgers University",
+            "contact_email": "",
+            "description": "Derived data products representing fishing effort by port and gear type."
+        }
+    },
+    {
+        "pk": 27,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": false,
+            "name": "Live submarine telecommunications cables",
+            "expected_date": "TBD",
+            "notes": "Current data displayed on MMC and Portal are from NOAA ENCs.  These data are incomplete and do not distinguish between in-service and out-of-service cables.  The North American Submarine Cable Association (NASCA) is currently updating their national Route Position Line database for ocean planning. However, at this point in time, they will only make these data available as PDF documents.  We are still in negotiations with NASCA regarding their making the actual RPL data available to the Portal.  ",
+            "themes": [
+                8
+            ],
+            "source": "Multiple sources including North American Submarine Cable Association and member companies.",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Vector data of live telecommunications cables running either underneath or on top of the sea floor."
+        }
+    },
+    {
+        "pk": 9,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Sand, gravel, and cobble mining locations",
+            "expected_date": " October 2014",
+            "notes": "Currently, we have detailed information for MD only and work continues to develop a regional scale map layer using state and federal sources. ",
+            "themes": [
+                8
+            ],
+            "source": "Multiple agencies including ACOE, BOEM, Mid-Atlantic States",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Areas where resources are actively mined from the seafloor and potential source areas."
+        }
+    },
+    {
+        "pk": 3,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development\r\n",
+            "archived": false,
+            "name": "Marine mammal population density and migration paths",
+            "expected_date": "Fall 2014",
+            "notes": "OBIS Seamap is currently refining new marine mammal model data, expected Fall 2014.  New data on marine mammals in Mid-Atlantic  forthcoming from AMAPPS and BRI in 2015.  The Northeast Regional Ocean Council is funding a new project to integrate past and ongoing marine mammal surveys to produce new spatial data for regional ocean planning.\r\n",
+            "themes": [
+                2
+            ],
+            "source": "Multiple sources include new survey and modeling projects by NOAA (AMAPPS), Biodiversity Research Inst., VA Coastal Zone Mgmt/VA Aquarium, and Duke University (OBIS)",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Population density distribution estimates (actual and modeled) and delineation of seasonal migratory pathways for large whales (toothed and baleen), dolphins and porpoises.  \r\n"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Recreational fishing activity",
+            "expected_date": "June 2013",
+            "notes": "Existing data on recreational fishing locations is of variable quality, resolution and geographic extent. Participatory GIS workshops with recreational fishery stakeholders began summer 2012 and will continue through the fall and winter; these efforts will be supplemented by other surveys planned for 2013.",
+            "themes": [
+                4
+            ],
+            "source": "Recreational fishers via MARCO stakeholder engagement efforts",
+            "contact": "Rutgers CRSSA ",
+            "contact_email": "",
+            "description": "Areas where non-commercial fishing (recreational/sport fishing) occurs."
+        }
+    },
+    {
+        "pk": 10,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Not initiated.",
+            "archived": true,
+            "name": "State landings and fishing effort ",
+            "expected_date": "To be determined (beyond scope of current funding)",
+            "notes": "Most ocean fishery harvests are documented through federal reporting systems but there are gaps for some fisheries that do not require federal licenses, e.g. croaker and whelks (\"conch\") in Virginia.",
+            "themes": [
+                4
+            ],
+            "source": "States",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Information about commercial harvest activity collected by state agencies in the Mid-Atlantic."
+        }
+    },
+    {
+        "pk": 12,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Energy facilities",
+            "expected_date": "Spring 2013",
+            "notes": "In addition to point locations, plume models would be useful for informing ocean planning efforts.",
+            "themes": [
+                3
+            ],
+            "source": "Multiple agencies including FERC, NREL, NRC, and the EPA",
+            "contact": "Rutgers CRSSA ",
+            "contact_email": "",
+            "description": "Examples include nuclear power plant locations and their discharge pipe locations, potential/existing hydrokinetic sites, etc."
+        }
+    },
+    {
+        "pk": 5,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": true,
+            "name": "Turtles-Distribution and Nesting Areas (ESI)",
+            "expected_date": "As soon as vetted by Portal Data Review Group",
+            "notes": "ESI maps provide a concise summary of coastal resources that are at risk if an oil spill occurs nearby. Vector polygons in this data set represent turtle distribution.",
+            "themes": [
+                2
+            ],
+            "source": "TNC NAM ERA compiled; source data from Environmental Sensitivity Index, NOAA",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Sea turtle areas displayed on the maps are limited to nesting beaches and several well-known in-water concentration areas. Sea turtle nesting beaches include sandy beach areas where sea turtles come ashore to nest."
+        }
+    },
+    {
+        "pk": 20,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Commercial fishing activity (VTR)",
+            "expected_date": "September, 2014",
+            "notes": "Data developed using \"Communities at Sea\" mapping approach. Draft maps produced and currently under review by fishing industry contacts. Development of additional map layers to address key gaps including state managed fisheries will begin July 2014.  Additional potential data sources include NOAA's Vessel Monitoring System, state agency collected data and participatory mapping projects with fishermen. ",
+            "themes": [
+                4
+            ],
+            "source": "NOAA-NMFS, developed in consultation with Portal Team's commercial fishery advisory group.",
+            "contact": "Rick Lathrop, Rutgers CRSSA",
+            "contact_email": "",
+            "description": "Map layers developed using aggregated records from NOAA's Fishing Vessel Trip Report and permit databases in consultation with commercial fishing stakeholders to illustrate the distribution and importance of commercial fishing activity by diverse communities (port, vessel type and gear group combinations).  Additional attributes collected through stakeholder engagement may include information about the specific socio-economic value of fishing locations to communities. "
+        }
+    },
+    {
+        "pk": 28,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Municipal and private discharge",
+            "expected_date": " October 2014",
+            "notes": "In addition to point locations, effluent plume models may be useful for informing ocean planning efforts.",
+            "themes": [],
+            "source": "EPA",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Point locations for waste water treatment plant facilities and outfalls including attributes for volume of discharge. "
+        }
+    },
+    {
+        "pk": 6,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal",
+            "archived": true,
+            "name": "Large Pelagic Species (sharks, tuna, marlin)-Species Richness, Persistence and EFH",
+            "expected_date": "As soon as vetted by Portal Data Review Group",
+            "notes": "14 species represented include: Albacore Tuna, Bigeye Thresher, Blue Marlin, Bluefin Tuna, Dusky shark, Great Hammerhead, Porbeagle, Sandbar shark, Sand Tiger, Shortfin Mako, Swordfish, Thresher, White Marlin, Scalloped Hammerhead\r\n",
+            "themes": [
+                2
+            ],
+            "source": "TNC NAM ERA compiled; source data from NMFS- SEFSC and NMFS-NEFSC; EFH from NMFS and HMS FMP",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Target species richness refers to the total number of target species by age class observed within a TMS summed and mapped based on all available data (1965-2004).  Persistence refers to the sum of the number of decades that a given target species was present (1-4) for combined juvenile and adult observations.  Habitat refers to the number of target species whose EFH overlapped each TMS determined and summarized by total target species and by age class.\r\n"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Areas of recreational activities including fishing, boating, surface water sports, wildlife viewing,",
+            "expected_date": " August 2014",
+            "notes": "Drafts of the data are complete and are under review by stakeholders, tribal leaders, and states. A regional dataset that integrates the three survey methods is under development.",
+            "themes": [
+                7
+            ],
+            "source": "Recreational users, via stakeholder engagement efforts such as participatory workshops (pGIS), Surfrider Coastal Rec survey, and Mid-Atlantic Rec Boater Survey",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Activities include fishing, boating, diving, surfing, swimming, nature viewing. "
+        }
+    },
+    {
+        "pk": 13,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Automatic Identification System (AIS) ship traffic",
+            "expected_date": "June 2013",
+            "notes": "",
+            "themes": [
+                8
+            ],
+            "source": "USCG & NOAA",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "AIS is an automated tracking system used on ships and by Vessel Traffic Services for identifying and locating vessels by electronically exchanging data with other nearby ships and VTS stations. AIS provides information such as unique identification, position, course, and speed. A preliminary AIS map layer has been added to the Portal as a placeholder; enhanced AIS map layers showing traffic patterns by vessel type and other attributes are under development by NOAA Coastal Services Center and others."
+        }
+    },
+    {
+        "pk": 2,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to incorporate authorized data into Portal\r\n",
+            "archived": false,
+            "name": "Coldwater coral predictive distribution model",
+            "expected_date": "May 2014",
+            "notes": "NCCOS  and NEFSC working on a predictive model for the Mid-Atlantic and Northeast Atlantic.  The Portal's separate coral point data set will continue to be updated as new survey data are released.",
+            "themes": [
+                2
+            ],
+            "source": "Multiple sources ",
+            "contact": "Brian Kinlan, NOAA Biogeography Branch",
+            "contact_email": "",
+            "description": "A high resolution, predictive model of coral habitat and distribution.\r\n"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Dat under development",
+            "archived": false,
+            "name": "Danger Zones and restricted Areas",
+            "expected_date": "Winter 2015",
+            "notes": "NOAA is creating a national geospatial database of the Danger Zones and Restricted Areas based on the most current Code of Federal Regulations for the Cadastre. ",
+            "themes": [
+                5
+            ],
+            "source": "NOAA is digitizing the areas as described in the Code of Federal Regulations ",
+            "contact": "NOAA Coastal Services Center",
+            "contact_email": "",
+            "description": "This fall, NOAA intends to release a revised version of Danger Zones and Restricted Areas based on the most current areas designated as such in the CFR. These areas are either high risk areas where hazardous operations occur on full time or intermittent basis or high security areas to protect Government property, usually for national security purposes, that are either closed to or restric public access."
+        }
+    },
+    {
+        "pk": 14,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": true,
+            "name": "Port locations and attributes",
+            "expected_date": "Spring 2013",
+            "notes": "Port locations are known, additional work is underway to work with port's stakeholders to develop relevant spatial data and information for each port.",
+            "themes": [
+                8
+            ],
+            "source": "ACOE; Individual ports",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Locations of ports, how they relate to shipping traffic and their capacity for servicing offshore energy development"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data development not yet initiated",
+            "archived": true,
+            "name": "Recreational boating activity",
+            "expected_date": "TBD",
+            "notes": "Initial data is being collected via participatory GIS workshops with recreational stakeholders, summer 2012 and will continue through the fall and winter; these efforts will be supplemented by other surveys planned for 2013.",
+            "themes": [
+                7
+            ],
+            "source": "Recreational boaters via MARCO stakeholder engagement efforts",
+            "contact": "Rutgers CRSSA ",
+            "contact_email": "",
+            "description": "Areas where recreational boating (regattas, pleasure, cruises, water skiing, etc.) occurs."
+        }
+    },
+    {
+        "pk": 1,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Efforts underway to develop and incorporate authorized data into Portal\r\n",
+            "archived": true,
+            "name": "Military, hazard and restricted areas",
+            "expected_date": "Unknown ",
+            "notes": "",
+            "themes": [
+                5
+            ],
+            "source": "USCG & DOD including ACOE, Navy, etc. ",
+            "contact": "NOAA CSC  ",
+            "contact_email": "",
+            "description": "Information pertaining to uses of the marine environment by the Department of Defense for training, classified or restricted areas, with unexploded ordinances, etc.\r\n"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Marine wildlife (whales, birds, turtles, bats) distribution and migration paths",
+            "expected_date": "Fall 2014",
+            "notes": "OBIS Seamap is currently refining new marine mammal model data, expected Fall 2014.   The Northeast Regional Ocean Council is funding a new project to integrate past and ongoing marine mammal surveys to produce new spatial data for regional ocean planning.",
+            "themes": [
+                2
+            ],
+            "source": "Multiple sources include new survey and modeling projects by NOAA (AMAPPS), Biodiversity Research Inst., VA Aquarium, and Duke University (OBIS).",
+            "contact": "The Nature Conservancy",
+            "contact_email": "",
+            "description": "Critical seasonal migratory pathways for large whales (toothed and baleen), dolphins and porpoises, sea turtles, sea birds and sea ducks, and bats."
+        }
+    },
+    {
+        "pk": 4,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development\r\n",
+            "archived": false,
+            "name": "Sea turtle population density and migration paths",
+            "expected_date": "TBD",
+            "notes": "New data on sea turtles in Mid-Atlantic  forthcoming from AMAPPS and BRI in 2015. \r\n",
+            "themes": [
+                2
+            ],
+            "source": "Multiple sources include new survey and modeling projects by NOAA (AMAPPS), Biodiversity Research Inst., VA Aquarium, and Duke University (OBIS)",
+            "contact": "The Nature Conservancy ",
+            "contact_email": "",
+            "description": "Population density distribution estimates (actual and modeled) and delineation of seasonal migratory pathways for sea turtles  through Mid-Atlantic.  "
+        }
+    },
+    {
+        "pk": 29,
+        "model": "data_manager.dataneed",
+        "fields": {
+            "status": "Data under development",
+            "archived": false,
+            "name": "Department of Defense Operational Areas (OPAREAS) ",
+            "expected_date": "Fall 2015",
+            "notes": "U.S. Navy developing improved data that characterizes compatibility of human uses with military operational areas.  ",
+            "themes": [
+                5
+            ],
+            "source": "DOD Environmental Information Management System (EIMS)",
+            "contact": "U.S. Fleet Forces Command, U.S. Navy",
+            "contact_email": "",
+            "description": "OPAREA is an area where DOD's Atlantic Fleet routinely conducts training exercises and system qualification tests via ships and aircrafts. Data under development will include general attributes about specific activities occurring in OPAREAS related to testing and training. "
+        }
+    }
+]
