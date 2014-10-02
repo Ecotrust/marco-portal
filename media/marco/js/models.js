@@ -995,7 +995,7 @@ function viewModel() {
         self.updateAggregatedAttributesOverlayWidthAndScrollbar();
         self.showFeatureAttribution( self.featureAttribution() && !($.isEmptyObject(self.aggregatedAttributes())) );
         // toggling off the info overview if feature attribute overlay is activated
-        if ( app.mafmc && self.showFeatureAttribution ) {
+        if ( app.mafmc && self.showFeatureAttribution() ) {
             self.showOverview(false);
         }
     });
