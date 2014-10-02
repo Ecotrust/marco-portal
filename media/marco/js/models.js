@@ -195,6 +195,11 @@ function layerModel(options, parent) {
     app.viewModel.showOverview.subscribe( function() {
         if ( app.viewModel.showOverview() === false ) {
             self.infoActive(false);
+        } else {
+            // if mafmc, and overview is toggled on, then hide feature attribution overlay
+            if ( app.mafmc ) {
+                app.viewModel.closeAttribution();
+            }
         }
     });
     
@@ -989,6 +994,10 @@ function viewModel() {
     self.aggregatedAttributes.subscribe( function() {
         self.updateAggregatedAttributesOverlayWidthAndScrollbar();
         self.showFeatureAttribution( self.featureAttribution() && !($.isEmptyObject(self.aggregatedAttributes())) );
+        // toggling off the info overview if feature attribute overlay is activated
+        if ( app.mafmc && self.showFeatureAttribution ) {
+            self.showOverview(false);
+        }
     });
     self.removeFromAggregatedAttributes = function(layerName) {
         delete app.viewModel.aggregatedAttributes()[layerName];
