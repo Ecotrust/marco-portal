@@ -45577,7 +45577,7 @@ OpenLayers.Control.UTFGrid = OpenLayers.Class(OpenLayers.Control, {
      * {Array} Layers to handle on each event
      */
     findLayers: function() {
-        var candidates = this.layers || this.map.layers;
+        var candidates = this.map.layers;
         var layers = [];
         var layer;
         for (var i=candidates.length-1; i>=0; --i) {

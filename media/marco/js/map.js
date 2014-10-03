@@ -200,7 +200,7 @@ app.init = function () {
     
     app.map.attributes = [];
     //app.map.clickOutput = { time: 0, attributes: [] };
-    app.map.clickOutput = { time: 0, attributes: {} };        
+    app.map.clickOutput = { time: 0, attributes: {} };      
 
     //UTF Click Attribution
     app.map.UTFClickControl = new OpenLayers.Control.UTFGrid({
@@ -217,12 +217,13 @@ app.init = function () {
     /*** UTF MOUSE OVER EVENTS NOT YET FUNCTIONING ***/
     //UTF Move Attribution
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
-        //attributes: layer.attributes,
         layers: [],
-        //events: {fallThrough: true},
-        handlerMode: 'move',
-        callback: function(infoLookup, lonlat, xy) {   
-            app.map.utfGridClickHandling(infoLookup, lonlat, xy);
+        handlerMode: "move",
+        callback: function(infoLookup, lonlat, xy) { 
+            console.log(infoLookup);
+            if (infoLookup) {                              
+                app.map.utfGridMoveHandling(infoLookup, lonlat, xy); 
+            }  
         }
     });
     map.addControl(app.map.UTFMoveControl);   
@@ -232,11 +233,12 @@ app.init = function () {
         for (var idx in infoLookup) {
             $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
                 if (potential_layer.type !== 'Vector' && potential_layer.utfurl && potential_layer.attributeEvent === 'mouseover') {
-                    var attribute = potential_layer.attributes[0],
+                    // var attribute = potential_layer.attributes[0],
+                    var attribute = potential_layer.mouseoverAttribute,
                         info = infoLookup[idx];
                     //debugger;
                     if (info && info.data) { 
-                        utfPopup.innerHTML = "<div>" + info.data + "</div>";
+                        utfPopup.innerHTML = "<div>" + info.data[attribute] + "</div>";
                         utfPopup.style.left = (pixel.x + 15) + "px";
                         utfPopup.style.top = (pixel.y + 15) + "px";
                     }
