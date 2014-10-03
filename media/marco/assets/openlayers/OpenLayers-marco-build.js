@@ -25853,6 +25853,7 @@ OpenLayers.Tile = OpenLayers.Class({
  * See license.txt in the OpenLayers distribution or repository for the
  * full text of the license. */
 
+/*** NOTE initImage WAS ALTERED 10-10-2013 BY SFLETCHE ***/
 
 /**
  * @requires OpenLayers/Tile.js
@@ -26145,6 +26146,8 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
     initImage: function() {
         this.events.triggerEvent(this._loadEvent);
         var img = this.getImage();
+        /*** NOTE THE FOLLOWING IF STATEMENT WAS REMOVED 10-10-2013 BY SFLETCHE ***/
+        /*** THIS SOLVES THE PROBLEM OF SOME 403 ERRORS NOT BEING TAGGED AS EMPTY TILES ***/
         // if (this.url && img.getAttribute("src") == this.url) {
         //     this.onImageLoad();
         // } else {
@@ -39938,6 +39941,240 @@ OpenLayers.Control.ScaleBar = OpenLayers.Class(OpenLayers.Control, {
     
 });
 /* ======================================================================
+    OpenLayers/Handler/Pinch.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+/**
+ * @requires OpenLayers/Handler.js
+ */
+
+/**
+ * Class: OpenLayers.Handler.Pinch
+ * The pinch handler is used to deal with sequences of browser events related
+ *     to pinch gestures. The handler is used by controls that want to know
+ *     when a pinch sequence begins, when a pinch is happening, and when it has
+ *     finished.
+ *
+ * Controls that use the pinch handler typically construct it with callbacks
+ *     for 'start', 'move', and 'done'.  Callbacks for these keys are
+ *     called when the pinch begins, with each change, and when the pinch is
+ *     done.
+ *
+ * Create a new pinch handler with the <OpenLayers.Handler.Pinch> constructor.
+ *
+ * Inherits from:
+ *  - <OpenLayers.Handler>
+ */
+OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
+
+    /**
+     * Property: started
+     * {Boolean} When a touchstart event is received, we want to record it,
+     *     but not set 'pinching' until the touchmove get started after
+     *     starting.
+     */
+    started: false,
+
+    /**
+     * Property: stopDown
+     * {Boolean} Stop propagation of touchstart events from getting to
+     *     listeners on the same element. Default is false.
+     */
+    stopDown: false,
+
+    /**
+     * Property: pinching
+     * {Boolean}
+     */
+    pinching: false,
+
+    /**
+     * Property: last
+     * {Object} Object that store informations related to pinch last touch.
+     */
+    last: null,
+
+    /**
+     * Property: start
+     * {Object} Object that store informations related to pinch touchstart.
+     */
+    start: null,
+
+    /**
+     * Constructor: OpenLayers.Handler.Pinch
+     * Returns OpenLayers.Handler.Pinch
+     *
+     * Parameters:
+     * control - {<OpenLayers.Control>} The control that is making use of
+     *     this handler.  If a handler is being used without a control, the
+     *     handlers setMap method must be overridden to deal properly with
+     *     the map.
+     * callbacks - {Object} An object containing functions to be called when
+     *     the pinch operation start, change, or is finished. The callbacks
+     *     should expect to receive an object argument, which contains
+     *     information about scale, distance, and position of touch points.
+     * options - {Object}
+     */
+
+    /**
+     * Method: touchstart
+     * Handle touchstart events
+     *
+     * Parameters:
+     * evt - {Event}
+     *
+     * Returns:
+     * {Boolean} Let the event propagate.
+     */
+    touchstart: function(evt) {
+        var propagate = true;
+        this.pinching = false;
+        if (OpenLayers.Event.isMultiTouch(evt)) {
+            this.started = true;
+            this.last = this.start = {
+                distance: this.getDistance(evt.touches),
+                delta: 0,
+                scale: 1
+            };
+            this.callback("start", [evt, this.start]);
+            propagate = !this.stopDown;
+        } else {
+            this.started = false;
+            this.start = null;
+            this.last = null;
+        }
+        // prevent document dragging
+        OpenLayers.Event.stop(evt);
+        return propagate;
+    },
+
+    /**
+     * Method: touchmove
+     * Handle touchmove events
+     *
+     * Parameters:
+     * evt - {Event}
+     *
+     * Returns:
+     * {Boolean} Let the event propagate.
+     */
+    touchmove: function(evt) {
+        if (this.started && OpenLayers.Event.isMultiTouch(evt)) {
+            this.pinching = true;
+            var current = this.getPinchData(evt);
+            this.callback("move", [evt, current]);
+            this.last = current;
+            // prevent document dragging
+            OpenLayers.Event.stop(evt);
+        }
+        return true;
+    },
+
+    /**
+     * Method: touchend
+     * Handle touchend events
+     *
+     * Parameters:
+     * evt - {Event}
+     *
+     * Returns:
+     * {Boolean} Let the event propagate.
+     */
+    touchend: function(evt) {
+        if (this.started) {
+            this.started = false;
+            this.pinching = false;
+            this.callback("done", [evt, this.start, this.last]);
+            this.start = null;
+            this.last = null;
+        }
+        return true;
+    },
+
+    /**
+     * Method: activate
+     * Activate the handler.
+     *
+     * Returns:
+     * {Boolean} The handler was successfully activated.
+     */
+    activate: function() {
+        var activated = false;
+        if (OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+            this.pinching = false;
+            activated = true;
+        }
+        return activated;
+    },
+
+    /**
+     * Method: deactivate
+     * Deactivate the handler.
+     *
+     * Returns:
+     * {Boolean} The handler was successfully deactivated.
+     */
+    deactivate: function() {
+        var deactivated = false;
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+            this.started = false;
+            this.pinching = false;
+            this.start = null;
+            this.last = null;
+            deactivated = true;
+        }
+        return deactivated;
+    },
+
+    /**
+     * Method: getDistance
+     * Get the distance in pixels between two touches.
+     *
+     * Parameters:
+     * touches - {Array(Object)}
+     *
+     * Returns:
+     * {Number} The distance in pixels.
+     */
+    getDistance: function(touches) {
+        var t0 = touches[0];
+        var t1 = touches[1];
+        return Math.sqrt(
+            Math.pow(t0.clientX - t1.clientX, 2) +
+            Math.pow(t0.clientY - t1.clientY, 2)
+        );
+    },
+
+
+    /**
+     * Method: getPinchData
+     * Get informations about the pinch event.
+     *
+     * Parameters:
+     * evt - {Event}
+     *
+     * Returns:
+     * {Object} Object that contains data about the current pinch.
+     */
+    getPinchData: function(evt) {
+        var distance = this.getDistance(evt.touches);
+        var scale = distance / this.start.distance;
+        return {
+            distance: distance,
+            delta: this.last.distance - distance,
+            scale: scale
+        };
+    },
+
+    CLASS_NAME: "OpenLayers.Handler.Pinch"
+});
+
+/* ======================================================================
     OpenLayers/Symbolizer/Point.js
    ====================================================================== */
 
@@ -41923,6 +42160,404 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
 OpenLayers.Events.nofeatureclick = OpenLayers.Events.featureclick;
 OpenLayers.Events.featureover = OpenLayers.Events.featureclick;
 OpenLayers.Events.featureout = OpenLayers.Events.featureclick;
+/* ======================================================================
+    OpenLayers/Control/PinchZoom.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+/**
+ * @requires OpenLayers/Handler/Pinch.js
+ */
+
+/**
+ * Class: OpenLayers.Control.PinchZoom
+ *
+ * Inherits:
+ *  - <OpenLayers.Control>
+ */
+OpenLayers.Control.PinchZoom = OpenLayers.Class(OpenLayers.Control, {
+
+    /** 
+     * Property: type
+     * {OpenLayers.Control.TYPES}
+     */
+    type: OpenLayers.Control.TYPE_TOOL,
+
+    /**
+     * Property: containerCenter
+     * {Object} Cached object representing the layer container center (in pixels).
+     */
+    containerCenter: null,
+
+    /**
+     * Property: pinchOrigin
+     * {Object} Cached object representing the pinch start (in pixels).
+     */
+    pinchOrigin: null,    
+    
+    /**
+     * Property: currentCenter
+     * {Object} Cached object representing the latest pinch center (in pixels).
+     */
+    currentCenter: null,    
+
+    /**
+     * APIProperty: autoActivate
+     * {Boolean} Activate the control when it is added to a map.  Default is
+     *     true.
+     */
+    autoActivate: true,
+    
+    /**
+     * Constructor: OpenLayers.Control.PinchZoom
+     * Create a control for zooming with pinch gestures.  This works on devices
+     *     with multi-touch support.
+     *
+     * Parameters:
+     * options - {Object} An optional object whose properties will be set on
+     *                    the control
+     */
+    initialize: function(options) {
+        OpenLayers.Control.prototype.initialize.apply(this, arguments);
+        this.handler = new OpenLayers.Handler.Pinch(this, {
+            start: this.pinchStart,
+            move: this.pinchMove,
+            done: this.pinchDone
+        }, this.handlerOptions);
+    },
+    
+    /**
+     * APIMethod: activate
+     * Activate this control.  Must be called after the control is added to a 
+     * map.
+     *
+     * Returns:
+     * {Boolean} The control was successfully activated.
+     */
+    activate: function() {
+        var activated = OpenLayers.Control.prototype.activate.apply(this,arguments);
+        if (activated) {
+            this.map.events.on({
+                moveend: this.updateContainerCenter,
+                scope: this
+            });
+            this.updateContainerCenter();
+        }
+        return activated;
+    },
+
+    /**
+     * APIMethod: deactivate
+     * Deactivate this control.
+     *
+     * Returns:
+     * {Boolean} The control was successfully deactivated.
+     */
+    deactivate: function() {
+        var deactivated = OpenLayers.Control.prototype.deactivate.apply(this,arguments);
+        if (this.map && this.map.events) {
+            this.map.events.un({
+                moveend: this.updateContainerCenter,
+                scope: this
+            });
+        }
+        return deactivated;
+    },
+    
+    /**
+     * Method: updateContainerCenter
+     * Must be called each time the layer container moves.
+     */
+    updateContainerCenter: function() {
+        var container = this.map.layerContainerDiv;
+        // the layer container div is a square of 100px/100px
+        this.containerCenter = {
+            x: parseInt(container.style.left, 10) + 50,
+            y: parseInt(container.style.top, 10) + 50
+        };
+    },
+
+    /**
+     * Method: pinchStart
+     *
+     * Parameters:
+     * evt - {Event}
+     * pinchData - {Object} pinch data object related to the current touchmove
+     *     of the pinch gesture. This give us the current scale of the pinch.
+     */
+    pinchStart: function(evt, pinchData) {
+        this.pinchOrigin = evt.xy;
+        this.currentCenter = evt.xy;
+    },
+    
+    /**
+     * Method: pinchMove
+     *
+     * Parameters:
+     * evt - {Event}
+     * pinchData - {Object} pinch data object related to the current touchmove
+     *     of the pinch gesture. This give us the current scale of the pinch.
+     */
+    pinchMove: function(evt, pinchData) {
+        var scale = pinchData.scale;
+        var containerCenter = this.containerCenter;
+        var pinchOrigin = this.pinchOrigin;
+        var current = evt.xy;
+
+        var dx = Math.round((current.x - pinchOrigin.x) + (scale - 1) * (containerCenter.x - pinchOrigin.x));
+        var dy = Math.round((current.y - pinchOrigin.y) + (scale - 1) * (containerCenter.y - pinchOrigin.y));
+
+        this.applyTransform(
+            "translate(" + dx + "px, " + dy + "px) scale(" + scale + ")"
+        );
+        this.currentCenter = current;
+    },
+    
+    /**
+     * Method: applyTransform
+     * Applies the given transform to layers.
+     */
+    applyTransform: function(transform) {
+        var style = this.map.layerContainerDiv.style;
+        style['-webkit-transform'] = transform;
+        style['-moz-transform'] = transform;
+    },
+    
+    /**
+     * Method: pinchDone
+     *
+     * Parameters:
+     * evt - {Event}
+     * start - {Object} pinch data object related to the touchstart event that
+     *     started the pinch gesture.
+     * last - {Object} pinch data object related to the last touchmove event
+     *     of the pinch gesture. This give us the final scale of the pinch.
+     */
+    pinchDone: function(evt, start, last) {
+        this.applyTransform("");
+        var zoom = this.map.getZoomForResolution(this.map.getResolution() / last.scale, true);
+        if (zoom !== this.map.getZoom() || !this.currentCenter.equals(this.pinchOrigin)) {
+            var resolution = this.map.getResolutionForZoom(zoom);
+
+            var location = this.map.getLonLatFromPixel(this.pinchOrigin);
+            var zoomPixel = this.currentCenter;        
+            var size = this.map.getSize();
+
+            location.lon += resolution * ((size.w / 2) - zoomPixel.x);
+            location.lat -= resolution * ((size.h / 2) - zoomPixel.y);
+
+            // Force a reflow before calling setCenter. This is to work
+            // around an issue occuring in iOS.
+            //
+            // See https://github.com/openlayers/openlayers/pull/351.
+            //
+            // Without a reflow setting the layer container div's top left
+            // style properties to "0px" - as done in Map.moveTo when zoom
+            // is changed - won't actually correctly reposition the layer
+            // container div.
+            //
+            // Also, we need to use a statement that the Google Closure
+            // compiler won't optimize away.
+            this.map.div.clientWidth = this.map.div.clientWidth;
+
+            this.map.setCenter(location, zoom);
+        }
+    },
+
+    CLASS_NAME: "OpenLayers.Control.PinchZoom"
+
+});
+/* ======================================================================
+    OpenLayers/Control/TouchNavigation.js
+   ====================================================================== */
+
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for
+ * full list of contributors). Published under the 2-clause BSD license.
+ * See license.txt in the OpenLayers distribution or repository for the
+ * full text of the license. */
+
+/**
+ * @requires OpenLayers/Control/DragPan.js
+ * @requires OpenLayers/Control/PinchZoom.js
+ * @requires OpenLayers/Handler/Click.js
+ */
+
+/**
+ * Class: OpenLayers.Control.TouchNavigation
+ * The navigation control handles map browsing with touch events (dragging,
+ *     double-tapping, tap with two fingers, and pinch zoom).  Create a new 
+ *     control with the <OpenLayers.Control.TouchNavigation> constructor.
+ *
+ * If you’re only targeting touch enabled devices with your mapping application,
+ *     you can create a map with only a TouchNavigation control. The 
+ *     <OpenLayers.Control.Navigation> control is mobile ready by default, but 
+ *     you can generate a smaller build of the library by only including this
+ *     touch navigation control if you aren't concerned about mouse interaction.
+ *
+ * Inherits:
+ *  - <OpenLayers.Control>
+ */
+OpenLayers.Control.TouchNavigation = OpenLayers.Class(OpenLayers.Control, {
+
+    /**
+     * Property: dragPan
+     * {<OpenLayers.Control.DragPan>}
+     */
+    dragPan: null,
+
+    /**
+     * APIProperty: dragPanOptions
+     * {Object} Options passed to the DragPan control.
+     */
+    dragPanOptions: null,
+
+    /**
+     * Property: pinchZoom
+     * {<OpenLayers.Control.PinchZoom>}
+     */
+    pinchZoom: null,
+
+    /**
+     * APIProperty: pinchZoomOptions
+     * {Object} Options passed to the PinchZoom control.
+     */
+    pinchZoomOptions: null,
+
+    /**
+     * APIProperty: clickHandlerOptions
+     * {Object} Options passed to the Click handler.
+     */
+    clickHandlerOptions: null,
+
+    /**
+     * APIProperty: documentDrag
+     * {Boolean} Allow panning of the map by dragging outside map viewport.
+     *     Default is false.
+     */
+    documentDrag: false,
+
+    /**
+     * APIProperty: autoActivate
+     * {Boolean} Activate the control when it is added to a map.  Default is
+     *     true.
+     */
+    autoActivate: true,
+
+    /**
+     * Constructor: OpenLayers.Control.TouchNavigation
+     * Create a new navigation control
+     *
+     * Parameters:
+     * options - {Object} An optional object whose properties will be set on
+     *                    the control
+     */
+    initialize: function(options) {
+        this.handlers = {};
+        OpenLayers.Control.prototype.initialize.apply(this, arguments);
+    },
+
+    /**
+     * Method: destroy
+     * The destroy method is used to perform any clean up before the control
+     * is dereferenced.  Typically this is where event listeners are removed
+     * to prevent memory leaks.
+     */
+    destroy: function() {
+        this.deactivate();
+        if(this.dragPan) {
+            this.dragPan.destroy();
+        }
+        this.dragPan = null;
+        if (this.pinchZoom) {
+            this.pinchZoom.destroy();
+            delete this.pinchZoom;
+        }
+        OpenLayers.Control.prototype.destroy.apply(this,arguments);
+    },
+
+    /**
+     * Method: activate
+     */
+    activate: function() {
+        if(OpenLayers.Control.prototype.activate.apply(this,arguments)) {
+            this.dragPan.activate();
+            this.handlers.click.activate();
+            this.pinchZoom.activate();
+            return true;
+        }
+        return false;
+    },
+
+    /**
+     * Method: deactivate
+     */
+    deactivate: function() {
+        if(OpenLayers.Control.prototype.deactivate.apply(this,arguments)) {
+            this.dragPan.deactivate();
+            this.handlers.click.deactivate();
+            this.pinchZoom.deactivate();
+            return true;
+        }
+        return false;
+    },
+    
+    /**
+     * Method: draw
+     */
+    draw: function() {
+        var clickCallbacks = {
+            click: this.defaultClick,
+            dblclick: this.defaultDblClick
+        };
+        var clickOptions = OpenLayers.Util.extend({
+            "double": true,
+            stopDouble: true,
+            pixelTolerance: 2
+        }, this.clickHandlerOptions);
+        this.handlers.click = new OpenLayers.Handler.Click(
+            this, clickCallbacks, clickOptions
+        );
+        this.dragPan = new OpenLayers.Control.DragPan(
+            OpenLayers.Util.extend({
+                map: this.map,
+                documentDrag: this.documentDrag
+            }, this.dragPanOptions)
+        );
+        this.dragPan.draw();
+        this.pinchZoom = new OpenLayers.Control.PinchZoom(
+            OpenLayers.Util.extend({map: this.map}, this.pinchZoomOptions)
+        );
+    },
+
+    /**
+     * Method: defaultClick
+     *
+     * Parameters:
+     * evt - {Event}
+     */
+    defaultClick: function (evt) {
+        if(evt.lastTouches && evt.lastTouches.length == 2) {
+            this.map.zoomOut();
+        }
+    },
+
+    /**
+     * Method: defaultDblClick
+     *
+     * Parameters:
+     * evt - {Event}
+     */
+    defaultDblClick: function (evt) {
+        var newCenter = this.map.getLonLatFromViewPortPx(evt.xy);
+        this.map.setCenter(newCenter, this.map.zoom + 1);
+    },
+
+    CLASS_NAME: "OpenLayers.Control.TouchNavigation"
+});
 /* ======================================================================
     OpenLayers/Symbolizer/Line.js
    ====================================================================== */
