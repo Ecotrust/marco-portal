@@ -401,53 +401,66 @@ app.init = function () {
         var feature = e.feature,
             layerModel = e.feature.layer.layerModel;
 
-        if (layerModel.attributeEvent === 'mouseover') {
-            app.map.activatePopup(feature);
+        if (layerModel.attributeEvent === 'mouseover') {        
+            var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
+                location = app.map.getFeatureLocation(feature),
+                layer = feature.layer;  
+            app.map.activatePopup(mouseoverAttribute, location, layer);
         }        
     });
 
     //mouseout events
     app.map.events.register("featureout", null, function(e, test) {
         var feature = e.feature,
-            layerModel = e.feature.layer.layerModel;
+            layer = feature.layer,
+            layerModel = layer.layerModel;
 
         if (layerModel.attributeEvent === 'mouseover') {
-            app.map.deactivatePopup(feature);
+            app.map.deactivatePopup(layer.popup);
         }        
     });
 
-    app.map.activatePopup = function(feature) {
+    app.map.getFeatureMouseoverAttribute = function(feature) {        
+        var mouseoverAttribute = feature.layer.layerModel.mouseoverAttribute,
+            attributeValue = mouseoverAttribute ? feature.attributes[mouseoverAttribute] : feature.layer.layerModel.name;
+        return attributeValue;
+    };
+
+    app.map.getFeatureLocation = function(feature) {
+        return feature.geometry.getBounds().getCenterLonLat();   
+    }
+
+    app.map.activatePopup = function(mouseoverAttribute, location, layer) {
         if (app.map.popups.length) {
 
-            if ( feature.layer.getZIndex() >= app.map.currentPopupFeature.layer.getZIndex() ) {
-                app.map.currentPopupFeature.popup.hide();
-                app.map.createPopup(feature);
-                app.map.currentPopupFeature = feature;
-            } else {
-                app.map.createPopup(feature);
-                feature.popup.hide();
+            if ( layer.getZIndex() >= app.map.currentPopup.layer.getZIndex() ) {
+                app.map.currentPopup.hide();                      
+                layer.popup = app.map.createPopup(mouseoverAttribute, location);
+                app.map.currentPopup = layer.popup;
+                app.map.currentPopup.layer = layer;
+            } else {                     
+                layer.popup = app.map.createPopup(mouseoverAttribute, location);
+                layer.popup.hide();
             }
 
-        } else {
-            app.map.createPopup(feature);
-            app.map.currentPopupFeature = feature;
+        } else {                     
+            layer.popup = app.map.createPopup(mouseoverAttribute, location);
+            app.map.currentPopup = layer.popup;
+            app.map.currentPopup.layer = layer;
         }
     };
 
-    app.map.deactivatePopup = function(feature) {
+    app.map.deactivatePopup = function(popup) {
         //app.map.destroyPopup(feature);
-        app.map.removePopup(feature.popup);
+        app.map.removePopup(popup);
         if (app.map.popups.length && !app.map.anyVisiblePopups()) {
             var hiddenPopup = app.map.popups[app.map.popups.length-1];
             hiddenPopup.show();
-            app.map.currentPopupFeature = hiddenPopup.feature;
+            app.map.currentPopup.layer = hiddenPopup.layer;
         }
     };
 
-    app.map.createPopup = function(feature) {
-        var mouseoverAttribute = feature.layer.layerModel.mouseoverAttribute,
-            attributeValue = mouseoverAttribute ? feature.attributes[mouseoverAttribute] : feature.layer.layerModel.name,
-            location = feature.geometry.getBounds().getCenterLonLat();
+    app.map.createPopup = function(attributeValue, location) {
         
         if ( ! app.map.getExtent().containsLonLat(location) ) {
             location = app.map.center;
@@ -461,9 +474,8 @@ app.init = function () {
             false,
             null
         );
-        popup.feature = feature;
-        feature.popup = popup;
         app.map.addPopup(popup);
+        return popup;
     };
 
     app.map.anyVisiblePopups = function() {
