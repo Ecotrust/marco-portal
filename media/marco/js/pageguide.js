@@ -361,7 +361,7 @@ app.pageguide.defaultOpenStuff = function() {
     app.viewModel.hideMapAttribution();
     
     //increase the z-value of SimpleLayerSwitcher so it falls on top of the pageguide icon
-    $('#SimpleLayerSwitcher_28').css('z-index', 1100);
+    $('.SimpleLayerSwitcher').css('z-index', 1100);
 };
 
 app.pageguide.defaultCloseStuff = function() {
@@ -375,7 +375,7 @@ app.pageguide.defaultCloseStuff = function() {
     app.viewModel.closeAllThemes();
     
     //return the zindex of the SimpleLayerSwitcher to its original value
-    $('#SimpleLayerSwitcher_28').css('z-index', 1005);
+    $('.SimpleLayerSwitcher').css('z-index', 1005);
     
     //only save state if tour is activated from a normal (non-tour) state)
     //if tour is closing to start another tour, then don't resave/reload original state (wait till tours are closing rather than toggling)
