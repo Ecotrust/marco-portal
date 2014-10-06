@@ -256,7 +256,7 @@
 	
 	$(document).on('map-ready', function () {
 		app.map.events.register('changebaselayer', null, function (event) {
-			console.log('base layer changed');
+			// console.log('base layer changed');
 			app.viewModel.printing.isGoogle(/Google/.test(event.layer.name));
 		});
 
