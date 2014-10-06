@@ -252,6 +252,16 @@ $(document).ready(function() {
     setTimeout( app.onResize, 300);
   };
 
+  app.isLikelyMobile = function() {
+    if (typeof window.orientation !== 'undefined') {
+      return true;
+    } 
+    if (window.innerWidth <= 800 && window.innerHeight <= 600) {
+      return true;
+    }
+    return false;
+  };
+  
   // Basemaps button and drop-down behavior
   //hide basemaps drop-down on mouseout
   $('#basemaps').mouseleave( function(e) {
@@ -279,6 +289,10 @@ $(document).ready(function() {
     }    
   });
 
+  $('.SimpleLayerSwitcher').on('touchend', function() {
+    $('.SimpleLayerSwitcher').hide();
+  });
+  
   //hide basemaps drop-down on mouseout
   $('.SimpleLayerSwitcher').mouseenter( function() {
     $('#basemaps').addClass('open');
