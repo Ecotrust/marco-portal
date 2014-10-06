@@ -219,32 +219,49 @@ app.init = function () {
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
         layers: [],
         handlerMode: "move",
-        callback: function(infoLookup, lonlat, xy) { 
-            console.log(infoLookup);
-            if (infoLookup) {                              
-                app.map.utfGridMoveHandling(infoLookup, lonlat, xy); 
-            }  
+        callback: function(infoLookup, lonlat, xy) {     
+            console.log("entering xyz-based move handler with " + app.map.popups.length + " popups");                
+            if (app.map.currentPopup) {
+                if (app.map.currentPopup.layerModel.utfurl) {
+                    app.map.deactivatePopup(app.map.currentPopup);
+                }                
+            }
+            // if (app.map.popups && app.map.popups.length) {
+            //     var lastPopupLayer = app.map.popups[0].layerModel;
+            //     if (lastPopupLayer.utfurl) {
+            //         app.map.deactivatePopup(app.map.popups[0]);
+            //     }                
+            // }
+            if (infoLookup) {   
+                for (var idx in infoLookup) {
+                    var info = infoLookup[idx];
+                    if (info && info.data) {   
+                        app.map.utfGridMoveHandling(info, lonlat, xy)                        
+                    } 
+                }
+            }
         }
     });
     map.addControl(app.map.UTFMoveControl);   
 
     var utfPopup = document.getElementById("utf-popup");
-    app.map.utfGridMoveHandling = function(infoLookup, lonlat, pixel) {
-        for (var idx in infoLookup) {
-            $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-                if (potential_layer.type !== 'Vector' && potential_layer.utfurl && potential_layer.attributeEvent === 'mouseover') {
-                    // var attribute = potential_layer.attributes[0],
-                    var attribute = potential_layer.mouseoverAttribute,
-                        info = infoLookup[idx];
-                    //debugger;
-                    if (info && info.data) { 
-                        utfPopup.innerHTML = "<div>" + info.data[attribute] + "</div>";
-                        utfPopup.style.left = (pixel.x + 15) + "px";
-                        utfPopup.style.top = (pixel.y + 15) + "px";
-                    }
-                }
-            });
-        }
+    app.map.utfGridMoveHandling = function(info, lonlat, pixel) {
+        console.log("entering utfGridMoveHandler with " + app.map.popups.length + " popups");
+        $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
+            if (potential_layer.type !== 'Vector' && potential_layer.utfurl && potential_layer.attributeEvent === 'mouseover' && potential_layer.mouseoverAttribute !== '') {
+                // var attribute = potential_layer.attributes[0],
+                var attribute = potential_layer.mouseoverAttribute;
+                if (info && info.data) { 
+                    // utfPopup.innerHTML = "<div>" + info.data[attribute] + "</div>";
+                    // utfPopup.style.left = (pixel.x + 15) + "px";
+                    // utfPopup.style.top = (pixel.y + 15) + "px";
+                    app.map.activatePopup(info.data[attribute], lonlat, potential_layer);
+                } 
+                // else {
+                //     app.map.deactivatePopup(potential_layer.layer.popup);
+                // }
+            }
+        });
     };
     
     // UTF Click Event Handler
@@ -397,26 +414,30 @@ app.init = function () {
     });//end featureclick event registration
     
     //mouseover events
-    app.map.events.register("featureover", null, function(e, test) {
+    app.map.events.register("featureover", null, function(e) {
         var feature = e.feature,
             layerModel = e.feature.layer.layerModel;
+
+        console.log("entering vector-based featureover with " + app.map.popups.length + " popups");
 
         if (layerModel.attributeEvent === 'mouseover') {        
             var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
                 location = app.map.getFeatureLocation(feature),
                 layer = feature.layer;  
-            app.map.activatePopup(mouseoverAttribute, location, layer);
+            app.map.activatePopup(mouseoverAttribute, location, layerModel);
         }        
     });
 
     //mouseout events
-    app.map.events.register("featureout", null, function(e, test) {
+    app.map.events.register("featureout", null, function(e) {
         var feature = e.feature,
             layer = feature.layer,
             layerModel = layer.layerModel;
 
+        console.log("vector-based featureout with " + app.map.popups.length + " popups");
         if (layerModel.attributeEvent === 'mouseover') {
             app.map.deactivatePopup(layer.popup);
+            // app.map.deactivatePopup(app.map.currentPopup);
         }        
     });
 
@@ -430,24 +451,33 @@ app.init = function () {
         return feature.geometry.getBounds().getCenterLonLat();   
     }
 
-    app.map.activatePopup = function(mouseoverAttribute, location, layer) {
+    app.map.activatePopup = function(mouseoverAttribute, location, layerModel) {
+        var layer = layerModel.layer;
+        console.log('activating popup');
         if (app.map.popups.length) {
-
+            console.log('app.map.popups is populated already with ' + app.map.popups.length + ' popups');
             if ( layer.getZIndex() >= app.map.currentPopup.layer.getZIndex() ) {
-                app.map.currentPopup.hide();                      
-                layer.popup = app.map.createPopup(mouseoverAttribute, location);
+                console.log('hiding any popups and showing popup from layer with higher Z value');
+                // console.log(app.map.currentPopup);
+                app.map.hidePopups();
+                // app.map.currentPopup.hide();                      
+                layer.popup = app.map.createPopup(mouseoverAttribute, location, layerModel);
                 app.map.currentPopup = layer.popup;
                 app.map.currentPopup.layer = layer;
             } else {                     
-                layer.popup = app.map.createPopup(mouseoverAttribute, location);
-                layer.popup.hide();
+                console.log('creating and hiding popup from layer with lower Z value');
+                layer.popup = app.map.createPopup(mouseoverAttribute, location, layerModel);
+                layer.popup.layer = layer;
+                layer.popup.hide();                
             }
 
-        } else {                     
-            layer.popup = app.map.createPopup(mouseoverAttribute, location);
+        } else {    
+            console.log('app.map.popups is empty, creating and showing popup'); 
+            layer.popup = app.map.createPopup(mouseoverAttribute, location, layerModel);
             app.map.currentPopup = layer.popup;
             app.map.currentPopup.layer = layer;
         }
+        
     };
 
     app.map.deactivatePopup = function(popup) {
@@ -460,7 +490,7 @@ app.init = function () {
         }
     };
 
-    app.map.createPopup = function(attributeValue, location) {
+    app.map.createPopup = function(attributeValue, location, layerModel) {
         
         if ( ! app.map.getExtent().containsLonLat(location) ) {
             location = app.map.center;
@@ -474,13 +504,20 @@ app.init = function () {
             false,
             null
         );
+        popup.layerModel = layerModel;
         app.map.addPopup(popup);
         return popup;
     };
 
+    app.map.hidePopups = function() {
+        for (var i=0; i<app.map.popups.length; i+=1) {
+            app.map.popups[i].hide();
+        }
+    }
+
     app.map.anyVisiblePopups = function() {
         for (var i=0; i<app.map.popups.length; i+=1) {
-            if (app.map.popups[0].visible()) {
+            if (app.map.popups[i].visible()) {
                 return true;
             }
         }
