@@ -219,19 +219,12 @@ app.init = function () {
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
         layers: [],
         handlerMode: "move",
-        callback: function(infoLookup, lonlat, xy) {     
-            console.log("entering xyz-based move handler with " + app.map.popups.length + " popups");                
+        callback: function(infoLookup, lonlat, xy) {                   
             if (app.map.currentPopup) {
                 if (app.map.currentPopup.layerModel.utfurl) {
-                    app.map.deactivatePopup(app.map.currentPopup);
+                    app.map.deactivateAllPopups();
                 }                
             }
-            // if (app.map.popups && app.map.popups.length) {
-            //     var lastPopupLayer = app.map.popups[0].layerModel;
-            //     if (lastPopupLayer.utfurl) {
-            //         app.map.deactivatePopup(app.map.popups[0]);
-            //     }                
-            // }
             if (infoLookup) {   
                 for (var idx in infoLookup) {
                     var info = infoLookup[idx];
@@ -244,22 +237,15 @@ app.init = function () {
     });
     map.addControl(app.map.UTFMoveControl);   
 
-    var utfPopup = document.getElementById("utf-popup");
+    // var utfPopup = document.getElementById("utf-popup");
     app.map.utfGridMoveHandling = function(info, lonlat, pixel) {
-        console.log("entering utfGridMoveHandler with " + app.map.popups.length + " popups");
         $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
             if (potential_layer.type !== 'Vector' && potential_layer.utfurl && potential_layer.attributeEvent === 'mouseover' && potential_layer.mouseoverAttribute !== '') {
-                // var attribute = potential_layer.attributes[0],
+
                 var attribute = potential_layer.mouseoverAttribute;
                 if (info && info.data) { 
-                    // utfPopup.innerHTML = "<div>" + info.data[attribute] + "</div>";
-                    // utfPopup.style.left = (pixel.x + 15) + "px";
-                    // utfPopup.style.top = (pixel.y + 15) + "px";
                     app.map.activatePopup(info.data[attribute], lonlat, potential_layer);
                 } 
-                // else {
-                //     app.map.deactivatePopup(potential_layer.layer.popup);
-                // }
             }
         });
     };
@@ -371,7 +357,6 @@ app.init = function () {
             
         }
         app.viewModel.updateMarker(lonlat);
-        //app.marker.display(true); 
         
     }; //end utfGridClickHandling
       
@@ -397,17 +382,11 @@ app.init = function () {
                 }
             }
             
-            // the following delay prevents the #map click-event-attributes-clearing from taking place after this has occurred
-            setTimeout( function() {
-                if (text.length) {
-                    app.map.clickOutput.attributes[layer.featureAttributionName] = text;
-                    app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                    app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
-                }
-                // if (app.marker) {
-                    // app.marker.display(true);
-                // }
-            }, 100);
+            if (text.length) {
+                app.map.clickOutput.attributes[layer.featureAttributionName] = text;
+                app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
+            }
             
         }
         
@@ -418,15 +397,30 @@ app.init = function () {
         var feature = e.feature,
             layerModel = e.feature.layer.layerModel;
 
-        console.log("entering vector-based featureover with " + app.map.popups.length + " popups");
-
         if (layerModel.attributeEvent === 'mouseover') {        
             var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
                 location = app.map.getFeatureLocation(feature),
                 layer = feature.layer;  
-            app.map.activatePopup(mouseoverAttribute, location, layerModel);
+            setTimeout(function() {
+                app.map.activatePopup(mouseoverAttribute, location, layerModel);
+            }, 100);
         }        
     });
+
+    app.map.vectorFeatureMouseOver = function(feature) {
+        // var feature = features[0];
+        if (feature) {
+            var layerModel = feature.layer.layerModel;
+            if (layerModel.attributeEvent === 'mouseover') {        
+                var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
+                    location = app.map.getFeatureLocation(feature),
+                    layer = feature.layer;  
+                setTimeout(function() {
+                    app.map.activatePopup(mouseoverAttribute, location, layerModel);
+                }, 100);
+            }      
+        }
+    };
 
     //mouseout events
     app.map.events.register("featureout", null, function(e) {
@@ -434,11 +428,7 @@ app.init = function () {
             layer = feature.layer,
             layerModel = layer.layerModel;
 
-        console.log("vector-based featureout with " + app.map.popups.length + " popups");
-        if (layerModel.attributeEvent === 'mouseover') {
-            app.map.deactivatePopup(layer.popup);
-            // app.map.deactivatePopup(app.map.currentPopup);
-        }        
+        app.map.deactivateAllPopups();
     });
 
     app.map.getFeatureMouseoverAttribute = function(feature) {        
@@ -453,40 +443,24 @@ app.init = function () {
 
     app.map.activatePopup = function(mouseoverAttribute, location, layerModel) {
         var layer = layerModel.layer;
-        console.log('activating popup');
-        if (app.map.popups.length) {
-            console.log('app.map.popups is populated already with ' + app.map.popups.length + ' popups');
-            if ( layer.getZIndex() >= app.map.currentPopup.layer.getZIndex() ) {
-                console.log('hiding any popups and showing popup from layer with higher Z value');
-                // console.log(app.map.currentPopup);
-                app.map.hidePopups();
-                // app.map.currentPopup.hide();                      
-                layer.popup = app.map.createPopup(mouseoverAttribute, location, layerModel);
-                app.map.currentPopup = layer.popup;
-                app.map.currentPopup.layer = layer;
-            } else {                     
-                console.log('creating and hiding popup from layer with lower Z value');
-                layer.popup = app.map.createPopup(mouseoverAttribute, location, layerModel);
-                layer.popup.layer = layer;
-                layer.popup.hide();                
+        if (app.map.currentPopup && app.map.currentPopup.layer === layer) {
+            // do nothing
+        } else if (!app.map.currentPopup || layer.getZIndex() >= app.map.currentPopup.layer.getZIndex()) {            
+
+            if (app.map.currentPopup) {                
+                app.map.deactivateAllPopups();
             }
 
-        } else {    
-            console.log('app.map.popups is empty, creating and showing popup'); 
-            layer.popup = app.map.createPopup(mouseoverAttribute, location, layerModel);
-            app.map.currentPopup = layer.popup;
+            // console.log('actually activating Popup');
+            app.map.currentPopup = app.map.createPopup(mouseoverAttribute, location, layerModel);
             app.map.currentPopup.layer = layer;
         }
-        
     };
 
-    app.map.deactivatePopup = function(popup) {
-        //app.map.destroyPopup(feature);
-        app.map.removePopup(popup);
-        if (app.map.popups.length && !app.map.anyVisiblePopups()) {
-            var hiddenPopup = app.map.popups[app.map.popups.length-1];
-            hiddenPopup.show();
-            app.map.currentPopup.layer = hiddenPopup.layer;
+    app.map.deactivateAllPopups = function() {
+        app.map.currentPopup = undefined;
+        for (var i=0; i<app.map.popups.length; i+=1) {
+            app.map.removePopup(app.map.popups[i]);
         }
     };
 
@@ -524,13 +498,6 @@ app.init = function () {
         return false;
     };
 
-    // app.map.destroyPopup = function(feature) {
-    //     // remove tooltip
-    //     app.map.removePopup(feature.popup);
-    //     //feature.popup.destroy();
-    //     //feature.popup=null;
-    // }
-    
     app.markers = new OpenLayers.Layer.Markers( "Markers" );
     var size = new OpenLayers.Size(16,25);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
@@ -538,8 +505,7 @@ app.init = function () {
     app.map.addLayer(app.markers);
       
     
-    //no longer needed?
-    //replaced with #map mouseup and move events in app.js?
+    
     //place the marker on click events
     app.map.events.register("click", app.map , function(e){
         //app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.xy));
@@ -547,9 +513,67 @@ app.init = function () {
         //display is set to true in the featureclick and utfgridclick handlers (when there is actually a hit)
         //app.marker.display(false);
         
+        //is the following no longer necessary? replaced with #map mouseup and move events in app.js?
         //the following ensures that the location of the marker is not displaced while waiting for web services
         app.map.clickLocation = app.map.getLonLatFromViewPortPx(e.xy);
+
+        // remove any mouseover popups
+        app.map.deactivateAllPopups();
     });
+
+    /***
+    app.map.events.register("mousemove", app.map, function(evt) {
+        var features = app.map.isVectorEvent(evt);
+        // if (!features.length) {            
+        //     app.map.removeVectorPopups();
+        // } else {
+        //     app.map.vectorFeatureMouseOver(features);
+        // }
+        if (features.length) {
+            console.log('calling vectorFeatureMouseOver');
+            app.map.vectorFeatureMouseOver(features[0]);
+        } else {
+            app.map.removeVectorPopups();
+        }
+    });
+
+    app.map.removeVectorPopups = function() {
+        for (var i=0; i<app.map.popups.length; i+=1) {
+            if (app.map.popups[i].layerModel.type === 'Vector') {
+                app.map.removePopup(app.map.popups[i]);
+                app.map.currentPopup = undefined;
+            }
+        }
+    };
+
+    // pulled this from OpenLayers featureclick (it wasn't always triggering for some reason, and putting this here seems to solve that prolbem)
+    app.map.isVectorEvent = function(evt) {
+        var x = evt.clientX, y = evt.clientY,
+            features = [];
+        for (var i=app.map.layers.length-1; i>=0; --i) {
+            var layer = app.map.layers[i];
+            if (layer.renderer instanceof OpenLayers.Renderer.Elements) {
+                if (layer.div.style.display !== "none") {
+                    if (layer instanceof OpenLayers.Layer.Vector) {
+                        //elevating the layer's zindex to ensure it is the first layer hit by document.elementFromPoint
+                        layer.setZIndex(parseInt(layer.getZIndex()) + 1000000);
+                        
+                        var target = document.elementFromPoint(x, y); 
+                        if (target && target._featureId) {
+                            var feature = layer.getFeatureById(target._featureId);
+                            if (feature) {
+                                features.push(feature);
+                            }
+                        }
+                        layer.setZIndex(parseInt(layer.getZIndex()) - 1000000);
+                    }
+                }
+            } 
+        }
+        console.log('isVectorEvent is returning ' + features.length + ' features');
+        return features;
+    };
+    ***/
     
     app.map.removeLayerByName = function(layerName) {
         for (var i=0; i<app.map.layers.length; i++) {
