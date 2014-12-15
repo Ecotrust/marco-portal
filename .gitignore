@@ -70,6 +70,10 @@ media/marco/assets/openlayers/tools/*
 
 media/marco/assets/openlayers/v2.13.1/*
 
+media/marco/assets/openlayers/lib-2.12/*
+
+media/marco/assets/openlayers/lib-2.13/*
+
 media/marco/assets/openlayers/OpenLayers-marco-build_orig.js
 
 media/marco/assets/openlayers/OpenLayers-marco-min_orig.js
@@ -89,3 +93,9 @@ scripts/export_xls.py
 scripts/test.xls
 
 marco/data_manager/fixtures/data_manager_fixture_prev.json
+
+media/marco/assets/openlayers/OpenLayers-marco-build-2.12.js
+
+media/marco/assets/openlayers/OpenLayers-marco-min-2.12.js
+
+marco/data_manager/fixtures/datadump-2014-12-02.json

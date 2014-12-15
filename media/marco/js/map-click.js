@@ -134,9 +134,12 @@ app.addClickEventHandling = function() {
             }
             
             if (text.length) {
-                app.map.clickOutput.attributes[layer.featureAttributionName] = text;
-                app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-                app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
+                // adding this delay so that the mouseup event in app.js (which closes any attribute overlay) is fired before the following (and not after)
+                setTimeout( function() {
+                    app.map.clickOutput.attributes[layer.featureAttributionName] = text;
+                    app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                    app.viewModel.updateMarker(app.map.getLonLatFromViewPortPx(e.event.xy));
+                }, 100);
             }
             
         }
