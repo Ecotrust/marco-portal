@@ -305,7 +305,7 @@ function layerModel(options, parent) {
         var layer = this;
         //NEED TO CHECK FOR PARENT LAYER HERE TOO...?
         //the following removes this layers utfgrid from the UTFClickControl and prevents continued utf attribution on this layer
-        app.map.UTFClickControl.layers.splice($.inArray(layer.utfgrid, app.map.UTFClickControl.layers), 1);
+        // app.map.UTFClickControl.layers.splice($.inArray(layer.utfgrid, app.map.UTFClickControl.layers), 1);
         app.map.removeLayer(layer.utfgrid);
     };
 
@@ -364,9 +364,10 @@ function layerModel(options, parent) {
             }
 
             //add utfgrid if applicable
-            if (layer.utfgrid) {
-                self.activateUtfGridLayer();
-            }
+            // already part of activateBaseLayer.addLayerToMap
+            // if (layer.utfgrid) {
+            //     self.activateUtfGridLayer();
+            // }
             
             //activate arcIdentifyControl (if applicable)
             if (layer.arcIdentifyControl) {
@@ -415,7 +416,8 @@ function layerModel(options, parent) {
     self.activateUtfGridLayer = function() {
         var layer = this;
         
-        app.map.UTFClickControl.layers.unshift(layer.utfgrid);
+        // app.map.UTFClickControl.layers.unshift(layer.utfgrid);
+        app.map.layers.unshift(layer.utfgrid);
     };
 
     // bound to click handler for layer visibility switching in Active panel
@@ -439,8 +441,12 @@ function layerModel(options, parent) {
         app.setLayerVisibility(layer, true);
         
         //add utfgrid if applicable
-        if (layer.utfgrid && app.map.UTFClickControl.layers.indexOf(layer.utfgrid) === -1) {
-            app.map.UTFClickControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
+        // if (layer.utfgrid && app.map.UTFClickControl.layers.indexOf(layer.utfgrid) === -1) {
+        //     app.map.UTFClickControl.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
+        // }
+        if (layer.utfgrid && app.map.layers.indexOf(layer.utfgrid) === -1) {
+            // app.map.layers.splice($.inArray(this, app.viewModel.activeLayers()), 0, layer.utfgrid);
+            app.map.addLayer(layer.utfgrid);
         }
     };
     
@@ -470,7 +476,9 @@ function layerModel(options, parent) {
         //remove related utfgrid layer
         if (layer.utfgrid) {
             //the following removes this layers utfgrid from the utfcontrol and prevents continued utf attribution on this layer
-            app.map.UTFClickControl.layers.splice($.inArray(this.utfgrid, app.map.UTFClickControl.layers), 1);
+            // app.map.UTFClickControl.layers.splice($.inArray(this.utfgrid, app.map.UTFClickControl.layers), 1);
+            // app.map.layers.splice($.inArray(layer.utfgrid, app.map.layers), 1);
+            app.map.removeLayer(layer.utfgrid);
         }
     };
 

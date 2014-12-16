@@ -1,6 +1,18 @@
 
 app.addClickEventHandling = function() {
 
+    //UTF Click Attribution
+    app.map.UTFClickControl = new OpenLayers.Control.UTFGrid({
+        //attributes: layer.attributes,
+        layers: [],
+        //events: {fallThrough: true},
+        handlerMode: 'click',
+        callback: function(infoLookup, lonlat, xy) {   
+            app.map.utfGridClickHandling(infoLookup, lonlat, xy);
+        }
+    });
+    app.map.addControl(app.map.UTFClickControl);    
+
     // UTF Click Event Handler
     app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
         var clickAttributes = {};

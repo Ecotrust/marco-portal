@@ -1,51 +1,44 @@
     
 app.addMouseoverEventHandling = function() {
 
-    //UTF Click Attribution
-    app.map.UTFClickControl = new OpenLayers.Control.UTFGrid({
-        //attributes: layer.attributes,
-        layers: [],
-        //events: {fallThrough: true},
-        handlerMode: 'click',
-        callback: function(infoLookup, lonlat, xy) {   
-            app.map.utfGridClickHandling(infoLookup, lonlat, xy);
-        }
-    });
-    app.map.addControl(app.map.UTFClickControl);    
+    //UTF Mouseover Events
 
-    //UTF Move Attribution
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
         layers: [],
         handlerMode: "move",
-        callback: function(infoLookup, lonlat, xy) {                   
+        callback: function(infoLookup, lonlat, xy) { 
+            console.log('inside callback');
+            console.log(infoLookup);                  
             if (app.map.currentPopup) {
                 if (app.map.currentPopup.layerModel.utfurl) {
-                    app.map.deactivateAllPopups();
+                    // app.map.deactivateAllPopups();
+                    app.map.deactivateCurrentPopup();
+                    console.log('deactivating current popup');
                 }                
             }
-            if (infoLookup) {   
+            if (infoLookup) {  
+                var activatingPopup = false; 
                 for (var idx in infoLookup) {
                     var info = infoLookup[idx];
                     if (info && info.data) {   
-                        app.map.utfGridMoveHandling(info, lonlat, xy)                        
+                        var potential_layer = app.map.layers[idx].layerModel;
+                        var attribute = potential_layer.mouseoverAttribute;
+                        app.map.activatePopup(info.data[attribute], lonlat, potential_layer);  
+                        activatingPopup = true;                   
                     } 
+                }
+                if (!activatingPopup && app.map.nextPopup) {
+                    app.map.currentPopup = app.map.nextPopup;
+                    app.map.deactivateAllPopups();
+                    app.map.addPopup(app.map.currentPopup);
+                    app.map.nextPopup = undefined;
                 }
             }
         }
     });
     app.map.addControl(app.map.UTFMoveControl);   
 
-    app.map.utfGridMoveHandling = function(info, lonlat, pixel) {
-        $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-            if (potential_layer.type !== 'Vector' && potential_layer.utfurl && potential_layer.attributeEvent === 'mouseover' && potential_layer.mouseoverAttribute !== '') {
-
-                var attribute = potential_layer.mouseoverAttribute;
-                if (info && info.data) { 
-                    app.map.activatePopup(info.data[attribute], lonlat, potential_layer);
-                } 
-            }
-        });
-    };
+    // Vector Mouseover Events
 
     //mouseover events
     app.map.events.register("featureover", null, function(e) {
@@ -56,6 +49,7 @@ app.addMouseoverEventHandling = function() {
             var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
                 location = app.map.getFeatureLocation(feature),
                 layer = feature.layer;  
+            // the following setTimeout ensures activating popup occurs after removing popups
             setTimeout(function() {
                 app.map.activatePopup(mouseoverAttribute, location, layerModel);
             }, 50);
@@ -67,24 +61,18 @@ app.addMouseoverEventHandling = function() {
         var feature = e.feature,
             layer = feature.layer,
             layerModel = layer.layerModel;
-        setTimeout(function() {
+        if (app.map.currentPopup && app.map.currentPopup.layer === layer) {
+            app.map.deactivateCurrentPopup();
+        }
+        if (app.map.nextPopup && app.map.nextPopup.layer === layer) {
+            app.map.deactivateNextPopup();
+        } else if (app.map.nextPopup && app.map.nextPopup.layer !== layer) {
+            app.map.currentPopup = app.map.nextPopup;
             app.map.deactivateAllPopups();
-        }, 20);
+            app.map.addPopup(app.map.currentPopup);
+            app.map.nextPopup = undefined;
+        }
     });
-
-    // app.map.vectorFeatureMouseOver = function(feature) {
-    //     if (feature) {
-    //         var layerModel = feature.layer.layerModel;
-    //         if (layerModel.attributeEvent === 'mouseover') {        
-    //             var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
-    //                 location = app.map.getFeatureLocation(feature),
-    //                 layer = feature.layer;  
-    //             setTimeout(function() {
-    //                 app.map.activatePopup(mouseoverAttribute, location, layerModel);
-    //             }, 100);
-    //         }      
-    //     }
-    // };
 
     app.map.getFeatureMouseoverAttribute = function(feature) {        
         var mouseoverAttribute = feature.layer.layerModel.mouseoverAttribute,
@@ -103,18 +91,18 @@ app.addMouseoverEventHandling = function() {
         } else if (!app.map.currentPopup || layer.getZIndex() >= app.map.currentPopup.layer.getZIndex()) {            
 
             if (app.map.currentPopup) {                
-                app.map.deactivateAllPopups();
+                // app.map.deactivateAllPopups();
+                app.map.nextPopup = app.map.currentPopup;
+                app.map.removePopup(app.map.nextPopup);
             }
 
             app.map.currentPopup = app.map.createPopup(mouseoverAttribute, location, layerModel);
+            app.map.deactivateAllPopups();
+            app.map.addPopup(app.map.currentPopup);
             app.map.currentPopup.layer = layer;
-        }
-    };
-
-    app.map.deactivateAllPopups = function() {
-        app.map.currentPopup = undefined;
-        for (var i=0; i<app.map.popups.length; i+=1) {
-            app.map.removePopup(app.map.popups[i]);
+        } else {
+            app.map.nextPopup = app.map.createPopup(mouseoverAttribute, location, layerModel);
+            app.map.nextPopup.layer = layer;
         }
     };
 
@@ -133,29 +121,31 @@ app.addMouseoverEventHandling = function() {
             null
         );
         popup.layerModel = layerModel;
-        app.map.addPopup(popup);
         return popup;
     };
 
-    app.map.hidePopups = function() {
-        for (var i=0; i<app.map.popups.length; i+=1) {
-            app.map.popups[i].hide();
-        }
-    }
+    app.map.deactivateCurrentPopup = function() {
+        app.map.removePopup(app.map.currentPopup);
+        app.map.currentPopup = undefined;
+    };
 
-    app.map.anyVisiblePopups = function() {
+    app.map.deactivateNextPopup = function() {
+        app.map.removePopup(app.map.nextPopup);
+        app.map.nextPopup = undefined;
+    };
+
+    app.map.deactivateAllPopups = function() {
         for (var i=0; i<app.map.popups.length; i+=1) {
-            if (app.map.popups[i].visible()) {
-                return true;
-            }
+            app.map.removePopup(app.map.popups[i--]);
         }
-        return false;
     };
 
     //place the marker on click events
     app.map.events.register("click", app.map , function(e){
-        // remove any mouseover popups
+        // remove any and all mouseover popups
         app.map.deactivateAllPopups();
+        app.map.currentPopup = undefined;
+        app.map.nextPopup = undefined;
     });    
 
 }

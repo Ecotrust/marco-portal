@@ -99,3 +99,5 @@ media/marco/assets/openlayers/OpenLayers-marco-build-2.12.js
 media/marco/assets/openlayers/OpenLayers-marco-min-2.12.js
 
 marco/data_manager/fixtures/datadump-2014-12-02.json
+
+media/data_manager/geojson/FMCIntercouncilBoundaries.json
