@@ -158,4 +158,5 @@ app.addClickEventHandling = function() {
         
     });//end featureclick event registration
 
-}
+};
+app.addClickEventHandling();

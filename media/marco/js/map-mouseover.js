@@ -1,4 +1,4 @@
-    
+
 app.addMouseoverEventHandling = function() {
 
     //UTF Mouseover Events
@@ -6,14 +6,11 @@ app.addMouseoverEventHandling = function() {
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
         layers: [],
         handlerMode: "move",
-        callback: function(infoLookup, lonlat, xy) { 
-            console.log('inside callback');
-            console.log(infoLookup);                  
+        callback: function(infoLookup, lonlat, xy) {  
             if (app.map.currentPopup) {
                 if (app.map.currentPopup.layerModel.utfurl) {
                     // app.map.deactivateAllPopups();
-                    app.map.deactivateCurrentPopup();
-                    console.log('deactivating current popup');
+                    app.map.deactivateCurrentPopup();           
                 }                
             }
             if (infoLookup) {  
@@ -27,7 +24,7 @@ app.addMouseoverEventHandling = function() {
                         activatingPopup = true;                   
                     } 
                 }
-                if (!activatingPopup && app.map.nextPopup) {
+                if (!activatingPopup && app.map.currentPopup && app.map.currentPopup.layerModel.utfurl && app.map.nextPopup) {
                     app.map.currentPopup = app.map.nextPopup;
                     app.map.deactivateAllPopups();
                     app.map.addPopup(app.map.currentPopup);
@@ -51,7 +48,7 @@ app.addMouseoverEventHandling = function() {
                 layer = feature.layer;  
             // the following setTimeout ensures activating popup occurs after removing popups
             setTimeout(function() {
-                app.map.activatePopup(mouseoverAttribute, location, layerModel);
+                app.map.activatePopup(mouseoverAttribute, location, layerModel, feature);
             }, 50);
         }        
     });
@@ -59,8 +56,7 @@ app.addMouseoverEventHandling = function() {
     //mouseout events
     app.map.events.register("featureout", null, function(e) {
         var feature = e.feature,
-            layer = feature.layer,
-            layerModel = layer.layerModel;
+            layer = feature.layer
         if (app.map.currentPopup && app.map.currentPopup.layer === layer) {
             app.map.deactivateCurrentPopup();
         }
@@ -84,25 +80,31 @@ app.addMouseoverEventHandling = function() {
         return feature.geometry.getBounds().getCenterLonLat();   
     }
 
-    app.map.activatePopup = function(mouseoverAttribute, location, layerModel) {
+    app.map.activatePopup = function(mouseoverAttribute, location, layerModel, feature) {
         var layer = layerModel.layer;
-        if (app.map.currentPopup && app.map.currentPopup.layer === layer) {
+        if (app.map.currentPopup && app.map.currentPopup.feature && feature && app.map.currentPopup.feature === feature) {
             // do nothing
-        } else if (!app.map.currentPopup || layer.getZIndex() >= app.map.currentPopup.layer.getZIndex()) {            
-
-            if (app.map.currentPopup) {                
+        } else if (app.map.currentPopup && layerModel.utfurl && app.map.currentPopup.layer === layer) {  
+            // do nothing
+        } else if (!app.map.currentPopup || layer.getZIndex() >= app.map.currentPopup.layer.getZIndex()) {  
+            if (app.map.currentPopup && layer.getZIndex() > app.map.currentPopup.layer.getZIndex()) {                
                 // app.map.deactivateAllPopups();
                 app.map.nextPopup = app.map.currentPopup;
-                app.map.removePopup(app.map.nextPopup);
+                app.map.removePopup(app.map.currentPopup);
             }
-
             app.map.currentPopup = app.map.createPopup(mouseoverAttribute, location, layerModel);
             app.map.deactivateAllPopups();
             app.map.addPopup(app.map.currentPopup);
             app.map.currentPopup.layer = layer;
-        } else {
+            if (feature) {
+                app.map.currentPopup.feature = feature;
+            }            
+        } else {           
             app.map.nextPopup = app.map.createPopup(mouseoverAttribute, location, layerModel);
             app.map.nextPopup.layer = layer;
+            if (feature) {
+                app.map.nextPopup.feature = feature;
+            }
         }
     };
 
@@ -127,6 +129,12 @@ app.addMouseoverEventHandling = function() {
     app.map.deactivateCurrentPopup = function() {
         app.map.removePopup(app.map.currentPopup);
         app.map.currentPopup = undefined;
+
+        if (app.map.nextPopup) {
+            app.map.currentPopup = app.map.nextPopup; 
+            app.map.addPopup(app.map.currentPopup);
+            app.map.nextPopup = undefined;
+        }
     };
 
     app.map.deactivateNextPopup = function() {
@@ -148,4 +156,5 @@ app.addMouseoverEventHandling = function() {
         app.map.nextPopup = undefined;
     });    
 
-}
+};
+app.addMouseoverEventHandling();

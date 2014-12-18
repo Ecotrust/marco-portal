@@ -208,9 +208,6 @@ app.init = function () {
     app.markers.icon = new OpenLayers.Icon('/media/marco/assets/img/red-pin.png', size, offset);
     app.map.addLayer(app.markers);
      
-    app.addMouseoverEventHandling();
-    app.addClickEventHandling();
-    
     //place the marker on click events
     app.map.events.register("click", app.map , function(e){
         //is the following no longer necessary? replaced with #map mouseup and move events in app.js?
