@@ -1,5 +1,12 @@
 
 app.addMouseoverEventHandling = function() {
+    
+    /***
+    TODO: 
+    nextPopup currently keeps track of the feature that has been entered but is covered by another attributed feature or utfgrid,
+    next steps might turn this into a nextPopups list that stores attribute info for all attributed features under the cursor
+    ***/
+
     //UTF Mouseover Events
 
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
