@@ -1,6 +1,5 @@
 
 app.addMouseoverEventHandling = function() {
-
     //UTF Mouseover Events
 
     app.map.UTFMoveControl = new OpenLayers.Control.UTFGrid({
@@ -10,7 +9,12 @@ app.addMouseoverEventHandling = function() {
             if (app.map.currentPopup) {
                 if (app.map.currentPopup.layerModel.utfurl) {
                     // app.map.deactivateAllPopups();
-                    app.map.deactivateCurrentPopup();           
+                    app.map.deactivateCurrentPopup();  
+                    if (app.map.nextPopup) {
+                        app.map.currentPopup = app.map.nextPopup; 
+                        app.map.addPopup(app.map.currentPopup);
+                        app.map.nextPopup = undefined;
+                    }        
                 }                
             }
             if (infoLookup) {  
@@ -41,15 +45,15 @@ app.addMouseoverEventHandling = function() {
     app.map.events.register("featureover", null, function(e) {
         var feature = e.feature,
             layerModel = e.feature.layer.layerModel;
-
         if (layerModel.attributeEvent === 'mouseover') {        
             var mouseoverAttribute = app.map.getFeatureMouseoverAttribute(feature),
                 location = app.map.getFeatureLocation(feature),
                 layer = feature.layer;  
-            // the following setTimeout ensures activating popup occurs after removing popups
+            // the following setTimeout ensures activating popup occurs after removing popups (featureover fires before featureout for adjacent features)
+            // 5ms seems to be enough -- 50ms sometimes caused popups to linger, 0ms prevented adjacent features from opening popup 
             setTimeout(function() {
                 app.map.activatePopup(mouseoverAttribute, location, layerModel, feature);
-            }, 50);
+            }, 1);
         }        
     });
 
@@ -60,6 +64,7 @@ app.addMouseoverEventHandling = function() {
         if (app.map.currentPopup && app.map.currentPopup.layer === layer) {
             app.map.deactivateCurrentPopup();
         }
+
         if (app.map.nextPopup && app.map.nextPopup.layer === layer) {
             app.map.deactivateNextPopup();
         } else if (app.map.nextPopup && app.map.nextPopup.layer !== layer) {
@@ -129,12 +134,6 @@ app.addMouseoverEventHandling = function() {
     app.map.deactivateCurrentPopup = function() {
         app.map.removePopup(app.map.currentPopup);
         app.map.currentPopup = undefined;
-
-        if (app.map.nextPopup) {
-            app.map.currentPopup = app.map.nextPopup; 
-            app.map.addPopup(app.map.currentPopup);
-            app.map.nextPopup = undefined;
-        }
     };
 
     app.map.deactivateNextPopup = function() {
