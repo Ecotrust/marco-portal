@@ -354,6 +354,10 @@ $(document).ready(function() {
     app.updateUrl();
   });
   
+  // MAFMC Active Tab instructions button
+  $('#active-tab-instructions').mouseover(function() { $('#instructions-content').css('visibility', 'visible'); });
+  $('#active-tab-instructions').mouseout(function() { $('#instructions-content').css('visibility', 'hidden'); });
+  
 });
 
 $('#bookmark-form').on('submit', function(event) {
