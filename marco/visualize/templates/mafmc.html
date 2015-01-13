@@ -283,10 +283,6 @@
                 height: 100px;
                 border: 0px;
             }
-            #mafmc-panel #overview-overlay-text {
-                /*height: 70px;*/
-                margin-top: -5px;
-            }
             #mafmc-panel #overview-overlay-text .mCSB_container {
                 background-color: rgb(230, 230, 230);
             }
@@ -492,7 +488,7 @@
                                                 <!--<span class="caret" style="display:none" data-bind="visible: activeInfoLayer().subLayers"></span>-->
                                                 <span><a href="#" style="margin-left: 10px; opacity: .8;" class="btn btn-mini pull-right close" data-bind="click: closeDescription"> x </a> </span>
                                             </div>
-                                            <div id="overview-overlay-text" style="margin-top: 5px"> 
+                                            <div id="overview-overlay-text" style="margin-top: -5px"> 
                                                 <span class="text" data-bind="html: getOverviewText()" style="white-space: pre-wrap"></span>
                                                 <div class="notes">
                                                     <div data-bind="visible: activeInfoSublayer() ? activeInfoSublayer().data_source : activeInfoLayer().data_source">
