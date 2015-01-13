@@ -284,7 +284,8 @@
                 border: 0px;
             }
             #mafmc-panel #overview-overlay-text {
-                height: 70px;
+                /*height: 70px;*/
+                margin-top: -5px;
             }
             #mafmc-panel #overview-overlay-text .mCSB_container {
                 background-color: rgb(230, 230, 230);
@@ -506,16 +507,9 @@
                                             </div>
                                             
                                             {% load flatblock_tags %}
-                                            <div id="overview-overlay-links">
+                                            <!-- <div id="overview-overlay-links">
                                               <span>
                                                 <div class="text" style="margin-top: 5px">
-                                                    <!-- <span>
-                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeKmlLink() }, attr: { href: activeKmlLink() }" target="_blank">
-                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_kml_link_tooltip' %}">
-                                                                {% flatblock "data_catalog_kml_link" %}
-                                                            </span>
-                                                        </a>
-                                                    </span> -->
                                                     <span>
                                                         <a class="btn btn-mini" data-bind="css: { disabled: ! activeDataLink() }, attr: { href: activeDataLink() }" target="_blank">
                                                             <span rel="tooltip" title="{% flatblock 'data_catalog_data_link_tooltip' %}">
@@ -537,16 +531,9 @@
                                                             </span>
                                                         </a>
                                                     </span>
-                                                    <!-- <span>
-                                                        <a class="btn btn-mini" data-bind="css: { disabled: ! activeTilesLink() }, attr: { href: activeTilesLink() }" target="_blank">
-                                                            <span rel="tooltip" title="{% flatblock 'data_catalog_tiles_link_tooltip' %}">
-                                                                {% flatblock "data_catalog_tiles_link" %}
-                                                            </span>
-                                                        </a>
-                                                    </span> -->
                                                 </div>
                                               </span>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     
