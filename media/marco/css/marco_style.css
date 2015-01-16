@@ -719,7 +719,7 @@ img + h3 {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	width: auto;
-    max-width: 72%;
+    max-width: 88%;
 	/*height: inherit;*/
     height: 16px;
     vertical-align: middle;
