@@ -31,8 +31,10 @@ app.addMouseoverEventHandling = function() {
                     if (info && info.data) {   
                         var potential_layer = app.map.layers[idx].layerModel;
                         var attribute = potential_layer.mouseoverAttribute;
-                        app.map.activatePopup(info.data[attribute], lonlat, potential_layer);  
-                        activatingPopup = true;                   
+                        if (attribute) {
+                            app.map.activatePopup(info.data[attribute], lonlat, potential_layer);  
+                            activatingPopup = true; 
+                        }                  
                     } 
                 }
                 if (!activatingPopup && app.map.currentPopup && app.map.currentPopup.layerModel.utfurl && app.map.nextPopup) {
