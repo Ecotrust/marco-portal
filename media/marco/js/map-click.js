@@ -107,7 +107,9 @@ app.addClickEventHandling = function() {
                             text = app.viewModel.getChannelAttributes(info.data);
                         } else if ( title === 'Benthic Habitats (North)' || title === 'Benthic Habitats (South)' ) {
                             title = 'Benthic Habitats';
-                        }
+                        } else if ( potential_layer.name === 'Essential Fish Habitats') {
+                            text = app.clickAttributes.getEFHAttributes(info.data);
+                        } 
                         clickAttributes[title] = text;
                         //app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
                     } 
