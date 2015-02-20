@@ -343,13 +343,13 @@
                 }, 500);
             });
             
-            $(document).ready( function() {
+            $(document).ready( function() {                
                 app.map.getLayersByName('ESRI Ocean')[0]['attribution'] = "Basemap Attribution";
                 $('.olControlAttribution').text("Basemap Attribution");
                 $('.olControlAttribution').width("112px");
                 $('.olControlAttribution').attr('rel',"tooltip");
                 //$('.olControlAttribution').attr('title',"The Ocean Basemap was created with data from the General Bathymetric Chart of the Oceans (GEBCO), IHO-IOC GEBCO Gazetteer of Undersea Feature Names, NOAA, Seafloor Mapping Lab of the California State University Monterey Bay, National Geographic, DeLorme, and Esri.");
-                $('.olControlAttribution').attr('title',"The ESRI Ocean Basemap was was built using data provided by ESRI, GEBCO, NOAA, Canadian Hydrographic Service (CHS), California State University at Monterey Bay (CSUMB), National Geographic, DeLorme, and NAVTEQ.");
+                $('.olControlAttribution').attr('title',"The ESRI Ocean Basemap was built using data provided by ESRI, GEBCO, NOAA, Canadian Hydrographic Service (CHS), California State University at Monterey Bay (CSUMB), National Geographic, DeLorme, and NAVTEQ.");
             });
             
             $(function () { 
