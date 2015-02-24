@@ -103,3 +103,7 @@ marco/data_manager/fixtures/datadump-2014-12-02.json
 media/data_manager/geojson/FMCIntercouncilBoundaries.json
 
 marco/scenarios/fixtures/leaseblock_dump_20130919.json.zip
+
+marco/data_manager/fixtures/datadump_20150224.json
+
+marco/local_datadump_20150224.json

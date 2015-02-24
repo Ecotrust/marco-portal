@@ -7,11 +7,13 @@ app.viewModel.loadLayers = function(data) {
 
 		self.layerIndex[layer.id] = layerViewModel;
 		// add sublayers if they exist
-		if (layer.subLayers) {
+		if (layer.subLayers && layer.subLayers.length) {
 			$.each(layer.subLayers, function(i, layer_options) {
-				var subLayer = new layerModel(layer_options, layerViewModel);
-				app.viewModel.layerIndex[subLayer.id] = subLayer;
-				layerViewModel.subLayers.push(subLayer);
+                if (layer_options.type !== 'placeholder') {
+    				var subLayer = new layerModel(layer_options, layerViewModel);
+    				app.viewModel.layerIndex[subLayer.id] = subLayer;
+    				layerViewModel.subLayers.push(subLayer);
+                }
 			});
 		}
 	});
