@@ -498,6 +498,11 @@ a.disabled-link:hover {
   overflow: hidden;
 }
 
+#overview-overlay-text a {
+  color: white;
+  font-style: italic;
+}
+
 #overview-overlay-text .mCSB_container {
   padding: 5px 10px 15px;  
   margin-right: 25px;
