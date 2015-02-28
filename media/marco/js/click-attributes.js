@@ -23,6 +23,9 @@ app.clickAttributes = (function() {
 	};
 
 	var getEFHAttributes = function(data) {
+        if (!data) {
+            return;
+        }
 		var attrs = [];
         if ('American_P' in data && data['American_P']) {
         	output = getEFHData(data['American_P']);

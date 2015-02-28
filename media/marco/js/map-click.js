@@ -17,110 +17,90 @@ app.addClickEventHandling = function() {
     app.map.utfGridClickHandling = function(infoLookup, lonlat, xy) {
         var clickAttributes = {};
         
+        // identify which grid layers were clicked
+        var gridLayersHit = [];
         for (var idx in infoLookup) {
-            $.each(app.viewModel.visibleLayers(), function (layer_index, potential_layer) {
-              if (potential_layer.type !== 'Vector') {
-                var new_attributes,
-                    info = infoLookup[idx];
-                //debugger;
-                if (info && info.data) { 
-                    var newmsg = '',
-                        hasAllAttributes = true,
-                        parentHasAllAttributes = false;
-                    // if info.data has all the attributes we're looking for
-                    // we'll accept this layer as the attribution layer 
-                    //if ( ! potential_layer.attributes.length ) {
-                    if (potential_layer.attributes.length) {
-                        hasAllAttributes = true;
-                    } else {
-                        hasAllAttributes = false;
-                    }
-                    //}
-                    $.each(potential_layer.attributes, function (attr_index, attr_obj) {
-                        if ( !(attr_obj.field in info.data) ) {
-                            hasAllAttributes = false;
+            var info = infoLookup[idx];
+            if (info && info.data) {
+                var gridLayer = app.map.layers[idx];
+                if (gridLayer && gridLayer.layerModel && gridLayer.layerModel.name) {
+                    gridLayersHit[gridLayer.layerModel.name] = info;
+                }
+            }
+        }
+
+        // loop through visible layers and show attributes for any visible layers that match the grid layers that were clicked
+        $.each(app.viewModel.visibleLayers(), function(layer_index, potential_layer) {
+            var gridLayerInfo = gridLayersHit[potential_layer.name];
+            if (gridLayerInfo) {
+                var attributes = undefined;
+                var attribute_objs = [];
+
+                if (potential_layer.attributes) {
+                    attributes = potential_layer.attributes;
+                } else if (potential_layer.parent && potential_layer.parent.attributes) {
+                    attributes = potential_layer.parent.attributes;
+                }
+
+                if (attributes) {
+                    $.each(attributes, function(index, obj) {
+                        if (potential_layer.compress_attributes) {
+                            var display = obj.display + ': ' + gridLayerInfo.data[obj.field];
+                            attribute_objs.push({
+                                'display': display,
+                                'data': ''
+                            });
+                        } else {
+                            var value = gridLayerInfo.data[obj.field];
+                            try {
+                                //set the precision and add any necessary commas
+                                value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            } catch (e) {
+                                //keep on keeping on
+                            }
+                            attribute_objs.push({
+                                'display': obj.display,
+                                'data': value
+                            });
                         }
                     });
-                    if ( !hasAllAttributes && potential_layer.parent) {
-                        parentHasAllAttributes = true;
-                        if ( ! potential_layer.parent.attributes.length ) {
-                            parentHasAllAttributes = false;
-                        }
-                        $.each(potential_layer.parent.attributes, function (attr_index, attr_obj) {
-                            if ( !(attr_obj.field in info.data) ) {
-                                parentHasAllAttributes = false;
-                            }
-                        });
-                    }
-                    if (hasAllAttributes) {
-                        new_attributes = potential_layer.attributes;
-                    } else if (parentHasAllAttributes) {
-                        new_attributes = potential_layer.parent.attributes;
-                    }
 
-                    if (new_attributes) { 
-                        var attribute_objs = [];
-                        $.each(new_attributes, function(index, obj) {
-                            if ( potential_layer.compress_attributes ) {
-                                var display = obj.display + ': ' + info.data[obj.field];
-                                attribute_objs.push({'display': display, 'data': ''});
-                            } else {
-                                /*** SPECIAL CASE FOR ENDANGERED WHALE DATA ***/
-                                var value = info.data[obj.field];
-                                if (value === 999999) {
-                                    attribute_objs.push({'display': obj.display, 'data': 'No Survey Effort'});
-                                } else {
-                                    try {
-                                        //set the precision and add any necessary commas
-                                        value = value.toFixed(obj.precision).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                    }
-                                    catch (e) {
-                                        //keep on keeping on
-                                    }
-                                    attribute_objs.push({'display': obj.display, 'data': value});
-                                }
-                            }
-                        });
-                        var title = potential_layer.featureAttributionName,
-                            text = attribute_objs;
-                        if ( potential_layer.name === 'OCS Lease Blocks' ) {
-                            text = app.viewModel.getOCSAttributes(info.data);
-                        } else if ( potential_layer.name === 'Sea Turtles' ) {
-                            text = app.viewModel.getSeaTurtleAttributes(info.data);
-                        } else if ( potential_layer.name === 'Toothed Mammals (All Seasons)' ) {
-                            text = app.viewModel.getToothedMammalAttributes(info.data);
-                        } else if ( potential_layer.name === 'Wind Speed' ) {
-                            text = app.viewModel.getWindSpeedAttributes(info.data);
-                        } else if ( potential_layer.name === 'BOEM Wind Planning Areas' ) {
-                            text = app.viewModel.getWindPlanningAreaAttributes(info.data);
-                        } else if ( potential_layer.name === 'Party & Charter Boat' ) {
-                            text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
-                        } else if ( potential_layer.name === 'Port Commodity (Points)' ) { 
-                            text = app.viewModel.getPortCommodityAttributes(info.data);                             
-                        } else if ( potential_layer.name === 'Port Commodity' ) { 
-                            text = app.viewModel.getPortCommodityAttributes(info.data);                             
-                        } else if ( potential_layer.name === 'Port Ownership (Points)' ) { 
-                            text = app.viewModel.getPortOwnershipAttributes(info.data);                             
-                        } else if ( potential_layer.name === 'Port Ownership' ) { 
-                            text = app.viewModel.getPortOwnershipAttributes(info.data);                             
-                        } else if ( potential_layer.name === 'Maintained Channels') {
-                            text = app.viewModel.getChannelAttributes(info.data);
-                        } else if ( title === 'Benthic Habitats (North)' || title === 'Benthic Habitats (South)' ) {
-                            title = 'Benthic Habitats';
-                        } else if ( potential_layer.name === 'Essential Fish Habitats') {
-                            text = app.clickAttributes.getEFHAttributes(info.data);
-                        } 
-                        clickAttributes[title] = text;
-                        //app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
+                    var title = potential_layer.featureAttributionName,
+                        text = attribute_objs;
+                    if ( potential_layer.name === 'OCS Lease Blocks' ) {
+                        text = app.viewModel.getOCSAttributes(gridLayerInfo.data);
+                    } else if ( potential_layer.name === 'Sea Turtles' ) {
+                        text = app.viewModel.getSeaTurtleAttributes(gridLayerInfo.data);
+                    } else if ( potential_layer.name === 'Toothed Mammals (All Seasons)' ) {
+                        text = app.viewModel.getToothedMammalAttributes(gridLayerInfo.data);
+                    } else if ( potential_layer.name === 'Wind Speed' ) {
+                        text = app.viewModel.getWindSpeedAttributes(gridLayerInfo.data);
+                    } else if ( potential_layer.name === 'BOEM Wind Planning Areas' ) {
+                        text = app.viewModel.getWindPlanningAreaAttributes(gridLayerInfo.data);
+                    } else if ( potential_layer.name === 'Party & Charter Boat' ) {
+                        text = app.viewModel.adjustPartyCharterAttributes(attribute_objs);
+                    } else if ( potential_layer.name === 'Port Commodity (Points)' ) { 
+                        text = app.viewModel.getPortCommodityAttributes(gridLayerInfo.data);                             
+                    } else if ( potential_layer.name === 'Port Commodity' ) { 
+                        text = app.viewModel.getPortCommodityAttributes(gridLayerInfo.data);                             
+                    } else if ( potential_layer.name === 'Port Ownership (Points)' ) { 
+                        text = app.viewModel.getPortOwnershipAttributes(gridLayerInfo.data);                             
+                    } else if ( potential_layer.name === 'Port Ownership' ) { 
+                        text = app.viewModel.getPortOwnershipAttributes(gridLayerInfo.data);                             
+                    } else if ( potential_layer.name === 'Maintained Channels') {
+                        text = app.viewModel.getChannelAttributes(gridLayerInfo.data);
+                    } else if ( title === 'Benthic Habitats (North)' || title === 'Benthic Habitats (South)' ) {
+                        title = 'Benthic Habitats';
+                    } else if ( potential_layer.name === 'Essential Fish Habitats') {
+                        text = app.clickAttributes.getEFHAttributes(gridLayerInfo.data);
                     } 
-                } 
-              }
-            });
-            
+                    clickAttributes[title] = text;
+                }
+            }
             $.extend(app.map.clickOutput.attributes, clickAttributes);
             app.viewModel.aggregatedAttributes(app.map.clickOutput.attributes);
-            
-        }
+        });
+
         app.viewModel.updateMarker(lonlat);
         
     }; //end utfGridClickHandling
