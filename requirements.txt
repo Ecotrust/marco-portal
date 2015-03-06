@@ -1,9 +1,10 @@
 # pip requirements file for MARCO
 Distribute
-django==1.4
+django==1.4.2
 madrona
 simplejson
 django-redis
 querystring-parser
 httplib2
 requests
+django-import-export

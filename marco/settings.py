@@ -40,7 +40,8 @@ INSTALLED_APPS += ( 'clipping',
                     'django.contrib.humanize',
                     'flatblocks',
                     'proxy',
-                    'marco_profile' )
+                    'marco_profile',
+                    'import_export' )
 
 GEOMETRY_DB_SRID = 99996
 GEOMETRY_CLIENT_SRID = 3857 #for latlon
