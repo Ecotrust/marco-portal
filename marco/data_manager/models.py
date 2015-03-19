@@ -105,6 +105,7 @@ class Layer(models.Model):
     vector_color = models.CharField(max_length=7, blank=True, null=True)
     vector_fill = models.FloatField(blank=True, null=True)
     vector_graphic = models.CharField(max_length=255, blank=True, null=True)
+    point_radius = models.IntegerField(blank=True, null=True, help_text='Used only for for Point layers (default is 2)')
     opacity = models.FloatField(default=.5, blank=True, null=True)
     
     def __unicode__(self):
@@ -250,6 +251,7 @@ class Layer(models.Model):
                 'lookups': layer.serialize_lookups,
                 'outline_color': layer.vector_outline_color,
                 'outline_opacity': layer.vector_outline_opacity,
+                'point_radius': layer.point_radius,
                 'color': layer.vector_color,
                 'fill_opacity': layer.vector_fill,
                 'graphic': layer.vector_graphic,
@@ -284,6 +286,7 @@ class Layer(models.Model):
             'lookups': self.serialize_lookups,
             'outline_color': self.vector_outline_color,
             'outline_opacity': self.vector_outline_opacity,
+            'point_radius': self.point_radius,
             'color': self.vector_color,
             'fill_opacity': self.vector_fill,
             'graphic': self.vector_graphic,

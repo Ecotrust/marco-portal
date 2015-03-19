@@ -455,7 +455,7 @@ app.addVectorLayerToMap = function(layer) {
             //strokeLinecap: "square",
             //http://dev.openlayers.org/apidocs/files/OpenLayers/Feature/Vector-js.html
             //title: 'testing'
-            pointRadius: 2,
+            pointRadius: layer.point_radius,
             externalGraphic: layer.graphic,
             graphicWidth: 8,
             graphicHeight: 8,
