@@ -13,7 +13,6 @@
     "webshot": "0.1.4",
     "socket.io": "0.9.6",
     "express": "3.0.0",
-    "moment": "1.7.2",
     "gm": "1.6.1",
     "node-native-zip": "1.1.0",
     "optimist": "0.3.5"
@@ -24,4 +23,3 @@
     "node": "*"
   }
 }
-

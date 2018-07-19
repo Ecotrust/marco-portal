@@ -2,7 +2,6 @@ var webshot = require('./lib/webshot/lib/webshot.js'),
   argv = require('optimist').argv,
   express = require('express'),
   http = require('http'),
-  moment = require('moment'),
   zip = require("node-native-zip"),
   gm = require('gm'),
   fs = require('fs'),
@@ -54,16 +53,25 @@ app.get('/download/:file', function (req, res) {
         res.contentType(req.params.file);
         res.setHeader('Content-disposition', 'attachment; filename=' + file);
         res.send(data);
-      }   
+      }
       res.end();
-    }); 
+    });
 });
 
 io.sockets.on('connection', function(socket) {
   //clients[socket.id] = socket;
 
   socket.on('shot', function(data, cb) {
-    var ts = moment().format('YYYYDDmmHHss'),
+    var now = new Date();
+    var ts = now.getFullYear() + '' + ('0' + now.getDate()).slice(-2) + '' +
+        ("0" + Number(now.getMonth()+1)).slice(-2) +
+        ("0" + now.getHours()).slice(-2) +
+        ("0" + now.getSeconds()).slice(-2),
+    // RDH 07/19/2018 - This format is stupid, but I don't want to dig in to be
+        // sure that rewriting it won't break anything. See initial format code
+        // below. Removed due to insecurities in Moment.
+        // Wishlist: swap day with month, add minutes between hours and seconds
+    // var ts = moment().format('YYYYDDmmHHss'),
       filename = ts + '-' + socket.id;
       options = {
         userAgent: data.userAgent,
@@ -75,7 +83,7 @@ io.sockets.on('connection', function(socket) {
         shotSize: {
           width: data.mapWidth,
           height: data.mapHeight
-        }, 
+        },
         phantomPath: phantomPath
       },
       hash = data.hash + "&print=true";
@@ -103,7 +111,7 @@ io.sockets.on('connection', function(socket) {
           },
           zipTiff = function (cb) {
             var archive = new zip(),
-                worldString = data.pixelSize + "\n0\n0\n" + 
+                worldString = data.pixelSize + "\n0\n0\n" +
                   data.pixelSize * -1 + '\n' + data.extent[0] + '\n'
                   data.extent[3] + '\n',
                 prjFileString = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]';
@@ -120,7 +128,7 @@ io.sockets.on('connection', function(socket) {
                 });
               });
           };
-          
+
 
 
       if (! err) {
@@ -131,7 +139,7 @@ io.sockets.on('connection', function(socket) {
           img.resize(constraints[data.paperSize].width);
           img.extent(constraints[data.paperSize].width, constraints[data.paperSize].width);
         } else {
-          img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));          
+          img.resize(parseInt(data.shotWidth, 10), parseInt(data.shotHeight, 10));
         }
 
         img.write(target + data.format, function () {
@@ -141,9 +149,9 @@ io.sockets.on('connection', function(socket) {
               console.log(err);
             }
             if (data.format === '.tiff') {
-              zipTiff(done); 
+              zipTiff(done);
             } else {
-              done();              
+              done();
             }
           });
         });
