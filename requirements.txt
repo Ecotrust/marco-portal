@@ -1,6 +1,6 @@
 # pip requirements file for MARCO
 Distribute
-django==1.4
+django==1.11.28
 madrona
 simplejson
 django-redis
